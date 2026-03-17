@@ -1,0 +1,178 @@
+{
+  "num": 6,
+  "title": "Полиморфизм. Виртуальные функции",
+  "summary": "Концепции ООП (инкапсуляция, наследование, полиморфизм). Статический и динамический полиморфизм. Раннее и позднее связывание. Виртуальные функции и таблица виртуальных функций (vtable). Ключевые слова override и final для методов. Виртуальные деструкторы (зачем?). Чистые виртуальные функции и абстрактные классы. Интерфейсы. Понижающее приведение типа (dynamic_cast). Повышающее приведение типа (static_cast).",
+  "sections": [
+    {
+      "heading": "Три принципа ООП",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "Инкапсуляция",
+          "content": "Заключение переменных и функций, относящихся к одной сущности, в единый объект (класс) и <strong>регулирование доступа</strong> к ним (через модификаторы <code>public</code>, <code>protected</code>, <code>private</code>)."
+        },
+        {
+          "type": "definition",
+          "term": "Наследование",
+          "content": "Механизм, позволяющий определить новые классы на базе уже существующих, <strong>наследуя</strong> их поля и методы и <strong>расширяя</strong> их функционал."
+        },
+        {
+          "type": "definition",
+          "term": "Полиморфизм",
+          "content": "Механизм, позволяющий создавать <strong>различные реализации</strong> одноимённых методов и вызывать «подходящую» версию в зависимости от типа объекта и/или параметров."
+        }
+      ]
+    },
+    {
+      "heading": "Статический и динамический полиморфизм",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "Статический полиморфизм",
+          "content": "Какой метод будет вызван — известно <strong>на этапе компиляции</strong>.<br>Примеры: переопределение методов в наследниках (без <code>virtual</code>), шаблоны, перегрузка функций."
+        },
+        {
+          "type": "definition",
+          "term": "Динамический полиморфизм",
+          "content": "Какой метод будет вызван — определяется <strong>во время выполнения</strong> программы, исходя из типа <strong>объекта</strong>, а не указателя/ссылки."
+        },
+        {
+          "type": "definition",
+          "term": "Связывание (binding)",
+          "content": "<strong>Связывание</strong> — сопоставление вызова функции с её определением.<br>• <strong>Раннее</strong> (статическое) — при компиляции<br>• <strong>Позднее</strong> (динамическое) — при выполнении"
+        },
+        {
+          "type": "example",
+          "content": "<strong>Демонстрация проблемы статического связывания:</strong><br><pre><code>class Rectangle {\nprotected:\n    float length, width;\npublic:\n    Rectangle(const float &l = 0, const float &w = 0) : length(l), width(w) {}\n    float countArea() const { return length * width; }\n};\n\nclass Parallelepiped : public Rectangle {\n    float height;\npublic:\n    Parallelepiped(const float &l, const float &w, const float &h)\n        : Rectangle(l, w), height(h) {}\n    float countArea() const {\n        return 2 * (length*width + length*height + width*height);\n    }\n};\n\nint main() {\n    Parallelepiped p(1, 2, 3);\n    std::cout &lt;&lt; p.countArea() &lt;&lt; std::endl;    // 22 (метод наследника)\n    Rectangle* r = &p;\n    std::cout &lt;&lt; r-&gt;countArea() &lt;&lt; std::endl;   // 2 (метод РОДИТЕЛЯ!)\n    Rectangle& r2 = p;\n    std::cout &lt;&lt; r2.countArea() &lt;&lt; std::endl;   // 2 (метод РОДИТЕЛЯ!)\n    return 0;\n}</code></pre>Через указатель/ссылку базового типа вызывается метод <strong>родителя</strong>, а не наследника."
+        }
+      ]
+    },
+    {
+      "heading": "Виртуальные функции",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "virtual",
+          "content": "Чтобы включить <strong>динамический полиморфизм</strong>, метод в базовом классе объявляется как <code>virtual</code>:<br><pre><code>virtual float countArea() const { return length * width; }</code></pre>Теперь вызов через указатель/ссылку базового типа вызовет метод <strong>объекта</strong>, а не указателя."
+        },
+        {
+          "type": "text",
+          "content": "Если метод объявлен виртуальным в базовом классе, он <strong>автоматически</strong> является виртуальным во всех наследниках (ключевое слово <code>virtual</code> в наследнике необязательно).<br><br><strong>Требования:</strong> для корректной работы переопределения кол-во параметров, их типы, тип возвращаемого значения и <strong>константность</strong> метода должны <strong>полностью совпадать</strong>. Единственное исключение — ковариантный возвращаемый тип (указатель/ссылка на свой класс)."
+        }
+      ]
+    },
+    {
+      "heading": "Таблица виртуальных функций (vtable)",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "При компиляции для каждого класса с виртуальными методами создаётся <strong>таблица виртуальных функций</strong> — массив указателей на реализации виртуальных методов. В каждый объект добавляется <strong>скрытый указатель</strong> на эту таблицу.<br><br>Если метод <strong>переопределён</strong> в наследнике, в его таблице будет адрес переопределённой версии. Если <strong>не переопределён</strong> — адрес метода из базового класса."
+        },
+        {
+          "type": "note",
+          "content": "Наличие виртуальных функций <strong>увеличивает размер объекта</strong> на размер указателя (обычно 4 или 8 байт):<br><pre><code>// Без virtual: sizeof(A) == 4 (только int)\n// С virtual:  sizeof(A) == 8 или 16 (int + указатель на vtable)</code></pre>"
+        }
+      ]
+    },
+    {
+      "heading": "override и final для методов",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "override",
+          "content": "Ключевое слово <code>override</code> в конце объявления метода в наследнике <strong>гарантирует</strong>, что метод действительно переопределяет виртуальный метод базового класса. Если сигнатуры не совпадают — <strong>ошибка компиляции</strong>:<br><pre><code>class A {\npublic:\n    virtual void fun() const { }\n};\n\nclass B : public A {\npublic:\n    void fun() override { }  // ОШИБКА! Отсутствует const\n    void fun() const override { }  // OK\n};</code></pre>"
+        },
+        {
+          "type": "definition",
+          "term": "final для методов",
+          "content": "Ключевое слово <code>final</code> <strong>запрещает переопределение</strong> метода в дальнейших наследниках:<br><pre><code>class Parallelepiped : public Rectangle {\npublic:\n    float countArea() const override final; // Запрещено переопределять дальше\n};</code></pre>"
+        },
+        {
+          "type": "note",
+          "content": "<strong>Best practice:</strong> всегда используйте <code>override</code> при переопределении виртуальных методов. Это защищает от случайных ошибок в сигнатуре."
+        }
+      ]
+    },
+    {
+      "heading": "Виртуальные деструкторы",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "При удалении объекта через указатель базового класса, если деструктор <strong>не виртуальный</strong>, вызовется только деструктор базового класса → <strong>утечка памяти</strong>:<br><pre><code>A *pA = new B();\ndelete pA; // Если ~A() не виртуальный → деструктор B НЕ будет вызван!</code></pre>"
+        },
+        {
+          "type": "note",
+          "content": "<strong>Best practice:</strong> если планируете наследоваться от класса, <strong>объявляйте его деструктор виртуальным</strong>:<br><pre><code>virtual ~Rectangle() {}</code></pre>Конструкторы виртуальными быть <strong>не могут</strong>."
+        },
+        {
+          "type": "text",
+          "content": "<strong>Важно:</strong> не вызывайте виртуальные методы в конструкторах и деструкторах. Создание объекта начинается с родительской части, а уничтожение — с части наследника. К моменту вызова виртуального метода в конструкторе родителя часть наследника <strong>ещё не создана</strong>, а в деструкторе — <strong>уже уничтожена</strong>."
+        }
+      ]
+    },
+    {
+      "heading": "Чистые виртуальные функции и абстрактные классы",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "Чистая виртуальная функция (ЧВФ)",
+          "content": "Виртуальная функция, не имеющая определения в базовом классе, «присвоенная» значению 0:<br><pre><code>virtual float countPerimeter() const = 0;\nvirtual float countArea() const = 0;</code></pre>"
+        },
+        {
+          "type": "definition",
+          "term": "Абстрактный класс",
+          "content": "Класс, содержащий <strong>хотя бы одну</strong> чистую виртуальную функцию. <strong>Нельзя</strong> создать объект абстрактного класса, но можно создать <strong>указатель/ссылку</strong> такого типа."
+        },
+        {
+          "type": "example",
+          "content": "<pre><code>class Figure {  // Абстрактный класс\npublic:\n    virtual float countPerimeter() const = 0;\n    virtual float countArea() const = 0;\n};\n\nclass Rectangle : public Figure {\nprotected:\n    float length, width;\npublic:\n    Rectangle(const float &l, const float &w) : length(l), width(w) {}\n    float countPerimeter() const override { return 2 * (length + width); }\n    float countArea() const override { return length * width; }\n};\n\n// Figure f; // ОШИБКА — нельзя создать объект абстрактного класса\nFigure* p = new Rectangle(3, 4); // OK — указатель на абстрактный тип</code></pre>"
+        },
+        {
+          "type": "text",
+          "content": "Если в наследнике абстрактного класса ЧВФ <strong>не переопределена</strong>, наследник тоже будет абстрактным.<br><br>ЧВФ можно определить <strong>вне класса</strong> (как «реализацию по умолчанию»), но класс <strong>останется абстрактным</strong>. Наследники могут вызвать её через <code>Figure::countPerimeter()</code>."
+        },
+        {
+          "type": "note",
+          "content": "Абстрактные классы нужны для задания <strong>«шаблона»</strong>: они описывают общий интерфейс, не привязываясь к конкретным данным (например, «фигура» не имеет конкретных размеров, но имеет периметр и площадь)."
+        }
+      ]
+    },
+    {
+      "heading": "Интерфейсы",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "Интерфейс",
+          "content": "<strong>Интерфейс</strong> — класс, <strong>не имеющий полей</strong>, все методы которого являются чистыми виртуальными функциями.<br><br>В C++ нет специального ключевого слова для интерфейсов (как <code>interface</code> в C#), они реализуются как обычные абстрактные классы:<br><pre><code>class IFigure {\npublic:\n    virtual float countPerimeter() const = 0;\n    virtual float countArea() const = 0;\n    virtual ~IFigure() {}\n};</code></pre>"
+        }
+      ]
+    },
+    {
+      "heading": "Приведение типов: dynamic_cast и static_cast",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Указатель/ссылка базового типа «видит» <strong>только</strong> поля и методы базового класса. Чтобы вызвать методы наследника, есть два подхода:<br>1. Добавить виртуальную функцию в базовый класс (не всегда уместно)<br>2. <strong>Приведение типа</strong> к производному классу"
+        },
+        {
+          "type": "definition",
+          "term": "dynamic_cast (понижающее приведение)",
+          "content": "Приведение указателя/ссылки <strong>базового типа к производному</strong>. Если приведение невозможно — возвращает <code>nullptr</code>:<br><pre><code>for (Rectangle* const& figure : figures)\n{\n    if (Parallelepiped* p = dynamic_cast&lt;Parallelepiped*&gt;(figure))\n        std::cout &lt;&lt; \"volume: \" &lt;&lt; p-&gt;countVolume() &lt;&lt; \"\\n\";\n}</code></pre>"
+        },
+        {
+          "type": "definition",
+          "term": "static_cast (повышающее приведение)",
+          "content": "<strong>Повышающее приведение</strong> — наследник к базовому типу. Выполняется <strong>без проверки</strong> (быстрее, но менее безопасно)."
+        },
+        {
+          "type": "note",
+          "content": "Ограничения <code>dynamic_cast</code>: не работает с классами, у которых <strong>нет</strong> виртуальных методов (нет vtable), и при <code>private</code>/<code>protected</code>-наследовании."
+        },
+        {
+          "type": "text",
+          "content": "<strong>Практическое применение:</strong> динамический полиморфизм позволяет хранить объекты разных типов в <strong>одной коллекции</strong> (через указатели на базовый класс) и работать с ними <strong>единообразно</strong>:<br><pre><code>std::vector&lt;Rectangle*&gt; figures;\nfigures.push_back(new Rectangle(3, 4));\nfigures.push_back(new Parallelepiped(1, 2, 3));\n\nfor (auto* f : figures) {\n    f-&gt;printParameters();               // Виртуальный вызов\n    std::cout &lt;&lt; f-&gt;countArea() &lt;&lt; \"\\n\"; // Правильный метод для каждого типа\n}</code></pre>"
+        }
+      ]
+    }
+  ]
+}

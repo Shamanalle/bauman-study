@@ -1,0 +1,6 @@
+Lada_Vesta 5.8 9.3 7.2 190 106
+Toyota_Camry 6.1 10.5 7.8 210 181
+BMW_X5 7.5 12.3 9.4 250 340
+Hyundai_Solaris 5.2 8.1 6.3 185 123
+Kia_Rio 5.0 7.9 6.1 180 100
+Ford_Focus 5.5 9.0 6.9 200 150

@@ -1,0 +1,193 @@
+/* Cards: theorem page, sections, proof/example toggles, all card content blocks */
+
+/* Theorem page card */
+.theorem-page {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+/* Card header */
+.tp-header {
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.tp-header-task { flex-direction: column; gap: 10px; position: relative; }
+.tp-num {
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--accent); color: #fff; border-radius: 10px;
+  font-size: 0.85rem; font-weight: 700; flex-shrink: 0;
+}
+.tp-header-task .tp-num {
+  width: max-content; min-width: 36px; padding: 0 10px;
+  height: 28px; border-radius: 8px; font-size: 0.75rem; margin-bottom: -2px;
+}
+.tp-header-text { flex: 1; }
+.tp-title { font-size: 1.05rem; font-weight: 700; color: var(--text); }
+.tp-subtitle { font-size: 0.8rem; color: var(--text3); margin-top: 2px; }
+.tp-chevron { color: var(--text3); transition: 0.3s; font-size: 0.8rem; margin-top: 8px; }
+.tp-header-task .tp-chevron { position: absolute; top: 32px; right: 24px; margin-top: 0; }
+.theorem-page.open .tp-chevron { transform: rotate(180deg); }
+
+/* Card body */
+.tp-body { display: none; padding: 0 24px 24px; }
+.theorem-page.open .tp-body { padding: 28px 32px; display: flex; flex-direction: column; gap: 20px; }
+
+/* Card content blocks */
+.card-tldr {
+  font-size: 1.15rem; font-weight: 800; color: var(--text);
+  line-height: 1.5; letter-spacing: -0.02em;
+}
+.card-intuition {
+  font-size: 0.95rem; color: var(--text2); line-height: 1.85;
+  margin: 0; font-style: italic; padding-left: 18px;
+  border-left: 2px solid var(--accent-border);
+}
+.card-analogy {
+  font-size: 0.9rem; color: var(--text3); line-height: 1.75;
+  margin: 0; padding: 14px 18px; background: var(--accent-bg);
+  border-radius: 10px; border: 1px solid var(--accent-border);
+}
+
+/* Formal text */
+.card-formal { margin: 0; }
+.card-formal-text { font-size: 0.95rem; line-height: 1.85; color: var(--text); margin: 0 0 12px; }
+.card-formal-text ul, .card-formal-text ol { padding-left: 24px; margin: 12px 0; }
+.card-formal-text li { margin-bottom: 8px; }
+.card-cond { margin: 12px 0; padding-left: 0; list-style: none; }
+.card-cond li {
+  position: relative; padding-left: 24px; margin: 6px 0;
+  font-size: 0.92rem; line-height: 1.8; color: var(--text);
+}
+.card-cond li::before { content: "•"; position: absolute; left: 4px; color: var(--accent); font-weight: bold; }
+
+/* Proof toggle */
+.proof-toggle {
+  cursor: pointer; padding: 10px 14px;
+  border: 1.5px dashed var(--purple); border-radius: var(--radius);
+  color: var(--purple); font-size: 0.85rem; font-weight: 600;
+  display: flex; align-items: center; gap: 6px;
+  transition: all 0.15s; user-select: none;
+}
+.proof-toggle:hover { background: var(--purple-bg); border-style: solid; }
+.proof-toggle-icon { font-size: 1rem; }
+.proof-body { display: none; margin-top: 8px; }
+.proof-toggle.open + .proof-body { display: block; }
+.proof-key-idea {
+  font-size: 0.88rem; color: #7a4f01; background: var(--orange-bg);
+  border: 1px solid var(--orange-border); border-radius: 8px;
+  padding: 10px 14px; margin-bottom: 12px; line-height: 1.6; font-weight: 500;
+}
+.proof-text { font-size: 0.9rem; color: var(--text); line-height: 1.85; padding: 12px 0; }
+
+/* Steps */
+.proof-steps { counter-reset: step; }
+.step { display: flex; gap: 14px; margin-bottom: 16px; position: relative; }
+.step::before {
+  counter-increment: step; content: counter(step);
+  width: 28px; height: 28px; display: flex; align-items: center; justify-content: center;
+  background: var(--purple); color: #fff; border-radius: 50%;
+  font-size: 0.75rem; font-weight: 700; flex-shrink: 0; margin-top: 2px;
+}
+.step-content { flex: 1; }
+.step-title { font-weight: 700; font-size: 0.88rem; color: var(--purple); margin-bottom: 4px; }
+.step-text { font-size: 0.9rem; color: var(--text); line-height: 1.85; }
+.step-math {
+  background: var(--purple-bg); border: 1px solid var(--purple-border);
+  border-radius: 8px; padding: 10px 14px; margin: 8px 0;
+  font-size: 0.95rem; overflow-x: auto; text-align: center;
+}
+.step-tip {
+  background: var(--orange-bg); border: 1px solid var(--orange-border);
+  border-radius: 8px; padding: 8px 12px; margin: 8px 0;
+  font-size: 0.82rem; color: #6a4a00;
+  display: flex; align-items: flex-start; gap: 6px;
+}
+.step-tip::before { content: "💡"; flex-shrink: 0; }
+
+/* Example toggle */
+.example-toggle {
+  cursor: pointer; padding: 10px 14px;
+  border: 1.5px dashed var(--teal); border-radius: var(--radius);
+  color: var(--teal); font-size: 0.85rem; font-weight: 600;
+  display: flex; align-items: center; gap: 6px;
+  transition: all 0.15s; user-select: none; margin-top: 12px;
+}
+.example-toggle:hover { background: var(--teal-bg); border-style: solid; }
+.example-toggle-icon { font-size: 1rem; }
+.example-toggle .adv-chevron { margin-left: auto; transition: transform 0.2s; font-size: 0.7rem; }
+.example-toggle.open .adv-chevron { transform: rotate(90deg); }
+.example-body { display: none; margin-top: 10px; }
+.example-body.show { display: block; }
+.example-body pre { margin: 0; font-family: "JetBrains Mono", monospace; font-size: 0.85rem; line-height: 1.5; }
+.example-body code { font-family: "JetBrains Mono", monospace; }
+.card-example-text {
+  background: #f6f8fa; border: 1px solid var(--border); border-radius: 8px;
+  padding: 16px; font-size: 0.85rem; line-height: 1.6; overflow-x: auto; color: #24292f;
+}
+.card-example-text p { margin: 0; }
+
+/* Advanced toggle */
+.adv-toggle {
+  cursor: pointer; padding: 10px 14px;
+  border: 1.5px dashed #cf222e; border-radius: var(--radius);
+  color: #cf222e; font-size: 0.82rem; font-weight: 600;
+  display: flex; align-items: center; gap: 6px;
+  transition: all 0.15s; user-select: none;
+}
+.adv-toggle:hover { background: rgba(207, 34, 46, 0.06); border-style: solid; }
+.adv-toggle-icon { font-size: 1rem; }
+.adv-chevron { margin-left: auto; transition: transform 0.2s; font-size: 0.7rem; }
+.adv-toggle.open .adv-chevron { transform: rotate(90deg); }
+.adv-body { display: none; }
+.adv-toggle.open + .adv-body { display: block; }
+.advanced-block {
+  background: linear-gradient(135deg, #fff5f5, #ffe0e0);
+  border: 2px solid #cf222e; border-radius: var(--radius);
+  padding: 16px 18px; font-size: 0.9rem; line-height: 1.85; margin-top: 8px;
+}
+.advanced-block p { color: #5c0a0a; }
+.adv-proof { margin-top: 12px; padding-top: 12px; border-top: 1px dashed #ff8182; color: #7a1b1b; line-height: 1.85; }
+
+/* Visual block */
+.visual-block {
+  background: #f6f8fa; border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 16px; text-align: center; overflow-x: auto;
+}
+.visual-block svg { max-width: 100%; height: auto; }
+.visual-label { font-size: 0.72rem; color: var(--text3); margin-top: 8px; font-style: italic; }
+
+/* Exam/Note text */
+.card-exam-say { font-size: 0.85rem; color: var(--text2); line-height: 1.7; margin: 0; padding-top: 8px; border-top: 1px solid var(--border); }
+.card-note { font-size: 0.85rem; color: var(--text2); line-height: 1.7; margin: 0; }
+
+/* Key idea */
+.key-idea { background: var(--orange-bg); border: 1px solid var(--orange-border); border-radius: var(--radius); padding: 14px 18px; }
+.ki-label { font-weight: 700; font-size: 0.82rem; color: #7a4f01; display: block; margin-bottom: 4px; }
+.key-idea p { font-size: 0.88rem; color: #6a4a00; line-height: 1.6; font-weight: 500; }
+
+/* Statement block */
+.statement-block {
+  background: linear-gradient(135deg, #f0f4ff, #e8f0fe);
+  border: 2px solid #c2d4f0; border-radius: var(--radius);
+  padding: 14px 18px; font-size: 0.92rem; line-height: 1.6;
+  color: #1a3a5c; font-weight: 500;
+}
+
+/* TLDR block */
+.tldr {
+  background: linear-gradient(135deg, #dafbe1, #d4f7e2);
+  border: 1.5px solid var(--accent); border-radius: var(--radius);
+  padding: 12px 16px; font-size: 0.92rem; font-weight: 600;
+  color: #1a4731; line-height: 1.5; margin-bottom: 8px;
+}

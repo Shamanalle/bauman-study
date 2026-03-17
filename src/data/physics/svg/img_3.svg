@@ -1,0 +1,49 @@
+<svg viewBox="0 0 460 135" width="460" height="135">
+  <defs>
+    <linearGradient id="diskGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="rgba(9,105,218,0.45)"/>
+      <stop offset="100%" stop-color="rgba(9,105,218,0.1)"/>
+    </linearGradient>
+    <radialGradient id="sphereGrad" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="rgba(56,139,253,0.6)"/>
+      <stop offset="100%" stop-color="rgba(9,105,218,0.08)"/>
+    </radialGradient>
+    <linearGradient id="rodGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="rgba(9,105,218,0.45)"/>
+      <stop offset="100%" stop-color="rgba(9,105,218,0.15)"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Ring (centered at x=55) -->
+  <g transform="translate(10, 10)">
+    <line x1="45" y1="0" x2="45" y2="80" stroke="#cf222e" stroke-width="1.5" stroke-dasharray="4"/>
+    <ellipse cx="45" cy="35" rx="34" ry="15" fill="none" stroke="#0969da" stroke-width="3"/>
+    <text x="45" y="96" font-size="12" fill="#24292f" font-weight="bold" text-anchor="middle">Обруч</text>
+    <text x="45" y="113" font-size="13" fill="#0969da" font-weight="bold" text-anchor="middle">mR²</text>
+  </g>
+
+  <!-- Disk (centered at x=160) -->
+  <g transform="translate(115, 10)">
+    <line x1="45" y1="0" x2="45" y2="80" stroke="#cf222e" stroke-width="1.5" stroke-dasharray="4"/>
+    <ellipse cx="45" cy="35" rx="34" ry="15" fill="url(#diskGrad)" stroke="#0969da" stroke-width="2"/>
+    <text x="45" y="96" font-size="12" fill="#24292f" font-weight="bold" text-anchor="middle">Диск</text>
+    <text x="45" y="113" font-size="13" fill="#0969da" font-weight="bold" text-anchor="middle">½mR²</text>
+  </g>
+
+  <!-- Sphere (centered at x=265) -->
+  <g transform="translate(220, 10)">
+    <line x1="45" y1="0" x2="45" y2="80" stroke="#cf222e" stroke-width="1.5" stroke-dasharray="4"/>
+    <circle cx="45" cy="35" r="28" fill="url(#sphereGrad)" stroke="#0969da" stroke-width="1.5"/>
+    <ellipse cx="45" cy="35" rx="28" ry="5" fill="none" stroke="rgba(9,105,218,0.5)" stroke-width="1" stroke-dasharray="4 3"/>
+    <text x="45" y="96" font-size="12" fill="#24292f" font-weight="bold" text-anchor="middle">Шар</text>
+    <text x="45" y="113" font-size="13" fill="#0969da" font-weight="bold" text-anchor="middle">⅖mR²</text>
+  </g>
+
+  <!-- Rod (centered at x=375, rotation axis at LEFT end) -->
+  <g transform="translate(335, 10)">
+    <line x1="60" y1="0" x2="60" y2="80" stroke="#cf222e" stroke-width="1.5" stroke-dasharray="4"/>
+    <rect x="20" y="30" width="80" height="10" rx="3" fill="url(#rodGrad)" stroke="#0969da" stroke-width="1.5"/>
+    <text x="55" y="96" font-size="12" fill="#24292f" font-weight="bold" text-anchor="middle">Стержень</text>
+    <text x="55" y="113" font-size="13" fill="#0969da" font-weight="bold" text-anchor="middle">¹⁄₁₂mL²</text>
+  </g>
+</svg>

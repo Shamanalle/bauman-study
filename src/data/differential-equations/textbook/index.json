@@ -1,0 +1,16 @@
+{
+  "chapters": [
+    { "file": "ch-01-antiderivative.json", "title": "Неопределённый интеграл" },
+    { "file": "ch-02-rational.json", "title": "Интегрирование рациональных и тригонометрических выражений" },
+    { "file": "ch-03-definite-integral.json", "title": "Определённый интеграл" },
+    { "file": "ch-04-newton-leibniz.json", "title": "Формула Ньютона — Лейбница" },
+    { "file": "ch-05-improper.json", "title": "Несобственные интегралы" },
+    { "file": "ch-06-applications.json", "title": "Приложения определённого интеграла" },
+    { "file": "ch-07-ode-first-order.json", "title": "Дифференциальные уравнения первого порядка" },
+    { "file": "ch-08-higher-order.json", "title": "Методы решения ДУ. ДУ высших порядков" },
+    { "file": "ch-09-linear-ode.json", "title": "Линейные ДУ n-го порядка" },
+    { "file": "ch-10-const-coeff.json", "title": "ЛОДУ с постоянными коэффициентами. Неоднородные ЛДУ" },
+    { "file": "ch-11-systems.json", "title": "Системы дифференциальных уравнений" },
+    { "file": "ch-12-linear-systems.json", "title": "Системы линейных ДУ. ЛОДУ с постоянными коэффициентами" }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "num": 9,
+  "title": "Итераторы",
+  "summary": "Понятие итератора. Типы итераторов: Input, Forward, Bidirectional, Random Access, Contiguous, Output. Операции для каждого типа. Написание своего итератора: using-определения (iterator_category, value_type, difference_type, pointer, reference). Реализация операторов ==, !=, *, ->, ++, --, [], +, -, +=, -=, <, >, <=, >=. Привязка итератора к контейнеру (begin/end). Работа со стандартными алгоритмами.",
+  "sections": [
+    {
+      "heading": "Что такое итератор?",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "Итератор",
+          "content": "<strong>Итератор</strong> — тип данных, позволяющий <strong>перебирать элементы</strong> контейнера. Является обёрткой над указателем (в простейшем случае), но может быть и более сложным типом.<br><br>С итераторами вы сталкиваетесь каждый раз при использовании <strong>range-based for</strong>:<br><pre><code>for (auto& elem : container) { ... }</code></pre>"
+        },
+        {
+          "type": "text",
+          "content": "Итератор должен обеспечивать <strong>требуемый функционал</strong> (набор операций) в зависимости от своего типа."
+        }
+      ]
+    },
+    {
+      "heading": "Типы (категории) итераторов",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Итераторы образуют <strong>иерархию</strong> — каждый следующий добавляет новые операции:"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Итератор",
+            "Операции"
+          ],
+          "rows": [
+            [
+              "Input iterator (один проход, одно направление)",
+              "==, !=, ->, *, ++ (пре/пост)"
+            ],
+            [
+              "Forward iterator (многопроходный, одно направление)",
+              "Те же, без новых"
+            ],
+            [
+              "Bidirectional iterator (оба направления)",
+              "+ -- (пре/пост)"
+            ],
+            [
+              "Random access iterator (произвольный доступ)",
+              "+ [], +, -, +=, -=, <, >, <=, >="
+            ],
+            [
+              "Contiguous iterator (смежная память)",
+              "Те же, без новых"
+            ]
+          ]
+        },
+        {
+          "type": "text",
+          "content": "<strong>Output iterator</strong> стоит особняком — отвечает за <strong>модификацию</strong> данных. Любой итератор чтения может одновременно быть Output iterator (тогда он <strong>изменяемый</strong>)."
+        }
+      ]
+    },
+    {
+      "heading": "Создание своего итератора",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Для создания <strong>Random Access Output</strong> итератора (самый полный вариант) нужно определить <strong>19 операторов</strong> и 5 <code>using</code>-определений:"
+        },
+        {
+          "type": "example",
+          "content": "<pre><code>class StringIterator {\n    char* _pos;\npublic:\n    // Обязательные using-определения:\n    using iterator_category = std::random_access_iterator_tag;\n    using value_type = char;\n    using difference_type = int;\n    using pointer = char*;\n    using reference = char&;\n\n    StringIterator(char* pos) : _pos(pos) {}\n\n    // Операторы сравнения\n    bool operator==(StringIterator const& other) const { return _pos == other._pos; }\n    bool operator!=(StringIterator const& other) const { return _pos != other._pos; }\n\n    // Разыменование и доступ\n    reference operator*() const { return *_pos; }\n    pointer operator-&gt;() const  { return _pos; }\n\n    // Инкремент/декремент\n    StringIterator& operator++()    { ++_pos; return *this; }        // Префиксный\n    StringIterator  operator++(int) { auto tmp = *this; ++_pos; return tmp; } // Постфиксный\n    StringIterator& operator--()    { --_pos; return *this; }\n    StringIterator  operator--(int) { auto tmp = *this; --_pos; return tmp; }\n\n    // Произвольный доступ\n    reference operator[](size_t index) const { return _pos[index]; }\n    StringIterator operator+(difference_type const& d) const { return {_pos + d}; }\n    StringIterator operator-(difference_type const& d) const { return {_pos - d}; }\n    difference_type operator-(StringIterator const& o) const {\n        return std::distance(o._pos, _pos);\n    }\n    StringIterator& operator+=(difference_type const& d) { _pos += d; return *this; }\n    StringIterator& operator-=(difference_type const& d) { _pos -= d; return *this; }\n\n    // Сравнения позиций\n    bool operator&gt;(StringIterator const& o)  const { return _pos &gt; o._pos; }\n    bool operator&lt;(StringIterator const& o)  const { return _pos &lt; o._pos; }\n    bool operator&gt;=(StringIterator const& o) const { return _pos &gt;= o._pos; }\n    bool operator&lt;=(StringIterator const& o) const { return _pos &lt;= o._pos; }\n\n    // Внешняя функция: сдвиг + итератор\n    friend StringIterator operator+(difference_type const& d, StringIterator const& it);\n};</code></pre>"
+        },
+        {
+          "type": "note",
+          "content": "Класс итератора <strong>не работает с ресурсами</strong>, поэтому по <strong>правилу нуля</strong> ему не нужны конструктор копирования, оператор присваивания и деструктор."
+        }
+      ]
+    },
+    {
+      "heading": "Привязка итератора к контейнеру (begin/end)",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Для использования итератора с <code>range-based for</code> и стандартными алгоритмами нужно определить методы <code>begin()</code> и <code>end()</code> в классе контейнера:"
+        },
+        {
+          "type": "example",
+          "content": "<pre><code>class String {\n    char* _symbols;\n    size_t _len;\n    size_t _capacity;\npublic:\n    // ...\n    StringIterator begin() const { return StringIterator(&_symbols[0]); }\n    StringIterator end()   const { return StringIterator(&_symbols[_len]); }\n};</code></pre>"
+        },
+        {
+          "type": "note",
+          "content": "<code>end()</code> возвращает итератор на элемент <strong>после последнего</strong>. Область памяти, на которую он указывает, должна быть «легальной» (выделенной)."
+        }
+      ]
+    },
+    {
+      "heading": "Работа со стандартными алгоритмами",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "После определения итератора и <code>begin()/end()</code> контейнер автоматически работает со <strong>стандартными алгоритмами STL</strong>:"
+        },
+        {
+          "type": "example",
+          "content": "<pre><code>#include &lt;algorithm&gt;\n\nString str(\"ABCDEFG 12345 asdfgh\");\n\n// for_each — вывод каждого символа\nstd::for_each(str.begin(), str.end(), [](auto i) { std::cout &lt;&lt; i; });\n\n// range-based for\nfor (auto i : str) std::cout &lt;&lt; i &lt;&lt; \"|\";\n\n// find — поиск символа\nauto pos = std::find(str.begin(), str.end(), 's') - str.begin();\n\n// count_if — подсчёт цифр\nint nums = std::count_if(str.begin(), str.end(),\n    [](auto i) { return i &gt;= '0' && i &lt;= '9'; });\n\n// sort — сортировка\nstd::sort(str.begin(), str.end());\n\n// max_element, min_element\nstd::cout &lt;&lt; *std::max_element(str.begin(), str.end());\nstd::cout &lt;&lt; *std::min_element(str.begin(), str.end());</code></pre>"
+        }
+      ]
+    }
+  ]
+}

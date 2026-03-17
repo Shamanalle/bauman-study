@@ -1,0 +1,37 @@
+<svg viewBox="0 0 440 200" width="440" height="200">
+  <defs>
+    <marker id="arrR" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0, 7 3.5, 0 7" fill="#0969da"/></marker>
+    <marker id="arrF" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0, 7 3.5, 0 7" fill="#e5534b"/></marker>
+    <marker id="arrM" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0, 7 3.5, 0 7" fill="#8250df"/></marker>
+  </defs>
+
+  <!-- Floor plane (perspective grid) -->
+  <polygon points="50 155, 240 155, 340 95, 150 95" fill="rgba(139,148,158,0.06)" stroke="#d0d7de" stroke-width="1"/>
+
+  <!-- Rotation axis (dashed vertical) -->
+  <line x1="160" y1="180" x2="160" y2="20" stroke="#8b949e" stroke-width="1.5" stroke-dasharray="5"/>
+
+  <!-- Point of application O -->
+  <circle cx="160" cy="125" r="5" fill="#24292f"/>
+  <text x="143" y="142" font-size="14" fill="#24292f" font-weight="bold">O</text>
+
+  <!-- r vector (horizontal, from O to point of force application) -->
+  <line x1="160" y1="125" x2="262" y2="125" stroke="#0969da" stroke-width="3" marker-end="url(#arrR)"/>
+  <text x="205" y="118" font-size="16" fill="#0969da" font-weight="bold">r</text>
+
+  <!-- F vector (from end of r, going up-right at angle) -->
+  <line x1="262" y1="125" x2="325" y2="62" stroke="#e5534b" stroke-width="3" marker-end="url(#arrF)"/>
+  <text x="330" y="58" font-size="16" fill="#e5534b" font-weight="bold">F</text>
+
+  <!-- Angle arc α (between r and F at their junction) -->
+  <path d="M 290 125 A 30 30 0 0 0 282 100" fill="none" stroke="#2da44e" stroke-width="2.5"/>
+  <text x="298" y="112" font-size="14" fill="#2da44e" font-weight="bold">α</text>
+
+  <!-- M vector (moment = perpendicular to plane, along axis, up) -->
+  <line x1="160" y1="125" x2="160" y2="30" stroke="#8250df" stroke-width="3.5" marker-end="url(#arrM)"/>
+  <text x="138" y="52" font-size="18" fill="#8250df" font-weight="bold">M</text>
+
+  <!-- Formula box (below, with good clearance from viewBox edge) -->
+  <rect x="225" y="150" width="200" height="35" rx="8" fill="rgba(130,80,223,0.1)" stroke="#8250df" stroke-width="1.5"/>
+  <text x="242" y="173" font-size="13" fill="#8250df" font-weight="bold">M = [r × F] = r·F·sin(α)</text>
+</svg>

@@ -1,0 +1,37 @@
+<svg viewBox="0 0 440 200" width="440" height="200">
+  <defs>
+    <marker id="arr6" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0 0, 6 3, 0 6" fill="#8b949e"/></marker>
+  </defs>
+
+  <!-- Axes -->
+  <line x1="30" y1="100" x2="410" y2="100" stroke="#d0d7de" stroke-width="1.5" marker-end="url(#arr6)"/>
+  <line x1="210" y1="190" x2="210" y2="10" stroke="#d0d7de" stroke-width="1.5" marker-end="url(#arr6)"/>
+  <text x="416" y="106" font-size="14" fill="#8b949e" font-weight="600">x</text>
+  <text x="195" y="18" font-size="14" fill="#8b949e" font-weight="600">p</text>
+
+  <!-- Ellipse (phase trajectory) rx=150, ry=70, center at 210,100 -->
+  <ellipse cx="210" cy="100" rx="150" ry="70" fill="rgba(9,105,218,0.06)" stroke="#0969da" stroke-width="2.5"/>
+
+  <!-- Moving point on ellipse (path EXACTLY matches ellipse: cx=210 cy=100 rx=150 ry=70) -->
+  
+
+  <!-- Direction arrows (clockwise motion: at top goes right, at bottom goes left) -->
+  <polygon points="218 30, 226 25, 222 36" fill="#0969da"/>
+  <polygon points="202 170, 194 175, 198 164" fill="#0969da"/>
+
+  <!-- Extremes on x-axis: A, -A (at rx=150 from center) -->
+  <circle cx="360" cy="100" r="4.5" fill="#e5534b"/>
+  <text x="366" y="96" font-size="14" fill="#e5534b" font-weight="bold">A</text>
+  <circle cx="60" cy="100" r="4.5" fill="#e5534b"/>
+  <text x="36" y="96" font-size="14" fill="#e5534b" font-weight="bold">−A</text>
+
+  <!-- Extremes on p-axis: mωA, -mωA (at ry=70 from center) -->
+  <circle cx="210" cy="30" r="4.5" fill="#2da44e"/>
+  <text x="220" y="28" font-size="13" fill="#2da44e" font-weight="bold">mωA</text>
+  <circle cx="210" cy="170" r="4.5" fill="#2da44e"/>
+  <text x="220" y="178" font-size="13" fill="#2da44e" font-weight="bold">−mωA</text>
+
+  <!-- Label box -->
+  <rect x="18" y="10" width="150" height="28" rx="6" fill="rgba(88,166,255,0.12)" stroke="#0969da" stroke-width="1.5"/>
+  <text x="32" y="29" font-size="12" fill="#0969da" font-weight="bold">E = const (Эллипс)</text>
+</svg>

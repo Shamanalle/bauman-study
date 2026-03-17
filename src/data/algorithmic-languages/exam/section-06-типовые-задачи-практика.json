@@ -1,0 +1,46 @@
+{
+  "section": "Типовые задачи (Практика)",
+  "icon": "🔨",
+  "questions": [
+    {
+      "id": "Задача 1: Наследование и Полиморфизм",
+      "title": "Хранение объектов базового и производных классов",
+      "type": "Практика",
+      "tldr": "Как правильно поместить объекты разных дочерних классов в один массив и безопасно их удалить.",
+      "steps": [
+        "**Объявление Базы**: Создаем класс `Animal` с чисто виртуальной функцией `speak() = 0` (делая класс абстрактным).",
+        "**Наследники**: Создаем `Cat` и `Dog`, публично наследуем `Animal`, переопределяем `speak()` (используя `override`).",
+        "**Виртуальный деструктор**: КРИТИЧЕСКИ ВАЖНО добавить `virtual ~Animal() {}` в базу, иначе объекты `Cat` и `Dog` при удалении через указатель `Animal*` удалятся лишь частично (утечка памяти!).",
+        "**Массив указателей**: Создаем `std::vector<Animal*>`. Массив самих объектов `Animal` создать нельзя (класс абстрактный), массив указателей — можно.",
+        "**Вызов и очистка**: В цикле вызываем `speak()` (сработает полиморфизм), затем делаем `delete` каждому указателю."
+      ],
+      "example": "<pre><code>#include &lt;iostream>\n#include &lt;vector>\n\nclass Animal {\npublic:\n    virtual void speak() const = 0;\n    // Обязательный виртуальный деструктор\n    virtual ~Animal() { std::cout << \"(~Animal)\"; }\n};\n\nclass Dog : public Animal {\npublic:\n    void speak() const override { std::cout << \"Woof! \"; }\n    ~Dog() { std::cout << \"(~Dog)\"; }\n};\n\nclass Cat : public Animal {\npublic:\n    void speak() const override { std::cout << \"Meow! \"; }\n    ~Cat() { std::cout << \"(~Cat)\"; }\n};\n\nint main() {\n    // Создаем разнородные объекты в динамической памяти\n    std::vector&lt;Animal*> zoo;\n    zoo.push_back(new Dog());\n    zoo.push_back(new Cat());\n    \n    // Полиморфный вызов (Рантайм сам понимает, чья функция нужна)\n    for (Animal* a : zoo) {\n        a->speak();\n    }\n    \n    // Освобождение памяти (благодаря virtual ~Animal вызовутся и ~Dog, и ~Cat)\n    for (Animal* a : zoo) {\n        delete a;\n    }\n    return 0;\n}</code></pre>"
+    },
+    {
+      "id": "Задача 2: Исключения",
+      "title": "Свой класс исключений",
+      "type": "Практика",
+      "tldr": "Написать класс исключения и выбросить его при ошибке в функции.",
+      "steps": [
+        "**Класс исключения**: Наследуемся от `std::exception` (можно и от `std::runtime_error`, это проще). В конструкторе принимаем сообщение об ошибке.",
+        "**Метод what**: Переопределяем метод `const char* what() const noexcept`, возвращающий C-строку с ошибкой.",
+        "**Генерация (throw)**: Пишем логику (например, `pop` из пустого стека). Если размер 0, делаем `throw MyException(\"Stack is empty!\");`.",
+        "**Перехват (catch)**: В `main()` оборачиваем вызов в `try`. Ловим исключение **по константной ссылке** `catch(const MyException& e)`, чтобы избежать лишнего копирования."
+      ],
+      "example": "<pre><code>#include &lt;iostream>\n#include &lt;exception>\n#include &lt;string>\n\n// Кастомное исключение\nclass EmptyStackException : public std::exception {\n    std::string message;\npublic:\n    EmptyStackException(const std::string& msg) : message(msg) {}\n    \n    // noexcept означает, что метод сам никогда не бросит исключение\n    const char* what() const noexcept override {\n        return message.c_str();\n    }\n};\n\nclass Stack {\n    int size = 0;\npublic:\n    int pop() {\n        if (size == 0) {\n            // Бросаем безымянный объект исключения\n            throw EmptyStackException(\"Ahhh! Pop from empty stack!\");\n        }\n        return size--;\n    }\n};\n\nint main() {\n    Stack s;\n    try {\n        s.pop();\n    } catch (const EmptyStackException& e) { // Ловим по константной ссылке!\n        std::cerr << \"Caught an error: \" << e.what() << \"\\n\";\n    }\n}</code></pre>"
+    },
+    {
+      "id": "Задача 3: Многопоточность",
+      "title": "Попеременная печать из 3х потоков",
+      "type": "Практика",
+      "tldr": "Классическая задача: три потока печатают 'A', 'B', 'C' в строгом порядке, синхронизировано.",
+      "steps": [
+        "**Общее состояние**: Объявляем `std::mutex`, `std::condition_variable` и общий флаг-состояние (например, `int current_turn = 0;`).",
+        "**Ожидание**: Внутри функции потока в бесконечном (или конечном) цикле используем `unique_lock<mutex> lk(m);`. Затем вызываем `cv.wait(lk, []{ return current_turn == MY_TURN; });`.",
+        "**Работа и передача**: Если поток проснулся, значит его очередь. Печатаем свою букву. Меняем `current_turn` на следующего `(current_turn + 1) % 3`. Зовём `cv.notify_all()`, будя вообще всех спящих (проснется и пройдет проверку только один).",
+        "**Запуск и Join**: В `main` порождаем три `std::thread`, передавая каждому его номер (0, 1 или 2). Затем вызываем `join()` для каждого."
+      ],
+      "example": "<pre><code>#include &lt;thread>\n#include &lt;mutex>\n#include &lt;condition_variable>\n#include &lt;iostream>\n\nstd::mutex m;\nstd::condition_variable cv;\nint turn = 0;\n\nvoid printLetter(int id, char letter) {\n    for (int i = 0; i < 5; ++i) {\n        std::unique_lock&lt;std::mutex> lk(m);\n        \n        // Засыпаем ПРЯМО ТУТ, пока очередь (turn) не совпадет с нашим id\n        cv.wait(lk, [id] { return turn == id; });\n        \n        // Если мы тут - мы проснулись и мьютекс у нас\n        std::cout << letter;\n        std::cout.flush(); // принудительно выводим на экран без endl\n        \n        // Даем ход следующему и будим всех!\n        turn = (turn + 1) % 3;\n        cv.notify_all();\n    }\n}\n\nint main() {\n    // ВАЖНО: они стартанут примерно одновременно, но A напечатается первой,\n    // так как turn == 0, и B(1), C(2) мгновенно уснут в wait.\n    std::thread t1(printLetter, 0, 'A');\n    std::thread t2(printLetter, 1, 'B');\n    std::thread t3(printLetter, 2, 'C');\n    \n    t1.join(); t2.join(); t3.join(); \n    return 0; // Итог: ABCABCABCABCABC\n}</code></pre>"
+    }
+  ]
+}

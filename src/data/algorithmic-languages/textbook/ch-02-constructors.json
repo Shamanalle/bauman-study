@@ -1,0 +1,246 @@
+{
+  "num": 2,
+  "title": "Конструкторы и деструкторы. Правило 3/5/0",
+  "summary": "Конструктор: по умолчанию, с параметрами, список инициализации. Конструктор копирования: поверхностное vs глубокое копирование. Конструктор перемещения (&&, std::move, std::swap). Деструктор: назначение, автоматический вызов. Оператор присваивания копированием и перемещением. Проблема самоприсваивания (сравнение адресов). Правило трёх, пяти, нуля. Ключевые слова explicit, = delete, = default.",
+  "sections": [
+    {
+      "heading": "Конструктор класса",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "Конструктор",
+          "content": "<strong>Конструктор</strong> — специальный блок операторов, вызываемый при создании объекта. Назначение: присвоение начальных значений полям (инициализация), выделение памяти, открытие файлов, сетевых соединений и т.п.<br><br>Имя конструктора <strong>совпадает</strong> с именем класса. Конструктор <strong>не имеет</strong> возвращаемого значения. Возможна <strong>перегрузка</strong> конструкторов."
+        },
+        {
+          "type": "text",
+          "content": "Конструктор может определяться как <strong>внутри класса</strong>, так и <strong>за пределами</strong>:<br><pre><code>// Формат определения внутри класса:\nИмя_класса(Список_формальных_параметров)\n{  Операторы_тела_конструктора  }\n\n// Формат определения за пределами класса:\nИмя_класса::Имя_класса(Параметры) : список_инициализации\n{  Операторы_тела_конструктора  }</code></pre>"
+        },
+        {
+          "type": "text",
+          "content": "<strong>Вызовы конструкторов:</strong><br><pre><code>A a1;                      // конструктор без параметров\nA* pA = new A;             // конструктор без параметров (в куче)\nA a2(3, 4);                // конструктор с 2-мя параметрами\nA* pA2 = new A(3, 4);     // конструктор с 2-мя параметрами (в куче)\nA* pP = new A[10];         // массив из 10 объектов, вызывается конструктор без параметров</code></pre>"
+        },
+        {
+          "type": "note",
+          "content": "Конструкторы и деструкторы <strong>не вызываются</strong> пользователем напрямую. Они вызываются <strong>автоматически</strong> при создании и уничтожении объекта."
+        }
+      ]
+    },
+    {
+      "heading": "Конструктор по умолчанию",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "Конструктор по умолчанию",
+          "content": "<strong>Конструктор по умолчанию</strong> (без параметров) — создаёт объекты без пользовательских значений инициализации. Может быть только один.<br><br>Если вы <strong>не пишете ни одного конструктора</strong>, компилятор сгенерирует конструктор по умолчанию автоматически (он будет пуст — поля не инициализируются, там будет мусор).<br><br><strong>Но:</strong> если вы определили <strong>конструктор с параметрами</strong>, конструктор по умолчанию автоматически <strong>не генерируется</strong>."
+        },
+        {
+          "type": "example",
+          "content": "<pre><code>Matrix::Matrix()\n{\n    n = m = -1;\n    values = nullptr;\n}\n\n// Или через список инициализации:\npoint() : x(0), y(0)\n{\n    cout &lt;&lt; endl &lt;&lt; \"point()\";\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "heading": "Конструктор с параметрами",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "<strong>Конструктор с параметрами</strong> принимает один или несколько параметров. Таких конструкторов может быть сколько угодно (перегрузка), но список параметров каждого должен быть уникален."
+        },
+        {
+          "type": "example",
+          "content": "<pre><code>Matrix::Matrix(const int &n1, const int &m1)\n{\n    n = n1;\n    m = m1;\n    values = new float*[n];\n    for (int i = 0; i &lt; n; ++i)\n        values[i] = new float[m];\n}\n\n// Определение за пределами класса с инициализацией:\npoint::point(int a, int b)\n    : x(a), y(b)  // список инициализации\n{\n    // x = a; y = b; // Или так, в теле\n}</code></pre>"
+        },
+        {
+          "type": "text",
+          "content": "Для конструктора с <strong>одним параметром</strong> допускается форма:<br><pre><code>A a1 = 5;   // вместо A a1(5);\nA a2 = a1;  // вместо A a2(a1);</code></pre>Это называется <em>неявное преобразование типа</em>."
+        }
+      ]
+    },
+    {
+      "heading": "Ключевое слово explicit",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "explicit",
+          "content": "Ключевое слово <code>explicit</code> у конструктора с одним параметром <strong>запрещает</strong> неявное преобразование типа. Допустима только явная форма вызова:<br><pre><code>class point {\n    int x, y;\npublic:\n    explicit point(int a) { x = a; y = 0; }\n};\n\npoint p1(100);   // OK — явный вызов\npoint p2 = 100;  // ОШИБКА — неявное преобразование запрещено</code></pre>"
+        },
+        {
+          "type": "note",
+          "content": "Рекомендуется использовать <code>explicit</code> для конструкторов с одним параметром, чтобы избежать непреднамеренных преобразований типов."
+        }
+      ]
+    },
+    {
+      "heading": "Список инициализации",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "Список инициализации",
+          "content": "Список инициализации — способ инициализации полей класса <strong>до</strong> выполнения тела конструктора. Записывается после двоеточия, перед открывающей фигурной скобкой:<br><pre><code>Matrix::Matrix(const int &n1, const int &m1, const float** &values1)\n    : n(n1), m(m1), values(values1)\n{\n    values1 = nullptr;\n}</code></pre>"
+        },
+        {
+          "type": "note",
+          "content": "При инициализации полей <strong>по возможности используйте список инициализации</strong> — это эффективнее присваивания в теле конструктора (поля инициализируются один раз, а не сначала по умолчанию, потом перезаписываются)."
+        }
+      ]
+    },
+    {
+      "heading": "Конструктор копирования",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "Конструктор копирования",
+          "content": "По умолчанию класс имеет <strong>конструктор копирования</strong> вида <code>A(const A& a)</code>, выполняющий <em>почленное копирование</em> полей. Этот конструктор можно переопределять."
+        },
+        {
+          "type": "text",
+          "content": "<strong>Проблема поверхностного копирования:</strong> при почленном копировании объектов с динамически выделенной памятью, новый объект будет хранить тот же указатель, что и оригинал. Это приводит к двум проблемам:<br>1. Изменение одного объекта затрагивает другой<br>2. Выделенная память будет <strong>освобождена дважды</strong> (double free)"
+        },
+        {
+          "type": "example",
+          "content": "<strong>❌ Неправильно (поверхностное копирование):</strong><br><pre><code>Matrix::Matrix(const Matrix &matrix)\n{\n    n = matrix.n;\n    m = matrix.m;\n    values = matrix.values; // Оба объекта указывают на одну память!\n}</code></pre><br><strong>✅ Правильно (глубокое копирование):</strong><br><pre><code>Matrix::Matrix(const Matrix &matrix)\n{\n    n = matrix.n;\n    m = matrix.m;\n    if (matrix.values != nullptr)\n    {\n        values = new float*[n];\n        for (int i = 0; i &lt; n; ++i)\n        {\n            values[i] = new float[m];\n            for (int j = 0; j &lt; m; ++j)\n                values[i][j] = matrix.values[i][j];\n        }\n    }\n}</code></pre>"
+        },
+        {
+          "type": "text",
+          "content": "Вызов конструктора копирования:<br><pre><code>A a2 = a1;    // или A a2(a1);\nMassiv M2 = M1;  // вызывается конструктор копирования\nMassiv *pM = new Massiv(M1); // конструктор копирования для объекта в куче</code></pre>"
+        },
+        {
+          "type": "note",
+          "content": "Конструктор копирования по умолчанию можно <strong>удалить</strong>:<br><pre><code>A(const A& a) = delete;</code></pre>Если есть <strong>явный конструктор перемещения</strong> или оператор присваивания перемещением, конструктор копирования по умолчанию <strong>не генерируется</strong>."
+        }
+      ]
+    },
+    {
+      "heading": "Конструктор перемещения (move constructor)",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "Конструктор перемещения",
+          "content": "Конструктор перемещения «забирает» ресурсы у исходного объекта вместо копирования. Работает <strong>быстрее</strong> конструктора копирования. Параметр — <strong>правосторонняя ссылка</strong> <code>T&&</code>.<br><br>После перемещения исходный объект приводится в состояние, подходящее для вызова деструктора (указатели обнуляются), чтобы <strong>не испортить</strong> новый объект."
+        },
+        {
+          "type": "example",
+          "content": "<strong>Вариант 1 — явное перемещение:</strong><br><pre><code>Massiv::Massiv(Massiv&& M)  // параметр — правосторонняя ссылка\n    : p(M.p), n(M.n)       // можно инициализировать так\n{\n    cout &lt;&lt; \"Constr Move\\n\";\n    // Обнуляем исходный объект\n    M.p = nullptr;\n    M.n = 0;\n}</code></pre><br><strong>Вариант 2 — через std::swap (более короткий):</strong><br><pre><code>Massiv::Massiv(Massiv&& M)\n{\n    cout &lt;&lt; \"Constr Move\\n\";\n    std::swap(p, M.p);  // Обмениваем указатели\n    std::swap(n, M.n);  // Обмениваем размеры\n}</code></pre>"
+        },
+        {
+          "type": "text",
+          "content": "<strong>Вызов конструктора перемещения:</strong><br><pre><code>Massiv M3 = std::move(M1); // явное перемещение через std::move</code></pre>"
+        },
+        {
+          "type": "note",
+          "content": "Правила генерации по умолчанию:<br>• Если <strong>нет</strong> явного конструктора перемещения и копирования — конструктор перемещения создаётся по умолчанию<br>• Если есть <strong>явный</strong> конструктор копирования — конструктор перемещения <strong>не создаётся</strong> (вместо него используется конструктор копирования)<br>• Конструктор перемещения можно удалить: <code>A(A&& a) = delete;</code>"
+        }
+      ]
+    },
+    {
+      "heading": "Деструктор",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "Деструктор",
+          "content": "<strong>Деструктор</strong> — специальный блок операторов для <strong>деинициализации</strong> объекта: освобождение памяти, закрытие файлов и т.п.<br><br>Формат: <code>~имя_класса() { тело_деструктора }</code><br><br>Не имеет возвращаемого значения и <strong>параметров</strong>. Может определяться как внутри класса, так и за пределами."
+        },
+        {
+          "type": "text",
+          "content": "Деструктор вызывается <strong>автоматически</strong>:<br>• Оператором <code>delete</code><br>• При выходе из блока, в котором существует объект<br>• При удалении массива объектов: <code>delete[] pP;</code>"
+        },
+        {
+          "type": "example",
+          "content": "<pre><code>Massiv::~Massiv()\n{\n    if (p != nullptr) delete[] p;\n    std::cout &lt;&lt; \"Destructor\\n\";\n}</code></pre>"
+        },
+        {
+          "type": "note",
+          "content": "В отличие от «деструкторов» из первого семестра, не нужно «занулять» поля — после выполнения деструктора объект <strong>перестаёт существовать</strong>.<br><br><strong>Важно:</strong> для освобождения массивов используйте <code>delete[]</code>, а не <code>free()</code>."
+        }
+      ]
+    },
+    {
+      "heading": "Оператор присваивания копированием",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "По умолчанию в классе существует <strong>оператор присваивания с копированием</strong>. Как и конструктор копирования, он выполняет почленное копирование, что может быть небезопасно для классов с динамической памятью."
+        },
+        {
+          "type": "example",
+          "content": "<pre><code>Matrix& Matrix::operator=(const Matrix &matrix)\n{\n    if (this != &matrix) // Защита от самоприсваивания!\n    {\n        // 1. Освобождаем старые ресурсы\n        if (values != nullptr) {\n            for (int i = 0; i &lt; n; ++i)\n                delete[] values[i];\n            delete[] values;\n        }\n        // 2. Копируем данные\n        n = matrix.n;\n        m = matrix.m;\n        if (matrix.values == nullptr)\n            values = nullptr;\n        else {\n            values = new float*[n];\n            for (int i = 0; i &lt; n; ++i) {\n                values[i] = new float[m];\n                for (int j = 0; j &lt; m; ++j)\n                    values[i][j] = matrix.values[i][j];\n            }\n        }\n    }\n    return *this; // Для поддержки цепочек: a = b = c;\n}</code></pre>"
+        },
+        {
+          "type": "text",
+          "content": "Оператор возвращает <code>*this</code> по ссылке, чтобы работали <strong>цепочки присваивания</strong>: <code>a = b = c;</code>. Это аналогично тому, зачем перегрузки <code>&lt;&lt;</code> и <code>&gt;&gt;</code> возвращают ссылку на поток."
+        },
+        {
+          "type": "note",
+          "content": "Оператор присваивания можно <strong>удалить</strong>: <code>A& operator=(const A& Ob) = delete;</code>"
+        }
+      ]
+    },
+    {
+      "heading": "Проблема самоприсваивания",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "При записи <code>first = first;</code> оператор присваивания получает <code>other</code>, который указывает на тот же объект. Если без проверки сначала сделать <code>delete[] values</code>, то мы <strong>уничтожим данные</strong>, которые совпадают с <code>other.values</code>. В результате — потеря данных и мусор."
+        },
+        {
+          "type": "text",
+          "content": "<strong>Решения:</strong><br><br><strong>✅ Хороший вариант</strong> — сравнение <strong>адресов</strong>:<br><pre><code>if (this != &other)\n{\n    // ... копирование ...\n}</code></pre>Проверяем, не указывает ли <code>this</code> на ту же область памяти, что и <code>&other</code>.<br><br><strong>❌ Плохой вариант</strong> — передача параметра <strong>по значению</strong> (лишняя работа + лишняя память).<br><br><strong>❌ Плохой вариант</strong> — сравнение <strong>объектов</strong> (<code>*this != other</code>): требует обхода всех полей при сравнении, а потом ещё раз при копировании → двойная работа."
+        },
+        {
+          "type": "note",
+          "content": "<strong>Вывод:</strong> в операторе присваивания копированием <strong>обязательно</strong> проверяйте <code>this != &other</code>."
+        }
+      ]
+    },
+    {
+      "heading": "Оператор присваивания перемещением",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "По аналогии с конструкторами, существует <strong>оператор присваивания с перемещением</strong>. Правила создания и использования аналогичны конструкторам."
+        },
+        {
+          "type": "example",
+          "content": "<pre><code>Matrix& Matrix::operator=(Matrix &&matrix)\n{\n    values = matrix.values;\n    n = matrix.n;\n    m = matrix.m;\n    matrix.values = nullptr;\n    matrix.n = matrix.m = -1;\n    return *this;\n}</code></pre>"
+        },
+        {
+          "type": "note",
+          "content": "Оператор присваивания перемещением можно удалить: <code>A& operator=(A&& Ob) = delete;</code>"
+        }
+      ]
+    },
+    {
+      "heading": "Правило трёх, пяти, нуля",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "Правило трёх (Rule of Three)",
+          "content": "Если классу требуется пользовательский:<br>1. <strong>Деструктор</strong><br>2. <strong>Конструктор копирования</strong><br>3. <strong>Оператор присваивания копированием</strong><br><br>то почти наверняка ему требуются <strong>все три</strong>.<br><br><em>Почему:</em> если класс управляет ресурсами (динамическая память, файлы), одна из этих функций не может работать корректно без остальных."
+        },
+        {
+          "type": "definition",
+          "term": "Правило пяти (Rule of Five)",
+          "content": "Если класс использует пользовательские деструктор (1), конструктор копирования (2) или оператор присваивания копированием (3) <strong>и</strong> требует функционал перемещения, то должны быть явно определены также:<br>4. <strong>Конструктор перемещения</strong><br>5. <strong>Оператор присваивания перемещением</strong>"
+        },
+        {
+          "type": "definition",
+          "term": "Правило нуля (Rule of Zero)",
+          "content": "Если класс использует <strong>автоматически генерируемые</strong> деструктор, конструкторы копирования и перемещения, а также операторы присваивания, то такой класс <strong>не должен</strong> управлять ресурсами (динамическое выделение памяти, открытие файлов и т.п.).<br><br><em>Идея:</em> управление ресурсами выносится в отдельные классы-обёртки (например, <code>std::vector</code>, <code>std::unique_ptr</code>)."
+        },
+        {
+          "type": "note",
+          "content": "<strong>Итого:</strong><br>• Если в классе есть <code>new</code>/открытие файлов → определяйте все 5 (деструктор + копирование + перемещение)<br>• Если класс не владеет ресурсами → не определяйте ничего (Rule of Zero)<br>• Чтобы <strong>явно запретить</strong> операцию: <code>A(const A&) = delete;</code><br>• Чтобы <strong>явно затребовать</strong> генерацию по умолчанию: <code>A(const A&) = default;</code>"
+        }
+      ]
+    },
+    {
+      "heading": "Полный пример класса",
+      "blocks": [
+        {
+          "type": "example",
+          "content": "<strong>Класс Vector с конструкторами, деструктором и операторами:</strong><br><pre><code>class Vector {\n    int* p = nullptr;\n    int n = 0;\npublic:\n    Vector() : n(0), p(nullptr) {}           // По умолчанию\n    ~Vector() {                               // Деструктор\n        if (p != nullptr) delete[] p;\n    }\n    Vector(int* p, int n) {                   // С параметрами\n        this-&gt;n = n;\n        this-&gt;p = new int[n];\n        for (int i = 0; i &lt; n; i++) this-&gt;p[i] = p[i];\n    }\n    Vector(const Vector& V) {                 // Копирования\n        n = V.n;\n        p = new int[n];\n        for (int i = 0; i &lt; n; i++) p[i] = V.p[i];\n    }\n    Vector(Vector&& V) {                      // Перемещения\n        swap(p, V.p);\n        swap(n, V.n);\n    }\n    Vector& operator=(const Vector& V2) {     // Присв. копированием\n        if (this != &V2) {\n            if (p != nullptr) delete[] p;\n            n = V2.n;\n            p = new int[n];\n            for (int i = 0; i &lt; n; i++) p[i] = V2.p[i];\n        }\n        return *this;\n    }\n    Vector& operator=(Vector&& V2) {          // Присв. перемещением\n        swap(p, V2.p);\n        swap(n, V2.n);\n        return *this;\n    }\n};\n\nint main() {\n    int m[] = {1, 2, 3, 4, 5, 6, 7};\n    Vector M1(m, 7);           // Конструктор с параметрами\n    Vector M2 = M1;            // Конструктор копирования\n    Vector M3 = std::move(M1); // Конструктор перемещения\n    return 0;\n}</code></pre>"
+        }
+      ]
+    }
+  ]
+}

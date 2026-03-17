@@ -1,0 +1,228 @@
+/* Dark theme overrides */
+body.dark {
+  --bg: #0d1117; --surface: #161b22; --card: #161b22;
+  --border: #30363d; --border2: #484f58;
+  --text: #e6edf3; --text2: #8b949e; --text3: #484f58;
+  --accent-bg: rgba(45, 164, 78, 0.12); --accent-border: rgba(45, 164, 78, 0.4);
+  --blue-bg: rgba(9, 105, 218, 0.12); --blue-border: rgba(9, 105, 218, 0.4);
+  --purple-bg: rgba(130, 80, 223, 0.12); --purple-border: rgba(130, 80, 223, 0.4);
+  --orange-bg: rgba(191, 163, 64, 0.12); --orange-border: rgba(191, 163, 64, 0.4);
+  --red-bg: rgba(207, 34, 46, 0.12); --red-border: rgba(207, 34, 46, 0.4);
+  --teal-bg: rgba(10, 123, 131, 0.12);
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.3); --shadow2: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Hero */
+body.dark .hero { background: linear-gradient(135deg, #161b22, #1c2a3a); }
+body.dark .hero h1 { color: #e6edf3; }
+body.dark .hero p { color: #8b949e; }
+body.dark .stat-pill { background: rgba(255, 255, 255, 0.1); color: #e6edf3; }
+body.dark .progress-bar-hero { background: #21262d; }
+
+/* Nav */
+body.dark .nav { background: var(--bg); border-color: var(--border); }
+body.dark #search { background: #21262d; border-color: var(--border); color: #e6edf3; }
+body.dark #search::placeholder { color: #484f58; }
+body.dark .nav-btn { background: #21262d; color: #e6edf3; border-color: var(--border); }
+body.dark .nav-btn:hover { background: #30363d; }
+body.dark .search-clear { color: #484f58; }
+body.dark .search-clear:hover { color: #f85149; }
+
+/* Section pills */
+body.dark .sp { background: #21262d; border-color: var(--border); color: #8b949e; }
+body.dark .sp:hover { border-color: var(--accent); color: #7ee787; }
+body.dark .sp.active { background: var(--accent); color: #fff; }
+body.dark .sp-done { background: rgba(45, 164, 78, 0.15) !important; color: #7ee787 !important; }
+body.dark .sp-reset { color: #f85149; border-color: rgba(248, 81, 73, 0.3); }
+body.dark .sp-reset:hover { background: rgba(248, 81, 73, 0.1); }
+
+/* Section dividers */
+body.dark .sd-text { color: #e6edf3; }
+body.dark .sd-line { background: var(--border); }
+body.dark .sd-count { color: #484f58; }
+
+/* Cards */
+body.dark .theorem-page { background: var(--surface); border-color: var(--border); }
+body.dark .theorem-page:hover { background: #1c2128; }
+body.dark .tp-title { color: #e6edf3; }
+body.dark .tp-subtitle { color: #8b949e; }
+body.dark .tp-chevron { color: #484f58; }
+body.dark .tp-body { color: #c9d1d9; }
+
+/* Card content */
+body.dark .card-tldr { color: #e6edf3; background: linear-gradient(90deg, #e6edf3, #8b949e); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+body.dark .card-intuition { color: #8b949e; border-color: rgba(45, 164, 78, 0.4); }
+body.dark .card-analogy { color: #8b949e; border-color: #30363d; background: rgba(45, 164, 78, 0.05); }
+body.dark .card-formal-text { color: #c9d1d9; }
+body.dark .card-cond { color: #c9d1d9; }
+body.dark .card-cond li::before { color: #56d364; }
+body.dark .card-exam-say { color: #8b949e; border-color: #30363d; }
+body.dark .card-note { color: #8b949e; }
+
+/* Proof/Example toggles */
+body.dark .proof-toggle { color: #d2a8ff; border-color: rgba(130, 80, 223, 0.4); }
+body.dark .proof-toggle:hover { background: rgba(130, 80, 223, 0.08); }
+body.dark .proof-key-idea { background: rgba(191, 163, 64, 0.08); border-color: rgba(191, 163, 64, 0.25); color: #e3b341; }
+body.dark .proof-text { color: #c9d1d9; }
+body.dark .example-toggle { color: #6bc4c9; border-color: rgba(107, 196, 201, 0.4); }
+body.dark .example-toggle:hover { background: rgba(107, 196, 201, 0.08); }
+body.dark .card-example-text { background: #0d1117; border-color: #30363d; color: #e6edf3; }
+
+/* Steps */
+body.dark .step-title { color: #d2a8ff; }
+body.dark .step-text { color: #e6edf3; }
+body.dark .step-math { background: rgba(130, 80, 223, 0.08); border-color: rgba(130, 80, 223, 0.25); }
+body.dark .step-tip { background: rgba(191, 163, 64, 0.08); border-color: rgba(191, 163, 64, 0.25); color: #e3b341; }
+
+/* Math */
+body.dark .math-box { background: rgba(130, 80, 223, 0.06); }
+body.dark .katex { color: #c9d1d9; }
+body.dark .math-box .katex, body.dark .step-math .katex { color: #d2a8ff; }
+
+/* Advanced */
+body.dark .adv-toggle { color: #f85149; border-color: rgba(248, 81, 73, 0.4); }
+body.dark .adv-toggle:hover { background: rgba(248, 81, 73, 0.08); }
+body.dark .advanced-block { background: rgba(207, 34, 46, 0.08); border-color: rgba(207, 34, 46, 0.35); }
+body.dark .advanced-block p { color: #ffa198; }
+body.dark .adv-proof { border-color: rgba(207, 34, 46, 0.25); color: #ff7b72; }
+
+/* Visual */
+body.dark .visual-block { background: #161b22; border-color: var(--border); }
+body.dark .visual-label { color: #484f58; }
+
+/* SVG dark mode — axes, grid lines */
+body.dark .visual-block svg line[stroke="#d0d7de"] { stroke: #484f58; }
+body.dark .visual-block svg rect[stroke="#d0d7de"] { stroke: #484f58; }
+body.dark .visual-block svg polygon[stroke="#d0d7de"] { stroke: #484f58; }
+body.dark .visual-block svg ellipse[stroke="#d0d7de"] { stroke: #484f58; }
+body.dark .visual-block svg circle[stroke="#d0d7de"] { stroke: #484f58; }
+
+/* SVG dark mode — text: primary dark → light */
+body.dark .visual-block svg text[fill="#24292f"] { fill: #e6edf3; }
+/* SVG dark mode — text: secondary gray → brighter gray */
+body.dark .visual-block svg text[fill="#57606a"] { fill: #c9d1d9; }
+body.dark .visual-block svg text[fill="#8b949e"] { fill: #c9d1d9; }
+/* SVG dark mode — text: green variants */
+body.dark .visual-block svg text[fill="#1a4731"] { fill: #7ee787; }
+body.dark .visual-block svg text[fill="#1a7f37"] { fill: #56d364; }
+/* SVG dark mode — text: purple (adiabat label) → brighter */
+body.dark .visual-block svg text[fill="#8250df"] { fill: #d2a8ff; }
+
+/* SVG dark mode — dots, points */
+body.dark .visual-block svg circle[fill="#24292f"] { fill: #e6edf3; }
+
+/* SVG dark mode — arrow markers */
+body.dark .visual-block svg marker polygon[fill="#8b949e"] { fill: #8b949e; }
+
+/* SVG dark mode — formula boxes: dark rgba → semi-transparent light */
+body.dark .visual-block svg rect[fill="rgba(36,41,47,0.4)"] { fill: rgba(200,200,200,0.08); }
+body.dark .visual-block svg rect[fill="rgba(36,41,47,0.04)"] { fill: rgba(200,200,200,0.04); }
+body.dark .visual-block svg rect[fill="rgba(36,41,47,0.06)"] { fill: rgba(200,200,200,0.06); }
+body.dark .visual-block svg rect[fill="rgba(36,41,47,0.85)"] { fill: rgba(13,17,23,0.95); }
+/* SVG dark mode — formula boxes with blue tint */
+body.dark .visual-block svg rect[fill="rgba(9,105,218,0.06)"] { fill: rgba(56,139,253,0.1); }
+body.dark .visual-block svg rect[fill="rgba(9,105,218,0.1)"] { fill: rgba(56,139,253,0.12); }
+body.dark .visual-block svg rect[fill="rgba(9,105,218,.1)"] { fill: rgba(56,139,253,0.12); }
+/* SVG dark mode — formula boxes with green tint (Carnot η) */
+body.dark .visual-block svg rect[fill="rgba(45,164,78,0.1)"] { fill: rgba(45,164,78,0.15); }
+/* SVG dark mode — 3D plane, misc polygons, and area fills */
+body.dark .visual-block svg polygon[fill*="139, 148, 158"] { fill: rgba(139,148,158,0.08); }
+body.dark .visual-block svg rect[fill="#f6f8fa"] { fill: rgba(200,200,200,0.05); }
+body.dark .visual-block svg rect[fill="rgba(139,148,158,0.08)"] { fill: rgba(139,148,158,0.05); }
+body.dark .visual-block svg rect[fill="rgba(139,148,158,0.1)"] { fill: rgba(139,148,158,0.06); }
+/* SVG dark mode — filled areas (Carnot work, Maxwell fill, integrals) */
+body.dark .visual-block svg path[fill="rgba(9,105,218,0.08)"] { fill: rgba(56,139,253,0.12); }
+body.dark .visual-block svg path[fill="rgba(130,80,223,0.12)"] { fill: rgba(130,80,223,0.18); }
+/* SVG dark mode — ellipse fills (phase diagram dome) */
+body.dark .visual-block svg ellipse[fill="rgba(36,41,47,0.4)"] { fill: rgba(200,200,200,0.08); }
+/* SVG dark mode — dashed stroke lines (radius, etc) */
+body.dark .visual-block svg line[stroke="#8b949e"] { stroke: #6e7681; }
+body.dark .visual-block svg path[stroke="#8b949e"] { stroke: #6e7681; }
+body.dark .visual-block svg ellipse[stroke="#8b949e"] { stroke: #6e7681; }
+
+/* Code */
+body.dark .inline-code, body.dark code:not(pre code) { background: rgba(110, 118, 129, 0.4); color: #79c0ff; }
+body.dark .code-block { background: #0d1117; border-color: #30363d; }
+body.dark .code-block code { color: #c9d1d9; }
+body.dark .hljs-keyword { color: #ff7b72; }
+body.dark .hljs-string { color: #a5d6ff; }
+body.dark .hljs-type { color: #d2a8ff; }
+body.dark .hljs-comment { color: #8b949e; }
+body.dark .hljs-meta { color: #ff7b72; }
+body.dark .hljs-literal { color: #79c0ff; }
+body.dark .hljs-title { color: #7ee787; }
+
+/* Special blocks */
+body.dark .key-idea { background: rgba(191, 163, 64, 0.08); border-color: rgba(191, 163, 64, 0.25); }
+body.dark .key-idea p { color: #e3b341; }
+body.dark .ki-label { color: #e3b341; }
+body.dark .statement-block { background: rgba(9, 105, 218, 0.08); border-color: rgba(9, 105, 218, 0.25); color: #79c0ff; }
+body.dark .tldr { background: rgba(45, 164, 78, 0.1); border-color: rgba(45, 164, 78, 0.35); color: #7ee787; }
+
+/* Scroll-to-top */
+body.dark .scroll-top { background: #238636; }
+
+/* Quiz dark overrides */
+body.dark .quiz-card { background: var(--surface); color: #e6edf3; }
+body.dark .qz-counter { color: #8b949e; }
+body.dark .qz-title { color: #e6edf3; }
+body.dark .qz-type { color: #8b949e; }
+body.dark .qz-prompt { background: rgba(9, 105, 218, 0.06); border-color: rgba(9, 105, 218, 0.25); color: #79c0ff; }
+body.dark .qz-hint-btn { background: #161b22; border-color: #30363d; color: #8b949e; }
+body.dark .qz-hint-btn:hover { border-color: var(--accent); color: var(--accent); }
+body.dark .qz-hint-btn.used { background: rgba(45, 164, 78, 0.15); color: #7ee787; }
+body.dark .qz-hint-box { background: rgba(191, 135, 0, 0.1); border-color: #bf8700; }
+body.dark .qz-skip-btn { background: #161b22; border-color: #30363d; color: #8b949e; }
+body.dark .qz-skip-btn:hover { background: #21262d; }
+body.dark .qz-reveal-btn { border-color: var(--border); color: #8b949e; }
+body.dark .qz-reveal-btn:hover { border-color: var(--accent); color: #7ee787; background: rgba(45, 164, 78, 0.06); }
+body.dark kbd { background: rgba(255, 255, 255, 0.1); }
+body.dark .qz-mode-btn { background: #21262d; border-color: var(--border); color: #e6edf3; }
+body.dark .qz-mode-btn:hover { border-color: var(--accent); background: rgba(45, 164, 78, 0.06); }
+body.dark .qz-mode-section { color: #8b949e; border-color: #30363d; }
+body.dark .qz-progress-bar { background: #21262d; }
+body.dark .qz-btn-fail { background: rgba(248, 81, 73, 0.1); color: #f85149; border-color: rgba(248, 81, 73, 0.3) !important; }
+body.dark .qz-btn-ok { background: rgba(45, 164, 78, 0.1); color: #56d364; border-color: rgba(45, 164, 78, 0.3) !important; }
+body.dark .qz-btn-meh { background: rgba(191, 135, 0, 0.15); border-color: #bf8700 !important; color: #e3b341; }
+body.dark .qz-setup h2 { color: #e6edf3; }
+body.dark .qz-setup p { color: #8b949e; }
+body.dark .qz-results h2 { color: #e6edf3; }
+body.dark .qz-score-ring .ring-bg { stroke: #21262d; }
+body.dark .qz-btn-retry { background: #238636; }
+body.dark .qz-btn-close { background: #21262d; color: #e6edf3; }
+body.dark .qz-last-score { background: #161b22; border-color: #30363d; color: #8b949e; }
+body.dark .qz-wrong-item:hover { background: #21262d; }
+body.dark .qz-heatmap { background: #161b22; border-color: #30363d; }
+
+/* Lab Browser dark overrides */
+body.dark .lab-text-content pre,
+body.dark .lab-text-content .code-block { background: #161b22; border-color: #30363d; }
+body.dark .lab-text-content pre code,
+body.dark .lab-text-content .code-block code { color: #c9d1d9; }
+
+body.dark .code-copy-btn { background: rgba(255,255,255,0.08); border-color: #30363d; color: #8b949e; }
+body.dark .code-copy-btn:hover { background: var(--accent); color: white; border-color: var(--accent); }
+body.dark .code-copy-btn.copied { background: #238636; border-color: #238636; }
+
+body.dark .lab-checklist-item:hover { background: rgba(255,255,255,0.03); }
+body.dark .lab-checklist-item input[type="checkbox"] { border-color: #30363d; }
+
+body.dark .lab-errors-toggle { background: rgba(248, 81, 73, 0.06); border-color: rgba(248, 81, 73, 0.3); color: #f85149; }
+body.dark .lab-errors-toggle:hover { background: rgba(248, 81, 73, 0.1); }
+body.dark .lab-error-item { background: rgba(248, 81, 73, 0.04); border-color: rgba(248, 81, 73, 0.2); }
+body.dark .lab-error-item h4 { color: #f85149; }
+body.dark .lab-error-item .error-fix { color: #56d364; }
+
+body.dark .lab-reference-btn { background: #21262d; border-color: #30363d; color: #8b949e; }
+body.dark .lab-reference-btn:hover { background: var(--accent); color: white; }
+body.dark .lab-reference-drawer { background: #161b22; border-color: #30363d; }
+body.dark .drawer-close:hover { background: rgba(248, 81, 73, 0.15); }
+body.dark .drawer-search input { background: #0d1117; border-color: #30363d; }
+body.dark .drawer-item { border-bottom-color: #21262d; }
+body.dark .drawer-lab-badge { background: rgba(255,255,255,0.06); }
+
+body.dark .lab-diagram svg text { fill: #e6edf3; }
+body.dark .lab-diagram svg .diagram-box { fill: #21262d; stroke: #30363d; }
+body.dark .lab-diagram svg .diagram-arrow { stroke: #484f58; fill: #484f58; }
+body.dark .lab-diagram svg .diagram-label { fill: #8b949e; }
+body.dark .lab-diagram svg .diagram-accent { fill: var(--accent); stroke: var(--accent); }

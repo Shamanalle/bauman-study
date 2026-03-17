@@ -1,0 +1,12 @@
+/* Responsive: mobile breakpoints */
+@media (max-width: 600px) {
+  .hero h1 { font-size: 1.4rem; }
+  .tp-header { padding: 14px 16px 12px; }
+  .tp-body { padding: 0 16px 16px; }
+  .theorem-page.open .tp-body { padding: 20px 16px; }
+  .step { gap: 10px; }
+  .section-pills { padding: 0; }
+  .quiz-card { padding: 20px; }
+  .qz-title { font-size: 1rem; }
+  .card-tldr { font-size: 1rem; }
+}

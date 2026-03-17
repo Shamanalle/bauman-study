@@ -1,0 +1,27 @@
+<svg viewBox="0 0 440 180" width="440" height="180">
+  <!-- Special relativity formula cards -->
+
+  <!-- Time dilation -->
+  <g transform="translate(10, 10)">
+    
+    <rect x="0" y="0" width="200" height="72" rx="10" fill="rgba(9,105,218,0.1)" stroke="#0969da" stroke-width="1.5"/>
+    <text x="16" y="24" font-size="13" fill="#0969da" font-weight="bold">⏱ Замедление времени</text>
+    <text x="16" y="54" font-size="16" fill="#24292f" font-weight="bold" font-family="monospace">Δt = Δt₀/√(1−v²/c²)</text>
+  </g>
+
+  <!-- Length contraction -->
+  <g transform="translate(228, 10)">
+    
+    <rect x="0" y="0" width="200" height="72" rx="10" fill="rgba(255,123,114,0.12)" stroke="#cf222e" stroke-width="1.5"/>
+    <text x="16" y="24" font-size="13" fill="#cf222e" font-weight="bold">📏 Сокращение длины</text>
+    <text x="16" y="54" font-size="16" fill="#24292f" font-weight="bold" font-family="monospace">l = l₀·√(1−v²/c²)</text>
+  </g>
+
+  <!-- Velocity addition -->
+  <g transform="translate(118, 96)">
+    
+    <rect x="0" y="0" width="210" height="72" rx="10" fill="rgba(46,160,67,0.12)" stroke="#2da44e" stroke-width="1.5"/>
+    <text x="16" y="24" font-size="13" fill="#1a7f37" font-weight="bold">🚀 Сложение скоростей</text>
+    <text x="16" y="54" font-size="14" fill="#24292f" font-weight="bold" font-family="monospace">v=(v₁+v₂)/(1+v₁v₂/c²)</text>
+  </g>
+</svg>

@@ -1,0 +1,199 @@
+{
+  "num": 2,
+  "title": "Командная строка Linux",
+  "summary": "Структура консольной команды: утилита, флаги, команды, аргументы. Навигация по файловой системе: pwd, cd, ls. Работа с файлами и директориями: mkdir, touch, cp, mv, rm. Просмотр содержимого: cat, less, head, tail. Поиск: find, grep. Скачивание: wget, curl. Права доступа и переменные среды. Перенаправление ввода-вывода и конвейеры.",
+  "sections": [
+    {
+      "heading": "Структура консольной команды",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Каждая консольная команда начинается с <strong>названия утилиты</strong>. После него следуют флаги, команды и аргументы."
+        },
+        {
+          "type": "definition",
+          "term": "Утилита",
+          "content": "Исполняемая программа (аналог приложения). Примеры: <code>git</code>, <code>cmake</code>, <code>find</code>, <code>grep</code>."
+        },
+        {
+          "type": "definition",
+          "term": "Флаги",
+          "content": "Параметры выполнения. Бывают короткие (<code>-f</code>) и длинные (<code>--force</code>). Короткие можно объединять: <code>-rf</code> = <code>-r -f</code>."
+        },
+        {
+          "type": "definition",
+          "term": "Команда",
+          "content": "Действие, совершаемое утилитой. Если утилита — программа, то команда — её функция. Пример: <code>git <strong>push</strong></code>, <code>apt <strong>install</strong></code>."
+        },
+        {
+          "type": "definition",
+          "term": "Аргументы",
+          "content": "То, что передаётся команде — имена файлов, пути, значения. Пример: <code>git push origin <strong>main</strong></code>."
+        },
+        {
+          "type": "example",
+          "content": "<strong>Разбор команды:</strong><br><pre><code>$ git push -f origin main</code></pre><br>• <code>git</code> — утилита<br>• <code>push</code> — команда<br>• <code>-f</code> — флаг (force push)<br>• <code>origin main</code> — аргументы (remote и ветка)"
+        },
+        {
+          "type": "note",
+          "content": "Полезные флаги, которые есть у почти каждой утилиты:<br>• <code>--version</code> — версия утилиты<br>• <code>--help</code> или <code>-h</code> — справка по командам и флагам<br>• <code>man утилита</code> — полная документация (выход — <kbd>q</kbd>)"
+        }
+      ]
+    },
+    {
+      "heading": "Навигация по файловой системе",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "<strong>Специальные символы директорий:</strong><br>• <code>/</code> — корневая директория (корень)<br>• <code>~</code> — домашняя директория (<code>/home/user</code>)<br>• <code>.</code> — текущая директория<br>• <code>..</code> — родительская директория"
+        },
+        {
+          "type": "definition",
+          "term": "pwd (print working directory)",
+          "content": "Выводит полный путь к текущей директории.<br><pre><code>$ pwd\n/home/student/projects</code></pre>"
+        },
+        {
+          "type": "definition",
+          "term": "cd (change directory)",
+          "content": "Переход в другую директорию:<br>• <code>cd папка</code> — перейти в папку<br>• <code>cd ..</code> — перейти на уровень выше<br>• <code>cd ~</code> или <code>cd</code> — перейти в домашнюю<br>• <code>cd -</code> — вернуться в предыдущую директорию<br>• <code>cd /var/log</code> — перейти по абсолютному пути"
+        },
+        {
+          "type": "definition",
+          "term": "ls (list)",
+          "content": "Вывод содержимого директории:<br>• <code>ls</code> — файлы и папки<br>• <code>ls -l</code> — подробный формат (права, размер, дата)<br>• <code>ls -a</code> — включая скрытые (начинающиеся с точки)<br>• <code>ls -la</code> — подробно + скрытые<br>• <code>ls -lh</code> — с человекочитаемым размером (KB, MB)"
+        },
+        {
+          "type": "definition",
+          "term": "tree",
+          "content": "Рекурсивный вывод директории в виде дерева.<br><pre><code>$ tree\n.\n├── src\n│   ├── main.cpp\n│   └── utils.h\n├── CMakeLists.txt\n└── README.md</code></pre>Флаги: <code>-L 2</code> (глубина 2), <code>-d</code> (только директории)."
+        }
+      ]
+    },
+    {
+      "heading": "Работа с файлами и директориями",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "<strong>Создание:</strong><br>• <code>mkdir папка</code> — создать директорию<br>• <code>mkdir -p a/b/c</code> — создать вложенные директории<br>• <code>touch файл</code> — создать пустой файл (или обновить дату)"
+        },
+        {
+          "type": "text",
+          "content": "<strong>Копирование и перемещение:</strong><br>• <code>cp файл копия</code> — скопировать файл<br>• <code>cp -r папка копия</code> — скопировать директорию рекурсивно<br>• <code>mv файл новое_имя</code> — переименовать<br>• <code>mv файл папка/</code> — переместить в директорию"
+        },
+        {
+          "type": "text",
+          "content": "<strong>Удаление:</strong><br>• <code>rm файл</code> — удалить файл<br>• <code>rm -r папка</code> — удалить директорию рекурсивно<br>• <code>rm -rf папка</code> — принудительное удаление без подтверждений<br>• <code>rmdir папка</code> — удалить пустую директорию"
+        },
+        {
+          "type": "note",
+          "content": "<strong>Внимание:</strong> <code>rm -rf</code> удаляет без подтверждения и без возможности восстановления! В Linux нет «Корзины» для консольных операций. Будь осторожен с <code>rm -rf /</code> — это удалит ВСЮ файловую систему."
+        }
+      ]
+    },
+    {
+      "heading": "Просмотр содержимого файлов",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "• <code>cat файл</code> — вывести весь файл целиком<br>• <code>less файл</code> — постраничный просмотр (навигация: ↑↓, <kbd>q</kbd> — выход)<br>• <code>head -n 10 файл</code> — первые 10 строк<br>• <code>tail -n 10 файл</code> — последние 10 строк<br>• <code>wc файл</code> — количество строк, слов и байт<br>• <code>wc -l файл</code> — только количество строк"
+        },
+        {
+          "type": "definition",
+          "term": "echo",
+          "content": "Выводит текст в консоль или записывает в файл:<br>• <code>echo \"Hello\"</code> — вывести на экран<br>• <code>echo \"Hello\" > файл</code> — записать в файл (перезаписать)<br>• <code>echo \"Hello\" >> файл</code> — добавить в конец файла"
+        }
+      ]
+    },
+    {
+      "heading": "Поиск: find и grep",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "find",
+          "content": "Поиск <strong>файлов</strong> по имени, типу, размеру и другим атрибутам.<br><pre><code>find путь [условия]</code></pre>• <code>find . -name \"*.cpp\"</code> — все .cpp файлы<br>• <code>find . -type f</code> — только файлы (не директории)<br>• <code>find . -type d</code> — только директории<br>• <code>find . -maxdepth 1 -type f</code> — файлы только в текущей директории (без вложенных)<br>• <code>find . ! -type d</code> — всё, кроме директорий"
+        },
+        {
+          "type": "definition",
+          "term": "grep",
+          "content": "Поиск <strong>текста внутри файлов</strong>.<br><pre><code>grep [флаги] \"паттерн\" [путь]</code></pre>• <code>grep \"main\" файл.cpp</code> — строки со словом main<br>• <code>grep -r \"TODO\" .</code> — рекурсивный поиск по всем файлам<br>• <code>grep -l \"boost\" .</code> — только имена файлов, содержащих boost<br>• <code>grep -i \"hello\" файл</code> — без учёта регистра<br>• <code>grep -n \"error\" файл</code> — с номерами строк<br>• <code>grep -c \"test\" файл</code> — количество совпадений"
+        },
+        {
+          "type": "example",
+          "content": "<strong>Комбинация find и grep (лаба 01):</strong><br><pre><code># Найти все .cpp файлы и подсчитать их\nfind . -name \"*.cpp\" | wc -l\n\n# Найти файлы, содержащие boost::asio\ngrep -lr \"boost::asio\" .\n\n# Найти файл any.hpp\nfind . -name \"any.hpp\"</code></pre>"
+        }
+      ]
+    },
+    {
+      "heading": "Скачивание: wget и curl",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "wget",
+          "content": "Скачивание файлов из интернета:<br>• <code>wget URL</code> — скачать файл<br>• <code>wget -O имя URL</code> — скачать с другим именем<br><br><pre><code>$ wget https://example.com/archive.tar.gz</code></pre>"
+        },
+        {
+          "type": "definition",
+          "term": "curl",
+          "content": "Универсальный инструмент для HTTP-запросов:<br>• <code>curl URL</code> — вывести содержимое на экран<br>• <code>curl -o файл URL</code> — сохранить в файл<br>• <code>curl -L URL</code> — следовать редиректам"
+        },
+        {
+          "type": "definition",
+          "term": "tar",
+          "content": "Архиватор:<br>• <code>tar -xf архив.tar.gz</code> — распаковать<br>• <code>tar -xf архив.tar.gz -C папка</code> — распаковать в указанную папку<br>• <code>tar -czf архив.tar.gz папка</code> — создать архив"
+        }
+      ]
+    },
+    {
+      "heading": "Права доступа",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "Права доступа файлов",
+          "content": "Каждый файл имеет права вида <code>-rwxrw-r--</code>:<br><br>• <code>d</code> — файл является директорией<br>• <code>r</code> (read) — чтение<br>• <code>w</code> (write) — запись<br>• <code>x</code> (execute) — исполнение<br>• <code>-</code> — право отсутствует<br><br>Три группы по три символа:<br>1. <strong>Владелец</strong> файла<br>2. <strong>Группа</strong> пользователей<br>3. <strong>Все остальные</strong><br><br>Пример: <code>-rwxrw-r--</code> = файл, владелец может всё, группа — читать и писать, остальные — только читать."
+        },
+        {
+          "type": "text",
+          "content": "<strong>Числовая запись:</strong> r=4, w=2, x=1. Суммируются для каждой группы.<br>• <code>chmod 755 файл</code> = rwxr-xr-x<br>• <code>chmod 644 файл</code> = rw-r--r--<br>• <code>chmod +x скрипт.sh</code> — добавить право на исполнение"
+        }
+      ]
+    },
+    {
+      "heading": "Переменные среды",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "Переменные среды",
+          "content": "Переменные, доступные в консольной сессии. Получить значение: <code>${ПЕРЕМЕННАЯ}</code> или <code>$ПЕРЕМЕННАЯ</code>."
+        },
+        {
+          "type": "text",
+          "content": "<strong>Работа с переменными:</strong><br>• <code>echo $PATH</code> — вывести значение PATH<br>• <code>export MY_VAR=\"hello\"</code> — создать переменную (до конца сессии)<br>• <code>env</code> — показать все переменные среды<br>• <code>unset MY_VAR</code> — удалить переменную"
+        },
+        {
+          "type": "definition",
+          "term": "PATH",
+          "content": "Самая важная переменная среды. Содержит пути к директориям с исполняемыми файлами, разделённые двоеточием. Когда ты вводишь команду (например, <code>git</code>), система ищет исполняемый файл <code>git</code> в директориях, перечисленных в PATH."
+        }
+      ]
+    },
+    {
+      "heading": "Перенаправление и конвейеры",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "Перенаправление вывода",
+          "content": "• <code>команда > файл</code> — записать вывод в файл (перезаписать)<br>• <code>команда >> файл</code> — добавить в конец файла<br>• <code>команда 2> файл</code> — перенаправить ошибки в файл<br>• <code>команда &> файл</code> — перенаправить всё (вывод + ошибки)"
+        },
+        {
+          "type": "definition",
+          "term": "Конвейер (pipe)",
+          "content": "Символ <code>|</code> передаёт вывод одной команды на вход другой:<br><pre><code># Найти все файлы и подсчитать количество\nfind . -type f | wc -l\n\n# Отсортировать и убрать дубликаты\ncat log.txt | sort | uniq\n\n# Показать процессы, содержащие 'python'\nps aux | grep python</code></pre>"
+        },
+        {
+          "type": "note",
+          "content": "Конвейеры — мощнейший инструмент Unix. Философия Unix: каждая утилита делает <strong>одну вещь хорошо</strong>, а конвейеры позволяют комбинировать их для решения сложных задач."
+        }
+      ]
+    }
+  ]
+}

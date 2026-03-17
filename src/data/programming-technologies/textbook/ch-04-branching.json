@@ -1,0 +1,131 @@
+{
+  "num": 4,
+  "title": "Ветвление и совместная работа",
+  "summary": "Создание, переключение и удаление веток. Слияние: fast-forward и three-way merge. Конфликты и их разрешение. Git rebase и золотое правило. Git stash. Удалённые репозитории: remote, push, pull, fetch. Pull Request и Code Review. Fork — контрибуция в чужие проекты.",
+  "sections": [
+    {
+      "heading": "Работа с ветками",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Ветвление — ключевая возможность Git. Создание ветки — мгновенная операция (41 байт), а не копирование проекта."
+        },
+        {
+          "type": "example",
+          "content": "<strong>Команды веток:</strong><br><pre><code>git branch                      # Список веток\ngit branch -a                   # Все (локальные + удалённые)\ngit branch feature              # Создать ветку\ngit switch feature              # Переключиться\ngit switch -c feature           # Создать и переключиться\ngit branch -d feature           # Удалить (если слита)\ngit branch -D feature           # Принудительное удаление</code></pre>"
+        },
+        {
+          "type": "note",
+          "content": "Новые команды вместо старых:<br>• <code>git switch</code> — переключение веток (вместо <code>git checkout</code>)<br>• <code>git restore</code> — откат файлов (вместо <code>git checkout --</code>)"
+        }
+      ]
+    },
+    {
+      "heading": "Слияние: git merge",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "<code>git merge ветка</code> сливает указанную ветку <strong>в текущую</strong>."
+        },
+        {
+          "type": "definition",
+          "term": "Fast-forward merge",
+          "content": "Текущая ветка не имеет новых коммитов → Git просто перемещает указатель. Merge-коммит не создаётся."
+        },
+        {
+          "type": "definition",
+          "term": "Three-way merge",
+          "content": "Обе ветки имеют новые коммиты → Git находит общего предка, сравнивает изменения и создаёт <strong>merge-коммит</strong> с двумя родителями. Если одни и те же строки изменены — возникает <strong>конфликт</strong>."
+        },
+        {
+          "type": "example",
+          "content": "<pre><code>git switch main              # Переключиться на целевую\ngit merge feature            # Слить feature в main\ngit branch -d feature        # Удалить ветку</code></pre>"
+        }
+      ]
+    },
+    {
+      "heading": "Разрешение конфликтов",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Конфликт возникает, когда обе ветки изменили <strong>одни и те же строки</strong>. Git помечает конфликтные участки маркерами:<br><pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD\nтвои изменения (текущая ветка)\n=======\nих изменения (вливаемая ветка)\n&gt;&gt;&gt;&gt;&gt;&gt;&gt; branch-name</code></pre>"
+        },
+        {
+          "type": "text",
+          "content": "<strong>Разрешение:</strong><br>1. <code>git status</code> — увидеть конфликтные файлы<br>2. Открыть файл, найти маркеры<br>3. Выбрать одну версию или объединить обе, <strong>удалить ВСЕ маркеры</strong><br>4. <code>git add файл</code><br>5. <code>git commit</code> — завершить merge<br><br>Отменить merge: <code>git merge --abort</code>"
+        },
+        {
+          "type": "note",
+          "content": "В VS Code конфликты подсвечиваются с кнопками: <strong>Accept Current Change</strong> / <strong>Accept Incoming Change</strong> / <strong>Accept Both Changes</strong>."
+        }
+      ]
+    },
+    {
+      "heading": "Rebase и Stash",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "git rebase",
+          "content": "<code>git rebase main</code> (из feature-ветки) — пересаживает коммиты feature поверх main. Результат: чистая линейная история без merge-коммитов."
+        },
+        {
+          "type": "note",
+          "content": "<strong>Золотое правило:</strong> НИКОГДА не делай rebase публичных веток (main, develop). Rebase переписывает историю — создаёт новые коммиты с новыми хешами."
+        },
+        {
+          "type": "definition",
+          "term": "git stash",
+          "content": "Сохраняет незакоммиченные изменения в стек и возвращает рабочую директорию к последнему коммиту.<br>• <code>git stash</code> — спрятать<br>• <code>git stash pop</code> — достать и удалить из стека<br>• <code>git stash list</code> — список сохранённых<br>• <code>git stash -m \"описание\"</code> — с сообщением"
+        }
+      ]
+    },
+    {
+      "heading": "Удалённые репозитории",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "Remote",
+          "content": "Репозиторий на сервере. <code>origin</code> — имя по умолчанию для remote после <code>git clone</code>.<br>• <code>git remote -v</code> — список remote с URL<br>• <code>git remote add origin URL</code> — добавить<br>• <code>git remote remove origin</code> — удалить"
+        },
+        {
+          "type": "definition",
+          "term": "git push",
+          "content": "Отправить коммиты на сервер:<br>• <code>git push origin main</code> — отправить ветку<br>• <code>git push -u origin main</code> — отправить и установить upstream<br>• <code>git push --force</code> — перезаписать историю на сервере (ОПАСНО!)"
+        },
+        {
+          "type": "definition",
+          "term": "git fetch и git pull",
+          "content": "• <code>git fetch</code> — скачать новые коммиты БЕЗ слияния (безопасно)<br>• <code>git pull</code> = <code>git fetch</code> + <code>git merge</code> (может вызвать конфликты)<br>• <code>git pull --rebase</code> — скачать и rebase (чище, рекомендуется)"
+        }
+      ]
+    },
+    {
+      "heading": "Pull Request",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "Pull Request (PR)",
+          "content": "Механизм GitHub для предложения изменений:<br>1. Уведомление команды о готовности<br>2. Обсуждение кода (комментарии к строкам)<br>3. Автоматические проверки (CI/CD)<br>4. Approve и Merge"
+        },
+        {
+          "type": "text",
+          "content": "<strong>Анатомия PR:</strong><br>• <strong>Title</strong> — краткое описание<br>• <strong>Description</strong> — что, зачем, как тестировать<br>• <strong>Diff</strong> — изменения в коде<br>• <strong>Checks</strong> — результаты автотестов<br>• <strong>Reviewers</strong> — кто проверяет"
+        }
+      ]
+    },
+    {
+      "heading": "Fork — контрибуция в чужие проекты",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "Fork",
+          "content": "Операция на GitHub: создаёт полную копию чужого репозитория в твоём аккаунте. Позволяет предлагать изменения оригиналу через Pull Request."
+        },
+        {
+          "type": "example",
+          "content": "<strong>Workflow:</strong><br><pre><code># 1. Fork на GitHub (кнопка Fork)\n# 2. Клонировать свой fork\ngit clone git@github.com:ВашLogin/repo.git\n# 3. Добавить оригинал\ngit remote add upstream git@github.com:Автор/repo.git\n# 4. Ветка + правки + push в свой fork\ngit switch -c fix-typo\ngit add . && git commit -m \"Исправить опечатку\"\ngit push origin fix-typo\n# 5. Pull Request: ВашLogin/repo → Автор/repo</code></pre>"
+        }
+      ]
+    }
+  ]
+}

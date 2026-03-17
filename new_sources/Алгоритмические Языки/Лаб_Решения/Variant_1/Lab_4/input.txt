@@ -1,0 +1,6 @@
+Ivanov 2020-01-15 Manager 85000
+Petrov 2019-06-01 Developer 120000
+Sidorov 2021-03-20 Analyst 75000
+Kozlov 2018-11-10 Director 150000
+Andreev 2022-05-05 Intern 45000
+Fedorov 2017-09-22 Designer 95000

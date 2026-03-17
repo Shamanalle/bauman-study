@@ -1,0 +1,116 @@
+{
+  "num": 7,
+  "title": "Обработка исключений",
+  "summary": "Понятие исключения. Операторы throw, try, catch. Несколько блоков catch, универсальный catch(...). Исключения и ООП: std::exception, std::logic_error, std::invalid_argument. Пользовательские классы исключений. Проблема утечки памяти при исключениях. Концепция RAII. Вложенные блоки обработки. Проброс исключений (throw без аргумента). Спецификация исключений: noexcept. Функциональный блок try.",
+  "sections": [
+    {
+      "heading": "Понятие исключения",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "Исключение",
+          "content": "<strong>Исключение</strong> — некоторый нестандартный случай (исключительная ситуация), который не может быть обработан в текущем контексте.<br><br>В C++ исключение — это <strong>объект некоторого типа</strong>, который генерируется в исключительной ситуации."
+        },
+        {
+          "type": "text",
+          "content": "С исключениями связаны <strong>3 оператора</strong>:<br>• <code>throw</code> — «бросает» (генерирует) исключение<br>• <code>try</code> — блок кода, в котором может произойти исключение<br>• <code>catch</code> — блок обработки пойманного исключения<br><br>У блока <code>try</code> должен быть <strong>хотя бы один</strong> <code>catch</code>!"
+        }
+      ]
+    },
+    {
+      "heading": "Основные механизмы использования",
+      "blocks": [
+        {
+          "type": "example",
+          "content": "<strong>Простой пример — деление на ноль:</strong><br><pre><code>#include &lt;iostream&gt;\n\nint main() {\n    float a, b;\n    std::cin &gt;&gt; a &gt;&gt; b;\n    try {\n        if (b == 0)\n            throw -1; // Бросаем исключение типа int\n        else\n            std::cout &lt;&lt; \"Result: \" &lt;&lt; a / b;\n    }\n    catch (...) { // Универсальный catch — ловит всё\n        std::cout &lt;&lt; \"Division by zero\\n\";\n    }\n    return 0;\n}</code></pre>"
+        },
+        {
+          "type": "text",
+          "content": "<strong>Типизация catch:</strong><br>• Можно указать <strong>только тип</strong>: <code>catch(int)</code><br>• Можно указать <strong>тип и имя</strong>: <code>catch(int e)</code> — чтобы использовать значение<br>• <strong>Универсальный</strong>: <code>catch(...)</code> — ловит исключения любого типа (должен быть <strong>последним</strong>)"
+        },
+        {
+          "type": "example",
+          "content": "<strong>Несколько блоков catch:</strong><br><pre><code>try {\n    // ...\n}\ncatch (char)  { /* Если тип char */  }\ncatch (int e) { /* Если тип int, значение в e */ }\ncatch (...)   { /* Всё остальное */ }</code></pre>Поиск подходящего блока осуществляется <strong>последовательно</strong>."
+        },
+        {
+          "type": "text",
+          "content": "<strong>Бросание исключений из функций:</strong> <code>throw</code> не обязательно должен быть непосредственно в блоке <code>try</code>. Если исключение брошено в функции, блок <code>try</code> ищется в <strong>вызывающей</strong> функции, затем выше — вплоть до <code>main</code>. Если не найден — программа <strong>завершается аварийно</strong>.<br><pre><code>double division(double const& a, double const& b) {\n    if (b == 0) throw -1;\n    return a / b;\n}\n\nint main() {\n    try {\n        std::cout &lt;&lt; division(4, 0);\n    }\n    catch (...) {\n        std::cout &lt;&lt; \"Division by zero\\n\";\n    }\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "heading": "Исключения и ООП: иерархия std::exception",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Все стандартные исключения — <strong>наследники</strong> класса <code>std::exception</code>. У него есть виртуальный метод <code>what()</code>, возвращающий строку (<code>const char*</code>).<br><br>Исключения делятся на <strong>3 категории</strong>:<br><br><strong>1. Языковая поддержка:</strong><br>• <code>bad_alloc</code> — неудачный <code>new</code><br>• <code>bad_cast</code> — неудачный <code>dynamic_cast</code><br>• <code>bad_typeid</code> — <code>typeid</code> от null<br><br><strong>2. Логические ошибки</strong> (<code>logic_error</code>):<br>• <code>invalid_argument</code> — неверный аргумент<br>• <code>out_of_range</code> — вне диапазона<br>• <code>length_error</code> — неверная длина<br>• <code>domain_error</code> — вне области<br><br><strong>3. Ошибки времени выполнения</strong> (<code>runtime_error</code>):<br>• <code>range_error</code> — ошибка диапазона<br>• <code>overflow_error</code> — переполнение<br>• <code>underflow_error</code> — потеря значимости"
+        },
+        {
+          "type": "example",
+          "content": "<pre><code>#include &lt;stdexcept&gt;\n\ndouble division(double const& a, double const& b) {\n    if (b == 0)\n        throw std::invalid_argument(\"Division by zero\");\n    return a / b;\n}\n\nint main() {\n    try {\n        std::cout &lt;&lt; division(4, 0);\n    }\n    catch (std::exception& e) { // Ловим по ссылке на базовый!\n        std::cout &lt;&lt; e.what();   // \"Division by zero\"\n    }\n}</code></pre>"
+        },
+        {
+          "type": "note",
+          "content": "Исключение-наследник <strong>можно поймать</strong> блоком <code>catch</code> для базового типа (динамический полиморфизм). <strong>Обратное не работает.</strong><br><br>Для правильной работы <code>what()</code> ловите исключения <strong>по ссылке</strong> (<code>catch(std::exception& e)</code>), а не по значению."
+        },
+        {
+          "type": "text",
+          "content": "<strong>Пользовательские исключения:</strong> определяются как наследники <code>std::exception</code>. Нужно переопределить <code>what()</code> и при необходимости добавить поле для сообщения."
+        }
+      ]
+    },
+    {
+      "heading": "Опасности исключений и RAII",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "При генерации исключения нарушается «правильный» порядок выполнения — код после <code>throw</code> <strong>не выполняется</strong>. Это может привести к <strong>утечке памяти</strong>:<br><pre><code>try {\n    int* a = new int[10];\n    someFunction(a); // Здесь бросается исключение\n    delete[] a;      // НЕ выполнится!\n}\ncatch (...) {\n    std::cout &lt;&lt; \"Error\\n\";\n    // Утечка памяти!\n}</code></pre>"
+        },
+        {
+          "type": "text",
+          "content": "<strong>Решения:</strong><br>1. Дублировать <code>delete</code> в <code>catch</code> (плохо — легко забыть)<br>2. Вынести <code>delete</code> после <code>catch</code> (плохо — память может быть не выделена)<br>3. <strong>RAII</strong> — очищать память в деструкторе (лучший вариант!)"
+        },
+        {
+          "type": "definition",
+          "term": "RAII",
+          "content": "<strong>RAII</strong> (Resource Acquisition Is Initialization) — подход, при котором получение ресурса неразрывно связано с <strong>инициализацией</strong> объекта, а освобождение — с его <strong>уничтожением</strong> (в деструкторе).<br><br>Это позволяет автоматически освобождать ресурсы при выходе из области видимости, даже при исключении."
+        }
+      ]
+    },
+    {
+      "heading": "Проброс исключений и вложенные блоки",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Блоки <code>try-catch</code> поддерживают <strong>вложенность</strong>. Если исключение не должно быть полностью обработано на текущем уровне, его можно <strong>пробросить выше</strong>:<br><pre><code>try {\n    try {\n        throw std::runtime_error(\"Error\");\n    }\n    catch (std::exception& e) {\n        std::cout &lt;&lt; \"Partial handling\\n\";\n        throw; // Проброс — предпочтительный способ!\n    }\n}\ncatch (std::exception& e) {\n    std::cout &lt;&lt; e.what() &lt;&lt; std::endl;\n}</code></pre>"
+        },
+        {
+          "type": "note",
+          "content": "<code>throw;</code> (без аргумента) <strong>предпочтительнее</strong>, чем <code>throw e;</code>, т.к. не создаёт копию и сохраняет правильный тип исключения."
+        }
+      ]
+    },
+    {
+      "heading": "Спецификация исключений (noexcept)",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Можно указать, что функция <strong>не бросает</strong> исключений наружу:<br><br>Старый стандарт: <code>double myFunction() throw() { ... }</code><br>C++11 и новее: <code>double myFunction() noexcept { ... }</code><br><br>Такие функции <strong>могут</strong> генерировать исключения и обрабатывать их <strong>внутри себя</strong>, не передавая наружу."
+        },
+        {
+          "type": "note",
+          "content": "<strong>Best practice:</strong> используйте <code>noexcept</code> для:<br>• Конструкторов копирования и перемещения<br>• Операторов присваивания<br>• Деструкторов<br><br>Эти методы должны выполняться <strong>полностью</strong> и не должны прерываться."
+        }
+      ]
+    },
+    {
+      "heading": "Функциональный блок try",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Блок <code>try</code> может охватывать <strong>всё тело функции</strong> — это «функциональный» блок try:<br><pre><code>double division(double const& a, double const& b) try\n{\n    if (b == 0) throw -1;\n    else return a / b;\n}\ncatch (...) {\n    std::cout &lt;&lt; \"Division by zero\\n\";\n}\n\nint main() {\n    std::cout &lt;&lt; \"Result: \" &lt;&lt; division(4, 0);\n    // Строка выполнится (в отличие от обычного try)!\n}</code></pre>"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+Ipoteka 5000000 RUB 8.5
+Consumer 250000 RUB 15.0
+CarLoan 1500000 RUB 11.5
+Business 10000000 RUB 13.0
+Micro 50000 RUB 365.0
+Education 800000 RUB 3.0

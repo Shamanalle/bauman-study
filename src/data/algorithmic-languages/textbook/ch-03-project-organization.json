@@ -1,0 +1,201 @@
+{
+  "num": 3,
+  "title": "Организация проекта. Статические и дружественные элементы",
+  "summary": "Многофайловые программы: разделение на .h и .cpp, header guards, #pragma once. Предварительно скомпилированные заголовки (pch.h, stdafx.h). inline-функции. Статические поля и методы класса (static). Дружественные функции и классы (friend). Функторы (operator()). Введение в CMake: CMakeLists.txt, cmake_minimum_required, project, set, add_executable, флаги компиляторов. Интеграция с Git и IDE.",
+  "sections": [
+    {
+      "heading": "Многофайловые программы",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Когда появляются классы, их принято выносить в отдельные файлы:<br>1. Классы могут быть объёмны и затруднять ориентирование в основном коде<br>2. Классы являются обособленными единицами и не зависят от основной программы<br>3. Классы могут использоваться не только в файле с <code>main</code>, но и в файлах других классов"
+        },
+        {
+          "type": "definition",
+          "term": "Разделение на два файла",
+          "content": "Код класса разделяется на:<br>1. <strong>Заголовочный файл</strong> (<code>.h</code>, иногда <code>.hpp</code>) — объявление класса с прототипами методов, маленькие определения (геттеры, сеттеры)<br>2. <strong>Файл реализации</strong> (<code>.cpp</code>) — определения (реализации) методов за пределами класса<br><br>Для использования класса в другом файле подключаем заголовочный файл через <code>#include</code> с <strong>кавычками</strong> (не треугольными скобками):"
+        },
+        {
+          "type": "example",
+          "content": "<strong>Файл Matrix.h:</strong><br><pre><code>#pragma once\n\nclass Matrix {\nprivate:\n    int n, m;\n    float** values;\npublic:\n    Matrix() : n(0), m(0), values(nullptr) {}\n    Matrix(const int &n_, const int &m_) : n(n_), m(m_) {}\n    Matrix(const int &n_, const int &m_, float** const& values_);\n    Matrix(const Matrix &matrix);\n    int getRows() { return n; }\n    int getColumns() { return m; }\n    void setDimentions(const int& n_, const int& m_);\n    void fillValues();\n    void print();\n    Matrix& operator=(const Matrix &matrix);\n    Matrix operator+(const Matrix &matrix);\n    ~Matrix();\n};</code></pre>"
+        },
+        {
+          "type": "example",
+          "content": "<strong>Файл Matrix.cpp:</strong><br><pre><code>#include \"Matrix.h\"\n#include &lt;limits&gt;\n#include &lt;ctime&gt;\n#include &lt;iostream&gt;\n\nMatrix::Matrix(const int &n_, const int &m_, float** const& values_)\n    : n(n_), m(m_)\n{\n    values = new float*[n];\n    for (size_t i = 0; i &lt; n; ++i) {\n        values[i] = new float[m];\n        for (size_t j = 0; j &lt; m; ++j)\n            values[i][j] = values_[i][j];\n    }\n}\n// ... остальные определения методов ...</code></pre>"
+        },
+        {
+          "type": "example",
+          "content": "<strong>Основной файл Source.cpp:</strong><br><pre><code>#include &lt;iostream&gt;\n#include \"Matrix.h\"\n\nint main()\n{\n    Matrix a(3, 4), b(3, 4);\n    a.fillValues();\n    b.fillValues();\n    a.print();\n    (a + b).print();\n    return 0;\n}</code></pre>Подключается <strong>только</strong> заголовочный файл. На этапе препроцессорной обработки содержимое <code>Matrix.h</code> вставляется в <code>Source.cpp</code>, оба <code>.cpp</code> компилируются отдельно и связываются на этапе <strong>линковки</strong>."
+        },
+        {
+          "type": "note",
+          "content": "<strong>Преимущество:</strong> разбиение на файлы позволяет <strong>перекомпилировать только изменённые</strong> файлы. Это особенно важно для больших проектов. Однако это относится только к <code>.cpp</code>-файлам — вынесение кода в <code>.h</code> даёт лишь сокращение размера, но не ускорение компиляции."
+        }
+      ]
+    },
+    {
+      "heading": "Защита от повторного подключения",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Директива <code>#include</code> просто <strong>копирует</strong> содержимое подключаемого файла. Если один заголовок подключается дважды, будет ошибка повторного определения. Существуют два способа защиты:"
+        },
+        {
+          "type": "definition",
+          "term": "Header guards",
+          "content": "Набор директив препроцессора для условной компиляции:<br><pre><code>#ifndef MATRIX_H\n#define MATRIX_H\n\n// ... содержимое заголовочного файла ...\n\n#endif</code></pre>Работает буквально: если <code>MATRIX_H</code> не объявлен — объявляем его вместе с кодом до <code>#endif</code>. При повторном подключении <code>MATRIX_H</code> уже объявлен → содержимое пропускается.<br><br><strong>Плюс:</strong> входит в стандарт. <strong>Минус:</strong> нужно придумывать уникальное имя (обычно — имя файла с <code>_H</code>)."
+        },
+        {
+          "type": "definition",
+          "term": "#pragma once",
+          "content": "Альтернативный способ — одна директива в начале файла:<br><pre><code>#pragma once\n\n// ... содержимое заголовочного файла ...</code></pre><strong>Плюс:</strong> простота, не нужно ничего придумывать. <strong>Минус:</strong> <em>не входит</em> в стандарт C++, но поддерживается <strong>большинством компиляторов</strong>."
+        },
+        {
+          "type": "note",
+          "content": "В <strong>каждом</strong> заголовочном файле должна быть защита от повторного подключения одним из этих способов."
+        }
+      ]
+    },
+    {
+      "heading": "Предварительно скомпилированные заголовки",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "Precompiled headers",
+          "content": "Предварительно скомпилированные заголовки (<code>stdafx.h</code> или <code>pch.h</code>) — заголовочные файлы, предварительно обработанные для <strong>оптимизации компиляции</strong>."
+        },
+        {
+          "type": "text",
+          "content": "В них помещают заголовки, которые <strong>редко или никогда не меняются</strong> (например, стандартная библиотека: <code>&lt;iostream&gt;</code>, <code>&lt;vector&gt;</code>, <code>&lt;string&gt;</code>).<br><br><strong>Правила:</strong><br>• Подключайте предкомпилированный заголовок <strong>только там, где он нужен</strong><br>• Если настройка включена для проекта — IDE ожидает подключение в <strong>каждом</strong> <code>.cpp</code>-файле<br>• Можно включать все библиотеки (увеличивая размер) или только общие (подключая остальные отдельно)"
+        },
+        {
+          "type": "note",
+          "content": "CLion ограниченно поддерживает предкомпилируемые заголовки, иногда бывают баги."
+        }
+      ]
+    },
+    {
+      "heading": "inline-функции",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "inline-функция",
+          "content": "<strong>inline-функции</strong> (встроенные функции) — функции, вызов которых заменяется компилятором на <strong>исходный код</strong> функции (тело). Объявляются с ключевым словом <code>inline</code>:<br><pre><code>inline int getFirst(const std::pair&lt;int, std::string&gt;& pair) const\n{\n    return pair.first;\n}</code></pre>"
+        },
+        {
+          "type": "text",
+          "content": "<strong>Плюс:</strong> ускорение программы — нет издержек на переход между функциями (вызов, возврат, передача параметров).<br><br><strong>Минус:</strong> дублирование кода — исходный код подставляется под <strong>каждый вызов</strong>. Рекомендуется «встраивать» только <strong>короткие</strong> функции."
+        },
+        {
+          "type": "note",
+          "content": "Методы класса, определённые <strong>в заголовочном файле</strong> (внутри объявления класса), являются встроенными <strong>автоматически</strong> и не требуют <code>inline</code>."
+        }
+      ]
+    },
+    {
+      "heading": "Статические поля и методы (static)",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "Статические члены класса",
+          "content": "Поля и методы с ключевым словом <code>static</code> существуют <strong>независимо от объектов</strong> класса. Они принадлежат <strong>классу в целом</strong>, а не конкретному экземпляру.<br>• Вызываются как через объект, так и через <strong>имя класса</strong>: <code>ClassName::member</code><br>• <strong>Статические методы</strong> не могут обращаться к нестатическим полям (у них нет <code>this</code>)"
+        },
+        {
+          "type": "text",
+          "content": "<strong>Особенность:</strong> статическое поле нужно <strong>повторно объявить</strong> в глобальной области видимости (обычно в <code>.cpp</code>-файле):"
+        },
+        {
+          "type": "example",
+          "content": "<strong>Пример: счётчик объектов через static-поле</strong><br><pre><code>#include &lt;iostream&gt;\n#include &lt;vector&gt;\n\nclass SomeObject {\npublic:\n    static size_t counter;\n    SomeObject() { ++counter; }\n};\n\nsize_t SomeObject::counter = 0; // Обязательно! Повторное объявление\n\nint main()\n{\n    std::vector&lt;SomeObject&gt; vec(5); // counter = 5\n    for (size_t i = 0; i &lt; 5; ++i) {\n        std::cout &lt;&lt; \"Before \" &lt;&lt; SomeObject::counter &lt;&lt; std::endl;\n        vec.push_back(SomeObject()); // ++counter\n        std::cout &lt;&lt; \"After: \" &lt;&lt; vec[0].counter &lt;&lt; std::endl;\n    }\n    SomeObject a, b; // ещё +2\n    std::cout &lt;&lt; \"After + 2: \" &lt;&lt; vec[0].counter &lt;&lt; std::endl;\n    return 0;\n}</code></pre>Обращение к <code>counter</code> через <strong>имя класса</strong> (<code>SomeObject::counter</code>) или через <strong>любой объект</strong> (<code>vec[0].counter</code>). Значение одно и то же — статическое поле <strong>общее</strong> для всех экземпляров."
+        }
+      ]
+    },
+    {
+      "heading": "Дружественные функции и классы (friend)",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "Дружественные функции",
+          "content": "<strong>friend-функции</strong> — функции, имеющие доступ к <code>private</code> и <code>protected</code> полям класса, <strong>не являясь</strong> его членами. Объявляются внутри класса с ключевым словом <code>friend</code>.<br><br>На friend-функции <strong>не распространяются</strong> модификаторы доступа (неважно, в какой секции — public, private — стоит объявление)."
+        },
+        {
+          "type": "text",
+          "content": "Дружественные функции нужны, когда функции необходим доступ к приватным полям, но она <strong>не может быть</strong> членом класса (с точки зрения инкапсуляции или по логике).<br><br><strong>Типичный пример</strong> — перегрузка оператора <code>&lt;&lt;</code> для вывода в поток. Слева от оператора стоит <code>ostream</code>, поэтому оператор нельзя сделать членом нашего класса:"
+        },
+        {
+          "type": "example",
+          "content": "<pre><code>class Point {\n    float x;\n    float y;\npublic:\n    Point(const float& x_, const float& y_) : x(x_), y(y_) {}\n\n    friend std::ostream& operator&lt;&lt;(std::ostream& out, const Point& point);\n};\n\nstd::ostream& operator&lt;&lt;(std::ostream& out, const Point& point)\n{\n    out &lt;&lt; \"(\" &lt;&lt; point.x &lt;&lt; \"; \" &lt;&lt; point.y &lt;&lt; \")\";\n    return out;\n}\n\nint main()\n{\n    std::cout &lt;&lt; Point(0,1) + Point(2, 3); // (2; 4)\n    return 0;\n}</code></pre>"
+        },
+        {
+          "type": "text",
+          "content": "Аналогично можно <strong>подружить класс</strong> с методом другого класса или целиком с другим классом:<br><pre><code>class Figure {\n    std::vector&lt;Point&gt; points;\n    friend class Point;          // весь класс Point — друг\n    friend void Drawer::show();  // конкретный метод — друг\n};</code></pre>"
+        },
+        {
+          "type": "note",
+          "content": "<strong>Предупреждение:</strong> не злоупотребляйте <code>friend</code> — это <strong>нарушает инкапсуляцию</strong>. Используйте только когда действительно необходим доступ к приватным полям из внешней функции."
+        }
+      ]
+    },
+    {
+      "heading": "Функторы",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "Функтор",
+          "content": "<strong>Функтор</strong> (функциональный объект) — объект, для которого перегружен <code>operator()</code>, что позволяет использовать его <strong>как функцию</strong>."
+        },
+        {
+          "type": "example",
+          "content": "<pre><code>// Обычная функция сравнения\nbool compFunction(const int& first, const int& second)\n{\n    return first &gt; second;\n}\n\n// Функтор — то же самое, но в виде объекта\nstruct comp {\n    bool operator()(const int& first, const int& second) const\n    {\n        return first &gt; second;\n    }\n};\n\nint main()\n{\n    std::vector&lt;int&gt; vec1{ 6, 0, 12, 1, 2, 9 }, vec2(vec1);\n\n    // Сортировка через указатель на функцию:\n    std::sort(vec1.begin(), vec1.end(), compFunction);\n\n    // Сортировка через функтор:\n    std::sort(vec2.begin(), vec2.end(), comp());\n\n    return 0;\n}</code></pre>"
+        },
+        {
+          "type": "note",
+          "content": "Функторы могут хранить <strong>внутреннее состояние</strong> (в отличие от обычных функций), что делает их более гибкими. Подробно функторы и лямбда-функции рассмотрены в главе 7."
+        }
+      ]
+    },
+    {
+      "heading": "Введение в CMake",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "CMake",
+          "content": "<strong>CMake</strong> — кроссплатформенная система автоматизации сборки, поддерживаемая большинством современных IDE (Visual Studio, CLion, Qt Creator и др.).<br><br>Использование CMake <strong>избавляет от зависимости</strong> от конкретной IDE. Вся информация для сборки хранится в <code>CMakeLists.txt</code>."
+        },
+        {
+          "type": "example",
+          "content": "<strong>Базовый CMakeLists.txt:</strong><br><pre><code>cmake_minimum_required(VERSION 3.12)  # Минимальная версия CMake\n\nproject(MyProject)                     # Название проекта\n\nset(CMAKE_CXX_STANDARD 17)            # Стандарт C++ (17 = C++17)\n\nadd_executable(MyProject main.cpp)     # Цель: исполняемый файл из main.cpp</code></pre>"
+        },
+        {
+          "type": "text",
+          "content": "<strong>Основные команды:</strong><br>• <code>cmake_minimum_required(VERSION X)</code> — минимальная версия CMake<br>• <code>project(Name)</code> — название проекта<br>• <code>set(VAR VALUE)</code> — присвоить переменной значение<br>• <code>add_executable(Name files...)</code> — цель: исполняемый файл из перечисленных файлов<br><br>При добавлении класса через IDE файлы автоматически добавляются в цель:<br><pre><code>add_executable(MyProject main.cpp NewClass.cpp NewClass.h)</code></pre>"
+        },
+        {
+          "type": "example",
+          "content": "<strong>Расширенный CMakeLists с проверкой компилятора:</strong><br><pre><code>cmake_minimum_required(VERSION 3.12)\nproject(MyProject)\nset(CMAKE_CXX_STANDARD 17)\n\nif (CMAKE_CXX_COMPILER_ID STREQUAL \"GNU\")\n    message(\"Compiler is GNU\")\n    set(EXTRA_FLAGS \"-pedantic-errors -Wall -Wextra -Weffc++\")\n    set(CMAKE_CXX_FLAGS \"${CMAKE_CXX_FLAGS} ${EXTRA_FLAGS}\")\nelseif(CMAKE_CXX_COMPILER_ID STREQUAL \"MSVC\")\n    message(\"Compiler is MSVC\")\n    set(EXTRA_FLAGS \"/W4\")\n    set(CMAKE_CXX_FLAGS \"${CMAKE_CXX_FLAGS} ${EXTRA_FLAGS}\")\nendif()\n\nadd_executable(MyProject main.cpp)</code></pre>Комментарии в CMake начинаются с <code>#</code>. Доступны условия (<code>if/elseif/endif</code>), циклы (<code>while/foreach</code>), функции и макросы."
+        },
+        {
+          "type": "note",
+          "content": "Получение значения переменной: <code>${VARIABLE}</code>. Можно указывать <strong>несколько целей</strong> — какую собирать, выбирается через меню IDE."
+        }
+      ]
+    },
+    {
+      "heading": "Интеграция с Git и IDE",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Для управления версиями проекта используется <strong>Git</strong>. Большинство IDE (Visual Studio, CLion, Xcode, VS Code) имеют встроенную или расширяемую поддержку Git/GitHub."
+        },
+        {
+          "type": "text",
+          "content": "<strong>Какие файлы загружать в репозиторий:</strong><br>• Исходный код (<code>.cpp</code>, <code>.h</code>, <code>.hpp</code>)<br>• Файлы конфигурации сборки (<code>CMakeLists.txt</code>)<br><br><strong>Что НЕ стоит загружать:</strong><br>• Файлы, созданные в результате сборки (каталоги <code>build/</code>, <code>Debug/</code>, <code>Release/</code>)<br>• Служебные файлы IDE (<code>.vs/</code>, <code>.idea/</code>)"
+        },
+        {
+          "type": "text",
+          "content": "<strong>Основные действия:</strong><br>1. <strong>Создать</strong> локальный и удалённый репозиторий<br>2. <strong>Commit</strong> — зафиксировать изменения с описанием<br>3. <strong>Push</strong> — отправить коммиты на GitHub<br>4. <strong>Clone</strong> — клонировать существующий проект"
+        }
+      ]
+    }
+  ]
+}

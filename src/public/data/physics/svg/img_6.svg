@@ -1,0 +1,26 @@
+<svg viewBox="0 0 400 170" width="400" height="170">
+  <defs><marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0 0, 6 3, 0 6" fill="#8b949e"/></marker></defs>
+  
+  <line x1="30" y1="85" x2="380" y2="85" stroke="#d0d7de" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="200" y1="160" x2="200" y2="10" stroke="#d0d7de" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="385" y="90" font-size="12" fill="#8b949e">x</text>
+  <text x="185" y="15" font-size="12" fill="#8b949e">p</text>
+
+  <ellipse cx="200" cy="85" rx="130" ry="60" fill="rgba(9, 105, 218, 0.05)" stroke="#0969da" stroke-width="2.5"/>
+  
+  <path d="M 200 25 L 210 20 L 205 30 Z" fill="#0969da"/>
+  <path d="M 200 145 L 190 150 L 195 140 Z" fill="#0969da"/>
+
+  <circle cx="330" cy="85" r="4" fill="#e5534b"/>
+  <circle cx="70" cy="85" r="4" fill="#e5534b"/>
+  <text x="335" y="80" font-size="12" fill="#e5534b" font-weight="bold">A</text>
+  <text x="50" y="80" font-size="12" fill="#e5534b" font-weight="bold">−A</text>
+
+  <circle cx="200" cy="25" r="4" fill="#2da44e"/>
+  <circle cx="200" cy="145" r="4" fill="#2da44e"/>
+  <text x="210" y="30" font-size="12" fill="#2da44e" font-weight="bold">mωA</text>
+  <text x="210" y="155" font-size="12" fill="#2da44e" font-weight="bold">−mωA</text>
+
+  <rect x="20" y="10" width="130" height="30" rx="4" fill="rgba(88,166,255,0.15)" stroke="#0969da" stroke-width="1"/>
+  <text x="30" y="30" font-size="11" fill="#0969da" font-weight="bold">E = const (Эллипс)</text>
+</svg>

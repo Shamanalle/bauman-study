@@ -1,0 +1,11 @@
+{
+  "labs": [
+    { "num": "00", "title": "Настройка среды", "desc": "Регистрация GitHub, Personal Token, Markdown, настройка окружения", "file": "lab-00.json" },
+    { "num": "01", "title": "Утилиты для разработки", "desc": "Командная строка Linux, навигация, работа с файлами, wget, boost", "file": "lab-01.json" },
+    { "num": "02", "title": "Система контроля версий Git", "desc": "init, clone, add, commit, push, pull, ветвление, конфликты", "file": "lab-02.json" },
+    { "num": "03", "title": "Автоматизация сборки — CMake", "desc": "CMakeLists.txt, библиотеки, исполняемые файлы, проект Formatter Inc.", "file": "lab-03.json" },
+    { "num": "04", "title": "Непрерывная интеграция — CI/CD", "desc": "GitHub Actions / Travis CI, .yml конфиги, автосборка, бейджи", "file": "lab-04.json" },
+    { "num": "05", "title": "Тестирование — GTest", "desc": "Google Test, git submodule, TEST(), EXPECT/ASSERT, покрытие кода", "file": "lab-05.json" },
+    { "num": "06", "title": "Пакетирование — CPack", "desc": "Версионирование, CPackConfig, TGZ/DEB/RPM пакеты, git tag", "file": "lab-06.json" }
+  ]
+}

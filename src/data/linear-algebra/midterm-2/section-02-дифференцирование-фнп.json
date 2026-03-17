@@ -1,0 +1,132 @@
+{
+  "section": "Дифференцирование ФНП",
+  "icon": "📈",
+  "questions": [
+    {
+      "id": 7,
+      "title": "Теорема о связи непрерывности и дифференцируемости ФНП",
+      "type": "Теорема",
+      "tldr": "Дифференцируемость ⟹ непрерывность. Обратное неверно.",
+      "intuition": "Если функция дифференцируема — значит у неё есть касательная плоскость, и поверхность «плавная». Плавная ⟹ нет разрывов ⟹ непрерывна. Но непрерывность не гарантирует гладкость: $f(x,y) = |x| + |y|$ непрерывна, но в нуле «угол» — нет касательной плоскости.",
+      "formalText": "Если $f$ дифференцируема в $\\mathbf{a}$ → $f$ непрерывна в $\\mathbf{a}$.",
+      "formula": "\\text{дифф.} \\;\\Rightarrow\\; \\text{непр.}",
+      "keyIdea": "Дифференцируемость — более строгое требование, чем непрерывность. Цепочка: дифф. → непр. → предел существует.",
+      "proof": "По определению дифференцируемости: $\\Delta f = \\sum A_i\\Delta x_i + \\alpha\\|\\Delta\\mathbf{x}\\|$. При $\\Delta\\mathbf{x} \\to 0$ все слагаемые в правой части стремятся к нулю. Следовательно, $\\Delta f \\to 0$, что и означает непрерывность функции в точке $\\mathbf{a}$. $$",
+      "steps": [
+        {
+          "title": "1. Контрпример для обратного",
+          "text": "$f(x,y) = |x|+|y|$ — непрерывна в $(0,0)$, но частной производной $\\partial f/\\partial x$ в $(0,0)$ нет (предел разностного отношения по $x$ при $y=0$ равен $\\pm 1$ с разных сторон). Значит, не дифференцируема.",
+          "tip": "Непрерывность — слабее дифференцируемости"
+        }
+      ],
+      "examSay": "Обратное: непр. $\\not\\Rightarrow$ дифф. Контрпример: $f = |x|+|y|$ непрерывна, но не дифф. в $(0,0)$."
+    },
+    {
+      "id": 8,
+      "title": "Теорема о необходимых условиях дифференцируемости ФНП",
+      "type": "Теорема",
+      "tldr": "Дифференцируема → существуют все частные производные.",
+      "intuition": "Если поверхность имеет касательную плоскость (дифференцируема), то обязательно существуют наклоны в направлениях осей (частные производные). Это «необходимо»: без существования частных нет касательной плоскости.",
+      "formalText": "Если $f$ дифференцируема в точке $\\mathbf{a}$, то в этой точке существуют все её частные производные, и $A_i = \\frac{\\partial f}{\\partial x_i}$.",
+      "formula": "\\text{дифф.} \\;\\Rightarrow\\; \\exists \\frac{\\partial f}{\\partial x_i}",
+      "proof": "Запишем разность $\\Delta f = \\sum A_i \\Delta x_i + \\alpha \\|\\Delta\\mathbf{x}\\|$. Положим приращения всех аргументов, кроме $x_i$, равными нулю: $\\Delta x_j = 0$ при $j \\neq i$. Тогда $\\Delta f = A_i \\Delta x_i + \\alpha |\\Delta x_i|$. Разделим на $\\Delta x_i$: $\\frac{\\Delta f}{\\Delta x_i} = A_i + \\alpha \\frac{|\\Delta x_i|}{\\Delta x_i}$. Переходя к пределу при $\\Delta x_i \\to 0$ (учитывая, что $\\alpha \\to 0$), получаем $\\lim \\frac{\\Delta f}{\\Delta x_i} = A_i$. Этот предел и есть определение частной производной $\\frac{\\partial f}{\\partial x_i}$. $$",
+      "keyIdea": "Коэффициенты линейной части дифференциала — это в точности частные производные.",
+      "examSay": "Обратное НЕ верно: $\\exists$ всех частных $\\not\\Rightarrow$ дифф. Пример: $f = xy/(x^2+y^2)$ у нуля."
+    },
+    {
+      "id": 9,
+      "title": "Теорема о достаточных условиях дифференцируемости ФНП",
+      "type": "Теорема",
+      "tldr": "Если частные производные непрерывны → дифференцируема.",
+      "intuition": "Непрерывность частных производных — это «отсутствие резких изломов наклонов». Если все наклоны меняются плавно, то поверхность гладкая — значит касательная плоскость существует.",
+      "formalText": "Если функция $f$ имеет в окрестности точки $\\mathbf{a}$ частные производные $\\frac{\\partial f}{\\partial x_i}$, и они <strong>непрерывны</strong> в самой точке $\\mathbf{a}$, то $f$ дифференцируема в $\\mathbf{a}$.",
+      "formula": "\\frac{\\partial f}{\\partial x_i} \\text{ непр.} \\;\\Rightarrow\\; f \\text{ дифф.}",
+      "proof": "(Для функции двух переменных $f(x,y)$).\nРассмотрим приращение $\\Delta f = f(x+\\Delta x, y+\\Delta y) - f(x,y)$. Представим его в виде:\n$\\Delta f = [f(x+\\Delta x, y+\\Delta y) - f(x, y+\\Delta y)] + [f(x, y+\\Delta y) - f(x,y)]$.\nК каждой квадратной скобке применим теорему Лагранжа о конечных приращениях для функции одной переменной:\n$\\Delta f = f'_x(x+\\theta_1\\Delta x, y+\\Delta y)\\Delta x + f'_y(x, y+\\theta_2\\Delta y)\\Delta y$, где $\\theta_1, \\theta_2 \\in (0,1)$.\nВ силу непрерывности $f'_x$ и $f'_y$ в точке $(x,y)$, их можно представить как $f'_x + \\alpha_1$ и $f'_y + \\alpha_2$, где $\\alpha_1, \\alpha_2 \\to 0$ при $\\Delta x, \\Delta y \\to 0$.\nОтсюда $\\Delta f = f'_x\\Delta x + f'_y\\Delta y + \\alpha_1\\Delta x + \\alpha_2\\Delta y$.\nПоследние два слагаемых можно записать как $o(\\sqrt{\\Delta x^2 + \\Delta y^2}) = o(\\rho)$, так как $|\\Delta x| \\le \\rho, |\\Delta y| \\le \\rho$. Следовательно, функция дифференцируема. $$",
+      "keyIdea": "Если $f \\in C^1$ (все частные непрерывны) → $f$ дифференцируема. Доказательство опирается на теорему Лагранжа.",
+      "examSay": "Непрерывность частных — ДОСТАТОЧНОЕ условие. Используется разбиение приращения по осям."
+    },
+    {
+      "id": 10,
+      "title": "Определение полного первого дифференциала и матрицы Гессе ФНП",
+      "type": "Определение",
+      "tldr": "df = Σ(∂f/∂xᵢ)dxᵢ. Гессиан: H = (∂²f/∂xᵢ∂xⱼ).",
+      "formalText": "$df = \\sum \\frac{\\partial f}{\\partial x_i}dx_i$.\n$d^2f = \\sum_{i,j}\\frac{\\partial^2 f}{\\partial x_i \\partial x_j}dx_i\\,dx_j$.\n<strong>Матрица Гессе:</strong> $H = \\left(\\frac{\\partial^2 f}{\\partial x_i \\partial x_j}\\right)_{n \\times n}$.",
+      "formula": "H = \\left(\\frac{\\partial^2 f}{\\partial x_i \\partial x_j}\\right)",
+      "keyIdea": "Матрица Гессе симметрична (при непрерывности вторых производных). Она описывает кривизну функции."
+    },
+    {
+      "id": 11,
+      "title": "Теорема о независимости смешанных частных производных",
+      "type": "Теорема",
+      "tldr": "∂²f/∂x∂y = ∂²f/∂y∂x (теорема Шварца).",
+      "formalText": "<strong>Теорема Шварца:</strong> Если функция $f(x,y)$ имеет смешанные частные производные $\\frac{\\partial^2 f}{\\partial x\\partial y}$ и $\\frac{\\partial^2 f}{\\partial y\\partial x}$ в окрестности точки $(x_0, y_0)$ и они непрерывны в самой дифференцируемой точке, то в этой точке они равны.",
+      "formula": "\\frac{\\partial^2 f}{\\partial x\\partial y} = \\frac{\\partial^2 f}{\\partial y\\partial x}",
+      "proof": "Рассмотрим выражение $\\Phi = f(x+\\Delta x, y+\\Delta y) - f(x+\\Delta x, y) - f(x, y+\\Delta y) + f(x, y)$.\nС одной стороны, обозначим $\\varphi(x) = f(x, y+\\Delta y) - f(x, y)$. Тогда $\\Phi = \\varphi(x+\\Delta x) - \\varphi(x)$. По теореме Лагранжа $\\Phi = \\varphi'(x+\\theta_1\\Delta x)\\Delta x = [f'_x(x+\\theta_1\\Delta x, y+\\Delta y) - f'_x(x+\\theta_1\\Delta x, y)]\\Delta x$.\nПрименим теорему Лагранжа второй раз по $y$: $\\Phi = f''_{xy}(x+\\theta_1\\Delta x, y+\\theta_2\\Delta y)\\Delta x\\Delta y$.\nС другой стороны, введя $\\psi(y) = f(x+\\Delta x, y) - f(x, y)$, аналогично получим $\\Phi = f''_{yx}(x+\\theta_3\\Delta x, y+\\theta_4\\Delta y)\\Delta x\\Delta y$.\nПриравнивая и сокращая на $\\Delta x\\Delta y \\neq 0$, имеем $f''_{xy}(x+\\theta_1\\Delta x, y+\\theta_2\\Delta y) = f''_{yx}(x+\\theta_3\\Delta x, y+\\theta_4\\Delta y)$.\nПереходя к пределу при $\\Delta x, \\Delta y \\to 0$, в силу непрерывности $f''_{xy}$ и $f''_{yx}$ в точке $(x,y)$, получаем $f''_{xy}(x,y) = f''_{yx}(x,y)$. $$",
+      "examSay": "Непрерывность вторых производных — ключевое условие теоремы Шварца. Иначе равенство может нарушаться."
+    },
+    {
+      "id": 12,
+      "title": "Условия для полного дифференциала P dx + Q dy",
+      "type": "Теорема",
+      "tldr": "P dx + Q dy = df ⟺ ∂P/∂y = ∂Q/∂x.",
+      "formalText": "Выражение $P(x,y)\\,dx + Q(x,y)\\,dy$ является полным дифференциалом некоторой функции $f(x,y)$ в односвязной области ⟺ в этой области выполняется тождество: $\\frac{\\partial P}{\\partial y} = \\frac{\\partial Q}{\\partial x}$.",
+      "formula": "\\frac{\\partial P}{\\partial y} = \\frac{\\partial Q}{\\partial x}",
+      "examSay": "Это фундаментальный критерий потенциальности векторного поля. Используется для точных дифференциальных уравнений."
+    },
+    {
+      "id": 13,
+      "title": "Формулы для частных производных сложной функции",
+      "type": "Формула",
+      "tldr": "∂z/∂x = (∂f/∂u)(∂u/∂x) + (∂f/∂v)(∂v/∂x)",
+      "formalText": "Пусть $z = f(u,v)$ — дифференцируемая функция, а аргументы $u, v$ — функции от $x, y$: $u = u(x,y)$, $v = v(x,y)$. Тогда частные производные вычисляются по <strong>цепному правилу</strong>:\n$\\frac{\\partial z}{\\partial x} = \\frac{\\partial f}{\\partial u}\\frac{\\partial u}{\\partial x} + \\frac{\\partial f}{\\partial v}\\frac{\\partial v}{\\partial x}$.\nАналогично для $\\frac{\\partial z}{\\partial y}$.",
+      "formula": "\\frac{\\partial z}{\\partial x} = f'_u u'_x + f'_v v'_x",
+      "examSay": "Суммируем вклады всех промежуточных переменных. В виде матриц: $J_{z,x} = J_{z,(u,v)} \\times J_{(u,v),x}$."
+    },
+    {
+      "id": 14,
+      "title": "Производная сложной функции u = f(x(t), y(t), z(t))",
+      "type": "Формула + вывод",
+      "tldr": "du/dt = (∂f/∂x)x' + (∂f/∂y)y' + (∂f/∂z)z'.",
+      "formalText": "Если $u = f(x, y, z)$ дифференцируема, а $x=x(t)$, $y=y(t)$, $z=z(t)$ дифференцируемы по $t$, то производная полной сложной функции $u(t)$ равна:\n$\\frac{du}{dt} = \\frac{\\partial f}{\\partial x}\\frac{dx}{dt} + \\frac{\\partial f}{\\partial y}\\frac{dy}{dt} + \\frac{\\partial f}{\\partial z}\\frac{dz}{dt}$.",
+      "formula": "\\frac{du}{dt} = \\nabla f \\cdot \\mathbf{r}'(t)",
+      "proof": "Полное приращение $\\Delta u = \\frac{\\partial f}{\\partial x}\\Delta x + \\frac{\\partial f}{\\partial y}\\Delta y + \\frac{\\partial f}{\\partial z}\\Delta z + \\alpha\\rho$.\nРазделим на $\\Delta t$:\n$\\frac{\\Delta u}{\\Delta t} = \\frac{\\partial f}{\\partial x}\\frac{\\Delta x}{\\Delta t} + \\frac{\\partial f}{\\partial y}\\frac{\\Delta y}{\\Delta t} + \\frac{\\partial f}{\\partial z}\\frac{\\Delta z}{\\Delta t} + \\alpha\\frac{\\rho}{\\Delta t}$.\nПерейдём к пределу при $\\Delta t \\to 0$. При этом $\\frac{\\Delta x}{\\Delta t} \to x'(t)$, $\\Delta x \\to 0$ (т.к. функция дифф-ма, значит непрерывна), поэтому $\\rho \\to 0$ и $\\alpha \\to 0$. Отношение $\\frac{\\rho}{\\Delta t} = \\sqrt{(\\frac{\\Delta x}{\\Delta t})^2 + ...} \\to \\sqrt{x'^2 + y'^2 + z'^2}$ — число конечное. В пределе слагаемое с $\\alpha$ исчезает, и получаем требуемую формулу. $$"
+    },
+    {
+      "id": 15,
+      "title": "Теорема о неявной функции и её частные производные",
+      "type": "Теорема + вывод",
+      "tldr": "Уравнение F(x,y)=0 определяет y(x). y' = -Fx/Fy.",
+      "formalText": "<strong>Теорема о неявной функции:</strong> Пусть уравнение $F(x,y)=0$ задаёт кривую, $F$ непрерывно дифференцируема, и в точке $(x_0,y_0)$ $F(x_0,y_0)=0$, $F_y(x_0,y_0) \\neq 0$. Тогда в некоторой окрестности этой точки уравнение определяет единственную дифференцируемую функцию $y = y(x)$, такую что $y(x_0)=y_0$ и $F(x,y(x)) \\equiv 0$.",
+      "formula": "y' = -\\frac{F_x}{F_y}, \\quad \\frac{\\partial z}{\\partial x} = -\\frac{F_x}{F_z}, \\quad \\frac{\\partial z}{\\partial y} = -\\frac{F_y}{F_z}",
+      "proof": "<strong>Вывод формул частных производных (для $z(x,y)$ из $F(x,y,z)=0$):</strong>\nПодставим неявную функцию $z=z(x,y)$ в исходное уравнение, получим тождество $F(x, y, z(x,y)) \\equiv 0$.\nПродифференцируем это тождество по переменной $x$, считая $y$ постоянной. Применим цепное правило сложной функции:\n$\\frac{\\partial F}{\\partial x}\\frac{\\partial x}{\\partial x} + \\frac{\\partial F}{\\partial y}\\frac{\\partial y}{\\partial x} + \\frac{\\partial F}{\\partial z}\\frac{\\partial z}{\\partial x} = 0$.\nПоскольку $x$ и $y$ — независимые переменные, $\\frac{\\partial x}{\\partial x} = 1$, а $\\frac{\\partial y}{\\partial x} = 0$. Получаем:\n$\\frac{\\partial F}{\\partial x} + \\frac{\\partial F}{\\partial z}\\frac{\\partial z}{\\partial x} = 0$.\nТак как по условию $F_z \\neq 0$, выразим $\\frac{\\partial z}{\\partial x}$:\n$\\frac{\\partial z}{\\partial x} = -\\frac{F_x}{F_z}$.\nДифференцируя тождество по $y$, аналогично получаем $\\frac{\\partial z}{\\partial y} = -\\frac{F_y}{F_z}$. $$",
+      "visual": "svg:img_4",
+      "visualLabel": "Теорема о неявной функции: если F_y≠0, то кривая F(x,y)=0 локально задаёт y = f(x)."
+    },
+    {
+      "id": 16,
+      "title": "Определение градиента ФНП и производной по направлению",
+      "type": "Определение",
+      "tldr": "grad f = (∂f/∂x₁,...,∂f/∂xₙ). ∂f/∂l = (grad f, l⁰).",
+      "formalText": "$\\text{grad}\\,f = \\nabla f = \\left(\\frac{\\partial f}{\\partial x_1},...,\\frac{\\partial f}{\\partial x_n}\\right)$ — <strong>градиент</strong> функции.\n<strong>Производная по направлению $\\mathbf{l}$:</strong> $\\frac{\\partial f}{\\partial \\mathbf{l}} = \\lim_{\\Delta s \\to 0} \\frac{f(\\mathbf{x}_0 + \\Delta s \\cdot \\mathbf{l}^0) - f(\\mathbf{x}_0)}{\\Delta s}$, где $\\mathbf{l}^0$ — единичный вектор направления.",
+      "formula": "\\frac{\\partial f}{\\partial \\mathbf{l}} = (\\nabla f, \\mathbf{l}^0)",
+      "keyIdea": "Производная по направлению максимальна при $\\mathbf{l} \\parallel \\nabla f$ (вдоль градиента)."
+    },
+    {
+      "id": 17,
+      "title": "Формула для производной ФНП по направлению",
+      "type": "Формула",
+      "tldr": "∂f/∂l = Σ(∂f/∂xᵢ)cos αᵢ.",
+      "formalText": "$\\frac{\\partial f}{\\partial \\mathbf{l}} = \\frac{\\partial f}{\\partial x}\\cos\\alpha + \\frac{\\partial f}{\\partial y}\\cos\\beta + \\frac{\\partial f}{\\partial z}\\cos\\gamma$, где $\\cos\\alpha, \\cos\\beta, \\cos\\gamma$ — направляющие косинусы вектора направленя $\\mathbf{l}$.",
+      "formula": "\\frac{\\partial f}{\\partial \\mathbf{l}} = \\nabla f \\cdot \\mathbf{l}^0",
+      "examSay": "Важно: вектор $\\mathbf{l}$ должен быть отнормирован, длина $\\mathbf{l}^0$ равна единице."
+    },
+    {
+      "id": 18,
+      "title": "Основные свойства градиента ФНП",
+      "type": "Свойства",
+      "tldr": "1) Направление максимума. 2) Перпендикулярен линиям уровня.",
+      "formalText": "1. $\\nabla f$ <strong>направлен в сторону наибыстрейшего возрастания</strong> функции $f$.\n2. <strong>Длина градиента</strong> $\\|\\nabla f\\|$ равна максимальному значению производной по направлению.\n3. В каждой точке $\\nabla f$ <strong>перпендикулярен</strong> линии уровня (и поверхности уровня), проходящей через эту точку.\n4. Линейность: $\\nabla(\\lambda f + \\mu g) = \\lambda\\nabla f + \\mu\\nabla g$.",
+      "formula": "\\nabla f \\perp f(x,y,z)=\\text{const}"
+    }
+  ]
+}

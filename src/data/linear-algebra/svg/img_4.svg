@@ -1,0 +1,38 @@
+<svg viewBox="0 0 420 185" width="420" height="185">
+  <defs>
+    <marker id="arrowX" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><polygon points="0 0, 8 4, 0 8" fill="#d0d7de"/></marker>
+  </defs>
+
+  <!-- Axes -->
+  <line x1="80" y1="140" x2="360" y2="140" stroke="#d0d7de" stroke-width="1.5" marker-end="url(#arrowX)"/>
+  <text x="365" y="145" font-size="13" fill="#8b949e" font-weight="600">x</text>
+  <line x1="125" y1="170" x2="125" y2="10" stroke="#d0d7de" stroke-width="1.5" marker-end="url(#arrowX)"/>
+  <text x="112" y="18" font-size="13" fill="#8b949e" font-weight="600">y</text>
+
+  <!-- Implicit curve (ellipse) -->
+  <ellipse cx="208" cy="85" rx="65" ry="42" fill="none" stroke="#8b949e" stroke-width="2"/>
+  <text x="135" y="118" font-size="14" fill="#8b949e">F(x,y) = 0
+    
+  </text>
+
+  <!-- Local neighborhood -->
+  <rect x="218" y="45" width="42" height="42" fill="rgba(45,164,78,0.1)" stroke="#2da44e" stroke-dasharray="4"/>
+
+  <!-- Explicit function through neighborhood -->
+  <path d="M 218 80 Q 238 68 260 48" fill="none" stroke="#0969da" stroke-width="3"/>
+
+  <!-- Point -->
+  <circle cx="238" cy="63" r="5" fill="#e5534b"/>
+  <text x="248" y="68" font-size="12" fill="#e5534b">(x₀, y₀)
+    
+  </text>
+
+  <!-- Labels -->
+  <g>
+    
+    <text x="270" y="30" font-size="12" fill="#2da44e">Локально (в окрестности)</text>
+    <text x="270" y="48" font-size="12" fill="#0969da">задаёт функцию y=f(x)</text>
+    <text x="270" y="68" font-size="12" fill="#e5534b">Обязательно: F_y(x₀,y₀) ≠ 0</text>
+    <text x="270" y="85" font-size="10" fill="#8b949e">(касательная не вертикальна)</text>
+  </g>
+</svg>

@@ -1,0 +1,96 @@
+{
+  "num": 5,
+  "title": "Отмена изменений и исправление ошибок",
+  "summary": "Git restore — откат файлов. Git reset: три режима (soft, mixed, hard). Git revert — безопасная отмена коммита. Git reflog — журнал всех действий HEAD. Git clean — удаление неотслеживаемых файлов. Таблица: когда какую команду использовать.",
+  "sections": [
+    {
+      "heading": "Откат файлов: git restore",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "git restore",
+          "content": "Откатывает файлы в рабочей директории или staging area.<br>• <code>git restore файл</code> — откатить изменения в рабочей директории<br>• <code>git restore --staged файл</code> — убрать файл из staging (git add отмена)<br>• <code>git restore --source=HEAD~3 файл</code> — восстановить версию 3 коммита назад"
+        },
+        {
+          "type": "note",
+          "content": "<code>git restore файл</code> безвозвратно удаляет не закоммиченные изменения! Используй с осторожностью."
+        }
+      ]
+    },
+    {
+      "heading": "Откат коммитов: git reset",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "<code>git reset</code> перемещает указатель HEAD (и текущей ветки) на указанный коммит."
+        },
+        {
+          "type": "definition",
+          "term": "git reset --soft HEAD~1",
+          "content": "Откатывает коммит, но <strong>сохраняет изменения в staging</strong>. Используй, если хочешь переделать коммит."
+        },
+        {
+          "type": "definition",
+          "term": "git reset --mixed HEAD~1",
+          "content": "Режим по умолчанию. Откатывает коммит, изменения <strong>остаются в рабочей директории</strong>, но убираются из staging."
+        },
+        {
+          "type": "definition",
+          "term": "git reset --hard HEAD~1",
+          "content": "<strong>Полный откат</strong>: коммит удалён, staging очищен, рабочая директория возвращена к указанному коммиту. Изменения потеряны безвозвратно!"
+        },
+        {
+          "type": "note",
+          "content": "<strong>Не используй</strong> <code>git reset</code> для уже запушенных коммитов — это перепишет историю и создаст проблемы для коллег."
+        }
+      ]
+    },
+    {
+      "heading": "Безопасная отмена: git revert",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "git revert",
+          "content": "<code>git revert хеш</code> создаёт <strong>новый коммит</strong>, который отменяет изменения указанного. Безопасно для публичных веток — история не переписывается.<br><pre><code>git revert abc1234\n# Создаст коммит \"Revert 'сообщение abc1234'\"</code></pre>"
+        },
+        {
+          "type": "text",
+          "content": "<strong>reset vs revert:</strong><br>• <code>reset</code> — <strong>удаляет</strong> коммиты из истории (для локальных)<br>• <code>revert</code> — <strong>добавляет</strong> отменяющий коммит (для запушенных)"
+        }
+      ]
+    },
+    {
+      "heading": "Журнал действий: git reflog",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "git reflog",
+          "content": "Локальный журнал <strong>всех</strong> перемещений HEAD. Даже после <code>reset --hard</code> или <code>rebase</code> можно найти потерянные коммиты в reflog.<br><pre><code>git reflog\n# abc1234 HEAD@{0}: reset: moving to HEAD~1\n# def5678 HEAD@{1}: commit: Важные изменения\n\n# Восстановить:\ngit reset --hard def5678</code></pre>"
+        },
+        {
+          "type": "note",
+          "content": "Reflog хранится ~90 дней. Это «страховочная сетка» Git — почти всегда можно восстановить данные."
+        }
+      ]
+    },
+    {
+      "heading": "Очистка: git clean",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "git clean",
+          "content": "Удаляет <strong>неотслеживаемые</strong> файлы (untracked):<br>• <code>git clean -n</code> — показать, что будет удалено (dry run)<br>• <code>git clean -f</code> — удалить файлы<br>• <code>git clean -fd</code> — удалить файлы и директории<br>• <code>git clean -fX</code> — удалить файлы из .gitignore (сборочные артефакты)"
+        }
+      ]
+    },
+    {
+      "heading": "Когда что использовать",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "<strong>Справочная таблица:</strong><br><br>• Отменить изменения в файле → <code>git restore файл</code><br>• Убрать файл из staging → <code>git restore --staged файл</code><br>• Исправить последний коммит → <code>git commit --amend</code><br>• Откатить локальный коммит → <code>git reset HEAD~1</code><br>• Откатить запушенный коммит → <code>git revert хеш</code><br>• Спрятать изменения временно → <code>git stash</code><br>• Восстановить после reset → <code>git reflog</code> → <code>git reset хеш</code><br>• Удалить мусор → <code>git clean -fd</code>"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "num": 8,
+  "title": "Шаблоны классов и функций",
+  "summary": "Понятие шаблона. Шаблоны классов: определение, параметры шаблона, создание объектов. Внешнее определение методов шаблонного класса. Ключевые слова class и typename. Шаблоны функций. Стандартная библиотека шаблонов (STL): контейнеры vector, list, set, stack, queue. Пример шаблонного класса-вектора.",
+  "sections": [
+    {
+      "heading": "Понятие шаблона",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "Шаблон",
+          "content": "<strong>Шаблон</strong> (template) задаёт <strong>семейство классов или функций</strong>, в которых могут использоваться разные типы.<br><br>Вместо написания отдельных классов для <code>int</code>, <code>double</code>, <code>string</code> и т.д. создаётся один шаблон с <strong>параметром типа</strong>. При создании конкретного объекта указывается нужный тип, и компилятор <strong>генерирует</strong> класс."
+        },
+        {
+          "type": "text",
+          "content": "<strong>Синтаксис:</strong><br><pre><code>template &lt;список_параметров_шаблона&gt;\nопределение_шаблона_класса_или_функции</code></pre>Имя параметра шаблона — имя <strong>неизвестного</strong> заранее типа."
+        }
+      ]
+    },
+    {
+      "heading": "Шаблоны классов",
+      "blocks": [
+        {
+          "type": "example",
+          "content": "<pre><code>template &lt;class T&gt; // T — параметр-тип\nclass vektor {\n    T* data;      // Указатель на массив элементов типа T\n    int size;     // Размерность\npublic:\n    vektor(int n = 10);\n    ~vektor() { delete[] data; }\n\n    T& operator[](int i) { return data[i]; } // Доступ по индексу\n    T getSum();  // Сумма элементов\n};</code></pre>"
+        },
+        {
+          "type": "text",
+          "content": "При создании объекта указывается <strong>конкретный тип</strong> в угловых скобках:<br><pre><code>vektor&lt;int&gt; X(5);       // Вектор из 5 элементов типа int\nvektor&lt;double&gt; Y(10);   // Вектор из 10 элементов типа double\n\nX[1] = 101;\nY[0] = 10.51;</code></pre>Для каждого используемого типа компилятор <strong>генерирует</strong> отдельный класс."
+        }
+      ]
+    },
+    {
+      "heading": "Внешнее определение методов",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "При определении методов шаблонного класса <strong>за пределами</strong> класса перед каждым методом нужно повторять строку <code>template</code>:"
+        },
+        {
+          "type": "example",
+          "content": "<pre><code>// Внешнее определение конструктора\ntemplate &lt;class T&gt;\nvektor&lt;T&gt;::vektor(int n) {\n    data = new T[n];\n    size = n;\n}\n\n// Внешнее определение функции getSum\ntemplate &lt;class T&gt;\nT vektor&lt;T&gt;::getSum() {\n    T sum = 0;\n    for (int i = 0; i &lt; size; i++)\n        sum += data[i];\n    return sum;\n}</code></pre>"
+        },
+        {
+          "type": "note",
+          "content": "<strong>Важно:</strong> при внешнем определении используется полное имя класса <code>vektor&lt;T&gt;</code>, а не просто <code>vektor</code>."
+        }
+      ]
+    },
+    {
+      "heading": "class и typename",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Перед параметром шаблона можно использовать <strong>оба</strong> ключевых слова — результат одинаковый:<br><pre><code>template &lt;class T&gt;     // Тоже самое, что:\ntemplate &lt;typename T&gt;  // Используется чаще в современном C++</code></pre>Ключевое слово <code>typename</code> считается более «современным» и наглядным (параметр — именно <strong>тип</strong>, а не обязательно класс)."
+        }
+      ]
+    },
+    {
+      "heading": "Шаблоны функций",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Шаблоны можно применять не только к классам, но и к <strong>обычным функциям</strong>:"
+        },
+        {
+          "type": "example",
+          "content": "<pre><code>template &lt;typename T&gt;\nT maxOf(T a, T b) {\n    return (a &gt; b) ? a : b;\n}\n\nint main() {\n    std::cout &lt;&lt; maxOf(3, 7);        // int → 7\n    std::cout &lt;&lt; maxOf(1.5, 2.8);    // double → 2.8\n    std::cout &lt;&lt; maxOf&lt;int&gt;(3, 7);   // Явное указание типа\n}</code></pre>Компилятор может <strong>автоматически</strong> вывести тип из аргументов (или тип указывается явно в угловых скобках)."
+        }
+      ]
+    },
+    {
+      "heading": "Несколько параметров шаблона",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Шаблон может иметь <strong>несколько</strong> параметров типа, а также <strong>нетиповые</strong> параметры:<br><pre><code>template &lt;typename K, typename V&gt;\nclass Pair {\n    K key;\n    V value;\npublic:\n    Pair(K k, V v) : key(k), value(v) {}\n    K getKey() const { return key; }\n    V getValue() const { return value; }\n};\n\nPair&lt;std::string, int&gt; p(\"age\", 20);</code></pre>"
+        },
+        {
+          "type": "example",
+          "content": "<strong>Нетиповые параметры:</strong><br><pre><code>template &lt;typename T, int N&gt;\nclass StaticArray {\n    T data[N];\npublic:\n    T& operator[](int i) { return data[i]; }\n    int size() const { return N; }\n};\n\nStaticArray&lt;double, 100&gt; arr; // Массив из 100 double</code></pre>"
+        }
+      ]
+    },
+    {
+      "heading": "Проблема компиляции шаблонов (h/cpp)",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "При разделении шаблонного класса на <code>.h</code> (объявление) и <code>.cpp</code> (определение методов) возникает <strong>ошибка линковки</strong>:<br><br>1. Заголовочный файл подключается в <code>Source.cpp</code> — компилятор видит объявления и <strong>генерирует</strong> код для нужного типа<br>2. Файл <code>Matrix.cpp</code> с определениями компилируется <strong>отдельно</strong> — компилятор <strong>не знает</strong>, для каких типов генерировать код<br>3. Линковщик не находит реализацию → <strong>ошибка</strong>"
+        },
+        {
+          "type": "text",
+          "content": "<strong>Решения:</strong><br><br>1. <strong>Всё в .h</strong> — поместить определения методов в заголовочный файл (минус: медленная компиляция при частых изменениях)<br><br>2. <strong>Подключить .cpp</strong> — писать <code>#include \"Matrix.cpp\"</code> (минус: та же проблема)<br><br>3. <strong>Явная генерация</strong> (предпочтительный вариант) — создать отдельный файл с явным инстанцированием:"
+        },
+        {
+          "type": "example",
+          "content": "<strong>Файл IntMatrix.cpp (явная генерация):</strong><br><pre><code>#include \"Matrix.h\"\n#include \"Matrix.cpp\"\n\ntemplate class Matrix&lt;int&gt;;    // Генерация для int\ntemplate class Matrix&lt;double&gt;; // Генерация для double</code></pre>Строка <code>template class Matrix&lt;int&gt;;</code> указывает компилятору <strong>создать</strong> в этом месте класс с типом <code>int</code> на месте <code>T</code>. Этот подход не требует изменения остальных файлов проекта."
+        }
+      ]
+    },
+    {
+      "heading": "STL — стандартная библиотека шаблонов",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Библиотека <strong>STL</strong> (Standard Template Library), вошедшая в стандарт C++11, реализует <strong>контейнеры</strong> — структуры данных для хранения наборов объектов любых типов:<br><br>• <code>vector</code> — динамический массив<br>• <code>list</code> — двусвязный список<br>• <code>set</code> — множество (уникальные элементы)<br>• <code>stack</code> — стек (LIFO)<br>• <code>queue</code> — очередь (FIFO)<br>• <code>map</code> — ассоциативный массив (ключ-значение)<br><br>Все контейнеры являются <strong>шаблонными классами</strong>: тип элементов указывается в угловых скобках."
+        },
+        {
+          "type": "example",
+          "content": "<pre><code>#include &lt;vector&gt;\n#include &lt;list&gt;\n#include &lt;set&gt;\n\nstd::vector&lt;int&gt; v = {1, 2, 3};\nstd::list&lt;std::string&gt; names = {\"Alice\", \"Bob\"};\nstd::set&lt;double&gt; unique_values;</code></pre>"
+        }
+      ]
+    }
+  ]
+}

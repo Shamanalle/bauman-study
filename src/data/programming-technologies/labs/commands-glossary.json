@@ -1,0 +1,95 @@
+{
+  "commands": [
+    { "cmd": "pwd", "desc": "Показать текущую директорию", "lab": 0, "category": "📂 Навигация" },
+    { "cmd": "cd путь", "desc": "Перейти в директорию", "lab": 0, "category": "📂 Навигация" },
+    { "cmd": "ls", "desc": "Показать содержимое директории", "lab": 1, "category": "📂 Навигация" },
+    { "cmd": "ls -la", "desc": "Подробный вывод с правами и скрытыми файлами", "lab": 1, "category": "📂 Навигация" },
+    { "cmd": "mkdir -p", "desc": "Создать директорию (с промежуточными)", "lab": 0, "category": "📂 Навигация" },
+
+    { "cmd": "cat файл", "desc": "Показать содержимое файла", "lab": 1, "category": "📄 Работа с файлами" },
+    { "cmd": "touch файл", "desc": "Создать пустой файл", "lab": 1, "category": "📄 Работа с файлами" },
+    { "cmd": "cp src dst", "desc": "Копировать файл", "lab": 1, "category": "📄 Работа с файлами" },
+    { "cmd": "mv src dst", "desc": "Переместить / переименовать", "lab": 1, "category": "📄 Работа с файлами" },
+    { "cmd": "rm файл", "desc": "Удалить файл", "lab": 1, "category": "📄 Работа с файлами" },
+    { "cmd": "rm -rf dir", "desc": "Удалить директорию рекурсивно", "lab": 1, "category": "📄 Работа с файлами" },
+
+    { "cmd": "export VAR=val", "desc": "Установить переменную среды", "lab": 1, "category": "⚙️ Переменные среды" },
+    { "cmd": "echo ${VAR}", "desc": "Показать значение переменной", "lab": 1, "category": "⚙️ Переменные среды" },
+    { "cmd": "env", "desc": "Показать все переменные среды", "lab": 1, "category": "⚙️ Переменные среды" },
+    { "cmd": "source файл", "desc": "Выполнить файл как набор команд", "lab": 1, "category": "⚙️ Переменные среды" },
+
+    { "cmd": "wget url", "desc": "Скачать файл по ссылке", "lab": 1, "category": "📥 Скачивание и архивы" },
+    { "cmd": "curl -O url", "desc": "Скачать файл (гибче wget)", "lab": 1, "category": "📥 Скачивание и архивы" },
+    { "cmd": "tar -xf архив", "desc": "Распаковать архив", "lab": 1, "category": "📥 Скачивание и архивы" },
+
+    { "cmd": "find . -name", "desc": "Найти файлы по имени", "lab": 1, "category": "🔍 Поиск" },
+    { "cmd": "grep -r текст", "desc": "Найти текст в файлах рекурсивно", "lab": 1, "category": "🔍 Поиск" },
+    { "cmd": "grep -lr текст", "desc": "Показать только имена файлов", "lab": 1, "category": "🔍 Поиск" },
+    { "cmd": "wc -l файл", "desc": "Подсчёт строк в файле", "lab": 1, "category": "🔍 Поиск" },
+
+    { "cmd": "sudo apt install", "desc": "Установить пакет (Ubuntu/Debian)", "lab": 0, "category": "📦 Пакеты" },
+    { "cmd": "gem install", "desc": "Установить Ruby-пакет", "lab": 1, "category": "📦 Пакеты" },
+
+    { "cmd": "git init", "desc": "Создать репозиторий", "lab": 2, "category": "🌿 Git — Основы" },
+    { "cmd": "git clone url", "desc": "Клонировать репозиторий", "lab": 2, "category": "🌿 Git — Основы" },
+    { "cmd": "git status", "desc": "Показать состояние файлов", "lab": 2, "category": "🌿 Git — Основы" },
+    { "cmd": "git add .", "desc": "Добавить все файлы в staging", "lab": 2, "category": "🌿 Git — Основы" },
+    { "cmd": "git commit -m", "desc": "Зафиксировать изменения", "lab": 2, "category": "🌿 Git — Основы" },
+    { "cmd": "git log", "desc": "Показать историю коммитов", "lab": 2, "category": "🌿 Git — Основы" },
+    { "cmd": "git diff", "desc": "Показать изменения в файлах", "lab": 2, "category": "🌿 Git — Основы" },
+
+    { "cmd": "git branch имя", "desc": "Создать ветку", "lab": 2, "category": "🌿 Git — Ветки" },
+    { "cmd": "git checkout имя", "desc": "Переключиться на ветку", "lab": 2, "category": "🌿 Git — Ветки" },
+    { "cmd": "git checkout -b", "desc": "Создать ветку и переключиться", "lab": 2, "category": "🌿 Git — Ветки" },
+    { "cmd": "git merge имя", "desc": "Слить ветку в текущую", "lab": 2, "category": "🌿 Git — Ветки" },
+    { "cmd": "git branch -d", "desc": "Удалить ветку", "lab": 2, "category": "🌿 Git — Ветки" },
+
+    { "cmd": "git remote add", "desc": "Привязать к GitHub", "lab": 2, "category": "🌿 Git — Remote" },
+    { "cmd": "git push origin", "desc": "Отправить коммиты на GitHub", "lab": 2, "category": "🌿 Git — Remote" },
+    { "cmd": "git pull origin", "desc": "Получить коммиты с GitHub", "lab": 2, "category": "🌿 Git — Remote" },
+    { "cmd": "git push -f", "desc": "Принудительно перезаписать remote", "lab": 2, "category": "🌿 Git — Remote" },
+    { "cmd": "git tag v1.0.0", "desc": "Создать тег версии", "lab": 6, "category": "🌿 Git — Remote" },
+    { "cmd": "git submodule add", "desc": "Добавить вложенный репозиторий", "lab": 5, "category": "🌿 Git — Remote" },
+
+    { "cmd": "cmake -B build", "desc": "Сгенерировать файлы сборки", "lab": 3, "category": "🔨 CMake" },
+    { "cmd": "cmake --build build", "desc": "Скомпилировать проект", "lab": 3, "category": "🔨 CMake" },
+    { "cmd": "cmake --target install", "desc": "Установить собранный проект", "lab": 3, "category": "🔨 CMake" },
+
+    { "cmd": "g++ -std=c++11", "desc": "Компиляция C++ (стандарт 11)", "lab": 3, "category": "🔨 Компиляция" },
+    { "cmd": "g++ -c файл.cpp", "desc": "Компиляция без линковки", "lab": 3, "category": "🔨 Компиляция" },
+    { "cmd": "ar rvs lib.a", "desc": "Создать статическую библиотеку", "lab": 3, "category": "🔨 Компиляция" },
+
+    { "cmd": "cpack -G TGZ", "desc": "Создать .tar.gz пакет", "lab": 6, "category": "📦 CPack" },
+    { "cmd": "cpack -G DEB", "desc": "Создать .deb пакет", "lab": 6, "category": "📦 CPack" },
+
+    { "cmd": "lcov", "desc": "Генерация данных покрытия кода", "lab": 5, "category": "🧪 Тестирование" },
+    { "cmd": "genhtml", "desc": "HTML-отчёт покрытия", "lab": 5, "category": "🧪 Тестирование" }
+  ],
+  "terms": [
+    { "term": "Репозиторий", "desc": "Рабочая папка под контролем Git", "lab": 2 },
+    { "term": "Коммит", "desc": "Снимок состояния проекта (хранит отличия)", "lab": 2 },
+    { "term": "Ветка (branch)", "desc": "Линейная цепочка коммитов", "lab": 2 },
+    { "term": "Staging Area", "desc": "Промежуточная область перед коммитом", "lab": 2 },
+    { "term": "Merge", "desc": "Слияние двух веток", "lab": 2 },
+    { "term": "Pull Request", "desc": "Запрос на слияние ветки на GitHub", "lab": 2 },
+    { "term": "Конфликт", "desc": "Противоречие при слиянии двух веток", "lab": 2 },
+    { "term": ".gitignore", "desc": "Файл со списком файлов, игнорируемых Git", "lab": 2 },
+    { "term": "Таргет", "desc": "Что-то, что можно собрать: exe или lib", "lab": 3 },
+    { "term": "CMakeLists.txt", "desc": "Файл с инструкциями сборки CMake", "lab": 3 },
+    { "term": "Статическая библиотека", "desc": "Скомпилированный .a файл для линковки", "lab": 3 },
+    { "term": "CI/CD", "desc": "Автоматическая сборка и тестирование при каждом пуше", "lab": 4 },
+    { "term": "Workflow", "desc": "Автоматизированный процесс GitHub Actions (.yml)", "lab": 4 },
+    { "term": "Runner", "desc": "Сервер для выполнения CI задач", "lab": 4 },
+    { "term": "Unit Test", "desc": "Тест одной функции / одного модуля", "lab": 5 },
+    { "term": "EXPECT_EQ", "desc": "Мягкая проверка: a == b (тест продолжается)", "lab": 5 },
+    { "term": "ASSERT_EQ", "desc": "Жёсткая проверка: a == b (тест останавливается)", "lab": 5 },
+    { "term": "Code Coverage", "desc": "% строк кода, выполненных тестами", "lab": 5 },
+    { "term": "CPack", "desc": "Модуль CMake для создания установочных пакетов", "lab": 6 },
+    { "term": "Semver", "desc": "Версионирование: MAJOR.MINOR.PATCH", "lab": 6 },
+    { "term": "PATH", "desc": "Пути к исполняемым файлам в системе", "lab": 0 },
+    { "term": "PAT", "desc": "Personal Access Token — токен для GitHub API", "lab": 0 },
+    { "term": "sudo", "desc": "Запуск от имени администратора", "lab": 0 },
+    { "term": "Pipe (|)", "desc": "Подача вывода одной команды на вход другой", "lab": 1 },
+    { "term": "umask", "desc": "Маска прав доступа для новых файлов", "lab": 1 }
+  ]
+}

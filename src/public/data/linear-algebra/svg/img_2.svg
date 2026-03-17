@@ -1,0 +1,23 @@
+<svg viewBox="0 0 400 170" width="400" height="170">
+  <defs>
+    <marker id="arr_old" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0 0, 6 3, 0 6" fill="#8b949e"/></marker>
+    <marker id="arr_new" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0 0, 6 3, 0 6" fill="#0969da"/></marker>
+    <marker id="arr_x" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0 0, 6 3, 0 6" fill="#cf222e"/></marker>
+  </defs>
+  <line x1="80" y1="130" x2="220" y2="130" stroke="#8b949e" stroke-width="2" marker-end="url(#arr_old)"/>
+  <line x1="80" y1="130" x2="80" y2="30" stroke="#8b949e" stroke-width="2" marker-end="url(#arr_old)"/>
+  <text x="225" y="135" font-size="12" fill="#8b949e">e₁ (старый)</text>
+  <text x="85" y="35" font-size="12" fill="#8b949e">e₂</text>
+  
+  <line x1="80" y1="130" x2="190" y2="90" stroke="#0969da" stroke-width="2.5" marker-end="url(#arr_new)"/>
+  <line x1="80" y1="130" x2="50" y2="50" stroke="#0969da" stroke-width="2.5" marker-end="url(#arr_new)"/>
+  <text x="195" y="85" font-size="12" fill="#0969da" font-weight="bold">e₁' (новый)</text>
+  <text x="10" y="55" font-size="12" fill="#0969da" font-weight="bold">e₂'</text>
+
+  <line x1="80" y1="130" x2="160" y2="40" stroke="#cf222e" stroke-width="3" marker-end="url(#arr_x)"/>
+  <text x="170" y="45" font-size="14" fill="#cf222e" font-weight="bold">x</text>
+
+  <rect x="230" y="30" width="160" height="60" rx="6" fill="rgba(36,41,47,0.4)" stroke="#d0d7de" stroke-width="1.5"/>
+  <text x="240" y="50" font-size="11" fill="#8b949e">Связь координат:</text>
+  <text x="240" y="70" font-size="14" fill="#2da44e" font-weight="bold" font-family="monospace">x_ст = T · x_нов</text>
+</svg>

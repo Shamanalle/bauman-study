@@ -1,0 +1,59 @@
+{
+  "section": "Квадратный трёхчлен и тригонометрия",
+  "icon": "📐",
+  "questions": [
+    {
+      "id": "Задача 3.1",
+      "title": "Интеграл с квадратным трёхчленом под корнем",
+      "type": "Задача · 1 балл",
+      "formalText": "Вычислить: $$\\int \\frac{4x + 1}{\\sqrt{2 + 4x - x^2}}\\, dx$$",
+      "keyIdea": "Разбить числитель: \\(4x + 1 = -2(-2x + 4) + 9\\), чтобы выделить производную подкоренного выражения",
+      "steps": [
+        {"title": "Разбиение числителя", "text": "\\((2 + 4x - x^2)' = 4 - 2x\\). Представим: \\(4x + 1 = -2(4 - 2x) + 9\\)"},
+        {"title": "Два интеграла", "text": "$$-2\\int \\frac{d(2+4x-x^2)}{2\\sqrt{2+4x-x^2}} + 9\\int \\frac{dx}{\\sqrt{6-(x-2)^2}}$$"},
+        {"title": "Результат", "text": "Первый — подведение, второй — табличный арксинус."}
+      ],
+      "note": "Стандартная техника: выделить производную знаменателя в числителе."
+    },
+    {
+      "id": "Задача 4.1",
+      "title": "∫ tg³x dx",
+      "type": "Задача · 2 балла",
+      "formalText": "Вычислить: $$\\int \\text{tg}^3 x\\, dx$$",
+      "keyIdea": "Выделить \\(\\text{tg}\\,x \\cdot \\text{tg}^2 x = \\text{tg}\\,x(\\sec^2 x - 1)\\)",
+      "steps": [
+        {"title": "Разложение", "text": "$$\\int \\text{tg}\\,x \\cdot \\text{tg}^2 x\\,dx = \\int \\text{tg}\\,x(\\sec^2 x - 1)\\,dx$$"},
+        {"title": "Разбиение", "text": "$$\\int \\text{tg}\\,x \\cdot \\sec^2 x\\,dx - \\int \\text{tg}\\,x\\,dx$$\nПервый: подведение \\(t = \\text{tg}\\,x\\). Второй: табличный."},
+        {"title": "Ответ", "text": "$$\\frac{\\text{tg}^2 x}{2} + \\ln|\\cos x| + C$$"}
+      ],
+      "formula": "\\frac{\\text{tg}^2 x}{2} + \\ln|\\cos x| + C"
+    },
+    {
+      "id": "Задача 4.2",
+      "title": "∫ dx/cos⁶x",
+      "type": "Задача · 2 балла",
+      "formalText": "Вычислить: $$\\int \\frac{dx}{\\cos^6 x}$$",
+      "keyIdea": "\\(\\frac{1}{\\cos^6 x} = \\sec^4 x \\cdot \\sec^2 x\\), подведение \\(d(\\text{tg}\\,x) = \\sec^2 x\\,dx\\)",
+      "steps": [
+        {"title": "Преобразование", "text": "$$\\int \\sec^6 x\\,dx = \\int (1 + \\text{tg}^2 x)^2 \\cdot \\sec^2 x\\,dx$$"},
+        {"title": "Подстановка", "text": "\\(t = \\text{tg}\\,x\\), \\(dt = \\sec^2 x\\,dx\\):\n$$\\int (1 + t^2)^2\\, dt = \\int (1 + 2t^2 + t^4)\\, dt$$"},
+        {"title": "Ответ", "text": "$$\\text{tg}\\,x + \\frac{2\\text{tg}^3 x}{3} + \\frac{\\text{tg}^5 x}{5} + C$$"}
+      ],
+      "formula": "\\text{tg}\\,x + \\frac{2\\text{tg}^3 x}{3} + \\frac{\\text{tg}^5 x}{5} + C"
+    },
+    {
+      "id": "Задача 4.7",
+      "title": "∫ sin⁴(4x) dx",
+      "type": "Задача · 2 балла",
+      "formalText": "Вычислить: $$\\int \\sin^4 4x\\, dx$$",
+      "keyIdea": "Понижение степени: \\(\\sin^2 \\alpha = \\frac{1 - \\cos 2\\alpha}{2}\\), применить дважды",
+      "steps": [
+        {"title": "Первое понижение", "text": "$$\\sin^4 4x = \\left(\\frac{1 - \\cos 8x}{2}\\right)^2 = \\frac{1 - 2\\cos 8x + \\cos^2 8x}{4}$$"},
+        {"title": "Второе понижение", "text": "$$\\cos^2 8x = \\frac{1 + \\cos 16x}{2}$$"},
+        {"title": "Интегрирование", "text": "$$\\frac{1}{4}\\int \\left(\\frac{3}{2} - 2\\cos 8x + \\frac{\\cos 16x}{2}\\right)dx = \\frac{3x}{8} - \\frac{\\sin 8x}{16} + \\frac{\\sin 16x}{128} + C$$"}
+      ],
+      "formula": "\\frac{3x}{8} - \\frac{\\sin 8x}{16} + \\frac{\\sin 16x}{128} + C",
+      "note": "Чётные степени sin/cos понижают формулами двойного угла."
+    }
+  ]
+}

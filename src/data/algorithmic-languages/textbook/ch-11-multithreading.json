@@ -1,0 +1,110 @@
+{
+  "num": 11,
+  "title": "Потоковая многозадачность",
+  "summary": "Понятие многозадачности (процессы и потоки). Высокоуровневый интерфейс: std::async и std::future. Низкоуровневый интерфейс: std::thread, join, detach, this_thread. Синхронизация: std::mutex (lock/unlock), std::lock_guard, std::unique_lock. Условные переменные (condition_variable). Атомарные операции (std::atomic). Состояние гонки (race condition).",
+  "sections": [
+    {
+      "heading": "Понятие многозадачности",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "Процесс и поток",
+          "content": "<strong>Процесс</strong> — копия выполняющейся программы, «владеет» адресным пространством.<br><strong>Поток</strong> (thread) — выполняющийся объект <strong>внутри</strong> процесса. При запуске процесса создаётся <strong>главный поток</strong>, который может запускать дочерние.<br><br>Потоки работают <strong>параллельно</strong> (на многопроцессорных системах) или <strong>псевдопараллельно</strong> (временное разделение)."
+        },
+        {
+          "type": "note",
+          "content": "Не путайте <strong>поток</strong> (thread) как часть процесса с <strong>потоком ввода-вывода</strong> (stream)!<br><br>Поддержка многопоточности в C++ определена стандартом C++11."
+        }
+      ]
+    },
+    {
+      "heading": "Высокоуровневый интерфейс: async и future",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Самый простой способ запустить асинхронную задачу — <code>std::async()</code> + <code>std::future&lt;&gt;</code>:"
+        },
+        {
+          "type": "example",
+          "content": "<pre><code>#include &lt;iostream&gt;\n#include &lt;future&gt;\n\nint func1() {\n    for (int i = 0; i &lt; 5; i++)\n        std::cout &lt;&lt; \"func1 i=\" &lt;&lt; i &lt;&lt; std::endl;\n    return 5;\n}\nint func2() {\n    for (int i = 0; i &lt; 10; i++)\n        std::cout &lt;&lt; \"func2 i=\" &lt;&lt; i &lt;&lt; std::endl;\n    return 10;\n}\n\nint main() {\n    std::future&lt;int&gt; rez1(std::async(func1)); // Асинхронный запуск\n    int rez2 = func2();                       // Синхронный запуск\n    int Rez = rez1.get() + rez2;              // .get() ждёт завершения\n    std::cout &lt;&lt; \"Rez=\" &lt;&lt; Rez &lt;&lt; std::endl;  // 15\n}</code></pre>"
+        },
+        {
+          "type": "text",
+          "content": "<code>std::async</code> может принимать метод класса и объект:<br><pre><code>class X {\npublic:\n    void print(int n) { /* ... */ }\n};\n\nX x;\nstd::future&lt;void&gt; a(std::async(&X::print, x, 11));\na.get(); // Ждём завершения</code></pre>"
+        }
+      ]
+    },
+    {
+      "heading": "Низкоуровневый интерфейс: std::thread",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Поток создаётся как объект класса <code>std::thread</code>. Первый параметр — указатель на функцию, остальные — аргументы:"
+        },
+        {
+          "type": "example",
+          "content": "<pre><code>#include &lt;thread&gt;\n\nvoid myfun(std::string str) {\n    for (int i = 0; i &lt; 10; i++)\n        std::cout &lt;&lt; std::endl &lt;&lt; str;\n}\n\nint main() {\n    std::thread th1(myfun, \"Java\");\n    std::thread th2(myfun, \"C++\");\n    th1.join();  // Ждём завершения потока\n    th2.join();\n}</code></pre>"
+        },
+        {
+          "type": "definition",
+          "term": "join и detach",
+          "content": "• <code>join()</code> — <strong>ожидает</strong> завершения потока (блокирующий вызов)<br>• <code>detach()</code> — <strong>отсоединяет</strong> поток, он работает в фоновом режиме<br><br>Если не вызвать <code>join()</code> или <code>detach()</code>, при удалении объекта потока будет <strong>исключение</strong>."
+        },
+        {
+          "type": "text",
+          "content": "<strong>Полезные функции</strong> из <code>std::this_thread</code>:<br><pre><code>std::this_thread::get_id();          // ID текущего потока\nstd::this_thread::sleep_for(dur);    // Пауза на длительность\nstd::this_thread::sleep_for(std::chrono::seconds(10));\nunsigned int n = std::thread::hardware_concurrency(); // Число ядер</code></pre>"
+        }
+      ]
+    },
+    {
+      "heading": "Синхронизация: mutex",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "Состояние гонки (race condition)",
+          "content": "Ошибка, при которой результат работы зависит от <strong>порядка выполнения</strong> потоков. Возникает, когда несколько потоков обращаются к <strong>одним и тем же данным</strong>."
+        },
+        {
+          "type": "text",
+          "content": "Для синхронизации используется <code>std::mutex</code>:<br><pre><code>#include &lt;mutex&gt;\n\nstd::mutex mut;\n\nvoid myfun(std::string str) {\n    for (int i = 0; i &lt; 10; i++) {\n        mut.lock();                        // Блокируем\n        std::cout &lt;&lt; std::endl &lt;&lt; str;\n        mut.unlock();                      // Снимаем блокировку\n    }\n}</code></pre>"
+        },
+        {
+          "type": "definition",
+          "term": "lock_guard и unique_lock (RAII)",
+          "content": "<code>std::lock_guard</code> — автоматически снимает блокировку при выходе из области видимости:<br><pre><code>void myfun() {\n    std::lock_guard&lt;std::mutex&gt; lock(mut); // Блокирует mut\n    std::cout &lt;&lt; \"Safe output\" &lt;&lt; std::endl;\n} // mut автоматически разблокируется</code></pre><code>std::unique_lock</code> — более гибкий: позволяет <strong>блокировать и разблокировать</strong> mutex вручную."
+        }
+      ]
+    },
+    {
+      "heading": "Условные переменные",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "<code>std::condition_variable</code> позволяет одному потоку <strong>сигнализировать</strong> другим о наступлении события:"
+        },
+        {
+          "type": "example",
+          "content": "<pre><code>#include &lt;mutex&gt;\n#include &lt;condition_variable&gt;\n\nstd::mutex mut;\nstd::condition_variable con_var;\nbool flag = false;\n\nvoid producer() {\n    // Подготовка данных...\n    flag = true;\n    con_var.notify_one();  // Сигнал: данные готовы\n}\n\nvoid consumer() {\n    std::unique_lock&lt;std::mutex&gt; lock(mut);\n    while (!flag)\n        con_var.wait(lock); // Ждём сигнала\n    flag = false;\n    // Обработка данных...\n}</code></pre>"
+        },
+        {
+          "type": "note",
+          "content": "Используйте <strong>флаг</strong> (<code>bool flag</code>) для предотвращения ложных срабатываний (<strong>spurious wakeup</strong>).<br><br><code>notify_one()</code> — будит один ожидающий поток.<br><code>notify_all()</code> — будит все ожидающие потоки."
+        }
+      ]
+    },
+    {
+      "heading": "Атомарные операции",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "std::atomic",
+          "content": "<strong>Атомарные операции</strong> не могут быть прерваны другим потоком — выполняются <strong>без перерывов</strong>.<br><br>Основные методы:<br>• <code>store()</code> — присвоить новое значение<br>• <code>load()</code> — получить текущее значение<br>• <code>fetch_add()</code> — увеличить на заданное значение"
+        },
+        {
+          "type": "example",
+          "content": "<strong>Проблема с обычной переменной:</strong><br><pre><code>int value = 0;\nvoid do_work() {\n    for (int i = 0; i &lt; 10000; i++) ++value;\n}\n// 10 потоков → результат НЕ 100000 (race condition!)</code></pre><br><strong>Решение — atomic:</strong><br><pre><code>#include &lt;atomic&gt;\n\nstd::atomic&lt;int&gt; value = 0;\nvoid do_work() {\n    for (int i = 0; i &lt; 10000; i++) value.fetch_add(1);\n}\n// 10 потоков → результат ВСЕГДА 100000</code></pre>"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Справочник к экзамену</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+</head>
+<body>
+  <div class="app" id="app">
+    <!-- Hero -->
+    <div class="hero">
+      <h1 id="heroTitle">📚 Загрузка...</h1>
+      <p id="heroSubtitle">...</p>
+      <div class="stats-row">
+        <div class="stat-pill">✅ <span id="learnedCount">0</span> / <span id="totalCount">0</span> выучено · <span id="secDone">0</span>/<span id="secTotal">0</span> разделов</div>
+        <button class="stat-pill dark-toggle" id="darkToggle" title="Переключить тему">🌙</button>
+      </div>
+      <div class="progress-bar-hero"><div class="progress-fill-hero" id="heroProgress"></div></div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav">
+      <div style="position:relative;flex:1">
+        <input type="text" placeholder="🔍 Поиск..." id="search">
+        <button class="search-clear" id="searchClear">✕</button>
+      </div>
+
+      <button class="nav-btn" id="randomBtn" title="Перейти к случайному вопросу">🎲</button>
+      <button class="nav-btn" id="toggleBtn" title="Развернуть / свернуть все вопросы">📖 Открыть всё</button>
+    </div>
+
+    <!-- Section filter pills -->
+    <div class="section-pills" id="sectionPills"></div>
+
+    <!-- Content -->
+    <div id="content"></div>
+  </div>
+
+  <!-- Floating controls (outside #app so they persist on all page types) -->
+  <button class="scroll-top" id="scrollTop" title="Наверх">↑</button>
+  <button class="theme-fab" id="themeFab" title="Переключить тему">🌙</button>
+
+
+
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+{
+  "num": 10,
+  "title": "Рабочие процессы и инструменты",
+  "summary": "GitHub Flow — рабочий процесс для команд. Конвенции именования веток. Git в VS Code: Source Control, GitLens. Vim — консольный текстовый редактор (базовые команды). Полная шпаргалка по всем командам курса.",
+  "sections": [
+    {
+      "heading": "GitHub Flow",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "GitHub Flow",
+          "content": "Минимальный workflow для команд:<br>1. Ветка <code>main</code> всегда рабочая<br>2. Для каждой задачи — отдельная ветка от main<br>3. Коммиты в feature-ветку, push на сервер<br>4. Pull Request для обсуждения и ревью<br>5. После одобрения — merge в main<br>6. Удалить feature-ветку"
+        },
+        {
+          "type": "example",
+          "content": "<strong>Полный цикл:</strong><br><pre><code># 1. Создать ветку для задачи\ngit switch -c feature/login-form\n\n# 2. Работать и коммитить\ngit add .\ngit commit -m \"Добавить форму логина\"\ngit push -u origin feature/login-form\n\n# 3. Открыть Pull Request на GitHub\n# 4. Code Review → Approve → Merge\n\n# 5. Обновить локальный main\ngit switch main\ngit pull\ngit branch -d feature/login-form</code></pre>"
+        },
+        {
+          "type": "note",
+          "content": "<strong>Конвенции именования веток:</strong><br>• <code>feature/</code> — новая функциональность<br>• <code>bugfix/</code> — исправление бага<br>• <code>hotfix/</code> — срочное исправление<br><br>Примеры: <code>feature/add-login</code>, <code>bugfix/fix-crash</code>"
+        }
+      ]
+    },
+    {
+      "heading": "Git в Visual Studio Code",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "VS Code имеет полную встроенную интеграцию с Git."
+        },
+        {
+          "type": "text",
+          "content": "<strong>Source Control (Ctrl+Shift+G):</strong><br>• Список изменённых файлов<br>• <strong>+</strong> рядом с файлом = <code>git add</code><br>• <strong>✓</strong> вверху = <code>git commit</code> (поле для сообщения)<br>• <strong>...</strong> → Push/Pull<br>• Клик на файл — показывает diff"
+        },
+        {
+          "type": "text",
+          "content": "<strong>Полезные возможности:</strong><br>• Подсветка конфликтов с кнопками Accept Current / Incoming / Both<br>• <strong>GitLens</strong> (расширение) — автор каждой строки, история файла<br>• Встроенный терминал (<kbd>Ctrl+`</kbd>)<br>• Выбор ветки в левом нижнем углу<br>• Встроенная поддержка CMake (расширение CMake Tools)"
+        }
+      ]
+    },
+    {
+      "heading": "Vim — консольный текстовый редактор",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "<strong>Vim</strong> — текстовый редактор, встроенный в большинство Linux-систем. Git часто открывает его для ввода сообщений (merge-коммит, rebase). Базовые знания необходимы!"
+        },
+        {
+          "type": "text",
+          "content": "<strong>Два основных режима:</strong><br>• <strong>Normal</strong> (по умолчанию) — навигация и команды<br>• <strong>Insert</strong> — ввод текста (нажми <kbd>i</kbd> для входа, <kbd>Esc</kbd> для выхода)"
+        },
+        {
+          "type": "text",
+          "content": "<strong>Минимальные команды (Normal mode):</strong><br>• <kbd>i</kbd> — войти в режим вставки<br>• <kbd>Esc</kbd> — вернуться в Normal<br>• <code>:w</code> — сохранить<br>• <code>:q</code> — выйти<br>• <code>:wq</code> — сохранить и выйти<br>• <code>:q!</code> — выйти без сохранения<br>• <kbd>dd</kbd> — удалить строку<br>• <kbd>u</kbd> — отмена (undo)<br>• <code>/текст</code> — поиск"
+        },
+        {
+          "type": "note",
+          "content": "Если случайно попал в Vim и не знаешь как выйти: нажми <kbd>Esc</kbd>, затем введи <code>:q!</code> и <kbd>Enter</kbd>. Чтобы Git не открывал Vim, установи VS Code как редактор по умолчанию:<br><code>git config --global core.editor \"code --wait\"</code>"
+        }
+      ]
+    },
+    {
+      "heading": "Шпаргалка: Git",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "<strong>Создание:</strong><br>• <code>git init</code> — новый репозиторий<br>• <code>git clone URL</code> — клонировать"
+        },
+        {
+          "type": "text",
+          "content": "<strong>Изменения:</strong><br>• <code>git status</code> — статус файлов<br>• <code>git add файл</code> / <code>git add .</code> — в staging<br>• <code>git commit -m \"...\"</code> — коммит<br>• <code>git diff</code> / <code>git diff --staged</code> — изменения"
+        },
+        {
+          "type": "text",
+          "content": "<strong>Ветки:</strong><br>• <code>git branch имя</code> — создать<br>• <code>git switch имя</code> — переключиться<br>• <code>git merge имя</code> — слить<br>• <code>git rebase имя</code> — перебазировать"
+        },
+        {
+          "type": "text",
+          "content": "<strong>Удалённые:</strong><br>• <code>git push</code> — отправить<br>• <code>git pull</code> — получить и слить<br>• <code>git fetch</code> — только получить"
+        },
+        {
+          "type": "text",
+          "content": "<strong>Отмена:</strong><br>• <code>git restore файл</code> — откатить файл<br>• <code>git reset HEAD~1</code> — откатить коммит<br>• <code>git revert хеш</code> — безопасная отмена<br>• <code>git stash</code> — спрятать изменения<br>• <code>git reflog</code> — журнал всех действий"
+        }
+      ]
+    },
+    {
+      "heading": "Шпаргалка: Linux",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "<strong>Навигация:</strong> <code>pwd</code>, <code>cd</code>, <code>ls -la</code>, <code>tree</code><br><strong>Файлы:</strong> <code>mkdir -p</code>, <code>touch</code>, <code>cp -r</code>, <code>mv</code>, <code>rm -rf</code><br><strong>Просмотр:</strong> <code>cat</code>, <code>less</code>, <code>head</code>, <code>tail</code>, <code>wc</code><br><strong>Поиск:</strong> <code>find . -name \"*.cpp\"</code>, <code>grep -r \"text\" .</code><br><strong>Скачивание:</strong> <code>wget URL</code>, <code>curl URL</code><br><strong>Архивы:</strong> <code>tar -xf архив.tar.gz</code>"
+        }
+      ]
+    },
+    {
+      "heading": "Шпаргалка: CMake и инструменты",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "<strong>CMake:</strong><br>• <code>cmake -B build</code> — генерация<br>• <code>cmake --build build</code> — компиляция<br>• <code>cmake -B build -DBUILD_TESTS=ON</code> — с опцией"
+        },
+        {
+          "type": "text",
+          "content": "<strong>Тестирование:</strong><br>• <code>cmake --build build --target test</code> — запустить тесты<br>• <code>./build/check</code> — запустить напрямую<br>• <code>ctest --test-dir build --verbose</code> — подробный вывод"
+        },
+        {
+          "type": "text",
+          "content": "<strong>Пакетирование:</strong><br>• <code>cpack -G \"TGZ\"</code> — создать архив<br>• <code>git tag v1.0.0</code> — пометить релиз<br>• <code>git push origin --tags</code> — отправить теги"
+        }
+      ]
+    },
+    {
+      "heading": "Полезные ссылки",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "• <strong>Условия лабораторных:</strong> github.com/tp-labs<br>• <strong>Методички с решениями:</strong> github.com/SodAcetate<br>• <strong>Интерактивный Git:</strong> learngitbranching.js.org<br>• <strong>Git Book (рус):</strong> git-scm.com/book/ru/v2<br>• <strong>CMake Tutorial:</strong> cmake.org/cmake/help/latest/guide/tutorial<br>• <strong>GTest Docs:</strong> google.github.io/googletest<br>• <strong>GitHub Actions Docs:</strong> docs.github.com/en/actions<br>• <strong>Шаблоны .gitignore:</strong> github.com/github/gitignore"
+        }
+      ]
+    }
+  ]
+}

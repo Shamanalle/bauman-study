@@ -1,0 +1,112 @@
+{
+  "num": 10,
+  "title": "Использование объектов классов в STL. Лямбда-функции",
+  "summary": "Требования к классам для размещения в контейнерах STL. Конструкторы для vector (по умолчанию, копирования, перемещения). Сортировка объектов: перегрузка operator<, функция-предикат. Лямбда-функции: синтаксис, параметры, захваты (=, &, конкретные переменные). Лямбды в алгоритмах STL (transform, find_if, sort). Функторы: определение, стандартные (less, greater, negate, multiplies). Требования для set/map (operator<) и для unordered_set/map (хеш-функция, operator==).",
+  "sections": [
+    {
+      "heading": "Требования к классам для последовательных контейнеров",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "При использовании своих классов в <code>vector</code>, <code>list</code>, <code>deque</code> необходимо учитывать:<br><br>1. <code>vector&lt;A&gt; vec(4);</code> — требует <strong>конструктор без параметров</strong><br>2. <code>vec.push_back(a);</code> — вызывает <strong>конструктор копирования</strong> (при динамической памяти нужно глубокое копирование)<br>3. <code>vec.push_back(A());</code> — вызывает <strong>конструктор перемещения</strong> (быстрее копирования)"
+        },
+        {
+          "type": "note",
+          "content": "При добавлении элементов вектор периодически <strong>реаллоцируется</strong> (увеличивает память), при этом используется конструктор копирования. Для эффективности определяйте <strong>конструктор перемещения</strong>."
+        }
+      ]
+    },
+    {
+      "heading": "Сортировка объектов в контейнере",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Для сортировки <code>sort(vec.begin(), vec.end())</code> нужно <strong>правило сравнения</strong> двух объектов — перегрузка <code>operator&lt;</code>:"
+        },
+        {
+          "type": "example",
+          "content": "<pre><code>class A {\n    string str;\n    int value;\npublic:\n    A(string s, int v) : str(s), value(v) {}\n    bool operator&lt;(const A& ob2) { return str &lt; ob2.str; } // Сортировка по строке\n    friend ostream& operator&lt;&lt;(ostream& out, const A& ob);\n};\n\nint main() {\n    vector&lt;A&gt; vec;\n    vec.push_back(A(\"World\", 127));\n    vec.push_back(A(\"Hello\", 8));\n    vec.push_back(A(\"Apple\", 100));\n    sort(vec.begin(), vec.end()); // Использует operator&lt;\n    for (auto& pos : vec) cout &lt;&lt; pos &lt;&lt; endl;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "heading": "Лямбда-функции",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "Лямбда-выражение",
+          "content": "<strong>Лямбда-выражение</strong> (С++11) — определение <strong>анонимной функции</strong> непосредственно в месте вызова или передачи в качестве аргумента.<br><br>Минимальная лямбда:<br><pre><code>[] { std::cout &lt;&lt; \"hello lambda\" &lt;&lt; std::endl; }();</code></pre>"
+        },
+        {
+          "type": "text",
+          "content": "<strong>Лямбда с параметрами:</strong><br><pre><code>auto greet = [](std::string str) {\n    std::cout &lt;&lt; str &lt;&lt; std::endl;\n};\ngreet(\"Hello World!\");</code></pre>"
+        },
+        {
+          "type": "text",
+          "content": "<strong>Захваты (capture)</strong> — доступ к переменным из внешней области видимости:<br><br>• <code>[=]</code> — все переменные <strong>по значению</strong> (копия)<br>• <code>[&]</code> — все переменные <strong>по ссылке</strong> (можно изменять)<br>• <code>[x, &y]</code> — конкретные: <code>x</code> по значению, <code>y</code> по ссылке"
+        },
+        {
+          "type": "example",
+          "content": "<pre><code>int x = 0, y = 42;\nauto qqq = [x, &y] {\n    std::cout &lt;&lt; \"x: \" &lt;&lt; x &lt;&lt; std::endl; // x — копия (0)\n    std::cout &lt;&lt; \"y: \" &lt;&lt; y &lt;&lt; std::endl; // y — ссылка\n    ++y;   // OK — y по ссылке\n    // ++x; // ОШИБКА — x по значению (только чтение)\n};\nx = y = 77;\nqqq(); // x: 0, y: 77, y становится 78</code></pre>"
+        }
+      ]
+    },
+    {
+      "heading": "Лямбды в алгоритмах STL",
+      "blocks": [
+        {
+          "type": "example",
+          "content": "<pre><code>#include &lt;algorithm&gt;\n#include &lt;deque&gt;\n\ndeque&lt;int&gt; coll = {1, 3, 19, 5, 13, 7, 11, 2, 17};\nvector&lt;int&gt; coll2(coll.size());\n\n// Возведение в куб\ntransform(coll.begin(), coll.end(), coll2.begin(),\n    [](int d) { return d * d * d; });\n\n// Поиск элемента в диапазоне\nint x = 5, y = 12;\nauto pos = find_if(coll.cbegin(), coll.cend(),\n    [=](int i) { return i &gt; x && i &lt; y; });\n\n// Сортировка с лямбда-компаратором\nsort(coll.begin(), coll.end(),\n    [](const Person& p1, const Person& p2) {\n        return p1.lastname() &lt; p2.lastname();\n    });</code></pre>"
+        }
+      ]
+    },
+    {
+      "heading": "Функторы (функциональные объекты)",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "Функтор",
+          "content": "Объект класса с перегруженным <code>operator()</code> — «ведёт себя» как функция. Преимущество: имеет <strong>внутреннее состояние</strong>."
+        },
+        {
+          "type": "example",
+          "content": "<pre><code>class AddValue {\n    int theValue;\npublic:\n    AddValue(int v) : theValue(v) {}\n    void operator()(int& elem) const {\n        elem += theValue;\n    }\n};\n\nlist&lt;int&gt; coll = {1, 2, 3, 4, 5};\n// Добавляем 10 к каждому элементу\nfor_each(coll.begin(), coll.end(), AddValue(10));</code></pre>"
+        },
+        {
+          "type": "text",
+          "content": "<strong>Стандартные функторы</strong> (<code>&lt;functional&gt;</code>):<br>• <code>less&lt;int&gt;</code> — операция <code>&lt;</code> (критерий сортировки по умолчанию)<br>• <code>greater&lt;int&gt;</code> — операция <code>&gt;</code><br>• <code>negate&lt;int&gt;</code> — изменение знака<br>• <code>multiplies&lt;int&gt;</code> — умножение<br><pre><code>set&lt;int, greater&lt;int&gt;&gt; s = {3, 1, 4, 1, 5}; // Сортировка по убыванию\ntransform(v.begin(), v.end(), v.begin(), negate&lt;int&gt;()); // Все в минус</code></pre>"
+        }
+      ]
+    },
+    {
+      "heading": "Требования для set и map",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Контейнеры <code>set</code> и <code>map</code> хранят элементы в <strong>отсортированном</strong> виде (красно-чёрное дерево). Необходима <strong>перегрузка <code>operator&lt;</code></strong> (const!):"
+        },
+        {
+          "type": "example",
+          "content": "<pre><code>class A {\n    string str;\n    int value;\npublic:\n    bool operator&lt;(const A& ob2) const { // Обязательно const!\n        return str &lt; ob2.str;\n    }\n};\n\nset&lt;A&gt; s;\ns.insert(A(\"World\", 127));\ns.insert(A(\"Hello\", 8));</code></pre>"
+        }
+      ]
+    },
+    {
+      "heading": "Требования для unordered_set и unordered_map",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Контейнеры <code>unordered_set</code> и <code>unordered_map</code> используют <strong>хеш-таблицу</strong>. Для своих классов нужно:<br>1. <strong>Хеш-функция</strong> (класс-«хешер» с <code>operator()</code>)<br>2. <strong>Перегрузка <code>operator==</code></strong>"
+        },
+        {
+          "type": "example",
+          "content": "<pre><code>struct Person {\n    string name;\n    int age;\n    double weight;\n    bool operator==(const Person& ob2) const {\n        return name == ob2.name && age == ob2.age && weight == ob2.weight;\n    }\n};\n\nstruct PersonHasher {\n    hash&lt;string&gt; shash;\n    hash&lt;int&gt; ihash;\n    hash&lt;double&gt; dhash;\n    size_t operator()(const Person& ob) const {\n        const size_t coef = 2'946'901;\n        return coef * coef * shash(ob.name)\n             + coef * ihash(ob.age)\n             + dhash(ob.weight);\n    }\n};\n\nunordered_set&lt;Person, PersonHasher&gt; un_set;\nun_set.insert({\"Ivanov\", 35, 73.5});</code></pre>"
+        },
+        {
+          "type": "note",
+          "content": "Для получения «хорошего» хеша используйте <strong>простые числа</strong> в качестве коэффициентов: 5171, 11171, 103141, 2'946'901 — в зависимости от количества полей."
+        }
+      ]
+    }
+  ]
+}

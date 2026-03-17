@@ -1,0 +1,17 @@
+{
+  "name": "bauman-study-platform",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "migrate": "node scripts/migrate-data.js",
+    "bundle": "node scripts/build-bundles.js"
+  },
+  "devDependencies": {
+    "pdf-parse": "^2.4.5",
+    "vite": "^6.0.0"
+  }
+}

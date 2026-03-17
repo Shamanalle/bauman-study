@@ -1,0 +1,110 @@
+{
+  "num": 7,
+  "title": "CI/CD и GitHub Actions",
+  "summary": "Что такое непрерывная интеграция (CI) и непрерывная доставка (CD). Зачем автоматизировать сборку и тестирование. GitHub Actions: workflows, jobs, steps. Структура YAML-файла. Триггеры: push, pull_request. Настройка автоматической сборки CMake проекта. Значки (badges) в README.",
+  "sections": [
+    {
+      "heading": "Что такое CI/CD",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "CI (Continuous Integration)",
+          "content": "<strong>Непрерывная интеграция</strong> — практика, при которой код каждого разработчика автоматически <strong>собирается и тестируется</strong> при каждом push или Pull Request.<br><br>Зачем: ловить ошибки сразу, а не ночью перед дедлайном."
+        },
+        {
+          "type": "definition",
+          "term": "CD (Continuous Delivery/Deployment)",
+          "content": "<strong>Непрерывная доставка</strong> — автоматическое развёртывание протестированного кода в production. Если CI проверяет «не сломано ли?», то CD отвечает «доставить пользователю»."
+        },
+        {
+          "type": "text",
+          "content": "<strong>Типичный CI пайплайн:</strong><br>1. Разработчик делает <code>git push</code><br>2. CI-сервер подхватывает изменения<br>3. Автоматически: клонирует код, собирает, запускает тесты<br>4. Результат отображается в Pull Request (✅ или ❌)"
+        }
+      ]
+    },
+    {
+      "heading": "GitHub Actions",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "GitHub Actions",
+          "content": "Встроенный CI/CD сервис GitHub. Бесплатный для публичных репозиториев. Инструкции описываются в YAML-файлах в директории <code>.github/workflows/</code>."
+        },
+        {
+          "type": "note",
+          "content": "В оригинальном задании лабы используется Travis CI — устаревший сервис. Сегодня используется <strong>GitHub Actions</strong>. Принцип тот же, но Actions встроен в GitHub."
+        }
+      ]
+    },
+    {
+      "heading": "Структура YAML-файла",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Workflow файл размещается в <code>.github/workflows/имя.yml</code>.<br><br><strong>Важно:</strong> YAML очень чувствителен к отступам. Только <strong>пробелы</strong>, никаких табов!"
+        },
+        {
+          "type": "example",
+          "content": "<strong>Пример: CI для CMake проекта</strong><br><pre><code>name: CMake Build        # Имя workflow\n\non:                       # Триггеры\n  push:\n    branches: [main]\n  pull_request:\n    branches: [main]\n\njobs:                     # Задачи\n  build:\n    runs-on: ubuntu-latest  # ОС для выполнения\n\n    steps:                  # Шаги задачи\n    - uses: actions/checkout@v3  # Клонировать репо\n\n    - name: Configure\n      run: cmake -B build\n\n    - name: Build\n      run: cmake --build build\n\n    - name: Test\n      run: cmake --build build --target test</code></pre>"
+        }
+      ]
+    },
+    {
+      "heading": "Ключевые элементы workflow",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "name",
+          "content": "Имя процесса, отображается во вкладке Actions на GitHub."
+        },
+        {
+          "type": "definition",
+          "term": "on (триггеры)",
+          "content": "Условия запуска workflow:<br>• <code>push</code> — при push в указанные ветки<br>• <code>pull_request</code> — при создании/обновлении PR<br>• <code>schedule</code> — по расписанию (cron)<br>• <code>workflow_dispatch</code> — ручной запуск"
+        },
+        {
+          "type": "definition",
+          "term": "jobs",
+          "content": "Набор задач. Каждая задача запускается на отдельной виртуальной машине:<br>• <code>runs-on: ubuntu-latest</code> — Ubuntu<br>• <code>runs-on: windows-latest</code> — Windows<br>• <code>runs-on: macos-latest</code> — macOS"
+        },
+        {
+          "type": "definition",
+          "term": "steps",
+          "content": "Последовательные шаги внутри задачи:<br>• <code>uses:</code> — использовать готовое действие (action)<br>• <code>run:</code> — выполнить команду в терминале<br>• <code>name:</code> — имя шага (отображается в логах)"
+        },
+        {
+          "type": "definition",
+          "term": "${{ github.workspace }}",
+          "content": "Переменная с путём к рабочей директории на сервере GitHub Actions. Все пути следует писать относительно неё."
+        }
+      ]
+    },
+    {
+      "heading": "Просмотр результатов",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "• Вкладка <strong>Actions</strong> на странице репозитория — подробные логи<br>• В Pull Request — статус проверок (✅ зелёная галочка или ❌ красный крест)<br>• Email-уведомления при провале"
+        },
+        {
+          "type": "definition",
+          "term": "Badge (значок)",
+          "content": "Значок в README, показывающий статус сборки:<br><pre><code>![Build](https://github.com/user/repo/actions/workflows/ci.yml/badge.svg)</code></pre>Отображается как зелёный «passing» или красный «failing»."
+        }
+      ]
+    },
+    {
+      "heading": "Практика: добавление CI в lab04",
+      "blocks": [
+        {
+          "type": "example",
+          "content": "<strong>Шаги:</strong><br><pre><code># 1. Клонировать lab03\ngit clone https://github.com/user/lab03 lab04\ncd lab04\ngit remote remove origin\ngit remote add origin https://github.com/user/lab04\n\n# 2. Создать workflow файл\nmkdir -p .github/workflows\n\n# 3. Написать YAML (см. пример выше)\n\n# 4. Закоммитить и запушить\ngit add .github/workflows/cmake.yml\ngit commit -m \"added CI\"\ngit push -u origin main</code></pre>"
+        },
+        {
+          "type": "note",
+          "content": "При каждом push GitHub автоматически запустит сборку и тестирование. Результат виден в Actions."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+<svg viewBox="0 0 440 205" width="440" height="205">
+  <defs><marker id="arr13" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0 0, 6 3, 0 6" fill="#8b949e"/></marker></defs>
+  <line x1="35" y1="168" x2="410" y2="168" stroke="#d0d7de" stroke-width="1.5" marker-end="url(#arr13)"/>
+  <line x1="45" y1="178" x2="45" y2="10" stroke="#d0d7de" stroke-width="1.5" marker-end="url(#arr13)"/>
+  <text x="416" y="174" font-size="14" fill="#8b949e" font-weight="600">v</text>
+  <text x="14" y="18" font-size="13" fill="#8b949e" font-weight="600">f(v)</text>
+  <path d="M 45 168 C 55 168, 65 167, 80 162 C 95 154, 110 130, 125 80 C 135 48, 145 28, 155 25 C 170 22, 190 40, 210 75 C 240 128, 290 158, 380 166" fill="rgba(9,105,218,0.08)" stroke="#0969da" stroke-width="3"/>
+  <line x1="155" y1="25" x2="155" y2="168" stroke="#cf222e" stroke-width="2" stroke-dasharray="4"/>
+  <text x="140" y="192" font-size="12" fill="#cf222e" font-weight="bold">v<tspan dy="3" font-size="9">вер</tspan></text>
+  <line x1="180" y1="52" x2="180" y2="168" stroke="#2da44e" stroke-width="2" stroke-dasharray="4"/>
+  <text x="168" y="192" font-size="12" fill="#2da44e" font-weight="bold">⟨v⟩</text>
+  <line x1="208" y1="78" x2="208" y2="168" stroke="#8250df" stroke-width="2" stroke-dasharray="4"/>
+  <text x="196" y="192" font-size="12" fill="#8250df" font-weight="bold">v<tspan dy="3" font-size="9">кв</tspan></text>
+  <rect x="248" y="28" width="178" height="34" rx="8" fill="rgba(9,105,218,0.06)" stroke="#d0d7de" stroke-width="1.5"/>
+  <text x="262" y="50" font-size="13" fill="#24292f" font-weight="bold">v_вер &lt; ⟨v⟩ &lt; v_кв</text>
+</svg>

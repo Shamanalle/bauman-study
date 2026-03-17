@@ -1,0 +1,18 @@
+<svg viewBox="0 0 450 170" width="450" height="170">
+  <rect x="10" y="10" width="400" height="148" rx="8" fill="rgba(139,148,158,0.08)" stroke="#d0d7de" stroke-width="1.5"/>
+  <text x="25" y="32" font-size="14" fill="#24292f" font-weight="bold">Теорема Жегалкина</text>
+  <text x="25" y="52" font-size="12" fill="#8b949e">Каждая булева функция <tspan fill="#cf222e" font-weight="bold">единственным образом</tspan></text>
+  <text x="25" y="68" font-size="12" fill="#8b949e">представляется в виде полинома Жегалкина.</text>
+
+  <g>
+    <rect x="25" y="82" width="165" height="58" rx="8" fill="rgba(9,105,218,.1)" stroke="#0969da" stroke-width="1.5"/>
+    <text x="38" y="105" font-size="12" fill="#0969da" font-weight="bold">Базис Жегалкина:</text>
+    <text x="38" y="130" font-size="20" fill="#0969da" font-family="monospace" font-weight="bold">{1, ⊕, ·}</text>
+  </g>
+
+  <g>
+    <rect x="205" y="82" width="195" height="58" rx="8" fill="rgba(139,148,158,0.1)" stroke="#d0d7de" stroke-dasharray="4"/>
+    <text x="218" y="105" font-size="12" fill="#8b949e" font-weight="bold">Без отрицаний (¬) и дизъюнкций (∨)!</text>
+    <text x="218" y="125" font-size="11" fill="#8b949e">Только константа 1, XOR и AND.</text>
+  </g>
+</svg>

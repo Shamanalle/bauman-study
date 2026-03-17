@@ -1,0 +1,40 @@
+<svg viewBox="0 0 420 150" width="420" height="150">
+  <text x="10" y="22" font-size="13" fill="#24292f" font-weight="bold">Сложность схемы L(S)</text>
+
+  <!-- Wires -->
+  <g>
+    <path d="M 20 72 L 62 72 L 62 37 L 102 37" fill="none" stroke="#d0d7de" stroke-width="2"/>
+    <path d="M 142 37 L 182 37 L 182 107 L 142 107" fill="none" stroke="#d0d7de" stroke-width="2"/>
+    <path d="M 62 72 L 62 107 L 102 107" fill="none" stroke="#d0d7de" stroke-width="2"/>
+    <path d="M 182 72 L 222 72" fill="none" stroke="#d0d7de" stroke-width="2"/>
+    <path d="M 262 72 L 302 72" fill="none" stroke="#d0d7de" stroke-width="2"/>
+  </g>
+
+  <!-- Switches (open) -->
+  <g>
+    <line x1="102" y1="37" x2="138" y2="17" stroke="#8b949e" stroke-width="2.5"/>
+    <line x1="102" y1="107" x2="138" y2="87" stroke="#8b949e" stroke-width="2.5"/>
+    <line x1="222" y1="72" x2="258" y2="52" stroke="#8b949e" stroke-width="2.5"/>
+  </g>
+
+  <!-- Contact counters (animated) -->
+  <g>
+    <circle cx="122" cy="27" r="15" fill="rgba(207,34,46,0.1)" stroke="#cf222e" stroke-width="2" stroke-dasharray="4"/>
+    <text x="118" y="32" font-size="15" fill="#cf222e" font-weight="bold">1</text>
+  </g>
+  <g>
+    <circle cx="122" cy="97" r="15" fill="rgba(207,34,46,0.1)" stroke="#cf222e" stroke-width="2" stroke-dasharray="4"/>
+    <text x="118" y="102" font-size="15" fill="#cf222e" font-weight="bold">2</text>
+  </g>
+  <g>
+    <circle cx="242" cy="62" r="15" fill="rgba(207,34,46,0.1)" stroke="#cf222e" stroke-width="2" stroke-dasharray="4"/>
+    <text x="238" y="67" font-size="15" fill="#cf222e" font-weight="bold">3</text>
+  </g>
+
+  <!-- Result -->
+  <g>
+    <rect x="265" y="22" width="148" height="42" rx="6" fill="rgba(255,123,114,0.12)" stroke="#cf222e" stroke-width="1.5"/>
+    <text x="278" y="40" font-size="13" fill="#cf222e" font-weight="bold">Сложность L(S) = 3</text>
+    <text x="278" y="55" font-size="11" fill="#cf222e">Количество контактов</text>
+  </g>
+</svg>

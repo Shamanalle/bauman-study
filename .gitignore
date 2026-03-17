@@ -1,0 +1,25 @@
+# Зависимости
+node_modules/
+
+# Сборка Vite
+dist/
+
+# Собранные бандлы (пересобираются командой npm run bundle)
+bundles/
+
+# Системные файлы
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+
+# Логи
+*.log
+npm-debug.log*
+
+# Gemini agent data
+.gemini/
+.agent/skills/*/scripts/__pycache__/

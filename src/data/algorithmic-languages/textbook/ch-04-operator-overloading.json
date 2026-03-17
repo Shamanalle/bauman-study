@@ -1,0 +1,157 @@
+{
+  "num": 4,
+  "title": "Перегрузка операций",
+  "summary": "Понятие перегрузки операций, оператор-функция. Два способа: как метод класса и как внешняя функция. Правила и ограничения. Перегрузка арифметических операций (+, -, *). Перегрузка [] (const и неconst). Перегрузка ++/-- (префиксная и постфиксная формы). Перегрузка << (friend ostream&). Умножение: порядок операндов. Указатели на компоненты класса.",
+  "sections": [
+    {
+      "heading": "Понятие перегрузки операций",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "Перегрузка операций",
+          "content": "<strong>Перегрузка операций</strong> — возможность распространения действия стандартных операций на операнды, для которых эти операции первоначально не предназначались. Возможна, если <strong>хотя бы один</strong> из операндов является объектом класса.<br><br>Для перегрузки создаётся специальная <strong>оператор-функция</strong>:<br><pre><code>&lt;тип_возвр_значения&gt; operator &lt;знак_операции&gt; (спецификация_параметров)\n{\n    операторы_тела_функции\n}</code></pre>"
+        },
+        {
+          "type": "text",
+          "content": "<strong>Два способа перегрузки:</strong><br>1. Оператор-функция определяется <strong>как метод класса</strong>: левый операнд — текущий объект (<code>this</code>), правый — параметр<br>2. Оператор-функция определяется <strong>как внешняя функция</strong>: оба операнда передаются как параметры (при необходимости объявляется <code>friend</code>)"
+        }
+      ]
+    },
+    {
+      "heading": "Правила и ограничения",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "<strong>Особенности перегрузки:</strong><br>• Можно перегружать <strong>только стандартные</strong> операции (нельзя, например, определить <code>**</code>)<br>• <strong>Не допускают</strong> перегрузки: <code>.</code>, <code>.*</code>, <code>?:</code>, <code>::</code>, <code>sizeof</code><br>• <strong>Сохраняется арность</strong> операций (бинарные остаются бинарными, унарные — унарными)"
+        },
+        {
+          "type": "text",
+          "content": "<strong>Бинарные операции:</strong><br>• Как <strong>внешняя функция</strong> — 2 параметра, один обязательно объект класса<br>• Как <strong>метод класса</strong> — 1 параметр (правый операнд); левый операнд — текущий объект<br><br><strong>Только как методы класса</strong> (нельзя перегрузить внешними функциями):<br>• <code>=</code> (присваивание)<br>• <code>[]</code> (квадратные скобки)<br>• <code>()</code> (круглые скобки)<br>• <code>-></code> (стрелка)"
+        },
+        {
+          "type": "text",
+          "content": "<strong>Унарные операции:</strong><br>• Как <strong>внешняя функция</strong> — 1 параметр (объект или ссылка)<br>• Как <strong>метод класса</strong> — без параметров; операнд — текущий объект"
+        }
+      ]
+    },
+    {
+      "heading": "Перегрузка арифметических операций",
+      "blocks": [
+        {
+          "type": "example",
+          "content": "<strong>Перегрузка <code>+</code> как метод класса:</strong><br><pre><code>class Point {\n    float x, y;\npublic:\n    Point(const float& x_, const float& y_) : x(x_), y(y_) {}\n\n    Point operator+(const Point& other)\n    {\n        return Point(x + other.x, y + other.y);\n    }\n};</code></pre>При использовании: <code>Point p3 = p1 + p2;</code> эквивалентно <code>p1.operator+(p2);</code>"
+        },
+        {
+          "type": "example",
+          "content": "<strong>Перегрузка <code>+</code> как внешняя функция:</strong><br><pre><code>class Point {\npublic:\n    float x, y;\n    Point(const float& x_, const float& y_) : x(x_), y(y_) {}\n};\n\nPoint operator+(const Point& first, const Point& second)\n{\n    return Point(first.x + second.x, first.y + second.y);\n}</code></pre>Результат использования <strong>одинаковый</strong>, но внешняя функция требует доступа к полям (через публичные поля, геттеры или <code>friend</code>)."
+        },
+        {
+          "type": "text",
+          "content": "<strong>Умножение вектора на число</strong> (как метод) и <strong>числа на вектор</strong> (как внешняя функция):<br><pre><code>// Как метод: v * 3\nVector operator*(int x) const\n{\n    Vector V(n);\n    for (int i = 0; i &lt; n; i++) V[i] = p[i] * x;\n    return V;\n}\n\n// Как внешняя friend-функция: 3 * v\nfriend Vector operator*(int x, const Vector& v2);\n\nVector operator*(int x, const Vector& v2)\n{\n    Vector V(v2.n);\n    for (int i = 0; i &lt; v2.n; i++) V[i] = x * v2[i];\n    return V;\n}</code></pre>"
+        },
+        {
+          "type": "note",
+          "content": "<strong>Порядок операндов:</strong> при перегрузке как метода класса текущий объект всегда <strong>левый</strong> операнд. Если нужен другой порядок (например, <code>int * Vector</code>), требуется <strong>внешняя функция</strong>."
+        }
+      ]
+    },
+    {
+      "heading": "Перегрузка оператора []",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Оператор <code>[]</code> перегружается <strong>только как метод</strong> класса. Часто нужны <strong>две версии</strong> — константная и неконстантная."
+        },
+        {
+          "type": "example",
+          "content": "<pre><code>class Array {\n    char* values;\npublic:\n    // Неконстантная версия — для модификации:\n    char& operator[](const size_t index)\n    {\n        return values[index];\n    }\n\n    // Константная версия — для чтения из const-объектов:\n    const char& operator[](size_t& index) const\n    {\n        return values[index];\n    }\n};</code></pre>"
+        },
+        {
+          "type": "text",
+          "content": "Неконстантная версия возвращает <strong>ссылку</strong>, позволяя изменять значение:<br><pre><code>V1[0] = 100; // Вызывается operator[](int) — возвращает int&</code></pre>Константная версия нужна для работы с <strong>константными объектами</strong> (например, при передаче по <code>const&</code>)."
+        },
+        {
+          "type": "note",
+          "content": "Две перегрузки совпадают по имени, типу и количеству параметров, но различаются по <strong>константности</strong>. Это допустимо в C++."
+        }
+      ]
+    },
+    {
+      "heading": "Перегрузка ++/-- (префиксная и постфиксная формы)",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Для различения <strong>префиксной</strong> и <strong>постфиксной</strong> форм операций <code>++</code> и <code>--</code> используется <strong>фиктивный параметр</strong> типа <code>int</code> в постфиксной форме."
+        },
+        {
+          "type": "definition",
+          "term": "Префиксная форма (++v)",
+          "content": "<strong>Как метод:</strong> <code>Vector& operator++()</code> — без параметров, возвращает <strong>ссылку</strong> на изменённый объект.<br><strong>Как внешняя:</strong> <code>Vector& operator++(Vector& V)</code>"
+        },
+        {
+          "type": "definition",
+          "term": "Постфиксная форма (v++)",
+          "content": "<strong>Как метод:</strong> <code>Vector operator++(int)</code> — с фиктивным <code>int</code>, возвращает <strong>копию</strong> (старое значение).<br><strong>Как внешняя:</strong> <code>Vector operator++(Vector& V, int)</code>"
+        },
+        {
+          "type": "example",
+          "content": "<pre><code>class Vector {\n    int* p;\n    int n;\npublic:\n    // Префиксная: ++v\n    Vector& operator++() {\n        for (int i = 0; i &lt; n; i++) ++p[i];\n        return *this; // Возвращаем изменённый объект\n    }\n\n    // Постфиксная: v++\n    Vector operator++(int) {\n        Vector temp(*this);              // Сохраняем старое состояние\n        for (int i = 0; i &lt; n; i++) ++p[i]; // Инкремент\n        return temp;                      // Возвращаем старое состояние\n    }\n};</code></pre>"
+        },
+        {
+          "type": "note",
+          "content": "<strong>Различие:</strong> префиксная форма возвращает <strong>ссылку</strong> на изменённый объект, постфиксная — <strong>копию</strong> старого состояния. Поэтому префиксная форма <strong>эффективнее</strong>."
+        }
+      ]
+    },
+    {
+      "heading": "Перегрузка оператора << (вывод в поток)",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Оператор <code>&lt;&lt;</code> для вывода перегружается как <strong>внешняя</strong> функция (т.к. слева стоит <code>ostream</code>, а не наш объект). Чаще всего объявляется как <code>friend</code>:"
+        },
+        {
+          "type": "example",
+          "content": "<pre><code>class Vector {\n    int* p;\n    int n;\npublic:\n    // ...\n    friend ostream& operator&lt;&lt;(ostream& out, const Vector& v);\n};\n\nostream& operator&lt;&lt;(ostream& out, const Vector& v)\n{\n    if (v.p != nullptr)\n        for (int i = 0; i &lt; v.n; i++)\n            out &lt;&lt; v.p[i] &lt;&lt; ' ';\n    else\n        out &lt;&lt; \"Empty\";\n    out &lt;&lt; endl;\n    return out; // Для поддержки цепочек: cout &lt;&lt; v1 &lt;&lt; v2;\n}</code></pre>"
+        },
+        {
+          "type": "note",
+          "content": "Функция возвращает <code>ostream&</code> для поддержки <strong>цепочек</strong> вывода: <code>cout &lt;&lt; V1 &lt;&lt; V2;</code>"
+        }
+      ]
+    },
+    {
+      "heading": "Указатели на компоненты класса",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "В C++ существуют специальные операции <code>.*</code> и <code>->*</code> для работы с указателями на члены класса."
+        },
+        {
+          "type": "definition",
+          "term": "Указатель на метод класса",
+          "content": "Формат определения:<br><pre><code>тип_возвр_знач (имя_класса::*имя_указателя)(параметры);</code></pre>Настройка: <code>имя_ук = &имя_класса::имя_функции;</code><br>Вызов: <code>(объект.*имя_ук)(параметры);</code> или <code>(ук_на_об->*имя_ук)(параметры);</code>"
+        },
+        {
+          "type": "definition",
+          "term": "Указатель на поле класса",
+          "content": "Формат определения:<br><pre><code>тип_поля (имя_класса::*имя_указателя);</code></pre>Настройка: <code>имя_ук = &имя_класса::имя_поля;</code><br>Обращение: <code>объект.*имя_ук = 10;</code> или <code>ук_на_об->*имя_ук = 10;</code>"
+        },
+        {
+          "type": "example",
+          "content": "<pre><code>struct point {\n    int x, y;\n    void printX() { cout &lt;&lt; endl &lt;&lt; \"x=\" &lt;&lt; x; }\n    void printY() { cout &lt;&lt; endl &lt;&lt; \"y=\" &lt;&lt; y; }\n};\n\nint main() {\n    void (point::*pF)() = &point::printX; // Указатель на метод\n    int point::*p = &point::x;             // Указатель на поле\n\n    point p1;\n    p1.*p = 5;        // Обращение к полю x через указатель\n    p = &point::y;\n    p1.*p = 10;       // Обращение к полю y через указатель\n    (p1.*pF)();       // Вызов printX через указатель\n    pF = &point::printY;\n    (p1.*pF)();       // Вызов printY через указатель\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "heading": "Локальные классы",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "Локальный класс",
+          "content": "<strong>Локальный класс</strong> — класс, определённый <strong>внутри блока</strong> (например, внутри функции).<br><br>Ограничения:<br>• Не может иметь <strong>статических данных</strong><br>• Его методы могут быть только <strong>встроенными</strong> (inline)<br>• Внутри класса можно использовать внешние переменные и функции, <strong>кроме</strong> локальных переменных (<code>auto</code>)"
+        }
+      ]
+    }
+  ]
+}

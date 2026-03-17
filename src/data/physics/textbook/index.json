@@ -1,0 +1,18 @@
+{
+  "chapters": [
+    { "num": 1, "title": "Кинематика", "file": "ch-01-kinematics.json" },
+    { "num": 2, "title": "Динамика. Законы Ньютона", "file": "ch-02-dynamics.json" },
+    { "num": 3, "title": "Момент импульса. Вращение твёрдого тела", "file": "ch-03-momentum.json" },
+    { "num": 4, "title": "Работа и энергия. Закон сохранения энергии", "file": "ch-04-energy.json" },
+    { "num": 5, "title": "Колебания", "file": "ch-05-oscillations.json" },
+    { "num": 6, "title": "Механические волны", "file": "ch-06-waves.json" },
+    { "num": 7, "title": "Элементы специальной теории относительности", "file": "ch-07-relativity.json" },
+    { "num": 8, "title": "Молекулярно-кинетическая теория", "file": "ch-08-mkt.json" },
+    { "num": 9, "title": "Первое начало термодинамики", "file": "ch-09-first-law.json" },
+    { "num": 10, "title": "Второе начало термодинамики. Энтропия", "file": "ch-10-second-law.json" },
+    { "num": 11, "title": "Статистические распределения", "file": "ch-11-statistics.json" },
+    { "num": 12, "title": "Явления переноса", "file": "ch-12-transport.json" },
+    { "num": 13, "title": "Фазовые переходы и агрегатные состояния", "file": "ch-13-phases.json" },
+    { "num": 14, "title": "Термодинамические потенциалы", "file": "ch-14-potentials.json" }
+  ]
+}

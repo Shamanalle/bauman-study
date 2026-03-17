@@ -1,0 +1,28 @@
+<svg viewBox="0 0 420 145" width="420" height="145">
+  <defs><marker id="arr_ex" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0, 7 3.5, 0 7" fill="#cf222e"/></marker></defs>
+
+  <!-- Try block -->
+  <g>
+    <rect x="20" y="20" width="108" height="52" rx="8" fill="rgba(88,166,255,0.12)" stroke="#0969da" stroke-width="1.5"/>
+    <text x="48" y="52" font-size="15" fill="#0969da" font-weight="bold" font-family="monospace">try { }</text>
+  </g>
+
+  <!-- throw arrow -->
+  <g>
+    <path d="M 132 46 Q 162 46 192 46" fill="none" stroke="#cf222e" stroke-width="3" marker-end="url(#arr_ex)"/>
+    <text x="142" y="38" font-size="13" fill="#cf222e" font-weight="bold">throw</text>
+  </g>
+
+  <!-- Catch block -->
+  <g>
+    <rect x="202" y="20" width="198" height="52" rx="8" fill="rgba(255,123,114,0.12)" stroke="#cf222e" stroke-width="1.5"/>
+    <text x="218" y="52" font-size="13" fill="#cf222e" font-weight="bold" font-family="monospace">catch(const exception&amp; e)</text>
+  </g>
+
+  <!-- Stack unwinding info -->
+  <g>
+    <text x="20" y="105" font-size="13" fill="#8b949e" font-weight="bold">Раскрутка стека (Stack unwinding):</text>
+    <text x="20" y="125" font-size="11" fill="#8b949e">При пробросе исключения деструкторы локальных</text>
+    <text x="20" y="140" font-size="11" fill="#8b949e">объектов вызываются автоматически</text>
+  </g>
+</svg>

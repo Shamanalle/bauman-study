@@ -1,0 +1,176 @@
+{
+  "num": 3,
+  "title": "Основы Git. Базовые команды",
+  "summary": "Что такое VCS: локальные, централизованные, распределённые. Архитектура Git: рабочая директория, staging area, репозиторий. Внутреннее устройство: blob, tree, commit, tag. Создание репозитория (git init, git clone). Жизненный цикл файлов. Команды git add, git commit, git status, git log, git diff. Файл .gitignore. SSH-ключи для GitHub.",
+  "sections": [
+    {
+      "heading": "Система контроля версий",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "VCS (Version Control System)",
+          "content": "Система контроля версий — ПО для отслеживания изменений в файлах и координации работы нескольких разработчиков.<br><br>Три типа VCS:<br>• <strong>Локальные</strong> (RCS) — история на одной машине, без совместной работы<br>• <strong>Централизованные</strong> (SVN, CVS) — один сервер, единая точка отказа<br>• <strong>Распределённые</strong> (Git, Mercurial) — у каждого полная копия репозитория"
+        },
+        {
+          "type": "note",
+          "content": "<strong>Git</strong> — распределённая VCS, созданная Линусом Торвальдсом в 2005 году для разработки ядра Linux. Де-факто стандарт индустрии (95%+ разработчиков по Stack Overflow Survey)."
+        }
+      ]
+    },
+    {
+      "heading": "Архитектура Git: три области",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "Working Directory",
+          "content": "Файлы проекта на диске, которые ты редактируешь. При изменении файла Git помечает его как <code>modified</code>."
+        },
+        {
+          "type": "definition",
+          "term": "Staging Area (индекс)",
+          "content": "Промежуточная область: <code>git add</code> копирует сюда текущее состояние файлов. Позволяет выборочно формировать коммит — не все изменения сразу."
+        },
+        {
+          "type": "definition",
+          "term": "Repository (.git)",
+          "content": "Папка <code>.git/</code> — база данных объектов и метаданных. <code>git commit</code> сохраняет staging area как неизменяемый снимок."
+        },
+        {
+          "type": "example",
+          "content": "<strong>Аналогия «Посылка»:</strong><br>1. Складываешь вещи на стол (Working Directory) — редактируешь файлы<br>2. Пакуешь в коробку (Staging Area) — <code>git add</code><br>3. Отправляешь (Repository) — <code>git commit</code>"
+        }
+      ]
+    },
+    {
+      "heading": "Внутреннее устройство Git",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Git хранит данные в виде <strong>объектов</strong> в <code>.git/objects/</code>. Каждый объект — уникальный <strong>SHA-1 хеш</strong> (40 символов)."
+        },
+        {
+          "type": "definition",
+          "term": "Blob",
+          "content": "Содержимое одного файла (без имени!). Два файла с одинаковым содержимым = один blob."
+        },
+        {
+          "type": "definition",
+          "term": "Tree",
+          "content": "Аналог директории. Список записей: (режим, тип, SHA-1, имя). Указывает на blob-ы или другие tree."
+        },
+        {
+          "type": "definition",
+          "term": "Commit",
+          "content": "Снимок проекта: указатель на корневой tree + хеш родителя + автор + время + сообщение. Коммиты образуют направленный ациклический граф (DAG)."
+        },
+        {
+          "type": "definition",
+          "term": "Ветка (branch)",
+          "content": "Лёгкий указатель на коммит (файл в 41 байт в <code>.git/refs/heads/</code>). <strong>HEAD</strong> — указатель на текущую ветку."
+        }
+      ]
+    },
+    {
+      "heading": "Создание репозитория",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "git init",
+          "content": "Создаёт новый репозиторий в текущей директории (папку <code>.git/</code>)."
+        },
+        {
+          "type": "definition",
+          "term": "git clone",
+          "content": "Создаёт полную локальную копию удалённого репозитория со всей историей. Автоматически настраивает remote <code>origin</code>."
+        },
+        {
+          "type": "example",
+          "content": "<strong>Создание проекта (лаба 02, часть I):</strong><br><pre><code># Создать проект с нуля\nmkdir TP-lab02 && cd TP-lab02\necho \"# TP-lab02\" >> README.md\ngit init\ngit add README.md\ngit commit -m \"first commit\"\ngit branch -M main\ngit remote add origin https://github.com/user/TP-lab02.git\ngit push -u origin main</code></pre>"
+        },
+        {
+          "type": "example",
+          "content": "<strong>Клонирование:</strong><br><pre><code># HTTPS (просто, но спрашивает пароль)\ngit clone https://github.com/user/repo.git\n\n# SSH (без пароля после настройки ключей)\ngit clone git@github.com:user/repo.git\n\n# Неглубокий клон (только последний коммит)\ngit clone --depth 1 https://github.com/user/repo.git</code></pre>"
+        }
+      ]
+    },
+    {
+      "heading": "Жизненный цикл файлов",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Каждый файл может быть в одном из четырёх состояний:"
+        },
+        {
+          "type": "definition",
+          "term": "Untracked → Staged → Committed → Modified",
+          "content": "• <strong>Untracked</strong> — Git не знает о файле (новый файл)<br>• <strong>Staged</strong> — добавлен в staging (<code>git add</code>), готов к коммиту (зелёный в status)<br>• <strong>Committed</strong> — сохранён в базе Git (не отображается в status)<br>• <strong>Modified</strong> — изменён после последнего коммита (красный в status)"
+        }
+      ]
+    },
+    {
+      "heading": "Базовые команды",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "git add",
+          "content": "Копирует <strong>текущее состояние</strong> файла в staging area:<br>• <code>git add файл.txt</code> — конкретный файл<br>• <code>git add .</code> — все изменения в текущей директории<br>• <code>git add -A</code> — все изменения (включая удалённые файлы)<br>• <code>git add -p</code> — интерактивный выбор блоков изменений"
+        },
+        {
+          "type": "definition",
+          "term": "git commit",
+          "content": "Создаёт новый коммит из staging area:<br>• <code>git commit -m \"сообщение\"</code> — коммит с сообщением<br>• <code>git commit -am \"сообщение\"</code> — add + commit для отслеживаемых файлов<br>• <code>git commit --amend</code> — исправить последний коммит"
+        },
+        {
+          "type": "definition",
+          "term": "git status",
+          "content": "Текущее состояние: ветка, staged (зелёные), modified (красные), untracked файлы."
+        },
+        {
+          "type": "definition",
+          "term": "git log",
+          "content": "История коммитов:<br>• <code>git log --oneline</code> — компактный формат<br>• <code>git log --oneline --graph --all</code> — красивый граф веток<br>• <code>git log -n 5</code> — последние 5<br>• <code>git log -- файл.txt</code> — история файла"
+        },
+        {
+          "type": "definition",
+          "term": "git diff",
+          "content": "Конкретные изменения:<br>• <code>git diff</code> — не в staging<br>• <code>git diff --staged</code> — в staging<br>• <code>git diff ветка1 ветка2</code> — разница между ветками"
+        },
+        {
+          "type": "note",
+          "content": "<strong>Хорошие сообщения коммитов:</strong><br>✅ <code>\"Добавить валидацию формы логина\"</code><br>✅ <code>\"Исправить падение при пустом списке\"</code><br>❌ <code>\"fix\"</code>, <code>\"changes\"</code>, <code>\"update\"</code>"
+        }
+      ]
+    },
+    {
+      "heading": "Файл .gitignore",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": ".gitignore",
+          "content": "Паттерны файлов, которые Git не отслеживает. Действует только на untracked файлы."
+        },
+        {
+          "type": "example",
+          "content": "<strong>Типичный .gitignore для C++ проекта:</strong><br><pre><code># Скомпилированные файлы\n*.o\n*.out\n\n# Папки сборки\nbuild/\n_build/\ncmake-build-*/\n\n# IDE\n.idea/\n.vscode/\n*.swp\n\n# OS\n.DS_Store\nThumbs.db</code></pre>"
+        },
+        {
+          "type": "note",
+          "content": "Готовые шаблоны .gitignore: github.com/github/gitignore. Если файл уже отслеживается, сначала: <code>git rm --cached файл</code>."
+        }
+      ]
+    },
+    {
+      "heading": "SSH-ключи для GitHub",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "SSH-ключ позволяет push/pull без ввода пароля."
+        },
+        {
+          "type": "example",
+          "content": "<strong>Настройка SSH:</strong><br><pre><code># 1. Генерация ключа\nssh-keygen -t ed25519 -C \"email@example.com\"\n# Нажать Enter 3 раза\n\n# 2. Скопировать публичный ключ\ncat ~/.ssh/id_ed25519.pub\n\n# 3. GitHub → Settings → SSH keys → New SSH key\n# Вставить ключ, сохранить\n\n# 4. Проверка\nssh -T git@github.com\n# Hi username! You've been authenticated...</code></pre>"
+        }
+      ]
+    }
+  ]
+}

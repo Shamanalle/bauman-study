@@ -1,0 +1,91 @@
+{
+  "num": 9,
+  "title": "CPack — пакетирование",
+  "summary": "Что такое пакетирование и зачем оно нужно. CPack — модуль CMake для создания дистрибутивов. Формат CPackConfig.cmake. Создание TGZ, DEB, RPM пакетов. Версионирование проекта. Файлы DESCRIPTION, ChangeLog, LICENSE. Git-теги для релизов.",
+  "sections": [
+    {
+      "heading": "Что такое пакетирование",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "<strong>Пакетирование</strong> — создание дистрибутива (пакета), который можно установить на другой машине. Вместо «скачай код, поставь зависимости, собери» — просто установи пакет."
+        },
+        {
+          "type": "text",
+          "content": "<strong>Форматы пакетов:</strong><br>• <strong>TGZ</strong> (.tar.gz) — простой архив, кроссплатформенный<br>• <strong>DEB</strong> (.deb) — пакеты Debian/Ubuntu (устанавливаются через <code>dpkg -i</code>)<br>• <strong>RPM</strong> (.rpm) — пакеты Red Hat/Fedora/CentOS"
+        },
+        {
+          "type": "definition",
+          "term": "CPack",
+          "content": "Модуль CMake для автоматического создания пакетов. Использует ту же систему сборки — не нужно писать отдельные скрипты пакетирования."
+        }
+      ]
+    },
+    {
+      "heading": "Версионирование",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "Семантическое версионирование",
+          "content": "Стандарт: <strong>MAJOR.MINOR.PATCH</strong> (например, 1.2.3)<br>• <strong>MAJOR</strong> — несовместимые изменения API<br>• <strong>MINOR</strong> — новая функциональность (обратная совместимость)<br>• <strong>PATCH</strong> — исправления багов"
+        },
+        {
+          "type": "example",
+          "content": "<strong>Версия в CMakeLists.txt:</strong><br><pre><code>project(print)\n\nset(PRINT_VERSION_MAJOR 0)\nset(PRINT_VERSION_MINOR 1)\nset(PRINT_VERSION_PATCH 0)\nset(PRINT_VERSION_TWEAK 0)\nset(PRINT_VERSION\n  ${PRINT_VERSION_MAJOR}.${PRINT_VERSION_MINOR}.${PRINT_VERSION_PATCH}.${PRINT_VERSION_TWEAK}\n)\nset(PRINT_VERSION_STRING \"v${PRINT_VERSION}\")</code></pre>"
+        },
+        {
+          "type": "definition",
+          "term": "Git Tag для релизов",
+          "content": "Тег фиксирует коммит как релизную версию:<br><pre><code>git tag v0.1.0.0\ngit push origin master --tags</code></pre>На GitHub теги отображаются в разделе Releases."
+        }
+      ]
+    },
+    {
+      "heading": "Конфигурация CPack",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Настройки CPack описываются в файле <code>CPackConfig.cmake</code>, который подключается к основному CMakeLists.txt."
+        },
+        {
+          "type": "example",
+          "content": "<strong>CPackConfig.cmake:</strong><br><pre><code>include(InstallRequiredSystemLibraries)\n\n# Общие настройки\nset(CPACK_PACKAGE_CONTACT \"user@email.com\")\nset(CPACK_PACKAGE_VERSION_MAJOR ${PRINT_VERSION_MAJOR})\nset(CPACK_PACKAGE_VERSION_MINOR ${PRINT_VERSION_MINOR})\nset(CPACK_PACKAGE_VERSION_PATCH ${PRINT_VERSION_PATCH})\nset(CPACK_PACKAGE_VERSION ${PRINT_VERSION})\nset(CPACK_PACKAGE_DESCRIPTION_FILE\n  ${CMAKE_CURRENT_SOURCE_DIR}/DESCRIPTION)\nset(CPACK_PACKAGE_DESCRIPTION_SUMMARY\n  \"static C++ library for printing\")\n\n# Файлы проекта\nset(CPACK_RESOURCE_FILE_LICENSE\n  ${CMAKE_CURRENT_SOURCE_DIR}/LICENSE)\nset(CPACK_RESOURCE_FILE_README\n  ${CMAKE_CURRENT_SOURCE_DIR}/README.md)\n\n# Настройки RPM\nset(CPACK_RPM_PACKAGE_NAME \"print-devel\")\nset(CPACK_RPM_PACKAGE_LICENSE \"MIT\")\nset(CPACK_RPM_PACKAGE_GROUP \"print\")\nset(CPACK_RPM_CHANGELOG_FILE\n  ${CMAKE_CURRENT_SOURCE_DIR}/ChangeLog.md)\nset(CPACK_RPM_PACKAGE_RELEASE 1)\n\n# Настройки DEB\nset(CPACK_DEBIAN_PACKAGE_NAME \"libprint-dev\")\nset(CPACK_DEBIAN_PACKAGE_PREDEPENDS \"cmake >= 3.0\")\nset(CPACK_DEBIAN_PACKAGE_RELEASE 1)\n\ninclude(CPack)</code></pre>"
+        },
+        {
+          "type": "text",
+          "content": "<strong>Подключение в CMakeLists.txt:</strong><br><pre><code>include(CPackConfig.cmake)</code></pre>"
+        }
+      ]
+    },
+    {
+      "heading": "Дополнительные файлы проекта",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Для пакетирования нужны:<br>• <strong>DESCRIPTION</strong> — текстовое описание проекта<br>• <strong>ChangeLog.md</strong> — журнал изменений<br>• <strong>LICENSE</strong> — лицензия (MIT, Apache-2.0 и т.д.)"
+        },
+        {
+          "type": "example",
+          "content": "<strong>Пример ChangeLog.md:</strong><br><pre><code>* Mon Mar 17 2026 student &lt;student@email.com&gt; 0.1.0.0\n- Initial RPM release</code></pre>"
+        }
+      ]
+    },
+    {
+      "heading": "Создание пакетов",
+      "blocks": [
+        {
+          "type": "example",
+          "content": "<strong>Сборка пакетов:</strong><br><pre><code># Способ 1: через cpack\ncmake -B build\ncmake --build build\ncd build\ncpack -G \"TGZ\"     # Создать .tar.gz\ncpack -G \"DEB\"     # Создать .deb\ncpack -G \"RPM\"     # Создать .rpm\n\n# Способ 2: через CMake\ncmake -B build -DCPACK_GENERATOR=\"TGZ\"\ncmake --build build --target package</code></pre>"
+        },
+        {
+          "type": "text",
+          "content": "Созданные пакеты появятся в директории <code>build/</code>. Можно сохранить в папку <code>artifacts/</code>:<br><pre><code>mkdir artifacts\nmv build/*.tar.gz artifacts/</code></pre>"
+        },
+        {
+          "type": "note",
+          "content": "В CI-пайплайне пакеты создаются автоматически после успешной сборки и тестов. Их можно прикрепить к GitHub Release."
+        }
+      ]
+    }
+  ]
+}

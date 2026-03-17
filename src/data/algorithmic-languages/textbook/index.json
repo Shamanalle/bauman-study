@@ -1,0 +1,15 @@
+{
+  "chapters": [
+    { "file": "ch-01-oop-classes.json", "title": "Введение в ООП. Классы и объекты" },
+    { "file": "ch-02-constructors.json", "title": "Конструкторы и деструкторы. Правило 3/5/0" },
+    { "file": "ch-03-project-organization.json", "title": "Организация проекта. Статические и дружественные элементы" },
+    { "file": "ch-04-operator-overloading.json", "title": "Перегрузка операций" },
+    { "file": "ch-05-inheritance.json", "title": "Наследование классов" },
+    { "file": "ch-06-polymorphism.json", "title": "Полиморфизм и виртуальные функции" },
+    { "file": "ch-07-exceptions.json", "title": "Обработка исключений" },
+    { "file": "ch-08-templates.json", "title": "Шаблоны классов и функций" },
+    { "file": "ch-09-iterators.json", "title": "Итераторы" },
+    { "file": "ch-10-stl-advanced.json", "title": "Использование объектов в STL. Лямбда-функции" },
+    { "file": "ch-11-multithreading.json", "title": "Потоковая многозадачность" }
+  ]
+}

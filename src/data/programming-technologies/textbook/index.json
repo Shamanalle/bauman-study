@@ -1,0 +1,14 @@
+{
+  "chapters": [
+    { "file": "ch-01-intro-setup.json", "title": "Введение. Настройка среды разработки" },
+    { "file": "ch-02-linux-cli.json", "title": "Командная строка Linux" },
+    { "file": "ch-03-git-basics.json", "title": "Основы Git. Базовые команды" },
+    { "file": "ch-04-branching.json", "title": "Ветвление и совместная работа" },
+    { "file": "ch-05-undo.json", "title": "Отмена изменений и исправление ошибок" },
+    { "file": "ch-06-cmake.json", "title": "CMake — автоматизация сборки" },
+    { "file": "ch-07-ci-cd.json", "title": "CI/CD и GitHub Actions" },
+    { "file": "ch-08-gtest.json", "title": "GTest — тестирование C++ проектов" },
+    { "file": "ch-09-cpack.json", "title": "CPack — пакетирование" },
+    { "file": "ch-10-workflow.json", "title": "Рабочие процессы и инструменты" }
+  ]
+}

@@ -1,0 +1,21 @@
+<svg viewBox="0 0 400 170" width="400" height="170">
+  <defs>
+    <marker id="arrG" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0 0, 6 3, 0 6" fill="#2da44e"/></marker>
+    <marker id="arrR" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0 0, 6 3, 0 6" fill="#cf222e"/></marker>
+  </defs>
+
+  <rect x="40" y="20" width="320" height="130" rx="8" fill="rgba(88,166,255,0.15)" stroke="#0969da" stroke-width="2"/>
+  <text x="50" y="40" font-size="12" fill="#0969da" font-weight="bold">Derived Object (Производный)</text>
+  
+  <rect x="60" y="55" width="280" height="45" rx="6" fill="rgba(36,41,47,0.4)" stroke="#8b949e" stroke-width="1.5"/>
+  <text x="70" y="70" font-size="12" fill="#8b949e" font-weight="bold">Base Subobject (Базовый)</text>
+  
+  <text x="70" y="90" font-size="12" fill="#2da44e" font-weight="bold">1. Base()</text>
+  <text x="50" y="130" font-size="12" fill="#2da44e" font-weight="bold">2. Derived()</text>
+
+  <text x="250" y="130" font-size="12" fill="#cf222e" font-weight="bold">1. ~Derived()</text>
+  <text x="270" y="90" font-size="12" fill="#cf222e" font-weight="bold">2. ~Base()</text>
+
+  <path d="M 145 85 L 145 115" fill="none" stroke="#2da44e" stroke-width="2" marker-end="url(#arrG)"/>
+  <path d="M 260 115 L 260 85" fill="none" stroke="#cf222e" stroke-width="2" marker-end="url(#arrR)"/>
+</svg>

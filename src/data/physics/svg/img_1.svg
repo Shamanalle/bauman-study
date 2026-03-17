@@ -1,0 +1,28 @@
+<svg viewBox="0 0 460 220" width="460" height="220">
+  <defs>
+    <marker id="wArr2" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0, 7 3.5, 0 7" fill="#2da44e"/></marker>
+    <marker id="eArr2" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0, 7 3.5, 0 7" fill="#e5534b"/></marker>
+    <marker id="axArr2" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0, 7 3.5, 0 7" fill="#8250df"/></marker>
+  </defs>
+  <ellipse cx="155" cy="115" rx="80" ry="80" fill="rgba(9,105,218,0.06)" stroke="#d0d7de" stroke-width="2"/>
+  <ellipse cx="155" cy="115" rx="80" ry="18" fill="none" stroke="rgba(9,105,218,0.3)" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <circle cx="155" cy="115" r="4" fill="#24292f"/>
+  <text x="142" y="123" font-size="13" fill="#24292f" font-weight="bold">O</text>
+  <line x1="155" y1="210" x2="155" y2="14" stroke="#8250df" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#axArr2)"/>
+  <text x="162" y="20" font-size="12" fill="#8250df" font-weight="bold">ось</text>
+  <path d="M 125 52 A 50 50 0 0 1 185 52" fill="none" stroke="#2da44e" stroke-width="3" marker-end="url(#wArr2)"/>
+  <text x="148" y="42" font-size="16" fill="#2da44e" font-weight="bold">ω</text>
+  <path d="M 185 178 A 50 50 0 0 1 125 178" fill="none" stroke="#e5534b" stroke-width="2.5" stroke-dasharray="5" marker-end="url(#eArr2)"/>
+  <text x="148" y="200" font-size="16" fill="#e5534b" font-weight="bold">ε</text>
+  <path d="M 175 115 A 20 20 0 0 1 168 98" fill="none" stroke="#0969da" stroke-width="2"/>
+  <text x="180" y="105" font-size="13" fill="#0969da" font-weight="bold">φ</text>
+  <line x1="155" y1="115" x2="232" y2="82" stroke="#8b949e" stroke-width="1.5"/>
+  <circle cx="232" cy="82" r="4" fill="#0969da"/>
+  <rect x="275" y="25" width="172" height="165" rx="10" fill="rgba(9,105,218,0.06)" stroke="#d0d7de" stroke-width="1.5"/>
+  <text x="292" y="52" font-size="13" fill="#2da44e" font-weight="bold">ω = dφ/dt</text>
+  <text x="292" y="76" font-size="13" fill="#e5534b" font-weight="bold">ε = dω/dt</text>
+  <text x="292" y="100" font-size="13" fill="#0969da" font-weight="bold">φ = φ₀ + ωt + ½εt²</text>
+  <text x="292" y="130" font-size="12" fill="#8b949e" font-weight="600">ω = ω₀ + εt</text>
+  <text x="292" y="156" font-size="12" fill="#8b949e" font-weight="600">v = ωR, a<tspan dy="3" font-size="9">τ</tspan><tspan dy="-3"> = εR</tspan></text>
+  <text x="292" y="178" font-size="12" fill="#8b949e" font-weight="600">a<tspan dy="3" font-size="9">n</tspan><tspan dy="-3"> = ω²R</tspan></text>
+</svg>

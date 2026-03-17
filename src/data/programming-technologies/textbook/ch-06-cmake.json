@@ -1,0 +1,132 @@
+{
+  "num": 6,
+  "title": "CMake — автоматизация сборки",
+  "summary": "Что такое система сборки и зачем она нужна. Структура CMakeLists.txt. Команды cmake: cmake_minimum_required, project, set, add_executable, add_library, target_link_libraries, target_include_directories, add_subdirectory. Переменные CMake. Процесс сборки: генерация и компиляция. Организация проекта с библиотеками.",
+  "sections": [
+    {
+      "heading": "Зачем нужна система сборки",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "При работе с проектами на C++ недостаточно просто вызвать <code>g++ main.cpp</code>. Реальные проекты содержат десятки файлов, библиотеки, зависимости. <strong>Система сборки</strong> автоматизирует процесс: какие файлы компилировать, в каком порядке, какие библиотеки подключать."
+        },
+        {
+          "type": "definition",
+          "term": "CMake",
+          "content": "<strong>CMake</strong> — кроссплатформенная система автоматизации сборки. Не компилирует сама, а <strong>генерирует файлы сборки</strong> для конкретной платформы (Makefile для Linux, .sln для Visual Studio).<br><br>Конфигурация описывается в файле <code>CMakeLists.txt</code>."
+        },
+        {
+          "type": "definition",
+          "term": "Таргет (target)",
+          "content": "То, что можно собрать: <strong>исполняемый файл</strong> (executable) или <strong>библиотека</strong> (library). Из исходного кода CMake создаёт бинарный файл."
+        }
+      ]
+    },
+    {
+      "heading": "Процесс сборки",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Сборка состоит из <strong>двух этапов</strong>:<br><br>1. <strong>Генерация файлов сборки</strong> (configure) — CMake читает CMakeLists.txt и создаёт Makefile<br>2. <strong>Компиляция</strong> (build) — на основе Makefile компилируется код"
+        },
+        {
+          "type": "example",
+          "content": "<strong>Команды сборки:</strong><br><pre><code># 1. Генерация (результат в папку build)\ncmake -B build\n\n# 2. Компиляция\ncmake --build build\n\n# Альтернатива (старый стиль):\nmkdir build && cd build\ncmake ..\nmake</code></pre>"
+        },
+        {
+          "type": "note",
+          "content": "Папку <code>build/</code> нужно добавить в <code>.gitignore</code> — в ней только сгенерированные файлы, которые не нужно коммитить."
+        }
+      ]
+    },
+    {
+      "heading": "Структура CMakeLists.txt",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Разберём типичный CMakeLists.txt для проекта с библиотекой:"
+        },
+        {
+          "type": "example",
+          "content": "<pre><code># Минимальная версия CMake\ncmake_minimum_required(VERSION 3.4)\n\n# Название проекта\nproject(myapp)\n\n# Стандарт C++\nset(CMAKE_CXX_STANDARD 11)\nset(CMAKE_CXX_STANDARD_REQUIRED ON)\n\n# Подключить директорию с CMake библиотеки\nadd_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/library lib_dir)\n\n# Создать исполняемый файл из исходника\nadd_executable(myapp ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp)\n\n# Указать, где искать заголовочные файлы\ntarget_include_directories(myapp PUBLIC\n  ${CMAKE_CURRENT_SOURCE_DIR}/library\n)\n\n# Подключить библиотеку к исполняемому файлу\ntarget_link_libraries(myapp library)</code></pre>"
+        }
+      ]
+    },
+    {
+      "heading": "Основные команды CMake",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "cmake_minimum_required(VERSION X.Y)",
+          "content": "Задаёт минимальную версию CMake для сборки проекта."
+        },
+        {
+          "type": "definition",
+          "term": "project(name)",
+          "content": "Задаёт название проекта. Создаёт переменную <code>${PROJECT_NAME}</code>."
+        },
+        {
+          "type": "definition",
+          "term": "set(ПЕРЕМЕННАЯ значение)",
+          "content": "Задаёт значение переменной. Часто используется для настройки стандарта C++:<br><code>set(CMAKE_CXX_STANDARD 17)</code>"
+        },
+        {
+          "type": "definition",
+          "term": "add_executable(target sources)",
+          "content": "Создаёт таргет <strong>исполняемого файла</strong>:<br><code>add_executable(app main.cpp)</code>"
+        },
+        {
+          "type": "definition",
+          "term": "add_library(target sources)",
+          "content": "Создаёт таргет <strong>библиотеки</strong>:<br><code>add_library(mylib src/mylib.cpp)</code><br>По умолчанию создаёт статическую библиотеку (.a). Для динамической: <code>add_library(mylib SHARED src/mylib.cpp)</code>"
+        },
+        {
+          "type": "definition",
+          "term": "target_include_directories(target scope dirs)",
+          "content": "Указывает, где искать заголовочные файлы (#include):<br><code>target_include_directories(app PUBLIC include/)</code>"
+        },
+        {
+          "type": "definition",
+          "term": "target_link_libraries(target library)",
+          "content": "Подключает библиотеку к таргету:<br><code>target_link_libraries(app mylib)</code>"
+        },
+        {
+          "type": "definition",
+          "term": "add_subdirectory(path)",
+          "content": "Включает поддиректорию с собственным CMakeLists.txt:<br><code>add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/library lib_dir)</code>"
+        }
+      ]
+    },
+    {
+      "heading": "Переменные CMake",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "<strong>Встроенные переменные:</strong><br>• <code>${CMAKE_CURRENT_SOURCE_DIR}</code> — путь к текущему CMakeLists.txt<br>• <code>${PROJECT_NAME}</code> — имя проекта<br>• <code>${CMAKE_CXX_STANDARD}</code> — стандарт C++<br>• <code>${CMAKE_BUILD_TYPE}</code> — тип сборки (Debug/Release)"
+        },
+        {
+          "type": "definition",
+          "term": "option()",
+          "content": "Объявляет булеву опцию, которую можно включить при сборке:<br><pre><code># В CMakeLists.txt:\noption(BUILD_TESTS \"Build tests\" OFF)\n\n# При сборке:\ncmake -B build -DBUILD_TESTS=ON</code></pre>"
+        }
+      ]
+    },
+    {
+      "heading": "Пример: структура проекта lab03",
+      "blocks": [
+        {
+          "type": "example",
+          "content": "<strong>Типичная структура проекта:</strong><br><pre><code>project/\n├── CMakeLists.txt          # Главный файл сборки\n├── sources/\n│   └── print.cpp           # Реализация\n├── include/\n│   └── print.hpp           # Заголовок\n├── demo/\n│   └── main.cpp            # Демо-приложение\n└── build/                  # Папка сборки (в .gitignore!)</code></pre>"
+        },
+        {
+          "type": "example",
+          "content": "<strong>CMakeLists.txt для этой структуры:</strong><br><pre><code>cmake_minimum_required(VERSION 3.4)\nproject(print)\n\nset(CMAKE_CXX_STANDARD 11)\nset(CMAKE_CXX_STANDARD_REQUIRED ON)\n\n# Библиотека print\nadd_library(print STATIC\n  ${CMAKE_CURRENT_SOURCE_DIR}/sources/print.cpp\n)\ntarget_include_directories(print PUBLIC\n  ${CMAKE_CURRENT_SOURCE_DIR}/include\n)\n\n# Демо-приложение\nadd_executable(demo\n  ${CMAKE_CURRENT_SOURCE_DIR}/demo/main.cpp\n)\ntarget_link_libraries(demo print)</code></pre>"
+        },
+        {
+          "type": "example",
+          "content": "<strong>Сборка и запуск:</strong><br><pre><code>cmake -B build\ncmake --build build\n./build/demo</code></pre>"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+<svg viewBox="0 0 420 150" width="420" height="150">
+  <text x="10" y="20" font-size="12" fill="#24292f" font-weight="bold">Замкнутые классы Поста:</text>
+  
+  <rect x="10" y="35" width="70" height="45" rx="6" fill="rgba(9,105,218,.1)" stroke="#0969da" stroke-width="1.5"/>
+  <text x="45" y="55" font-size="14" fill="#0969da" font-weight="bold" text-anchor="middle">T₀</text>
+  <text x="45" y="72" font-size="9" fill="#0969da" text-anchor="middle">f(0..0)=0</text>
+
+  <rect x="90" y="35" width="70" height="45" rx="6" fill="rgba(255,123,114,0.15)" stroke="#cf222e" stroke-width="1.5"/>
+  <text x="125" y="55" font-size="14" fill="#cf222e" font-weight="bold" text-anchor="middle">T₁</text>
+  <text x="125" y="72" font-size="9" fill="#cf222e" text-anchor="middle">f(1..1)=1</text>
+
+  <rect x="170" y="35" width="70" height="45" rx="6" fill="rgba(46,160,67,0.15)" stroke="#2da44e" stroke-width="1.5"/>
+  <text x="205" y="55" font-size="14" fill="#1a7f37" font-weight="bold" text-anchor="middle">S</text>
+  <text x="205" y="72" font-size="9" fill="#1a7f37" text-anchor="middle">самодв.</text>
+
+  <rect x="250" y="35" width="70" height="45" rx="6" fill="rgba(36,41,47,0.4)" stroke="#8b949e" stroke-width="1.5"/>
+  <text x="285" y="55" font-size="14" fill="#57606a" font-weight="bold" text-anchor="middle">M</text>
+  <text x="285" y="72" font-size="9" fill="#57606a" text-anchor="middle">монотон.</text>
+
+  <rect x="330" y="35" width="70" height="45" rx="6" fill="rgba(210,168,255,0.15)" stroke="#8250df" stroke-width="1.5"/>
+  <text x="365" y="55" font-size="14" fill="#8250df" font-weight="bold" text-anchor="middle">L</text>
+  <text x="365" y="72" font-size="9" fill="#8250df" text-anchor="middle">линейные</text>
+
+  <rect x="10" y="95" width="390" height="40" rx="4" fill="rgba(36,41,47,0.8)" stroke="#cf222e" stroke-width="1.5" stroke-dasharray="4"/>
+  <text x="20" y="115" font-size="11" fill="#24292f" font-weight="bold">Функциональная полнота системы {f₁, ..., fₖ} ⟺</text>
+  <text x="20" y="128" font-size="10" fill="#cf222e" font-weight="bold">Система не содержится целиком ни в одном из 5 классов (⊄ T₀, ⊄ T₁...)</text>
+</svg>

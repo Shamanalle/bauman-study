@@ -1,0 +1,133 @@
+{
+  "num": 1,
+  "title": "Введение. Настройка среды разработки",
+  "summary": "Обзор курса ТиМП и его лабораторных работ. Что нужно установить: Linux, Git, CMake, компилятор. Регистрация на GitHub. Personal Access Token. GitHub Gist. Markdown — формат отчётов. Структура и правила сдачи лабораторных.",
+  "sections": [
+    {
+      "heading": "Обзор курса",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Курс <strong>«Технологии и методы программирования»</strong> (ТиМП) посвящён инструментам и практикам, которые используют профессиональные разработчики в повседневной работе."
+        },
+        {
+          "type": "text",
+          "content": "<strong>Темы курса:</strong><br>• <strong>Git</strong> — система контроля версий<br>• <strong>Командная строка Linux</strong> — навигация, работа с файлами<br>• <strong>CMake</strong> — автоматизация сборки C++ проектов<br>• <strong>CI/CD</strong> — непрерывная интеграция (GitHub Actions)<br>• <strong>GTest</strong> — фреймворк тестирования от Google<br>• <strong>CPack</strong> — пакетирование и дистрибуция<br><br>Лабораторные выполняются последовательно: каждая следующая лаба строится на результатах предыдущей."
+        },
+        {
+          "type": "note",
+          "content": "<strong>Карта лабораторных работ:</strong><br>• Lab 00 — Настройка среды (GitHub, токены, Markdown)<br>• Lab 01 — Утилиты разработки (консоль Linux)<br>• Lab 02 — Система контроля версий Git<br>• Lab 03 — Автоматизация сборки CMake<br>• Lab 04 — CI/CD и GitHub Actions<br>• Lab 05 — Тестирование с GTest<br>• Lab 06 — Пакетирование с CPack"
+        }
+      ]
+    },
+    {
+      "heading": "Установка Linux",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Большая часть лабораторных выполняется в <strong>командной строке Linux</strong>. Варианты установки для пользователей Windows:"
+        },
+        {
+          "type": "definition",
+          "term": "WSL (Windows Subsystem for Linux)",
+          "content": "Рекомендуемый вариант. Позволяет запускать полноценный Linux прямо в Windows без виртуальной машины.<br><pre><code>wsl --install</code></pre>После перезагрузки запустит Ubuntu. Все консольные команды Linux будут работать."
+        },
+        {
+          "type": "definition",
+          "term": "Виртуальная машина",
+          "content": "Установить VirtualBox или VMware, создать виртуальную машину с Ubuntu. Более тяжёлый вариант, но полная изоляция. Подходит, если WSL не работает."
+        },
+        {
+          "type": "definition",
+          "term": "Dual Boot",
+          "content": "Установить Linux параллельно с Windows на отдельный раздел диска. Самый производительный вариант, но сложнее в настройке."
+        },
+        {
+          "type": "note",
+          "content": "На <strong>macOS</strong> большинство лабораторных работает нативно — macOS основана на Unix. Используй <code>brew</code> вместо <code>apt</code> для установки пакетов."
+        }
+      ]
+    },
+    {
+      "heading": "Необходимые инструменты",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Проверь наличие всех утилит командой <code>--version</code>:<br><pre><code>cmake --version\ngit --version\ng++ --version\nmake --version\nwget --version\ncurl --version\ntree --version</code></pre>"
+        },
+        {
+          "type": "text",
+          "content": "<strong>Установка недостающих (Ubuntu/WSL):</strong><br><pre><code>sudo apt update\nsudo apt install git cmake g++ make wget curl tree</code></pre>"
+        },
+        {
+          "type": "definition",
+          "term": "sudo",
+          "content": "Команда <code>sudo</code> (super user do) — аналог «запустить от имени администратора» в Windows. Запрашивает пароль, после чего на ~10 минут терминал работает с правами суперпользователя. Некоторые команды, например <code>apt install</code>, доступны только через <code>sudo</code>."
+        },
+        {
+          "type": "definition",
+          "term": "apt",
+          "content": "Менеджер пакетов в Debian/Ubuntu. Позволяет устанавливать, обновлять и удалять программы:<br>• <code>sudo apt install пакет</code> — установить<br>• <code>sudo apt update</code> — обновить список пакетов<br>• <code>sudo apt upgrade</code> — обновить установленные пакеты<br>• <code>sudo apt remove пакет</code> — удалить"
+        }
+      ]
+    },
+    {
+      "heading": "Регистрация на GitHub",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "<strong>GitHub</strong> — крупнейшая платформа для хостинга Git-репозиториев и совместной разработки. Все лабораторные сдаются через GitHub."
+        },
+        {
+          "type": "text",
+          "content": "<strong>Шаги регистрации:</strong><br>1. Перейти на github.com → Sign up<br>2. Указать email, пароль, имя пользователя<br>3. Подтвердить email<br>4. Настроить профиль (фото, bio — опционально)"
+        },
+        {
+          "type": "definition",
+          "term": "Personal Access Token (PAT)",
+          "content": "Токен для аутентификации вместо пароля при работе через HTTPS.<br><br><strong>Создание:</strong> GitHub → Settings → Developer Settings → Personal Access Tokens → Generate new token → Classic.<br><br>Минимальные права: <code>repo</code>, <code>gist</code>, <code>user</code>.<br><br><strong>Важно:</strong> токен показывается только один раз! Сохрани его в надёжном месте."
+        },
+        {
+          "type": "definition",
+          "term": "GitHub Gist",
+          "content": "Gist — сервис GitHub для хранения фрагментов кода и заметок. Используется в лабораторных для быстрой публикации отчётов.<br><br>Создание: gist.github.com → New Gist → Public/Secret."
+        }
+      ]
+    },
+    {
+      "heading": "Markdown — формат отчётов",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "Markdown",
+          "content": "Markdown (.md) — лёгкий язык разметки текста. Отчёты по лабораторным сдаются в формате Markdown. GitHub автоматически рендерит .md файлы в красивый вид."
+        },
+        {
+          "type": "text",
+          "content": "<strong>Основной синтаксис:</strong><br><pre><code># Заголовок 1 уровня\n## Заголовок 2 уровня\n\n**Жирный текст**\n*Курсив*\n\n- Элемент списка\n- Ещё элемент\n\n1. Нумерованный\n2. Список\n\n`inline код`\n\n```\nблок кода\n```\n\n[Текст ссылки](https://url.com)\n![Alt текст](image.png)</code></pre>"
+        },
+        {
+          "type": "note",
+          "content": "<strong>Редакторы Markdown:</strong><br>• <strong>VS Code</strong> — встроенный preview (Ctrl+Shift+V)<br>• <strong>Obsidian</strong> — удобный редактор с live preview<br>• <strong>Typora</strong> — WYSIWYG-редактор<br>• Онлайн: stackedit.io, dillinger.io"
+        }
+      ]
+    },
+    {
+      "heading": "Структура лабораторных",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Каждая лабораторная работа состоит из разделов:"
+        },
+        {
+          "type": "text",
+          "content": "• <strong>Tasks</strong> — список задач (чеклист)<br>• <strong>Tutorial</strong> — пошаговый туториал для ознакомления с утилитами<br>• <strong>Homework</strong> — основная часть лабы (самостоятельная работа)<br>• <strong>Report</strong> — как оформить и сдать отчёт<br>• <strong>Links</strong> — полезные ссылки"
+        },
+        {
+          "type": "note",
+          "content": "<strong>Совет:</strong> Рекомендуется сначала прогнать Tutorial, чтобы понять, как работают утилиты, а затем приступать к Homework. Для каждой лабы создаётся отдельный GitHub-репозиторий."
+        }
+      ]
+    }
+  ]
+}

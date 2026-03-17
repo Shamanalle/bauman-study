@@ -1,0 +1,6 @@
+Ivanov IU7-35B 12345 5 4 5 3
+Petrov IU7-35B 12346 4 4 4 4
+Sidorov IU7-36B 12347 3 5 4 5
+Kozlova IU7-35B 12348 5 5 5 5
+Andreev IU7-36B 12349 3 3 4 3
+Fedorova IU7-35B 12350 4 5 5 4

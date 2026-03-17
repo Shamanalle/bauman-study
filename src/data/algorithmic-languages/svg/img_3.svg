@@ -1,0 +1,30 @@
+<svg viewBox="0 0 420 185" width="420" height="185">
+  <defs>
+    <marker id="arrG3" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0, 7 3.5, 0 7" fill="#2da44e"/></marker>
+    <marker id="arrR3" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0, 7 3.5, 0 7" fill="#cf222e"/></marker>
+  </defs>
+
+  <!-- Derived object container -->
+  <rect x="42" y="18" width="332" height="140" rx="10" fill="rgba(88,166,255,0.12)" stroke="#0969da" stroke-width="2"/>
+  <text x="55" y="40" font-size="13" fill="#0969da" font-weight="bold">Derived Object (Производный)</text>
+
+  <!-- Base subobject -->
+  <g>
+    <rect x="62" y="55" width="290" height="48" rx="8" fill="rgba(36,41,47,0.4)" stroke="#8b949e" stroke-width="1.5"/>
+    <text x="75" y="75" font-size="13" fill="#8b949e" font-weight="bold">Base Subobject (Базовый)</text>
+  </g>
+
+  <!-- Construction order -->
+  <g>
+    <text x="75" y="95" font-size="13" fill="#2da44e" font-weight="bold">1. Base()</text>
+    <path d="M 148 88 L 148 118" fill="none" stroke="#2da44e" stroke-width="2" marker-end="url(#arrG3)"/>
+    <text x="55" y="140" font-size="13" fill="#2da44e" font-weight="bold">2. Derived()</text>
+  </g>
+
+  <!-- Destruction order -->
+  <g>
+    <text x="258" y="140" font-size="13" fill="#cf222e" font-weight="bold">1. ~Derived()</text>
+    <path d="M 268 118 L 268 88" fill="none" stroke="#cf222e" stroke-width="2" marker-end="url(#arrR3)"/>
+    <text x="278" y="95" font-size="13" fill="#cf222e" font-weight="bold">2. ~Base()</text>
+  </g>
+</svg>

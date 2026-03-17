@@ -1,0 +1,6 @@
+Tolstoy War_and_Peace AST 1869 1225
+Dostoevsky Crime_and_Punishment Eksmo 1866 671
+Pushkin Eugene_Onegin Prosveshenie 1833 224
+Bulgakov Master_and_Margarita AST 1967 480
+Chekhov The_Cherry_Orchard Drofa 1904 96
+Turgenev Fathers_and_Sons Eksmo 1862 352

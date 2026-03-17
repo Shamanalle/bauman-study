@@ -1,0 +1,13 @@
+<svg viewBox="0 0 440 200" width="440" height="200">
+  <line x1="20" y1="100" x2="400" y2="100" stroke="#d0d7de" stroke-width="1.5"/>
+  <path d="M 40 100 C 59 100 59 45 77 45 C 95 45 95 100 114 100 C 133 100 133 45 151 45 C 169 45 169 100 188 100 C 207 100 207 45 225 45 C 243 45 243 100 262 100 C 281 100 281 45 299 45 C 317 45 317 100 336 100" fill="none" stroke="#0969da" stroke-width="2.8"/>
+  <path d="M 40 100 C 59 100 59 155 77 155 C 95 155 95 100 114 100 C 133 100 133 155 151 155 C 169 155 169 100 188 100 C 207 100 207 155 225 155 C 243 155 243 100 262 100 C 281 100 281 155 299 155 C 317 155 317 100 336 100" fill="none" stroke="#0969da" stroke-width="2" stroke-dasharray="6,4"/>
+  <circle cx="77" cy="45" r="5" fill="#2da44e"/><circle cx="151" cy="45" r="5" fill="#2da44e"/><circle cx="225" cy="45" r="5" fill="#2da44e"/><circle cx="299" cy="45" r="5" fill="#2da44e"/>
+  <text x="77" y="28" font-size="11" fill="#2da44e" font-weight="bold" text-anchor="middle">Пучность</text>
+  <circle cx="40" cy="100" r="5.5" fill="#cf222e"/><circle cx="114" cy="100" r="5.5" fill="#cf222e"/><circle cx="188" cy="100" r="5.5" fill="#cf222e"/><circle cx="262" cy="100" r="5.5" fill="#cf222e"/><circle cx="336" cy="100" r="5.5" fill="#cf222e"/>
+  <text x="114" y="120" font-size="11" fill="#cf222e" font-weight="bold" text-anchor="middle">Узел</text>
+  <line x1="40" y1="168" x2="114" y2="168" stroke="#8b949e" stroke-width="1.5"/><line x1="40" y1="162" x2="40" y2="174" stroke="#8b949e" stroke-width="1.5"/><line x1="114" y1="162" x2="114" y2="174" stroke="#8b949e" stroke-width="1.5"/>
+  <text x="77" y="185" font-size="11" fill="#8b949e" font-weight="bold" text-anchor="middle">λ/2</text>
+  <line x1="114" y1="168" x2="262" y2="168" stroke="#57606a" stroke-width="2"/><line x1="114" y1="162" x2="114" y2="174" stroke="#57606a" stroke-width="2"/><line x1="262" y1="162" x2="262" y2="174" stroke="#57606a" stroke-width="2"/>
+  <text x="188" y="185" font-size="12" fill="#57606a" font-weight="bold" text-anchor="middle">λ</text>
+</svg>

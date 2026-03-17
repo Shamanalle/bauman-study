@@ -1,0 +1,37 @@
+<svg viewBox="0 0 420 160" width="420" height="160">
+  <text x="10" y="22" font-size="13" fill="#24292f" font-weight="bold">Замкнутые классы Поста:</text>
+
+  <!-- 5 class boxes - staggered reveal -->
+  <g>
+    <rect x="10" y="35" width="72" height="48" rx="8" fill="rgba(9,105,218,.1)" stroke="#0969da" stroke-width="1.5"/>
+    <text x="46" y="56" font-size="15" fill="#0969da" font-weight="bold" text-anchor="middle">T₀</text>
+    <text x="46" y="74" font-size="10" fill="#0969da" text-anchor="middle">f(0..0)=0</text>
+  </g>
+  <g>
+    <rect x="90" y="35" width="72" height="48" rx="8" fill="rgba(255,123,114,0.12)" stroke="#cf222e" stroke-width="1.5"/>
+    <text x="126" y="56" font-size="15" fill="#cf222e" font-weight="bold" text-anchor="middle">T₁</text>
+    <text x="126" y="74" font-size="10" fill="#cf222e" text-anchor="middle">f(1..1)=1</text>
+  </g>
+  <g>
+    <rect x="170" y="35" width="72" height="48" rx="8" fill="rgba(46,160,67,0.12)" stroke="#2da44e" stroke-width="1.5"/>
+    <text x="206" y="56" font-size="15" fill="#1a7f37" font-weight="bold" text-anchor="middle">S</text>
+    <text x="206" y="74" font-size="10" fill="#1a7f37" text-anchor="middle">самодв.</text>
+  </g>
+  <g>
+    <rect x="250" y="35" width="72" height="48" rx="8" fill="rgba(139,148,158,0.08)" stroke="#8b949e" stroke-width="1.5"/>
+    <text x="286" y="56" font-size="15" fill="#57606a" font-weight="bold" text-anchor="middle">M</text>
+    <text x="286" y="74" font-size="10" fill="#57606a" text-anchor="middle">монотон.</text>
+  </g>
+  <g>
+    <rect x="330" y="35" width="72" height="48" rx="8" fill="rgba(210,168,255,0.12)" stroke="#8250df" stroke-width="1.5"/>
+    <text x="366" y="56" font-size="15" fill="#8250df" font-weight="bold" text-anchor="middle">L</text>
+    <text x="366" y="74" font-size="10" fill="#8250df" text-anchor="middle">линейные</text>
+  </g>
+
+  <!-- Theorem box -->
+  <g>
+    <rect x="10" y="98" width="395" height="45" rx="6" fill="rgba(139,148,158,0.1)" stroke="#cf222e" stroke-width="1.5" stroke-dasharray="4"/>
+    <text x="22" y="118" font-size="12" fill="#24292f" font-weight="bold">Функциональная полнота системы {f₁, ..., fₖ} ⟺</text>
+    <text x="22" y="134" font-size="11" fill="#cf222e" font-weight="bold">Система не содержится целиком ни в одном из 5 классов (⊄ T₀, ⊄ T₁...)</text>
+  </g>
+</svg>

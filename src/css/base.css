@@ -1,0 +1,149 @@
+/* Base: CSS variables, reset, typography, fonts */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap");
+
+/* Import all modules */
+@import './layout.css';
+@import './cards.css';
+@import './quiz.css';
+@import './dark.css';
+@import './responsive.css';
+
+/* Platform landing page */
+.platform-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px; }
+.platform-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+  overflow: hidden; box-shadow: var(--shadow); transition: all 0.2s;
+}
+.platform-card:hover { transform: translateY(-2px); box-shadow: var(--shadow2); }
+.platform-card-header { padding: 20px 24px 12px; display: flex; align-items: flex-start; gap: 14px; }
+.platform-icon { font-size: 2rem; }
+.platform-card-title { font-size: 1.1rem; font-weight: 700; color: var(--text); }
+.platform-card-subtitle { font-size: 0.8rem; color: var(--text3); margin-top: 2px; }
+.platform-assessments { padding: 0 16px 16px; display: flex; flex-direction: column; gap: 6px; }
+.platform-link {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 14px; border: 1px solid var(--border); border-radius: 10px;
+  text-decoration: none; color: var(--text); font-size: 0.88rem; font-weight: 500;
+  transition: all 0.15s; background: var(--bg);
+}
+.platform-link:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-bg); }
+.platform-arrow { color: var(--text3); transition: 0.15s; }
+.platform-link:hover .platform-arrow { color: var(--accent); transform: translateX(3px); }
+.platform-divider { height: 1px; background: var(--border); margin: 4px 0; }
+.platform-link--special {
+  background: linear-gradient(135deg, var(--accent-bg) 0%, var(--blue-bg) 100%);
+  border-color: var(--accent-border);
+  font-weight: 600;
+}
+.platform-link--special:hover {
+  background: linear-gradient(135deg, var(--accent-bg) 0%, var(--purple-bg) 100%);
+  border-color: var(--accent);
+}
+
+/* Reset */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* KaTeX fixes */
+.katex-mathml { display: none !important; }
+.katex .katex-html { visibility: visible; }
+.katex { font-size: 1em !important; }
+.math-box .katex { font-size: 1.15em !important; }
+.step-math .katex { font-size: 1.05em !important; }
+
+/* Design Tokens */
+:root {
+  --bg: #fafbfc;
+  --surface: #fff;
+  --card: #fff;
+  --border: #e8ecf0;
+  --border2: #d0d7de;
+  --text: #1a1a2e;
+  --text2: #57606a;
+  --text3: #8b949e;
+  --accent: #2da44e;
+  --accent-bg: #dafbe1;
+  --accent-border: #a7dca7;
+  --blue: #0969da;
+  --blue-bg: #ddf4ff;
+  --blue-border: #54aeff;
+  --purple: #8250df;
+  --purple-bg: #fbefff;
+  --purple-border: #c297ff;
+  --orange: #bf8700;
+  --orange-bg: #fff8c5;
+  --orange-border: #d4a72c;
+  --red: #cf222e;
+  --red-bg: #ffebe9;
+  --red-border: #ff8182;
+  --teal: #0a7b83;
+  --teal-bg: #ccfcff;
+  --radius: 12px;
+  --shadow: 0 1px 3px rgba(31, 35, 40, 0.04), 0 8px 24px rgba(66, 74, 83, 0.08);
+  --shadow2: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+/* Typography */
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+code { font-family: "JetBrains Mono", monospace; }
+
+/* Inline code */
+.inline-code, code:not(pre code) {
+  background: rgba(175, 184, 193, 0.2);
+  padding: 0.15em 0.3em;
+  border-radius: 6px;
+  font-size: 92%;
+  color: var(--blue);
+  font-weight: 500;
+}
+
+/* Code blocks */
+.code-block {
+  background: #f6f8fa;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  margin: 12px 0;
+  overflow-x: auto;
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.02);
+}
+.code-block code {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #24292f;
+  background: none;
+  padding: 0;
+}
+
+/* Syntax Highlighting */
+.hljs-comment { color: #6e7681; font-style: italic; }
+.hljs-keyword { color: #cf222e; font-weight: 700; }
+.hljs-string { color: #0a3069; }
+.hljs-meta { color: #953800; font-weight: 600; }
+.hljs-type { color: #8250df; font-weight: 600; }
+.hljs-literal { color: #0550ae; font-weight: 600; }
+.hljs-title { color: #116329; font-weight: 600; }
+
+/* Math box */
+.math-box {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 10px 0;
+  text-align: center;
+  font-size: 1.05rem;
+  overflow-x: auto;
+}
+
+/* App container */
+.app {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 20px 16px 80px;
+}

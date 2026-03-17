@@ -1,0 +1,36 @@
+<svg viewBox="0 0 440 195" width="440" height="195">
+  <defs>
+    <marker id="arr_old" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#8b949e"/></marker>
+    <marker id="arr_new" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#0969da"/></marker>
+    <marker id="arr_x" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#cf222e"/></marker>
+  </defs>
+
+  <!-- Old basis (gray axes) -->
+  <line x1="90" y1="148" x2="250" y2="148" stroke="#8b949e" stroke-width="2" marker-end="url(#arr_old)"/>
+  <line x1="90" y1="148" x2="90" y2="30" stroke="#8b949e" stroke-width="2" marker-end="url(#arr_old)"/>
+  <text x="256" y="154" font-size="12" fill="#8b949e">e₁ (старый)</text>
+  <text x="96" y="36" font-size="12" fill="#8b949e">e₂</text>
+
+  <!-- New basis (blue, rotated) -->
+  <g>
+    
+    <line x1="90" y1="148" x2="210" y2="100" stroke="#0969da" stroke-width="2.5" marker-end="url(#arr_new)"/>
+    <line x1="90" y1="148" x2="48" y2="52" stroke="#0969da" stroke-width="2.5" marker-end="url(#arr_new)"/>
+    <text x="218" y="96" font-size="12" fill="#0969da" font-weight="bold">e₁' (новый)</text>
+    <text x="12" y="58" font-size="12" fill="#0969da" font-weight="bold">e₂'</text>
+  </g>
+
+  <!-- Vector x (red, between the two bases) -->
+  <line x1="90" y1="148" x2="175" y2="45" stroke="#cf222e" stroke-width="3" marker-end="url(#arr_x)"/>
+  <text x="184" y="48" font-size="16" fill="#cf222e" font-weight="bold">x
+    
+  </text>
+
+  <!-- Formula box -->
+  <g>
+    
+    <rect x="260" y="35" width="168" height="68" rx="8" fill="rgba(36,41,47,0.06)" stroke="#d0d7de" stroke-width="1.5"/>
+    <text x="275" y="58" font-size="13" fill="#8b949e">Связь координат:</text>
+    <text x="275" y="82" font-size="16" fill="#2da44e" font-weight="bold" font-family="monospace">x_ст = T · x_нов</text>
+  </g>
+</svg>

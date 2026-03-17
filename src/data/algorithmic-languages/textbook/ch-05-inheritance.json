@@ -1,0 +1,152 @@
+{
+  "num": 5,
+  "title": "Наследование классов",
+  "summary": "Основные понятия наследования. Определение производного класса. Модификаторы наследования (public, protected, private) — таблица доступа. Конструкторы при наследовании: вызов конструктора базового класса, список инициализации. Деструкторы при наследовании: порядок разрушения. Цепное и множественное наследование. Проблема «алмаз смерти», виртуальное наследование. Дублирование полей, конфликт имён. Ключевое слово final.",
+  "sections": [
+    {
+      "heading": "Основные понятия наследования",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "Наследование",
+          "content": "<strong>Наследование</strong> — один из основных принципов ООП. Позволяет определять <strong>новые классы на базе существующих</strong>.<br>• <strong>Базовый класс</strong> (родитель) — класс, от которого наследуются поля и методы<br>• <strong>Производный класс</strong> (наследник) — новый класс, определённый на базе существующего, наследующий поля и методы родителя"
+        },
+        {
+          "type": "text",
+          "content": "В производном классе можно:<br>• <strong>Переопределить</strong> методы базового класса (изменить поведение)<br>• Определить <strong>собственные</strong> поля и методы (расширить функционал)"
+        },
+        {
+          "type": "example",
+          "content": "<pre><code>class Rectangle {\nprotected:\n    float length, width;\npublic:\n    Rectangle() : length(0), width(0) {}\n    float countArea() { return length * width; }\n};\n\nclass Parallelepiped : public Rectangle {\n    float height;\npublic:\n    Parallelepiped() : height(0) {}\n\n    // Переопределённый метод\n    float countArea() {\n        return 2 * (length*width + length*height + width*height);\n    }\n    // Новый метод\n    float countVolume() {\n        return Rectangle::countArea() * height; // Вызов метода базового класса\n    }\n};</code></pre>В <code>countVolume()</code> используется <code>Rectangle::countArea()</code> — <strong>явный вызов</strong> метода базового класса через оператор разрешения области видимости."
+        }
+      ]
+    },
+    {
+      "heading": "Модификаторы наследования",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Перед именем базового класса указывается <strong>тип наследования</strong> (<code>public</code>, <code>protected</code>, <code>private</code>). Он определяет, как изменяются модификаторы доступа наследуемых членов:"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Доступ в базовом →",
+            "public-наследование",
+            "protected-наследование",
+            "private-наследование"
+          ],
+          "rows": [
+            [
+              "public",
+              "public",
+              "protected",
+              "private"
+            ],
+            [
+              "protected",
+              "protected",
+              "protected",
+              "private"
+            ],
+            [
+              "private",
+              "недоступен",
+              "недоступен",
+              "недоступен"
+            ]
+          ]
+        },
+        {
+          "type": "note",
+          "content": "<strong>По умолчанию:</strong> для <code>class</code> — <code>private</code>-наследование, для <code>struct</code> — <code>public</code>-наследование.<br><br><strong>Рекомендация:</strong> используйте <code>public</code>-наследование и <code>protected</code>-поля, если планируете дальнейшее наследование. Не используйте <code>private/protected</code>-наследование без веских причин."
+        },
+        {
+          "type": "text",
+          "content": "<strong>Важно:</strong> <code>private</code>-члены родителя <strong>наследуются</strong>, но доступ к ним в наследнике возможен <strong>только через методы</strong> родительского класса. Они не «исчезают», а просто скрыты."
+        }
+      ]
+    },
+    {
+      "heading": "Конструкторы при наследовании",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Конструктор производного класса <strong>всегда</strong> вызывает конструктор базового класса (явно или неявно). Если явный вызов не указан — вызывается <strong>конструктор по умолчанию</strong> (без параметров). Если такого нет — <strong>ошибка компиляции</strong>."
+        },
+        {
+          "type": "example",
+          "content": "<pre><code>class A {\npublic:\n    A(int x) { cout &lt;&lt; \"A2\" &lt;&lt; endl; }\n};\n\nclass B : public A {\npublic:\n    B() : A(4) // Явный вызов конструктора базового с параметром\n    {\n        cout &lt;&lt; \"B\" &lt;&lt; endl;\n    }\n};\n\n// Множественное наследование:\nclass D : public A, public C {\npublic:\n    D() : A(3), C(5) // Порядок — как в списке базовых классов\n    {\n        cout &lt;&lt; \"D\" &lt;&lt; endl;\n    }\n};</code></pre>"
+        },
+        {
+          "type": "note",
+          "content": "<strong>Важно!</strong> Наследники <strong>не могут</strong> инициализировать наследуемые поля в списке инициализации напрямую. Для этого нужно вызывать <strong>конструктор базового класса</strong> с параметрами. Присваивание в <strong>теле</strong> конструктора допустимо, но это уже не инициализация."
+        }
+      ]
+    },
+    {
+      "heading": "Деструкторы при наследовании",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Деструктор производного класса <strong>автоматически</strong> (неявно) вызывает деструкторы базовых классов <strong>после</strong> выполнения своего тела.<br><br><strong>Порядок разрушения обратен порядку создания.</strong>"
+        },
+        {
+          "type": "example",
+          "content": "<pre><code>class A { public: ~A() { cout &lt;&lt; \"A\" &lt;&lt; endl; } };\nclass B { public: ~B() { cout &lt;&lt; \"B\" &lt;&lt; endl; } };\nclass C : public A, public B {\npublic:\n    ~C() { cout &lt;&lt; \"C\" &lt;&lt; endl; }\n};\n\nint main() {\n    { C c1; }\n    // Вывод:\n    // C   (деструктор C)\n    // B   (деструктор B — обратный порядок)\n    // A   (деструктор A)\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "heading": "Цепное наследование",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "<strong>Цепное наследование</strong> — наследование от класса, который сам является наследником:<br><pre><code>class A { protected: float a; };\nclass B : public A { protected: float b; };\nclass C : public B { protected: float c; };\n// C имеет поля a, b, c</code></pre>Класс <code>C</code> наследует все поля и методы из <code>B</code> (включая унаследованные от <code>A</code>)."
+        }
+      ]
+    },
+    {
+      "heading": "Множественное наследование",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "Множественное наследование",
+          "content": "Класс может наследоваться от <strong>нескольких</strong> базовых классов одновременно:<br><pre><code>class C : public A, public B { ... };</code></pre>Не забывайте указывать тип наследования <strong>для каждого</strong> базового класса!"
+        },
+        {
+          "type": "text",
+          "content": "<strong>Проблемы множественного наследования:</strong><br>1. <strong>Конфликт имён</strong> — если в базовых классах есть методы с одинаковыми именами, нужно явно указывать класс: <code>Second::print()</code><br>2. <strong>Дублирование сущностей</strong> — если базовые классы наследуются от одного предка"
+        }
+      ]
+    },
+    {
+      "heading": "Проблема «алмаз смерти» и виртуальное наследование",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Классическая проблема — <strong>«алмаз смерти»</strong> (diamond problem):<br><pre><code>class X { public: int k; };\nclass Y : public X { };\nclass Z : public X { };\nclass A : public Y, public Z { };\n\nA a;\na.k = 10; // ОШИБКА! Неоднозначность — какой k?</code></pre>В объекте <code>A</code> существуют <strong>две копии</strong> поля <code>k</code> (одна через <code>Y</code>, другая через <code>Z</code>)."
+        },
+        {
+          "type": "definition",
+          "term": "Виртуальное наследование",
+          "content": "Для устранения дублирования используется ключевое слово <code>virtual</code> при наследовании:<br><pre><code>class Y : public virtual X { };\nclass Z : public virtual X { };\nclass A : public Y, public Z { };\n\nA a;\na.k = 10; // OK — k существует в единственном экземпляре</code></pre><strong>Виртуальный класс</strong> включается в потомки <strong>ссылкой</strong>, а не копией, избегая дублирования."
+        },
+        {
+          "type": "note",
+          "content": "<strong>Особенность:</strong> при виртуальном наследовании конструктор виртуального базового класса <code>X</code> вызывается <strong>конструктором самого дальнего потомка</strong> <code>A</code> (явно или конструктор по умолчанию), а <strong>не</strong> конструкторами <code>Y</code> и <code>Z</code>:<br><pre><code>A(int k) : X(k), Y(k), Z(k) { ... }\n// Вызывается X(k) один раз, в Y и Z вызов X пропускается</code></pre>"
+        }
+      ]
+    },
+    {
+      "heading": "Запрет наследования (final)",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "final",
+          "content": "Спецификатор <code>final</code> запрещает наследование от класса:<br><pre><code>class Fourth final : public Second, public Third {\n    // ...\n};\n\n// class Fifth : public Fourth { }; // ОШИБКА: Fourth — final</code></pre>"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "num": 8,
+  "title": "GTest — тестирование C++ проектов",
+  "summary": "Зачем нужны автотесты. Google Test (GTest) — фреймворк тестирования для C++. Установка GTest через git submodule. Написание тестов: TEST(), EXPECT_EQ, ASSERT_EQ. Макросы сравнения. Интеграция GTest в CMake-проект. Запуск тестов. Структура тестового файла.",
+  "sections": [
+    {
+      "heading": "Зачем нужны автоматические тесты",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Ручное тестирование — ненадёжно и медленно. <strong>Автоматические тесты</strong> — код, который проверяет другой код. Запускаются одной командой, результат — ✅ или ❌."
+        },
+        {
+          "type": "text",
+          "content": "<strong>Виды тестов:</strong><br>• <strong>Unit-тесты</strong> — проверяют отдельные функции/классы<br>• <strong>Интеграционные</strong> — проверяют взаимодействие компонентов<br>• <strong>End-to-end</strong> — проверяют систему целиком"
+        },
+        {
+          "type": "note",
+          "content": "Тесты — не просто «хорошая практика». Они позволяют:<br>• Ловить баги на ранней стадии<br>• Безопасно рефакторить код<br>• Документировать ожидаемое поведение<br>• Автоматически проверять каждый push (CI)"
+        }
+      ]
+    },
+    {
+      "heading": "Google Test (GTest)",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "GTest",
+          "content": "<strong>Google Test</strong> — наиболее популярный фреймворк для unit-тестирования C++. Разработан Google, используется в Chromium, LLVM и тысячах проектов.<br><br>Репозиторий: github.com/google/googletest"
+        },
+        {
+          "type": "text",
+          "content": "<strong>Подключение через git submodule:</strong><br><pre><code># Добавить GTest как подмодуль\nmkdir third-party\ngit submodule add https://github.com/google/googletest third-party/gtest\ncd third-party/gtest && git checkout release-1.8.1 && cd ../..\ngit add third-party/gtest\ngit commit -m \"added gtest framework\"</code></pre>"
+        },
+        {
+          "type": "definition",
+          "term": "Git Submodule",
+          "content": "Механизм Git для включения одного репозитория внутрь другого. Подмодуль — это ссылка на конкретный коммит внешнего репозитория. Информация хранится в файле <code>.gitmodules</code>."
+        }
+      ]
+    },
+    {
+      "heading": "Написание тестов",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Тест-файл — обычный .cpp файл, подключающий <code>gtest/gtest.h</code>."
+        },
+        {
+          "type": "example",
+          "content": "<strong>Пример тестового файла (tests/test1.cpp):</strong><br><pre><code>#include &lt;gtest/gtest.h&gt;\n#include &lt;print.hpp&gt;\n#include &lt;fstream&gt;\n\n// Тест: print пишет в файл\nTEST(Print, InFileStream) {\n  std::string filepath = \"file.txt\";\n  std::string text = \"hello\";\n\n  std::ofstream out{filepath};\n  print(text, out);\n  out.close();\n\n  std::string result;\n  std::ifstream in{filepath};\n  in >> result;\n\n  EXPECT_EQ(result, text);\n}\n\n// Тест: сложение\nTEST(Math, Addition) {\n  EXPECT_EQ(2 + 2, 4);\n  EXPECT_EQ(0 + 0, 0);\n  EXPECT_EQ(-1 + 1, 0);\n}</code></pre>"
+        },
+        {
+          "type": "definition",
+          "term": "TEST(TestSuite, TestName)",
+          "content": "Макрос для объявления теста. Первый аргумент — имя группы (test suite), второй — имя конкретного теста. Имена произвольные, но должны быть осмысленными."
+        }
+      ]
+    },
+    {
+      "heading": "Макросы утверждений",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "<strong>EXPECT_* vs ASSERT_*:</strong><br>• <code>EXPECT_*</code> — при неудаче тест продолжается (non-fatal)<br>• <code>ASSERT_*</code> — при неудаче тест прерывается (fatal)"
+        },
+        {
+          "type": "text",
+          "content": "<strong>Основные макросы:</strong><br>• <code>EXPECT_EQ(a, b)</code> — a == b<br>• <code>EXPECT_NE(a, b)</code> — a != b<br>• <code>EXPECT_LT(a, b)</code> — a &lt; b<br>• <code>EXPECT_GT(a, b)</code> — a &gt; b<br>• <code>EXPECT_LE(a, b)</code> — a &lt;= b<br>• <code>EXPECT_GE(a, b)</code> — a &gt;= b<br>• <code>EXPECT_TRUE(expr)</code> — выражение истинно<br>• <code>EXPECT_FALSE(expr)</code> — выражение ложно<br>• <code>EXPECT_THROW(stmt, type)</code> — stmt выбрасывает исключение типа type"
+        }
+      ]
+    },
+    {
+      "heading": "Интеграция GTest в CMake",
+      "blocks": [
+        {
+          "type": "example",
+          "content": "<strong>Добавление в CMakeLists.txt:</strong><br><pre><code># Опция для включения тестов\noption(BUILD_TESTS \"Build tests\" OFF)\n\nif(BUILD_TESTS)\n  enable_testing()\n  add_subdirectory(third-party/gtest)\n\n  # Собрать все тестовые файлы\n  file(GLOB ${PROJECT_NAME}_TEST_SOURCES tests/*.cpp)\n\n  # Создать исполняемый файл тестов\n  add_executable(check ${${PROJECT_NAME}_TEST_SOURCES})\n\n  # Подключить GTest и нашу библиотеку\n  target_link_libraries(check ${PROJECT_NAME} gtest_main)\n\n  # Зарегистрировать как тест CMake\n  add_test(NAME check COMMAND check)\nendif()</code></pre>"
+        },
+        {
+          "type": "example",
+          "content": "<strong>Сборка и запуск тестов:</strong><br><pre><code># Собрать с тестами\ncmake -B build -DBUILD_TESTS=ON\ncmake --build build\n\n# Запуск тестов\n./build/check                        # Напрямую\ncmake --build build --target test    # Через CMake\n\n# Подробный вывод\nctest --test-dir build --verbose</code></pre>"
+        },
+        {
+          "type": "note",
+          "content": "<code>gtest_main</code> содержит функцию <code>main()</code> для запуска всех тестов. Подключая <code>gtest_main</code>, не нужно писать свой main — GTest сам найдёт и запустит все <code>TEST()</code>."
+        }
+      ]
+    }
+  ]
+}

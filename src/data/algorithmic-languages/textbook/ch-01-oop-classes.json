@@ -1,0 +1,222 @@
+{
+  "num": 1,
+  "title": "Введение в ООП. Классы и объекты",
+  "summary": "Историческая справка о C++. Основные принципы ООП: инкапсуляция, наследование, полиморфизм. Объявление классов (class, struct, union). Объекты и обращение к членам класса. Модификаторы доступа: public, private, protected. Определение методов внутри и за пределами класса. Указатель this. Методы с модификатором const и поля mutable. Отличие class от struct. Геттеры и сеттеры. Новшества C++11/14/17/20.",
+  "sections": [
+    {
+      "heading": "Историческая справка",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Язык <strong>C++</strong> появился в 80-х годах и первоначально назывался «Си с классами». Название <code>C++</code> появилось в 1983 году (в Си существует операция <code>++</code> — инкремент). Одним из создателей языка является <strong>Бьёрн Страуструп</strong>.<br><br>C++ дополняет язык Си объектно-ориентированными средствами. Синтаксис C++ оказался настолько удачным, что многие языки (Java, C#, PHP, JavaScript) унаследовали его основные элементы."
+        },
+        {
+          "type": "text",
+          "content": "<strong>Стандарты языка:</strong><br>• ISO/IEC 14882:1998 — первый стандарт<br>• ISO/IEC 14882:2003 — исправления<br>• C++ TR1 (2005) — библиотека расширений<br>• <strong>C++11</strong> — революционное обновление (auto, constexpr, nullptr, range-based for, rvalue-ссылки, move-семантика)<br>• <strong>C++14</strong> — улучшения (двоичные литералы: <code>0b11100011</code>)<br>• <strong>C++17</strong><br>• <strong>C++20</strong><br>• <strong>C++23</strong>"
+        }
+      ]
+    },
+    {
+      "heading": "Новшества C++11 и далее",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Перед изучением ООП полезно ознакомиться с ключевыми нововведениями, которые активно используются в современном C++."
+        },
+        {
+          "type": "definition",
+          "term": "auto",
+          "content": "Если тип переменной однозначно определяется инициализатором, можно использовать <code>auto</code> вместо явного указания типа:<br><pre><code>auto a = 10;      // int\nauto x = 10.5;    // double</code></pre>"
+        },
+        {
+          "type": "definition",
+          "term": "constexpr",
+          "content": "Ключевое слово <code>constexpr</code> (C++11) гарантирует, что функция или конструктор возвращает <strong>константу времени компиляции</strong>:<br><pre><code>constexpr int GiveFive() { return 5; }\nint some_value[GiveFive() + 7]; // OK: размер массива известен на этапе компиляции</code></pre>"
+        },
+        {
+          "type": "definition",
+          "term": "nullptr",
+          "content": "Новый способ задания недействительного указателя (C++11), заменяющий <code>NULL</code>:<br><pre><code>int *p = nullptr;</code></pre>"
+        },
+        {
+          "type": "definition",
+          "term": "Range-based for",
+          "content": "Цикл <code>for</code> по набору значений (C++11):<br><pre><code>int m[] = { 1, 4, 10, 20, 8 };\nfor (int k : m)          // Для каждого k в массиве m\n    cout &lt;&lt; endl &lt;&lt; k;   // Печатается весь массив</code></pre>"
+        },
+        {
+          "type": "definition",
+          "term": "Правосторонняя ссылка (rvalue reference)",
+          "content": "Обозначается <code>T&&</code> (C++11). Позволяет ссылаться на <strong>временные объекты</strong>, что лежит в основе <em>семантики перемещения</em> (подробно — в главе 2)."
+        },
+        {
+          "type": "definition",
+          "term": "Пространство имён (namespace)",
+          "content": "Группа имён, в которой имена не совпадают:<br><pre><code>namespace name {\n    int a;\n}\nname::a = 10;          // обращение через ::\nusing namespace name;  // или подключаем пространство\na = 10;                // и обращаемся напрямую</code></pre>Пространства имён могут быть вложенными: <code>name1::name2::name3::a = 10;</code>"
+        },
+        {
+          "type": "note",
+          "content": "Заголовочные файлы C++ пишутся <strong>без расширения <code>.h</code></strong>: старый стиль — <code>stdio.h</code>, новый — <code>cstdio</code>."
+        }
+      ]
+    },
+    {
+      "heading": "Понятие об ООП",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Основная идеология <strong>объектно-ориентированного программирования</strong> (ООП) — объединение в один объект набора свойств (<em>поля</em>, атрибуты) и поведения (<em>методы</em>, функции)."
+        },
+        {
+          "type": "definition",
+          "term": "Класс",
+          "content": "<strong>Класс</strong> — тип данных, определяемый программистом, включающий <em>атрибуты</em> (поля класса) и <em>методы</em> (функции) для обработки этих данных. Атрибуты и методы вместе называются <strong>членами класса</strong>."
+        },
+        {
+          "type": "definition",
+          "term": "Объект (экземпляр)",
+          "content": "<strong>Объект</strong> (экземпляр класса) — переменная типа класса. Каждый объект имеет в оперативной памяти <strong>свои копии полей</strong> класса."
+        },
+        {
+          "type": "text",
+          "content": "<strong>Основные принципы ООП:</strong><br>• <strong>Инкапсуляция</strong> — объединение в одном типе данных и методов для их обработки<br>• <strong>Наследование</strong> — объявление новых классов на базе существующих<br>• <strong>Полиморфизм</strong> — переопределение методов в классах-наследниках"
+        }
+      ]
+    },
+    {
+      "heading": "Объявление классов",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Общий формат объявления класса:<br><pre><code>&lt;Ключевое_слово&gt; &lt;Имя_класса&gt;\n{\n    &lt;список компонент&gt;\n};</code></pre>Ключевые слова: <code>class</code>, <code>struct</code>, <code>union</code>."
+        },
+        {
+          "type": "text",
+          "content": "По сути, <strong>класс</strong> — это структура, в которую введены методы для обработки полей.<br><br><strong>Создание объектов:</strong><br><pre><code>&lt;Имя_класса&gt; &lt;Имя_объекта1&gt;, ..., &lt;Имя_объектаN&gt;;</code></pre>"
+        },
+        {
+          "type": "example",
+          "content": "<strong>Пример: простой класс</strong><br><pre><code>struct A {\n    int i;\n    void print() { printf(\"i=%d\", i); }\n};\n\nA a1;               // создание объекта\nA *pA = &a1;        // указатель на объект\na1.i = 10;          // обращение через объект и «.»\na1.print();\npA-&gt;i = 10;         // обращение через указатель и «-&gt;»\npA-&gt;print();</code></pre>"
+        },
+        {
+          "type": "note",
+          "content": "Обращение к полям и методам внутри методов класса — <strong>просто по имени</strong>. За пределами класса — через имя объекта и операцию <code>.</code> или через указатель и операцию <code>-></code>."
+        }
+      ]
+    },
+    {
+      "heading": "Модификаторы доступа",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Свойство <strong>доступности</strong> определяет возможность обращения к полям и методам за пределами класса (через имя объекта, через указатель или в производном классе)."
+        },
+        {
+          "type": "definition",
+          "term": "Модификаторы доступа",
+          "content": "Существуют три статуса доступа:<br>• <code>public</code> — полностью доступны как в классе, так и за пределами класса<br>• <code>private</code> — доступны только в методах <strong>своего</strong> класса и дружественным функциям/классам<br>• <code>protected</code> — доступны в своём классе, в <strong>производных</strong> классах и дружественным функциям/классам<br><br>Модификатор распространяется на <strong>все</strong> члены класса, объявленные после него."
+        },
+        {
+          "type": "text",
+          "content": "<strong>Доступ по умолчанию:</strong><br>• <code>struct</code> → по умолчанию <code>public</code><br>• <code>class</code> → по умолчанию <code>private</code><br>• <code>union</code> → по умолчанию <code>public</code>, но все поля разделяют одну область памяти<br><br>Статус доступа можно <strong>изменить</strong> с помощью соответствующих модификаторов:"
+        },
+        {
+          "type": "example",
+          "content": "<pre><code>struct A\n{\n    // ... Статус доступа public (по умолчанию)\nprivate:\n    // ... Статус доступа private\nprotected:\n    // ... Статус доступа protected\n};\n\nclass B\n{\n    // ... Статус доступа private (по умолчанию)\npublic:\n    // ... Статус доступа public\nprotected:\n    // ... Статус доступа protected\n};</code></pre>"
+        },
+        {
+          "type": "note",
+          "content": "<strong>Важно:</strong> контроль доступа обеспечивается на уровне <em>класса</em>, а не объекта. Это значит, что внутри метода, вызванного конкретным экземпляром, можно получить доступ к приватным полям <strong>других</strong> экземпляров того же класса (например, в конструкторе копирования)."
+        }
+      ]
+    },
+    {
+      "heading": "Определение методов",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Методы класса могут быть определены двумя способами:<br>1. <strong>Внутри класса</strong> — метод автоматически становится <em>подставляемым</em> (inline).<br>2. <strong>За пределами класса</strong> — используется оператор разрешения области видимости <code>::</code>."
+        },
+        {
+          "type": "example",
+          "content": "<pre><code>struct Complex {\n    double real, image;\n\n    // Определение метода внутри класса (inline)\n    void define(double re = 0.0, double im = 0.0)\n    {\n        real = re; image = im;\n    }\n\n    void print(); // Только описание (прототип)\n};\n\n// Определение метода за пределами класса\nvoid Complex::print()\n{\n    cout &lt;&lt; \"real=\" &lt;&lt; real &lt;&lt; \"  image=\" &lt;&lt; image &lt;&lt; endl;\n}</code></pre>"
+        },
+        {
+          "type": "text",
+          "content": "Возможна <strong>перегрузка методов</strong>: несколько методов с одним именем, но разными параметрами.<br><br>Чаще всего класс объявляется в <strong>двух файлах</strong>:<br>• <code>.h</code> — заголовочный файл (описание класса с прототипами методов)<br>• <code>.cpp</code> — файл реализации (определения методов за пределами класса)<br><br>Для использования класса в другом файле проекта нужно подключить заголовочный файл."
+        },
+        {
+          "type": "note",
+          "content": "Допустимо объявление полей класса с инициализацией (C++11):<br><pre><code>class point {\n    int x = -10;        // инициализация поля\n    mutable int y = -10;\npublic:\n    void print() const;\n};</code></pre>Инициализация выполняется <strong>до</strong> выполнения конструктора."
+        }
+      ]
+    },
+    {
+      "heading": "Методы с модификатором const и поля mutable",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "const-метод",
+          "content": "Метод класса с модификатором <code>const</code> <strong>не может изменять поля</strong> класса, кроме полей с модификатором <code>mutable</code>:<br><pre><code>void point::print() const\n{\n    cout &lt;&lt; \"\\nx=\" &lt;&lt; x &lt;&lt; \" y=\" &lt;&lt; y;\n    y = 10; // OK — y объявлен как mutable\n    // x = 5; // ОШИБКА — x не mutable\n}</code></pre>"
+        },
+        {
+          "type": "definition",
+          "term": "mutable",
+          "content": "Поле с модификатором <code>mutable</code> может быть изменено даже в <code>const</code>-методах. Используется для полей, которые не влияют на «логическое состояние» объекта (например, кеши, счётчики обращений)."
+        }
+      ]
+    },
+    {
+      "heading": "Указатель this",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "Указатель this",
+          "content": "Любой <strong>нестатический</strong> метод и конструктор/деструктор неявно получает указатель <code>this</code> — указатель на объект класса, для которого вызывается метод."
+        },
+        {
+          "type": "text",
+          "content": "<strong>Основные случаи использования <code>this</code>:</strong><br><br><strong>1. Разрешение конфликта имён</strong> — когда имя параметра совпадает с именем поля:<br><pre><code>class point {\n    int x, y;\npublic:\n    point(int x, int y)\n    {\n        this-&gt;x = x;\n        this-&gt;y = y;\n    }\n};</code></pre>"
+        },
+        {
+          "type": "text",
+          "content": "<strong>2. Возврат ссылки на текущий объект</strong> — для поддержки «цепочек» вызовов (например, <code>a = b = c;</code>):<br><pre><code>Matrix& Matrix::operator=(const Matrix &matrix)\n{\n    if (this != &matrix) { /* ... копирование ... */ }\n    return *this;\n}</code></pre>"
+        },
+        {
+          "type": "example",
+          "content": "<strong>3. Передача адреса текущего объекта</strong> — например, в связном списке:<br><pre><code>class List {\n    int x;\n    List *pNext;\npublic:\n    List(int x) { this-&gt;x = x; }\n\n    void add(List *&pF) // Добавить элемент в начало списка\n    {\n        pNext = pF;\n        pF = this; // Текущий элемент становится первым\n    }\n\n    static void print(List *pF)\n    {\n        List *pi = pF;\n        while (pi) {\n            cout &lt;&lt; endl &lt;&lt; pi-&gt;x;\n            pi = pi-&gt;pNext;\n        }\n    }\n};</code></pre>"
+        }
+      ]
+    },
+    {
+      "heading": "Отличие class от struct",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Фактическое отличие <code>class</code> от <code>struct</code> заключается в <strong>модификаторе доступа по умолчанию</strong>:<br>• Для <code>class</code> — <code>private</code><br>• Для <code>struct</code> — <code>public</code><br><br><strong>Рекомендация:</strong> используйте <code>struct</code>, когда нужно просто «объединить несколько переменных в одну» (данные без сложного поведения). Используйте <code>class</code>, когда помимо объединения данных необходимо заложить в объект <strong>функционал</strong> (конструкторы, деструкторы, методы с инкапсуляцией)."
+        },
+        {
+          "type": "note",
+          "content": "С точки зрения компилятора <code>struct</code> и <code>class</code> — практически одно и то же. Формально можно добавить методы и в структуру, но идеологически это неверно."
+        }
+      ]
+    },
+    {
+      "heading": "Геттеры и сеттеры",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "К приватным полям класса можно обеспечить контролируемый доступ с помощью публичных методов:"
+        },
+        {
+          "type": "definition",
+          "term": "Геттеры и сеттеры",
+          "content": "• <strong>Геттер</strong> (getter) — метод для <em>получения</em> значения приватного поля<br>• <strong>Сеттер</strong> (setter) — метод для <em>задания</em> значения приватного поля<br><br>В сеттер можно включить <strong>проверки входных данных</strong>, что обеспечивает безопасный доступ к полям."
+        },
+        {
+          "type": "example",
+          "content": "<pre><code>class Matrix {\nprivate:\n    int n, m;\n    float** values;\npublic:\n    int getRows()    { return n; }\n    int getColumns() { return m; }\n\n    void setRows(int n)    { this-&gt;n = n; }\n    void setColumns(int m) { this-&gt;m = m; }\n\n    // ... конструкторы, деструктор, другие методы ...\n};</code></pre>Программист вместо прямого обращения к полям использует геттеры для получения значений и сеттеры для изменения их значений."
+        }
+      ]
+    }
+  ]
+}
