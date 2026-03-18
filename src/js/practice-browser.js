@@ -220,14 +220,50 @@ function renderMethods(el, section) {
   </div>`;
 }
 
+/* ─── Extract unique topics from questions ─── */
+function extractTopics(questions) {
+  const topicMap = new Map();
+  for (const q of questions) {
+    const type = q.type || '';
+    const parts = type.split('·').map(s => s.trim());
+    const topic = parts.length > 1 ? parts[parts.length - 1] : '';
+    if (topic) {
+      if (!topicMap.has(topic)) topicMap.set(topic, 0);
+      topicMap.set(topic, topicMap.get(topic) + 1);
+    }
+  }
+  return topicMap;
+}
+
+function getQuestionTopic(q) {
+  const type = q.type || '';
+  const parts = type.split('·').map(s => s.trim());
+  return parts.length > 1 ? parts[parts.length - 1] : '';
+}
+
 /* ─── Tab 3: Problem Cards with Toggle Reveal ─── */
 function renderProblems(el, section) {
-  el.innerHTML = `<div class="prac-problem-list">
+  const topics = extractTopics(section.questions);
+  const hasTopics = topics.size > 1;
+
+  el.innerHTML = `${hasTopics ? `
+    <div class="prac-topic-filters" id="pracTopicFilters">
+      <button class="prac-topic-pill active" data-topic="__all">
+        Все <span class="prac-topic-count">${section.questions.length}</span>
+      </button>
+      ${[...topics.entries()].map(([topic, count]) => `
+        <button class="prac-topic-pill" data-topic="${topic}">
+          ${topic} <span class="prac-topic-count">${count}</span>
+        </button>
+      `).join('')}
+    </div>
+  ` : ''}
+  <div class="prac-problem-list" id="pracProblemList">
     ${section.questions.map(q => {
       const hasSolution = (q.steps && q.steps.length) || q.formula;
       const hasHint = q.tldr || q.keyIdea;
       return `
-      <div class="prac-problem" id="prob-${q.id}">
+      <div class="prac-problem" id="prob-${q.id}" data-topic="${getQuestionTopic(q)}">
         <div class="prac-problem-head">
           <div class="prac-problem-num">${q.id}</div>
           <div class="prac-problem-info">
@@ -277,6 +313,33 @@ function renderProblems(el, section) {
       </div>`;
     }).join('')}
   </div>`;
+
+  // Topic filter click handler
+  if (hasTopics) {
+    const filtersEl = el.querySelector('#pracTopicFilters');
+    if (filtersEl) {
+      filtersEl.addEventListener('click', (e) => {
+        const pill = e.target.closest('.prac-topic-pill');
+        if (!pill) return;
+        const topic = pill.dataset.topic;
+        
+        // Update active state
+        filtersEl.querySelectorAll('.prac-topic-pill').forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        
+        // Filter problems
+        const problems = el.querySelectorAll('.prac-problem');
+        problems.forEach(p => {
+          if (topic === '__all') {
+            p.style.display = '';
+          } else {
+            const probTopic = p.getAttribute('data-topic');
+            p.style.display = probTopic === topic ? '' : 'none';
+          }
+        });
+      });
+    }
+  }
 }
 
 /* ─── Tab 4: Exam Tickets with Per-Task Solutions ─── */
