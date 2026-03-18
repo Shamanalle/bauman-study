@@ -48,6 +48,12 @@
           "title": "Простые действительные корни",
           "content": "Решить \\(y'' - 3y' + 2y = 0\\).",
           "solution": "Характеристическое уравнение: \\(\\lambda^2 - 3\\lambda + 2 = 0\\).<br>\\((\\lambda - 1)(\\lambda - 2) = 0 \\implies \\lambda_1 = 1, \\lambda_2 = 2\\).<br>Общее решение: \\(y = C_1 e^x + C_2 e^{2x}\\)."
+        },
+        {
+          "type": "example",
+          "title": "Комплексные корни кратности > 1",
+          "content": "Решить \\(y^{(4)} + 2y'' + y = 0\\).",
+          "solution": "Характеристическое уравнение: \\(\\lambda^4 + 2\\lambda^2 + 1 = 0\\).<br>\\((\\lambda^2 + 1)^2 = 0 \\implies \\lambda = \\pm i\\) (кратность 2 каждый).<br><br>Для комплексных корней \\(\\alpha \\pm \\beta i\\) кратности \\(k\\) ФСР содержит:<br>\\(e^{\\alpha x}\\cos\\beta x,\\; xe^{\\alpha x}\\cos\\beta x,\\; \\ldots,\\; x^{k-1}e^{\\alpha x}\\cos\\beta x\\) и аналогично с sin.<br><br>Здесь \\(\\alpha = 0, \\beta = 1, k = 2\\):<br>$$y = (C_1 + C_2 x)\\cos x + (C_3 + C_4 x)\\sin x$$"
         }
       ]
     },
@@ -97,6 +103,16 @@
         {
           "type": "text",
           "content": "<strong>Вывод для \\(n = 2\\).</strong> Уравнение \\(y'' + a_1 y' + a_2 y = b(x)\\), \\(y = C_1 y_1 + C_2 y_2\\).\n\nИз системы \\(C_1'y_1 + C_2'y_2 = 0\\), \\(C_1'y_1' + C_2'y_2' = b\\):\n$$y' = C_1 y_1' + C_2 y_2' \\quad (\\text{т.к. } C_1'y_1 + C_2'y_2 = 0)$$\n$$y'' = C_1'y_1' + C_2'y_2' + C_1 y_1'' + C_2 y_2'' = b + C_1 y_1'' + C_2 y_2''$$\nПодставляя: \\(L[y] = b + C_1 L[y_1] + C_2 L[y_2] = b + 0 = b\\). \\(\\)"
+        },
+        {
+          "type": "text",
+          "content": "<strong>Алгоритм метода вариации постоянных</strong> (для \\(y'' + py' + qy = f(x)\\)):<br>1. Решить ЛОДУ: \\(y_{\\text{одн}} = C_1 y_1 + C_2 y_2\\).<br>2. Заменить \\(C_i \\to C_i(x)\\): \\(y = C_1(x)y_1 + C_2(x)y_2\\).<br>3. Решить систему:$$\\begin{cases} C_1'y_1 + C_2'y_2 = 0 \\\\ C_1'y_1' + C_2'y_2' = f(x) \\end{cases}$$4. Найти \\(C_1(x), C_2(x)\\) интегрированием."
+        },
+        {
+          "type": "example",
+          "title": "Метод Лагранжа (вариация постоянных)",
+          "content": "Решить \\(y'' + y = 1/\\cos x\\).",
+          "solution": "1. ЛОДУ: \\(y'' + y = 0 \\implies y_{\\text{одн}} = C_1\\cos x + C_2\\sin x\\).<br><br>2. Система для \\(C_1'(x), C_2'(x)\\):$$\\begin{cases} C_1'\\cos x + C_2'\\sin x = 0 \\\\ -C_1'\\sin x + C_2'\\cos x = 1/\\cos x \\end{cases}$$<br>3. Из первого: \\(C_1' = -C_2'\\tan x\\). Подставляем во второе:<br>\\(C_2'(\\sin x \\tan x + \\cos x) = 1/\\cos x\\).<br>\\(C_2' \\cdot \\frac{\\sin^2 x + \\cos^2 x}{\\cos x} = \\frac{1}{\\cos x}\\).<br>\\(C_2' = 1 \\implies C_2 = x\\).<br>\\(C_1' = -\\tan x \\implies C_1 = \\ln|\\cos x|\\).<br><br>Ответ: \\(y = C_1\\cos x + C_2\\sin x + \\cos x \\cdot \\ln|\\cos x| + x\\sin x\\)."
         }
       ]
     },
@@ -117,6 +133,22 @@
           "title": "Метод неопределённых коэффициентов",
           "content": "Найти частное решение \\(y'' - 2y' + y = x + 2e^x\\).",
           "solution": "Характеристическое: \\(\\lambda^2 - 2\\lambda + 1 = 0\\), корень \\(\\lambda = 1\\) кратности 2.\n\n<strong>1)</strong> Правая часть \\(b_1 = x\\): \\(\\alpha = \\beta = 0\\), не корень, \\(r = 0\\).\n\\(y_{10} = ax + b\\). Подстановка: \\(-2a + ax + b = x \\Rightarrow a = 1,\\; b = 2\\). \\(y_{10} = x + 2\\).\n\n<strong>2)</strong> Правая часть \\(b_2 = 2e^x\\): \\(\\alpha = 1,\\; \\beta = 0\\), корень кратности \\(r = 2\\).\n\\(y_{20} = ax^2 e^x\\). Подстановка: \\(2ae^x = 2e^x \\Rightarrow a = 1\\). \\(y_{20} = x^2 e^x\\).\n\n<strong>Наложение:</strong> \\(y_0 = y_{10} + y_{20} = x + 2 + x^2 e^x\\)."
+        },
+        {
+          "type": "text",
+          "content": "<strong>Правило подбора частного решения.</strong> Для правой части вида \\(f(x) = e^{\\alpha x}(P_n(x)\\cos\\beta x + Q_m(x)\\sin\\beta x)\\) ищем:$$y_* = x^s \\cdot e^{\\alpha x}(\\tilde{P}_N(x)\\cos\\beta x + \\tilde{Q}_N(x)\\sin\\beta x)$$где \\(N = \\max(n, m)\\), а \\(s\\) — кратность числа \\(\\alpha + i\\beta\\) как корня характеристического уравнения."
+        },
+        {
+          "type": "example",
+          "title": "Подбор: правая часть с резонансом",
+          "content": "Решить \\(y'' - 2y' + y = xe^x\\).",
+          "solution": "1. Характеристическое: \\(\\lambda^2 - 2\\lambda + 1 = 0 \\implies \\lambda = 1\\) (кратность 2).<br>\\(y_{\\text{одн}} = (C_1 + C_2 x)e^x\\).<br><br>2. Правая часть: \\(xe^x\\). Здесь \\(\\alpha = 1, \\beta = 0\\), \\(P_1(x) = x\\).<br>Число \\(\\alpha + i\\beta = 1\\) — корень кратности \\(s = 2\\).<br><br>Ищем: \\(y_* = x^2(Ax + B)e^x = (Ax^3 + Bx^2)e^x\\).<br><br>3. Подставляем: \\(6Ae^x = xe^x \\cdot [\\text{после сокращений}]\\).<br>\\(6A = 1 \\implies A = 1/6, \\quad 2B = 0 \\implies B = 0\\).<br><br>Ответ: \\(y = (C_1 + C_2 x)e^x + \\frac{x^3}{6}e^x\\)."
+        },
+        {
+          "type": "example",
+          "title": "Подбор: тригонометрическая правая часть",
+          "content": "Решить \\(y'' + 4y = \\cos 2x\\).",
+          "solution": "1. Характеристическое: \\(\\lambda^2 + 4 = 0 \\implies \\lambda = \\pm 2i\\).<br>\\(y_{\\text{одн}} = C_1\\cos 2x + C_2\\sin 2x\\).<br><br>2. Правая часть: \\(\\cos 2x\\). Здесь \\(\\alpha = 0, \\beta = 2\\).<br>\\(\\alpha + i\\beta = 2i\\) — корень кратности \\(s = 1\\) → резонанс!<br><br>Ищем: \\(y_* = x(A\\cos 2x + B\\sin 2x)\\).<br><br>3. Подставляем: \\(-4A\\sin 2x + 4B\\cos 2x = \\cos 2x\\).<br>\\(B = 1/4, A = 0\\).<br><br>Ответ: \\(y = C_1\\cos 2x + C_2\\sin 2x + \\frac{x}{4}\\sin 2x\\)."
         }
       ]
     },
