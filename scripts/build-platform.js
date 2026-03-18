@@ -77,7 +77,10 @@ const SUBJECTS = [
   {
     id: 'math-cs-foundations', title: 'Мат. основы информатики',
     subtitle: 'Булевы функции, нормальные формы, теорема Поста', icon: '🔢',
-    assessments: [{ id: 'zachet', name: 'Зачёт', icon: '✅' }],
+    assessments: [
+      { id: 'zachet', name: 'Зачёт', icon: '✅' },
+      { id: null, name: 'Учебное пособие', icon: '📖', href: '?subject=math-cs-foundations&type=textbook', skipBundle: true },
+    ],
   },
 ];
 
