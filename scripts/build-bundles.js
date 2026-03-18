@@ -36,7 +36,9 @@ const SUBJECTS = [
     id: 'differential-equations', title: 'Интегралы и ДУ', icon: '∫',
     assessments: [
       { id: 'exam', name: 'Экзамен', bundleName: 'ИнтДУ_Экзамен' },
+      { id: 'exam-practice', name: 'Экзамен · Практика', bundleName: 'ИнтДУ_Экзамен_Практика' },
       { id: 'midterm-1', name: 'РК-1', bundleName: 'ИнтДУ_РК-1' },
+
       { id: 'midterm-2', name: 'РК-2', bundleName: 'ИнтДУ_РК-2' },
       { id: 'kr-1', name: 'КР-1', bundleName: 'ИнтДУ_КР-1' },
       { id: 'kr-2', name: 'КР-2', bundleName: 'ИнтДУ_КР-2' },
