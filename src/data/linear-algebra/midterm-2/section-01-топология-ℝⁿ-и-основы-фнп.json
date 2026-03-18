@@ -53,7 +53,7 @@
       "type": "Определение",
       "tldr": "Предел: f(x) близка к A при x близком к a. Непрерывна: предел = значение.",
       "intuition": "Предел ФНП -- значение, к которому стремится функция при приближении аргумента к точке. Непрерывность: нет «скачков» и «дыр» -- значение функции в точке совпадает с её пределом.",
-      "formalText": "Число $A$ называют **пределом функции** $f(\\mathbf{x})$ по множеству $M$ при $\\mathbf{x} \\to \\mathbf{a}$, если:\\n\\n$$\\forall\\, \\varepsilon > 0 \\;\\exists\\, \\delta > 0: \\forall\\, \\mathbf{x} \\in M,\\; 0 < \\|\\mathbf{x}-\\mathbf{a}\\| < \\delta \\;\\Rightarrow\\; |f(\\mathbf{x})-A| < \\varepsilon$$\\n\\nОбозначение: $\\lim_{\\mathbf{x} \\to \\mathbf{a}} f(\\mathbf{x}) = A$.\\n\\nФНП $f(\\mathbf{x})$ **непрерывна** в точке $\\mathbf{a}$, если:\\n\\n$$\\lim_{\\mathbf{x} \\to \\mathbf{a}} f(\\mathbf{x}) = f(\\mathbf{a})$$",
+      "formalText": "Число $A$ называют **пределом функции** $f(\\mathbf{x})$ по множеству $M$ при $\\mathbf{x} \\to \\mathbf{a}$, если:\\n\\n$$\\forall\\, \\varepsilon > 0 \\;\\exists\\, \\delta > 0: \\forall\\, \\mathbf{x} \\in M,\\; 0 < \\|\\mathbf{x}-\\mathbf{a}\\| < \\delta \\;\\Rightarrow\\; |f(\\mathbf{x})-A| < \\varepsilon$$\\nОбозначение: $\\lim_{\\mathbf{x} \\to \\mathbf{a}} f(\\mathbf{x}) = A$.\\n\\nФНП $f(\\mathbf{x})$ **непрерывна** в точке $\\mathbf{a}$, если:\\n\\n$$\\lim_{\\mathbf{x} \\to \\mathbf{a}} f(\\mathbf{x}) = f(\\mathbf{a})$$",
       "formula": "\\lim_{\\mathbf{x} \\to \\mathbf{a}} f(\\mathbf{x}) = f(\\mathbf{a})",
       "keyIdea": "Предел ФНП должен быть одинаковым по ВСЕМ путям приближения к точке. Это ключевое отличие от функции одной переменной.",
       "example": {
@@ -83,7 +83,7 @@
       "type": "Определение",
       "tldr": "Приращение = линейная часть + бесконечно малая высшего порядка.",
       "intuition": "Дифференцируемость означает, что функцию можно хорошо приблизить линейной функцией (касательной гиперплоскостью). Ошибка приближения стремится к нулю быстрее, чем само расстояние.",
-      "formalText": "ФНП $f(\\mathbf{x})$ называют **дифференцируемой** в точке $\\mathbf{a}$, если полное приращение представимо в виде:\\n\\n$$\\Delta f = f(\\mathbf{a}+\\Delta\\mathbf{x}) - f(\\mathbf{a}) = \\sum_{i=1}^n A_i \\cdot \\Delta x_i + o(\\|\\Delta\\mathbf{x}\\|)$$\\n\\nгде $A_i$ -- постоянные (не зависят от $\\Delta\\mathbf{x}$), а $o(\\|\\Delta\\mathbf{x}\\|)$ -- бесконечно малая более высокого порядка, чем $\\|\\Delta\\mathbf{x}\\|$.\\n\\nПри этом $A_i = \\frac{\\partial f}{\\partial x_i}(\\mathbf{a})$.",
+      "formalText": "ФНП $f(\\mathbf{x})$ называют **дифференцируемой** в точке $\\mathbf{a}$, если полное приращение представимо в виде:\\n\\n$$\\Delta f = f(\\mathbf{a}+\\Delta\\mathbf{x}) - f(\\mathbf{a}) = \\sum_{i=1}^n A_i \\cdot \\Delta x_i + o(\\|\\Delta\\mathbf{x}\\|)$$\\nгде $A_i$ -- постоянные (не зависят от $\\Delta\\mathbf{x}$), а $o(\\|\\Delta\\mathbf{x}\\|)$ -- бесконечно малая более высокого порядка, чем $\\|\\Delta\\mathbf{x}\\|$.\\n\\nПри этом $A_i = \\frac{\\partial f}{\\partial x_i}(\\mathbf{a})$.",
       "formula": "\\Delta f = \\sum A_i\\Delta x_i + o(\\|\\Delta\\mathbf{x}\\|)",
       "keyIdea": "Дифференцируемость строже, чем существование частных производных. Дифференцируемость влечет непрерывность, но не наоборот.",
       "example": {

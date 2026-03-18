@@ -85,7 +85,7 @@
       "type": "Определение",
       "tldr": "L = f + lambda*g. Множитель lambda -- дополнительная неизвестная.",
       "intuition": "Метод Лагранжа превращает задачу с ограничениями в задачу без ограничений: добавляем ограничение в целевую функцию с «штрафным коэффициентом» -- множителем Лагранжа.",
-      "formalText": "**Функция Лагранжа** для задачи $f(\\mathbf{x}) \\to \\text{extr}$ при $g(\\mathbf{x}) = 0$:\\n\\n$$L(\\mathbf{x}, \\lambda) = f(\\mathbf{x}) + \\lambda \\cdot g(\\mathbf{x})$$\\n\\nгде $\\lambda \\in \\mathbb{R}$ -- **множитель Лагранжа** (дополнительная неизвестная).\\n\\nДля нескольких ограничений $g_1 = 0, \\ldots, g_m = 0$:\\n\\n$$L = f + \\lambda_1 g_1 + \\ldots + \\lambda_m g_m$$",
+      "formalText": "**Функция Лагранжа** для задачи $f(\\mathbf{x}) \\to \\text{extr}$ при $g(\\mathbf{x}) = 0$:\\n\\n$$L(\\mathbf{x}, \\lambda) = f(\\mathbf{x}) + \\lambda \\cdot g(\\mathbf{x})$$\\nгде $\\lambda \\in \\mathbb{R}$ -- **множитель Лагранжа** (дополнительная неизвестная).\\n\\nДля нескольких ограничений $g_1 = 0, \\ldots, g_m = 0$:\\n\\n$$L = f + \\lambda_1 g_1 + \\ldots + \\lambda_m g_m$$",
       "formula": "L(\\mathbf{x},\\lambda) = f(\\mathbf{x}) + \\lambda\\,g(\\mathbf{x})",
       "keyIdea": "Множитель Лагранжа $\\lambda$ имеет смысл: он показывает, как изменится экстремальное значение $f$ при малом изменении ограничения.",
       "example": {
@@ -100,7 +100,7 @@
       "type": "Теорема",
       "tldr": "В точке условного экстремума grad L = 0 (по всем переменным и lambda).",
       "intuition": "Условный экстремум -- там, где градиент $f$ параллелен градиенту $g$ (нельзя улучшить $f$ не нарушив $g$). Множитель $\\lambda$ -- коэффициент параллельности.",
-      "formalText": "**Необходимые условия.** Если $\\mathbf{a}$ -- точка условного экстремума $f(\\mathbf{x})$ при $g(\\mathbf{x}) = 0$ и $\\nabla g(\\mathbf{a}) \\neq \\mathbf{0}$, то существует $\\lambda$ такое, что:\\n\\n$$\\nabla_\\mathbf{x} L = \\mathbf{0}, \\quad \\frac{\\partial L}{\\partial \\lambda} = 0$$\\n\\nТо есть:\\n\\n$$\\frac{\\partial f}{\\partial x_i} + \\lambda \\frac{\\partial g}{\\partial x_i} = 0, \\quad i = 1,\\ldots,n$$\\n$$g(\\mathbf{x}) = 0$$",
+      "formalText": "**Необходимые условия.** Если $\\mathbf{a}$ -- точка условного экстремума $f(\\mathbf{x})$ при $g(\\mathbf{x}) = 0$ и $\\nabla g(\\mathbf{a}) \\neq \\mathbf{0}$, то существует $\\lambda$ такое, что:\\n\\n$$\\nabla_\\mathbf{x} L = \\mathbf{0}, \\quad \\frac{\\partial L}{\\partial \\lambda} = 0$$\\nТо есть:\\n\\n$$\\frac{\\partial f}{\\partial x_i} + \\lambda \\frac{\\partial g}{\\partial x_i} = 0, \\quad i = 1,\\ldots,n$$\\n$$g(\\mathbf{x}) = 0$$",
       "formula": "\\nabla f + \\lambda\\nabla g = \\mathbf{0},\\quad g = 0",
       "keyIdea": "Геометрический смысл: $\\nabla f = -\\lambda\\nabla g$, т.е. градиенты $f$ и $g$ параллельны в точке условного экстремума.",
       "steps": [

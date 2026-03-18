@@ -70,7 +70,7 @@
       "type": "Теорема",
       "tldr": "f(a+h,b+k) = f(a,b) + df + (1/2)d^2f + ... + остаток.",
       "intuition": "Формула Тейлора -- полиномиальное приближение функции вблизи точки. Чем больше членов берём, тем точнее. Для двух переменных дифференциалы -- квадратичные формы.",
-      "formalText": "**Формула Тейлора** для $f(x,y)$ в окрестности $(a,b)$:\\n\\n$$f(a+h,b+k) = f(a,b) + df + \\frac{1}{2!}d^2f + \\ldots + \\frac{1}{n!}d^nf + R_n$$\\n\\nгде $df = f_x'h + f_y'k$,\\n$d^2f = f_{xx}''h^2 + 2f_{xy}''hk + f_{yy}''k^2$,\\n\\nили компактно: $d^kf = \\left(h\\frac{\\partial}{\\partial x} + k\\frac{\\partial}{\\partial y}\\right)^k f(a,b)$.\\n\\n**Остаточный член** в форме Лагранжа: $R_n = \\frac{1}{(n+1)!}d^{n+1}f\\bigg|_{(a+\\theta h,\\,b+\\theta k)}$, $0 < \\theta < 1$.",
+      "formalText": "**Формула Тейлора** для $f(x,y)$ в окрестности $(a,b)$:\\n\\n$$f(a+h,b+k) = f(a,b) + df + \\frac{1}{2!}d^2f + \\ldots + \\frac{1}{n!}d^nf + R_n$$\\nгде $df = f_x'h + f_y'k$,\\n$d^2f = f_{xx}''h^2 + 2f_{xy}''hk + f_{yy}''k^2$,\\n\\nили компактно: $d^kf = \\left(h\\frac{\\partial}{\\partial x} + k\\frac{\\partial}{\\partial y}\\right)^k f(a,b)$.\\n\\n**Остаточный член** в форме Лагранжа: $R_n = \\frac{1}{(n+1)!}d^{n+1}f\\bigg|_{(a+\\theta h,\\,b+\\theta k)}$, $0 < \\theta < 1$.",
       "formula": "f = \\sum_{k=0}^{n} \\frac{1}{k!}d^k f + R_n",
       "keyIdea": "Формула Тейлора для двух переменных обобщает одномерную. Второй дифференциал -- квадратичная форма, определяющая тип экстремума.",
       "steps": [
