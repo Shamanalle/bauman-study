@@ -47,8 +47,7 @@
         ],
         "fill": [
           {
-            "below": 1,
-            "above": 0,
+            "between": [1, 0],
             "xRange": [
               0,
               2

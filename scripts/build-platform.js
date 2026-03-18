@@ -67,6 +67,14 @@ const SUBJECTS = [
     ],
   },
   {
+    id: 'programming-technologies', title: 'Технологии и методы программирования',
+    subtitle: 'Git: контроль версий, ветвление, GitHub', icon: '🔀',
+    assessments: [
+      { id: null, name: 'Учебное пособие', icon: '📖', href: '?subject=programming-technologies&type=textbook', skipBundle: true },
+      { id: null, name: 'Лабораторные', icon: '🔬', href: '?subject=programming-technologies&type=labs', skipBundle: true },
+    ],
+  },
+  {
     id: 'math-cs-foundations', title: 'Мат. основы информатики',
     subtitle: 'Булевы функции, нормальные формы, теорема Поста', icon: '🔢',
     assessments: [{ id: 'zachet', name: 'Зачёт', icon: '✅' }],
@@ -134,32 +142,58 @@ for (const subject of SUBJECTS) {
   console.log(`  📖 ${subject.id}/textbook: ${Object.keys(chapters).length} глав`);
 }
 
-// Load lab data
-const labData = {};
-const labsDir = path.join(DATA, 'algorithmic-languages', 'labs');
-if (fs.existsSync(labsDir)) {
+// Load lab data for ALL subjects that have labs
+const allLabData = {};
+const LAB_SUBJECTS = ['algorithmic-languages', 'programming-technologies'];
+
+for (const labSubject of LAB_SUBJECTS) {
+  const labsDir = path.join(DATA, labSubject, 'labs');
+  if (!fs.existsSync(labsDir)) continue;
+
+  const subjectLabData = {};
   const labMeta = JSON.parse(fs.readFileSync(path.join(labsDir, 'meta.json'), 'utf-8'));
   const labIndex = JSON.parse(fs.readFileSync(path.join(labsDir, 'index.json'), 'utf-8'));
-  labData.meta = labMeta;
-  labData.index = labIndex;
-  labData.solutions = {};
+  subjectLabData.meta = labMeta;
+  subjectLabData.index = labIndex;
+
+  // Load individual lab JSON files (for ТиМП labs)
+  subjectLabData.labs = {};
+  for (const labEntry of labIndex.labs) {
+    if (!labEntry.file) continue; // АЯ labs use 'id' + solutions, not individual files
+    const labFilePath = path.join(labsDir, labEntry.file);
+    if (fs.existsSync(labFilePath)) {
+      subjectLabData.labs[labEntry.file] = JSON.parse(fs.readFileSync(labFilePath, 'utf-8'));
+    }
+  }
+
+  // Load commands glossary if exists
+  const glossaryPath = path.join(labsDir, 'commands-glossary.json');
+  if (fs.existsSync(glossaryPath)) {
+    subjectLabData.glossary = JSON.parse(fs.readFileSync(glossaryPath, 'utf-8'));
+  }
+
+  // Load solutions if exist (АЯ labs have solutions)
+  subjectLabData.solutions = {};
   const solDir = path.join(labsDir, 'solutions');
   if (fs.existsSync(solDir)) {
     let labCount = 0;
     for (const vDir of fs.readdirSync(solDir)) {
       const vPath = path.join(solDir, vDir);
       if (!fs.statSync(vPath).isDirectory()) continue;
-      labData.solutions[vDir] = {};
+      subjectLabData.solutions[vDir] = {};
       for (const file of fs.readdirSync(vPath).filter(f => f.endsWith('.json'))) {
-        labData.solutions[vDir][file] = JSON.parse(fs.readFileSync(path.join(vPath, file), 'utf-8'));
+        subjectLabData.solutions[vDir][file] = JSON.parse(fs.readFileSync(path.join(vPath, file), 'utf-8'));
         labCount++;
       }
     }
-    console.log(`  💻 labs: ${labCount} решений`);
+    if (labCount > 0) console.log(`  💻 ${labSubject}/labs: ${labCount} решений`);
   }
+
+  allLabData[labSubject] = subjectLabData;
+  console.log(`  🔬 ${labSubject}/labs: ${labIndex.labs.length} лаб`);
 }
 
-const platformJS = buildPlatformJS(jsContent, allData, SUBJECTS, textbookData, labData);
+const platformJS = buildPlatformJS(jsContent, allData, SUBJECTS, textbookData, allLabData);
 
 const html = `<!DOCTYPE html>
 <html lang="ru">
@@ -211,7 +245,7 @@ const size = (Buffer.byteLength(html) / 1024).toFixed(0);
 console.log(`\n✅ Платформа.html — ${totalQuestions} вопросов, ${size} КБ`);
 
 
-function buildPlatformJS(appJS, allData, subjects, textbookData, labData) {
+function buildPlatformJS(appJS, allData, subjects, textbookData, allLabData) {
   // With inlineDynamicImports: true in vite.config.js, Vite produces a single JS file
   // with no separate chunks. We only need to:
   // 1. Strip the ES module export{} at the end
@@ -239,7 +273,7 @@ function buildPlatformJS(appJS, allData, subjects, textbookData, labData) {
 window.__ALL_DATA__ = ${JSON.stringify(allData)};
 window.__SUBJECTS__ = ${JSON.stringify(subjects)};
 window.__TEXTBOOK_DATA__ = ${JSON.stringify(textbookData)};
-window.__LAB_DATA__ = ${JSON.stringify(labData)};
+window.__ALL_LAB_DATA__ = ${JSON.stringify(allLabData)};
 window.__CURRENT__ = null;
 
 // ===== FETCH INTERCEPT =====
@@ -265,10 +299,28 @@ window.fetch = function(url) {
 
   // Lab data intercept
   if (url.includes('/labs/')) {
-    const ld = window.__LAB_DATA__;
+    // Determine which subject's labs are being requested
+    const labSubjectMatch = url.match(/data[\\/]([^\\/]+)[\\/]labs[\\/]/);
+    const labSubject = labSubjectMatch ? labSubjectMatch[1] : null;
+    const ld = labSubject ? window.__ALL_LAB_DATA__[labSubject] : null;
+    if (!ld) return Promise.resolve(new Response('', { status: 404 }));
+
     if (url.includes('/meta.json')) return Promise.resolve(new Response(JSON.stringify(ld.meta || {}), { status: ld.meta ? 200 : 404 }));
     if (url.includes('/index.json')) return Promise.resolve(new Response(JSON.stringify(ld.index || {}), { status: ld.index ? 200 : 404 }));
-    const solMatch = url.match(/solutions\\/(v\\d+)\\/(.+\\.json)/);
+
+    // Commands glossary intercept
+    if (url.includes('commands-glossary.json') && ld.glossary) {
+      return Promise.resolve(new Response(JSON.stringify(ld.glossary), { status: 200 }));
+    }
+
+    // Individual lab file intercept (e.g. lab-00.json, lab-01.json)
+    const labFileMatch = url.match(/labs[\\/]([^\\/]+\\.json)/);
+    if (labFileMatch && ld.labs?.[labFileMatch[1]]) {
+      return Promise.resolve(new Response(JSON.stringify(ld.labs[labFileMatch[1]]), { status: 200 }));
+    }
+
+    // Solutions intercept
+    const solMatch = url.match(/solutions[\\/](v\\d+)[\\/](.+\\.json)/);
     if (solMatch && ld.solutions?.[solMatch[1]]?.[solMatch[2]]) {
       return Promise.resolve(new Response(JSON.stringify(ld.solutions[solMatch[1]][solMatch[2]]), { status: 200 }));
     }

@@ -288,8 +288,14 @@ export function drawPlot(canvas, config) {
     ctx.fillStyle = f.color || colors.fill;
     if (f.between != null && f.between.length === 2) {
       const [i1, i2] = f.between;
-      const pts1 = curvePoints[i1] || [];
-      const pts2 = curvePoints[i2] || [];
+      let pts1 = curvePoints[i1] || [];
+      let pts2 = curvePoints[i2] || [];
+      // Filter by xRange if specified
+      if (f.xRange) {
+        const [xFrom, xTo] = f.xRange;
+        pts1 = pts1.filter(p => p.x >= xFrom - 0.01 && p.x <= xTo + 0.01);
+        pts2 = pts2.filter(p => p.x >= xFrom - 0.01 && p.x <= xTo + 0.01);
+      }
       if (pts1.length && pts2.length) {
         ctx.beginPath();
         pts1.forEach((p, j) => {
