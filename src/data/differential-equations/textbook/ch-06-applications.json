@@ -6,85 +6,246 @@
     {
       "heading": "Площадь плоской фигуры (декартовы координаты)",
       "blocks": [
-        {"type": "text", "content": "Теперь, когда мы умеем вычислять определённые интегралы, посмотрим, <em>для чего</em> они нужны. Оказывается, множество геометрических величин — площади, объёмы, длины кривых — выражаются через интегралы."},
-        {"type": "text", "content": "Ранее установлено: если \\(f(x) \\geqslant 0\\) непрерывна на \\([a,b]\\), площадь криволинейной трапеции \\(S = \\int_a^b f(x)\\,dx\\)."},
-        {"type": "text", "content": "Если \\(f(x) \\leqslant 0\\), то \\(S = -\\int_a^b f(x)\\,dx = \\int_a^b |f(x)|\\,dx\\)."},
-        {"type": "theorem", "name": "Площадь области между двумя кривыми", "content": "Если фигура ограничена сверху \\(y = \\psi(x)\\), снизу \\(y = \\varphi(x)\\), \\(\\psi(x) \\geqslant \\varphi(x)\\), и прямыми \\(x = a\\), \\(x = b\\), то:\n$$S = \\int_a^b (\\psi(x) - \\varphi(x))\\,dx$$"}
+        {
+          "type": "text",
+          "content": "Теперь, когда мы умеем вычислять определённые интегралы, посмотрим, <em>для чего</em> они нужны. Оказывается, множество геометрических величин — площади, объёмы, длины кривых — выражаются через интегралы."
+        },
+        {
+          "type": "text",
+          "content": "Ранее установлено: если \\(f(x) \\geqslant 0\\) непрерывна на \\([a,b]\\), площадь криволинейной трапеции \\(S = \\int_a^b f(x)\\,dx\\)."
+        },
+        {
+          "type": "text",
+          "content": "Если \\(f(x) \\leqslant 0\\), то \\(S = -\\int_a^b f(x)\\,dx = \\int_a^b |f(x)|\\,dx\\)."
+        },
+        {
+          "type": "theorem",
+          "name": "Площадь области между двумя кривыми",
+          "content": "Если фигура ограничена сверху \\(y = \\psi(x)\\), снизу \\(y = \\varphi(x)\\), \\(\\psi(x) \\geqslant \\varphi(x)\\), и прямыми \\(x = a\\), \\(x = b\\), то:\n$$S = \\int_a^b (\\psi(x) - \\varphi(x))\\,dx$$"
+        }
       ]
     },
     {
       "heading": "Площадь при параметрическом задании кривой",
       "blocks": [
-        {"type": "text", "content": "Пусть кривая задана параметрически: \\(x = \\varphi(t),\\; y = \\psi(t),\\; \\alpha \\leqslant t \\leqslant \\beta\\), причём \\(\\varphi(\\alpha) = a,\\; \\varphi(\\beta) = b\\)."},
-        {"type": "formula", "tex": "S = \\int_\\alpha^\\beta \\psi(t)\\,|\\varphi'(t)|\\,dt"},
-        {"type": "text", "content": "Если \\(\\varphi'(t) > 0\\): \\(S = \\int_\\alpha^\\beta \\psi(t)\\varphi'(t)\\,dt\\). Если \\(\\varphi'(t) < 0\\) — формула справедлива с точностью до знака."},
-        {"type": "example", "title": "Площадь эллипса", "content": "Вычислить площадь, ограниченную эллипсом \\(\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1\\).", "solution": "Параметрические уравнения: \\(x = a\\cos t,\\; y = b\\sin t\\), \\(0 \\leqslant t \\leqslant 2\\pi\\).\n\nИспользуя симметрию (берём 1-ю четверть \\(t \\in [0, \\pi/2]\\), умножаем на 4):\n$$S = 4\\int_0^{\\pi/2} b\\sin t \\cdot |{-a\\sin t}|\\,dt = 4ab\\int_0^{\\pi/2}\\sin^2 t\\,dt$$\n$$= 4ab \\cdot \\frac{\\pi}{4} = \\pi ab$$"}
+        {
+          "type": "text",
+          "content": "Пусть кривая задана параметрически: \\(x = \\varphi(t),\\; y = \\psi(t),\\; \\alpha \\leqslant t \\leqslant \\beta\\), причём \\(\\varphi(\\alpha) = a,\\; \\varphi(\\beta) = b\\)."
+        },
+        {
+          "type": "formula",
+          "tex": "S = \\int_\\alpha^\\beta \\psi(t)\\,|\\varphi'(t)|\\,dt"
+        },
+        {
+          "type": "text",
+          "content": "Если \\(\\varphi'(t) > 0\\): \\(S = \\int_\\alpha^\\beta \\psi(t)\\varphi'(t)\\,dt\\). Если \\(\\varphi'(t) < 0\\) — формула справедлива с точностью до знака."
+        },
+        {
+          "type": "example",
+          "title": "Площадь эллипса",
+          "content": "Вычислить площадь, ограниченную эллипсом \\(\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1\\).",
+          "solution": "Параметрические уравнения: \\(x = a\\cos t,\\; y = b\\sin t\\), \\(0 \\leqslant t \\leqslant 2\\pi\\).\n\nИспользуя симметрию (берём 1-ю четверть \\(t \\in [0, \\pi/2]\\), умножаем на 4):\n$$S = 4\\int_0^{\\pi/2} b\\sin t \\cdot |{-a\\sin t}|\\,dt = 4ab\\int_0^{\\pi/2}\\sin^2 t\\,dt$$\n$$= 4ab \\cdot \\frac{\\pi}{4} = \\pi ab$$"
+        }
       ]
     },
     {
       "heading": "Площадь в полярных координатах",
       "blocks": [
-        {"type": "definition", "term": "Криволинейный сектор", "content": "Фигура, ограниченная лучами \\(\\varphi = \\alpha\\), \\(\\varphi = \\beta\\) и кривой \\(r = r(\\varphi)\\), \\(\\varphi \\in [\\alpha, \\beta]\\)."},
-        {"type": "theorem", "name": "Площадь криволинейного сектора", "content": "$$S = \\frac{1}{2}\\int_\\alpha^\\beta r^2(\\varphi)\\,d\\varphi$$\n\n<strong>Вывод.</strong> На каждом частичном отрезке \\([\\varphi_{i-1}, \\varphi_i]\\):\n$$\\frac{1}{2}r^2(\\eta_i)\\Delta\\varphi_i \\leqslant S_i \\leqslant \\frac{1}{2}r^2(\\xi_i)\\Delta\\varphi_i$$\nСуммируя и переходя к пределу при \\(\\max\\Delta\\varphi_i \\to 0\\):  \\(S = \\frac{1}{2}\\int_\\alpha^\\beta r^2\\,d\\varphi\\). \\(\\)"},
-        {"type": "example", "title": "Лемниската Бернулли", "content": "Вычислить площадь, ограниченную лемнискатой \\(r = a\\sqrt{2\\cos 2\\varphi}\\).", "solution": "Используя симметрию (4 одинаковых части):\n$$S = 4 \\cdot \\frac{1}{2}\\int_0^{\\pi/4} a^2 \\cdot 2\\cos 2\\varphi\\,d\\varphi = 4a^2 \\cdot \\frac{\\sin 2\\varphi}{2}\\bigg|_0^{\\pi/4} = 2a^2$$"}
+        {
+          "type": "definition",
+          "term": "Криволинейный сектор",
+          "content": "Фигура, ограниченная лучами \\(\\varphi = \\alpha\\), \\(\\varphi = \\beta\\) и кривой \\(r = r(\\varphi)\\), \\(\\varphi \\in [\\alpha, \\beta]\\)."
+        },
+        {
+          "type": "theorem",
+          "name": "Площадь криволинейного сектора",
+          "content": "$$S = \\frac{1}{2}\\int_\\alpha^\\beta r^2(\\varphi)\\,d\\varphi$$\n\n<strong>Вывод.</strong> На каждом частичном отрезке \\([\\varphi_{i-1}, \\varphi_i]\\):\n$$\\frac{1}{2}r^2(\\eta_i)\\Delta\\varphi_i \\leqslant S_i \\leqslant \\frac{1}{2}r^2(\\xi_i)\\Delta\\varphi_i$$\nСуммируя и переходя к пределу при \\(\\max\\Delta\\varphi_i \\to 0\\):  \\(S = \\frac{1}{2}\\int_\\alpha^\\beta r^2\\,d\\varphi\\). \\(\\)"
+        },
+        {
+          "type": "example",
+          "title": "Лемниската Бернулли",
+          "content": "Вычислить площадь, ограниченную лемнискатой \\(r = a\\sqrt{2\\cos 2\\varphi}\\).",
+          "solution": "Используя симметрию (4 одинаковых части):\n$$S = 4 \\cdot \\frac{1}{2}\\int_0^{\\pi/4} a^2 \\cdot 2\\cos 2\\varphi\\,d\\varphi = 4a^2 \\cdot \\frac{\\sin 2\\varphi}{2}\\bigg|_0^{\\pi/4} = 2a^2$$"
+        },
+        {
+          "type": "example",
+          "title": "Площадь кардиоиды",
+          "content": "Найти площадь, ограниченную кардиоидой \\(\\rho = a(1 + \\cos\\varphi)\\).",
+          "solution": "Используем формулу площади в полярных координатах:$$S = \\frac{1}{2}\\int_0^{2\\pi} \\rho^2\\,d\\varphi = \\frac{a^2}{2}\\int_0^{2\\pi} (1 + \\cos\\varphi)^2\\,d\\varphi$$Раскрываем: \\((1 + \\cos\\varphi)^2 = 1 + 2\\cos\\varphi + \\cos^2\\varphi = 1 + 2\\cos\\varphi + (1 + \\cos 2\\varphi)/2\\).$$= \\frac{a^2}{2}\\left[\\frac{3}{2} \\cdot 2\\pi + 0 + 0\\right] = \\frac{3\\pi a^2}{2}$$"
+        }
       ]
     },
     {
       "heading": "Объём тела по площадям сечений",
       "blocks": [
-        {"type": "theorem", "name": "Объём тела", "content": "Пусть тело \\(M\\) расположено между плоскостями \\(x = a\\) и \\(x = b\\), и площадь поперечного сечения \\(S(x)\\) непрерывна. Тогда:\n$$V = \\int_a^b S(x)\\,dx$$\n\n<strong>Вывод.</strong> На каждом отрезке \\([x_{i-1}, x_i]\\):\n$$S(\\eta_i)\\Delta x_i \\leqslant V_i \\leqslant S(\\xi_i)\\Delta x_i$$\nСумма даёт: \\(\\sum S(\\eta_i)\\Delta x_i \\leqslant V \\leqslant \\sum S(\\xi_i)\\Delta x_i\\). При \\(\\lambda \\to 0\\) получаем \\(V = \\int_a^b S(x)\\,dx\\). \\(\\)"},
-        {"type": "text", "content": "<strong>Тело вращения.</strong> Если тело получено вращением графика \\(y = f(x)\\) вокруг \\(Ox\\), то \\(S(x) = \\pi f^2(x)\\):"},
-        {"type": "formula", "tex": "V = \\pi\\int_a^b f^2(x)\\,dx"},
-        {"type": "example", "title": "Объём эллипсоида", "content": "Найти объём эллипсоида \\(\\frac{x^2}{a^2} + \\frac{y^2}{b^2} + \\frac{z^2}{c^2} = 1\\).", "solution": "Сечение плоскостью \\(x = \\text{const}\\) даёт эллипс с полуосями \\(b\\sqrt{1-x^2/a^2}\\) и \\(c\\sqrt{1-x^2/a^2}\\):\n$$S(x) = \\pi bc\\left(1 - \\frac{x^2}{a^2}\\right) = \\frac{\\pi bc}{a^2}(a^2 - x^2)$$\nОбъём (по симметрии удваиваем):\n$$V = 2\\int_0^a S(x)\\,dx = \\frac{2\\pi bc}{a^2}\\left(a^2 x - \\frac{x^3}{3}\\right)\\bigg|_0^a = \\frac{4}{3}\\pi abc$$"}
+        {
+          "type": "theorem",
+          "name": "Объём тела",
+          "content": "Пусть тело \\(M\\) расположено между плоскостями \\(x = a\\) и \\(x = b\\), и площадь поперечного сечения \\(S(x)\\) непрерывна. Тогда:\n$$V = \\int_a^b S(x)\\,dx$$\n\n<strong>Вывод.</strong> На каждом отрезке \\([x_{i-1}, x_i]\\):\n$$S(\\eta_i)\\Delta x_i \\leqslant V_i \\leqslant S(\\xi_i)\\Delta x_i$$\nСумма даёт: \\(\\sum S(\\eta_i)\\Delta x_i \\leqslant V \\leqslant \\sum S(\\xi_i)\\Delta x_i\\). При \\(\\lambda \\to 0\\) получаем \\(V = \\int_a^b S(x)\\,dx\\). \\(\\)"
+        },
+        {
+          "type": "text",
+          "content": "<strong>Тело вращения.</strong> Если тело получено вращением графика \\(y = f(x)\\) вокруг \\(Ox\\), то \\(S(x) = \\pi f^2(x)\\):"
+        },
+        {
+          "type": "formula",
+          "tex": "V = \\pi\\int_a^b f^2(x)\\,dx"
+        },
+        {
+          "type": "example",
+          "title": "Объём эллипсоида",
+          "content": "Найти объём эллипсоида \\(\\frac{x^2}{a^2} + \\frac{y^2}{b^2} + \\frac{z^2}{c^2} = 1\\).",
+          "solution": "Сечение плоскостью \\(x = \\text{const}\\) даёт эллипс с полуосями \\(b\\sqrt{1-x^2/a^2}\\) и \\(c\\sqrt{1-x^2/a^2}\\):\n$$S(x) = \\pi bc\\left(1 - \\frac{x^2}{a^2}\\right) = \\frac{\\pi bc}{a^2}(a^2 - x^2)$$\nОбъём (по симметрии удваиваем):\n$$V = 2\\int_0^a S(x)\\,dx = \\frac{2\\pi bc}{a^2}\\left(a^2 x - \\frac{x^3}{3}\\right)\\bigg|_0^a = \\frac{4}{3}\\pi abc$$"
+        }
       ]
     },
     {
       "heading": "Длина дуги кривой",
       "blocks": [
-        {"type": "text", "content": "<strong>Параметрическое задание</strong> \\(x = x(t),\\; y = y(t)\\), \\(t \\in [a,b]\\):"},
-        {"type": "formula", "tex": "l = \\int_a^b \\sqrt{(x'(t))^2 + (y'(t))^2}\\,dt"},
-        {"type": "text", "content": "<strong>Явное задание</strong> \\(y = y(x)\\), \\(x \\in [a,b]\\) (берём \\(x\\) как параметр):"},
-        {"type": "formula", "tex": "l = \\int_a^b \\sqrt{1 + (y'(x))^2}\\,dx"},
-        {"type": "text", "content": "<strong>Полярные координаты</strong> \\(r = r(\\varphi)\\), \\(\\varphi \\in [\\alpha,\\beta]\\):"},
-        {"type": "formula", "tex": "l = \\int_\\alpha^\\beta \\sqrt{(r'(\\varphi))^2 + r^2(\\varphi)}\\,d\\varphi"},
-        {"type": "text", "content": "<strong>Пространственная кривая</strong> \\(x = x(t),\\; y = y(t),\\; z = z(t)\\):"},
-        {"type": "formula", "tex": "l = \\int_a^b \\sqrt{(x')^2 + (y')^2 + (z')^2}\\,dt"},
-        {"type": "example", "title": "Длина пространственной кривой", "content": "Найти длину кривой \\(x = \\cos t,\\; y = \\sin t,\\; z = \\ch t\\), \\(0 \\leqslant t \\leqslant 1\\).", "solution": "$$l = \\int_0^1 \\sqrt{\\sin^2 t + \\cos^2 t + \\sh^2 t}\\,dt = \\int_0^1 \\sqrt{1 + \\sh^2 t}\\,dt = \\int_0^1 \\ch t\\,dt = \\sh 1 = \\frac{e^2 - 1}{2e}$$"}
+        {
+          "type": "text",
+          "content": "<strong>Параметрическое задание</strong> \\(x = x(t),\\; y = y(t)\\), \\(t \\in [a,b]\\):"
+        },
+        {
+          "type": "formula",
+          "tex": "l = \\int_a^b \\sqrt{(x'(t))^2 + (y'(t))^2}\\,dt"
+        },
+        {
+          "type": "text",
+          "content": "<strong>Явное задание</strong> \\(y = y(x)\\), \\(x \\in [a,b]\\) (берём \\(x\\) как параметр):"
+        },
+        {
+          "type": "formula",
+          "tex": "l = \\int_a^b \\sqrt{1 + (y'(x))^2}\\,dx"
+        },
+        {
+          "type": "text",
+          "content": "<strong>Полярные координаты</strong> \\(r = r(\\varphi)\\), \\(\\varphi \\in [\\alpha,\\beta]\\):"
+        },
+        {
+          "type": "formula",
+          "tex": "l = \\int_\\alpha^\\beta \\sqrt{(r'(\\varphi))^2 + r^2(\\varphi)}\\,d\\varphi"
+        },
+        {
+          "type": "text",
+          "content": "<strong>Пространственная кривая</strong> \\(x = x(t),\\; y = y(t),\\; z = z(t)\\):"
+        },
+        {
+          "type": "formula",
+          "tex": "l = \\int_a^b \\sqrt{(x')^2 + (y')^2 + (z')^2}\\,dt"
+        },
+        {
+          "type": "example",
+          "title": "Длина пространственной кривой",
+          "content": "Найти длину кривой \\(x = \\cos t,\\; y = \\sin t,\\; z = \\ch t\\), \\(0 \\leqslant t \\leqslant 1\\).",
+          "solution": "$$l = \\int_0^1 \\sqrt{\\sin^2 t + \\cos^2 t + \\sh^2 t}\\,dt = \\int_0^1 \\sqrt{1 + \\sh^2 t}\\,dt = \\int_0^1 \\ch t\\,dt = \\sh 1 = \\frac{e^2 - 1}{2e}$$"
+        },
+        {
+          "type": "example",
+          "title": "Длина дуги параметрически",
+          "content": "Найти длину астроиды \\(x = a\\cos^3 t\\), \\(y = a\\sin^3 t\\), \\(t \\in [0, 2\\pi]\\).",
+          "solution": "$$x'_t = -3a\\cos^2 t\\sin t, \\quad y'_t = 3a\\sin^2 t\\cos t$$$$\\sqrt{x'^2 + y'^2} = 3a|\\sin t\\cos t| = \\frac{3a}{2}|\\sin 2t|$$По симметрии: \\(L = 4 \\cdot \\frac{3a}{2} \\int_0^{\\pi/2} \\sin 2t\\,dt = 6a \\cdot \\left[-\\frac{\\cos 2t}{2}\\right]_0^{\\pi/2} = 6a\\)."
+        }
       ]
     },
     {
       "heading": "Площадь поверхности вращения",
       "blocks": [
-        {"type": "theorem", "name": "Формула площади поверхности вращения", "content": "Если кривая \\(y = y(x) \\geqslant 0\\), \\(x \\in [a,b]\\), вращается вокруг \\(Ox\\), площадь поверхности:\n$$\\mu S = 2\\pi\\int_a^b y(x)\\sqrt{1 + (y'(x))^2}\\,dx$$\nИли, в общем случае: \\(\\mu S = 2\\pi\\int_a^b |y(x)|\\sqrt{1+(y')^2}\\,dx\\).\n\n<strong>Вывод.</strong> Аппроксимируем поверхность усечёнными конусами. Площадь \\(i\\)-го конуса:\n$$2\\pi \\cdot \\frac{y(x_{i-1})+y(x_i)}{2} \\cdot \\sqrt{(\\Delta x_i)^2 + (\\Delta y_i)^2}$$\nПо теореме Лагранжа: \\(\\Delta y_i = y'(\\xi_i)\\Delta x_i\\). Суммируя и переходя к пределу, получаем формулу. \\(\\)"},
-        {"type": "example", "title": "Поверхность эллипсоида вращения", "content": "Найти площадь поверхности вытянутого эллипсоида (\\(a > b\\)), полученного вращением \\(\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1\\) вокруг \\(Ox\\).", "solution": "Вычисляем \\(y\\sqrt{1+(y')^2} = \\frac{b}{a}\\sqrt{a^2 - \\varepsilon^2 x^2}\\), где \\(\\varepsilon = \\sqrt{1-b^2/a^2}\\) — эксцентриситет.\n\nИспользуя симметрию и замену \\(x = t/\\varepsilon\\):\n$$\\mu S = \\frac{4\\pi b}{a\\varepsilon}\\int_0^{a\\varepsilon}\\sqrt{a^2 - t^2}\\,dt = 2\\pi b\\left(b + \\frac{a}{\\varepsilon}\\arcsin\\varepsilon\\right)$$"}
+        {
+          "type": "theorem",
+          "name": "Формула площади поверхности вращения",
+          "content": "Если кривая \\(y = y(x) \\geqslant 0\\), \\(x \\in [a,b]\\), вращается вокруг \\(Ox\\), площадь поверхности:\n$$\\mu S = 2\\pi\\int_a^b y(x)\\sqrt{1 + (y'(x))^2}\\,dx$$\nИли, в общем случае: \\(\\mu S = 2\\pi\\int_a^b |y(x)|\\sqrt{1+(y')^2}\\,dx\\).\n\n<strong>Вывод.</strong> Аппроксимируем поверхность усечёнными конусами. Площадь \\(i\\)-го конуса:\n$$2\\pi \\cdot \\frac{y(x_{i-1})+y(x_i)}{2} \\cdot \\sqrt{(\\Delta x_i)^2 + (\\Delta y_i)^2}$$\nПо теореме Лагранжа: \\(\\Delta y_i = y'(\\xi_i)\\Delta x_i\\). Суммируя и переходя к пределу, получаем формулу. \\(\\)"
+        },
+        {
+          "type": "example",
+          "title": "Поверхность эллипсоида вращения",
+          "content": "Найти площадь поверхности вытянутого эллипсоида (\\(a > b\\)), полученного вращением \\(\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1\\) вокруг \\(Ox\\).",
+          "solution": "Вычисляем \\(y\\sqrt{1+(y')^2} = \\frac{b}{a}\\sqrt{a^2 - \\varepsilon^2 x^2}\\), где \\(\\varepsilon = \\sqrt{1-b^2/a^2}\\) — эксцентриситет.\n\nИспользуя симметрию и замену \\(x = t/\\varepsilon\\):\n$$\\mu S = \\frac{4\\pi b}{a\\varepsilon}\\int_0^{a\\varepsilon}\\sqrt{a^2 - t^2}\\,dt = 2\\pi b\\left(b + \\frac{a}{\\varepsilon}\\arcsin\\varepsilon\\right)$$"
+        }
       ]
     },
     {
       "heading": "Формула Симпсона",
       "blocks": [
-        {"type": "text", "content": "Для приближённого вычисления \\(\\int_a^b f(x)\\,dx\\) разбиваем \\([a,b]\\) на \\(n\\) равных частей длины \\(h = \\frac{b-a}{n}\\), точки: \\(x_i = a + ih\\), серединные точки: \\(\\xi_i = a + (i - \\frac{1}{2})h\\)."},
-        {"type": "text", "content": "На каждом \\([x_{i-1}, x_i]\\) заменяем \\(f(x)\\) параболой, проходящей через \\((x_{i-1}, f(x_{i-1}))\\), \\((\\xi_i, f(\\xi_i))\\), \\((x_i, f(x_i))\\)."},
-        {"type": "theorem", "name": "Формула Симпсона (парабол)", "content": "$$\\int_a^b f(x)\\,dx \\approx \\frac{b-a}{6n}\\left(f(a) + f(b) + 2\\sum_{i=1}^{n-1}f(x_i) + 4\\sum_{i=1}^n f(\\xi_i)\\right)$$"},
-        {"type": "text", "content": "<strong>Оценка погрешности.</strong> Если \\(|f^{(4)}(x)| \\leqslant M\\) на \\([a,b]\\), то абсолютная погрешность не превосходит:"},
-        {"type": "formula", "tex": "R_n \\leqslant \\frac{M(b-a)^5}{2880\\,n^4}"},
-        {"type": "note", "content": "Формула Симпсона <strong>точна для многочленов степени \\(\\leqslant 3\\)</strong> (не только \\(\\leqslant 2\\)!) и обеспечивает быструю сходимость: погрешность убывает как \\(O(n^{-4})\\)."}
+        {
+          "type": "text",
+          "content": "Для приближённого вычисления \\(\\int_a^b f(x)\\,dx\\) разбиваем \\([a,b]\\) на \\(n\\) равных частей длины \\(h = \\frac{b-a}{n}\\), точки: \\(x_i = a + ih\\), серединные точки: \\(\\xi_i = a + (i - \\frac{1}{2})h\\)."
+        },
+        {
+          "type": "text",
+          "content": "На каждом \\([x_{i-1}, x_i]\\) заменяем \\(f(x)\\) параболой, проходящей через \\((x_{i-1}, f(x_{i-1}))\\), \\((\\xi_i, f(\\xi_i))\\), \\((x_i, f(x_i))\\)."
+        },
+        {
+          "type": "theorem",
+          "name": "Формула Симпсона (парабол)",
+          "content": "$$\\int_a^b f(x)\\,dx \\approx \\frac{b-a}{6n}\\left(f(a) + f(b) + 2\\sum_{i=1}^{n-1}f(x_i) + 4\\sum_{i=1}^n f(\\xi_i)\\right)$$"
+        },
+        {
+          "type": "text",
+          "content": "<strong>Оценка погрешности.</strong> Если \\(|f^{(4)}(x)| \\leqslant M\\) на \\([a,b]\\), то абсолютная погрешность не превосходит:"
+        },
+        {
+          "type": "formula",
+          "tex": "R_n \\leqslant \\frac{M(b-a)^5}{2880\\,n^4}"
+        },
+        {
+          "type": "note",
+          "content": "Формула Симпсона <strong>точна для многочленов степени \\(\\leqslant 3\\)</strong> (не только \\(\\leqslant 2\\)!) и обеспечивает быструю сходимость: погрешность убывает как \\(O(n^{-4})\\)."
+        }
       ]
     },
     {
       "heading": "Сводка формул",
       "blocks": [
-        {"type": "table", "headers": ["Приложение", "Формула"], "rows": [
-          ["Площадь (декарт.)", "\\(S = \\int_a^b (\\psi - \\varphi)\\,dx\\)"],
-          ["Площадь (парам.)", "\\(S = \\int_\\alpha^\\beta \\psi(t)|\\varphi'(t)|\\,dt\\)"],
-          ["Площадь (поляр.)", "\\(S = \\frac{1}{2}\\int_\\alpha^\\beta r^2\\,d\\varphi\\)"],
-          ["Объём (сечения)", "\\(V = \\int_a^b S(x)\\,dx\\)"],
-          ["Объём вращения", "\\(V = \\pi\\int_a^b f^2\\,dx\\)"],
-          ["Длина дуги (парам.)", "\\(l = \\int_a^b \\sqrt{x'^2+y'^2}\\,dt\\)"],
-          ["Длина дуги (явн.)", "\\(l = \\int_a^b \\sqrt{1+y'^2}\\,dx\\)"],
-          ["Длина (поляр.)", "\\(l = \\int_\\alpha^\\beta \\sqrt{r'^2+r^2}\\,d\\varphi\\)"],
-          ["Площадь поверхн.", "\\(\\mu S = 2\\pi\\int_a^b |y|\\sqrt{1+y'^2}\\,dx\\)"],
-          ["Симпсон", "\\(\\frac{h}{6}\\sum(f_{i-1}+4f_{\\xi_i}+f_i)\\)"]
-        ]}
+        {
+          "type": "table",
+          "headers": [
+            "Приложение",
+            "Формула"
+          ],
+          "rows": [
+            [
+              "Площадь (декарт.)",
+              "\\(S = \\int_a^b (\\psi - \\varphi)\\,dx\\)"
+            ],
+            [
+              "Площадь (парам.)",
+              "\\(S = \\int_\\alpha^\\beta \\psi(t)|\\varphi'(t)|\\,dt\\)"
+            ],
+            [
+              "Площадь (поляр.)",
+              "\\(S = \\frac{1}{2}\\int_\\alpha^\\beta r^2\\,d\\varphi\\)"
+            ],
+            [
+              "Объём (сечения)",
+              "\\(V = \\int_a^b S(x)\\,dx\\)"
+            ],
+            [
+              "Объём вращения",
+              "\\(V = \\pi\\int_a^b f^2\\,dx\\)"
+            ],
+            [
+              "Длина дуги (парам.)",
+              "\\(l = \\int_a^b \\sqrt{x'^2+y'^2}\\,dt\\)"
+            ],
+            [
+              "Длина дуги (явн.)",
+              "\\(l = \\int_a^b \\sqrt{1+y'^2}\\,dx\\)"
+            ],
+            [
+              "Длина (поляр.)",
+              "\\(l = \\int_\\alpha^\\beta \\sqrt{r'^2+r^2}\\,d\\varphi\\)"
+            ],
+            [
+              "Площадь поверхн.",
+              "\\(\\mu S = 2\\pi\\int_a^b |y|\\sqrt{1+y'^2}\\,dx\\)"
+            ],
+            [
+              "Симпсон",
+              "\\(\\frac{h}{6}\\sum(f_{i-1}+4f_{\\xi_i}+f_i)\\)"
+            ]
+          ]
+        }
       ]
     }
   ]

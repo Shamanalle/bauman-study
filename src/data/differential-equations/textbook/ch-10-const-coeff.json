@@ -6,62 +6,157 @@
     {
       "heading": "Характеристическое уравнение",
       "blocks": [
-        {"type": "text", "content": "Когда коэффициенты линейного уравнения — постоянные числа (не зависят от \\(x\\)), задача резко упрощается: она сводится к <strong>алгебраическому</strong> уравнению для корней. Это одна из ключевых идей курса."},
-        {"type": "text", "content": "Рассмотрим <strong>ЛОДУ с постоянными коэффициентами</strong>:\n$$y^{(n)} + a_1 y^{(n-1)} + \\ldots + a_n y = 0$$\nгде \\(a_1, \\ldots, a_n \\in \\mathbb{R}\\)."},
-        {"type": "definition", "term": "Характеристическое уравнение", "content": "$$\\lambda^n + a_1 \\lambda^{n-1} + \\ldots + a_{n-1}\\lambda + a_n = 0$$\n\nЕсли \\(\\lambda_0\\) — корень, то \\(y_0 = e^{\\lambda_0 x}\\) — решение ЛОДУ, ибо \\(y_0^{(k)} = \\lambda_0^k e^{\\lambda_0 x}\\), и подстановка даёт \\((\\lambda_0^n + a_1\\lambda_0^{n-1} + \\ldots + a_n)e^{\\lambda_0 x} = 0\\)."}
+        {
+          "type": "text",
+          "content": "Когда коэффициенты линейного уравнения — постоянные числа (не зависят от \\(x\\)), задача резко упрощается: она сводится к <strong>алгебраическому</strong> уравнению для корней. Это одна из ключевых идей курса."
+        },
+        {
+          "type": "text",
+          "content": "Рассмотрим <strong>ЛОДУ с постоянными коэффициентами</strong>:\n$$y^{(n)} + a_1 y^{(n-1)} + \\ldots + a_n y = 0$$\nгде \\(a_1, \\ldots, a_n \\in \\mathbb{R}\\)."
+        },
+        {
+          "type": "definition",
+          "term": "Характеристическое уравнение",
+          "content": "$$\\lambda^n + a_1 \\lambda^{n-1} + \\ldots + a_{n-1}\\lambda + a_n = 0$$\n\nЕсли \\(\\lambda_0\\) — корень, то \\(y_0 = e^{\\lambda_0 x}\\) — решение ЛОДУ, ибо \\(y_0^{(k)} = \\lambda_0^k e^{\\lambda_0 x}\\), и подстановка даёт \\((\\lambda_0^n + a_1\\lambda_0^{n-1} + \\ldots + a_n)e^{\\lambda_0 x} = 0\\)."
+        }
       ]
     },
     {
       "heading": "ФСР для уравнения 2-го порядка",
       "blocks": [
-        {"type": "text", "content": "Для \\(y'' + a_1 y' + a_2 y = 0\\) характеристическое уравнение: \\(\\lambda^2 + a_1\\lambda + a_2 = 0\\)."},
-        {"type": "theorem", "name": "Случай 1: два различных вещественных корня \\(\\lambda_1 \\neq \\lambda_2\\)", "content": "ФСР: \\(y_1 = e^{\\lambda_1 x},\\quad y_2 = e^{\\lambda_2 x}\\)\n\nОбщее решение: \\(y = C_1 e^{\\lambda_1 x} + C_2 e^{\\lambda_2 x}\\)\n\n<strong>Лин. независимость:</strong> \\(W = e^{(\\lambda_1+\\lambda_2)x}(\\lambda_2 - \\lambda_1) \\neq 0\\). \\(\\)"},
-        {"type": "theorem", "name": "Случай 2: кратный корень \\(\\lambda_0\\) кратности 2", "content": "ФСР: \\(y_1 = e^{\\lambda_0 x},\\quad y_2 = x\\,e^{\\lambda_0 x}\\)\n\nОбщее решение: \\(y = (C_1 + C_2 x)e^{\\lambda_0 x}\\)\n\n<strong>Проверка \\(y_2\\):</strong> \\(\\lambda_0\\) кратности 2 \\(\\Rightarrow \\lambda_0^2 + a_1\\lambda_0 + a_2 = 0\\) и \\(2\\lambda_0 + a_1 = 0\\).\n$$y_2'' + a_1 y_2' + a_2 y_2 = e^{\\lambda_0 x}\\big[(2\\lambda_0+a_1) + x(\\lambda_0^2+a_1\\lambda_0+a_2)\\big] = 0\\$$\n\n<strong>Лин. независимость:</strong> \\(W = e^{2\\lambda_0 x} \\neq 0\\)."},
-        {"type": "theorem", "name": "Случай 3: комплексные корни \\(\\lambda_{1,2} = \\alpha \\pm i\\beta\\), \\(\\beta \\neq 0\\)", "content": "ФСР: \\(y_1 = e^{\\alpha x}\\cos\\beta x,\\quad y_2 = e^{\\alpha x}\\sin\\beta x\\)\n\nОбщее решение: \\(y = e^{\\alpha x}(C_1\\cos\\beta x + C_2\\sin\\beta x)\\)\n\n<strong>Лин. независимость:</strong> \\(W = \\beta\\,e^{2\\alpha x} \\neq 0\\). \\(\\)"}
+        {
+          "type": "text",
+          "content": "Для \\(y'' + a_1 y' + a_2 y = 0\\) характеристическое уравнение: \\(\\lambda^2 + a_1\\lambda + a_2 = 0\\)."
+        },
+        {
+          "type": "theorem",
+          "name": "Случай 1: два различных вещественных корня \\(\\lambda_1 \\neq \\lambda_2\\)",
+          "content": "ФСР: \\(y_1 = e^{\\lambda_1 x},\\quad y_2 = e^{\\lambda_2 x}\\)\n\nОбщее решение: \\(y = C_1 e^{\\lambda_1 x} + C_2 e^{\\lambda_2 x}\\)\n\n<strong>Лин. независимость:</strong> \\(W = e^{(\\lambda_1+\\lambda_2)x}(\\lambda_2 - \\lambda_1) \\neq 0\\). \\(\\)"
+        },
+        {
+          "type": "theorem",
+          "name": "Случай 2: кратный корень \\(\\lambda_0\\) кратности 2",
+          "content": "ФСР: \\(y_1 = e^{\\lambda_0 x},\\quad y_2 = x\\,e^{\\lambda_0 x}\\)\n\nОбщее решение: \\(y = (C_1 + C_2 x)e^{\\lambda_0 x}\\)\n\n<strong>Проверка \\(y_2\\):</strong> \\(\\lambda_0\\) кратности 2 \\(\\Rightarrow \\lambda_0^2 + a_1\\lambda_0 + a_2 = 0\\) и \\(2\\lambda_0 + a_1 = 0\\).\n$$y_2'' + a_1 y_2' + a_2 y_2 = e^{\\lambda_0 x}\\big[(2\\lambda_0+a_1) + x(\\lambda_0^2+a_1\\lambda_0+a_2)\\big] = 0\\$$\n\n<strong>Лин. независимость:</strong> \\(W = e^{2\\lambda_0 x} \\neq 0\\)."
+        },
+        {
+          "type": "theorem",
+          "name": "Случай 3: комплексные корни \\(\\lambda_{1,2} = \\alpha \\pm i\\beta\\), \\(\\beta \\neq 0\\)",
+          "content": "ФСР: \\(y_1 = e^{\\alpha x}\\cos\\beta x,\\quad y_2 = e^{\\alpha x}\\sin\\beta x\\)\n\nОбщее решение: \\(y = e^{\\alpha x}(C_1\\cos\\beta x + C_2\\sin\\beta x)\\)\n\n<strong>Лин. независимость:</strong> \\(W = \\beta\\,e^{2\\alpha x} \\neq 0\\). \\(\\)"
+        },
+        {
+          "type": "example",
+          "title": "Простые действительные корни",
+          "content": "Решить \\(y'' - 3y' + 2y = 0\\).",
+          "solution": "Характеристическое уравнение: \\(\\lambda^2 - 3\\lambda + 2 = 0\\).<br>\\((\\lambda - 1)(\\lambda - 2) = 0 \\implies \\lambda_1 = 1, \\lambda_2 = 2\\).<br>Общее решение: \\(y = C_1 e^x + C_2 e^{2x}\\)."
+        }
       ]
     },
     {
       "heading": "ФСР для уравнения n-го порядка",
       "blocks": [
-        {"type": "text", "content": "Каждому <strong>вещественному корню</strong> \\(\\lambda_0\\) кратности \\(r\\) соответствуют \\(r\\) решений:\n$$e^{\\lambda_0 x},\\; xe^{\\lambda_0 x},\\; \\ldots,\\; x^{r-1}e^{\\lambda_0 x}$$"},
-        {"type": "text", "content": "Каждой паре <strong>комплексно сопряжённых</strong> корней \\(\\alpha \\pm i\\beta\\) кратности \\(s\\) — \\(2s\\) решений:\n$$e^{\\alpha x}\\cos\\beta x,\\; xe^{\\alpha x}\\cos\\beta x,\\;\\ldots,\\; x^{s-1}e^{\\alpha x}\\cos\\beta x$$\n$$e^{\\alpha x}\\sin\\beta x,\\; xe^{\\alpha x}\\sin\\beta x,\\;\\ldots,\\; x^{s-1}e^{\\alpha x}\\sin\\beta x$$"},
-        {"type": "note", "content": "Суммарное число решений = \\(n\\) (с учётом кратностей). Они образуют ФСР."}
+        {
+          "type": "text",
+          "content": "Каждому <strong>вещественному корню</strong> \\(\\lambda_0\\) кратности \\(r\\) соответствуют \\(r\\) решений:\n$$e^{\\lambda_0 x},\\; xe^{\\lambda_0 x},\\; \\ldots,\\; x^{r-1}e^{\\lambda_0 x}$$"
+        },
+        {
+          "type": "text",
+          "content": "Каждой паре <strong>комплексно сопряжённых</strong> корней \\(\\alpha \\pm i\\beta\\) кратности \\(s\\) — \\(2s\\) решений:\n$$e^{\\alpha x}\\cos\\beta x,\\; xe^{\\alpha x}\\cos\\beta x,\\;\\ldots,\\; x^{s-1}e^{\\alpha x}\\cos\\beta x$$\n$$e^{\\alpha x}\\sin\\beta x,\\; xe^{\\alpha x}\\sin\\beta x,\\;\\ldots,\\; x^{s-1}e^{\\alpha x}\\sin\\beta x$$"
+        },
+        {
+          "type": "note",
+          "content": "Суммарное число решений = \\(n\\) (с учётом кратностей). Они образуют ФСР."
+        }
       ]
     },
     {
       "heading": "Структура общего решения ЛНДУ",
       "blocks": [
-        {"type": "theorem", "name": "Общее решение неоднородного уравнения", "content": "Общее решение \\(L[y] = b(x)\\):\n$$y = y_0(x) + C_1 y_1 + \\ldots + C_n y_n$$\nгде \\(y_0\\) — <strong>частное решение ЛНДУ</strong>, \\(y_1, \\ldots, y_n\\) — ФСР однородного.\n\n<strong>Доказательство.</strong>\n1. \\(L[y] = L[y_0] + \\sum C_k L[y_k] = b(x) + 0 = b(x)\\) — решение при любых \\(C_k\\).\n2. Для любых начальных данных: система для \\(C_k\\) имеет определитель \\(W(x_0) \\neq 0\\), значит \\(C_k\\) найдутся. \\(\\)"},
-        {"type": "theorem", "name": "Теорема о наложении", "content": "Если \\(y_1\\) — решение \\(L[y] = b_1(x)\\), \\(y_2\\) — решение \\(L[y] = b_2(x)\\), то\n$$y_1 + y_2 \\text{ — решение } L[y] = b_1(x) + b_2(x)$$\n<strong>Доказательство:</strong> \\(L[y_1+y_2] = L[y_1]+L[y_2] = b_1+b_2\\). \\(\\)"}
+        {
+          "type": "theorem",
+          "name": "Общее решение неоднородного уравнения",
+          "content": "Общее решение \\(L[y] = b(x)\\):\n$$y = y_0(x) + C_1 y_1 + \\ldots + C_n y_n$$\nгде \\(y_0\\) — <strong>частное решение ЛНДУ</strong>, \\(y_1, \\ldots, y_n\\) — ФСР однородного.\n\n<strong>Доказательство.</strong>\n1. \\(L[y] = L[y_0] + \\sum C_k L[y_k] = b(x) + 0 = b(x)\\) — решение при любых \\(C_k\\).\n2. Для любых начальных данных: система для \\(C_k\\) имеет определитель \\(W(x_0) \\neq 0\\), значит \\(C_k\\) найдутся. \\(\\)"
+        },
+        {
+          "type": "theorem",
+          "name": "Теорема о наложении",
+          "content": "Если \\(y_1\\) — решение \\(L[y] = b_1(x)\\), \\(y_2\\) — решение \\(L[y] = b_2(x)\\), то\n$$y_1 + y_2 \\text{ — решение } L[y] = b_1(x) + b_2(x)$$\n<strong>Доказательство:</strong> \\(L[y_1+y_2] = L[y_1]+L[y_2] = b_1+b_2\\). \\(\\)"
+        }
       ]
     },
     {
       "heading": "Метод Лагранжа (вариация постоянных)",
       "blocks": [
-        {"type": "text", "content": "Пусть \\(y_1, \\ldots, y_n\\) — ФСР для \\(L[y] = 0\\). Частное решение \\(L[y] = b(x)\\) ищем в виде:\n$$y = C_1(x)\\,y_1 + \\ldots + C_n(x)\\,y_n$$"},
-        {"type": "text", "content": "Функции \\(C_k(x)\\) находим из системы:\n$$\\begin{cases} C_1'y_1 + \\ldots + C_n'y_n = 0 \\\\ C_1'y_1' + \\ldots + C_n'y_n' = 0 \\\\ \\vdots \\\\ C_1'y_1^{(n-2)} + \\ldots + C_n'y_n^{(n-2)} = 0 \\\\ C_1'y_1^{(n-1)} + \\ldots + C_n'y_n^{(n-1)} = b(x) \\end{cases}$$\nОпределитель системы = \\(W(x) \\neq 0\\), значит \\(C_k'\\) находятся однозначно. Интегрируем: \\(C_k = \\int C_k'\\,dx\\)."},
-        {"type": "text", "content": "<strong>Вывод для \\(n = 2\\).</strong> Уравнение \\(y'' + a_1 y' + a_2 y = b(x)\\), \\(y = C_1 y_1 + C_2 y_2\\).\n\nИз системы \\(C_1'y_1 + C_2'y_2 = 0\\), \\(C_1'y_1' + C_2'y_2' = b\\):\n$$y' = C_1 y_1' + C_2 y_2' \\quad (\\text{т.к. } C_1'y_1 + C_2'y_2 = 0)$$\n$$y'' = C_1'y_1' + C_2'y_2' + C_1 y_1'' + C_2 y_2'' = b + C_1 y_1'' + C_2 y_2''$$\nПодставляя: \\(L[y] = b + C_1 L[y_1] + C_2 L[y_2] = b + 0 = b\\). \\(\\)"}
+        {
+          "type": "text",
+          "content": "Пусть \\(y_1, \\ldots, y_n\\) — ФСР для \\(L[y] = 0\\). Частное решение \\(L[y] = b(x)\\) ищем в виде:\n$$y = C_1(x)\\,y_1 + \\ldots + C_n(x)\\,y_n$$"
+        },
+        {
+          "type": "text",
+          "content": "Функции \\(C_k(x)\\) находим из системы:\n$$\\begin{cases} C_1'y_1 + \\ldots + C_n'y_n = 0 \\\\ C_1'y_1' + \\ldots + C_n'y_n' = 0 \\\\ \\vdots \\\\ C_1'y_1^{(n-2)} + \\ldots + C_n'y_n^{(n-2)} = 0 \\\\ C_1'y_1^{(n-1)} + \\ldots + C_n'y_n^{(n-1)} = b(x) \\end{cases}$$\nОпределитель системы = \\(W(x) \\neq 0\\), значит \\(C_k'\\) находятся однозначно. Интегрируем: \\(C_k = \\int C_k'\\,dx\\)."
+        },
+        {
+          "type": "text",
+          "content": "<strong>Вывод для \\(n = 2\\).</strong> Уравнение \\(y'' + a_1 y' + a_2 y = b(x)\\), \\(y = C_1 y_1 + C_2 y_2\\).\n\nИз системы \\(C_1'y_1 + C_2'y_2 = 0\\), \\(C_1'y_1' + C_2'y_2' = b\\):\n$$y' = C_1 y_1' + C_2 y_2' \\quad (\\text{т.к. } C_1'y_1 + C_2'y_2 = 0)$$\n$$y'' = C_1'y_1' + C_2'y_2' + C_1 y_1'' + C_2 y_2'' = b + C_1 y_1'' + C_2 y_2''$$\nПодставляя: \\(L[y] = b + C_1 L[y_1] + C_2 L[y_2] = b + 0 = b\\). \\(\\)"
+        }
       ]
     },
     {
       "heading": "Метод неопределённых коэффициентов",
       "blocks": [
-        {"type": "text", "content": "Для ЛНДУ с <strong>постоянными коэффициентами</strong> и правой частью — <strong>квазимногочленом</strong>:\n$$b(x) = e^{\\alpha x}\\big(P(x)\\cos\\beta x + Q(x)\\sin\\beta x\\big)$$"},
-        {"type": "theorem", "name": "Форма частного решения", "content": "Частное решение ищется в виде:\n$$y_0 = x^r\\,e^{\\alpha x}\\big(R(x)\\cos\\beta x + S(x)\\sin\\beta x\\big)$$\nгде:\n- \\(r = 0\\), если \\(\\alpha + i\\beta\\) <strong>не</strong> корень характеристического уравнения\n- \\(r =\\) кратность корня \\(\\alpha + i\\beta\\), если является корнем\n- \\(\\deg R = \\deg S = \\max(\\deg P, \\deg Q)\\)"},
-        {"type": "example", "title": "Метод неопределённых коэффициентов", "content": "Найти частное решение \\(y'' - 2y' + y = x + 2e^x\\).", "solution": "Характеристическое: \\(\\lambda^2 - 2\\lambda + 1 = 0\\), корень \\(\\lambda = 1\\) кратности 2.\n\n<strong>1)</strong> Правая часть \\(b_1 = x\\): \\(\\alpha = \\beta = 0\\), не корень, \\(r = 0\\).\n\\(y_{10} = ax + b\\). Подстановка: \\(-2a + ax + b = x \\Rightarrow a = 1,\\; b = 2\\). \\(y_{10} = x + 2\\).\n\n<strong>2)</strong> Правая часть \\(b_2 = 2e^x\\): \\(\\alpha = 1,\\; \\beta = 0\\), корень кратности \\(r = 2\\).\n\\(y_{20} = ax^2 e^x\\). Подстановка: \\(2ae^x = 2e^x \\Rightarrow a = 1\\). \\(y_{20} = x^2 e^x\\).\n\n<strong>Наложение:</strong> \\(y_0 = y_{10} + y_{20} = x + 2 + x^2 e^x\\)."}
+        {
+          "type": "text",
+          "content": "Для ЛНДУ с <strong>постоянными коэффициентами</strong> и правой частью — <strong>квазимногочленом</strong>:\n$$b(x) = e^{\\alpha x}\\big(P(x)\\cos\\beta x + Q(x)\\sin\\beta x\\big)$$"
+        },
+        {
+          "type": "theorem",
+          "name": "Форма частного решения",
+          "content": "Частное решение ищется в виде:\n$$y_0 = x^r\\,e^{\\alpha x}\\big(R(x)\\cos\\beta x + S(x)\\sin\\beta x\\big)$$\nгде:\n- \\(r = 0\\), если \\(\\alpha + i\\beta\\) <strong>не</strong> корень характеристического уравнения\n- \\(r =\\) кратность корня \\(\\alpha + i\\beta\\), если является корнем\n- \\(\\deg R = \\deg S = \\max(\\deg P, \\deg Q)\\)"
+        },
+        {
+          "type": "example",
+          "title": "Метод неопределённых коэффициентов",
+          "content": "Найти частное решение \\(y'' - 2y' + y = x + 2e^x\\).",
+          "solution": "Характеристическое: \\(\\lambda^2 - 2\\lambda + 1 = 0\\), корень \\(\\lambda = 1\\) кратности 2.\n\n<strong>1)</strong> Правая часть \\(b_1 = x\\): \\(\\alpha = \\beta = 0\\), не корень, \\(r = 0\\).\n\\(y_{10} = ax + b\\). Подстановка: \\(-2a + ax + b = x \\Rightarrow a = 1,\\; b = 2\\). \\(y_{10} = x + 2\\).\n\n<strong>2)</strong> Правая часть \\(b_2 = 2e^x\\): \\(\\alpha = 1,\\; \\beta = 0\\), корень кратности \\(r = 2\\).\n\\(y_{20} = ax^2 e^x\\). Подстановка: \\(2ae^x = 2e^x \\Rightarrow a = 1\\). \\(y_{20} = x^2 e^x\\).\n\n<strong>Наложение:</strong> \\(y_0 = y_{10} + y_{20} = x + 2 + x^2 e^x\\)."
+        }
       ]
     },
     {
       "heading": "Сводка",
       "blocks": [
-        {"type": "table", "headers": ["Тип корня \\(\\lambda\\)", "ФСР"], "rows": [
-          ["Веществ., кр. \\(r\\)", "\\(e^{\\lambda x},\\; xe^{\\lambda x},\\; \\ldots,\\; x^{r-1}e^{\\lambda x}\\)"],
-          ["Комплексн. \\(\\alpha \\pm i\\beta\\), кр. \\(s\\)", "\\(x^k e^{\\alpha x}\\cos\\beta x,\\; x^k e^{\\alpha x}\\sin\\beta x\\), \\(k=0..s-1\\)"]
-        ]},
-        {"type": "table", "headers": ["Метод", "Применимость"], "rows": [
-          ["Вариация постоянных", "Любая \\(b(x)\\), если известна ФСР"],
-          ["Неопредел. коэффициенты", "Только постоянные коэфф., \\(b\\) — квазимногочлен"]
-        ]}
+        {
+          "type": "table",
+          "headers": [
+            "Тип корня \\(\\lambda\\)",
+            "ФСР"
+          ],
+          "rows": [
+            [
+              "Веществ., кр. \\(r\\)",
+              "\\(e^{\\lambda x},\\; xe^{\\lambda x},\\; \\ldots,\\; x^{r-1}e^{\\lambda x}\\)"
+            ],
+            [
+              "Комплексн. \\(\\alpha \\pm i\\beta\\), кр. \\(s\\)",
+              "\\(x^k e^{\\alpha x}\\cos\\beta x,\\; x^k e^{\\alpha x}\\sin\\beta x\\), \\(k=0..s-1\\)"
+            ]
+          ]
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Метод",
+            "Применимость"
+          ],
+          "rows": [
+            [
+              "Вариация постоянных",
+              "Любая \\(b(x)\\), если известна ФСР"
+            ],
+            [
+              "Неопредел. коэффициенты",
+              "Только постоянные коэфф., \\(b\\) — квазимногочлен"
+            ]
+          ]
+        }
       ]
     }
   ]
