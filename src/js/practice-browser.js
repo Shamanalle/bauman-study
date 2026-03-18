@@ -22,6 +22,23 @@ function md(str) {
   // Preserve inline $...$ math
   str = str.replace(/\$[^$]+?\$/g, m => { blocks.push(m); return `⌘B${blocks.length - 1}⌘`; });
 
+  // Markdown tables: detect lines with | ... | pattern
+  str = str.replace(/(?:^|\n)((?:\|[^\n]+\|\s*\n)+)/g, (_, tableBlock) => {
+    const rows = tableBlock.trim().split('\n').map(r => r.trim()).filter(Boolean);
+    if (rows.length < 2) return '\n' + tableBlock;
+    // Check for separator row (|---|---|)
+    const sepIdx = rows.findIndex(r => /^\|[\s:]*-+[\s:]*(\|[\s:]*-+[\s:]*)*\|$/.test(r));
+    let html = '<table class="md-table">';
+    rows.forEach((row, i) => {
+      if (i === sepIdx) return; // skip separator
+      const cells = row.split('|').filter((_, ci, arr) => ci > 0 && ci < arr.length - 1);
+      const tag = (sepIdx >= 0 && i < sepIdx) ? 'th' : 'td';
+      html += '<tr>' + cells.map(c => `<${tag}>${c.trim()}</${tag}>`).join('') + '</tr>';
+    });
+    html += '</table>';
+    return '\n' + html + '\n';
+  });
+
   // Bold
   str = str.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
 
@@ -34,6 +51,8 @@ function md(str) {
   str = str.replace(/\n/g, '<br>');
   str = str.replace(/<br>\s*<ul>/g, '<ul>');
   str = str.replace(/<\/ul>\s*<br>/g, '</ul>');
+  str = str.replace(/<br>\s*<table/g, '<table');
+  str = str.replace(/<\/table>\s*<br>/g, '</table>');
 
   // Restore all blocks
   blocks.forEach((b, i) => { str = str.replace(`⌘B${i}⌘`, b); });

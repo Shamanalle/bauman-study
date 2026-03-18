@@ -1,9 +1,9 @@
 {
   "sections": [
-    "section-00-формулы.json",
-    "section-01-методы.json",
-    "section-02-задачи.json",
-    "section-03-доп-задачи.json",
-    "section-04-билеты.json"
+    "section-01-линейные-пространства-и-базисы.json",
+    "section-02-евклидово-пространство.json",
+    "section-03-линейные-операторы.json",
+    "section-04-ортогональные-операторы-и-квадратичные-формы.json",
+    "section-05-доказательства.json"
   ]
 }

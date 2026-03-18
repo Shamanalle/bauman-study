@@ -1,9 +1,9 @@
 {
   "sections": [
-    "section-00-формулы.json",
-    "section-01-методы.json",
-    "section-02-задачи.json",
-    "section-03-доп-задачи.json",
-    "section-04-билеты.json"
+    "section-01-топология-ℝⁿ-и-основы-фнп.json",
+    "section-02-дифференцирование-фнп.json",
+    "section-03-касательная-плоскость-и-экстремумы.json",
+    "section-04-экстремумы-фнп.json",
+    "section-05-доказательства.json"
   ]
 }

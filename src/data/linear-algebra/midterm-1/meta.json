@@ -1,8 +1,7 @@
 {
   "title": "Линейная алгебра и ФНП",
-  "subtitle": "РК-1 · Линейная алгебра · Практика",
+  "subtitle": "Рубежный контроль №1 · Линейная алгебра",
   "icon": "📐",
   "shortCode": "lark1",
-  "bundleName": "ЛинАлг_РК-1",
-  "practiceMode": true
+  "bundleName": "ЛинАлг_РК-1"
 }

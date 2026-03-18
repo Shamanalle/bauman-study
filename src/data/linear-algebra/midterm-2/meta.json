@@ -1,8 +1,7 @@
 {
   "title": "Линейная алгебра и ФНП",
-  "subtitle": "РК-2 · ФНП · Практика",
+  "subtitle": "Рубежный контроль №2 · Функции нескольких переменных",
   "icon": "📐",
   "shortCode": "lark2",
-  "bundleName": "ЛинАлг_РК-2",
-  "practiceMode": true
+  "bundleName": "ЛинАлг_РК-2"
 }

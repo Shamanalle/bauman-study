@@ -236,3 +236,9 @@ body.dark .lab-diagram svg .diagram-box { fill: #21262d; stroke: #30363d; }
 body.dark .lab-diagram svg .diagram-arrow { stroke: #484f58; fill: #484f58; }
 body.dark .lab-diagram svg .diagram-label { fill: #8b949e; }
 body.dark .lab-diagram svg .diagram-accent { fill: var(--accent); stroke: var(--accent); }
+
+/* Markdown tables */
+body.dark .md-table th { background: rgba(45, 164, 78, 0.1); color: #e6edf3; }
+body.dark .md-table td { border-color: #30363d; }
+body.dark .md-table th { border-color: #30363d; }
+body.dark .md-table tr:nth-child(even) td { background: rgba(255, 255, 255, 0.02); }

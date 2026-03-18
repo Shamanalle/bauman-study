@@ -10,9 +10,27 @@ export function nl(str) {
   const parts = res.split(/(<pre[\s\S]*?<\/pre>)/gi);
   return parts.map(p => {
     if (p.toLowerCase().startsWith('<pre')) return p;
-    return p
+    // Markdown tables
+    p = p.replace(/(?:^|\n)((?:\|[^\n]+\|\s*\n)+)/g, (_, tableBlock) => {
+      const rows = tableBlock.trim().split('\n').map(r => r.trim()).filter(Boolean);
+      if (rows.length < 2) return '\n' + tableBlock;
+      const sepIdx = rows.findIndex(r => /^\|[\s:]*-+[\s:]*(\|[\s:]*-+[\s:]*)*\|$/.test(r));
+      let html = '<table class="md-table">';
+      rows.forEach((row, i) => {
+        if (i === sepIdx) return;
+        const cells = row.split('|').filter((_, ci, arr) => ci > 0 && ci < arr.length - 1);
+        const tag = (sepIdx >= 0 && i < sepIdx) ? 'th' : 'td';
+        html += '<tr>' + cells.map(c => `<${tag}>${c.trim()}</${tag}>`).join('') + '</tr>';
+      });
+      html += '</table>';
+      return '\n' + html + '\n';
+    });
+    p = p
       .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
       .replace(/\\n(?![a-zA-Z])|\n/g, '<br>');
+    p = p.replace(/<br>\s*<table/g, '<table');
+    p = p.replace(/<\/table>\s*<br>/g, '</table>');
+    return p;
   }).join('');
 }
 
