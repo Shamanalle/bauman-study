@@ -1,38 +1,18 @@
-<svg viewBox="0 0 420 185" width="420" height="185">
+<svg viewBox="0 0 380 160" width="380" height="160">
   <defs>
-    <marker id="va" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><polygon points="0 0,7 3,0 6" fill="#0969da"/></marker>
-    <marker id="vb" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><polygon points="0 0,7 3,0 6" fill="#e5534b"/></marker>
-    <marker id="vc" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><polygon points="0 0,7 3,0 6" fill="#2da44e"/></marker>
+    <marker id="va" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#0969da"/></marker>
+    <marker id="vb" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#e5534b"/></marker>
+    <marker id="vc" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#2da44e"/></marker>
   </defs>
-
-  <text x="40" y="22" font-size="14" fill="#8b949e" font-weight="600">Правило параллелограмма</text>
-
-  <!-- Parallelogram fill (O → O+a → O+a+b → O+b) -->
-  <polygon points="95 120, 245 55, 340 85, 190 150" fill="rgba(139,148,158,0.06)" stroke="none"/>
-
-  <!-- Origin O -->
-  <circle cx="95" cy="120" r="4" fill="#8b949e"/>
-  <text x="78" y="128" font-size="13" fill="#8b949e" font-weight="bold">O</text>
-
-  <!-- Vector a (from O, up-right) -->
-  <line x1="95" y1="120" x2="245" y2="55" stroke="#0969da" stroke-width="3" marker-end="url(#va)"/>
-  <text x="160" y="72" font-size="16" fill="#0969da" font-weight="bold">a
-    
-  </text>
-
-  <!-- Vector b (from O, down-right) -->
-  <line x1="95" y1="120" x2="190" y2="150" stroke="#e5534b" stroke-width="3" marker-end="url(#vb)"/>
-  <text x="130" y="155" font-size="16" fill="#e5534b" font-weight="bold">b
-    
-  </text>
-
-  <!-- Sum vector a+b (diagonal of parallelogram) -->
-  <line x1="95" y1="120" x2="340" y2="85" stroke="#2da44e" stroke-width="3" marker-end="url(#vc)"/>
-  <text x="208" y="110" font-size="16" fill="#2da44e" font-weight="bold">a + b
-    
-  </text>
-
-  <!-- Dashed parallelogram sides (a+b completes through b' and a') -->
-  <line x1="245" y1="55" x2="340" y2="85" stroke="#e5534b" stroke-width="1.5" stroke-dasharray="6,4"/>
-  <line x1="190" y1="150" x2="340" y2="85" stroke="#0969da" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <polygon points="100 100, 250 40, 350 70, 200 130" fill="rgba(139, 148, 158, 0.05)" stroke="none"/>
+  <circle cx="100" cy="100" r="3" fill="var(--text2)"/>
+  <line x1="100" y1="100" x2="250" y2="40" stroke="#0969da" stroke-width="2.5" marker-end="url(#va)"/>
+  <text x="170" y="60" font-size="14" fill="#0969da" font-weight="600">a</text>
+  <line x1="100" y1="100" x2="200" y2="130" stroke="#e5534b" stroke-width="2.5" marker-end="url(#vb)"/>
+  <text x="140" y="135" font-size="14" fill="#e5534b" font-weight="600">b</text>
+  <line x1="100" y1="100" x2="350" y2="70" stroke="#2da44e" stroke-width="2.5" marker-end="url(#vc)"/>
+  <text x="210" y="95" font-size="14" fill="#2da44e" font-weight="600">a + b</text>
+  <line x1="250" y1="40" x2="350" y2="70" stroke="#e5534b" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <line x1="200" y1="130" x2="350" y2="70" stroke="#0969da" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <text x="40" y="25" font-size="12" fill="var(--text2)" font-weight="600">Правило параллелограмма</text>
 </svg>

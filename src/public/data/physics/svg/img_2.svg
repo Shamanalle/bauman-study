@@ -6,10 +6,10 @@
     <marker id="wArr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0 0, 6 3, 0 6" fill="#2da44e"/></marker>
   </defs>
 
-  <circle cx="140" cy="100" r="70" fill="none" stroke="#d0d7de" stroke-width="2" stroke-dasharray="6,4"/>
-  <circle cx="140" cy="100" r="4" fill="#24292f"/> <line x1="140" y1="100" x2="210" y2="100" stroke="#8b949e" stroke-width="2" stroke-dasharray="4"/>
-  <text x="170" y="95" font-size="12" fill="#8b949e" font-weight="bold">R</text>
-  <circle cx="210" cy="100" r="5" fill="#24292f"/> <line x1="210" y1="100" x2="210" y2="30" stroke="#0969da" stroke-width="3" marker-end="url(#vArr)"/>
+  <circle cx="140" cy="100" r="70" fill="none" stroke="var(--text2)" stroke-width="2" stroke-dasharray="6,4"/>
+  <circle cx="140" cy="100" r="4" fill="var(--text)"/> <line x1="140" y1="100" x2="210" y2="100" stroke="var(--text2)" stroke-width="2" stroke-dasharray="4"/>
+  <text x="170" y="95" font-size="12" fill="var(--text2)" font-weight="bold">R</text>
+  <circle cx="210" cy="100" r="5" fill="var(--text)"/> <line x1="210" y1="100" x2="210" y2="30" stroke="#0969da" stroke-width="3" marker-end="url(#vArr)"/>
   <text x="220" y="45" font-size="14" fill="#0969da" font-weight="bold">v</text>
 
   <line x1="210" y1="100" x2="210" y2="60" stroke="#e5534b" stroke-width="2.5" marker-end="url(#atArr)"/>
@@ -21,7 +21,7 @@
   <path d="M 120 70 A 30 30 0 0 1 160 70" fill="none" stroke="#2da44e" stroke-width="2" marker-end="url(#wArr)"/>
   <text x="135" y="60" font-size="14" fill="#2da44e" font-weight="bold">ω</text>
 
-  <rect x="250" y="40" width="160" height="90" rx="6" fill="rgba(36,41,47,0.4)" stroke="#d0d7de" stroke-width="1.5"/>
+  <rect x="250" y="40" width="160" height="90" rx="6" fill="rgba(128,128,128,0.08)" stroke="var(--text2)" stroke-width="1.5"/>
   <text x="260" y="60" font-size="12" fill="#0969da" font-weight="bold">v = ω · R</text>
   <text x="260" y="85" font-size="12" fill="#e5534b" font-weight="bold">a<tspan dy="2" font-size="10">τ</tspan> = ε · R</text>
   <text x="260" y="110" font-size="12" fill="#d29922" font-weight="bold">a<tspan dy="2" font-size="10">n</tspan> = ω² · R = v²/R</text>

@@ -159,6 +159,16 @@ body.dark .ki-label { color: #e3b341; }
 body.dark .statement-block { background: rgba(9, 105, 218, 0.08); border-color: rgba(9, 105, 218, 0.25); color: #79c0ff; }
 body.dark .tldr { background: rgba(45, 164, 78, 0.1); border-color: rgba(45, 164, 78, 0.35); color: #7ee787; }
 
+/* Practice mode dark overrides */
+body.dark .practice-condition { background: rgba(45, 164, 78, 0.06); border-color: rgba(45, 164, 78, 0.25); }
+body.dark .practice-condition .card-formal-text { color: #e6edf3; }
+body.dark .solution-reveal { color: #56d364; border-color: rgba(45, 164, 78, 0.5); }
+body.dark .solution-reveal:hover { background: rgba(45, 164, 78, 0.08); box-shadow: 0 2px 8px rgba(45, 164, 78, 0.2); }
+body.dark .solution-reveal.open { background: rgba(45, 164, 78, 0.1); }
+body.dark .solution-body { background: #0d1117; border-color: #30363d; }
+body.dark .solution-answer { background: rgba(45, 164, 78, 0.1); border-color: rgba(45, 164, 78, 0.35); }
+body.dark .solution-answer-label { color: #56d364; }
+
 /* Scroll-to-top */
 body.dark .scroll-top { background: #238636; }
 

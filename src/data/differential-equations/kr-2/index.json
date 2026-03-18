@@ -1,3 +1,8 @@
 {
-  "sections": ["section-01-образцы-билетов-кр-2.json"]
+  "sections": [
+    "section-00-формулы.json",
+    "section-01-методы.json",
+    "section-02-задачи.json",
+    "section-03-билеты.json"
+  ]
 }

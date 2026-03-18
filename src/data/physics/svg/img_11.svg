@@ -1,44 +1,21 @@
-<svg viewBox="0 0 440 210" width="440" height="210">
-  <defs>
-    <marker id="arr11" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0 0, 6 3, 0 6" fill="#8b949e"/></marker>
-  </defs>
+<svg viewBox="0 0 400 180" width="400" height="180">
+  <defs><marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0 0, 6 3, 0 6" fill="var(--text2)"/></marker></defs>
+  <line x1="30" y1="150" x2="380" y2="150" stroke="var(--text2)" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="40" y1="160" x2="40" y2="10" stroke="var(--text2)" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="385" y="155" font-size="12" fill="var(--text2)" font-weight="bold">V</text>
+  <text x="25" y="15" font-size="12" fill="var(--text2)" font-weight="bold">P</text>
 
-  <!-- Axes -->
-  <line x1="35" y1="170" x2="410" y2="170" stroke="#d0d7de" stroke-width="1.5" marker-end="url(#arr11)"/>
-  <line x1="45" y1="180" x2="45" y2="10" stroke="#d0d7de" stroke-width="1.5" marker-end="url(#arr11)"/>
-  <text x="416" y="176" font-size="14" fill="#8b949e" font-weight="600">V</text>
-  <text x="24" y="18" font-size="14" fill="#8b949e" font-weight="600">P</text>
+  <circle cx="120" cy="50" r="5" fill="var(--text)"/>
 
-  <!-- Starting state point -->
-  <circle cx="120" cy="55" r="5" fill="#24292f"/>
+  <line x1="120" y1="50" x2="330" y2="50" stroke="#2da44e" stroke-width="3"/>
+  <text x="340" y="55" font-size="12" fill="#2da44e" font-weight="bold">Изобара</text>
 
-  <!-- Isobar (constant P, horizontal) -->
-  <line x1="120" y1="55" x2="330" y2="55" stroke="#2da44e" stroke-width="3"/>
-  <text x="336" y="52" font-size="12" fill="#2da44e" font-weight="bold">Изобара (P=const)
-    
-  </text>
+  <line x1="120" y1="50" x2="120" y2="140" stroke="#e5534b" stroke-width="3"/>
+  <text x="130" y="130" font-size="12" fill="#e5534b" font-weight="bold">Изохора</text>
 
-  <!-- Isochor (constant V, vertical) -->
-  <line x1="120" y1="55" x2="120" y2="158" stroke="#e5534b" stroke-width="3"/>
-  <text x="62" y="145" font-size="12" fill="#e5534b" font-weight="bold">Изохора
-    
-  </text>
-  <text x="62" y="160" font-size="10" fill="#e5534b">(V=const)
-    
-  </text>
+  <path d="M 120 50 Q 180 100 330 110" fill="none" stroke="#0969da" stroke-width="3"/>
+  <text x="340" y="115" font-size="12" fill="#0969da" font-weight="bold">Изотерма</text>
 
-  <!-- Isotherm (hyperbola PV = const) -->
-  <path d="M 120 55 Q 200 95 330 110" fill="none" stroke="#0969da" stroke-width="3"/>
-  <text x="336" y="115" font-size="12" fill="#0969da" font-weight="bold">Изотерма
-    
-  </text>
-
-  <!-- Adiabat (steeper than isotherm, dashed) -->
-  <path d="M 120 55 Q 165 130 240 155" fill="none" stroke="#8250df" stroke-width="3" stroke-dasharray="6,4"/>
-  <text x="248" y="160" font-size="12" fill="#8250df" font-weight="bold">Адиабата
-    
-  </text>
-
-  <!-- Legend -->
-  <text x="45" y="200" font-size="10" fill="#8b949e">Все процессы из одной начальной точки</text>
+  <path d="M 120 50 Q 150 120 220 140" fill="none" stroke="#8250df" stroke-width="3" stroke-dasharray="6,4"/>
+  <text x="230" y="145" font-size="12" fill="#8250df" font-weight="bold">Адиабата (γ &gt; 1)</text>
 </svg>

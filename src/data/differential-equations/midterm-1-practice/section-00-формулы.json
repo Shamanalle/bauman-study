@@ -1,0 +1,61 @@
+{
+  "section": "📋 Формулы",
+  "icon": "📋",
+  "questions": [
+    {
+      "id": "f-1",
+      "title": "Площадь в декартовых координатах",
+      "type": "Справочник",
+      "formalText": "**Площадь между двумя кривыми:**\n$$S = \\int_a^b |f(x) - g(x)|\\,dx$$\n\n**Площадь в параметрической форме** ($x = x(t)$, $y = y(t)$):\n$$S = \\int_{t_1}^{t_2} y(t)\\,x'(t)\\,dt$$"
+    },
+    {
+      "id": "f-2",
+      "title": "Площадь в полярных координатах",
+      "type": "Справочник",
+      "formalText": "**Площадь криволинейного сектора** $\\rho = \\rho(\\varphi)$, $\\varphi \\in [\\alpha, \\beta]$:\n$$S = \\frac{1}{2}\\int_\\alpha^\\beta \\rho^2(\\varphi)\\,d\\varphi$$"
+    },
+    {
+      "id": "f-3",
+      "title": "Объём тела вращения",
+      "type": "Справочник",
+      "formalText": "**Вокруг оси Ox** (метод дисков):\n$$V = \\pi\\int_a^b f^2(x)\\,dx$$\n\n**Вокруг оси Oy** (метод оболочек):\n$$V = 2\\pi\\int_a^b x|f(x)|\\,dx$$\n\n**Параметрически:**\n$$V = \\pi\\int_{t_1}^{t_2} y^2(t)\\,x'(t)\\,dt$$\n\n**В полярных** (вокруг полярной оси):\n$$V = \\frac{2\\pi}{3}\\int_\\alpha^\\beta \\rho^3(\\varphi)\\sin\\varphi\\,d\\varphi$$"
+    },
+    {
+      "id": "f-4",
+      "title": "Длина дуги кривой",
+      "type": "Справочник",
+      "formalText": "**Декартовы (y = f(x)):**\n$$L = \\int_a^b \\sqrt{1 + (f'(x))^2}\\,dx$$\n\n**Параметрически:**\n$$L = \\int_{t_1}^{t_2} \\sqrt{(x'(t))^2 + (y'(t))^2}\\,dt$$\n\n**Полярные:**\n$$L = \\int_\\alpha^\\beta \\sqrt{\\rho^2 + (\\rho')^2}\\,d\\varphi$$"
+    },
+    {
+      "id": "f-5",
+      "title": "Площадь поверхности вращения",
+      "type": "Справочник",
+      "formalText": "**Вокруг оси Ox:**\n$$S = 2\\pi\\int_a^b |f(x)|\\sqrt{1 + (f'(x))^2}\\,dx$$\n\n**Параметрически:**\n$$S = 2\\pi\\int_{t_1}^{t_2} |y(t)|\\sqrt{(x')^2 + (y')^2}\\,dt$$"
+    },
+    {
+      "id": "f-6",
+      "title": "Несобственные интегралы — признаки сходимости",
+      "type": "Справочник",
+      "formalText": "**Эталонные:**\n$$\\int_1^{+\\infty}\\frac{dx}{x^p}: \\text{сх. при } p > 1, \\text{ расх. при } p \\le 1$$\n$$\\int_0^1 \\frac{dx}{x^p}: \\text{сх. при } p < 1, \\text{ расх. при } p \\ge 1$$\n\n**Признак сравнения:**\n$0 \\le f(x) \\le g(x)$: если $\\int g$ сх. → $\\int f$ сх.; если $\\int f$ расх. → $\\int g$ расх.\n\n**Предельный признак:**\n$\\lim_{x \\to +\\infty}\\frac{f(x)}{g(x)} = L \\neq 0$ → оба сходятся или оба расходятся.\n\n**Абсолютная сходимость:**\nЕсли $\\int|f|$ сх. → $\\int f$ сх. (абсолютно)."
+    },
+    {
+      "id": "f-7",
+      "title": "Формулы Валлиса (Wallis)",
+      "type": "Справочник",
+      "formalText": "**Для нечётного $n$:**\n$$\\int_0^{\\pi/2}\\sin^n x\\,dx = \\int_0^{\\pi/2}\\cos^n x\\,dx = \\frac{(n-1)!!}{n!!}$$\n\n**Для чётного $n$:**\n$$\\int_0^{\\pi/2}\\sin^n x\\,dx = \\int_0^{\\pi/2}\\cos^n x\\,dx = \\frac{(n-1)!!}{n!!} \\cdot \\frac{\\pi}{2}$$\n\n**Произведение** $\\sin^m x \\cos^n x$:\n$$\\int_0^{\\pi/2}\\sin^m x \\cos^n x\\,dx = \\frac{(m-1)!!(n-1)!!}{(m+n)!!} \\cdot \\begin{cases}\\frac{\\pi}{2} & \\text{m, n — оба чётные}\\\\1 & \\text{иначе}\\end{cases}$$\n\n**Факториалы:** $n!! = n(n-2)(n-4)\\ldots$, причём $0!! = 1!! = 1$.\n\n**Интеграл от 0 до $\\pi$:**\n$$\\int_0^\\pi \\sin^n x\\,dx = 2\\int_0^{\\pi/2}\\sin^n x\\,dx \\text{ (для любого n)}$$\n$$\\int_0^\\pi \\cos^n x\\,dx = 0 \\text{ (для нечётного n)}$$"
+    },
+    {
+      "id": "f-8",
+      "title": "Понижение степени тригонометрических функций",
+      "type": "Справочник",
+      "formalText": "**Основные формулы:**\n$$\\sin^2 x = \\frac{1 - \\cos 2x}{2}, \\qquad \\cos^2 x = \\frac{1 + \\cos 2x}{2}$$\n$$\\sin x \\cos x = \\frac{\\sin 2x}{2}$$\n\n**Формулы произведений:**\n$$\\sin\\alpha\\cos\\beta = \\frac{1}{2}[\\sin(\\alpha+\\beta)+\\sin(\\alpha-\\beta)]$$\n$$\\cos\\alpha\\cos\\beta = \\frac{1}{2}[\\cos(\\alpha-\\beta)+\\cos(\\alpha+\\beta)]$$\n$$\\sin\\alpha\\sin\\beta = \\frac{1}{2}[\\cos(\\alpha-\\beta)-\\cos(\\alpha+\\beta)]$$"
+    },
+    {
+      "id": "f-9",
+      "title": "Гиперболические функции и подстановки",
+      "type": "Справочник",
+      "formalText": "**Основные:**\n$$\\sinh x = \\frac{e^x - e^{-x}}{2}, \\quad \\cosh x = \\frac{e^x + e^{-x}}{2}$$\n$$\\cosh^2 x - \\sinh^2 x = 1$$\n\n**Обратные:**\n$$\\text{arcsh}\\,x = \\ln(x + \\sqrt{x^2+1})$$\n$$\\text{arcch}\\,x = \\ln(x + \\sqrt{x^2-1})$$\n\n**Когда использовать:**\n- $\\sqrt{1+t^2}$ → замена $t = \\sinh u$, тогда $\\sqrt{1+t^2} = \\cosh u$\n- $\\sqrt{t^2-1}$ → замена $t = \\cosh u$"
+    }
+  ]
+}
+

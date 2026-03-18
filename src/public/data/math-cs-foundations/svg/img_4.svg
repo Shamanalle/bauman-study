@@ -1,15 +1,15 @@
 <svg viewBox="0 0 420 160" width="420" height="160">
-  <rect x="10" y="10" width="400" height="140" rx="8" fill="rgba(36,41,47,0.4)" stroke="#d0d7de" stroke-width="1.5"/>
+  <rect x="10" y="10" width="400" height="140" rx="8" fill="rgba(128,128,128,0.08)" stroke="var(--text2)" stroke-width="1.5"/>
   
-  <text x="25" y="30" font-size="14" fill="#24292f" font-weight="bold">Теорема Жегалкина</text>
-  <text x="25" y="50" font-size="11" fill="#8b949e">Каждая булева функция <tspan fill="#cf222e" font-weight="bold">единственным образом</tspan></text>
-  <text x="25" y="65" font-size="11" fill="#8b949e">представляется в виде полинома Жегалкина.</text>
+  <text x="25" y="30" font-size="14" fill="var(--text)" font-weight="bold">Теорема Жегалкина</text>
+  <text x="25" y="50" font-size="11" fill="var(--text2)">Каждая булева функция <tspan fill="#cf222e" font-weight="bold">единственным образом</tspan></text>
+  <text x="25" y="65" font-size="11" fill="var(--text2)">представляется в виде полинома Жегалкина.</text>
 
   <rect x="25" y="80" width="160" height="55" rx="6" fill="rgba(9,105,218,.1)" stroke="#0969da" stroke-width="1.5"/>
   <text x="35" y="100" font-size="11" fill="#0969da" font-weight="bold">Базис Жегалкина:</text>
   <text x="35" y="125" font-size="18" fill="#0969da" font-family="monospace" font-weight="bold">{1, ⊕, ·}</text>
 
-  <rect x="200" y="80" width="190" height="55" rx="6" fill="rgba(36,41,47,0.8)" stroke="#d0d7de" stroke-dasharray="4"/>
-  <text x="210" y="100" font-size="11" fill="#8b949e" font-weight="bold">Без отрицаний (¬) и дизъюнкций (∨)!</text>
-  <text x="210" y="120" font-size="10" fill="#8b949e">Только константа 1, XOR и AND.</text>
+  <rect x="200" y="80" width="190" height="55" rx="6" fill="rgba(128,128,128,0.12)" stroke="var(--text2)" stroke-dasharray="4"/>
+  <text x="210" y="100" font-size="11" fill="var(--text2)" font-weight="bold">Без отрицаний (¬) и дизъюнкций (∨)!</text>
+  <text x="210" y="120" font-size="10" fill="var(--text2)">Только константа 1, XOR и AND.</text>
 </svg>

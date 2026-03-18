@@ -191,3 +191,95 @@
   padding: 12px 16px; font-size: 0.92rem; font-weight: 600;
   color: #1a4731; line-height: 1.5; margin-bottom: 8px;
 }
+
+/* ===== Practice mode: solution hiding ===== */
+
+/* Condition block: slightly emphasized for practice tasks */
+.practice-condition {
+  border: 2px solid var(--accent-border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  background: var(--accent-bg);
+}
+.practice-condition .card-formal-text {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* Solution reveal toggle */
+.solution-reveal {
+  cursor: pointer;
+  padding: 12px 16px;
+  border: 2px solid var(--accent);
+  border-radius: var(--radius);
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  user-select: none;
+  background: transparent;
+}
+.solution-reveal:hover {
+  background: var(--accent-bg);
+  border-color: var(--accent);
+  box-shadow: 0 2px 8px rgba(46, 160, 67, 0.15);
+}
+.solution-reveal-icon { font-size: 1.1rem; transition: transform 0.3s; }
+.solution-reveal.open .solution-reveal-icon { transform: rotate(15deg); }
+.solution-reveal .adv-chevron { margin-left: auto; transition: transform 0.2s; font-size: 0.7rem; }
+.solution-reveal.open .adv-chevron { transform: rotate(90deg); }
+
+/* Toggle text switching */
+.solution-reveal-text-open { display: none; }
+.solution-reveal.open .solution-reveal-text { display: none; }
+.solution-reveal.open .solution-reveal-text-open { display: inline; }
+
+.solution-reveal.open {
+  background: var(--accent-bg);
+  border-style: solid;
+  color: var(--accent);
+}
+
+/* Solution body: hidden by default */
+.solution-body {
+  display: none;
+  margin-top: 12px;
+  padding: 16px 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  flex-direction: column;
+  gap: 16px;
+}
+.solution-reveal.open ~ .solution-body {
+  display: flex;
+}
+
+/* Answer highlight in practice mode */
+.solution-answer {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #dafbe1, #d4f7e2);
+  border: 1.5px solid var(--accent);
+  border-radius: var(--radius);
+}
+.solution-answer-label {
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: var(--accent);
+  flex-shrink: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.solution-answer .math-box {
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+}

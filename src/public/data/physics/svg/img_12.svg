@@ -1,27 +1,27 @@
 <svg viewBox="0 0 400 180" width="400" height="180">
   <defs>
-    <marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0 0, 6 3, 0 6" fill="#8b949e"/></marker>
+    <marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0 0, 6 3, 0 6" fill="var(--text2)"/></marker>
     <marker id="arrRed" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><polygon points="0 0, 6 3, 0 6" fill="#cf222e"/></marker>
     <marker id="arrBlue" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><polygon points="0 0, 6 3, 0 6" fill="#0969da"/></marker>
   </defs>
-  <line x1="30" y1="160" x2="380" y2="160" stroke="#d0d7de" stroke-width="1.5" marker-end="url(#arr)"/>
-  <line x1="40" y1="170" x2="40" y2="10" stroke="#d0d7de" stroke-width="1.5" marker-end="url(#arr)"/>
-  <text x="385" y="165" font-size="12" fill="#8b949e">V</text>
-  <text x="25" y="15" font-size="12" fill="#8b949e">P</text>
+  <line x1="30" y1="160" x2="380" y2="160" stroke="var(--text2)" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="40" y1="170" x2="40" y2="10" stroke="var(--text2)" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="385" y="165" font-size="12" fill="var(--text2)">V</text>
+  <text x="25" y="15" font-size="12" fill="var(--text2)">P</text>
 
   <path d="M 100 40 Q 170 60 220 80 Q 250 120 280 140 Q 190 120 140 100 Q 110 60 100 40" fill="rgba(45, 164, 78, 0.15)"/>
 
   <path d="M 100 40 Q 170 60 220 80" fill="none" stroke="#cf222e" stroke-width="2.5" marker-mid="url(#arrRed)"/>
   <text x="180" y="55" font-size="12" fill="#cf222e" font-weight="bold">T₁ (нагреватель)</text>
 
-  <path d="M 220 80 Q 250 120 280 140" fill="none" stroke="#8b949e" stroke-width="2.5" stroke-dasharray="6,4"/>
+  <path d="M 220 80 Q 250 120 280 140" fill="none" stroke="var(--text2)" stroke-width="2.5" stroke-dasharray="6,4"/>
   
   <path d="M 280 140 Q 190 120 140 100" fill="none" stroke="#0969da" stroke-width="2.5" marker-mid="url(#arrBlue)"/>
   <text x="180" y="145" font-size="12" fill="#0969da" font-weight="bold">T₂ (холодильник)</text>
 
-  <path d="M 140 100 Q 110 60 100 40" fill="none" stroke="#8b949e" stroke-width="2.5" stroke-dasharray="6,4"/>
+  <path d="M 140 100 Q 110 60 100 40" fill="none" stroke="var(--text2)" stroke-width="2.5" stroke-dasharray="6,4"/>
 
   <text x="185" y="100" font-size="18" fill="#1a7f37" font-weight="bold">A</text>
   
-  <text x="290" y="30" font-size="12" fill="#24292f" font-weight="bold">η = 1 − T₂/T₁</text>
+  <text x="290" y="30" font-size="12" fill="var(--text)" font-weight="bold">η = 1 − T₂/T₁</text>
 </svg>

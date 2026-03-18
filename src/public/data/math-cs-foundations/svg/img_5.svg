@@ -1,14 +1,14 @@
 <svg viewBox="0 0 420 140" width="420" height="140">
-  <rect x="10" y="10" width="400" height="120" rx="6" fill="rgba(36,41,47,0.4)" stroke="#d0d7de" stroke-width="1.5"/>
-  <text x="25" y="30" font-size="12" fill="#24292f" font-weight="bold">Алгебраическая нормальная форма (АНФ)</text>
+  <rect x="10" y="10" width="400" height="120" rx="6" fill="rgba(128,128,128,0.08)" stroke="var(--text2)" stroke-width="1.5"/>
+  <text x="25" y="30" font-size="12" fill="var(--text)" font-weight="bold">Алгебраическая нормальная форма (АНФ)</text>
   
   <rect x="25" y="45" width="360" height="40" rx="4" fill="rgba(46,160,67,0.15)" stroke="#2da44e" stroke-width="1.5"/>
   <text x="35" y="70" font-size="14" fill="#1a7f37" font-family="monospace" font-weight="bold">
     f = c₀ ⊕ c₁x₁ ⊕ c₂x₂ ⊕ c₁₂x₁x₂ ⊕ ...
   </text>
   
-  <text x="25" y="105" font-size="11" fill="#8b949e">
+  <text x="25" y="105" font-size="11" fill="var(--text2)">
     <tspan font-weight="bold">Полином Жегалкина:</tspan> сумма (XOR) одночленов (AND).
   </text>
-  <text x="25" y="120" font-size="11" fill="#8b949e">Коэффициенты cᵢ ∈ {0, 1}</text>
+  <text x="25" y="120" font-size="11" fill="var(--text2)">Коэффициенты cᵢ ∈ {0, 1}</text>
 </svg>

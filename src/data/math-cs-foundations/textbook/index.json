@@ -1,0 +1,11 @@
+{
+  "chapters": [
+    { "num": 1, "title": "Метрика булевого куба", "file": "ch-01-metrics.json" },
+    { "num": 2, "title": "Булевы функции", "file": "ch-02-boolean-functions.json" },
+    { "num": 3, "title": "Формулы и двойственность", "file": "ch-03-formulas.json" },
+    { "num": 4, "title": "Нормальные формы булевых функций", "file": "ch-04-normal-forms.json" },
+    { "num": 5, "title": "Полнота и замкнутость. Теорема Поста", "file": "ch-05-completeness.json" },
+    { "num": 6, "title": "Контактные схемы и схемы из функциональных элементов", "file": "ch-06-circuit-schemes.json" },
+    { "num": 7, "title": "Функция Шеннона и оценки сложности", "file": "ch-07-shannon-function.json" }
+  ]
+}

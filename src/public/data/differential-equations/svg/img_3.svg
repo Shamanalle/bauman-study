@@ -1,14 +1,14 @@
 <svg viewBox="0 0 400 180" width="400" height="180">
-  <defs><marker id="arrX" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0 0, 6 3, 0 6" fill="#d0d7de"/></marker></defs>
+  <defs><marker id="arrX" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0 0, 6 3, 0 6" fill="var(--text2)"/></marker></defs>
   
-  <line x1="30" y1="150" x2="380" y2="150" stroke="#d0d7de" stroke-width="1.5" marker-end="url(#arrX)"/>
-  <text x="385" y="155" font-size="12" fill="#8b949e">x</text>
+  <line x1="30" y1="150" x2="380" y2="150" stroke="var(--text2)" stroke-width="1.5" marker-end="url(#arrX)"/>
+  <text x="385" y="155" font-size="12" fill="var(--text2)">x</text>
   
   <line x1="100" y1="150" x2="100" y2="20" stroke="#cf222e" stroke-width="2" stroke-dasharray="6,4"/>
   <text x="100" y="165" font-size="12" fill="#cf222e" font-weight="bold" text-anchor="middle">a (особая точка)</text>
   
-  <line x1="320" y1="150" x2="320" y2="120" stroke="#8b949e" stroke-width="1.5" stroke-dasharray="4"/>
-  <text x="320" y="165" font-size="12" fill="#8b949e" text-anchor="middle">b</text>
+  <line x1="320" y1="150" x2="320" y2="120" stroke="var(--text2)" stroke-width="1.5" stroke-dasharray="4"/>
+  <text x="320" y="165" font-size="12" fill="var(--text2)" text-anchor="middle">b</text>
 
   <path d="M 105 20 Q 110 100 150 120 T 320 130 L 320 150 L 105 150 Z" fill="rgba(130, 80, 223, 0.2)" stroke="none"/>
   

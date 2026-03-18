@@ -2,6 +2,7 @@
 import '../css/base.css';
 import '../css/labs.css';
 import '../css/textbook.css';
+import '../css/practice.css';
 import { loadAssessmentData, allQuestions } from './data-loader.js';
 import { render, updateLearnedUI, renderPills, setSections, filterSection, toggleAll, goRandom } from './renderer.js';
 import { initSearch } from './search.js';
@@ -65,6 +66,14 @@ async function init() {
   // 2. Load data
   try {
     const { meta, sections } = await loadAssessmentData();
+
+    // Practice mode → dedicated practice browser
+    if (meta.practiceMode) {
+      const { initPracticeBrowser } = await import('./practice-browser.js');
+      initPracticeBrowser({ meta, sections });
+      initScrollTop();
+      return;
+    }
 
     // 3. Set up app state
     progress.setPrefix(meta.shortCode || 'app');
@@ -172,9 +181,12 @@ function getSubjectsConfigLocal() {
       id: 'differential-equations', title: 'Интегралы и ДУ',
       subtitle: 'Определённые интегралы, несобственные интегралы, ОДУ', icon: '∫',
       assessments: [
-        { name: 'Экзамен', assessment: 'exam', type: 'exam', icon: '📋' },
-        { name: 'РК-1', assessment: 'midterm-1', type: 'midterm', icon: '📝' },
-        { name: 'РК-2', assessment: 'midterm-2', type: 'midterm', icon: '📝' },
+        { name: 'Экзамен · Теория', assessment: 'exam', type: 'exam', icon: '📋' },
+        { name: 'Экзамен · Практика', assessment: 'exam-practice', type: 'kr', icon: '✏️' },
+        { name: 'РК-1 · Теория', assessment: 'midterm-1', type: 'midterm', icon: '📝' },
+        { name: 'РК-1 · Практика', assessment: 'midterm-1-practice', type: 'kr', icon: '✏️' },
+        { name: 'РК-2 · Теория', assessment: 'midterm-2', type: 'midterm', icon: '📝' },
+        { name: 'РК-2 · Практика', assessment: 'midterm-2-practice', type: 'kr', icon: '✏️' },
         { name: 'КР-1 · Интегрирование', assessment: 'kr-1', type: 'kr', icon: '✏️' },
         { name: 'КР-2 · ДУ 1-го порядка', assessment: 'kr-2', type: 'kr', icon: '✏️' },
         { name: 'Учебное пособие', assessment: null, type: 'textbook', icon: '📖', href: '?subject=differential-equations&type=textbook' },

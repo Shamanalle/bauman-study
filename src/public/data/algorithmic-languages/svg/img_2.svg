@@ -1,20 +1,20 @@
 <svg viewBox="0 0 400 180" width="400" height="180">
   <defs><marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0 0, 6 3, 0 6" fill="#0969da"/></marker></defs>
   
-  <rect x="20" y="20" width="160" height="50" rx="6" fill="rgba(36,41,47,0.4)" stroke="#d0d7de" stroke-width="1.5"/>
-  <text x="30" y="35" font-size="12" fill="#8b949e">Внешний код:</text>
+  <rect x="20" y="20" width="160" height="50" rx="6" fill="rgba(128,128,128,0.08)" stroke="var(--text2)" stroke-width="1.5"/>
+  <text x="30" y="35" font-size="12" fill="var(--text2)">Внешний код:</text>
   <text x="30" y="55" font-size="12" fill="#2da44e" font-family="monospace">obj.doWork(5);</text>
 
   <rect x="220" y="20" width="160" height="70" rx="6" fill="rgba(9,105,218,.1)" stroke="#0969da" stroke-width="1.5"/>
   <text x="230" y="35" font-size="12" font-weight="bold" fill="#0969da">Объект obj</text>
-  <text x="230" y="55" font-size="11" fill="#8b949e">Адрес: 0x4A...</text>
+  <text x="230" y="55" font-size="11" fill="var(--text2)">Адрес: 0x4A...</text>
   <text x="230" y="75" font-size="12" fill="#cf222e" font-family="monospace">int value = 0;</text>
 
-  <rect x="20" y="100" width="230" height="60" rx="6" fill="#24292f" stroke="#8b949e" stroke-width="1.5"/>
+  <rect x="20" y="100" width="230" height="60" rx="6" fill="rgba(128,128,128,0.12)" stroke="var(--text2)" stroke-width="1.5"/>
   <text x="30" y="120" font-size="11" fill="#4ac26b" font-family="monospace">void doWork(int arg) {</text>
-  <text x="45" y="140" font-size="12" fill="#79c0ff" font-weight="bold" font-family="monospace">this->value = arg;</text>
+  <text x="45" y="140" font-size="12" fill="#79c0ff" font-weight="bold" font-family="monospace">this-&gt;value = arg;</text>
   <text x="30" y="155" font-size="11" fill="#4ac26b" font-family="monospace">}</text>
 
   <path d="M 180 135 Q 280 135 280 95" fill="none" stroke="#0969da" stroke-width="2" marker-end="url(#arr)"/>
-  <text x="290" y="130" font-size="12" fill="#0969da" font-weight="bold">this = &obj</text>
+  <text x="290" y="130" font-size="12" fill="#0969da" font-weight="bold">this = &amp;obj</text>
 </svg>

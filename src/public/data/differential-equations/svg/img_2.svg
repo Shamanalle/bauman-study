@@ -1,21 +1,21 @@
 <svg viewBox="0 0 400 160" width="400" height="160">
   <defs>
-    <marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0 0, 6 3, 0 6" fill="#8b949e"/></marker>
+    <marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0 0, 6 3, 0 6" fill="var(--text2)"/></marker>
     <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="rgba(9,105,218,0.3)"/>
       <stop offset="100%" stop-color="rgba(9,105,218,0.05)"/>
     </linearGradient>
   </defs>
-  <line x1="30" y1="130" x2="360" y2="130" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arr)"/>
-  <line x1="40" y1="140" x2="40" y2="20" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="30" y1="130" x2="360" y2="130" stroke="var(--text2)" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="40" y1="140" x2="40" y2="20" stroke="var(--text2)" stroke-width="1.5" marker-end="url(#arr)"/>
   <path d="M 80 130 L 80 90 Q 150 20 230 60 T 320 50 L 320 130 Z" fill="url(#areaGrad)"/>
   <path d="M 80 90 Q 150 20 230 60 T 320 50" fill="none" stroke="#0969da" stroke-width="3"/>
   <line x1="80" y1="130" x2="80" y2="90" stroke="#0969da" stroke-width="1.5" stroke-dasharray="4"/>
   <line x1="320" y1="130" x2="320" y2="50" stroke="#0969da" stroke-width="1.5" stroke-dasharray="4"/>
-  <text x="80" y="145" font-size="12" fill="#8b949e" text-anchor="middle">a</text>
-  <text x="320" y="145" font-size="12" fill="#8b949e" text-anchor="middle">b</text>
-  <text x="365" y="135" font-size="12" fill="#8b949e">x</text>
-  <text x="25" y="25" font-size="12" fill="#8b949e">y</text>
+  <text x="80" y="145" font-size="12" fill="var(--text2)" text-anchor="middle">a</text>
+  <text x="320" y="145" font-size="12" fill="var(--text2)" text-anchor="middle">b</text>
+  <text x="365" y="135" font-size="12" fill="var(--text2)">x</text>
+  <text x="25" y="25" font-size="12" fill="var(--text2)">y</text>
   <text x="200" y="40" font-size="14" fill="#0969da" font-weight="bold">f(x)</text>
   <text x="200" y="100" font-size="16" fill="#0969da" text-anchor="middle">∫ f(x) dx</text>
 </svg>

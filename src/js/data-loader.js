@@ -55,7 +55,7 @@ export async function loadAssessmentData() {
   // Load SVGs
   const svgs = {};
   const svgBasePath = `/data/${subject}/svg`;
-  // Process SVG references in questions
+  // Process SVG references in questions + propagate practiceMode
   for (const section of sections) {
     for (const q of section.questions) {
       if (q.visual && typeof q.visual === 'string' && q.visual.startsWith('svg:')) {
@@ -68,6 +68,10 @@ export async function loadAssessmentData() {
         }
         // Replace marker with actual SVG content
         q.visual = svgs[svgName] || null;
+      }
+      // Propagate practiceMode from meta to each question
+      if (meta.practiceMode) {
+        q.practiceMode = true;
       }
     }
   }

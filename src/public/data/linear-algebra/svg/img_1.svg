@@ -5,7 +5,7 @@
     <marker id="vc" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#2da44e"/></marker>
   </defs>
   <polygon points="100 100, 250 40, 350 70, 200 130" fill="rgba(139, 148, 158, 0.05)" stroke="none"/>
-  <circle cx="100" cy="100" r="3" fill="#8b949e"/>
+  <circle cx="100" cy="100" r="3" fill="var(--text2)"/>
   <line x1="100" y1="100" x2="250" y2="40" stroke="#0969da" stroke-width="2.5" marker-end="url(#va)"/>
   <text x="170" y="60" font-size="14" fill="#0969da" font-weight="600">a</text>
   <line x1="100" y1="100" x2="200" y2="130" stroke="#e5534b" stroke-width="2.5" marker-end="url(#vb)"/>
@@ -14,5 +14,5 @@
   <text x="210" y="95" font-size="14" fill="#2da44e" font-weight="600">a + b</text>
   <line x1="250" y1="40" x2="350" y2="70" stroke="#e5534b" stroke-width="1.5" stroke-dasharray="6,4"/>
   <line x1="200" y1="130" x2="350" y2="70" stroke="#0969da" stroke-width="1.5" stroke-dasharray="6,4"/>
-  <text x="40" y="25" font-size="12" fill="#8b949e" font-weight="600">Правило параллелограмма</text>
+  <text x="40" y="25" font-size="12" fill="var(--text2)" font-weight="600">Правило параллелограмма</text>
 </svg>

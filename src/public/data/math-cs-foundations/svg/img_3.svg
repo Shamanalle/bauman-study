@@ -2,18 +2,18 @@
   <g transform="translate(10, 10)">
     <rect x="0" y="0" width="190" height="90" rx="6" fill="rgba(9,105,218,.1)" stroke="#0969da" stroke-width="1.5"/>
     <text x="15" y="20" font-size="12" fill="#0969da" font-weight="bold">ДНФ</text>
-    <text x="15" y="45" font-size="12" fill="#24292f" font-weight="bold" font-family="monospace">(x₁ ∧ x₂) ∨ (¬x₁ ∧ x₃)</text>
-    <rect x="15" y="60" width="150" height="20" rx="4" fill="rgba(36,41,47,0.8)"/>
+    <text x="15" y="45" font-size="12" fill="var(--text)" font-weight="bold" font-family="monospace">(x₁ ∧ x₂) ∨ (¬x₁ ∧ x₃)</text>
+    <rect x="15" y="60" width="150" height="20" rx="4" fill="rgba(128,128,128,0.12)"/>
     <text x="20" y="74" font-size="10" fill="#0969da" font-weight="bold">Дизъюнкция (∨) конъюнкций</text>
   </g>
 
   <g transform="translate(210, 10)">
     <rect x="0" y="0" width="190" height="90" rx="6" fill="rgba(255,123,114,0.15)" stroke="#cf222e" stroke-width="1.5"/>
     <text x="15" y="20" font-size="12" fill="#cf222e" font-weight="bold">КНФ</text>
-    <text x="15" y="45" font-size="12" fill="#24292f" font-weight="bold" font-family="monospace">(x₁ ∨ x₂) ∧ (¬x₁ ∨ x₃)</text>
-    <rect x="15" y="60" width="150" height="20" rx="4" fill="rgba(36,41,47,0.8)"/>
+    <text x="15" y="45" font-size="12" fill="var(--text)" font-weight="bold" font-family="monospace">(x₁ ∨ x₂) ∧ (¬x₁ ∨ x₃)</text>
+    <rect x="15" y="60" width="150" height="20" rx="4" fill="rgba(128,128,128,0.12)"/>
     <text x="20" y="74" font-size="10" fill="#cf222e" font-weight="bold">Конъюнкция (∧) дизъюнкций</text>
   </g>
 
-  <text x="10" y="125" font-size="11" fill="#8b949e" font-weight="bold">Теорема: Любая булева функция представима в ДНФ и КНФ</text>
+  <text x="10" y="125" font-size="11" fill="var(--text2)" font-weight="bold">Теорема: Любая булева функция представима в ДНФ и КНФ</text>
 </svg>

@@ -33,6 +33,12 @@ export function buildQuestionBody(q, proofLabel, exampleLabel) {
     exampleLabel = isTask ? 'Решение' : 'Пример';
   }
 
+  // --- Practice mode: strong solution hiding ---
+  if (q.practiceMode) {
+    return buildPracticeModeBody(q, proofLabel, exampleLabel);
+  }
+
+  // --- Theory mode: standard rendering ---
   const proofContent = buildProofContent(q);
   const proofTitle = q.proofTitle || proofLabel;
 
@@ -71,6 +77,64 @@ export function buildQuestionBody(q, proofLabel, exampleLabel) {
       <div class="adv-body"><div class="advanced-block"><p>${nl(q.advanced)}</p>
         ${q.advancedProof ? `<div class="adv-proof"><strong>${proofLabel}.</strong> ${nl(q.advancedProof)}</div>` : ''}
       </div></div>` : ''}`;
+}
+
+/**
+ * Build body for practice-mode cards: only formalText visible, rest hidden.
+ */
+function buildPracticeModeBody(q, proofLabel, exampleLabel) {
+  const isAlgorithm = q.type === 'Алгоритм' || q.type === 'Справочник' || q.type === 'Метод';
+  
+  // Algorithm/reference cards in practice bundles are shown fully (they ARE the theory reference)
+  if (isAlgorithm) {
+    const proofContent = buildProofContent(q);
+    return `
+      ${q.tldr ? `<div class="card-tldr">${q.tldr}</div>` : ''}
+      ${q.intuition ? `<p class="card-intuition">${nl(q.intuition)}</p>` : ''}
+      <div class="card-formal">
+        <div class="card-formal-text">${nl(q.formalText || '')}</div>
+        ${q.conditions ? '<ul class="card-cond">' + q.conditions.map(c => '<li>' + c + '</li>').join('') + '</ul>' : ''}
+        ${q.formula ? `<div class="math-box">$$${q.formula}$$</div>` : ''}
+      </div>
+      ${q.keyIdea ? `<div class="proof-key-idea">🔑 ${nl(q.keyIdea)}</div>` : ''}
+      ${proofContent || ''}
+      ${q.example ? `
+        <div class="example-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('show')">
+          <span class="example-toggle-icon">📝</span> ${q.example.title || 'Пример'} <span class="adv-chevron">▸</span>
+        </div>
+        <div class="example-body">
+          <div class="card-example-text">${nl(typeof q.example === 'string' ? q.example : q.example.text)}</div>
+          ${q.example?.math ? `<div class="math-box">${q.example.math}</div>` : ''}
+        </div>` : ''}
+      ${q.note ? `<p class="card-note">💡 ${nl(q.note)}</p>` : ''}`;
+  }
+
+  // Task cards: only formalText visible, rest behind solution-reveal
+  const hasSolution = q.tldr || q.keyIdea || q.steps?.length || q.proof || q.formula || q.example || q.examSay || q.note;
+  const proofContent = buildProofContent(q);
+
+  return `
+    <div class="card-formal practice-condition">
+      <div class="card-formal-text">${nl(q.formalText || q.statement || '')}</div>
+    </div>
+    ${hasSolution ? `
+      <div class="solution-reveal" onclick="this.classList.toggle('open');window.__renderMath?.(this.closest('.theorem-page'))">
+        <span class="solution-reveal-icon">🔓</span>
+        <span class="solution-reveal-text">Показать решение</span>
+        <span class="solution-reveal-text-open">Скрыть решение</span>
+        <span class="adv-chevron">▸</span>
+      </div>
+      <div class="solution-body">
+        ${q.tldr ? `<div class="card-tldr">${q.tldr}</div>` : ''}
+        ${q.keyIdea ? `<div class="proof-key-idea">🔑 ${nl(q.keyIdea)}</div>` : ''}
+        ${proofContent || ''}
+        ${q.formula ? `<div class="solution-answer"><span class="solution-answer-label">Ответ:</span> <div class="math-box">$$${q.formula}$$</div></div>` : ''}
+        ${q.example ? `
+          <div class="card-example-text">${nl(typeof q.example === 'string' ? q.example : q.example.text)}</div>
+          ${q.example?.math ? `<div class="math-box">${q.example.math}</div>` : ''}` : ''}
+        ${q.examSay ? `<p class="card-exam-say">🎓 <em>${nl(q.examSay)}</em></p>` : ''}
+        ${q.note ? `<p class="card-note">💡 ${nl(q.note)}</p>` : ''}
+      </div>` : ''}`;
 }
 
 function buildProofContent(q) {

@@ -3,5 +3,6 @@
   "subtitle": "КР-1 · Техника интегрирования",
   "icon": "∫",
   "shortCode": "idkr1",
-  "bundleName": "ИнтДУ_КР-1"
+  "bundleName": "ИнтДУ_КР-1",
+  "practiceMode": true
 }

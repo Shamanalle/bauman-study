@@ -1,0 +1,42 @@
+{
+  "section": "📋 Формулы",
+  "icon": "📋",
+  "questions": [
+    {
+      "id": "ef-1",
+      "title": "Таблица интегралов + методы (Комплект 1)",
+      "type": "Справочник",
+      "formalText": "$$\\int x^n dx = \\frac{x^{n+1}}{n+1}+C, \\quad \\int \\frac{dx}{x} = \\ln|x|+C$$\n$$\\int e^x dx = e^x+C, \\quad \\int a^x dx = \\frac{a^x}{\\ln a}+C$$\n$$\\int \\sin x\\,dx = -\\cos x+C, \\quad \\int \\cos x\\,dx = \\sin x+C$$\n$$\\int \\frac{dx}{\\cos^2 x} = \\tan x+C, \\quad \\int \\frac{dx}{\\sin^2 x} = -\\cot x+C$$\n$$\\int \\frac{dx}{1+x^2} = \\arctan x+C, \\quad \\int \\frac{dx}{\\sqrt{1-x^2}} = \\arcsin x+C$$\n$$\\int \\frac{dx}{a^2+x^2} = \\frac{1}{a}\\arctan\\frac{x}{a}+C$$\n$$\\int \\frac{dx}{a^2-x^2} = \\frac{1}{2a}\\ln\\left|\\frac{a+x}{a-x}\\right|+C$$\n$$\\int \\frac{dx}{\\sqrt{x^2\\pm a^2}} = \\ln|x+\\sqrt{x^2\\pm a^2}|+C$$\n\n**Правило ЛИАП** (для по частям): Лог → Инверс.триг → Алгебра → Периодическ.\n\n**Универсальная подст.:** $t = \\tan(x/2)$"
+    },
+    {
+      "id": "ef-2",
+      "title": "Геометрические приложения (Комплект 2)",
+      "type": "Справочник",
+      "formalText": "**Площадь** (декарт.): $S = \\int_a^b|f(x)-g(x)|dx$\n\n**Площадь** (полярн.): $S = \\frac{1}{2}\\int_\\alpha^\\beta \\rho^2 d\\varphi$\n\n**Объём** (вокруг Ox): $V = \\pi\\int_a^b f^2(x)dx$\n\n**Объём** (вокруг Oy): $V = 2\\pi\\int_a^b x|f(x)|dx$\n\n**Длина** (декарт.): $L = \\int_a^b\\sqrt{1+(y')^2}dx$\n\n**Длина** (полярн.): $L = \\int_\\alpha^\\beta\\sqrt{\\rho^2+(\\rho')^2}d\\varphi$\n\n**Площадь поверхности**: $S = 2\\pi\\int|y|\\sqrt{1+(y')^2}dx$"
+    },
+    {
+      "id": "ef-3",
+      "title": "Несобственные интегралы (Комплект 3)",
+      "type": "Справочник",
+      "formalText": "**Эталоны:**\n$\\int_1^\\infty \\frac{dx}{x^p}$: сх. $p>1$, расх. $p \\le 1$\n$\\int_0^1 \\frac{dx}{x^p}$: сх. $p<1$, расх. $p \\ge 1$\n\n**Предельный признак:** $\\lim\\frac{f}{g} = L \\neq 0$ → одновр. сх./расх.\n\n**Абс. сходимость:** если $\\int|f|$ сх. → $\\int f$ сх."
+    },
+    {
+      "id": "ef-4",
+      "title": "ДУ с понижением порядка (Комплект 4)",
+      "type": "Справочник",
+      "formalText": "**Не содержит $y$ явно:** $F(x,y',y'')=0$\nЗамена $p = y'$, $p' = y''$. ДУ 1-го порядка для $p(x)$.\n\n**Не содержит $x$ явно:** $F(y,y',y'')=0$\nЗамена $y' = p(y)$, $y'' = p\\cdot p'_y$. ДУ 1-го порядка для $p(y)$.\n\nПосле нахождения $p$ → $y' = p$ → интегрируем."
+    },
+    {
+      "id": "ef-5",
+      "title": "Линейные ДУ высших порядков (Комплект 5)",
+      "type": "Справочник",
+      "formalText": "**Хар. уравнение:** $\\lambda^n + a_{n-1}\\lambda^{n-1}+\\ldots+a_0=0$\n\n**ФСР:** действ. $\\lambda$ → $e^{\\lambda x}$; кратн. $k$ → $x^j e^{\\lambda x}$; компл. $\\alpha\\pm i\\beta$ → $e^{\\alpha x}\\cos\\beta x,\\;e^{\\alpha x}\\sin\\beta x$\n\n**Подбор частного:** $f = e^{\\alpha x}P_n(x)$ → $\\tilde{y} = x^s e^{\\alpha x}Q_n(x)$\nгде $s$ = кратность $\\alpha$ как корня хар. ур.\n\n$f = e^{\\alpha x}[P\\cos\\beta x + R\\sin\\beta x]$ → $\\tilde{y} = x^s e^{\\alpha x}[Q\\cos\\beta x + T\\sin\\beta x]$\nгде $s$ = кратность $\\alpha+i\\beta$"
+    },
+    {
+      "id": "ef-6",
+      "title": "Метод вариации постоянных (Комплект 6)",
+      "type": "Справочник",
+      "formalText": "Для $y''+py'+qy=f(x)$:\n\n1. Решить однородное → ФСР $y_1, y_2$\n2. $y = C_1(x)y_1+C_2(x)y_2$\n3. Система:\n$$\\begin{cases}C_1'y_1+C_2'y_2=0\\\\C_1'y_1'+C_2'y_2'=f(x)\\end{cases}$$\n4. $C_1' = -\\frac{y_2 f}{W}$, $C_2' = \\frac{y_1 f}{W}$\n5. Интегрируем $C_1', C_2'$"
+    }
+  ]
+}

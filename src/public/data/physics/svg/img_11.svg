@@ -1,11 +1,11 @@
 <svg viewBox="0 0 400 180" width="400" height="180">
-  <defs><marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0 0, 6 3, 0 6" fill="#8b949e"/></marker></defs>
-  <line x1="30" y1="150" x2="380" y2="150" stroke="#d0d7de" stroke-width="1.5" marker-end="url(#arr)"/>
-  <line x1="40" y1="160" x2="40" y2="10" stroke="#d0d7de" stroke-width="1.5" marker-end="url(#arr)"/>
-  <text x="385" y="155" font-size="12" fill="#8b949e" font-weight="bold">V</text>
-  <text x="25" y="15" font-size="12" fill="#8b949e" font-weight="bold">P</text>
+  <defs><marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0 0, 6 3, 0 6" fill="var(--text2)"/></marker></defs>
+  <line x1="30" y1="150" x2="380" y2="150" stroke="var(--text2)" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="40" y1="160" x2="40" y2="10" stroke="var(--text2)" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="385" y="155" font-size="12" fill="var(--text2)" font-weight="bold">V</text>
+  <text x="25" y="15" font-size="12" fill="var(--text2)" font-weight="bold">P</text>
 
-  <circle cx="120" cy="50" r="5" fill="#24292f"/>
+  <circle cx="120" cy="50" r="5" fill="var(--text)"/>
 
   <line x1="120" y1="50" x2="330" y2="50" stroke="#2da44e" stroke-width="3"/>
   <text x="340" y="55" font-size="12" fill="#2da44e" font-weight="bold">Изобара</text>
@@ -17,5 +17,5 @@
   <text x="340" y="115" font-size="12" fill="#0969da" font-weight="bold">Изотерма</text>
 
   <path d="M 120 50 Q 150 120 220 140" fill="none" stroke="#8250df" stroke-width="3" stroke-dasharray="6,4"/>
-  <text x="230" y="145" font-size="12" fill="#8250df" font-weight="bold">Адиабата (γ > 1)</text>
+  <text x="230" y="145" font-size="12" fill="#8250df" font-weight="bold">Адиабата (γ &gt; 1)</text>
 </svg>

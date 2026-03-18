@@ -1,7 +1,8 @@
 {
   "title": "Интегралы и ДУ",
-  "subtitle": "КР-2 · ДУ 1-го порядка",
+  "subtitle": "КР-2 · Дифференциальные уравнения 1-го порядка",
   "icon": "∫",
   "shortCode": "idkr2",
-  "bundleName": "ИнтДУ_КР-2"
+  "bundleName": "ИнтДУ_КР-2",
+  "practiceMode": true
 }
