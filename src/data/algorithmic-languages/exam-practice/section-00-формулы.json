@@ -1,0 +1,56 @@
+{
+  "section": "📋 Синтаксис C++",
+  "icon": "📋",
+  "questions": [
+    {
+      "id": "f-1",
+      "title": "Класс (class / struct)",
+      "formalText": "<pre class=\"code-block\"><code>class ИмяКласса {\nprivate:\n    тип поле;              // private по умолчанию\npublic:\n    ИмяКласса(тип p) : поле(p) {}   // конструктор\n    ~ИмяКласса() {}                  // деструктор\n    тип метод() { return поле; }     // метод\n};\n\nstruct S { int x; };  // public по умолчанию</code></pre>"
+    },
+    {
+      "id": "f-2",
+      "title": "Конструкторы и деструктор",
+      "formalText": "<pre class=\"code-block\"><code>class A {\n    int* data;\npublic:\n    A()           : data(nullptr) {}        // по умолчанию\n    A(int n)      : data(new int[n]) {}     // с параметром\n    A(const A& o) : data(new int(*o.data)) {}  // копирования\n    A(A&& o) noexcept : data(o.data) { o.data = nullptr; } // перемещения\n    ~A() { delete[] data; }                 // деструктор\n};</code></pre>"
+    },
+    {
+      "id": "f-3",
+      "title": "Наследование",
+      "formalText": "<pre class=\"code-block\"><code>class Base {\nprotected:\n    int x;\npublic:\n    Base(int x) : x(x) {}\n    virtual void print() { cout << x; }  // virtual!\n    virtual ~Base() {}                    // virtual деструктор!\n};\n\nclass Derived : public Base {\n    int y;\npublic:\n    Derived(int x, int y) : Base(x), y(y) {}\n    void print() override { Base::print(); cout << y; }\n};</code></pre>"
+    },
+    {
+      "id": "f-4",
+      "title": "Виртуальные функции и полиморфизм",
+      "formalText": "<pre class=\"code-block\"><code>Base* p = new Derived(1, 2);\np->print();   // вызовет Derived::print() (динамически)\ndelete p;     // вызовет ~Derived() (виртуальный деструктор!)\n\n// Абстрактный класс:\nclass Shape {\npublic:\n    virtual double area() = 0;  // чисто виртуальная\n};</code></pre>"
+    },
+    {
+      "id": "f-5",
+      "title": "Шаблоны классов",
+      "formalText": "<pre class=\"code-block\"><code>template <class T>\nclass Container {\n    T data;\npublic:\n    Container(T d) : data(d) {}\n    T get() const { return data; }\n};\n\nContainer<int> c1(42);\nContainer<string> c2(\"hello\");</code></pre>"
+    },
+    {
+      "id": "f-6",
+      "title": "Перегрузка операторов",
+      "formalText": "**Как метод класса (левый операнд = this):**\n<pre class=\"code-block\"><code>class Vec {\n    int x;\npublic:\n    Vec operator+(const Vec& b) const { return Vec(x + b.x); }\n    Vec& operator++()    { ++x; return *this; }  // префикс\n    Vec  operator++(int) { Vec t(*this); ++x; return t; } // постфикс\n};</code></pre>\n**Как свободная функция (friend):**\n<pre class=\"code-block\"><code>friend ostream& operator<<(ostream& os, const Vec& v) {\n    return os << v.x;\n}</code></pre>"
+    },
+    {
+      "id": "f-7",
+      "title": "Исключения (try / catch / throw)",
+      "formalText": "<pre class=\"code-block\"><code>try {\n    if (ошибка) throw runtime_error(\"сообщение\");\n}\ncatch (const runtime_error& e) {\n    cerr << e.what();\n}\ncatch (...) {\n    cerr << \"Неизвестная ошибка\";\n}\n\n// Свой класс исключения:\nclass MyError : public out_of_range {\n    int val;\npublic:\n    MyError(int v) : out_of_range(\"Invalid\"), val(v) {}\n    int getVal() const { return val; }\n};</code></pre>"
+    },
+    {
+      "id": "f-8",
+      "title": "Потоки и синхронизация",
+      "formalText": "<pre class=\"code-block\"><code>#include <thread>\n#include <mutex>\n#include <condition_variable>\n\nstd::mutex mtx;\nvoid func(int id) {\n    std::lock_guard<std::mutex> lock(mtx);\n    cout << \"Thread \" << id << endl;\n}\n\nstd::thread t1(func, 1);\nstd::thread t2(func, 2);\nt1.join(); t2.join();</code></pre>\n**condition_variable:**\n<pre class=\"code-block\"><code>std::condition_variable cv;\nbool ready = false;\n\n// Ожидание:\nstd::unique_lock<std::mutex> lock(mtx);\ncv.wait(lock, []{ return ready; });\n\n// Оповещение:\n{ lock_guard<mutex> lk(mtx); ready = true; }\ncv.notify_one();</code></pre>"
+    },
+    {
+      "id": "f-9",
+      "title": "Лямбды и функторы",
+      "formalText": "**Лямбда:**\n<pre class=\"code-block\"><code>auto cmp = [](int a, int b) { return a > b; };\nsort(v.begin(), v.end(), cmp);</code></pre>\n**Функтор:**\n<pre class=\"code-block\"><code>class Cmp {\npublic:\n    bool operator()(int a, int b) const { return a > b; }\n};\nsort(v.begin(), v.end(), Cmp());</code></pre>"
+    },
+    {
+      "id": "f-10",
+      "title": "static, this, friend",
+      "formalText": "<pre class=\"code-block\"><code>class A {\n    static int count;         // общее для всех объектов\n    int val;\npublic:\n    A(int v) : val(v) { count++; }\n    static int getCount() { return count; }  // нет this\n    A& setVal(int v) { this->val = v; return *this; }\n    friend void show(const A& a);  // доступ к private\n};\nint A::count = 0;  // инициализация static\nvoid show(const A& a) { cout << a.val; }</code></pre>"
+    }
+  ]
+}

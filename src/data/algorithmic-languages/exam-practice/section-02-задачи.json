@@ -1,0 +1,494 @@
+{
+  "section": "✏️ Типовые задачи",
+  "icon": "✏️",
+  "questions": [
+    {
+      "id": "1",
+      "title": "Класс «целое число» — остаток от деления на 5",
+      "type": "Задача · Простые классы",
+      "formalText": "Создать класс «целое число».\nЭлементы класса: поле задаёт значение целого числа (private); конструктор; метод для вычисления остатка от деления на 5.\nСоздать 1 объект, вывести значение остатка.",
+      "tldr": "class + private int + метод % 5",
+      "hint": "Класс с одним private полем int, конструктор через список инициализации, метод возвращает value % 5",
+      "steps": [
+        {
+          "title": "Объявление класса",
+          "text": "Поле `value` — private. Конструктор инициализирует через список. Метод `remainder()` возвращает остаток.\n<pre class=\"code-block\"><code>class IntNumber {\n    int value;\npublic:\n    IntNumber(int v) : value(v) {}\n    int remainder() const { return value % 5; }\n};</code></pre>"
+        },
+        {
+          "title": "main с созданием объекта",
+          "text": "<pre class=\"code-block\"><code>int main() {\n    IntNumber num(17);\n    cout << \"Остаток от деления на 5: \" << num.remainder() << endl;\n    // Вывод: Остаток от деления на 5: 2\n    return 0;\n}</code></pre>"
+        },
+        {
+          "title": "Полный код",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\nusing namespace std;\n\nclass IntNumber {\n    int value;\npublic:\n    IntNumber(int v) : value(v) {}\n    int remainder() const { return value % 5; }\n};\n\nint main() {\n    IntNumber num(17);\n    cout << \"Остаток от деления на 5: \" << num.remainder() << endl;\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Класс «целое число» — вывод в 16-ричной системе",
+      "type": "Задача · Простые классы",
+      "formalText": "Создать класс «целое число».\nЭлементы класса: поле задаёт значение целого числа (private); конструктор; метод для печати значения в шестнадцатеричной системе счисления.\nСоздать 1 объект, вывести значение в hex.",
+      "tldr": "class + hex вывод через cout << hex",
+      "hint": "Метод печати использует cout << hex << value, не забудь вернуть cout << dec после",
+      "steps": [
+        {
+          "title": "Класс с методом hex-печати",
+          "text": "Используем манипуляторы `hex` / `uppercase` для 16-ричного вывода:\n<pre class=\"code-block\"><code>class IntNumber {\n    int value;\npublic:\n    IntNumber(int v) : value(v) {}\n    void printHex() const {\n        cout << \"Hex: \" << uppercase << hex << value << dec << endl;\n    }\n};</code></pre>"
+        },
+        {
+          "title": "Полный код",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\nusing namespace std;\n\nclass IntNumber {\n    int value;\npublic:\n    IntNumber(int v) : value(v) {}\n    void printHex() const {\n        cout << \"Hex: \" << uppercase << hex << value << dec << endl;\n    }\n};\n\nint main() {\n    IntNumber num(255);\n    num.printHex();  // Вывод: Hex: FF\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "title": "Класс «символ» — печать кода символа",
+      "type": "Задача · Простые классы",
+      "formalText": "Создать класс «символ».\nЭлементы класса: поле задаёт символ (private); конструктор; метод для печати кода символа.\nСоздать 1 объект, вывести код символа.",
+      "tldr": "class + char поле + (int)ch для кода",
+      "hint": "Поле типа char, для вывода кода приведи к int: static_cast<int>(ch)",
+      "steps": [
+        {
+          "title": "Класс с методом печати кода",
+          "text": "Приведение `char → int` даёт ASCII-код символа:\n<pre class=\"code-block\"><code>class Symbol {\n    char ch;\npublic:\n    Symbol(char c) : ch(c) {}\n    void printCode() const {\n        cout << \"Символ '\" << ch << \"' имеет код: \"\n             << static_cast<int>(ch) << endl;\n    }\n};</code></pre>"
+        },
+        {
+          "title": "Полный код",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\nusing namespace std;\n\nclass Symbol {\n    char ch;\npublic:\n    Symbol(char c) : ch(c) {}\n    void printCode() const {\n        cout << \"Символ '\" << ch << \"' имеет код: \"\n             << static_cast<int>(ch) << endl;\n    }\n};\n\nint main() {\n    Symbol s('A');\n    s.printCode();  // Символ 'A' имеет код: 65\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "title": "Класс «угол» — вычисление синуса",
+      "type": "Задача · Простые классы",
+      "formalText": "Создать класс «угол (заданный в градусах)».\nЭлементы класса: поле задаёт значение угла в градусах (private); конструктор; метод для вычисления синуса угла.\nСоздать 1 объект, вывести значение синуса.",
+      "tldr": "class + sin(deg * M_PI / 180.0)",
+      "hint": "sin() принимает радианы. Перевод: radians = degrees * M_PI / 180.0. Подключи <cmath>",
+      "steps": [
+        {
+          "title": "Класс с переводом градусов в радианы",
+          "text": "Функция `sin()` из `<cmath>` принимает радианы, поэтому переводим:\n<pre class=\"code-block\"><code>#include <cmath>\nconst double PI = 3.14159265358979323846;\n\nclass Angle {\n    double degrees;\npublic:\n    Angle(double d) : degrees(d) {}\n    double sinValue() const {\n        return sin(degrees * PI / 180.0);\n    }\n};</code></pre>"
+        },
+        {
+          "title": "Полный код",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <cmath>\nusing namespace std;\nconst double PI = 3.14159265358979323846;\n\nclass Angle {\n    double degrees;\npublic:\n    Angle(double d) : degrees(d) {}\n    double sinValue() const {\n        return sin(degrees * PI / 180.0);\n    }\n};\n\nint main() {\n    Angle a(30.0);\n    cout << \"sin(30) = \" << a.sinValue() << endl;\n    // Вывод: sin(30) = 0.5\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "title": "Класс «угол» — вычисление косинуса",
+      "type": "Задача · Простые классы",
+      "formalText": "Создать класс «угол (заданный в градусах)».\nЭлементы класса: поле задаёт значение угла в градусах (private); конструктор; метод для вычисления косинуса угла.\nСоздать 1 объект, вывести значение косинуса.",
+      "tldr": "class + cos(deg * PI / 180)",
+      "hint": "Аналогично синусу, но используй функцию cos() вместо sin()",
+      "steps": [
+        {
+          "title": "Класс с вычислением косинуса",
+          "text": "<pre class=\"code-block\"><code>class Angle {\n    double degrees;\npublic:\n    Angle(double d) : degrees(d) {}\n    double cosValue() const {\n        return cos(degrees * 3.14159265358979 / 180.0);\n    }\n};</code></pre>"
+        },
+        {
+          "title": "Полный код",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <cmath>\nusing namespace std;\n\nclass Angle {\n    double degrees;\npublic:\n    Angle(double d) : degrees(d) {}\n    double cosValue() const {\n        return cos(degrees * 3.14159265358979 / 180.0);\n    }\n};\n\nint main() {\n    Angle a(60.0);\n    cout << \"cos(60) = \" << a.cosValue() << endl;\n    // Вывод: cos(60) = 0.5\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "title": "Класс «целое число» — проверка чётности",
+      "type": "Задача · Простые классы",
+      "formalText": "Создать класс «целое число».\nЭлементы класса: поле задаёт значение целого числа (private); конструктор; метод, возвращающий 1 если число чётное и 0 в противном случае.\nСоздать 1 объект, проверить чётность, вывести сообщение.",
+      "tldr": "class + return value % 2 == 0 ? 1 : 0",
+      "hint": "Метод возвращает int: чётное → 1 (value % 2 == 0), нечётное → 0",
+      "steps": [
+        {
+          "title": "Класс с методом isEven",
+          "text": "<pre class=\"code-block\"><code>class IntNumber {\n    int value;\npublic:\n    IntNumber(int v) : value(v) {}\n    int isEven() const { return (value % 2 == 0) ? 1 : 0; }\n};</code></pre>"
+        },
+        {
+          "title": "Полный код",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\nusing namespace std;\n\nclass IntNumber {\n    int value;\npublic:\n    IntNumber(int v) : value(v) {}\n    int isEven() const { return (value % 2 == 0) ? 1 : 0; }\n};\n\nint main() {\n    IntNumber num(42);\n    if (num.isEven())\n        cout << \"Число чётное\" << endl;\n    else\n        cout << \"Число нечётное\" << endl;\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "title": "Класс «круг» — площадь",
+      "type": "Задача · Простые классы",
+      "formalText": "Создать класс «круг».\nЭлементы класса: поле задаёт значение радиуса круга (private); конструктор; метод для вычисления площади круга.\nСоздать 1 объект, напечатать значение площади круга.",
+      "tldr": "class + area = π·r²",
+      "hint": "Площадь круга: M_PI * radius * radius. Подключи <cmath>",
+      "steps": [
+        {
+          "title": "Класс Circle",
+          "text": "<pre class=\"code-block\"><code>class Circle {\n    double radius;\npublic:\n    Circle(double r) : radius(r) {}\n    double area() const {\n        return 3.14159265358979 * radius * radius;\n    }\n};</code></pre>"
+        },
+        {
+          "title": "Полный код",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <cmath>\nusing namespace std;\n\nclass Circle {\n    double radius;\npublic:\n    Circle(double r) : radius(r) {}\n    double area() const { return M_PI * radius * radius; }\n};\n\nint main() {\n    Circle c(5.0);\n    cout << \"Площадь круга: \" << c.area() << endl;\n    // Вывод: Площадь круга: 78.5398\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "title": "Класс «окружность» — длина",
+      "type": "Задача · Простые классы",
+      "formalText": "Создать класс «окружность».\nЭлементы класса: поле задаёт значение радиуса окружности (private); конструктор; метод для вычисления длины окружности.\nСоздать 1 объект, напечатать значение длины окружности.",
+      "tldr": "class + circumference = 2·π·r",
+      "hint": "Длина окружности: 2 * M_PI * radius",
+      "steps": [
+        {
+          "title": "Полный код",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <cmath>\nusing namespace std;\n\nclass CirclePerimeter {\n    double radius;\npublic:\n    CirclePerimeter(double r) : radius(r) {}\n    double circumference() const { return 2 * M_PI * radius; }\n};\n\nint main() {\n    CirclePerimeter c(5.0);\n    cout << \"Длина окружности: \" << c.circumference() << endl;\n    // Вывод: Длина окружности: 31.4159\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "title": "Класс «квадрат» — площадь",
+      "type": "Задача · Простые классы",
+      "formalText": "Создать класс «квадрат».\nЭлементы класса: поле задаёт значение длины стороны квадрата (private); конструктор; метод для вычисления площади квадрата.\nСоздать 1 объект, напечатать значение площади.",
+      "tldr": "class + area = side * side",
+      "hint": "Площадь квадрата: side * side",
+      "steps": [
+        {
+          "title": "Полный код",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\nusing namespace std;\n\nclass Square {\n    double side;\npublic:\n    Square(double s) : side(s) {}\n    double area() const { return side * side; }\n};\n\nint main() {\n    Square sq(7.0);\n    cout << \"Площадь квадрата: \" << sq.area() << endl;\n    // Вывод: Площадь квадрата: 49\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "title": "Класс «квадрат» — периметр",
+      "type": "Задача · Простые классы",
+      "formalText": "Создать класс «квадрат».\nЭлементы класса: поле задаёт значение длины стороны квадрата (private); конструктор; метод для вычисления периметра квадрата.\nСоздать 1 объект, напечатать значение периметра.",
+      "tldr": "class + perimeter = 4 * side",
+      "hint": "Периметр квадрата: 4 * side",
+      "steps": [
+        {
+          "title": "Полный код",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\nusing namespace std;\n\nclass Square {\n    double side;\npublic:\n    Square(double s) : side(s) {}\n    double perimeter() const { return 4 * side; }\n};\n\nint main() {\n    Square sq(7.0);\n    cout << \"Периметр квадрата: \" << sq.perimeter() << endl;\n    // Вывод: Периметр квадрата: 28\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "title": "Точка 2D → Точка 3D (динамический полиморфизм)",
+      "type": "Задача · Наследование",
+      "formalText": "Создать базовый класс «точка на плоскости» (protected поля x, y; конструктор; виртуальный метод печати).\nСоздать производный класс «точка в 3D» (доп. поле z; конструктор; переопределённый метод печати — вызывает метод базового класса).\nСоздать по 1 объекту. Через указатель базового типа вызвать метод. Обеспечить **динамический** полиморфизм.",
+      "tldr": "Point2D (virtual print) → Point3D (override) → Base* p",
+      "hint": "virtual print() в базовом, override в производном. Указатель Base* → вызов Derived::print()",
+      "steps": [
+        {
+          "title": "Базовый класс Point2D",
+          "text": "Ключевые моменты: поля `protected` (доступ из наследника), метод `virtual` (для полиморфизма), деструктор `virtual`.\n<pre class=\"code-block\"><code>class Point2D {\nprotected:\n    double x, y;\npublic:\n    Point2D(double x, double y) : x(x), y(y) {}\n    virtual void print() {\n        cout << \"x=\" << x << \", y=\" << y;\n    }\n    virtual ~Point2D() {}\n};</code></pre>"
+        },
+        {
+          "title": "Производный класс Point3D",
+          "text": "Конструктор вызывает `Point2D(x, y)`. Метод `print()` сначала вызывает `Point2D::print()`, затем выводит z.\n<pre class=\"code-block\"><code>class Point3D : public Point2D {\n    double z;\npublic:\n    Point3D(double x, double y, double z)\n        : Point2D(x, y), z(z) {}\n    void print() override {\n        Point2D::print();\n        cout << \", z=\" << z;\n    }\n};</code></pre>"
+        },
+        {
+          "title": "Демонстрация полиморфизма в main",
+          "text": "<pre class=\"code-block\"><code>int main() {\n    Point2D p2(1.0, 2.0);\n    Point3D p3(3.0, 4.0, 5.0);\n\n    Point2D* p = &p2;\n    p->print();    // x=1, y=2 (Point2D::print)\n    cout << endl;\n\n    p = &p3;\n    p->print();    // x=3, y=4, z=5 (Point3D::print — динамически!)\n    cout << endl;\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "title": "Вектор 2D → Вектор 3D (динамический полиморфизм)",
+      "type": "Задача · Наследование",
+      "formalText": "Создать базовый класс «вектор на плоскости» (protected поля x, y; конструктор; метод вычисления длины; виртуальный метод печати полей и длины).\nСоздать производный класс «вектор в 3D» (доп. поле z; переопределённые методы длины и печати).\nОбеспечить **динамический** полиморфизм через указатель.",
+      "tldr": "Vec2D(sqrt(x²+y²)) → Vec3D(sqrt(x²+y²+z²)), virtual",
+      "hint": "Длина 2D: sqrt(x*x + y*y). Длина 3D: sqrt(x*x + y*y + z*z). virtual print() + override",
+      "steps": [
+        {
+          "title": "Базовый класс Vec2D",
+          "text": "<pre class=\"code-block\"><code>class Vec2D {\nprotected:\n    double x, y;\npublic:\n    Vec2D(double x, double y) : x(x), y(y) {}\n    virtual double length() const {\n        return sqrt(x * x + y * y);\n    }\n    virtual void print() {\n        cout << \"(\" << x << \", \" << y << \"), length=\" << length();\n    }\n    virtual ~Vec2D() {}\n};</code></pre>"
+        },
+        {
+          "title": "Производный класс Vec3D",
+          "text": "<pre class=\"code-block\"><code>class Vec3D : public Vec2D {\n    double z;\npublic:\n    Vec3D(double x, double y, double z)\n        : Vec2D(x, y), z(z) {}\n    double length() const override {\n        return sqrt(x * x + y * y + z * z);\n    }\n    void print() override {\n        Vec2D::print();\n        cout << \", z=\" << z << \", length3D=\" << length();\n    }\n};</code></pre>"
+        },
+        {
+          "title": "main с полиморфизмом",
+          "text": "<pre class=\"code-block\"><code>int main() {\n    Vec2D v2(3.0, 4.0);\n    Vec3D v3(1.0, 2.0, 2.0);\n\n    Vec2D* p = &v2;\n    p->print(); cout << endl;  // (3, 4), length=5\n\n    p = &v3;\n    p->print(); cout << endl;  // (1, 2), length=3, z=2, length3D=3\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "13",
+      "title": "Квадрат → Куб (статический полиморфизм)",
+      "type": "Задача · Наследование",
+      "formalText": "Создать базовый класс «квадрат» (поле — сторона; метод площади; метод печати).\nСоздать производный класс «куб» (переопределённый метод вычисления объёма, внутри вызывает метод базового).\nОбеспечить **статический** полиморфизм.",
+      "tldr": "Square(area=s²) → Cube(vol=s²·s), без virtual",
+      "hint": "Статический полиморфизм = БЕЗ virtual. Указатель Base* вызовет Base::print(), а не Derived::print()",
+      "steps": [
+        {
+          "title": "Базовый класс Square (без virtual)",
+          "text": "Для статического полиморфизма — методы **НЕ** виртуальные:\n<pre class=\"code-block\"><code>class Square {\nprotected:\n    double side;\npublic:\n    Square(double s) : side(s) {}\n    double area() { return side * side; }\n    void print() {\n        cout << \"side=\" << side << \", area=\" << area();\n    }\n};</code></pre>"
+        },
+        {
+          "title": "Производный класс Cube",
+          "text": "Объём куба = площадь основания × сторона. Вызываем `Square::area()` внутри:\n<pre class=\"code-block\"><code>class Cube : public Square {\npublic:\n    Cube(double s) : Square(s) {}\n    double volume() { return area() * side; }  // area() из Square\n    void print() {\n        cout << \"side=\" << side << \", volume=\" << volume();\n    }\n};</code></pre>"
+        },
+        {
+          "title": "main — статическое связывание",
+          "text": "Указатель `Square*` → вызывает `Square::print()`, даже если указывает на Cube:\n<pre class=\"code-block\"><code>int main() {\n    Square sq(5.0);\n    Cube cu(5.0);\n\n    Square* p = &sq;\n    p->print(); cout << endl;  // side=5, area=25\n\n    p = &cu;\n    p->print(); cout << endl;  // side=5, area=25 (НЕ volume!)\n    // Статическое связывание: вызывается Square::print()\n\n    cu.print(); cout << endl;  // side=5, volume=125\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "14",
+      "title": "Прямоугольник → Параллелепипед (статический полиморфизм)",
+      "type": "Задача · Наследование",
+      "formalText": "Создать базовый класс «прямоугольник» (поля — стороны a, b; метод площади; метод печати).\nСоздать производный класс «прямоугольный параллелепипед» (доп. поле — высота h; переопределённый метод объёма, внутри вызывает площадь базового; переопределённый метод печати).\nОбеспечить **статический** полиморфизм.",
+      "tldr": "Rect(S=a·b) → Box(V=S·h), без virtual",
+      "hint": "Без virtual = статический полиморфизм. Объём = area() * h, площадь из базового",
+      "steps": [
+        {
+          "title": "Базовый класс Rect",
+          "text": "<pre class=\"code-block\"><code>class Rect {\nprotected:\n    double a, b;\npublic:\n    Rect(double a, double b) : a(a), b(b) {}\n    double area() { return a * b; }\n    void print() {\n        cout << \"a=\" << a << \", b=\" << b\n             << \", area=\" << area();\n    }\n};</code></pre>"
+        },
+        {
+          "title": "Производный класс Box",
+          "text": "<pre class=\"code-block\"><code>class Box : public Rect {\n    double h;\npublic:\n    Box(double a, double b, double h)\n        : Rect(a, b), h(h) {}\n    double volume() { return area() * h; }\n    void print() {\n        Rect::print();\n        cout << \", h=\" << h << \", volume=\" << volume();\n    }\n};</code></pre>"
+        },
+        {
+          "title": "main — статическое связывание",
+          "text": "<pre class=\"code-block\"><code>int main() {\n    Rect r(3, 4);\n    Box b(3, 4, 5);\n\n    Rect* p = &r;\n    p->print(); cout << endl;  // a=3, b=4, area=12\n\n    p = &b;\n    p->print(); cout << endl;  // a=3, b=4, area=12 (статически!)\n\n    b.print(); cout << endl;   // a=3, b=4, area=12, h=5, volume=60\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "15",
+      "title": "Круг → Шар (динамический полиморфизм)",
+      "type": "Задача · Наследование",
+      "formalText": "Создать базовый класс «круг» (поле — радиус; метод площади πr²; метод печати).\nСоздать производный класс «шар» (переопределённый метод вычисления объёма 4/3·πr³, внутри вызывает метод из базового).\nОбеспечить **динамический** полиморфизм.",
+      "tldr": "Circle(S=πr²) → Sphere(V=4/3·πr³), virtual",
+      "hint": "virtual compute() в базовом. В шаре: volume = area() * r * 4.0 / 3.0. Тут area() = πr²",
+      "steps": [
+        {
+          "title": "Базовый класс Circle (virtual)",
+          "text": "<pre class=\"code-block\"><code>class Circle {\nprotected:\n    double r;\npublic:\n    Circle(double r) : r(r) {}\n    virtual double compute() { return M_PI * r * r; }\n    virtual void print() {\n        cout << \"r=\" << r << \", area=\" << compute();\n    }\n    virtual ~Circle() {}\n};</code></pre>"
+        },
+        {
+          "title": "Производный класс Sphere",
+          "text": "Объём шара V = 4/3·πr³. Можно выразить как `compute()` базового (πr²) × r × 4/3:\n<pre class=\"code-block\"><code>class Sphere : public Circle {\npublic:\n    Sphere(double r) : Circle(r) {}\n    double compute() override {\n        return Circle::compute() * r * 4.0 / 3.0;\n    }\n    void print() override {\n        cout << \"r=\" << r << \", volume=\" << compute();\n    }\n};</code></pre>"
+        },
+        {
+          "title": "main — динамическое связывание",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <cmath>\nusing namespace std;\n\nint main() {\n    Circle c(5.0);\n    Sphere s(5.0);\n\n    Circle* p = &c;\n    p->print(); cout << endl;  // r=5, area=78.5398\n\n    p = &s;\n    p->print(); cout << endl;  // r=5, volume=523.599 (динамически!)\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "16",
+      "title": "Автомобиль → Грузовой (динамический полиморфизм)",
+      "type": "Задача · Наследование",
+      "formalText": "Создать базовый класс «автомобиль» (поля: модель, макс. скорость; метод печати).\nСоздать производный класс «грузовой автомобиль» (доп. поле: грузоподъёмность; переопределённый метод печати).\nОбеспечить **динамический** полиморфизм.",
+      "tldr": "Car(model, speed) → Truck(+payload), virtual print",
+      "hint": "Поле модели — string. Метод print() — virtual. В Truck: Base::print() + cout грузоподъёмности",
+      "steps": [
+        {
+          "title": "Базовый и производный классы",
+          "text": "<pre class=\"code-block\"><code>class Car {\nprotected:\n    string model;\n    double maxSpeed;\npublic:\n    Car(string m, double s) : model(m), maxSpeed(s) {}\n    virtual void print() {\n        cout << \"Модель: \" << model\n             << \", макс. скорость: \" << maxSpeed << \" км/ч\";\n    }\n    virtual ~Car() {}\n};\n\nclass Truck : public Car {\n    double payload;  // грузоподъёмность (тонны)\npublic:\n    Truck(string m, double s, double p)\n        : Car(m, s), payload(p) {}\n    void print() override {\n        Car::print();\n        cout << \", грузоподъёмность: \" << payload << \" т\";\n    }\n};</code></pre>"
+        },
+        {
+          "title": "main — динамическое связывание",
+          "text": "<pre class=\"code-block\"><code>int main() {\n    Car car(\"Sedan\", 200);\n    Truck truck(\"Kamaz\", 120, 10.5);\n\n    Car* p = &car;\n    p->print(); cout << endl;\n    // Модель: Sedan, макс. скорость: 200 км/ч\n\n    p = &truck;\n    p->print(); cout << endl;\n    // Модель: Kamaz, макс. скорость: 120 км/ч, грузоподъёмность: 10.5 т\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "17",
+      "title": "Вещественное число → Комплексное (динамический полиморфизм)",
+      "type": "Задача · Наследование",
+      "formalText": "Создать базовый класс «вещественное число» (поле — значение; метод модуля; метод печати).\nСоздать производный класс «комплексное число» (доп. поле — мнимая часть; переопределённый модуль = sqrt(re²+im²); переопределённая печать).\nОбеспечить **динамический** полиморфизм.",
+      "tldr": "Real(|x|) → Complex(sqrt(re²+im²)), virtual",
+      "hint": "Модуль вещественного: fabs(val). Модуль комплексного: sqrt(re*re + im*im). virtual + override",
+      "steps": [
+        {
+          "title": "Базовый класс RealNumber",
+          "text": "<pre class=\"code-block\"><code>class RealNumber {\nprotected:\n    double val;\npublic:\n    RealNumber(double v) : val(v) {}\n    virtual double modulus() { return fabs(val); }\n    virtual void print() {\n        cout << \"val=\" << val << \", |val|=\" << modulus();\n    }\n    virtual ~RealNumber() {}\n};</code></pre>"
+        },
+        {
+          "title": "Производный класс ComplexNumber",
+          "text": "<pre class=\"code-block\"><code>class ComplexNumber : public RealNumber {\n    double im;\npublic:\n    ComplexNumber(double re, double im)\n        : RealNumber(re), im(im) {}\n    double modulus() override {\n        return sqrt(val * val + im * im);\n    }\n    void print() override {\n        RealNumber::print();\n        cout << \", im=\" << im << \", |z|=\" << modulus();\n    }\n};</code></pre>"
+        },
+        {
+          "title": "main",
+          "text": "<pre class=\"code-block\"><code>int main() {\n    RealNumber r(-3.0);\n    ComplexNumber c(3.0, 4.0);\n\n    RealNumber* p = &r;\n    p->print(); cout << endl;  // val=-3, |val|=3\n\n    p = &c;\n    p->print(); cout << endl;  // val=3, |val|=5, im=4, |z|=5\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "18",
+      "title": "Сотрудник → Начальник (статический полиморфизм)",
+      "type": "Задача · Наследование",
+      "formalText": "Создать базовый класс «сотрудник компании» (поля: ФИО, оклад protected; метод печати).\nСоздать производный класс «начальник подразделения» (доп. поле: надбавка; переопределённый метод печати с зарплатой = оклад + надбавка).\nОбеспечить **статический** полиморфизм.",
+      "tldr": "Employee(name, salary) → Boss(+bonus), без virtual",
+      "hint": "Без virtual. Зарплата начальника = salary + bonus. В print() вызывай Employee::print()",
+      "steps": [
+        {
+          "title": "Классы Employee и Boss",
+          "text": "<pre class=\"code-block\"><code>class Employee {\nprotected:\n    string name;\n    double salary;\npublic:\n    Employee(string n, double s) : name(n), salary(s) {}\n    void print() {\n        cout << \"ФИО: \" << name << \", оклад: \" << salary;\n    }\n};\n\nclass Boss : public Employee {\n    double bonus;\npublic:\n    Boss(string n, double s, double b)\n        : Employee(n, s), bonus(b) {}\n    void print() {\n        Employee::print();\n        cout << \", надбавка: \" << bonus\n             << \", зарплата: \" << (salary + bonus);\n    }\n};</code></pre>"
+        },
+        {
+          "title": "main — статическое связывание",
+          "text": "<pre class=\"code-block\"><code>int main() {\n    Employee emp(\"Иванов\", 50000);\n    Boss boss(\"Петров\", 70000, 30000);\n\n    Employee* p = &emp;\n    p->print(); cout << endl;\n    // ФИО: Иванов, оклад: 50000\n\n    p = &boss;\n    p->print(); cout << endl;\n    // ФИО: Петров, оклад: 70000 (статически! без надбавки)\n\n    boss.print(); cout << endl;\n    // ФИО: Петров, оклад: 70000, надбавка: 30000, зарплата: 100000\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "19",
+      "title": "Вектор 2D → Вектор 3D (статический полиморфизм)",
+      "type": "Задача · Наследование",
+      "formalText": "Создать базовый класс «вектор на плоскости» (protected поля x, y; конструктор; метод печати координат).\nСоздать производный класс «вектор в 3D» (доп. поле z; переопределённый метод печати, внутри вызывает метод базового).\nОбеспечить **статический** полиморфизм.",
+      "tldr": "Vec2D(x,y) → Vec3D(+z), без virtual, статика",
+      "hint": "Без virtual: указатель Base* вызовет Base::print(). Через Derived.print() — Derived::print()",
+      "steps": [
+        {
+          "title": "Классы Vec2D и Vec3D",
+          "text": "<pre class=\"code-block\"><code>class Vec2D {\nprotected:\n    double x, y;\npublic:\n    Vec2D(double x, double y) : x(x), y(y) {}\n    void print() { cout << \"(\" << x << \", \" << y << \")\"; }\n};\n\nclass Vec3D : public Vec2D {\n    double z;\npublic:\n    Vec3D(double x, double y, double z)\n        : Vec2D(x, y), z(z) {}\n    void print() {\n        Vec2D::print();\n        cout << \" z=\" << z;\n    }\n};</code></pre>"
+        },
+        {
+          "title": "main — статическое связывание",
+          "text": "<pre class=\"code-block\"><code>int main() {\n    Vec2D v2(1, 2);\n    Vec3D v3(3, 4, 5);\n\n    Vec2D* p = &v2;\n    p->print(); cout << endl;  // (1, 2)\n\n    p = &v3;\n    p->print(); cout << endl;  // (3, 4) — статически! без z\n\n    v3.print(); cout << endl;  // (3, 4) z=5\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "20",
+      "title": "Квадрат → Прямоугольник (статический полиморфизм)",
+      "type": "Задача · Наследование",
+      "formalText": "Создать базовый класс «квадрат» (поле — сторона; метод периметра; метод печати).\nСоздать производный класс «прямоугольник» (доп. поле — другая сторона; переопределённый метод периметра; переопределённый метод печати).\nОбеспечить **статический** полиморфизм.",
+      "tldr": "Square(P=4s) → Rect(P=2(a+b)), без virtual",
+      "hint": "Без virtual. Периметр квадрата: 4*side. Периметр прямоугольника: 2*(side+b)",
+      "steps": [
+        {
+          "title": "Классы Square и Rectangle",
+          "text": "<pre class=\"code-block\"><code>class Square {\nprotected:\n    double side;\npublic:\n    Square(double s) : side(s) {}\n    double perimeter() { return 4 * side; }\n    void print() {\n        cout << \"side=\" << side\n             << \", P=\" << perimeter();\n    }\n};\n\nclass Rectangle : public Square {\n    double b;\npublic:\n    Rectangle(double a, double b)\n        : Square(a), b(b) {}\n    double perimeter() { return 2 * (side + b); }\n    void print() {\n        Square::print();\n        cout << \", b=\" << b << \", P=\" << perimeter();\n    }\n};</code></pre>"
+        },
+        {
+          "title": "main — статическое связывание",
+          "text": "<pre class=\"code-block\"><code>int main() {\n    Square sq(5);\n    Rectangle rc(4, 6);\n\n    Square* p = &sq;\n    p->print(); cout << endl;  // side=5, P=20\n\n    p = &rc;\n    p->print(); cout << endl;  // side=4, P=16 (статически! Square::perimeter)\n\n    rc.print(); cout << endl;  // side=4, P=16, b=6, P=20\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "21",
+      "title": "Класс «Время» с исключением от out_of_range",
+      "type": "Задача · Исключения",
+      "formalText": "Реализовать класс «Время» (поля: часы, минуты, секунды; конструктор — при недопустимых параметрах бросает исключение).\nДля исключения создать класс, производный от `out_of_range`, содержащий поля класса «Время» и метод печати.\nПродемонстрировать работу с исключением и без.",
+      "tldr": "Time + TimeError : out_of_range + try/catch",
+      "hint": "class TimeError : public out_of_range { int h,m,s; print(); }. В конструкторе Time: if (h<0||h>23||...) throw TimeError(h,m,s);",
+      "steps": [
+        {
+          "title": "Класс исключения TimeError",
+          "text": "Наследуем от `out_of_range`. Храним некорректные значения:\n<pre class=\"code-block\"><code>class TimeError : public out_of_range {\n    int h, m, s;\npublic:\n    TimeError(int h, int m, int s)\n        : out_of_range(\"Invalid time\"), h(h), m(m), s(s) {}\n    void print() const {\n        cerr << what() << \": \"\n             << h << \":\" << m << \":\" << s << endl;\n    }\n};</code></pre>"
+        },
+        {
+          "title": "Класс Time с валидацией",
+          "text": "<pre class=\"code-block\"><code>class Time {\n    int h, m, s;\npublic:\n    Time(int h, int m, int s) : h(h), m(m), s(s) {\n        if (h < 0 || h > 23 || m < 0 || m > 59 || s < 0 || s > 59)\n            throw TimeError(h, m, s);\n    }\n    void print() const {\n        cout << h << \":\" << m << \":\" << s << endl;\n    }\n};</code></pre>"
+        },
+        {
+          "title": "main — демонстрация",
+          "text": "<pre class=\"code-block\"><code>int main() {\n    // Случай 1: валидное время\n    try {\n        Time t1(10, 30, 45);\n        cout << \"t1 = \"; t1.print();  // 10:30:45\n    }\n    catch (const TimeError& e) {\n        e.print();\n    }\n\n    // Случай 2: невалидное время\n    try {\n        Time t2(25, 99, -1);  // бросит TimeError\n        t2.print();           // не выполнится\n    }\n    catch (const TimeError& e) {\n        e.print();  // Invalid time: 25:99:-1\n    }\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "22",
+      "title": "Класс «Дата» с исключением от out_of_range",
+      "type": "Задача · Исключения",
+      "formalText": "Реализовать класс «Дата» (поля: число, месяц, год; конструктор — при недопустимых параметрах бросает исключение).\nДля исключения создать класс, производный от `out_of_range`, содержащий поля класса «Дата» и метод печати.\nПродемонстрировать работу с исключением и без.",
+      "tldr": "Date + DateError : out_of_range + try/catch",
+      "hint": "class DateError : public out_of_range { int d,m,y; }. Проверка: день 1-31, месяц 1-12",
+      "steps": [
+        {
+          "title": "Класс исключения DateError",
+          "text": "<pre class=\"code-block\"><code>class DateError : public out_of_range {\n    int d, m, y;\npublic:\n    DateError(int d, int m, int y)\n        : out_of_range(\"Invalid date\"), d(d), m(m), y(y) {}\n    void print() const {\n        cerr << what() << \": \"\n             << d << \".\" << m << \".\" << y << endl;\n    }\n};</code></pre>"
+        },
+        {
+          "title": "Класс Date с валидацией",
+          "text": "<pre class=\"code-block\"><code>class Date {\n    int d, m, y;\npublic:\n    Date(int d, int m, int y) : d(d), m(m), y(y) {\n        if (d < 1 || d > 31 || m < 1 || m > 12 || y < 1)\n            throw DateError(d, m, y);\n    }\n    void print() const {\n        cout << d << \".\" << m << \".\" << y << endl;\n    }\n};</code></pre>"
+        },
+        {
+          "title": "main — демонстрация",
+          "text": "<pre class=\"code-block\"><code>int main() {\n    try {\n        Date d1(15, 6, 2024);\n        cout << \"d1 = \"; d1.print();  // 15.6.2024\n    }\n    catch (const DateError& e) { e.print(); }\n\n    try {\n        Date d2(32, 13, -1);  // бросит DateError\n        d2.print();\n    }\n    catch (const DateError& e) {\n        e.print();  // Invalid date: 32.13.-1\n    }\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "23",
+      "title": "Два потока: печать натуральных чисел с mutex",
+      "type": "Задача · Многопоточность",
+      "formalText": "Разработать функцию для печати n первых натуральных чисел (1, 2, …, n), параметры: n и имя потока. Функция печатает имя потока и значение числа на одной строке.\nСоздать два потока, обеспечить синхронизацию при печати каждой строки (строка печатается потоком полностью, исключить вставку данных другого потока).",
+      "tldr": "thread t1, t2 + mutex + lock_guard → атомарная печать строки",
+      "hint": "mutex mtx; lock_guard<mutex> lock(mtx) внутри цикла — гарантирует, что строка целиком печатается одним потоком",
+      "steps": [
+        {
+          "title": "Функция с синхронизацией",
+          "text": "`lock_guard` захватывает мьютекс на время вывода строки — другой поток не сможет вклиниться:\n<pre class=\"code-block\"><code>#include <iostream>\n#include <thread>\n#include <mutex>\nusing namespace std;\n\nmutex mtx;\n\nvoid printNumbers(int n, const string& name) {\n    for (int i = 1; i <= n; i++) {\n        lock_guard<mutex> lock(mtx);\n        cout << name << \": \" << i << endl;\n    }\n}</code></pre>"
+        },
+        {
+          "title": "main — запуск двух потоков",
+          "text": "<pre class=\"code-block\"><code>int main() {\n    thread t1(printNumbers, 5, \"Поток-1\");\n    thread t2(printNumbers, 5, \"Поток-2\");\n    t1.join();\n    t2.join();\n    return 0;\n}</code></pre>\nКаждая строка будет напечатана целиком одним потоком (без перемешивания)."
+        }
+      ]
+    },
+    {
+      "id": "24",
+      "title": "Два потока: печать ПСЧ с mutex",
+      "type": "Задача · Многопоточность",
+      "formalText": "Разработать функцию для печати n значений псевдослучайных чисел (ПСЧ), параметры: n и имя потока.\nСоздать два потока для печати двух последовательностей ПСЧ, обеспечить синхронизацию при печати каждой строки.",
+      "tldr": "thread t1, t2 + mutex + rand() → синхронная печать ПСЧ",
+      "hint": "srand(time(0)) для инициализации. mutex + lock_guard в цикле для синхронизации вывода",
+      "steps": [
+        {
+          "title": "Полный код",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <thread>\n#include <mutex>\n#include <cstdlib>\n#include <ctime>\nusing namespace std;\n\nmutex mtx;\n\nvoid printRandom(int n, const string& name) {\n    for (int i = 0; i < n; i++) {\n        lock_guard<mutex> lock(mtx);\n        cout << name << \": \" << rand() % 100 << endl;\n    }\n}\n\nint main() {\n    srand(time(0));\n    thread t1(printRandom, 5, \"Поток-1\");\n    thread t2(printRandom, 5, \"Поток-2\");\n    t1.join();\n    t2.join();\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "25",
+      "title": "Поток + condition_variable: оповещение о завершении (натуральные числа)",
+      "type": "Задача · Многопоточность",
+      "formalText": "Разработать функцию для печати n первых натуральных чисел.\nСоздать поток. Главный поток ожидает приёма оповещения от дочернего через `std::condition_variable`.\nДочерний поток после завершения посылает оповещение. Главный поток принимает оповещение и печатает сообщение об этом.",
+      "tldr": "thread + cv.notify_one() → cv.wait() + сообщение о завершении",
+      "hint": "bool done = false; дочерний: ...; done=true; cv.notify_one(); главный: cv.wait(lock, []{return done;}); cout << \"done\"",
+      "steps": [
+        {
+          "title": "Глобальные переменные синхронизации",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <thread>\n#include <mutex>\n#include <condition_variable>\nusing namespace std;\n\nmutex mtx;\ncondition_variable cv;\nbool done = false;</code></pre>"
+        },
+        {
+          "title": "Функция потока с оповещением",
+          "text": "После завершения печати — устанавливаем флаг и посылаем `notify_one()`:\n<pre class=\"code-block\"><code>void printNumbers(int n, const string& name) {\n    for (int i = 1; i <= n; i++) {\n        lock_guard<mutex> lock(mtx);\n        cout << name << \": \" << i << endl;\n    }\n    {\n        lock_guard<mutex> lock(mtx);\n        done = true;\n    }\n    cv.notify_one();\n}</code></pre>"
+        },
+        {
+          "title": "main — ожидание оповещения",
+          "text": "`cv.wait()` блокирует главный поток, пока `done` не станет `true`:\n<pre class=\"code-block\"><code>int main() {\n    thread t(printNumbers, 5, \"Child\");\n\n    // Главный поток ждёт оповещения\n    unique_lock<mutex> lock(mtx);\n    cv.wait(lock, []{ return done; });\n    cout << \"Main: дочерний поток завершён!\" << endl;\n\n    t.join();\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "26",
+      "title": "Поток + condition_variable: оповещение о завершении (ПСЧ)",
+      "type": "Задача · Многопоточность",
+      "formalText": "Разработать функцию для печати n значений псевдослучайных чисел.\nСоздать поток. Главный поток ожидает оповещения от дочернего через `std::condition_variable`.\nДочерний поток после завершения посылает оповещение. Главный поток принимает и печатает сообщение.",
+      "tldr": "thread + cv + rand() → оповещение о завершении",
+      "hint": "Аналогично задаче 25, но функция печатает rand()%100 вместо натуральных чисел",
+      "steps": [
+        {
+          "title": "Полный код",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <thread>\n#include <mutex>\n#include <condition_variable>\n#include <cstdlib>\n#include <ctime>\nusing namespace std;\n\nmutex mtx;\ncondition_variable cv;\nbool done = false;\n\nvoid printRandom(int n, const string& name) {\n    for (int i = 0; i < n; i++) {\n        lock_guard<mutex> lock(mtx);\n        cout << name << \": \" << rand() % 100 << endl;\n    }\n    { lock_guard<mutex> lock(mtx); done = true; }\n    cv.notify_one();\n}\n\nint main() {\n    srand(time(0));\n    thread t(printRandom, 5, \"Child\");\n\n    unique_lock<mutex> lock(mtx);\n    cv.wait(lock, []{ return done; });\n    cout << \"Main: дочерний поток завершён!\" << endl;\n\n    t.join();\n    return 0;\n}</code></pre>"
+        }
+      ]
+    }
+  ]
+}

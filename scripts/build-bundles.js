@@ -56,6 +56,7 @@ const SUBJECTS = [
     id: 'algorithmic-languages', title: 'Алгоритмические языки', icon: '💻',
     assessments: [
       { id: 'exam', name: 'Экзамен', bundleName: 'АЯ_Экзамен' },
+      { id: 'exam-practice', name: 'Экзамен · Практика', bundleName: 'АЯ_Экзамен_Практика' },
     ],
   },
   {

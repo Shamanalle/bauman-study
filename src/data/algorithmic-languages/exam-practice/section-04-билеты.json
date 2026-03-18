@@ -1,0 +1,60 @@
+{
+  "section": "🎫 Образцы вариантов",
+  "icon": "🎫",
+  "questions": [
+    {
+      "id": "1",
+      "title": "Вариант 1 (простой класс + наследование)",
+      "type": "Вариант экзамена · 2 задачи",
+      "formalText": "**Задача 1** Создать класс «целое число» с полем (private), конструктором и методом вычисления остатка от деления на 5.\n\n**Задача 2** Создать базовый класс «точка на плоскости» и производный «точка в 3D». Обеспечить динамический полиморфизм через указатель.",
+      "steps": [
+        {
+          "title": "Задача 1 · Простой класс",
+          "text": "**Тип:** простой класс с полем и методом.\n<pre class=\"code-block\"><code>class IntNumber {\n    int value;\npublic:\n    IntNumber(int v) : value(v) {}\n    int remainder() const { return value % 5; }\n};\n\nint main() {\n    IntNumber num(17);\n    cout << num.remainder() << endl; // 2\n    return 0;\n}</code></pre>",
+          "math": ""
+        },
+        {
+          "title": "Задача 2 · Наследование + динамический полиморфизм",
+          "text": "**Тип:** наследование с virtual/override.\n**Ключевое:** virtual print() в Base, override в Derived, указатель Base* вызывает метод реального типа.\n<pre class=\"code-block\"><code>class Point2D {\nprotected:\n    double x, y;\npublic:\n    Point2D(double x, double y) : x(x), y(y) {}\n    virtual void print() {\n        cout << \"x=\" << x << \", y=\" << y;\n    }\n    virtual ~Point2D() {}\n};\n\nclass Point3D : public Point2D {\n    double z;\npublic:\n    Point3D(double x, double y, double z)\n        : Point2D(x, y), z(z) {}\n    void print() override {\n        Point2D::print();\n        cout << \", z=\" << z;\n    }\n};\n\nint main() {\n    Point2D p2(1, 2);\n    Point3D p3(3, 4, 5);\n    Point2D* p = &p2;\n    p->print(); cout << endl;  // x=1, y=2\n    p = &p3;\n    p->print(); cout << endl;  // x=3, y=4, z=5\n    return 0;\n}</code></pre>",
+          "math": ""
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Вариант 2 (исключение + многопоточность)",
+      "type": "Вариант экзамена · 2 задачи",
+      "formalText": "**Задача 1** Реализовать класс «Время» (часы, минуты, секунды). При недопустимых параметрах — бросить исключение из своего класса, производного от out_of_range.\n\n**Задача 2** Создать два потока для печати натуральных чисел с синхронизацией через mutex.",
+      "steps": [
+        {
+          "title": "Задача 1 · Исключения",
+          "text": "**Тип:** свой класс исключения от out_of_range.\n<pre class=\"code-block\"><code>class TimeError : public out_of_range {\n    int h, m, s;\npublic:\n    TimeError(int h, int m, int s)\n        : out_of_range(\"Invalid time\"), h(h), m(m), s(s) {}\n    void print() const {\n        cerr << what() << \": \" << h << \":\" << m << \":\" << s << endl;\n    }\n};\n\nclass Time {\n    int h, m, s;\npublic:\n    Time(int h, int m, int s) : h(h), m(m), s(s) {\n        if (h<0||h>23||m<0||m>59||s<0||s>59)\n            throw TimeError(h, m, s);\n    }\n    void print() const {\n        cout << h << \":\" << m << \":\" << s << endl;\n    }\n};\n\nint main() {\n    try {\n        Time t1(10, 30, 0); t1.print();\n        Time t2(25, 99, -1);\n    }\n    catch (const TimeError& e) { e.print(); }\n    return 0;\n}</code></pre>",
+          "math": ""
+        },
+        {
+          "title": "Задача 2 · Многопоточность (mutex)",
+          "text": "**Тип:** два потока + lock_guard для синхронизации.\n<pre class=\"code-block\"><code>#include <thread>\n#include <mutex>\nmutex mtx;\n\nvoid printNumbers(int n, const string& name) {\n    for (int i = 1; i <= n; i++) {\n        lock_guard<mutex> lock(mtx);\n        cout << name << \": \" << i << endl;\n    }\n}\n\nint main() {\n    thread t1(printNumbers, 5, \"T1\");\n    thread t2(printNumbers, 5, \"T2\");\n    t1.join(); t2.join();\n    return 0;\n}</code></pre>",
+          "math": ""
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "title": "Вариант 3 (наследование static + condition_variable)",
+      "type": "Вариант экзамена · 2 задачи",
+      "formalText": "**Задача 1** Создать базовый «квадрат» и производный «куб». Объём куба = площадь × сторона. Обеспечить статический полиморфизм (без virtual).\n\n**Задача 2** Создать поток для печати ПСЧ. Главный поток ожидает оповещения через condition_variable.",
+      "steps": [
+        {
+          "title": "Задача 1 · Статический полиморфизм",
+          "text": "**Тип:** наследование БЕЗ virtual → указатель Base* вызывает Base::print().\n<pre class=\"code-block\"><code>class Square {\nprotected:\n    double side;\npublic:\n    Square(double s) : side(s) {}\n    double area() { return side * side; }\n    void print() {\n        cout << \"side=\" << side << \", area=\" << area();\n    }\n};\n\nclass Cube : public Square {\npublic:\n    Cube(double s) : Square(s) {}\n    double volume() { return area() * side; }\n    void print() {\n        cout << \"side=\" << side << \", V=\" << volume();\n    }\n};\n\nint main() {\n    Square sq(5); Cube cu(5);\n    Square* p = &sq;\n    p->print(); cout << endl;  // side=5, area=25\n    p = &cu;\n    p->print(); cout << endl;  // side=5, area=25 (статически!)\n    cu.print(); cout << endl;  // side=5, V=125\n    return 0;\n}</code></pre>",
+          "math": ""
+        },
+        {
+          "title": "Задача 2 · condition_variable",
+          "text": "**Тип:** оповещение от дочернего потока главному.\n<pre class=\"code-block\"><code>#include <thread>\n#include <mutex>\n#include <condition_variable>\n#include <cstdlib>\nmutex mtx;\ncondition_variable cv;\nbool done = false;\n\nvoid printRandom(int n, const string& name) {\n    for (int i = 0; i < n; i++) {\n        lock_guard<mutex> lk(mtx);\n        cout << name << \": \" << rand()%100 << endl;\n    }\n    { lock_guard<mutex> lk(mtx); done = true; }\n    cv.notify_one();\n}\n\nint main() {\n    srand(42);\n    thread t(printRandom, 5, \"Child\");\n    unique_lock<mutex> lock(mtx);\n    cv.wait(lock, []{ return done; });\n    cout << \"Main: child done!\" << endl;\n    t.join();\n    return 0;\n}</code></pre>",
+          "math": ""
+        }
+      ]
+    }
+  ]
+}

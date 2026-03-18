@@ -1,0 +1,8 @@
+{
+  "title": "Алгоритмические языки",
+  "subtitle": "Экзамен · Практика",
+  "icon": "💻",
+  "shortCode": "ayep",
+  "bundleName": "АЯ_Экзамен_Практика",
+  "practiceMode": true
+}

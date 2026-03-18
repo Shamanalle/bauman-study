@@ -62,7 +62,8 @@ const SUBJECTS = [
     id: 'algorithmic-languages', title: 'Алгоритмические языки',
     subtitle: 'C++: ООП, шаблоны, исключения, многопоточность', icon: '💻',
     assessments: [
-      { id: 'exam', name: 'Экзамен', icon: '📋' },
+      { id: 'exam', name: 'Экзамен · Теория', icon: '📋' },
+      { id: 'exam-practice', name: 'Экзамен · Практика', icon: '✏️' },
       { id: null, name: 'Учебное пособие', icon: '📖', href: '?subject=algorithmic-languages&type=textbook', skipBundle: true },
     ],
   },

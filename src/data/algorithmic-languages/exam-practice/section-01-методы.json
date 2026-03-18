@@ -1,0 +1,108 @@
+{
+  "section": "📚 Паттерны решения",
+  "icon": "📚",
+  "questions": [
+    {
+      "id": "m-1",
+      "title": "Простой класс с полем и методом",
+      "tldr": "class + private поле + public конструктор + метод",
+      "steps": [
+        {
+          "title": "Объяви класс с private-полем",
+          "text": "Поле всегда `private`. Конструктор инициализирует поле через список инициализации.\n<pre class=\"code-block\"><code>class MyClass {\n    int value;  // private по умолчанию\npublic:\n    MyClass(int v) : value(v) {}\n};</code></pre>"
+        },
+        {
+          "title": "Добавь метод вычисления",
+          "text": "Метод возвращает результат вычисления. Если метод не меняет поля — пометь `const`.\n<pre class=\"code-block\"><code>    int compute() const {\n        return value % 5;  // пример: остаток от деления\n    }</code></pre>"
+        },
+        {
+          "title": "Создай объект и вызови метод в main",
+          "text": "Создаём объект, передавая значение в конструктор. Вызываем метод через `.`\n<pre class=\"code-block\"><code>int main() {\n    MyClass obj(17);\n    cout << \"Result: \" << obj.compute() << endl;\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "m-2",
+      "title": "Наследование с виртуальными функциями",
+      "tldr": "Base (virtual) → Derived (override) → полиморфизм через указатель",
+      "steps": [
+        {
+          "title": "Создай базовый класс с virtual-методами",
+          "text": "Поля — `protected` (доступ из производного). Методы — `virtual` для полиморфизма. Деструктор — `virtual`!\n<pre class=\"code-block\"><code>class Base {\nprotected:\n    int x;\npublic:\n    Base(int x) : x(x) {}\n    virtual void print() { cout << x; }\n    virtual ~Base() {}\n};</code></pre>"
+        },
+        {
+          "title": "Создай производный класс",
+          "text": "Конструктор вызывает конструктор базового через `: Base(x)`. Переопределённый метод вызывает `Base::print()` для вывода унаследованных полей.\n<pre class=\"code-block\"><code>class Derived : public Base {\n    int y;\npublic:\n    Derived(int x, int y) : Base(x), y(y) {}\n    void print() override {\n        Base::print();  // сначала поля базового\n        cout << \", y=\" << y;\n    }\n};</code></pre>"
+        },
+        {
+          "title": "Продемонстрируй полиморфизм",
+          "text": "Указатель базового типа → вызывается метод **реального** типа объекта (динамическое связывание).\n<pre class=\"code-block\"><code>Base* p = new Base(1);\np->print();  // Base::print → 1\ndelete p;\n\np = new Derived(2, 3);\np->print();  // Derived::print → 2, y=3\ndelete p;</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "m-3",
+      "title": "Статический полиморфизм (без virtual)",
+      "tldr": "Без virtual → вызов по типу указателя, не объекта",
+      "steps": [
+        {
+          "title": "Класс без virtual",
+          "text": "Если метод НЕ виртуальный — компилятор выбирает метод по **типу указателя**, а не по реальному типу объекта.\n<pre class=\"code-block\"><code>class Base {\npublic:\n    void print() { cout << \"Base\"; }  // НЕ virtual\n};\nclass Derived : public Base {\npublic:\n    void print() { cout << \"Derived\"; }\n};</code></pre>"
+        },
+        {
+          "title": "Демонстрация статического связывания",
+          "text": "Указатель Base* → всегда вызывает Base::print(), даже если указывает на Derived.\n<pre class=\"code-block\"><code>Base* p = new Derived();\np->print();  // \"Base\" — статическое связывание!\ndelete p;</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "m-4",
+      "title": "Свой класс исключения от std::exception",
+      "tldr": "class MyErr : public out_of_range + доп. поля + try/catch",
+      "steps": [
+        {
+          "title": "Создай класс исключения",
+          "text": "Наследуй от `out_of_range` (или другого стандартного). Добавь поля для хранения некорректных данных.\n<pre class=\"code-block\"><code>class TimeError : public out_of_range {\n    int h, m, s;\npublic:\n    TimeError(int h, int m, int s)\n        : out_of_range(\"Invalid time\"), h(h), m(m), s(s) {}\n    void print() const {\n        cerr << what() << \": \" << h << \":\" << m << \":\" << s;\n    }\n};</code></pre>"
+        },
+        {
+          "title": "Бросай исключение при ошибке",
+          "text": "В конструкторе проверяй допустимость параметров:\n<pre class=\"code-block\"><code>class Time {\n    int h, m, s;\npublic:\n    Time(int h, int m, int s) : h(h), m(m), s(s) {\n        if (h < 0 || h > 23 || m < 0 || m > 59 || s < 0 || s > 59)\n            throw TimeError(h, m, s);\n    }\n};</code></pre>"
+        },
+        {
+          "title": "Лови и обрабатывай",
+          "text": "Лови по ссылке на **свой** тип (для доступа к доп. полям) или по базовому.\n<pre class=\"code-block\"><code>try {\n    Time t1(10, 30, 0);   // OK\n    Time t2(25, 99, -1);  // throw!\n}\ncatch (const TimeError& e) {\n    e.print();  // \"Invalid time: 25:99:-1\"\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "m-5",
+      "title": "Синхронизация потоков (mutex + lock_guard)",
+      "tldr": "mutex + lock_guard → строка печатается целиком",
+      "steps": [
+        {
+          "title": "Создай функцию с синхронизированной печатью",
+          "text": "`lock_guard` захватывает мьютекс на время жизни блока — строка печатается атомарно:\n<pre class=\"code-block\"><code>mutex mtx;\nvoid printSeq(int n, string name) {\n    for (int i = 1; i <= n; i++) {\n        lock_guard<mutex> lock(mtx);\n        cout << name << \": \" << i << endl;\n    }\n}</code></pre>"
+        },
+        {
+          "title": "Запусти два потока",
+          "text": "Каждый поток выполняет функцию с разными параметрами. `join()` ждёт завершения.\n<pre class=\"code-block\"><code>int main() {\n    thread t1(printSeq, 5, \"Thread-1\");\n    thread t2(printSeq, 5, \"Thread-2\");\n    t1.join();\n    t2.join();\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "m-6",
+      "title": "Оповещение через condition_variable",
+      "tldr": "cv.wait(lock, pred) + cv.notify_one()",
+      "steps": [
+        {
+          "title": "Дочерний поток: работа + notify",
+          "text": "После завершения работы — устанавливает флаг и посылает `notify_one()`:\n<pre class=\"code-block\"><code>mutex mtx;\ncondition_variable cv;\nbool done = false;\n\nvoid worker(int n, string name) {\n    for (int i = 1; i <= n; i++) {\n        lock_guard<mutex> lk(mtx);\n        cout << name << \": \" << i << endl;\n    }\n    { lock_guard<mutex> lk(mtx); done = true; }\n    cv.notify_one();\n}</code></pre>"
+        },
+        {
+          "title": "Главный поток: wait + приём оповещения",
+          "text": "Главный поток запускает дочерний, затем ждёт оповещения через `cv.wait()`:\n<pre class=\"code-block\"><code>int main() {\n    thread t(worker, 5, \"Child\");\n\n    unique_lock<mutex> lock(mtx);\n    cv.wait(lock, []{ return done; });\n    cout << \"Main: child finished!\" << endl;\n\n    t.join();\n}</code></pre>"
+        }
+      ]
+    }
+  ]
+}

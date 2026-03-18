@@ -2,7 +2,7 @@
 // Similar architecture to lab-browser.js but for exam/KR practice
 
 import { renderMath } from './math-utils.js';
-import { nl } from './text-utils.js';
+import { nl, highlightCode } from './text-utils.js';
 import * as progress from './progress.js';
 import { drawPlot } from './plot-utils.js';
 
@@ -16,6 +16,11 @@ let currentTab = 0;        // index into sections
  */
 function md(str) {
   if (!str) return '';
+  // Apply syntax highlighting to <pre><code> blocks
+  str = highlightCode(str);
+  // Preserve <pre> blocks from being mangled by newline conversion
+  const preBlocks = [];
+  str = str.replace(/<pre[\s\S]*?<\/pre>/gi, m => { preBlocks.push(m); return `⌘P${preBlocks.length - 1}⌘`; });
   // Preserve $$ blocks from being mangled
   const blocks = [];
   str = str.replace(/\$\$[\s\S]*?\$\$/g, m => { blocks.push(m); return `⌘B${blocks.length - 1}⌘`; });
@@ -37,6 +42,7 @@ function md(str) {
 
   // Restore all blocks
   blocks.forEach((b, i) => { str = str.replace(`⌘B${i}⌘`, b); });
+  preBlocks.forEach((b, i) => { str = str.replace(`⌘P${i}⌘`, b); });
 
   return str;
 }

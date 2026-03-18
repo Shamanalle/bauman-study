@@ -1,0 +1,220 @@
+{
+  "section": "🎯 Доп. задачи",
+  "icon": "✏️",
+  "questions": [
+    {
+      "id": "Д1",
+      "title": "Класс «температура» — перевод в Фаренгейт",
+      "type": "Задача · Простые классы",
+      "formalText": "Создать класс «температура» с полем в Цельсиях (private). Конструктор. Метод перевода в Фаренгейт: F = C × 9/5 + 32.\nСоздать объект, вывести температуру в Фаренгейтах.",
+      "tldr": "class + F = C * 9.0/5.0 + 32",
+      "hint": "Формула: fahrenheit = celsius * 9.0 / 5.0 + 32.0",
+      "steps": [
+        {
+          "title": "Полный код",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\nusing namespace std;\n\nclass Temperature {\n    double celsius;\npublic:\n    Temperature(double c) : celsius(c) {}\n    double toFahrenheit() const {\n        return celsius * 9.0 / 5.0 + 32.0;\n    }\n};\n\nint main() {\n    Temperature t(100.0);\n    cout << \"Fahrenheit: \" << t.toFahrenheit() << endl;\n    // Вывод: Fahrenheit: 212\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "Д2",
+      "title": "Класс «прямоугольник» — площадь и периметр",
+      "type": "Задача · Простые классы",
+      "formalText": "Создать класс «прямоугольник» с полями a, b (private). Конструктор. Методы: площадь (a×b), периметр (2(a+b)).\nСоздать объект, вывести площадь и периметр.",
+      "tldr": "class + area=a*b, perim=2*(a+b)",
+      "hint": "Два private поля double a, b. Два метода: area() и perimeter()",
+      "steps": [
+        {
+          "title": "Полный код",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\nusing namespace std;\n\nclass Rectangle {\n    double a, b;\npublic:\n    Rectangle(double a, double b) : a(a), b(b) {}\n    double area() const { return a * b; }\n    double perimeter() const { return 2 * (a + b); }\n};\n\nint main() {\n    Rectangle r(3.0, 5.0);\n    cout << \"Площадь: \" << r.area() << endl;       // 15\n    cout << \"Периметр: \" << r.perimeter() << endl; // 16\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "Д3",
+      "title": "Класс «строка» — подсчёт символов",
+      "type": "Задача · Простые классы",
+      "formalText": "Создать класс с полем string (private). Конструктор. Метод count(char c) — считает количество вхождений символа c в строку.\nСоздать объект, вывести количество вхождений.",
+      "tldr": "class + count() через for-each по string",
+      "hint": "Пробегаем строку циклом, считаем совпадения: if (s[i] == c) cnt++",
+      "steps": [
+        {
+          "title": "Полный код",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <string>\nusing namespace std;\n\nclass MyString {\n    string str;\npublic:\n    MyString(const string& s) : str(s) {}\n    int count(char c) const {\n        int cnt = 0;\n        for (char ch : str)\n            if (ch == c) cnt++;\n        return cnt;\n    }\n};\n\nint main() {\n    MyString s(\"hello world\");\n    cout << \"Кол-во 'l': \" << s.count('l') << endl; // 3\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "Д4",
+      "title": "Класс «дробь» — сложение",
+      "type": "Задача · Простые классы",
+      "formalText": "Создать класс «дробь» (числитель, знаменатель — private). Конструктор. Метод add(Fraction) — сложение двух дробей.\nСоздать два объекта, вывести сумму.",
+      "tldr": "class Fraction + add: a/b + c/d = (a*d+c*b)/(b*d)",
+      "hint": "a/b + c/d = (a*d + c*b) / (b*d). Можно сократить через НОД",
+      "steps": [
+        {
+          "title": "Полный код",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\nusing namespace std;\n\nclass Fraction {\n    int num, den;\npublic:\n    Fraction(int n, int d) : num(n), den(d) {}\n    Fraction add(const Fraction& f) const {\n        return Fraction(num * f.den + f.num * den,\n                        den * f.den);\n    }\n    void print() const {\n        cout << num << \"/\" << den;\n    }\n};\n\nint main() {\n    Fraction a(1, 3), b(1, 6);\n    Fraction c = a.add(b);\n    c.print();  // 9/18 (= 1/2)\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "Д5",
+      "title": "Фигура «треугольник» → «равнобедренный» (наследование, dynamic)",
+      "type": "Задача · Наследование",
+      "formalText": "Создать базовый класс «треугольник» (стороны a, b, c — protected; virtual площадь по Герону; virtual печать).\nСоздать производный класс «равнобедренный треугольник» (основание и боковая сторона; переопределённая печать).\nДинамический полиморфизм.",
+      "tldr": "Triangle(Герон) → Isosceles(a=b), virtual",
+      "hint": "Площадь по Герону: p=(a+b+c)/2, S=sqrt(p(p-a)(p-b)(p-c)). virtual + override",
+      "steps": [
+        {
+          "title": "Базовый и производный классы",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <cmath>\nusing namespace std;\n\nclass Triangle {\nprotected:\n    double a, b, c;\npublic:\n    Triangle(double a, double b, double c) : a(a), b(b), c(c) {}\n    virtual double area() {\n        double p = (a + b + c) / 2;\n        return sqrt(p * (p-a) * (p-b) * (p-c));\n    }\n    virtual void print() {\n        cout << \"a=\" << a << \", b=\" << b << \", c=\" << c\n             << \", S=\" << area();\n    }\n    virtual ~Triangle() {}\n};\n\nclass Isosceles : public Triangle {\npublic:\n    Isosceles(double base, double side)\n        : Triangle(base, side, side) {}\n    void print() override {\n        Triangle::print();\n        cout << \" (равнобедренный)\";\n    }\n};</code></pre>"
+        },
+        {
+          "title": "main",
+          "text": "<pre class=\"code-block\"><code>int main() {\n    Triangle t(3, 4, 5);\n    Isosceles iso(6, 5);\n\n    Triangle* p = &t;\n    p->print(); cout << endl;  // a=3, b=4, c=5, S=6\n\n    p = &iso;\n    p->print(); cout << endl;  // a=6, b=5, c=5, S=12 (равнобедренный)\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "Д6",
+      "title": "Животное → Кошка → Собака (наследование, dynamic)",
+      "type": "Задача · Наследование",
+      "formalText": "Создать базовый класс «животное» (имя — protected; virtual метод speak()).\nСоздать два производных класса «кошка» (speak → \"Мяу\") и «собака» (speak → \"Гав\").\nПродемонстрировать динамический полиморфизм через массив указателей.",
+      "tldr": "Animal → Cat(Мяу), Dog(Гав), массив Animal*",
+      "hint": "virtual void speak() в базовом. Cat/Dog — override. Массив Animal* animals[] для полиморфизма",
+      "steps": [
+        {
+          "title": "Полный код",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <string>\nusing namespace std;\n\nclass Animal {\nprotected:\n    string name;\npublic:\n    Animal(string n) : name(n) {}\n    virtual void speak() {\n        cout << name << \" говорит: ...\";\n    }\n    virtual ~Animal() {}\n};\n\nclass Cat : public Animal {\npublic:\n    Cat(string n) : Animal(n) {}\n    void speak() override {\n        cout << name << \" говорит: Мяу!\";\n    }\n};\n\nclass Dog : public Animal {\npublic:\n    Dog(string n) : Animal(n) {}\n    void speak() override {\n        cout << name << \" говорит: Гав!\";\n    }\n};\n\nint main() {\n    Animal* animals[] = {\n        new Cat(\"Мурка\"),\n        new Dog(\"Шарик\"),\n        new Cat(\"Барсик\")\n    };\n    for (auto a : animals) {\n        a->speak(); cout << endl;\n    }\n    for (auto a : animals) delete a;\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "Д7",
+      "title": "Стек с исключением при переполнении",
+      "type": "Задача · Исключения",
+      "formalText": "Создать класс «стек фиксированного размера» (массив int, текущий размер — private). Методы push и pop.\nПри переполнении (push в полный) — throw. При извлечении из пустого (pop) — throw.\nПродемонстрировать оба исключения.",
+      "tldr": "Stack + push/pop + throw overflow/underflow",
+      "hint": "class StackError : public runtime_error. push: if(top >= MAX) throw. pop: if(top <= 0) throw",
+      "steps": [
+        {
+          "title": "Полный код",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <stdexcept>\nusing namespace std;\n\nclass Stack {\n    static const int MAX = 5;\n    int data[MAX];\n    int top;\npublic:\n    Stack() : top(0) {}\n    void push(int val) {\n        if (top >= MAX)\n            throw overflow_error(\"Stack overflow\");\n        data[top++] = val;\n    }\n    int pop() {\n        if (top <= 0)\n            throw underflow_error(\"Stack underflow\");\n        return data[--top];\n    }\n};\n\nint main() {\n    Stack s;\n    try {\n        for (int i = 0; i < 6; i++)  // 6 > MAX=5\n            s.push(i * 10);\n    }\n    catch (const overflow_error& e) {\n        cerr << e.what() << endl;  // Stack overflow\n    }\n\n    try {\n        while (true) s.pop();  // извлекаем до пустого\n    }\n    catch (const underflow_error& e) {\n        cerr << e.what() << endl;  // Stack underflow\n    }\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "Д8",
+      "title": "Матрица с исключением при выходе за границы",
+      "type": "Задача · Исключения",
+      "formalText": "Создать класс «матрица» (2D массив, размеры — private). Метод at(i,j) — доступ к элементу.\nПри выходе индекса за границы — throw.\nПродемонстрировать обработку исключения.",
+      "tldr": "Matrix + at(i,j) + throw out_of_range",
+      "hint": "at(i,j): if (i>=rows || j>=cols) throw out_of_range(\"...\"); return data[i][j]",
+      "steps": [
+        {
+          "title": "Полный код",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <stdexcept>\n#include <vector>\nusing namespace std;\n\nclass Matrix {\n    vector<vector<int>> data;\n    int rows, cols;\npublic:\n    Matrix(int r, int c) : rows(r), cols(c),\n        data(r, vector<int>(c, 0)) {}\n    int& at(int i, int j) {\n        if (i < 0 || i >= rows || j < 0 || j >= cols)\n            throw out_of_range(\"Index out of bounds\");\n        return data[i][j];\n    }\n};\n\nint main() {\n    Matrix m(3, 3);\n    m.at(0, 0) = 42;\n    cout << m.at(0, 0) << endl;  // 42\n\n    try {\n        m.at(5, 5) = 10;  // throw!\n    }\n    catch (const out_of_range& e) {\n        cerr << e.what() << endl;  // Index out of bounds\n    }\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "Д9",
+      "title": "Три потока: параллельная сумма массива",
+      "type": "Задача · Многопоточность",
+      "formalText": "Создать массив из 30 элементов. Разбить на 3 части по 10. Каждый поток суммирует свою часть.\nГлавный поток собирает частичные суммы и выводит общую.",
+      "tldr": "3 threads, каждый суммирует 1/3 массива, mutex для результата",
+      "hint": "Общая переменная total — защищена mutex. Каждый поток: sum += arr[i], затем { lock_guard; total += sum; }",
+      "steps": [
+        {
+          "title": "Полный код",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <thread>\n#include <mutex>\n#include <vector>\nusing namespace std;\n\nmutex mtx;\nint total = 0;\n\nvoid partialSum(const vector<int>& arr, int from, int to) {\n    int sum = 0;\n    for (int i = from; i < to; i++) sum += arr[i];\n    lock_guard<mutex> lock(mtx);\n    total += sum;\n}\n\nint main() {\n    vector<int> arr(30);\n    for (int i = 0; i < 30; i++) arr[i] = i + 1;\n\n    thread t1(partialSum, ref(arr), 0, 10);\n    thread t2(partialSum, ref(arr), 10, 20);\n    thread t3(partialSum, ref(arr), 20, 30);\n    t1.join(); t2.join(); t3.join();\n\n    cout << \"Total: \" << total << endl;  // 465\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "Д10",
+      "title": "Производитель-потребитель (condition_variable)",
+      "type": "Задача · Многопоточность",
+      "formalText": "Реализовать паттерн «производитель-потребитель». Производитель помещает числа в буфер. Потребитель извлекает и печатает.\nИспользовать condition_variable для синхронизации — потребитель ждёт, пока буфер не пуст.",
+      "tldr": "producer-consumer + cv.wait + cv.notify_one",
+      "hint": "queue<int> buffer, cv.notify_one() при push, cv.wait(lock, []{return !buffer.empty();}) при pop",
+      "steps": [
+        {
+          "title": "Полный код",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <thread>\n#include <mutex>\n#include <condition_variable>\n#include <queue>\nusing namespace std;\n\nmutex mtx;\ncondition_variable cv;\nqueue<int> buffer;\nbool finished = false;\n\nvoid producer(int n) {\n    for (int i = 1; i <= n; i++) {\n        { lock_guard<mutex> lk(mtx); buffer.push(i); }\n        cv.notify_one();\n    }\n    { lock_guard<mutex> lk(mtx); finished = true; }\n    cv.notify_one();\n}\n\nvoid consumer() {\n    while (true) {\n        unique_lock<mutex> lk(mtx);\n        cv.wait(lk, []{ return !buffer.empty() || finished; });\n        while (!buffer.empty()) {\n            cout << \"Got: \" << buffer.front() << endl;\n            buffer.pop();\n        }\n        if (finished && buffer.empty()) break;\n    }\n}\n\nint main() {\n    thread p(producer, 5);\n    thread c(consumer);\n    p.join(); c.join();\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "Д11",
+      "title": "Класс «счётчик» со static полем",
+      "type": "Задача · Простые классы",
+      "formalText": "Создать класс с static полем count для подсчёта созданных объектов. Конструктор инкрементирует count, деструктор декрементирует.\nStatic метод getCount(). Продемонстрировать в main.",
+      "tldr": "static int count + конструктор++ + деструктор--",
+      "hint": "static int count; инициализация за классом: int A::count = 0; static int getCount() { return count; }",
+      "steps": [
+        {
+          "title": "Полный код",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\nusing namespace std;\n\nclass Counter {\n    static int count;\npublic:\n    Counter()  { count++; }\n    ~Counter() { count--; }\n    static int getCount() { return count; }\n};\nint Counter::count = 0;\n\nint main() {\n    cout << Counter::getCount() << endl;  // 0\n    Counter a, b, c;\n    cout << Counter::getCount() << endl;  // 3\n    {\n        Counter d;\n        cout << Counter::getCount() << endl;  // 4\n    }  // d уничтожен\n    cout << Counter::getCount() << endl;  // 3\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "Д12",
+      "title": "Перегрузка operator+ и operator<<",
+      "type": "Задача · Простые классы",
+      "formalText": "Создать класс «вектор 2D» (x, y). Перегрузить operator+ как метод класса. Перегрузить operator<< как дружественную функцию.\nПродемонстрировать сложение и вывод.",
+      "tldr": "operator+ (метод) + friend operator<< ",
+      "hint": "Vec operator+(const Vec& b) — метод. friend ostream& operator<<(ostream&, const Vec&) — друг",
+      "steps": [
+        {
+          "title": "Полный код",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\nusing namespace std;\n\nclass Vec2D {\n    double x, y;\npublic:\n    Vec2D(double x = 0, double y = 0) : x(x), y(y) {}\n    Vec2D operator+(const Vec2D& b) const {\n        return Vec2D(x + b.x, y + b.y);\n    }\n    friend ostream& operator<<(ostream& os, const Vec2D& v) {\n        return os << \"(\" << v.x << \", \" << v.y << \")\";\n    }\n};\n\nint main() {\n    Vec2D a(1, 2), b(3, 4);\n    Vec2D c = a + b;\n    cout << a << \" + \" << b << \" = \" << c << endl;\n    // (1, 2) + (3, 4) = (4, 6)\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "Д13",
+      "title": "Шаблон класса «пара значений»",
+      "type": "Задача · Простые классы",
+      "formalText": "Создать шаблонный класс Pair<T1, T2> с двумя полями. Конструктор. Методы getFirst(), getSecond().\nСоздать объекты Pair<int, string> и Pair<double, double>.",
+      "tldr": "template<class T1, class T2> class Pair",
+      "hint": "template<class T1, class T2> class Pair { T1 first; T2 second; ... };",
+      "steps": [
+        {
+          "title": "Полный код",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <string>\nusing namespace std;\n\ntemplate<class T1, class T2>\nclass Pair {\n    T1 first;\n    T2 second;\npublic:\n    Pair(T1 f, T2 s) : first(f), second(s) {}\n    T1 getFirst()  const { return first; }\n    T2 getSecond() const { return second; }\n};\n\nint main() {\n    Pair<int, string> p1(42, \"hello\");\n    cout << p1.getFirst() << \", \" << p1.getSecond() << endl;\n    // 42, hello\n\n    Pair<double, double> p2(3.14, 2.71);\n    cout << p2.getFirst() << \", \" << p2.getSecond() << endl;\n    // 3.14, 2.71\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "Д14",
+      "title": "Фигура (абстрактный класс) → Круг, Квадрат",
+      "type": "Задача · Наследование",
+      "formalText": "Создать абстрактный класс Shape с чисто виртуальным методом area().\nСоздать производные классы Circle и Square.\nМассив Shape* — продемонстрировать полиморфизм.",
+      "tldr": "Shape(pure virtual area) → Circle, Square",
+      "hint": "virtual double area() = 0; — чисто виртуальная. Circle: π*r², Square: s²",
+      "steps": [
+        {
+          "title": "Полный код",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <cmath>\nusing namespace std;\n\nclass Shape {\npublic:\n    virtual double area() = 0;  // чисто виртуальная\n    virtual void print() {\n        cout << \"Area = \" << area();\n    }\n    virtual ~Shape() {}\n};\n\nclass Circle : public Shape {\n    double r;\npublic:\n    Circle(double r) : r(r) {}\n    double area() override { return M_PI * r * r; }\n};\n\nclass Square : public Shape {\n    double s;\npublic:\n    Square(double s) : s(s) {}\n    double area() override { return s * s; }\n};\n\nint main() {\n    Shape* shapes[] = { new Circle(5), new Square(4) };\n    for (auto s : shapes) {\n        s->print(); cout << endl;\n    }\n    // Area = 78.5398\n    // Area = 16\n    for (auto s : shapes) delete s;\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "Д15",
+      "title": "async + future: параллельное вычисление",
+      "type": "Задача · Многопоточность",
+      "formalText": "Создать функцию для вычисления суммы 1..n. Запустить через std::async. Получить результат через std::future. Вывести.",
+      "tldr": "async(func, args) + future.get()",
+      "hint": "auto f = async(sumRange, 1, 1000000); int result = f.get();",
+      "steps": [
+        {
+          "title": "Полный код",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <future>\nusing namespace std;\n\nlong long sumRange(int from, int to) {\n    long long s = 0;\n    for (int i = from; i <= to; i++) s += i;\n    return s;\n}\n\nint main() {\n    auto f1 = async(sumRange, 1, 500000);\n    auto f2 = async(sumRange, 500001, 1000000);\n\n    long long total = f1.get() + f2.get();\n    cout << \"Sum 1..1000000 = \" << total << endl;\n    // Sum 1..1000000 = 500000500000\n    return 0;\n}</code></pre>"
+        }
+      ]
+    }
+  ]
+}
