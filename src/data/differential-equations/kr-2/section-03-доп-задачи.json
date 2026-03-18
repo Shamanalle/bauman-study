@@ -10,11 +10,21 @@
       "hint": "Разделяем: $\\frac{dy}{y}=x\\,dx$",
       "steps": [
         {
-          "title": "Разделение",
+          "title": "Определение типа",
+          "text": "ОДУ с разделяющимися переменными: все слагаемые с $y$ и $dy$ переносим в одну сторону, с $x$ и $dx$ — в другую."
+        },
+        {
+          "title": "Разделяем переменные",
+          "text": "Разделяем: $\\frac{dy}{y}=x\\,dx$",
           "math": "$$\\frac{dy}{y}=x\\,dx \\Rightarrow \\ln|y|=\\frac{x^2}{2}+C_1 \\Rightarrow y=Ce^{x^2/2}$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y=Ce^{x^2/2}}$$"
         }
       ],
-      "formula": "y=Ce^{x^2/2}"
+      "formula": "y=Ce^{x^2/2}",
+      "tldr": "Разделяем:"
     },
     {
       "id": "Д1.2",
@@ -24,11 +34,21 @@
       "hint": "$\\frac{dy}{y}=\\frac{dx}{x}$ → $\\ln|y|=\\ln|x|+C$",
       "steps": [
         {
-          "title": "Разделение",
+          "title": "Определение типа",
+          "text": "ОДУ с разделяющимися переменными: все слагаемые с $y$ и $dy$ переносим в одну сторону, с $x$ и $dx$ — в другую."
+        },
+        {
+          "title": "Разделяем переменные",
+          "text": "$\\frac{dy}{y}=\\frac{dx}{x}$ → $\\ln|y|=\\ln|x|+C$",
           "math": "$$\\ln|y|=\\ln|x|+C_1 \\Rightarrow y=Cx$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y=Cx}$$"
         }
       ],
-      "formula": "y=Cx"
+      "formula": "y=Cx",
+      "tldr": "→"
     },
     {
       "id": "Д1.3",
@@ -38,11 +58,21 @@
       "hint": "$\\frac{dy}{1+y^2}=dx$ → $\\arctan y = x + C$",
       "steps": [
         {
-          "title": "Разделение",
+          "title": "Определение типа",
+          "text": "ОДУ с разделяющимися переменными: все слагаемые с $y$ и $dy$ переносим в одну сторону, с $x$ и $dx$ — в другую."
+        },
+        {
+          "title": "Разделяем переменные",
+          "text": "$\\frac{dy}{1+y^2}=dx$ → $\\arctan y = x + C$",
           "math": "$$\\int\\frac{dy}{1+y^2}=\\int dx \\Rightarrow \\arctan y = x+C \\Rightarrow y=\\tan(x+C)$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y=\\tan(x+C)}$$"
         }
       ],
-      "formula": "y=\\tan(x+C)"
+      "formula": "y=\\tan(x+C)",
+      "tldr": "→"
     },
     {
       "id": "Д1.4",
@@ -52,11 +82,21 @@
       "hint": "$e^{x+y}=e^x \\cdot e^y$ → $e^{-y}dy=e^x dx$",
       "steps": [
         {
-          "title": "Разделение",
+          "title": "Определение типа",
+          "text": "ОДУ с разделяющимися переменными: все слагаемые с $y$ и $dy$ переносим в одну сторону, с $x$ и $dx$ — в другую."
+        },
+        {
+          "title": "Разделяем переменные",
+          "text": "$e^{x+y}=e^x \\cdot e^y$ → $e^{-y}dy=e^x dx$",
           "math": "$$\\int e^{-y}\\,dy=\\int e^x\\,dx \\Rightarrow -e^{-y}=e^x+C \\Rightarrow e^{-y}=-e^x+C_1$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{e^{-y}+e^x=C}$$"
         }
       ],
-      "formula": "e^{-y}+e^x=C"
+      "formula": "e^{-y}+e^x=C",
+      "tldr": "→"
     },
     {
       "id": "Д1.5",
@@ -66,11 +106,21 @@
       "hint": "$\\frac{dy}{y}=\\tan x\\,dx$ → $\\ln|y|=-\\ln|\\cos x|+C$",
       "steps": [
         {
-          "title": "Разделение",
+          "title": "Определение типа",
+          "text": "ОДУ с разделяющимися переменными: все слагаемые с $y$ и $dy$ переносим в одну сторону, с $x$ и $dx$ — в другую."
+        },
+        {
+          "title": "Разделяем переменные",
+          "text": "$\\frac{dy}{y}=\\tan x\\,dx$ → $\\ln|y|=-\\ln|\\cos x|+C$",
           "math": "$$\\int\\frac{dy}{y}=\\int\\tan x\\,dx \\Rightarrow \\ln|y|=-\\ln|\\cos x|+C \\Rightarrow y=\\frac{C}{\\cos x}$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y=\\frac{C}{\\cos x}}$$"
         }
       ],
-      "formula": "y=\\frac{C}{\\cos x}"
+      "formula": "y=\\frac{C}{\\cos x}",
+      "tldr": "→"
     },
     {
       "id": "Д1.6",
@@ -80,11 +130,21 @@
       "hint": "$\\frac{dy}{y}=-\\frac{dx}{x}$",
       "steps": [
         {
-          "title": "Разделение",
+          "title": "Определение типа",
+          "text": "ОДУ с разделяющимися переменными: все слагаемые с $y$ и $dy$ переносим в одну сторону, с $x$ и $dx$ — в другую."
+        },
+        {
+          "title": "Разделяем переменные",
+          "text": "$\\frac{dy}{y}=-\\frac{dx}{x}$",
           "math": "$$\\ln|y|=-\\ln|x|+C \\Rightarrow y=\\frac{C}{x}$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y=C/x}$$"
         }
       ],
-      "formula": "y=C/x"
+      "formula": "y=C/x",
+      "tldr": ""
     },
     {
       "id": "Д1.7",
@@ -94,11 +154,21 @@
       "hint": "$\\frac{dy}{y^2}=\\sin x\\,dx$",
       "steps": [
         {
-          "title": "Разделение",
+          "title": "Определение типа",
+          "text": "ОДУ с разделяющимися переменными: все слагаемые с $y$ и $dy$ переносим в одну сторону, с $x$ и $dx$ — в другую."
+        },
+        {
+          "title": "Разделяем переменные",
+          "text": "$\\frac{dy}{y^2}=\\sin x\\,dx$",
           "math": "$$-\\frac{1}{y}=-\\cos x+C \\Rightarrow y=\\frac{1}{\\cos x+C}$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y=\\frac{1}{\\cos x + C}}$$"
         }
       ],
-      "formula": "y=\\frac{1}{\\cos x + C}"
+      "formula": "y=\\frac{1}{\\cos x + C}",
+      "tldr": ""
     },
     {
       "id": "Д1.8",
@@ -108,11 +178,21 @@
       "hint": "$\\frac{dy}{y}=-\\frac{x\\,dx}{1+x^2}$",
       "steps": [
         {
-          "title": "Разделение",
+          "title": "Определение типа",
+          "text": "ОДУ с разделяющимися переменными: все слагаемые с $y$ и $dy$ переносим в одну сторону, с $x$ и $dx$ — в другую."
+        },
+        {
+          "title": "Разделяем переменные",
+          "text": "$\\frac{dy}{y}=-\\frac{x\\,dx}{1+x^2}$",
           "math": "$$\\ln|y|=-\\frac{1}{2}\\ln(1+x^2)+C \\Rightarrow y=\\frac{C}{\\sqrt{1+x^2}}$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y=\\frac{C}{\\sqrt{1+x^2}}}$$"
         }
       ],
-      "formula": "y=\\frac{C}{\\sqrt{1+x^2}}"
+      "formula": "y=\\frac{C}{\\sqrt{1+x^2}}",
+      "tldr": ""
     },
     {
       "id": "Д1.9",
@@ -122,7 +202,12 @@
       "hint": "$y\\,dy=x\\,dx$",
       "steps": [
         {
-          "title": "Разделение",
+          "title": "Определение типа",
+          "text": "ОДУ с разделяющимися переменными: все слагаемые с $y$ и $dy$ переносим в одну сторону, с $x$ и $dx$ — в другую."
+        },
+        {
+          "title": "Разделяем переменные",
+          "text": "$y\\,dy=x\\,dx$",
           "math": "$$\\frac{y^2}{2}=\\frac{x^2}{2}+C \\Rightarrow y^2=x^2+C_1$$"
         },
         {
@@ -131,7 +216,8 @@
           "math": "$$y=\\sqrt{x^2+4}$$"
         }
       ],
-      "formula": "y=\\sqrt{x^2+4}"
+      "formula": "y=\\sqrt{x^2+4}",
+      "tldr": ""
     },
     {
       "id": "Д1.10",
@@ -141,7 +227,12 @@
       "hint": "$\\frac{dy}{y^2}=2x\\,dx$",
       "steps": [
         {
-          "title": "Разделение",
+          "title": "Определение типа",
+          "text": "ОДУ с разделяющимися переменными: все слагаемые с $y$ и $dy$ переносим в одну сторону, с $x$ и $dx$ — в другую."
+        },
+        {
+          "title": "Разделяем переменные",
+          "text": "$\\frac{dy}{y^2}=2x\\,dx$",
           "math": "$$-\\frac{1}{y}=x^2+C \\Rightarrow y=-\\frac{1}{x^2+C}$$"
         },
         {
@@ -150,7 +241,8 @@
           "math": "$$y=\\frac{1}{1-x^2}$$"
         }
       ],
-      "formula": "y=\\frac{1}{1-x^2}"
+      "formula": "y=\\frac{1}{1-x^2}",
+      "tldr": ""
     },
     {
       "id": "Д1.11",
@@ -160,11 +252,21 @@
       "hint": "$\\frac{dy}{\\cos y}=\\cos x\\,dx$ → $\\int\\sec y\\,dy$",
       "steps": [
         {
-          "title": "Разделение",
+          "title": "Определение типа",
+          "text": "ОДУ с разделяющимися переменными: все слагаемые с $y$ и $dy$ переносим в одну сторону, с $x$ и $dx$ — в другую."
+        },
+        {
+          "title": "Разделяем переменные",
+          "text": "$\\frac{dy}{\\cos y}=\\cos x\\,dx$ → $\\int\\sec y\\,dy$",
           "math": "$$\\ln|\\sec y+\\tan y|=\\sin x+C$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{\\ln|\\sec y+\\tan y|=\\sin x+C}$$"
         }
       ],
-      "formula": "\\ln|\\sec y+\\tan y|=\\sin x+C"
+      "formula": "\\ln|\\sec y+\\tan y|=\\sin x+C",
+      "tldr": "→"
     },
     {
       "id": "Д1.12",
@@ -174,11 +276,21 @@
       "hint": "$\\frac{dy}{y^2}=-\\frac{dx}{x^2}$",
       "steps": [
         {
-          "title": "Разделение",
+          "title": "Определение типа",
+          "text": "ОДУ с разделяющимися переменными: все слагаемые с $y$ и $dy$ переносим в одну сторону, с $x$ и $dx$ — в другую."
+        },
+        {
+          "title": "Разделяем переменные",
+          "text": "$\\frac{dy}{y^2}=-\\frac{dx}{x^2}$",
           "math": "$$-\\frac{1}{y}=\\frac{1}{x}+C \\Rightarrow \\frac{1}{y}+\\frac{1}{x}=C$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{\\frac{1}{x}+\\frac{1}{y}=C}$$"
         }
       ],
-      "formula": "\\frac{1}{x}+\\frac{1}{y}=C"
+      "formula": "\\frac{1}{x}+\\frac{1}{y}=C",
+      "tldr": ""
     },
     {
       "id": "Д1.13",
@@ -188,11 +300,21 @@
       "hint": "$e^y\\,dy=x\\,dx$",
       "steps": [
         {
-          "title": "Разделение",
+          "title": "Определение типа",
+          "text": "ОДУ с разделяющимися переменными: все слагаемые с $y$ и $dy$ переносим в одну сторону, с $x$ и $dx$ — в другую."
+        },
+        {
+          "title": "Разделяем переменные",
+          "text": "$e^y\\,dy=x\\,dx$",
           "math": "$$e^y=\\frac{x^2}{2}+C$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{e^y=\\frac{x^2}{2}+C}$$"
         }
       ],
-      "formula": "e^y=\\frac{x^2}{2}+C"
+      "formula": "e^y=\\frac{x^2}{2}+C",
+      "tldr": ""
     },
     {
       "id": "Д1.14",
@@ -202,11 +324,21 @@
       "hint": "$\\frac{dx}{\\sqrt{1-x^2}}=\\frac{dy}{\\sqrt{1-y^2}}$ → арксинусы",
       "steps": [
         {
-          "title": "Разделение",
+          "title": "Определение типа",
+          "text": "ОДУ с разделяющимися переменными: все слагаемые с $y$ и $dy$ переносим в одну сторону, с $x$ и $dx$ — в другую."
+        },
+        {
+          "title": "Разделяем переменные",
+          "text": "$\\frac{dx}{\\sqrt{1-x^2}}=\\frac{dy}{\\sqrt{1-y^2}}$ → арксинусы",
           "math": "$$\\arcsin x=\\arcsin y+C \\Rightarrow \\arcsin x-\\arcsin y=C$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{\\arcsin x - \\arcsin y = C}$$"
         }
       ],
-      "formula": "\\arcsin x - \\arcsin y = C"
+      "formula": "\\arcsin x - \\arcsin y = C",
+      "tldr": "→ арксинусы"
     },
     {
       "id": "Д2.1",
@@ -216,12 +348,21 @@
       "hint": "Однородное: $t=y/x$, $y=tx$, $y'=t+xt'$. Тогда $xt'=1$",
       "steps": [
         {
+          "title": "Определение типа",
+          "text": "Однородное ОДУ — правая часть является функцией отношения $y/x$. Замена: $t = y/x$, $y = tx$, $y' = t + xt'$."
+        },
+        {
           "title": "Подстановка",
           "text": "$y=tx$ → $t+xt'=t+1$ → $xt'=1$.",
           "math": "$$\\frac{dt}{1}=\\frac{dx}{x} \\Rightarrow t=\\ln|x|+C \\Rightarrow y=x\\ln|x|+Cx$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y=x\\ln|x|+Cx}$$"
         }
       ],
-      "formula": "y=x\\ln|x|+Cx"
+      "formula": "y=x\\ln|x|+Cx",
+      "tldr": "Однородное: , , . Тогда"
     },
     {
       "id": "Д2.2",
@@ -231,11 +372,21 @@
       "hint": "Однородное: $t=y/x$ → $xt'=1$",
       "steps": [
         {
+          "title": "Определение типа",
+          "text": "Однородное ОДУ — правая часть является функцией отношения $y/x$. Замена: $t = y/x$, $y = tx$, $y' = t + xt'$."
+        },
+        {
           "title": "Подстановка",
+          "text": "Подставляем $y = tx$ и упрощаем:",
           "math": "$$t+xt'=1+t \\Rightarrow xt'=1 \\Rightarrow y=x\\ln|x|+Cx$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y=x(\\ln|x|+C)}$$"
         }
       ],
-      "formula": "y=x(\\ln|x|+C)"
+      "formula": "y=x(\\ln|x|+C)",
+      "tldr": "Однородное:  →"
     },
     {
       "id": "Д2.3",
@@ -245,11 +396,21 @@
       "hint": "Однородное: $t=y/x$. $y'=t+xt'=t+e^t$ → $xt'=e^t$",
       "steps": [
         {
+          "title": "Определение типа",
+          "text": "Однородное ОДУ — правая часть является функцией отношения $y/x$. Замена: $t = y/x$, $y = tx$, $y' = t + xt'$."
+        },
+        {
           "title": "Подстановка",
+          "text": "Подставляем $y = tx$ и упрощаем:",
           "math": "$$e^{-t}\\,dt=\\frac{dx}{x} \\Rightarrow -e^{-t}=\\ln|x|+C \\Rightarrow -e^{-y/x}=\\ln|x|+C$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{e^{-y/x}+\\ln|x|=C}$$"
         }
       ],
-      "formula": "e^{-y/x}+\\ln|x|=C"
+      "formula": "e^{-y/x}+\\ln|x|=C",
+      "tldr": "Однородное: .  →"
     },
     {
       "id": "Д2.4",
@@ -259,16 +420,26 @@
       "hint": "Делим на $x^2 dx$: $y'=\\frac{1+t^2}{2t}$, $t=y/x$",
       "steps": [
         {
+          "title": "Определение типа",
+          "text": "Однородное ОДУ — правая часть является функцией отношения $y/x$. Замена: $t = y/x$, $y = tx$, $y' = t + xt'$."
+        },
+        {
           "title": "Подстановка",
           "text": "$t=y/x$, $y'=t+xt'=\\frac{1+t^2}{2t}$.",
           "math": "$$xt'=\\frac{1+t^2}{2t}-t=\\frac{1-t^2}{2t} \\Rightarrow \\frac{2t\\,dt}{1-t^2}=\\frac{dx}{x}$$"
         },
         {
           "title": "Интегрирование",
+          "text": "Подставляем $y = tx$ и упрощаем:",
           "math": "$$-\\ln|1-t^2|=\\ln|x|+C \\Rightarrow \\frac{1}{1-y^2/x^2}=Cx \\Rightarrow \\frac{x^2}{x^2-y^2}=Cx$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{x^2=C(x^2-y^2)\\cdot x}$$"
         }
       ],
-      "formula": "x^2=C(x^2-y^2)\\cdot x"
+      "formula": "x^2=C(x^2-y^2)\\cdot x",
+      "tldr": "Делим на : ,"
     },
     {
       "id": "Д2.5",
@@ -278,16 +449,26 @@
       "hint": "Однородное: $t=y/x$, $y'=\\frac{t^2-1}{2t}$",
       "steps": [
         {
+          "title": "Определение типа",
+          "text": "Однородное ОДУ — правая часть является функцией отношения $y/x$. Замена: $t = y/x$, $y = tx$, $y' = t + xt'$."
+        },
+        {
           "title": "Подстановка",
           "text": "$xt'=\\frac{t^2-1}{2t}-t=\\frac{-t^2-1}{2t}$.",
           "math": "$$\\frac{2t\\,dt}{t^2+1}=-\\frac{dx}{x} \\Rightarrow \\ln(t^2+1)=-\\ln|x|+C \\Rightarrow x(y^2/x^2+1)=C$$"
         },
         {
           "title": "Упрощение",
+          "text": "Подставляем $y = tx$ и упрощаем:",
           "math": "$$x^2+y^2=Cx$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{x^2+y^2=Cx}$$"
         }
       ],
-      "formula": "x^2+y^2=Cx"
+      "formula": "x^2+y^2=Cx",
+      "tldr": "Однородное: ,"
     },
     {
       "id": "Д2.6",
@@ -297,11 +478,21 @@
       "hint": "$t=y/x$ → $xt'=\\sin t$",
       "steps": [
         {
+          "title": "Определение типа",
+          "text": "Однородное ОДУ — правая часть является функцией отношения $y/x$. Замена: $t = y/x$, $y = tx$, $y' = t + xt'$."
+        },
+        {
           "title": "Подстановка",
+          "text": "Подставляем $y = tx$ и упрощаем:",
           "math": "$$\\frac{dt}{\\sin t}=\\frac{dx}{x} \\Rightarrow \\ln|\\tan(t/2)|=\\ln|x|+C \\Rightarrow \\tan\\frac{y}{2x}=Cx$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{\\tan\\frac{y}{2x}=Cx}$$"
         }
       ],
-      "formula": "\\tan\\frac{y}{2x}=Cx"
+      "formula": "\\tan\\frac{y}{2x}=Cx",
+      "tldr": "→"
     },
     {
       "id": "Д2.7",
@@ -311,12 +502,21 @@
       "hint": "$y'=\\frac{x+y}{x-y}=\\frac{1+t}{1-t}$, $t=y/x$",
       "steps": [
         {
+          "title": "Определение типа",
+          "text": "Однородное ОДУ — правая часть является функцией отношения $y/x$. Замена: $t = y/x$, $y = tx$, $y' = t + xt'$."
+        },
+        {
           "title": "Подстановка",
           "text": "$xt'=\\frac{1+t}{1-t}-t=\\frac{1+t^2}{1-t}$.",
           "math": "$$\\frac{(1-t)\\,dt}{1+t^2}=\\frac{dx}{x} \\Rightarrow \\arctan t-\\frac{1}{2}\\ln(1+t^2)=\\ln|x|+C$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{\\arctan\\frac{y}{x}-\\frac{1}{2}\\ln(x^2+y^2)+\\ln|x|=C}$$"
         }
       ],
-      "formula": "\\arctan\\frac{y}{x}-\\frac{1}{2}\\ln(x^2+y^2)+\\ln|x|=C"
+      "formula": "\\arctan\\frac{y}{x}-\\frac{1}{2}\\ln(x^2+y^2)+\\ln|x|=C",
+      "tldr": ","
     },
     {
       "id": "Д2.8",
@@ -326,11 +526,21 @@
       "hint": "$t=y/x$ → $xt'=\\sqrt{1-t^2}$",
       "steps": [
         {
+          "title": "Определение типа",
+          "text": "Однородное ОДУ — правая часть является функцией отношения $y/x$. Замена: $t = y/x$, $y = tx$, $y' = t + xt'$."
+        },
+        {
           "title": "Подстановка",
+          "text": "Подставляем $y = tx$ и упрощаем:",
           "math": "$$\\frac{dt}{\\sqrt{1-t^2}}=\\frac{dx}{x} \\Rightarrow \\arcsin t=\\ln|x|+C \\Rightarrow \\arcsin\\frac{y}{x}=\\ln|x|+C$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{\\arcsin\\frac{y}{x}=\\ln|x|+C}$$"
         }
       ],
-      "formula": "\\arcsin\\frac{y}{x}=\\ln|x|+C"
+      "formula": "\\arcsin\\frac{y}{x}=\\ln|x|+C",
+      "tldr": "→"
     },
     {
       "id": "Д3.1",
@@ -340,12 +550,25 @@
       "hint": "Линейное: ИМ $\\mu=e^{\\int 1\\,dx}=e^x$. Или $y=uv$",
       "steps": [
         {
-          "title": "ИМ",
+          "title": "Определение типа",
+          "text": "Линейное ОДУ первого порядка: $y' + P(x)y = Q(x)$. Решаем методом интегрирующего множителя (ИМ): $\\mu = e^{\\int P(x)\\,dx}$."
+        },
+        {
+          "title": "Интегрирующий множитель",
+          "text": "Вычисляем ИМ: Линейное: ИМ $\\mu=e^{\\int 1\\,dx}=e^x$."
+        },
+        {
+          "title": "Решение",
           "text": "$\\mu=e^x$. $(e^x y)'=e^{2x}$.",
           "math": "$$e^x y=\\frac{e^{2x}}{2}+C \\Rightarrow y=\\frac{e^x}{2}+Ce^{-x}$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y=\\frac{e^x}{2}+Ce^{-x}}$$"
         }
       ],
-      "formula": "y=\\frac{e^x}{2}+Ce^{-x}"
+      "formula": "y=\\frac{e^x}{2}+Ce^{-x}",
+      "tldr": "Линейное: ИМ . Или"
     },
     {
       "id": "Д3.2",
@@ -355,15 +578,26 @@
       "hint": "ИМ $\\mu=e^{-2x}$. $(ye^{-2x})'=xe^{-2x}$",
       "steps": [
         {
-          "title": "ИМ",
+          "title": "Определение типа",
+          "text": "Линейное ОДУ первого порядка: $y' + P(x)y = Q(x)$. Решаем методом интегрирующего множителя (ИМ): $\\mu = e^{\\int P(x)\\,dx}$."
+        },
+        {
+          "title": "Интегрирующий множитель",
+          "text": "Вычисляем ИМ: ИМ $\\mu=e^{-2x}$."
+        },
+        {
+          "title": "Решение",
+          "text": "Умножаем обе стороны на $\\mu$ и интегрируем:",
           "math": "$$ye^{-2x}=\\int xe^{-2x}dx=-\\frac{x}{2}e^{-2x}-\\frac{1}{4}e^{-2x}+C$$"
         },
         {
           "title": "Ответ",
+          "text": "Выполняем вычисления:",
           "math": "$$y=-\\frac{x}{2}-\\frac{1}{4}+Ce^{2x}$$"
         }
       ],
-      "formula": "y=Ce^{2x}-\\frac{x}{2}-\\frac{1}{4}"
+      "formula": "y=Ce^{2x}-\\frac{x}{2}-\\frac{1}{4}",
+      "tldr": "ИМ ."
     },
     {
       "id": "Д3.3",
@@ -373,12 +607,25 @@
       "hint": "ИМ $\\mu=e^{\\int\\tan x\\,dx}=e^{-\\ln\\cos x}=\\sec x$",
       "steps": [
         {
-          "title": "ИМ",
+          "title": "Определение типа",
+          "text": "Линейное ОДУ первого порядка: $y' + P(x)y = Q(x)$. Решаем методом интегрирующего множителя (ИМ): $\\mu = e^{\\int P(x)\\,dx}$."
+        },
+        {
+          "title": "Интегрирующий множитель",
+          "text": "Вычисляем ИМ: ИМ $\\mu=e^{\\int\\tan x\\,dx}=e^{-\\ln\\cos x}=\\sec x$."
+        },
+        {
+          "title": "Решение",
           "text": "$\\mu=\\sec x$. $(y\\sec x)'=1$.",
           "math": "$$y\\sec x=x+C \\Rightarrow y=(x+C)\\cos x$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y=(x+C)\\cos x}$$"
         }
       ],
-      "formula": "y=(x+C)\\cos x"
+      "formula": "y=(x+C)\\cos x",
+      "tldr": "ИМ"
     },
     {
       "id": "Д3.4",
@@ -388,11 +635,25 @@
       "hint": "ИМ $\\mu=e^{\\int dx/x}=x$. $(xy)'=x^3$",
       "steps": [
         {
-          "title": "ИМ",
+          "title": "Определение типа",
+          "text": "Линейное ОДУ первого порядка: $y' + P(x)y = Q(x)$. Решаем методом интегрирующего множителя (ИМ): $\\mu = e^{\\int P(x)\\,dx}$."
+        },
+        {
+          "title": "Интегрирующий множитель",
+          "text": "Вычисляем ИМ: ИМ $\\mu=e^{\\int dx/x}=x$."
+        },
+        {
+          "title": "Решение",
+          "text": "Умножаем обе стороны на $\\mu$ и интегрируем:",
           "math": "$$xy=\\frac{x^4}{4}+C \\Rightarrow y=\\frac{x^3}{4}+\\frac{C}{x}$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y=\\frac{x^3}{4}+\\frac{C}{x}}$$"
         }
       ],
-      "formula": "y=\\frac{x^3}{4}+\\frac{C}{x}"
+      "formula": "y=\\frac{x^3}{4}+\\frac{C}{x}",
+      "tldr": "ИМ ."
     },
     {
       "id": "Д3.5",
@@ -402,12 +663,25 @@
       "hint": "Приведи к стандартному: $y'-y/x=xe^x$. ИМ $\\mu=1/x$",
       "steps": [
         {
-          "title": "ИМ",
+          "title": "Определение типа",
+          "text": "Линейное ОДУ первого порядка: $y' + P(x)y = Q(x)$. Решаем методом интегрирующего множителя (ИМ): $\\mu = e^{\\int P(x)\\,dx}$."
+        },
+        {
+          "title": "Интегрирующий множитель",
+          "text": "Вычисляем ИМ: Приведи к стандартному: $y'-y/x=xe^x$."
+        },
+        {
+          "title": "Решение",
           "text": "$\\mu=e^{-\\int dx/x}=1/x$. $(y/x)'=e^x$.",
           "math": "$$\\frac{y}{x}=e^x+C \\Rightarrow y=xe^x+Cx$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y=xe^x+Cx}$$"
         }
       ],
-      "formula": "y=xe^x+Cx"
+      "formula": "y=xe^x+Cx",
+      "tldr": "Приведи к стандартному: . ИМ"
     },
     {
       "id": "Д3.6",
@@ -417,11 +691,25 @@
       "hint": "ИМ $\\mu=e^{x^2}$. $(ye^{x^2})'=2x$",
       "steps": [
         {
-          "title": "ИМ",
+          "title": "Определение типа",
+          "text": "Линейное ОДУ первого порядка: $y' + P(x)y = Q(x)$. Решаем методом интегрирующего множителя (ИМ): $\\mu = e^{\\int P(x)\\,dx}$."
+        },
+        {
+          "title": "Интегрирующий множитель",
+          "text": "Вычисляем ИМ: ИМ $\\mu=e^{x^2}$."
+        },
+        {
+          "title": "Решение",
+          "text": "Умножаем обе стороны на $\\mu$ и интегрируем:",
           "math": "$$ye^{x^2}=x^2+C \\Rightarrow y=(x^2+C)e^{-x^2}$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y=(x^2+C)e^{-x^2}}$$"
         }
       ],
-      "formula": "y=(x^2+C)e^{-x^2}"
+      "formula": "y=(x^2+C)e^{-x^2}",
+      "tldr": "ИМ ."
     },
     {
       "id": "Д3.7",
@@ -431,15 +719,26 @@
       "hint": "ИМ $\\mu=e^{-x}$. $(ye^{-x})'=e^{-x}\\sin x$",
       "steps": [
         {
-          "title": "ИМ",
+          "title": "Определение типа",
+          "text": "Линейное ОДУ первого порядка: $y' + P(x)y = Q(x)$. Решаем методом интегрирующего множителя (ИМ): $\\mu = e^{\\int P(x)\\,dx}$."
+        },
+        {
+          "title": "Интегрирующий множитель",
+          "text": "Вычисляем ИМ: ИМ $\\mu=e^{-x}$."
+        },
+        {
+          "title": "Решение",
+          "text": "Умножаем обе стороны на $\\mu$ и интегрируем:",
           "math": "$$ye^{-x}=\\int e^{-x}\\sin x\\,dx=\\frac{e^{-x}(-\\sin x-\\cos x)}{2}+C$$"
         },
         {
           "title": "Ответ",
+          "text": "Выполняем вычисления:",
           "math": "$$y=Ce^x-\\frac{\\sin x+\\cos x}{2}$$"
         }
       ],
-      "formula": "y=Ce^x-\\frac{\\sin x+\\cos x}{2}"
+      "formula": "y=Ce^x-\\frac{\\sin x+\\cos x}{2}",
+      "tldr": "ИМ ."
     },
     {
       "id": "Д3.8",
@@ -449,16 +748,30 @@
       "hint": "ИМ $\\mu=e^x$. $(ye^x)'=e^x$",
       "steps": [
         {
+          "title": "Определение типа",
+          "text": "Линейное ОДУ первого порядка: $y' + P(x)y = Q(x)$. Решаем методом интегрирующего множителя (ИМ): $\\mu = e^{\\int P(x)\\,dx}$."
+        },
+        {
+          "title": "Интегрирующий множитель",
+          "text": "Вычисляем ИМ: ИМ $\\mu=e^x$."
+        },
+        {
           "title": "Решение",
+          "text": "Выполняем вычисления:",
           "math": "$$ye^x=e^x+C \\Rightarrow y=1+Ce^{-x}$$"
         },
         {
           "title": "НУ",
           "text": "$y(0)=0$: $0=1+C$ → $C=-1$.",
           "math": "$$y=1-e^{-x}$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y=1-e^{-x}}$$"
         }
       ],
-      "formula": "y=1-e^{-x}"
+      "formula": "y=1-e^{-x}",
+      "tldr": "ИМ ."
     },
     {
       "id": "Д3.9",
@@ -468,11 +781,25 @@
       "hint": "ИМ $\\mu=e^{3x}$. $(ye^{3x})'=6e^{3x}$",
       "steps": [
         {
+          "title": "Определение типа",
+          "text": "Линейное ОДУ первого порядка: $y' + P(x)y = Q(x)$. Решаем методом интегрирующего множителя (ИМ): $\\mu = e^{\\int P(x)\\,dx}$."
+        },
+        {
+          "title": "Интегрирующий множитель",
+          "text": "Вычисляем ИМ: ИМ $\\mu=e^{3x}$."
+        },
+        {
           "title": "Решение",
+          "text": "Выполняем вычисления:",
           "math": "$$ye^{3x}=2e^{3x}+C \\Rightarrow y=2+Ce^{-3x}$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y=2+Ce^{-3x}}$$"
         }
       ],
-      "formula": "y=2+Ce^{-3x}"
+      "formula": "y=2+Ce^{-3x}",
+      "tldr": "ИМ ."
     },
     {
       "id": "Д3.10",
@@ -482,15 +809,26 @@
       "hint": "ИМ $\\mu=e^{\\int\\cot x\\,dx}=\\sin x$. $(y\\sin x)'=\\sin 2x$",
       "steps": [
         {
-          "title": "ИМ",
+          "title": "Определение типа",
+          "text": "Линейное ОДУ первого порядка: $y' + P(x)y = Q(x)$. Решаем методом интегрирующего множителя (ИМ): $\\mu = e^{\\int P(x)\\,dx}$."
+        },
+        {
+          "title": "Интегрирующий множитель",
+          "text": "Вычисляем ИМ: ИМ $\\mu=e^{\\int\\cot x\\,dx}=\\sin x$."
+        },
+        {
+          "title": "Решение",
+          "text": "Умножаем обе стороны на $\\mu$ и интегрируем:",
           "math": "$$y\\sin x=\\int\\sin 2x\\,dx=-\\frac{\\cos 2x}{2}+C$$"
         },
         {
           "title": "Ответ",
+          "text": "Выполняем вычисления:",
           "math": "$$y=\\frac{C-\\frac{1}{2}\\cos 2x}{\\sin x}=\\frac{2C-1+2\\sin^2 x}{2\\sin x}$$"
         }
       ],
-      "formula": "y=\\sin x+\\frac{C}{\\sin x}-\\frac{1}{2\\sin x}"
+      "formula": "y=\\sin x+\\frac{C}{\\sin x}-\\frac{1}{2\\sin x}",
+      "tldr": "ИМ ."
     },
     {
       "id": "Д4.1",
@@ -500,12 +838,21 @@
       "hint": "Бернулли ($n=2$). Замена $z=y^{-1}$ → $z'-z=-1$",
       "steps": [
         {
+          "title": "Определение типа",
+          "text": "Уравнение Бернулли: $y' + P(x)y = Q(x)y^n$. Бернулли ($n=2$). Замена $z=y^{-1}$ → $z'-z=-1$"
+        },
+        {
           "title": "Замена",
           "text": "$z=y^{-1}$, $z'=-y^{-2}y'$. Делим на $y^2$: $y^{-2}y'+y^{-1}=1$ → $-z'+z=1$ → $z'-z=-1$.",
           "math": "$$z=Ce^x+1 \\Rightarrow y=\\frac{1}{Ce^x+1}$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y=\\frac{1}{Ce^x+1}}$$"
         }
       ],
-      "formula": "y=\\frac{1}{Ce^x+1}"
+      "formula": "y=\\frac{1}{Ce^x+1}",
+      "tldr": "Бернулли (). Замена  →"
     },
     {
       "id": "Д4.2",
@@ -515,16 +862,22 @@
       "hint": "Бернулли ($n=2$). $z=y^{-1}$ → $z'+z=-x$",
       "steps": [
         {
+          "title": "Определение типа",
+          "text": "Уравнение Бернулли: $y' + P(x)y = Q(x)y^n$. Бернулли ($n=2$). $z=y^{-1}$ → $z'+z=-x$"
+        },
+        {
           "title": "Замена",
           "text": "$z'+z=-x$. ИМ $\\mu=e^x$.",
           "math": "$$ze^x=\\int-xe^x\\,dx=-xe^x+e^x+C \\Rightarrow z=-x+1+Ce^{-x}$$"
         },
         {
           "title": "Ответ",
+          "text": "Решаем полученное линейное ОДУ:",
           "math": "$$y=\\frac{1}{1-x+Ce^{-x}}$$"
         }
       ],
-      "formula": "y=\\frac{1}{1-x+Ce^{-x}}"
+      "formula": "y=\\frac{1}{1-x+Ce^{-x}}",
+      "tldr": "Бернулли ().  →"
     },
     {
       "id": "Д4.3",
@@ -534,16 +887,22 @@
       "hint": "Бернулли. $z=y^{-1}$ → $z'-z/x=-\\ln x$",
       "steps": [
         {
+          "title": "Определение типа",
+          "text": "Уравнение Бернулли: $y' + P(x)y = Q(x)y^n$. Бернулли. $z=y^{-1}$ → $z'-z/x=-\\ln x$"
+        },
+        {
           "title": "Замена",
           "text": "$z'-z/x=-\\ln x$. ИМ $\\mu=1/x$.",
           "math": "$$\\frac{z}{x}=-\\int\\frac{\\ln x}{x}\\,dx=-\\frac{\\ln^2 x}{2}+C$$"
         },
         {
           "title": "Ответ",
+          "text": "Решаем полученное линейное ОДУ:",
           "math": "$$z=Cx-\\frac{x\\ln^2 x}{2} \\Rightarrow y=\\frac{1}{Cx-\\frac{x\\ln^2 x}{2}}$$"
         }
       ],
-      "formula": "y=\\frac{2}{x(2C-\\ln^2 x)}"
+      "formula": "y=\\frac{2}{x(2C-\\ln^2 x)}",
+      "tldr": "Бернулли.  →"
     },
     {
       "id": "Д4.4",
@@ -553,16 +912,22 @@
       "hint": "Бернулли ($n=3$). $z=y^{-2}$ → $z'-2z=-2e^x$",
       "steps": [
         {
+          "title": "Определение типа",
+          "text": "Уравнение Бернулли: $y' + P(x)y = Q(x)y^n$. Бернулли ($n=3$). $z=y^{-2}$ → $z'-2z=-2e^x$"
+        },
+        {
           "title": "Замена",
           "text": "Делим на $y^3$: $y^{-3}y'+y^{-2}=e^x$. $z=y^{-2}$, $z'=-2y^{-3}y'$ → $z'-2z=-2e^x$.",
           "math": "$$ze^{-2x}=-2\\int e^{-x}\\,dx=2e^{-x}+C \\Rightarrow z=2e^x+Ce^{2x}$$"
         },
         {
           "title": "Ответ",
+          "text": "Решаем полученное линейное ОДУ:",
           "math": "$$y^{-2}=2e^x+Ce^{2x} \\Rightarrow y=\\frac{1}{\\sqrt{2e^x+Ce^{2x}}}$$"
         }
       ],
-      "formula": "y=\\frac{1}{\\sqrt{Ce^{2x}+2e^x}}"
+      "formula": "y=\\frac{1}{\\sqrt{Ce^{2x}+2e^x}}",
+      "tldr": "Бернулли ().  →"
     },
     {
       "id": "Д4.5",
@@ -572,16 +937,22 @@
       "hint": "Приведи: $y'+y/x=xy^2$. Бернулли, $z=1/y$",
       "steps": [
         {
+          "title": "Определение типа",
+          "text": "Уравнение Бернулли: $y' + P(x)y = Q(x)y^n$. Приведи: $y'+y/x=xy^2$. Бернулли, $z=1/y$"
+        },
+        {
           "title": "Замена",
           "text": "$z'-z/x=-x$. ИМ $\\mu=1/x$.",
           "math": "$$\\frac{z}{x}=-\\int dx=-x+C \\Rightarrow z=Cx-x^2$$"
         },
         {
           "title": "Ответ",
+          "text": "Решаем полученное линейное ОДУ:",
           "math": "$$y=\\frac{1}{Cx-x^2}=\\frac{1}{x(C-x)}$$"
         }
       ],
-      "formula": "y=\\frac{1}{x(C-x)}"
+      "formula": "y=\\frac{1}{x(C-x)}",
+      "tldr": "Приведи: . Бернулли,"
     },
     {
       "id": "Д4.6",
@@ -591,16 +962,22 @@
       "hint": "Бернулли ($n=1/2$). $z=y^{1/2}$ → $z'-z/x=\\frac{3}{2}x^2$",
       "steps": [
         {
+          "title": "Определение типа",
+          "text": "Уравнение Бернулли: $y' + P(x)y = Q(x)y^n$. Бернулли ($n=1/2$). $z=y^{1/2}$ → $z'-z/x=\\frac{3}{2}x^2$"
+        },
+        {
           "title": "Замена",
           "text": "$z=\\sqrt{y}$, $z'=y'/(2\\sqrt{y})$ → $2z'-\\frac{2z}{x}=3x^2$ → $z'-z/x=\\frac{3x^2}{2}$.",
           "math": "$$\\frac{z}{x}=\\frac{3}{2}\\int x\\,dx=\\frac{3x^2}{4}+C \\Rightarrow z=\\frac{3x^3}{4}+Cx$$"
         },
         {
           "title": "Ответ",
+          "text": "Решаем полученное линейное ОДУ:",
           "math": "$$\\sqrt{y}=\\frac{3x^3}{4}+Cx \\Rightarrow y=\\left(\\frac{3x^3}{4}+Cx\\right)^2$$"
         }
       ],
-      "formula": "y=\\left(\\frac{3x^3}{4}+Cx\\right)^2"
+      "formula": "y=\\left(\\frac{3x^3}{4}+Cx\\right)^2",
+      "tldr": "Бернулли ().  →"
     },
     {
       "id": "Д5.1",
@@ -610,20 +987,30 @@
       "hint": "Проверка: $\\frac{\\partial P}{\\partial y}=3=\\frac{\\partial Q}{\\partial x}$. Полный дифференциал!",
       "steps": [
         {
+          "title": "Определение типа",
+          "text": "Уравнение в полных дифференциалах: $P\\,dx + Q\\,dy = 0$. Проверяем условие $\\frac{\\partial P}{\\partial y} = \\frac{\\partial Q}{\\partial x}$."
+        },
+        {
           "title": "Проверка",
           "text": "$P_y=3$, $Q_x=3$ ✓"
         },
         {
           "title": "Потенциал",
+          "text": "Находим потенциальную функцию $F(x,y)$:",
           "math": "$$F=\\int(2x+3y)\\,dx=x^2+3xy+\\varphi(y)$$"
         },
         {
           "title": "Из Q",
           "text": "$F_y=3x+\\varphi'(y)=3x+4y$ → $\\varphi'=4y$ → $\\varphi=2y^2$.",
           "math": "$$x^2+3xy+2y^2=C$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{x^2+3xy+2y^2=C}$$"
         }
       ],
-      "formula": "x^2+3xy+2y^2=C"
+      "formula": "x^2+3xy+2y^2=C",
+      "tldr": "Проверка: . Полный дифференциал!"
     },
     {
       "id": "Д5.2",
@@ -633,16 +1020,26 @@
       "hint": "$P_y=e^x\\cos y=Q_x$ ✓. $F=e^x\\sin y$",
       "steps": [
         {
+          "title": "Определение типа",
+          "text": "Уравнение в полных дифференциалах: $P\\,dx + Q\\,dy = 0$. Проверяем условие $\\frac{\\partial P}{\\partial y} = \\frac{\\partial Q}{\\partial x}$."
+        },
+        {
           "title": "Потенциал",
+          "text": "Находим потенциальную функцию $F(x,y)$:",
           "math": "$$F=\\int e^x\\sin y\\,dx=e^x\\sin y+\\varphi(y)$$"
         },
         {
           "title": "Из Q",
           "text": "$F_y=e^x\\cos y+\\varphi'(y)=e^x\\cos y$ → $\\varphi=0$.",
           "math": "$$e^x\\sin y=C$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{e^x\\sin y=C}$$"
         }
       ],
-      "formula": "e^x\\sin y=C"
+      "formula": "e^x\\sin y=C",
+      "tldr": "✓."
     },
     {
       "id": "Д5.3",
@@ -652,16 +1049,26 @@
       "hint": "$P_y=1/x$. $Q_x=1/x$ ✓",
       "steps": [
         {
+          "title": "Определение типа",
+          "text": "Уравнение в полных дифференциалах: $P\\,dx + Q\\,dy = 0$. Проверяем условие $\\frac{\\partial P}{\\partial y} = \\frac{\\partial Q}{\\partial x}$."
+        },
+        {
           "title": "Потенциал",
+          "text": "Находим потенциальную функцию $F(x,y)$:",
           "math": "$$F=\\int\\ln x\\,dy=y\\ln x+\\psi(x)$$"
         },
         {
           "title": "Из P",
           "text": "$F_x=y/x+\\psi'(x)=y/x+\\ln x$ → $\\psi=x\\ln x-x$.",
           "math": "$$y\\ln x+x\\ln x-x=C$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{(y+x)\\ln x-x=C}$$"
         }
       ],
-      "formula": "(y+x)\\ln x-x=C"
+      "formula": "(y+x)\\ln x-x=C",
+      "tldr": ".  ✓"
     },
     {
       "id": "Д5.4",
@@ -671,16 +1078,26 @@
       "hint": "$P_y=2x=Q_x$ ✓. $F=x^2 y+x+y^2$",
       "steps": [
         {
+          "title": "Определение типа",
+          "text": "Уравнение в полных дифференциалах: $P\\,dx + Q\\,dy = 0$. Проверяем условие $\\frac{\\partial P}{\\partial y} = \\frac{\\partial Q}{\\partial x}$."
+        },
+        {
           "title": "Потенциал",
+          "text": "Находим потенциальную функцию $F(x,y)$:",
           "math": "$$F=\\int(2xy+1)\\,dx=x^2 y+x+\\varphi(y)$$"
         },
         {
           "title": "Из Q",
           "text": "$F_y=x^2+\\varphi'=x^2+2y$ → $\\varphi=y^2$.",
           "math": "$$x^2 y+x+y^2=C$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{x^2 y+x+y^2=C}$$"
         }
       ],
-      "formula": "x^2 y+x+y^2=C"
+      "formula": "x^2 y+x+y^2=C",
+      "tldr": "✓."
     },
     {
       "id": "Д5.5",
@@ -690,16 +1107,26 @@
       "hint": "$P_y=1=Q_x$ ✓",
       "steps": [
         {
+          "title": "Определение типа",
+          "text": "Уравнение в полных дифференциалах: $P\\,dx + Q\\,dy = 0$. Проверяем условие $\\frac{\\partial P}{\\partial y} = \\frac{\\partial Q}{\\partial x}$."
+        },
+        {
           "title": "Потенциал",
+          "text": "Находим потенциальную функцию $F(x,y)$:",
           "math": "$$F=\\int(3x^2+y)\\,dx=x^3+xy+\\varphi(y)$$"
         },
         {
           "title": "Из Q",
           "text": "$F_y=x+\\varphi'=x-2y$ → $\\varphi=-y^2$.",
           "math": "$$x^3+xy-y^2=C$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{x^3+xy-y^2=C}$$"
         }
       ],
-      "formula": "x^3+xy-y^2=C"
+      "formula": "x^3+xy-y^2=C",
+      "tldr": "✓"
     },
     {
       "id": "Д5.6",
@@ -709,12 +1136,21 @@
       "hint": "$P_y=e^{xy}+xye^{xy}$. $Q_x=e^{xy}+xye^{xy}$ ✓",
       "steps": [
         {
+          "title": "Определение типа",
+          "text": "Уравнение в полных дифференциалах: $P\\,dx + Q\\,dy = 0$. Проверяем условие $\\frac{\\partial P}{\\partial y} = \\frac{\\partial Q}{\\partial x}$."
+        },
+        {
           "title": "Потенциал",
           "text": "Заметим: $d(e^{xy})=ye^{xy}dx+xe^{xy}dy$.",
           "math": "$$F=e^{xy}+x \\Rightarrow e^{xy}+x=C$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{e^{xy}+x=C}$$"
         }
       ],
-      "formula": "e^{xy}+x=C"
+      "formula": "e^{xy}+x=C",
+      "tldr": ".  ✓"
     }
   ]
 }
