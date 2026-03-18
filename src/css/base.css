@@ -150,15 +150,12 @@ code { font-family: "JetBrains Mono", monospace; }
   text-align: left !important;
 }
 
-/* Display math in formalText and steps: centered by default (стандартный KaTeX) */
-/* Only ИиДУ gets left-aligned formalText (too many formulas one after another) */
-body[data-subject="differential-equations"] .card-formal-text .katex-display,
-body[data-subject="differential-equations"] .step-text .katex-display {
+/* Display math: left-aligned globally (text → formula → text без прыжков) */
+.katex-display {
   text-align: left !important;
   margin: 8px 0 !important;
 }
-body[data-subject="differential-equations"] .card-formal .katex-display > .katex,
-body[data-subject="differential-equations"] .step-content .katex-display > .katex {
+.katex-display > .katex {
   text-align: left !important;
 }
 
