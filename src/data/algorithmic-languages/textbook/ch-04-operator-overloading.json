@@ -152,6 +152,59 @@
           "content": "<strong>Локальный класс</strong> — класс, определённый <strong>внутри блока</strong> (например, внутри функции).<br><br>Ограничения:<br>• Не может иметь <strong>статических данных</strong><br>• Его методы могут быть только <strong>встроенными</strong> (inline)<br>• Внутри класса можно использовать внешние переменные и функции, <strong>кроме</strong> локальных переменных (<code>auto</code>)"
         }
       ]
+    },
+    {
+      "heading": "Размещающий new (Placement new)",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "Placement new",
+          "content": "<strong>Placement new</strong> — форма оператора new, которая <em>не выделяет память</em>, а конструирует объект по указанному адресу:$$\\texttt{T* p = new (address) T(args...);}$$Используется в аллокаторах, пулах памяти, контейнерах STL (внутренне)."
+        },
+        {
+          "type": "text",
+          "content": "<strong>Зачем нужен?</strong><br>• Отделение <em>выделения памяти</em> от <em>конструирования объекта</em>.<br>• Создание объектов в заранее выделенном буфере (стек, shared memory, memory-mapped files).<br>• Реализация собственных аллокаторов."
+        },
+        {
+          "type": "example",
+          "title": "Placement new и явный вызов деструктора",
+          "content": "Создать объект в стековом буфере.",
+          "solution": "<pre><code>alignas(MyClass) char buffer[sizeof(MyClass)];\n\n// Создаём объект в буфере\nMyClass* p = new (buffer) MyClass(42);\np->doSomething();\n\n// ОБЯЗАТЕЛЬНО: явный вызов деструктора!\np->~MyClass();\n// НЕ вызывать delete p!</code></pre><br><strong>Важно:</strong> для placement new нельзя использовать <code>delete</code> — нужно вызвать деструктор явно."
+        },
+        {
+          "type": "text",
+          "content": "<strong>Перегрузка new/delete (Экзамен вопрос 40).</strong><br>Оператор <code>new</code> можно перегрузить как метод класса:<pre><code>class Pool {\npublic:\n    void* operator new(size_t size) {\n        return myAllocator.allocate(size);\n    }\n    void operator delete(void* ptr) {\n        myAllocator.deallocate(ptr);\n    }\n};</code></pre>"
+        }
+      ]
+    },
+    {
+      "heading": "RTTI и операции приведения типов",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "RTTI (Run-Time Type Information)",
+          "content": "<strong>RTTI</strong> — механизм C++, позволяющий определить тип объекта <em>во время выполнения</em>. Работает только для полиморфных классов (имеющих хотя бы одну виртуальную функцию).<br><br>Два инструмента: <code>typeid</code> и <code>dynamic_cast</code>."
+        },
+        {
+          "type": "text",
+          "content": "<strong>typeid</strong> — возвращает объект <code>std::type_info</code>:<pre><code>Base* p = new Derived();\nstd::cout << typeid(*p).name(); // \"Derived\"\n\nif (typeid(*p) == typeid(Derived)) {\n    // точное совпадение типа\n}</code></pre>"
+        },
+        {
+          "type": "text",
+          "content": "<strong>dynamic_cast</strong> — безопасное приведение вниз по иерархии:<pre><code>Base* bp = getSomeObject();\nDerived* dp = dynamic_cast<Derived*>(bp);\nif (dp != nullptr) {\n    dp->derivedMethod();\n} else {\n    // bp не указывает на Derived\n}</code></pre>Для ссылок при неудаче выбрасывает <code>std::bad_cast</code>."
+        },
+        {
+          "type": "definition",
+          "term": "Операции приведения типов (C++ casts)",
+          "content": "В C++ есть 4 оператора приведения:<br><br>• <code>static_cast&lt;T&gt;(expr)</code> — безопасное приведение «вверх»/«вниз» без проверки, числовые конверсии.<br>• <code>dynamic_cast&lt;T&gt;(expr)</code> — безопасное приведение с проверкой (RTTI), только для полиморфных классов.<br>• <code>const_cast&lt;T&gt;(expr)</code> — снятие/добавление <code>const</code> или <code>volatile</code>.<br>• <code>reinterpret_cast&lt;T&gt;(expr)</code> — побитовая реинтерпретация, самый опасный."
+        },
+        {
+          "type": "example",
+          "title": "Когда использовать какой cast?",
+          "content": "Определить правильный cast для каждой ситуации.",
+          "solution": "<pre><code>// 1. Числовое преобразование\nint n = static_cast<int>(3.14); // static_cast\n\n// 2. Безопасное приведение вниз\nBase* b = getObj();\nDerived* d = dynamic_cast<Derived*>(b); // dynamic_cast\n\n// 3. Убрать const для legacy API\nconst char* s = \"hello\";\nchar* p = const_cast<char*>(s); // const_cast\n\n// 4. Работа с raw memory\nvoid* raw = malloc(100);\nint* ip = reinterpret_cast<int*>(raw); // reinterpret_cast</code></pre>"
+        }
+      ]
     }
   ]
 }

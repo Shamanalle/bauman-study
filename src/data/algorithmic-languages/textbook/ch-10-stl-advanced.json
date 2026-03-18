@@ -92,6 +92,37 @@
       ]
     },
     {
+      "heading": "Алгоритмы STL",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "STL предоставляет ~100 алгоритмов в <code>&lt;algorithm&gt;</code>. Ключевые группы:"
+        },
+        {
+          "type": "example",
+          "title": "Основные алгоритмы",
+          "content": "Продемонстрировать find, count_if, transform, accumulate.",
+          "solution": "<pre><code>std::vector<int> v = {3, 1, 4, 1, 5, 9};\n\n// find — поиск элемента\nauto it = std::find(v.begin(), v.end(), 4);\n// it указывает на элемент 4\n\n// count_if — подсчёт по условию\nint cnt = std::count_if(v.begin(), v.end(),\n    [](int x){ return x > 3; }); // cnt = 3\n\n// transform — преобразование\nstd::vector<int> doubled(v.size());\nstd::transform(v.begin(), v.end(), doubled.begin(),\n    [](int x){ return x * 2; });\n// doubled = {6, 2, 8, 2, 10, 18}\n\n// accumulate — свёртка (из <numeric>)\nint sum = std::accumulate(v.begin(), v.end(), 0);\n// sum = 23</code></pre>"
+        }
+      ]
+    },
+    {
+      "heading": "Умные указатели (Smart Pointers)",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "Умные указатели",
+          "content": "C++11 вводит три типа умных указателей в <code>&lt;memory&gt;</code>:<br><br>• <code>std::unique_ptr&lt;T&gt;</code> — единоличное владение, нет копирования, только перемещение.<br>• <code>std::shared_ptr&lt;T&gt;</code> — разделяемое владение, подсчёт ссылок.<br>• <code>std::weak_ptr&lt;T&gt;</code> — слабая ссылка на shared_ptr, не увеличивает счётчик."
+        },
+        {
+          "type": "example",
+          "title": "unique_ptr vs shared_ptr",
+          "content": "Продемонстрировать использование умных указателей.",
+          "solution": "<pre><code>// unique_ptr — единоличное владение\nauto up = std::make_unique<MyClass>(42);\n// auto up2 = up; // ОШИБКА! нет копирования\nauto up2 = std::move(up); // OK: перемещение\n\n// shared_ptr — разделяемое владение\nauto sp1 = std::make_shared<MyClass>(42);\nauto sp2 = sp1; // OK: счётчик = 2\nsp1.reset(); // счётчик = 1\nsp2.reset(); // счётчик = 0 → деструктор\n\n// weak_ptr — без владения\nstd::weak_ptr<MyClass> wp = sp1;\nif (auto locked = wp.lock()) {\n    locked->doSomething();\n}</code></pre>"
+        }
+      ]
+    },
+    {
       "heading": "Требования для unordered_set и unordered_map",
       "blocks": [
         {

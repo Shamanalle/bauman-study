@@ -93,6 +93,37 @@
       ]
     },
     {
+      "heading": "Атомарные операции (std::atomic)",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "std::atomic",
+          "content": "<code>std::atomic&lt;T&gt;</code> — обёртка, гарантирующая атомарность операций чтения/записи без мьютексов. Работает для целочисленных типов и указателей.<br><br>Основные операции: <code>load()</code>, <code>store()</code>, <code>exchange()</code>, <code>compare_exchange_strong()</code>."
+        },
+        {
+          "type": "example",
+          "title": "Атомарный счётчик",
+          "content": "Реализовать потокобезопасный счётчик.",
+          "solution": "<pre><code>std::atomic<int> counter{0};\n\nvoid increment(int n) {\n    for (int i = 0; i < n; ++i) {\n        counter.fetch_add(1, std::memory_order_relaxed);\n    }\n}\n\nstd::thread t1(increment, 100000);\nstd::thread t2(increment, 100000);\nt1.join(); t2.join();\n\nstd::cout << counter.load(); // Всегда 200000!</code></pre>Без <code>atomic</code> результат был бы непредсказуемым из-за data race."
+        }
+      ]
+    },
+    {
+      "heading": "std::async и std::future",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "<code>std::async</code> — высокоуровневый способ запуска асинхронных задач. Возвращает <code>std::future</code>, через который можно получить результат:<pre><code>auto fut = std::async(std::launch::async, [](){\n    // выполняется в отдельном потоке\n    return heavyComputation();\n});\n\n// ... делаем другую работу ...\n\nint result = fut.get(); // ждём и получаем результат</code></pre>"
+        },
+        {
+          "type": "example",
+          "title": "Параллельное вычисление",
+          "content": "Вычислить суммы двух половин массива параллельно.",
+          "solution": "<pre><code>std::vector<int> data(1000000, 1);\n\nauto half = data.size() / 2;\nauto fut1 = std::async(std::launch::async, [&](){\n    return std::accumulate(data.begin(),\n                          data.begin() + half, 0LL);\n});\nauto fut2 = std::async(std::launch::async, [&](){\n    return std::accumulate(data.begin() + half,\n                          data.end(), 0LL);\n});\n\nlong long total = fut1.get() + fut2.get();\n// total = 1000000</code></pre>"
+        }
+      ]
+    },
+    {
       "heading": "Атомарные операции",
       "blocks": [
         {

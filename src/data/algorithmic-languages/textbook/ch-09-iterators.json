@@ -94,6 +94,41 @@
       ]
     },
     {
+      "heading": "Категории итераторов",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "Категории итераторов STL",
+          "content": "Итераторы делятся на 5 категорий по возможностям:<br><br>1. <strong>Input</strong> — только чтение, однопроходный (istream_iterator)<br>2. <strong>Output</strong> — только запись, однопроходный (ostream_iterator)<br>3. <strong>Forward</strong> — чтение/запись, многопроходный (forward_list)<br>4. <strong>Bidirectional</strong> — + движение назад (list, set, map)<br>5. <strong>RandomAccess</strong> — + произвольный доступ, арифметика (vector, deque, array)"
+        },
+        {
+          "type": "text",
+          "content": "<strong>Зачем нужны категории?</strong> Алгоритмы STL предъявляют <em>минимальные требования</em> к итераторам:<br>• <code>std::find</code> — InputIterator (любой контейнер)<br>• <code>std::reverse</code> — BidirectionalIterator (list, vector, но не forward_list)<br>• <code>std::sort</code> — RandomAccessIterator (vector, deque, но не list!)"
+        },
+        {
+          "type": "example",
+          "title": "Почему нельзя сортировать list через std::sort?",
+          "content": "Объяснить, почему std::sort(lst.begin(), lst.end()) не компилируется.",
+          "solution": "<code>std::list</code> предоставляет только <strong>BidirectionalIterator</strong>, а <code>std::sort</code> требует <strong>RandomAccessIterator</strong> для доступа по индексу (O(1)).<br><br>Решение: использовать метод контейнера <code>lst.sort()</code>, который реализует merge sort за O(n log n) без случайного доступа."
+        }
+      ]
+    },
+    {
+      "heading": "Написание своего итератора",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "Для написания итератора нужно определить 5 типов (через typedef или using) и операторы:"
+        },
+        {
+          "type": "example",
+          "title": "Минимальный forward iterator",
+          "content": "Реализовать итератор для обхода связного списка.",
+          "solution": "<pre><code>class ListIterator {\npublic:\n    using value_type = int;\n    using pointer = int*;\n    using reference = int&;\n    using difference_type = ptrdiff_t;\n    using iterator_category = std::forward_iterator_tag;\n\n    ListIterator(Node* p = nullptr) : ptr(p) {}\n\n    reference operator*() { return ptr->data; }\n    ListIterator& operator++() {\n        ptr = ptr->next;\n        return *this;\n    }\n    bool operator==(const ListIterator& o) const {\n        return ptr == o.ptr;\n    }\n    bool operator!=(const ListIterator& o) const {\n        return !(*this == o);\n    }\nprivate:\n    Node* ptr;\n};</code></pre>"
+        }
+      ]
+    },
+    {
       "heading": "Работа со стандартными алгоритмами",
       "blocks": [
         {

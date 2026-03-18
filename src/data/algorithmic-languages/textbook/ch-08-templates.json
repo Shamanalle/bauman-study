@@ -100,6 +100,42 @@
       ]
     },
     {
+      "heading": "Специализация шаблонов",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "Полная специализация",
+          "content": "<strong>Полная специализация</strong> — реализация шаблона для конкретного типа:<pre><code>template<> // пустые угловые скобки\nclass Stack<bool> {\n    // особая реализация для bool\n    // (побитовое хранение для экономии памяти)\n};</code></pre>"
+        },
+        {
+          "type": "definition",
+          "term": "Частичная специализация",
+          "content": "<strong>Частичная специализация</strong> — для подмножества типов (только для классов, не для функций!):<pre><code>template<typename T>\nclass Container<T*> {\n    // специализация для всех указателей\n};</code></pre>"
+        },
+        {
+          "type": "example",
+          "title": "Пример специализации",
+          "content": "Реализовать шаблон Print с особым поведением для std::string.",
+          "solution": "<pre><code>template<typename T>\nvoid print(const T& val) {\n    std::cout << val << std::endl;\n}\n\n// Полная специализация для string\ntemplate<>\nvoid print<std::string>(const std::string& val) {\n    std::cout << \"\\\"\" << val << \"\\\"\" << std::endl;\n}\n\nprint(42);        // 42\nprint(3.14);      // 3.14\nprint(std::string(\"hi\")); // \"hi\"</code></pre>"
+        }
+      ]
+    },
+    {
+      "heading": "Variadic templates и fold expressions",
+      "blocks": [
+        {
+          "type": "text",
+          "content": "<strong>Variadic templates</strong> (C++11) — шаблоны с переменным числом параметров:<pre><code>template<typename... Args>\nvoid log(Args... args) {\n    (std::cout << ... << args) << std::endl;\n    // fold expression (C++17)\n}\n\nlog(\"x =\", 42, \", y =\", 3.14);\n// Вывод: x =42, y =3.14</code></pre>"
+        },
+        {
+          "type": "example",
+          "title": "Рекурсивный variadic print",
+          "content": "Реализовать printf-подобную функцию через variadic templates.",
+          "solution": "<pre><code>// База рекурсии\nvoid print() { std::cout << std::endl; }\n\n// Рекурсивный шаг\ntemplate<typename T, typename... Rest>\nvoid print(const T& first, const Rest&... rest) {\n    std::cout << first << \" \";\n    print(rest...); // разворачиваем пакет\n}\n\nprint(1, \"hello\", 3.14); // 1 hello 3.14</code></pre>"
+        }
+      ]
+    },
+    {
       "heading": "STL — стандартная библиотека шаблонов",
       "blocks": [
         {
