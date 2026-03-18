@@ -1,0 +1,372 @@
+{
+  "section": "🎯 Доп. задачи",
+  "icon": "✏️",
+  "questions": [
+    {
+      "id": "Д1.1",
+      "title": "∫ x³/(x⁴+1) dx",
+      "type": "Задача · 6 б. · Подведение",
+      "formalText": "**Вычислить:**\n$$\\int\\frac{x^3}{x^4+1}\\,dx$$",
+      "tldr": "Подведение: d(x⁴)=4x³dx",
+      "hint": "Замена $t=x^4+1$, $dt=4x^3\\,dx$",
+      "steps": [
+        {"title": "Замена", "text": "$t=x^4+1$, $dt=4x^3 dx$:", "math": "$$\\int\\frac{x^3\\,dx}{x^4+1}=\\frac{1}{4}\\int\\frac{dt}{t}$$"},
+        {"title": "Интегрирование", "math": "$$=\\frac{1}{4}\\ln|t|+C$$"},
+        {"title": "Ответ", "math": "$$\\boxed{\\frac{1}{4}\\ln(x^4+1)+C}$$"}
+      ],
+      "formula": "\\frac{1}{4}\\ln(x^4+1)+C"
+    },
+    {
+      "id": "Д1.2",
+      "title": "∫ x·arctg x dx",
+      "type": "Задача · 6 б. · По частям",
+      "formalText": "**Вычислить:**\n$$\\int x\\arctan x\\,dx$$",
+      "tldr": "По частям: u=arctg x, dv=x dx",
+      "hint": "$u=\\arctan x$, $dv=x\\,dx$ → $du=\\frac{dx}{1+x^2}$, $v=\\frac{x^2}{2}$",
+      "steps": [
+        {"title": "По частям", "text": "$u=\\arctan x$, $dv=x\\,dx$:\n$v=x^2/2$, $du=dx/(1+x^2)$.", "math": "$$\\frac{x^2}{2}\\arctan x-\\frac{1}{2}\\int\\frac{x^2}{1+x^2}dx$$"},
+        {"title": "Упрощение", "text": "$\\frac{x^2}{1+x^2}=1-\\frac{1}{1+x^2}$.", "math": "$$=\\frac{x^2}{2}\\arctan x-\\frac{1}{2}(x-\\arctan x)+C$$"},
+        {"title": "Ответ", "math": "$$\\boxed{\\frac{x^2+1}{2}\\arctan x-\\frac{x}{2}+C}$$"}
+      ],
+      "formula": "\\frac{x^2+1}{2}\\arctan x-\\frac{x}{2}+C"
+    },
+    {
+      "id": "Д1.3",
+      "title": "∫ sin³x·cos²x dx",
+      "type": "Задача · 6 б. · Тригонометрия",
+      "formalText": "**Вычислить:**\n$$\\int\\sin^3 x\\cos^2 x\\,dx$$",
+      "tldr": "Нечёт. степень sin: отщепляем sin x·dx",
+      "hint": "$\\sin^3 x=(1-\\cos^2 x)\\sin x$, замена $t=\\cos x$",
+      "steps": [
+        {"title": "Разложение", "text": "$\\sin^3 x\\cos^2 x=(1-\\cos^2 x)\\cos^2 x\\sin x$. Замена $t=\\cos x$, $dt=-\\sin x\\,dx$:", "math": "$$-\\int(1-t^2)t^2\\,dt=-\\int(t^2-t^4)dt$$"},
+        {"title": "Интегрирование", "math": "$$=-\\frac{t^3}{3}+\\frac{t^5}{5}+C$$"},
+        {"title": "Ответ", "math": "$$\\boxed{\\frac{\\cos^5 x}{5}-\\frac{\\cos^3 x}{3}+C}$$"}
+      ],
+      "formula": "\\frac{\\cos^5 x}{5}-\\frac{\\cos^3 x}{3}+C"
+    },
+    {
+      "id": "Д1.4",
+      "title": "∫ dx/(x²+4x+8)",
+      "type": "Задача · 6 б. · Кв. трёхчлен",
+      "formalText": "**Вычислить:**\n$$\\int\\frac{dx}{x^2+4x+8}$$",
+      "tldr": "Выделение полного квадрата: (x+2)²+4",
+      "hint": "$x^2+4x+8=(x+2)^2+4$ → табличный $\\int\\frac{dt}{t^2+a^2}$",
+      "steps": [
+        {"title": "Полный квадрат", "text": "$x^2+4x+8=(x+2)^2+4$. Замена $t=x+2$:", "math": "$$\\int\\frac{dt}{t^2+4}=\\frac{1}{2}\\arctan\\frac{t}{2}+C$$"},
+        {"title": "Ответ", "math": "$$\\boxed{\\frac{1}{2}\\arctan\\frac{x+2}{2}+C}$$"}
+      ],
+      "formula": "\\frac{1}{2}\\arctan\\frac{x+2}{2}+C"
+    },
+    {
+      "id": "Д1.5",
+      "title": "∫ (3x+1)/(x²−x−2) dx",
+      "type": "Задача · 6 б. · Рац. дроби",
+      "formalText": "**Вычислить:**\n$$\\int\\frac{3x+1}{x^2-x-2}\\,dx$$",
+      "tldr": "Разложение: x²−x−2=(x−2)(x+1)",
+      "hint": "$\\frac{3x+1}{(x-2)(x+1)}=\\frac{A}{x-2}+\\frac{B}{x+1}$. Найти $A$, $B$",
+      "steps": [
+        {"title": "Разложение", "text": "$\\frac{3x+1}{(x-2)(x+1)}=\\frac{A}{x-2}+\\frac{B}{x+1}$.\n\n$x=2$: $7=3A$ → $A=7/3$. $x=-1$: $-2=-3B$ → $B=2/3$."},
+        {"title": "Интегрирование", "math": "$$\\frac{7}{3}\\ln|x-2|+\\frac{2}{3}\\ln|x+1|+C$$"},
+        {"title": "Ответ", "math": "$$\\boxed{\\frac{7}{3}\\ln|x-2|+\\frac{2}{3}\\ln|x+1|+C}$$"}
+      ],
+      "formula": "\\frac{7}{3}\\ln|x-2|+\\frac{2}{3}\\ln|x+1|+C"
+    },
+    {
+      "id": "Д1.6",
+      "title": "∫ eˣ·cos x dx",
+      "type": "Задача · 6 б. · По частям (двойное)",
+      "formalText": "**Вычислить:**\n$$\\int e^x\\cos x\\,dx$$",
+      "tldr": "Двойное по частям → уравнение на I",
+      "hint": "Два раза по частям: $u=\\cos x$, $dv=e^x dx$, затем $u=\\sin x$ → получится уравнение $I=...-I$",
+      "steps": [
+        {"title": "Первое по частям", "text": "$u=\\cos x$, $dv=e^x dx$:", "math": "$$I=e^x\\cos x+\\int e^x\\sin x\\,dx$$"},
+        {"title": "Второе по частям", "text": "$u=\\sin x$, $dv=e^x dx$:", "math": "$$I=e^x\\cos x+e^x\\sin x-I$$"},
+        {"title": "Ответ", "text": "$2I=e^x(\\cos x+\\sin x)$.", "math": "$$\\boxed{\\frac{e^x(\\cos x+\\sin x)}{2}+C}$$"}
+      ],
+      "formula": "\\frac{e^x(\\cos x+\\sin x)}{2}+C"
+    },
+    {
+      "id": "Д1.7",
+      "title": "∫ dx/(x√(x²+1))",
+      "type": "Задача · 6 б. · Кв. трёхчлен",
+      "formalText": "**Вычислить:**\n$$\\int\\frac{dx}{x\\sqrt{x^2+1}}$$",
+      "tldr": "Замена t=1/x → −∫dt/√(1+t²)",
+      "hint": "Замена $t=1/x$, $dx=-dt/t^2$ → $-\\int\\frac{dt}{\\sqrt{1+t^2}}$",
+      "steps": [
+        {"title": "Замена t=1/x", "text": "$x=1/t$, $dx=-dt/t^2$, $\\sqrt{x^2+1}=\\sqrt{1/t^2+1}=\\sqrt{1+t^2}/|t|$.", "math": "$$-\\int\\frac{t\\,dt}{t^2\\cdot\\sqrt{1+t^2}/t}=-\\int\\frac{dt}{\\sqrt{1+t^2}}$$"},
+        {"title": "Табличный интеграл", "math": "$$=-\\ln|t+\\sqrt{1+t^2}|+C$$"},
+        {"title": "Ответ", "text": "Обратная замена $t=1/x$:", "math": "$$\\boxed{-\\ln\\left|\\frac{1}{x}+\\sqrt{1+\\frac{1}{x^2}}\\right|+C}$$"}
+      ],
+      "formula": "\\ln\\left|\\frac{x}{1+\\sqrt{1+x^2}}\\right|+C"
+    },
+    {
+      "id": "Д1.8",
+      "title": "∫ x²·eˣ dx",
+      "type": "Задача · 6 б. · По частям",
+      "formalText": "**Вычислить:**\n$$\\int x^2 e^x\\,dx$$",
+      "tldr": "Двойное по частям: u=x², u=2x",
+      "hint": "По частям дважды: $u=x^2$ → $u=2x$ → табличный",
+      "steps": [
+        {"title": "Первое по частям", "text": "$u=x^2$, $dv=e^x dx$:", "math": "$$x^2 e^x-2\\int xe^x\\,dx$$"},
+        {"title": "Второе по частям", "text": "$u=x$, $dv=e^x dx$:", "math": "$$=x^2 e^x-2(xe^x-e^x)+C$$"},
+        {"title": "Ответ", "math": "$$\\boxed{e^x(x^2-2x+2)+C}$$"}
+      ],
+      "formula": "e^x(x^2-2x+2)+C"
+    },
+    {
+      "id": "Д1.9",
+      "title": "∫ dx/(sin x·cos x)",
+      "type": "Задача · 6 б. · Тригонометрия",
+      "formalText": "**Вычислить:**\n$$\\int\\frac{dx}{\\sin x\\cos x}$$",
+      "tldr": "sin x·cos x = sin(2x)/2",
+      "hint": "$\\frac{1}{\\sin x\\cos x}=\\frac{2}{\\sin 2x}=2\\csc 2x$",
+      "steps": [
+        {"title": "Упрощение", "text": "$\\sin x\\cos x=\\frac{\\sin 2x}{2}$ →", "math": "$$2\\int\\frac{dx}{\\sin 2x}=2\\int\\csc 2x\\,dx$$"},
+        {"title": "Табличный", "math": "$$=\\ln|\\tan x|+C$$"},
+        {"title": "Ответ", "math": "$$\\boxed{\\ln|\\tan x|+C}$$"}
+      ],
+      "formula": "\\ln|\\tan x|+C"
+    },
+    {
+      "id": "Д2.1",
+      "title": "S: y=x², y=√x",
+      "type": "Задача · 6 б. · Площадь (декарт.)",
+      "formalText": "**Вычислить площадь фигуры:**\n$$y=x^2,\\quad y=\\sqrt{x}$$",
+      "tldr": "Пересечение x=0,1; S=∫(√x−x²)dx",
+      "hint": "Пересечение: $x^2=\\sqrt{x}$ → $x^4=x$ → $x=0,1$. $S=\\int_0^1(\\sqrt{x}-x^2)dx$",
+      "steps": [
+        {"title": "Пересечения", "text": "$x^2=\\sqrt{x}$ → $x^4=x$ → $x(x^3-1)=0$ → $x=0,1$."},
+        {"title": "Площадь", "math": "$$S=\\int_0^1(x^{1/2}-x^2)dx=\\left[\\frac{2x^{3/2}}{3}-\\frac{x^3}{3}\\right]_0^1=\\frac{2}{3}-\\frac{1}{3}$$"},
+        {"title": "Ответ", "math": "$$\\boxed{S=\\frac{1}{3}}$$"}
+      ],
+      "formula": "\\frac{1}{3}"
+    },
+    {
+      "id": "Д2.2",
+      "title": "V_x: y=sin x, [0,π]",
+      "type": "Задача · 6 б. · Объём (Ox)",
+      "formalText": "**Объём тела вращения вокруг Ox:**\n$$y=\\sin x,\\quad x\\in[0,\\pi]$$",
+      "tldr": "V=π∫sin²x dx, формула понижения степени",
+      "hint": "$V=\\pi\\int_0^\\pi\\sin^2 x\\,dx$. Используй $\\sin^2 x=\\frac{1-\\cos 2x}{2}$",
+      "steps": [
+        {"title": "Формула объёма", "math": "$$V=\\pi\\int_0^\\pi\\sin^2 x\\,dx=\\pi\\int_0^\\pi\\frac{1-\\cos 2x}{2}dx$$"},
+        {"title": "Вычисление", "math": "$$=\\frac{\\pi}{2}\\left[x-\\frac{\\sin 2x}{2}\\right]_0^\\pi=\\frac{\\pi}{2}\\cdot\\pi$$"},
+        {"title": "Ответ", "math": "$$\\boxed{V=\\frac{\\pi^2}{2}}$$"}
+      ],
+      "formula": "\\frac{\\pi^2}{2}"
+    },
+    {
+      "id": "Д2.3",
+      "title": "L: y=x³/3, x∈[0,1]",
+      "type": "Задача · 6 б. · Длина дуги",
+      "formalText": "**Длина дуги:**\n$$y=\\frac{x^3}{3},\\quad x\\in[0,1]$$",
+      "tldr": "L=∫√(1+x⁴)dx — подстановка",
+      "hint": "$y'=x^2$ → $L=\\int_0^1\\sqrt{1+x^4}\\,dx$",
+      "steps": [
+        {"title": "Формула длины", "text": "$y'=x^2$.", "math": "$$L=\\int_0^1\\sqrt{1+x^4}\\,dx$$"},
+        {"title": "Вычисление", "text": "Этот интеграл — эллиптический, не берётся в элементарных. Численно: $L \\approx 1.0894$.", "math": "$$\\boxed{L=\\int_0^1\\sqrt{1+x^4}\\,dx\\approx 1.089}$$"}
+      ],
+      "formula": "\\int_0^1\\sqrt{1+x^4}\\,dx"
+    },
+    {
+      "id": "Д2.4",
+      "title": "S: r=2cos φ",
+      "type": "Задача · 6 б. · Площадь (полярные)",
+      "formalText": "**Площадь фигуры:**\n$$r=2\\cos\\varphi$$",
+      "tldr": "Окружность r=2cosφ: S=½∫r²dφ=π",
+      "hint": "$S=\\frac{1}{2}\\int_{-\\pi/2}^{\\pi/2}4\\cos^2\\varphi\\,d\\varphi$. Это окружность радиуса 1",
+      "steps": [
+        {"title": "Формула", "text": "Кривая замкнута при $\\varphi\\in[-\\pi/2,\\pi/2]$.", "math": "$$S=\\frac{1}{2}\\int_{-\\pi/2}^{\\pi/2}4\\cos^2\\varphi\\,d\\varphi=2\\int_{-\\pi/2}^{\\pi/2}\\frac{1+\\cos 2\\varphi}{2}d\\varphi$$"},
+        {"title": "Вычисление", "math": "$$=\\left[\\varphi+\\frac{\\sin 2\\varphi}{2}\\right]_{-\\pi/2}^{\\pi/2}=\\pi$$"},
+        {"title": "Ответ", "math": "$$\\boxed{S=\\pi}$$"}
+      ],
+      "formula": "\\pi"
+    },
+    {
+      "id": "Д2.5",
+      "title": "V_y: x²+y²/4=1",
+      "type": "Задача · 6 б. · Объём (Oy)",
+      "formalText": "**Объём тела вращения вокруг Oy:**\n$$x^2+\\frac{y^2}{4}=1$$",
+      "tldr": "Эллипс: V_y=π∫x²dy=π∫(1−y²/4)dy",
+      "hint": "Эллипс $a=1$, $b=2$. Вращение вокруг Oy: $x^2=1-y^2/4$, $y\\in[-2,2]$",
+      "steps": [
+        {"title": "Формула", "text": "$x^2=1-y^2/4$. По симметрии:", "math": "$$V=2\\pi\\int_0^2\\left(1-\\frac{y^2}{4}\\right)dy$$"},
+        {"title": "Вычисление", "math": "$$=2\\pi\\left[y-\\frac{y^3}{12}\\right]_0^2=2\\pi\\left(2-\\frac{8}{12}\\right)=2\\pi\\cdot\\frac{4}{3}$$"},
+        {"title": "Ответ", "math": "$$\\boxed{V=\\frac{8\\pi}{3}}$$"}
+      ],
+      "formula": "\\frac{8\\pi}{3}"
+    },
+    {
+      "id": "Д2.6",
+      "title": "S: y=eˣ, y=e⁻ˣ, x=1",
+      "type": "Задача · 6 б. · Площадь (декарт.)",
+      "formalText": "**Площадь фигуры:**\n$$y=e^x,\\;y=e^{-x},\\;x=1$$",
+      "tldr": "Пересечение x=0; S=∫₀¹(eˣ−e⁻ˣ)dx",
+      "hint": "$e^x=e^{-x}$ → $x=0$. $S=\\int_0^1(e^x-e^{-x})dx$",
+      "steps": [
+        {"title": "Пересечения", "text": "$e^x=e^{-x}$ → $e^{2x}=1$ → $x=0$."},
+        {"title": "Площадь", "math": "$$S=\\int_0^1(e^x-e^{-x})dx=[e^x+e^{-x}]_0^1=(e+e^{-1})-(1+1)$$"},
+        {"title": "Ответ", "math": "$$\\boxed{S=e+e^{-1}-2}$$"}
+      ],
+      "formula": "e+e^{-1}-2"
+    },
+    {
+      "id": "Д2.7",
+      "title": "S пов.: y=x², [0,1] вокруг Ox",
+      "type": "Задача · 6 б. · Площадь поверхности",
+      "formalText": "**Площадь поверхности вращения:**\n$$y=x^2,\\;x\\in[0,1]\\text{ вокруг Ox}$$",
+      "tldr": "P=2π∫y√(1+y'²)dx, y'=2x",
+      "hint": "$P=2\\pi\\int_0^1 x^2\\sqrt{1+4x^2}\\,dx$",
+      "steps": [
+        {"title": "Формула", "text": "$y'=2x$.", "math": "$$P=2\\pi\\int_0^1 x^2\\sqrt{1+4x^2}\\,dx$$"},
+        {"title": "Замена", "text": "$2x=\\sinh t$ или тригонометрическая. Результат:", "math": "$$\\boxed{P=\\frac{\\pi}{6}(5\\sqrt{5}-1)}$$"}
+      ],
+      "formula": "\\frac{\\pi}{6}(5\\sqrt{5}-1)"
+    },
+    {
+      "id": "Д2.8",
+      "title": "L: кардиоида r=1+cos φ",
+      "type": "Задача · 6 б. · Длина дуги",
+      "formalText": "**Длина кардиоиды:**\n$$r=1+\\cos\\varphi$$",
+      "tldr": "L=∫₀²π √(r²+r'²)dφ, r'=−sinφ",
+      "hint": "$L=\\int_0^{2\\pi}\\sqrt{(1+\\cos\\varphi)^2+\\sin^2\\varphi}\\,d\\varphi = \\int_0^{2\\pi}\\sqrt{2+2\\cos\\varphi}\\,d\\varphi$",
+      "steps": [
+        {"title": "Формула", "text": "$r'=-\\sin\\varphi$. $r^2+r'^2=(1+\\cos\\varphi)^2+\\sin^2\\varphi=2+2\\cos\\varphi=4\\cos^2(\\varphi/2)$.", "math": "$$L=\\int_0^{2\\pi}2|\\cos(\\varphi/2)|\\,d\\varphi=4\\int_0^\\pi\\cos(\\varphi/2)d\\varphi$$"},
+        {"title": "Вычисление", "math": "$$=4\\cdot[2\\sin(\\varphi/2)]_0^\\pi=8$$"},
+        {"title": "Ответ", "math": "$$\\boxed{L=8}$$"}
+      ],
+      "formula": "8"
+    },
+    {
+      "id": "Д2.9",
+      "title": "S: y=x², y=2x",
+      "type": "Задача · 6 б. · Площадь (декарт.)",
+      "formalText": "**Площадь фигуры:**\n$$y=x^2,\\quad y=2x$$",
+      "tldr": "Пересечение x=0,2; S=∫(2x−x²)dx",
+      "hint": "$x^2=2x$ → $x=0,2$. $S=\\int_0^2(2x-x^2)dx$",
+      "steps": [
+        {"title": "Пересечения", "text": "$x^2=2x$ → $x(x-2)=0$ → $x=0,2$."},
+        {"title": "Площадь", "math": "$$S=\\int_0^2(2x-x^2)dx=\\left[x^2-\\frac{x^3}{3}\\right]_0^2=4-\\frac{8}{3}$$"},
+        {"title": "Ответ", "math": "$$\\boxed{S=\\frac{4}{3}}$$"}
+      ],
+      "formula": "\\frac{4}{3}"
+    },
+    {
+      "id": "Д3.1",
+      "title": "∫₁^∞ dx/(x²+x)",
+      "type": "Задача · 6 б. · НИ 1-го рода",
+      "formalText": "Исследовать на сходимость:\n$$\\int_1^{\\infty}\\frac{dx}{x^2+x}$$",
+      "tldr": "f ~ 1/x² при x→∞, p=2>1 → сх.",
+      "hint": "$\\frac{1}{x^2+x}\\sim\\frac{1}{x^2}$ при $x\\to\\infty$, $p=2>1$",
+      "steps": [
+        {"title": "Эквивалент", "text": "При $x\\to\\infty$: $x^2+x\\sim x^2$ → $f\\sim 1/x^2$, $p=2$."},
+        {"title": "Ответ", "text": "$p=2>1$ → **сходится**. Более того: $\\frac{1}{x(x+1)}=\\frac{1}{x}-\\frac{1}{x+1}$ → $\\int_1^\\infty=\\ln 2$.", "math": "$$\\boxed{\\text{Сходится } (=\\ln 2)}$$"}
+      ],
+      "formula": "\\ln 2"
+    },
+    {
+      "id": "Д3.2",
+      "title": "∫₀¹ dx/√(x−x²)",
+      "type": "Задача · 6 б. · НИ 2-го рода",
+      "formalText": "Исследовать на сходимость:\n$$\\int_0^1\\frac{dx}{\\sqrt{x-x^2}}$$",
+      "tldr": "x−x²=x(1−x), две особые точки x=0,1, p=1/2<1",
+      "hint": "Особые точки $x=0$ и $x=1$. При $x\\to 0$: $\\sqrt{x-x^2}\\sim\\sqrt{x}$ → $p=1/2<1$",
+      "steps": [
+        {"title": "Анализ", "text": "$x-x^2=x(1-x)$. Особые: $x=0$ ($f\\sim 1/\\sqrt{x}$, $p=1/2$) и $x=1$ ($f\\sim 1/\\sqrt{1-x}$, $p=1/2$)."},
+        {"title": "Ответ", "text": "Оба $p=1/2<1$ → оба НИ **сходятся**. $\\int_0^1\\frac{dx}{\\sqrt{x(1-x)}}=\\pi$.", "math": "$$\\boxed{\\text{Сходится } (=\\pi)}$$"}
+      ],
+      "formula": "\\pi"
+    },
+    {
+      "id": "Д3.3",
+      "title": "∫₁^∞ sin(1/x)/x dx",
+      "type": "Задача · 6 б. · НИ 1-го рода",
+      "formalText": "Исследовать на сходимость:\n$$\\int_1^{\\infty}\\frac{\\sin(1/x)}{x}\\,dx$$",
+      "tldr": "sin(1/x) ~ 1/x → f ~ 1/x², p=2>1 → сх.",
+      "hint": "При $x\\to\\infty$: $\\sin(1/x)\\sim 1/x$ → $f\\sim 1/x^2$, $p=2>1$",
+      "steps": [
+        {"title": "Эквивалент", "text": "При $x\\to\\infty$: $\\sin(1/x)\\sim 1/x$. Значит $f\\sim 1/x^2$, $p=2$."},
+        {"title": "Ответ", "math": "$$\\boxed{\\text{Сходится (} p=2>1\\text{)}}$$"}
+      ],
+      "formula": "\\text{Сходится}"
+    },
+    {
+      "id": "Д3.4",
+      "title": "∫₂^∞ dx/(x·ln²x)",
+      "type": "Задача · 6 б. · НИ 1-го рода",
+      "formalText": "Исследовать на сходимость:\n$$\\int_2^{\\infty}\\frac{dx}{x\\ln^2 x}$$",
+      "tldr": "Подведение: t=ln x → ∫dt/t², сх.",
+      "hint": "Замена $t=\\ln x$, $dt=dx/x$ → $\\int_{\\ln 2}^\\infty \\frac{dt}{t^2}$, сходится",
+      "steps": [
+        {"title": "Замена", "text": "$t=\\ln x$, $dt=dx/x$:", "math": "$$\\int_{\\ln 2}^\\infty\\frac{dt}{t^2}=\\left[-\\frac{1}{t}\\right]_{\\ln 2}^\\infty=\\frac{1}{\\ln 2}$$"},
+        {"title": "Ответ", "math": "$$\\boxed{\\text{Сходится } (=1/\\ln 2)}$$"}
+      ],
+      "formula": "\\frac{1}{\\ln 2}"
+    },
+    {
+      "id": "Д3.5",
+      "title": "∫₀¹ ln x dx",
+      "type": "Задача · 6 б. · НИ 2-го рода",
+      "formalText": "Исследовать на сходимость:\n$$\\int_0^1\\ln x\\,dx$$",
+      "tldr": "НИ 2-го рода (x=0). Прямое вычисление: −1",
+      "hint": "При $x\\to 0^+$: $\\ln x \\to -\\infty$. По частям: $\\int\\ln x\\,dx=x\\ln x-x$",
+      "steps": [
+        {"title": "Вычисление", "text": "$\\int_0^1\\ln x\\,dx=[x\\ln x-x]_0^1$.\n\n$(1\\cdot 0-1)-\\lim_{x\\to 0^+}(x\\ln x-x)=-1-0=-1$.", "math": "$$\\lim_{x\\to 0^+}x\\ln x=0$$"},
+        {"title": "Ответ", "math": "$$\\boxed{\\text{Сходится } (=-1)}$$"}
+      ],
+      "formula": "-1"
+    },
+    {
+      "id": "Д3.6",
+      "title": "∫₁^∞ dx/(x√x)",
+      "type": "Задача · 6 б. · НИ 1-го рода",
+      "formalText": "Исследовать на сходимость:\n$$\\int_1^{\\infty}\\frac{dx}{x\\sqrt{x}}=\\int_1^\\infty x^{-3/2}dx$$",
+      "tldr": "Степенной: p=3/2>1 → сх. = 2",
+      "hint": "$x^{-3/2}$: $p=3/2>1$ → сходится",
+      "steps": [
+        {"title": "Вычисление", "math": "$$\\int_1^\\infty x^{-3/2}dx=\\left[\\frac{x^{-1/2}}{-1/2}\\right]_1^\\infty=0-(-2)=2$$"},
+        {"title": "Ответ", "math": "$$\\boxed{\\text{Сходится } (=2)}$$"}
+      ],
+      "formula": "2"
+    },
+    {
+      "id": "Д3.7",
+      "title": "∫₁^∞ dx/(x·ln x)",
+      "type": "Задача · 6 б. · НИ 1-го рода",
+      "formalText": "Исследовать на сходимость:\n$$\\int_1^{\\infty}\\frac{dx}{x\\ln x}$$",
+      "tldr": "t=ln x → ∫dt/t = ln(ln x) → расх.",
+      "hint": "Замена $t=\\ln x$ → $\\int_0^\\infty dt/t$ — расходится",
+      "steps": [
+        {"title": "Замена", "text": "$t=\\ln x$:", "math": "$$\\int_0^\\infty\\frac{dt}{t}=\\lim_{A\\to\\infty}\\ln A=+\\infty$$"},
+        {"title": "Ответ", "math": "$$\\boxed{\\text{Расходится}}$$"}
+      ],
+      "formula": "\\text{Расходится}"
+    },
+    {
+      "id": "Д3.8",
+      "title": "∫₀^∞ e⁻ˣ dx",
+      "type": "Задача · 6 б. · НИ 1-го рода",
+      "formalText": "Исследовать на сходимость:\n$$\\int_0^{\\infty}e^{-x}\\,dx$$",
+      "tldr": "Показательная: e⁻ˣ → 0 быстро, = 1",
+      "hint": "$\\int_0^\\infty e^{-x}dx=[-e^{-x}]_0^\\infty=0-(-1)=1$",
+      "steps": [
+        {"title": "Вычисление", "math": "$$\\int_0^\\infty e^{-x}dx=[-e^{-x}]_0^\\infty=1$$"},
+        {"title": "Ответ", "math": "$$\\boxed{\\text{Сходится } (=1)}$$"}
+      ],
+      "formula": "1"
+    },
+    {
+      "id": "Д3.9",
+      "title": "∫₀¹ dx/x^{3/4}",
+      "type": "Задача · 6 б. · НИ 2-го рода",
+      "formalText": "Исследовать на сходимость:\n$$\\int_0^1\\frac{dx}{x^{3/4}}$$",
+      "tldr": "p=3/4<1 → сх. = 4",
+      "hint": "$p=3/4<1$ → **сходится**",
+      "steps": [
+        {"title": "Вычисление", "math": "$$\\int_0^1 x^{-3/4}dx=\\left[\\frac{x^{1/4}}{1/4}\\right]_0^1=4$$"},
+        {"title": "Ответ", "math": "$$\\boxed{\\text{Сходится } (=4)}$$"}
+      ],
+      "formula": "4"
+    }
+  ]
+}
