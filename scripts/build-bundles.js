@@ -50,9 +50,12 @@ const SUBJECTS = [
   {
     id: 'linear-algebra', title: 'Линейная алгебра и ФНП', icon: '📐',
     assessments: [
-      { id: 'midterm-1', name: 'РК-1 · Линалг', bundleName: 'ЛинАлг_РК-1' },
-      { id: 'midterm-2', name: 'РК-2 · ФНП', bundleName: 'ЛинАлг_РК-2' },
-      { id: 'kr-1', name: 'КР · Дифф. ФНП', bundleName: 'ЛинАлг_КР-1' },
+      { id: 'midterm-1', name: 'РК-1 · Теория', bundleName: 'ЛинАлг_РК-1' },
+      { id: 'midterm-1-practice', name: 'РК-1 · Практика', bundleName: 'ЛинАлг_РК-1_Практика' },
+      { id: 'midterm-2', name: 'РК-2 · Теория', bundleName: 'ЛинАлг_РК-2' },
+      { id: 'midterm-2-practice', name: 'РК-2 · Практика', bundleName: 'ЛинАлг_РК-2_Практика' },
+      { id: 'kr-1', name: 'КР · Теория', bundleName: 'ЛинАлг_КР-1' },
+      { id: 'kr-1-practice', name: 'КР · Практика', bundleName: 'ЛинАлг_КР-1_Практика' },
     ],
   },
   {
