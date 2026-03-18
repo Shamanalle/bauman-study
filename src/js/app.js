@@ -209,7 +209,8 @@ function getSubjectsConfigLocal() {
       id: 'algorithmic-languages', title: 'Алгоритмические языки',
       subtitle: 'C++: ООП, шаблоны, исключения, многопоточность', icon: '💻',
       assessments: [
-        { name: 'Экзамен', assessment: 'exam', type: 'exam', icon: '📋' },
+        { name: 'Экзамен · Теория', assessment: 'exam', type: 'exam', icon: '📋' },
+        { name: 'Экзамен · Практика', assessment: 'exam-practice', type: 'kr', icon: '✏️' },
         { name: 'Лабораторные', assessment: null, type: 'labs', icon: '💻', href: '?subject=algorithmic-languages&type=labs' },
         { name: 'Учебное пособие', assessment: null, type: 'textbook', icon: '📖', href: '?subject=algorithmic-languages&type=textbook' },
       ],
