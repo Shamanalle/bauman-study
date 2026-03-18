@@ -32,7 +32,8 @@
         "title": "📝 Пример",
         "text": "Старый базис $\\mathbf{e}_1,\\mathbf{e}_2$, новый $\\mathbf{e}_1'=2\\mathbf{e}_1+\\mathbf{e}_2$, $\\mathbf{e}_2'=\\mathbf{e}_1-\\mathbf{e}_2$. $T=\\begin{pmatrix}2&1\\\\1&-1\\end{pmatrix}$.\\n\\nЕсли $\\mathbf{x}=(5,1)^T$ в старом, то $\\mathbf{x}'=T^{-1}\\mathbf{x}=\\frac{1}{-3}\\begin{pmatrix}-1&-1\\\\-1&2\\end{pmatrix}\\begin{pmatrix}5\\\\1\\end{pmatrix}=\\begin{pmatrix}2\\\\1\\end{pmatrix}$ в новом."
       },
-      "examSay": "На РК пишите полное доказательство: два разложения одного вектора, подставить $E'=ET$, единственность, получить $\\mathbf{x}=T\\mathbf{x}'$."
+      "examSay": "На РК пишите полное доказательство: два разложения одного вектора, подставить $E'=ET$, единственность, получить $\\mathbf{x}=T\\mathbf{x}'$.",
+      "proofTitle": "📐 Вывод формулы координат"
     },
     {
       "id": 2,
@@ -78,7 +79,8 @@
         "text": "$\\mathbf{x}=(3,4)$, $\\mathbf{y}=(4,3)$. $(\\mathbf{x},\\mathbf{y})=24$.\\n\\nКБ: $24^2=576 \\leq 25 \\cdot 25=625$ $\\checkmark$.\\n\\nТреугольник: $\\|\\mathbf{x}+\\mathbf{y}\\|=\\|(7,7)\\|=7\\sqrt{2} \\approx 9.9 \\leq 5+5=10$ $\\checkmark$."
       },
       "keyIdea": "КБ доказывается через неотрицательность скалярного квадрата и дискриминант. Неравенство треугольника -- следствие КБ.",
-      "examSay": "Доказательство КБ: квадратный трехчлен $(t\\mathbf{y}-\\mathbf{x})^2 \\geq 0$, дискриминант $\\leq 0$. Треугольник: подставить КБ в $\\|\\mathbf{x}+\\mathbf{y}\\|^2$."
+      "examSay": "Доказательство КБ: квадратный трехчлен $(t\\mathbf{y}-\\mathbf{x})^2 \\geq 0$, дискриминант $\\leq 0$. Треугольник: подставить КБ в $\\|\\mathbf{x}+\\mathbf{y}\\|^2$.",
+      "proofTitle": "📐 Доказательство неравенства"
     },
     {
       "id": 3,
@@ -120,7 +122,8 @@
         "text": "$A_E=\\begin{pmatrix}3&1\\\\0&2\\end{pmatrix}$, $T=\\begin{pmatrix}1&1\\\\0&1\\end{pmatrix}$, $T^{-1}=\\begin{pmatrix}1&-1\\\\0&1\\end{pmatrix}$.\\n\\n$A_{E'}=T^{-1}A_ET=\\begin{pmatrix}1&-1\\\\0&1\\end{pmatrix}\\begin{pmatrix}3&1\\\\0&2\\end{pmatrix}\\begin{pmatrix}1&1\\\\0&1\\end{pmatrix}=\\begin{pmatrix}3&2\\\\0&2\\end{pmatrix}$."
       },
       "keyIdea": "Формула $T^{-1}AT$ -- подобие матриц. Подобные матрицы имеют одни собственные числа, след, определитель.",
-      "examSay": "Три шага: подставить $\\mathbf{x}_E=T\\mathbf{x}_{E'}$ в $\\mathbf{y}_E=A_E\\mathbf{x}_E$, умножить на $T^{-1}$, сравнить."
+      "examSay": "Три шага: подставить $\\mathbf{x}_E=T\\mathbf{x}_{E'}$ в $\\mathbf{y}_E=A_E\\mathbf{x}_E$, умножить на $T^{-1}$, сравнить.",
+      "proofTitle": "📐 Вывод формулы оператора"
     },
     {
       "id": 4,
@@ -166,7 +169,8 @@
         "text": "$A=\\begin{pmatrix}1&2\\\\3&4\\end{pmatrix}$, $\\text{tr}\\,A=5$. При $T=\\begin{pmatrix}1&1\\\\0&1\\end{pmatrix}$: $A'=\\begin{pmatrix}-2&-1\\\\3&7\\end{pmatrix}$, $\\text{tr}\\,A'=-2+7=5$ $\\checkmark$."
       },
       "keyIdea": "$\\det T^{-1} \\cdot \\det T = 1$ -- вот почему подобие не меняет характеристический многочлен.",
-      "examSay": "Доказательство: $\\det(T^{-1}(A-\\lambda E)T) = \\det T^{-1} \\cdot \\det(A-\\lambda E) \\cdot \\det T = \\det(A-\\lambda E)$."
+      "examSay": "Доказательство: $\\det(T^{-1}(A-\\lambda E)T) = \\det T^{-1} \\cdot \\det(A-\\lambda E) \\cdot \\det T = \\det(A-\\lambda E)$.",
+      "proofTitle": "📐 Доказательство инвариантности"
     },
     {
       "id": 5,
@@ -212,7 +216,8 @@
         "text": "$A=\\begin{pmatrix}1&0&0\\\\0&2&0\\\\0&0&3\\end{pmatrix}$. $\\lambda_1=1$ ($\\mathbf{x}_1=(1,0,0)^T$), $\\lambda_2=2$ ($\\mathbf{x}_2=(0,1,0)^T$), $\\lambda_3=3$ ($\\mathbf{x}_3=(0,0,1)^T$).\\n\\nВсе различны $\\Rightarrow$ ЛНЗ."
       },
       "keyIdea": "Метод индукции: применить $A$, вычесть исходную комбинацию $\\times \\lambda_{s+1}$, воспользоваться предположением.",
-      "examSay": "Метод индукции: применить $A$ к равенству, вычесть исходное $\\times \\lambda_{s+1}$, применить ЛНЗ первых $s$ векторов."
+      "examSay": "Метод индукции: применить $A$ к равенству, вычесть исходное $\\times \\lambda_{s+1}$, применить ЛНЗ первых $s$ векторов.",
+      "proofTitle": "📐 Доказательство ЛНЗ"
     },
     {
       "id": 6,
@@ -254,7 +259,8 @@
         "text": "$Q=x_1^2+2x_1x_2$, $B=\\begin{pmatrix}1&1\\\\1&0\\end{pmatrix}$, $T=\\begin{pmatrix}1&0\\\\1&1\\end{pmatrix}$.\\n\\n$B'=T^TBT=\\begin{pmatrix}1&1\\\\0&1\\end{pmatrix}\\begin{pmatrix}1&1\\\\1&0\\end{pmatrix}\\begin{pmatrix}1&0\\\\1&1\\end{pmatrix}=\\begin{pmatrix}4&3\\\\3&1\\end{pmatrix}$."
       },
       "keyIdea": "Отличие от оператора: $T^T$ вместо $T^{-1}$. Причина: $(T\\mathbf{x})^T=\\mathbf{x}^TT^T$, а не $\\mathbf{x}^TT^{-1}$.",
-      "examSay": "Доказательство: $Q=\\mathbf{x}^TBx$, подставить $\\mathbf{x}=T\\mathbf{x}'$, раскрыть $(T\\mathbf{x}')^T=\\mathbf{x}'^TT^T$, получить $B'=T^TBT$."
+      "examSay": "Доказательство: $Q=\\mathbf{x}^TBx$, подставить $\\mathbf{x}=T\\mathbf{x}'$, раскрыть $(T\\mathbf{x}')^T=\\mathbf{x}'^TT^T$, получить $B'=T^TBT$.",
+      "proofTitle": "📐 Вывод формулы кв. формы"
     }
   ]
 }

@@ -96,7 +96,8 @@
         "title": "📝 Пример",
         "text": "Базис $\\mathbf{e}_1=(1,0)$, $\\mathbf{e}_2=(0,1)$. Новый: $\\mathbf{e}_1'=(1,1)$, $\\mathbf{e}_2'=(1,-1)$. $T=\\begin{pmatrix}1&1\\\\1&-1\\end{pmatrix}$.\\n\\nВектор $\\mathbf{v}=(3,1)$ в старом. В новом: $\\mathbf{x}'=T^{-1}\\mathbf{x}=\\frac{1}{-2}\\begin{pmatrix}-1&-1\\\\-1&1\\end{pmatrix}\\begin{pmatrix}3\\\\1\\end{pmatrix}=\\begin{pmatrix}2\\\\-1\\end{pmatrix}$."
       },
-      "examSay": "Запомните мнемонику: базис умножается «прямо» ($E'=ET$), а координаты — «обратно» ($\\mathbf{x}'=T^{-1}\\mathbf{x}$)."
+      "examSay": "Запомните мнемонику: базис умножается «прямо» ($E'=ET$), а координаты — «обратно» ($\\mathbf{x}'=T^{-1}\\mathbf{x}$).",
+      "proofTitle": "📐 Вывод формулы"
     },
     {
       "id": 6,

@@ -6,7 +6,10 @@ import { nl } from './text-utils.js';
  */
 export function buildQuestionCard(q) {
   const isTask = String(q.id).includes('Задача');
-  const proofLabel = isTask ? 'Идея' : 'Доказательство';
+  const t = (q.type || '').toLowerCase();
+  const proofLabel = isTask ? 'Идея'
+    : t.includes('формула') || t.includes('вывод') ? 'Вывод'
+    : 'Доказательство';
   const exampleLabel = isTask ? 'Решение' : 'Пример';
 
   return `
@@ -29,8 +32,15 @@ export function buildQuestionCard(q) {
 export function buildQuestionBody(q, proofLabel, exampleLabel) {
   if (!proofLabel) {
     const isTask = String(q.id).includes('Задача');
-    proofLabel = isTask ? 'Идея' : 'Доказательство';
-    exampleLabel = isTask ? 'Решение' : 'Пример';
+    if (isTask) {
+      proofLabel = 'Идея';
+      exampleLabel = 'Решение';
+    } else {
+      const t = (q.type || '').toLowerCase();
+      proofLabel = t.includes('формула') || t.includes('вывод') ? 'Вывод'
+        : 'Доказательство';
+      exampleLabel = 'Пример';
+    }
   }
 
   // --- Practice mode: strong solution hiding ---

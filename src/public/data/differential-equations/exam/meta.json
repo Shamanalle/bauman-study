@@ -1,7 +1,7 @@
 {
   "title": "Интегралы и ДУ",
-  "subtitle": "Экзамен за 2-й семестр",
+  "subtitle": "Экзамен · Теория · Все билеты",
   "icon": "∫",
-  "shortCode": "idex",
-  "bundleName": "ИнтегралыДУ_Экзамен"
+  "shortCode": "idexam",
+  "bundleName": "ИнтДУ_Экз_Теория"
 }
