@@ -136,15 +136,21 @@ code { font-family: "JetBrains Mono", monospace; }
   border-radius: 8px;
   padding: 12px 16px;
   margin: 10px 0;
-  text-align: center;
+  text-align: left;
   font-size: 1.05rem;
   overflow-x: auto;
 }
-body[data-subject="differential-equations"] .math-box {
-  text-align: left;
+
+/* Display math in math-box: left-aligned (formula = ключевая формула, не нужно центрировать) */
+.math-box .katex-display {
+  text-align: left !important;
+  margin: 8px 0 !important;
+}
+.math-box .katex-display > .katex {
+  text-align: left !important;
 }
 
-/* Display math: left-aligned only for ИиДУ (too many formulas → eyes jump) */
+/* Display math in card text: left-aligned for ИиДУ (too many formulas → eyes jump) */
 body[data-subject="differential-equations"] .card-formal-text .katex-display,
 body[data-subject="differential-equations"] .step-text .katex-display {
   text-align: left !important;
