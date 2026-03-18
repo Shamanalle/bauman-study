@@ -140,6 +140,20 @@ code { font-family: "JetBrains Mono", monospace; }
   font-size: 1.05rem;
   overflow-x: auto;
 }
+body[data-subject="differential-equations"] .math-box {
+  text-align: left;
+}
+
+/* Display math: left-aligned only for ИиДУ (too many formulas → eyes jump) */
+body[data-subject="differential-equations"] .card-formal-text .katex-display,
+body[data-subject="differential-equations"] .step-text .katex-display {
+  text-align: left !important;
+  margin: 8px 0 !important;
+}
+body[data-subject="differential-equations"] .card-formal .katex-display > .katex,
+body[data-subject="differential-equations"] .step-content .katex-display > .katex {
+  text-align: left !important;
+}
 
 /* App container */
 .app {

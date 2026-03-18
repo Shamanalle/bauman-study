@@ -34,6 +34,9 @@ async function init() {
   const hasParams = params.has('subject') && params.has('assessment');
   const isLabs = params.get('type') === 'labs';
 
+  // Set subject on body for per-subject CSS scoping
+  if (params.has('subject')) document.body.dataset.subject = params.get('subject');
+
   // Labs browser (separate page type)
   if (isLabs && params.get('subject') === 'algorithmic-languages') {
     const { initLabBrowser } = await import('./lab-browser.js');
