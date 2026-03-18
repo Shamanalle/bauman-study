@@ -9,23 +9,86 @@
       "formalText": "Найти площадь фигуры, ограниченной кривыми $y = \\sqrt{x+4}$, $y = -\\sqrt{x} + 2$ и осью $Ox$. Сделать чертёж.",
       "tldr": "Найти точки пересечения, определить пределы, ∫|f−g|dx",
       "steps": [
-        {"title": "Чертёж и точки пересечения", "text": "$\\sqrt{x+4} = -\\sqrt{x}+2$ → $\\sqrt{x+4}+\\sqrt{x} = 2$. Квадрируем: $x+4+2\\sqrt{x(x+4)}+x = 4$ → $2\\sqrt{x(x+4)} = -2x$ → $x = 0$.\n\n$\\sqrt{x+4} = 0$ при $x = -4$. $-\\sqrt{x}+2 = 0$ при $x = 4$."},
-        {"title": "Разбиваем на области", "text": "Фигура состоит из двух частей:\n1) $x \\in [-4, 0]$: ограничена $y = \\sqrt{x+4}$ и $y = 0$\n2) $x \\in [0, 4]$: ограничена $y = \\sqrt{x+4}$ сверху и $y = -\\sqrt{x}+2$ (или осью)", "math": "$$S = \\int_{-4}^{0}\\sqrt{x+4}\\,dx + \\int_0^4 (-\\sqrt{x}+2)\\,dx$$"},
-        {"title": "Вычисляем", "math": "$$\\int_{-4}^{0}\\sqrt{x+4}\\,dx = \\frac{2}{3}(x+4)^{3/2}\\Big|_{-4}^{0} = \\frac{2}{3} \\cdot 8 = \\frac{16}{3}$$"},
-        {"title": "Второй интеграл", "math": "$$\\int_0^4(-\\sqrt{x}+2)\\,dx = \\left(-\\frac{2}{3}x^{3/2}+2x\\right)\\Big|_0^4 = -\\frac{16}{3}+8 = \\frac{8}{3}$$"},
-        {"title": "Ответ", "math": "$$S = \\frac{16}{3} + \\frac{8}{3} = 8$$"}
+        {
+          "title": "Чертёж и точки пересечения",
+          "text": "$\\sqrt{x+4} = -\\sqrt{x}+2$ → $\\sqrt{x+4}+\\sqrt{x} = 2$. Квадрируем: $x+4+2\\sqrt{x(x+4)}+x = 4$ → $2\\sqrt{x(x+4)} = -2x$ → $x = 0$.\n\n$\\sqrt{x+4} = 0$ при $x = -4$. $-\\sqrt{x}+2 = 0$ при $x = 4$."
+        },
+        {
+          "title": "Разбиваем на области",
+          "text": "Фигура состоит из двух частей:\n1) $x \\in [-4, 0]$: ограничена $y = \\sqrt{x+4}$ и $y = 0$\n2) $x \\in [0, 4]$: ограничена $y = \\sqrt{x+4}$ сверху и $y = -\\sqrt{x}+2$ (или осью)",
+          "math": "$$S = \\int_{-4}^{0}\\sqrt{x+4}\\,dx + \\int_0^4 (-\\sqrt{x}+2)\\,dx$$"
+        },
+        {
+          "title": "Вычисляем",
+          "math": "$$\\int_{-4}^{0}\\sqrt{x+4}\\,dx = \\frac{2}{3}(x+4)^{3/2}\\Big|_{-4}^{0} = \\frac{2}{3} \\cdot 8 = \\frac{16}{3}$$"
+        },
+        {
+          "title": "Второй интеграл",
+          "math": "$$\\int_0^4(-\\sqrt{x}+2)\\,dx = \\left(-\\frac{2}{3}x^{3/2}+2x\\right)\\Big|_0^4 = -\\frac{16}{3}+8 = \\frac{8}{3}$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$S = \\frac{16}{3} + \\frac{8}{3} = 8$$"
+        }
       ],
       "formula": "S = 8",
       "plot": {
         "curves": [
-          {"expr": "sqrt(x+4)", "label": "√(x+4)"},
-          {"expr": "-sqrt(x)+2", "label": "−√x+2", "color": "#f43f5e"}
+          {
+            "expr": "sqrt(x+4)",
+            "label": "√(x+4)"
+          },
+          {
+            "expr": "-sqrt(x)+2",
+            "label": "−√x+2",
+            "color": "#f43f5e"
+          }
         ],
-        "xRange": [-5, 5],
-        "yRange": [-0.3, 3.2],
-        "fill": [{"below": 0, "xRange": [-4, 0], "color": "rgba(99,102,241,0.15)"}, {"below": 1, "xRange": [0, 4], "color": "rgba(244,63,94,0.12)"}],
-        "points": [{"x": -4, "y": 0, "label": "(−4,0)"}, {"x": 0, "y": 2, "label": "(0,2)"}, {"x": 4, "y": 0, "label": "(4,0)"}]
-      }
+        "xRange": [
+          -5,
+          5
+        ],
+        "yRange": [
+          -0.3,
+          3.2
+        ],
+        "fill": [
+          {
+            "below": 0,
+            "xRange": [
+              -4,
+              0
+            ],
+            "color": "rgba(99,102,241,0.15)"
+          },
+          {
+            "below": 1,
+            "xRange": [
+              0,
+              4
+            ],
+            "color": "rgba(244,63,94,0.12)"
+          }
+        ],
+        "points": [
+          {
+            "x": -4,
+            "y": 0,
+            "label": "(−4,0)"
+          },
+          {
+            "x": 0,
+            "y": 2,
+            "label": "(0,2)"
+          },
+          {
+            "x": 4,
+            "y": 0,
+            "label": "(4,0)"
+          }
+        ]
+      },
+      "hint": "Найди точки пересечения кривых, определи пределы интегрирования, затем вычисли $S = \\int_{a}^{b}|f(x) - g(x)|\\,dx$"
     },
     {
       "id": "1.2",
@@ -34,20 +97,79 @@
       "formalText": "Найти площадь фигуры, ограниченной астроидой $x = a\\cos^3 t$, $y = a\\sin^3 t$. Сделать чертёж.",
       "tldr": "Параметрическая: S = ∫y·x'dt, используем симметрию (×4)",
       "steps": [
-        {"title": "Используем симметрию", "text": "Астроида симметрична относительно обеих осей. Считаем 1-й квадрант (×4).", "math": "$$S = 4\\int_0^{\\pi/2} y(t) \\cdot |x'(t)|\\,dt$$"},
-        {"title": "Вычисляем x'(t)", "math": "$$x'(t) = -3a\\cos^2 t \\sin t$$"},
-        {"title": "Подставляем", "text": "При $t: 0 \\to \\pi/2$ кривая идёт от $(a,0)$ до $(0,a)$, $x$ убывает, значит $|x'| = 3a\\cos^2 t \\sin t$.", "math": "$$S = 4\\int_0^{\\pi/2} a\\sin^3 t \\cdot 3a\\cos^2 t \\sin t\\,dt = 12a^2\\int_0^{\\pi/2}\\sin^4 t \\cos^2 t\\,dt$$"},
-        {"title": "Интеграл Вальгиса", "text": "$\\int_0^{\\pi/2}\\sin^4 t\\cos^2 t\\,dt = \\frac{3 \\cdot 1 \\cdot 1}{6 \\cdot 4 \\cdot 2} \\cdot \\frac{\\pi}{2} = \\frac{\\pi}{32}$", "math": "$$S = 12a^2 \\cdot \\frac{\\pi}{32} = \\frac{3\\pi a^2}{8}$$"}
+        {
+          "title": "Используем симметрию",
+          "text": "Астроида симметрична относительно обеих осей. Считаем 1-й квадрант (×4).",
+          "math": "$$S = 4\\int_0^{\\pi/2} y(t) \\cdot |x'(t)|\\,dt$$"
+        },
+        {
+          "title": "Вычисляем x'(t)",
+          "math": "$$x'(t) = -3a\\cos^2 t \\sin t$$"
+        },
+        {
+          "title": "Подставляем",
+          "text": "При $t: 0 \\to \\pi/2$ кривая идёт от $(a,0)$ до $(0,a)$, $x$ убывает, значит $|x'| = 3a\\cos^2 t \\sin t$.",
+          "math": "$$S = 4\\int_0^{\\pi/2} a\\sin^3 t \\cdot 3a\\cos^2 t \\sin t\\,dt = 12a^2\\int_0^{\\pi/2}\\sin^4 t \\cos^2 t\\,dt$$"
+        },
+        {
+          "title": "Интеграл Вальгиса",
+          "text": "$\\int_0^{\\pi/2}\\sin^4 t\\cos^2 t\\,dt = \\frac{3 \\cdot 1 \\cdot 1}{6 \\cdot 4 \\cdot 2} \\cdot \\frac{\\pi}{2} = \\frac{\\pi}{32}$",
+          "math": "$$S = 12a^2 \\cdot \\frac{\\pi}{32} = \\frac{3\\pi a^2}{8}$$"
+        }
       ],
       "formula": "S = \\frac{3\\pi a^2}{8}",
       "plot": {
-        "curves": [{"type": "parametric", "x": "cos(t)^3", "y": "sin(t)^3", "tRange": [0, 6.2832], "label": "Астроида"}],
-        "xRange": [-1.2, 1.2],
-        "yRange": [-1.2, 1.2],
+        "curves": [
+          {
+            "type": "parametric",
+            "x": "cos(t)^3",
+            "y": "sin(t)^3",
+            "tRange": [
+              0,
+              6.2832
+            ],
+            "label": "Астроида"
+          }
+        ],
+        "xRange": [
+          -1.2,
+          1.2
+        ],
+        "yRange": [
+          -1.2,
+          1.2
+        ],
         "aspectEqual": true,
-        "fill": [{"enclosed": 0, "color": "rgba(99,102,241,0.12)"}],
-        "points": [{"x": 1, "y": 0, "label": "(a,0)"}, {"x": -1, "y": 0, "label": "(−a,0)"}, {"x": 0, "y": 1, "label": "(0,a)"}, {"x": 0, "y": -1, "label": "(0,−a)"}]
-      }
+        "fill": [
+          {
+            "enclosed": 0,
+            "color": "rgba(99,102,241,0.12)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": 0,
+            "label": "(a,0)"
+          },
+          {
+            "x": -1,
+            "y": 0,
+            "label": "(−a,0)"
+          },
+          {
+            "x": 0,
+            "y": 1,
+            "label": "(0,a)"
+          },
+          {
+            "x": 0,
+            "y": -1,
+            "label": "(0,−a)"
+          }
+        ]
+      },
+      "hint": "Параметрическая формула: $S = 4\\int_0^{\\pi/2} y(t) \\cdot |x'(t)|\\,dt$. Используй симметрию астроиды ($\\times 4$)"
     },
     {
       "id": "1.3",
@@ -56,22 +178,65 @@
       "formalText": "Найти площадь фигуры, ограниченной кардиоидой $\\rho = 2(1+\\cos\\varphi)$ и лучами $\\varphi = 0$, $\\varphi = \\pi/3$. Сделать чертёж.",
       "tldr": "Полярные: S = ½∫ρ²dφ от 0 до π/3",
       "steps": [
-        {"title": "Формула площади", "math": "$$S = \\frac{1}{2}\\int_0^{\\pi/3} [2(1+\\cos\\varphi)]^2\\,d\\varphi = 2\\int_0^{\\pi/3}(1+\\cos\\varphi)^2\\,d\\varphi$$"},
-        {"title": "Раскрываем", "math": "$$2\\int_0^{\\pi/3}(1 + 2\\cos\\varphi + \\cos^2\\varphi)\\,d\\varphi$$"},
-        {"title": "Используем cos² = (1+cos2φ)/2", "math": "$$2\\int_0^{\\pi/3}\\left(\\frac{3}{2} + 2\\cos\\varphi + \\frac{\\cos 2\\varphi}{2}\\right)d\\varphi$$"},
-        {"title": "Вычисляем", "math": "$$2\\left[\\frac{3\\varphi}{2} + 2\\sin\\varphi + \\frac{\\sin 2\\varphi}{4}\\right]_0^{\\pi/3} = 2\\left(\\frac{\\pi}{2} + \\sqrt{3} + \\frac{\\sqrt{3}}{8}\\right) = \\pi + \\frac{9\\sqrt{3}}{4}$$"}
+        {
+          "title": "Формула площади",
+          "math": "$$S = \\frac{1}{2}\\int_0^{\\pi/3} [2(1+\\cos\\varphi)]^2\\,d\\varphi = 2\\int_0^{\\pi/3}(1+\\cos\\varphi)^2\\,d\\varphi$$"
+        },
+        {
+          "title": "Раскрываем",
+          "math": "$$2\\int_0^{\\pi/3}(1 + 2\\cos\\varphi + \\cos^2\\varphi)\\,d\\varphi$$"
+        },
+        {
+          "title": "Используем cos² = (1+cos2φ)/2",
+          "math": "$$2\\int_0^{\\pi/3}\\left(\\frac{3}{2} + 2\\cos\\varphi + \\frac{\\cos 2\\varphi}{2}\\right)d\\varphi$$"
+        },
+        {
+          "title": "Вычисляем",
+          "math": "$$2\\left[\\frac{3\\varphi}{2} + 2\\sin\\varphi + \\frac{\\sin 2\\varphi}{4}\\right]_0^{\\pi/3} = 2\\left(\\frac{\\pi}{2} + \\sqrt{3} + \\frac{\\sqrt{3}}{8}\\right) = \\pi + \\frac{9\\sqrt{3}}{4}$$"
+        }
       ],
       "formula": "S = \\pi + \\frac{9\\sqrt{3}}{4}",
       "plot": {
         "curves": [
-          {"type": "polar", "r": "2*(1+cos(t))", "tRange": [0, 6.2832], "label": "ρ=2(1+cosφ)"}
+          {
+            "type": "polar",
+            "r": "2*(1+cos(t))",
+            "tRange": [
+              0,
+              6.2832
+            ],
+            "label": "ρ=2(1+cosφ)"
+          }
         ],
-        "xRange": [-1, 5],
-        "yRange": [-3.5, 3.5],
+        "xRange": [
+          -1,
+          5
+        ],
+        "yRange": [
+          -3.5,
+          3.5
+        ],
         "aspectEqual": true,
-        "fill": [{"enclosed": 0, "color": "rgba(99,102,241,0.1)"}],
-        "points": [{"x": 4, "y": 0, "label": "φ=0, ρ=4"}, {"x": 0, "y": 0, "label": "φ=π"}]
-      }
+        "fill": [
+          {
+            "enclosed": 0,
+            "color": "rgba(99,102,241,0.1)"
+          }
+        ],
+        "points": [
+          {
+            "x": 4,
+            "y": 0,
+            "label": "φ=0, ρ=4"
+          },
+          {
+            "x": 0,
+            "y": 0,
+            "label": "φ=π"
+          }
+        ]
+      },
+      "hint": "Полярные координаты: $S = \\frac{1}{2}\\int_{\\varphi_1}^{\\varphi_2} \\rho^2(\\varphi)\\,d\\varphi$. Пределы: от $0$ до $\\pi/3$"
     },
     {
       "id": "2.1",
@@ -80,22 +245,75 @@
       "formalText": "Найти объём тела, образованного вращением вокруг оси $Oy$ фигуры, ограниченной линиями $y = \\frac{x^2}{2}+2x+2$ и $y = 2$. Сделать чертёж.",
       "tldr": "Метод оболочек: V = 2π∫x|f(x)−g(x)|dx",
       "steps": [
-        {"title": "Точки пересечения", "text": "$\\frac{x^2}{2}+2x+2 = 2$ → $\\frac{x^2}{2}+2x = 0$ → $x(x+4) = 0$ → $x = 0, x = -4$.", "math": "$$\\text{Область: } x \\in [-4, 0]$$"},
-        {"title": "Метод оболочек (вокруг Oy)", "text": "Высота оболочки: $h = 2 - (\\frac{x^2}{2}+2x+2) = -\\frac{x^2}{2}-2x$.", "math": "$$V = 2\\pi\\int_{-4}^{0}|x|\\left(-\\frac{x^2}{2}-2x\\right)dx$$"},
-        {"title": "На [-4,0]: x < 0, |x| = −x", "math": "$$V = 2\\pi\\int_{-4}^{0}(-x)\\left(-\\frac{x^2}{2}-2x\\right)dx = 2\\pi\\int_{-4}^0\\left(\\frac{x^3}{2}+2x^2\\right)dx$$"},
-        {"title": "Вычисляем", "math": "$$2\\pi\\left[\\frac{x^4}{8}+\\frac{2x^3}{3}\\right]_{-4}^0 = 2\\pi\\left(0 - 32 + \\frac{128}{3}\\right) = 2\\pi \\cdot \\frac{32}{3} = \\frac{64\\pi}{3}$$"}
+        {
+          "title": "Точки пересечения",
+          "text": "$\\frac{x^2}{2}+2x+2 = 2$ → $\\frac{x^2}{2}+2x = 0$ → $x(x+4) = 0$ → $x = 0, x = -4$.",
+          "math": "$$\\text{Область: } x \\in [-4, 0]$$"
+        },
+        {
+          "title": "Метод оболочек (вокруг Oy)",
+          "text": "Высота оболочки: $h = 2 - (\\frac{x^2}{2}+2x+2) = -\\frac{x^2}{2}-2x$.",
+          "math": "$$V = 2\\pi\\int_{-4}^{0}|x|\\left(-\\frac{x^2}{2}-2x\\right)dx$$"
+        },
+        {
+          "title": "На [-4,0]: x < 0, |x| = −x",
+          "math": "$$V = 2\\pi\\int_{-4}^{0}(-x)\\left(-\\frac{x^2}{2}-2x\\right)dx = 2\\pi\\int_{-4}^0\\left(\\frac{x^3}{2}+2x^2\\right)dx$$"
+        },
+        {
+          "title": "Вычисляем",
+          "math": "$$2\\pi\\left[\\frac{x^4}{8}+\\frac{2x^3}{3}\\right]_{-4}^0 = 2\\pi\\left(0 - 32 + \\frac{128}{3}\\right) = 2\\pi \\cdot \\frac{32}{3} = \\frac{64\\pi}{3}$$"
+        }
       ],
       "formula": "V = \\frac{64\\pi}{3}",
       "plot": {
         "curves": [
-          {"expr": "x^2/2+2*x+2", "label": "x²/2+2x+2"},
-          {"expr": "2", "label": "y=2", "color": "#f43f5e", "dashed": true}
+          {
+            "expr": "x^2/2+2*x+2",
+            "label": "x²/2+2x+2"
+          },
+          {
+            "expr": "2",
+            "label": "y=2",
+            "color": "#f43f5e",
+            "dashed": true
+          }
         ],
-        "xRange": [-5, 1],
-        "yRange": [-0.3, 4],
-        "fill": [{"between": [1, 0], "color": "rgba(99,102,241,0.15)"}],
-        "points": [{"x": -4, "y": 2, "label": "(−4,2)"}, {"x": 0, "y": 2, "label": "(0,2)"}, {"x": -2, "y": 0, "label": "(−2,0)"}]
-      }
+        "xRange": [
+          -5,
+          1
+        ],
+        "yRange": [
+          -0.3,
+          4
+        ],
+        "fill": [
+          {
+            "between": [
+              1,
+              0
+            ],
+            "color": "rgba(99,102,241,0.15)"
+          }
+        ],
+        "points": [
+          {
+            "x": -4,
+            "y": 2,
+            "label": "(−4,2)"
+          },
+          {
+            "x": 0,
+            "y": 2,
+            "label": "(0,2)"
+          },
+          {
+            "x": -2,
+            "y": 0,
+            "label": "(−2,0)"
+          }
+        ]
+      },
+      "hint": "Метод оболочек (вращение вокруг $Oy$): $V = 2\\pi\\int_a^b x|f(x)-g(x)|\\,dx$"
     },
     {
       "id": "2.2",
@@ -104,19 +322,62 @@
       "formalText": "Найти объём тела, образованного вращением фигуры, ограниченной кривой $x = at^2$, $y = a\\ln t$ ($a > 0$) и осями координат, вокруг оси $Ox$. Сделать чертёж.",
       "tldr": "Параметрически: V = π∫y²·x'dt",
       "steps": [
-        {"title": "Определяем пределы", "text": "При $t = 1$: $x = a$, $y = 0$ (точка на оси Ox).\nПри $t \\to 0^+$: $x \\to 0$, $y \\to -\\infty$.\n\nКривая выходит из начала координат ($x=0$) при $t \\to 0^+$ и доходит до $(a, 0)$ при $t = 1$. Область ограничена кривой, осями и вращается вокруг $Ox$. Пределы по $t$: от $0$ до $1$."},
-        {"title": "Формула (метод дисков)", "text": "$x'(t) = 2at$. Подставляем в формулу объёма:", "math": "$$V = \\pi\\int_0^1 y^2(t)\\,x'(t)\\,dt = \\pi\\int_0^1 (a\\ln t)^2 \\cdot 2at\\,dt = 2\\pi a^3\\int_0^1 t\\ln^2 t\\,dt$$"},
-        {"title": "Интегрирование по частям (1-е)", "text": "$u = \\ln^2 t$, $dv = t\\,dt$ → $du = \\frac{2\\ln t}{t}dt$, $v = \\frac{t^2}{2}$.", "math": "$$\\int_0^1 t\\ln^2 t\\,dt = \\frac{t^2}{2}\\ln^2 t\\Big|_0^1 - \\int_0^1 t\\ln t\\,dt = 0 - \\int_0^1 t\\ln t\\,dt$$"},
-        {"title": "Интегрирование по частям (2-е)", "text": "$u = \\ln t$, $dv = t\\,dt$ → $du = \\frac{dt}{t}$, $v = \\frac{t^2}{2}$.", "math": "$$\\int_0^1 t\\ln t\\,dt = \\frac{t^2}{2}\\ln t\\Big|_0^1 - \\int_0^1\\frac{t}{2}dt = 0 - \\frac{1}{4} = -\\frac{1}{4}$$"},
-        {"title": "Ответ", "text": "$\\int_0^1 t\\ln^2 t\\,dt = -(-\\frac{1}{4}) = \\frac{1}{4}$.", "math": "$$V = 2\\pi a^3 \\cdot \\frac{1}{4} = \\frac{\\pi a^3}{2}$$"}
+        {
+          "title": "Определяем пределы",
+          "text": "При $t = 1$: $x = a$, $y = 0$ (точка на оси Ox).\nПри $t \\to 0^+$: $x \\to 0$, $y \\to -\\infty$.\n\nКривая выходит из начала координат ($x=0$) при $t \\to 0^+$ и доходит до $(a, 0)$ при $t = 1$. Область ограничена кривой, осями и вращается вокруг $Ox$. Пределы по $t$: от $0$ до $1$."
+        },
+        {
+          "title": "Формула (метод дисков)",
+          "text": "$x'(t) = 2at$. Подставляем в формулу объёма:",
+          "math": "$$V = \\pi\\int_0^1 y^2(t)\\,x'(t)\\,dt = \\pi\\int_0^1 (a\\ln t)^2 \\cdot 2at\\,dt = 2\\pi a^3\\int_0^1 t\\ln^2 t\\,dt$$"
+        },
+        {
+          "title": "Интегрирование по частям (1-е)",
+          "text": "$u = \\ln^2 t$, $dv = t\\,dt$ → $du = \\frac{2\\ln t}{t}dt$, $v = \\frac{t^2}{2}$.",
+          "math": "$$\\int_0^1 t\\ln^2 t\\,dt = \\frac{t^2}{2}\\ln^2 t\\Big|_0^1 - \\int_0^1 t\\ln t\\,dt = 0 - \\int_0^1 t\\ln t\\,dt$$"
+        },
+        {
+          "title": "Интегрирование по частям (2-е)",
+          "text": "$u = \\ln t$, $dv = t\\,dt$ → $du = \\frac{dt}{t}$, $v = \\frac{t^2}{2}$.",
+          "math": "$$\\int_0^1 t\\ln t\\,dt = \\frac{t^2}{2}\\ln t\\Big|_0^1 - \\int_0^1\\frac{t}{2}dt = 0 - \\frac{1}{4} = -\\frac{1}{4}$$"
+        },
+        {
+          "title": "Ответ",
+          "text": "$\\int_0^1 t\\ln^2 t\\,dt = -(-\\frac{1}{4}) = \\frac{1}{4}$.",
+          "math": "$$V = 2\\pi a^3 \\cdot \\frac{1}{4} = \\frac{\\pi a^3}{2}$$"
+        }
       ],
       "formula": "V = \\frac{\\pi a^3}{2}",
       "plot": {
-        "curves": [{"type": "parametric", "x": "t^2", "y": "ln(t)", "tRange": [0.05, 1], "label": "x=t², y=ln(t)"}],
-        "xRange": [-0.1, 1.2],
-        "yRange": [-3.2, 0.4],
-        "points": [{"x": 1, "y": 0, "label": "t=1"}]
-      }
+        "curves": [
+          {
+            "type": "parametric",
+            "x": "t^2",
+            "y": "ln(t)",
+            "tRange": [
+              0.05,
+              1
+            ],
+            "label": "x=t², y=ln(t)"
+          }
+        ],
+        "xRange": [
+          -0.1,
+          1.2
+        ],
+        "yRange": [
+          -3.2,
+          0.4
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": 0,
+            "label": "t=1"
+          }
+        ]
+      },
+      "hint": "Параметрическая формула объёма: $V = \\pi\\int y^2(t) \\cdot x'(t)\\,dt$"
     },
     {
       "id": "2.3",
@@ -125,19 +386,62 @@
       "formalText": "Найти объём тела, образованного вращением кривой $r = a\\sin^2\\varphi$ вокруг полярной оси. Сделать чертёж.",
       "tldr": "V = (2π/3)∫ρ³·sinφ dφ",
       "steps": [
-        {"title": "Формула", "math": "$$V = \\frac{2\\pi}{3}\\int_0^{\\pi}\\rho^3\\sin\\varphi\\,d\\varphi = \\frac{2\\pi a^3}{3}\\int_0^{\\pi}\\sin^6\\varphi \\cdot \\sin\\varphi\\,d\\varphi$$"},
-        {"title": "Упрощаем", "math": "$$V = \\frac{2\\pi a^3}{3}\\int_0^{\\pi}\\sin^7\\varphi\\,d\\varphi$$"},
-        {"title": "Интеграл Вальгиса", "text": "$\\int_0^\\pi \\sin^7\\varphi\\,d\\varphi = 2\\int_0^{\\pi/2}\\sin^7\\varphi\\,d\\varphi = 2 \\cdot \\frac{6 \\cdot 4 \\cdot 2}{7 \\cdot 5 \\cdot 3 \\cdot 1} = \\frac{32}{35}$", "math": "$$V = \\frac{2\\pi a^3}{3} \\cdot \\frac{32}{35} = \\frac{64\\pi a^3}{105}$$"}
+        {
+          "title": "Формула",
+          "math": "$$V = \\frac{2\\pi}{3}\\int_0^{\\pi}\\rho^3\\sin\\varphi\\,d\\varphi = \\frac{2\\pi a^3}{3}\\int_0^{\\pi}\\sin^6\\varphi \\cdot \\sin\\varphi\\,d\\varphi$$"
+        },
+        {
+          "title": "Упрощаем",
+          "math": "$$V = \\frac{2\\pi a^3}{3}\\int_0^{\\pi}\\sin^7\\varphi\\,d\\varphi$$"
+        },
+        {
+          "title": "Интеграл Вальгиса",
+          "text": "$\\int_0^\\pi \\sin^7\\varphi\\,d\\varphi = 2\\int_0^{\\pi/2}\\sin^7\\varphi\\,d\\varphi = 2 \\cdot \\frac{6 \\cdot 4 \\cdot 2}{7 \\cdot 5 \\cdot 3 \\cdot 1} = \\frac{32}{35}$",
+          "math": "$$V = \\frac{2\\pi a^3}{3} \\cdot \\frac{32}{35} = \\frac{64\\pi a^3}{105}$$"
+        }
       ],
       "formula": "V = \\frac{64\\pi a^3}{105}",
       "plot": {
-        "curves": [{"type": "polar", "r": "sin(t)^2", "tRange": [0, 6.2832], "label": "ρ=sin²φ"}],
-        "xRange": [-0.4, 1.1],
-        "yRange": [-0.8, 0.8],
+        "curves": [
+          {
+            "type": "polar",
+            "r": "sin(t)^2",
+            "tRange": [
+              0,
+              6.2832
+            ],
+            "label": "ρ=sin²φ"
+          }
+        ],
+        "xRange": [
+          -0.4,
+          1.1
+        ],
+        "yRange": [
+          -0.8,
+          0.8
+        ],
         "aspectEqual": true,
-        "fill": [{"enclosed": 0, "color": "rgba(99,102,241,0.12)"}],
-        "points": [{"x": 0, "y": 1, "label": "φ=π/2"}, {"x": 0, "y": -1, "label": "φ=3π/2"}]
-      }
+        "fill": [
+          {
+            "enclosed": 0,
+            "color": "rgba(99,102,241,0.12)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": 1,
+            "label": "φ=π/2"
+          },
+          {
+            "x": 0,
+            "y": -1,
+            "label": "φ=3π/2"
+          }
+        ]
+      },
+      "hint": "Полярная формула объёма вращения вокруг $Ox$: $V = \\frac{2\\pi}{3}\\int \\rho^3 \\sin\\varphi\\,d\\varphi$"
     },
     {
       "id": "3.1",
@@ -146,17 +450,50 @@
       "formalText": "Найти длину дуги кривой $y = x^2$ от точки $(-1, 1)$ до точки $(1, 1)$. Сделать чертёж.",
       "tldr": "L = ∫√(1+4x²)dx, симметрия → 2∫₀¹",
       "steps": [
-        {"title": "Формула", "text": "$y' = 2x$. Используем симметрию:", "math": "$$L = 2\\int_0^1\\sqrt{1+4x^2}\\,dx$$"},
-        {"title": "Подстановка x = ½·sh(t)", "text": "$1+4x^2 = \\cosh^2 t$, $dx = \\frac{1}{2}\\cosh t\\,dt$.", "math": "$$L = 2\\int_0^{\\text{arcsh}(2)}\\frac{\\cosh^2 t}{2}\\,dt = \\int_0^{\\text{arcsh}(2)}(1+\\cosh 2t)\\frac{dt}{2}$$"},
-        {"title": "Ответ", "math": "$$L = \\sqrt{5} + \\frac{1}{2}\\ln(2+\\sqrt{5})$$"}
+        {
+          "title": "Формула",
+          "text": "$y' = 2x$. Используем симметрию:",
+          "math": "$$L = 2\\int_0^1\\sqrt{1+4x^2}\\,dx$$"
+        },
+        {
+          "title": "Подстановка x = ½·sh(t)",
+          "text": "$1+4x^2 = \\cosh^2 t$, $dx = \\frac{1}{2}\\cosh t\\,dt$.",
+          "math": "$$L = 2\\int_0^{\\text{arcsh}(2)}\\frac{\\cosh^2 t}{2}\\,dt = \\int_0^{\\text{arcsh}(2)}(1+\\cosh 2t)\\frac{dt}{2}$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$L = \\sqrt{5} + \\frac{1}{2}\\ln(2+\\sqrt{5})$$"
+        }
       ],
       "formula": "L = \\sqrt{5} + \\frac{1}{2}\\ln(2+\\sqrt{5})",
       "plot": {
-        "curves": [{"expr": "x^2"}],
-        "xRange": [-1.5, 1.5],
-        "yRange": [-0.2, 1.8],
-        "points": [{"x": -1, "y": 1, "label": "A"}, {"x": 1, "y": 1, "label": "B"}]
-      }
+        "curves": [
+          {
+            "expr": "x^2"
+          }
+        ],
+        "xRange": [
+          -1.5,
+          1.5
+        ],
+        "yRange": [
+          -0.2,
+          1.8
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": 1,
+            "label": "A"
+          },
+          {
+            "x": 1,
+            "y": 1,
+            "label": "B"
+          }
+        ]
+      },
+      "hint": "Формула длины дуги: $L = \\int_a^b \\sqrt{1 + (y')^2}\\,dx$. Используй симметрию: $L = 2\\int_0^1$"
     },
     {
       "id": "3.2",
@@ -165,20 +502,84 @@
       "formalText": "Найти площадь поверхности, образованной вращением вокруг оси $Ox$ кривой $x = 2\\cos t$, $y = 4\\sin t$. Сделать чертёж.",
       "tldr": "S = 2π∫|y|√(x'²+y'²)dt — эллипс",
       "steps": [
-        {"title": "Производные", "text": "$x' = -2\\sin t$, $y' = 4\\cos t$.", "math": "$$ds = \\sqrt{(x')^2+(y')^2}\\,dt = \\sqrt{4\\sin^2 t + 16\\cos^2 t}\\,dt = 2\\sqrt{\\sin^2 t + 4\\cos^2 t}\\,dt$$"},
-        {"title": "Формула площади поверхности", "text": "Вращаем вокруг $Ox$. По симметрии верхней и нижней половинок эллипс повернётся одинаково. Считаем верхнюю ($t: 0 \\to \\pi$, $y \\ge 0$):", "math": "$$S = 2\\pi\\int_0^\\pi |y| \\cdot ds = 2\\pi\\int_0^\\pi 4\\sin t \\cdot 2\\sqrt{\\sin^2 t + 4\\cos^2 t}\\,dt$$"},
-        {"title": "Упрощаем подкоренное", "text": "$\\sin^2 t + 4\\cos^2 t = \\sin^2 t + 4(1-\\sin^2 t) = 4 - 3\\sin^2 t$. Но удобнее: $= 1 + 3\\cos^2 t$.", "math": "$$S = 16\\pi\\int_0^\\pi \\sin t\\sqrt{1+3\\cos^2 t}\\,dt$$"},
-        {"title": "Замена u = cos t", "text": "$du = -\\sin t\\,dt$. При $t=0$: $u=1$, при $t=\\pi$: $u=-1$.", "math": "$$S = 16\\pi\\int_{-1}^{1}\\sqrt{1+3u^2}\\,du = 32\\pi\\int_0^1\\sqrt{1+3u^2}\\,du$$"},
-        {"title": "Табличный интеграл", "text": "$\\int\\sqrt{1+a^2u^2}\\,du = \\frac{u}{2}\\sqrt{1+a^2u^2} + \\frac{1}{2a}\\ln(au+\\sqrt{1+a^2u^2})$, при $a = \\sqrt{3}$:", "math": "$$S = 32\\pi\\left[\\frac{u}{2}\\sqrt{1+3u^2}+\\frac{1}{2\\sqrt{3}}\\ln(\\sqrt{3}u+\\sqrt{1+3u^2})\\right]_0^1 = 32\\pi\\left(1 + \\frac{\\ln(\\sqrt{3}+2)}{2\\sqrt{3}}\\right)$$"}
+        {
+          "title": "Производные",
+          "text": "$x' = -2\\sin t$, $y' = 4\\cos t$.",
+          "math": "$$ds = \\sqrt{(x')^2+(y')^2}\\,dt = \\sqrt{4\\sin^2 t + 16\\cos^2 t}\\,dt = 2\\sqrt{\\sin^2 t + 4\\cos^2 t}\\,dt$$"
+        },
+        {
+          "title": "Формула площади поверхности",
+          "text": "Вращаем вокруг $Ox$. По симметрии верхней и нижней половинок эллипс повернётся одинаково. Считаем верхнюю ($t: 0 \\to \\pi$, $y \\ge 0$):",
+          "math": "$$S = 2\\pi\\int_0^\\pi |y| \\cdot ds = 2\\pi\\int_0^\\pi 4\\sin t \\cdot 2\\sqrt{\\sin^2 t + 4\\cos^2 t}\\,dt$$"
+        },
+        {
+          "title": "Упрощаем подкоренное",
+          "text": "$\\sin^2 t + 4\\cos^2 t = \\sin^2 t + 4(1-\\sin^2 t) = 4 - 3\\sin^2 t$. Но удобнее: $= 1 + 3\\cos^2 t$.",
+          "math": "$$S = 16\\pi\\int_0^\\pi \\sin t\\sqrt{1+3\\cos^2 t}\\,dt$$"
+        },
+        {
+          "title": "Замена u = cos t",
+          "text": "$du = -\\sin t\\,dt$. При $t=0$: $u=1$, при $t=\\pi$: $u=-1$.",
+          "math": "$$S = 16\\pi\\int_{-1}^{1}\\sqrt{1+3u^2}\\,du = 32\\pi\\int_0^1\\sqrt{1+3u^2}\\,du$$"
+        },
+        {
+          "title": "Табличный интеграл",
+          "text": "$\\int\\sqrt{1+a^2u^2}\\,du = \\frac{u}{2}\\sqrt{1+a^2u^2} + \\frac{1}{2a}\\ln(au+\\sqrt{1+a^2u^2})$, при $a = \\sqrt{3}$:",
+          "math": "$$S = 32\\pi\\left[\\frac{u}{2}\\sqrt{1+3u^2}+\\frac{1}{2\\sqrt{3}}\\ln(\\sqrt{3}u+\\sqrt{1+3u^2})\\right]_0^1 = 32\\pi\\left(1 + \\frac{\\ln(\\sqrt{3}+2)}{2\\sqrt{3}}\\right)$$"
+        }
       ],
       "plot": {
-        "curves": [{"type": "parametric", "x": "2*cos(t)", "y": "4*sin(t)", "tRange": [0, 6.2832], "label": "Эллипс"}],
-        "xRange": [-3, 3],
-        "yRange": [-5, 5],
+        "curves": [
+          {
+            "type": "parametric",
+            "x": "2*cos(t)",
+            "y": "4*sin(t)",
+            "tRange": [
+              0,
+              6.2832
+            ],
+            "label": "Эллипс"
+          }
+        ],
+        "xRange": [
+          -3,
+          3
+        ],
+        "yRange": [
+          -5,
+          5
+        ],
         "aspectEqual": true,
-        "fill": [{"enclosed": 0, "color": "rgba(99,102,241,0.06)"}],
-        "points": [{"x": 2, "y": 0, "label": "(2,0)"}, {"x": -2, "y": 0, "label": "(−2,0)"}, {"x": 0, "y": 4, "label": "(0,4)"}, {"x": 0, "y": -4, "label": "(0,−4)"}]
-      }
+        "fill": [
+          {
+            "enclosed": 0,
+            "color": "rgba(99,102,241,0.06)"
+          }
+        ],
+        "points": [
+          {
+            "x": 2,
+            "y": 0,
+            "label": "(2,0)"
+          },
+          {
+            "x": -2,
+            "y": 0,
+            "label": "(−2,0)"
+          },
+          {
+            "x": 0,
+            "y": 4,
+            "label": "(0,4)"
+          },
+          {
+            "x": 0,
+            "y": -4,
+            "label": "(0,−4)"
+          }
+        ]
+      },
+      "hint": "Площадь поверхности вращения: $S = 2\\pi\\int|y|\\sqrt{(x')^2 + (y')^2}\\,dt$"
     },
     {
       "id": "4.1",
@@ -187,10 +588,19 @@
       "formalText": "Исследовать на сходимость:\n$$\\int_1^{+\\infty}\\frac{\\arctan\\sqrt{1+x^2}}{x+3}\\,dx$$",
       "tldr": "При x→∞: arctg → π/2, знаменатель ~ x → расходится",
       "steps": [
-        {"title": "Поведение при x → +∞", "text": "$\\arctan\\sqrt{1+x^2} \\to \\frac{\\pi}{2}$ при $x \\to +\\infty$.\n$x + 3 \\sim x$ при $x \\to +\\infty$.", "math": "$$f(x) \\sim \\frac{\\pi/2}{x} \\quad (x \\to +\\infty)$$"},
-        {"title": "Сравнение с эталоном", "text": "Эквивалент $\\frac{C}{x}$ → сравниваем с $\\int\\frac{dx}{x}$ (расходится, $p = 1$).", "math": "$$\\text{Интеграл расходится}$$"}
+        {
+          "title": "Поведение при x → +∞",
+          "text": "$\\arctan\\sqrt{1+x^2} \\to \\frac{\\pi}{2}$ при $x \\to +\\infty$.\n$x + 3 \\sim x$ при $x \\to +\\infty$.",
+          "math": "$$f(x) \\sim \\frac{\\pi/2}{x} \\quad (x \\to +\\infty)$$"
+        },
+        {
+          "title": "Сравнение с эталоном",
+          "text": "Эквивалент $\\frac{C}{x}$ → сравниваем с $\\int\\frac{dx}{x}$ (расходится, $p = 1$).",
+          "math": "$$\\text{Интеграл расходится}$$"
+        }
       ],
-      "formula": "\\text{Расходится}"
+      "formula": "\\text{Расходится}",
+      "hint": "Определи поведение при $x \\to +\\infty$: $\\arctan x \\to \\pi/2$, знаменатель $\\sim x$. Сравни с $\\frac{1}{x^p}$"
     },
     {
       "id": "4.2",
@@ -199,10 +609,19 @@
       "formalText": "Исследовать на сходимость:\n$$\\int_1^{+\\infty}\\frac{x^2+x+1}{x^4+\\cos x}\\,dx$$",
       "tldr": "При x→∞: ~ x²/x⁴ = 1/x² → сходится (p=2>1)",
       "steps": [
-        {"title": "Эквивалент при x → +∞", "text": "$x^2+x+1 \\sim x^2$, $x^4+\\cos x \\sim x^4$.", "math": "$$f(x) \\sim \\frac{x^2}{x^4} = \\frac{1}{x^2}$$"},
-        {"title": "Сравнение с эталоном", "text": "$\\int_1^\\infty \\frac{dx}{x^2}$ сходится ($p = 2 > 1$). По предельному признаку:", "math": "$$\\text{Интеграл сходится}$$"}
+        {
+          "title": "Эквивалент при x → +∞",
+          "text": "$x^2+x+1 \\sim x^2$, $x^4+\\cos x \\sim x^4$.",
+          "math": "$$f(x) \\sim \\frac{x^2}{x^4} = \\frac{1}{x^2}$$"
+        },
+        {
+          "title": "Сравнение с эталоном",
+          "text": "$\\int_1^\\infty \\frac{dx}{x^2}$ сходится ($p = 2 > 1$). По предельному признаку:",
+          "math": "$$\\text{Интеграл сходится}$$"
+        }
       ],
-      "formula": "\\text{Сходится}"
+      "formula": "\\text{Сходится}",
+      "hint": "При $x \\to +\\infty$: подынтегральная $\\sim \\frac{x^2}{x^4} = \\frac{1}{x^2}$. Сравни: $p = 2 > 1$"
     },
     {
       "id": "4.3",
@@ -211,10 +630,19 @@
       "formalText": "Исследовать на сходимость:\n$$\\int_0^{\\pi/2}\\frac{\\sin x}{x^{4/3}}\\,dx$$",
       "tldr": "При x→0: sin x ~ x → f ~ 1/x^(1/3) → сходится (p=1/3<1)",
       "steps": [
-        {"title": "Особая точка: x = 0", "text": "НИ 2-го рода. При $x \\to 0^+$: $\\sin x \\sim x$.", "math": "$$f(x) \\sim \\frac{x}{x^{4/3}} = \\frac{1}{x^{1/3}}$$"},
-        {"title": "Сравнение с эталоном", "text": "$\\int_0^1 \\frac{dx}{x^{1/3}}$ сходится ($p = 1/3 < 1$).", "math": "$$\\text{Интеграл сходится}$$"}
+        {
+          "title": "Особая точка: x = 0",
+          "text": "НИ 2-го рода. При $x \\to 0^+$: $\\sin x \\sim x$.",
+          "math": "$$f(x) \\sim \\frac{x}{x^{4/3}} = \\frac{1}{x^{1/3}}$$"
+        },
+        {
+          "title": "Сравнение с эталоном",
+          "text": "$\\int_0^1 \\frac{dx}{x^{1/3}}$ сходится ($p = 1/3 < 1$).",
+          "math": "$$\\text{Интеграл сходится}$$"
+        }
       ],
-      "formula": "\\text{Сходится}"
+      "formula": "\\text{Сходится}",
+      "hint": "При $x \\to 0$: $\\sin x \\sim x$ → подынтегральная $\\sim \\frac{1}{x^{1/3}}$. Сравни: $p = 1/3 < 1$"
     },
     {
       "id": "4.4",
@@ -223,11 +651,23 @@
       "formalText": "Исследовать на сходимость:\n$$\\int_0^1\\frac{x-1}{x^3-3x+2}\\,dx$$",
       "tldr": "Разложить знаменатель, найти и сократить (x−1)",
       "steps": [
-        {"title": "Разложение знаменателя", "text": "$x^3-3x+2 = (x-1)^2(x+2)$.", "math": "$$\\frac{x-1}{(x-1)^2(x+2)} = \\frac{1}{(x-1)(x+2)}$$"},
-        {"title": "Особая точка x = 1", "text": "При $x \\to 1$: $\\frac{1}{(x-1)(x+2)} \\sim \\frac{1}{3(x-1)}$ → НИ 2-го рода.", "math": "$$\\frac{1}{(x-1)} \\text{ — расходится } (p = 1 \\ge 1)$$"},
-        {"title": "Ответ", "math": "$$\\text{Интеграл расходится}$$"}
+        {
+          "title": "Разложение знаменателя",
+          "text": "$x^3-3x+2 = (x-1)^2(x+2)$.",
+          "math": "$$\\frac{x-1}{(x-1)^2(x+2)} = \\frac{1}{(x-1)(x+2)}$$"
+        },
+        {
+          "title": "Особая точка x = 1",
+          "text": "При $x \\to 1$: $\\frac{1}{(x-1)(x+2)} \\sim \\frac{1}{3(x-1)}$ → НИ 2-го рода.",
+          "math": "$$\\frac{1}{(x-1)} \\text{ — расходится } (p = 1 \\ge 1)$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\text{Интеграл расходится}$$"
+        }
       ],
-      "formula": "\\text{Расходится}"
+      "formula": "\\text{Расходится}",
+      "hint": "Разложи знаменатель на множители, найди и сократи $(x-1)$, затем вычисли предел"
     },
     {
       "id": "4.5",
@@ -236,11 +676,22 @@
       "formalText": "При каких $\\alpha$ сходится интеграл:\n$$\\int_1^2\\frac{x^{1/5}-1}{(e^{x^2}-e)^\\alpha}\\,dx$$",
       "tldr": "Разложение при x→1: числитель ~ (x−1), знаменатель ~ (x−1)^α → p = α−1",
       "steps": [
-        {"title": "Особая точка x = 1", "text": "При $x \\to 1$:\n$x^{1/5}-1 \\sim \\frac{1}{5}(x-1)$\n$e^{x^2}-e = e(e^{x^2-1}-1) \\sim e \\cdot (x^2-1) = e(x-1)(x+1) \\sim 2e(x-1)$"},
-        {"title": "Эквивалент подынтегральной функции", "math": "$$\\frac{\\frac{1}{5}(x-1)}{[2e(x-1)]^\\alpha} = \\frac{C}{(x-1)^{\\alpha-1}}$$"},
-        {"title": "Условие сходимости", "text": "НИ 2-го рода: $\\int_1^2 \\frac{dx}{(x-1)^p}$ сходится при $p < 1$.", "math": "$$\\alpha - 1 < 1 \\quad \\Rightarrow \\quad \\alpha < 2$$"}
+        {
+          "title": "Особая точка x = 1",
+          "text": "При $x \\to 1$:\n$x^{1/5}-1 \\sim \\frac{1}{5}(x-1)$\n$e^{x^2}-e = e(e^{x^2-1}-1) \\sim e \\cdot (x^2-1) = e(x-1)(x+1) \\sim 2e(x-1)$"
+        },
+        {
+          "title": "Эквивалент подынтегральной функции",
+          "math": "$$\\frac{\\frac{1}{5}(x-1)}{[2e(x-1)]^\\alpha} = \\frac{C}{(x-1)^{\\alpha-1}}$$"
+        },
+        {
+          "title": "Условие сходимости",
+          "text": "НИ 2-го рода: $\\int_1^2 \\frac{dx}{(x-1)^p}$ сходится при $p < 1$.",
+          "math": "$$\\alpha - 1 < 1 \\quad \\Rightarrow \\quad \\alpha < 2$$"
+        }
       ],
-      "formula": "\\alpha < 2"
+      "formula": "\\alpha < 2",
+      "hint": "Разложи при $x \\to 1$: числитель $\\sim (x-1)$, знаменатель $\\sim (x-1)^\\alpha$. Предельный показатель $p = \\alpha - 1$"
     }
   ]
 }
