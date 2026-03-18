@@ -156,7 +156,7 @@
       "steps": [
         {
           "title": "Момент инерции цилиндра",
-          "text": "$$I = \\frac{mR^2}{2} = \\frac{1 \\cdot 0{,}01}{2} = 0{,}005 \\text{ кг·м}^2$$"
+          "text": "$$I = \\frac{mR^2}{2} = \\frac{1 \\cdot 0{,}01}{2} = 0{,}005 \\text{ кг\\\\cdot м}^2$$"
         },
         {
           "title": "Основное уравнение вращения",
@@ -332,7 +332,7 @@
         },
         {
           "title": "Угловое ускорение",
-          "text": "$$\\varepsilon = \\frac{M}{I} = \\frac{3mgl/4}{31ml^2/30} = \\frac{3mgl \\cdot 30}{4 \\cdot 31ml^2} = \\frac{90g}{124l} = \\frac{45g}{62l}$$\n\nЧисленно: $\\varepsilon = \\frac{45 \\cdot 9{,}8}{62 \\cdot 0{,}7} = \\frac{441}{43{,}4} = 10{,}2$ рад/с².",
+          "text": "$$\\varepsilon = \\frac{M}{I} = \\frac{3mgl/4}{31ml^2/30} = \\frac{3mgl \\cdot 30}{4 \\cdot 31ml^2} = \\frac{90g}{124l} = \\frac{45g}{62l}$$\n\nЧисленно: $\\varepsilon = \\frac{45 \\cdot 9{,}8}{62 \\cdot 0{,}7} = \\frac{441}{43{,}4} = 10{,}2$ рад/с^2.",
           "math": "$$\\boxed{\\varepsilon = \\frac{45g\\sin\\theta}{62l} \\approx 10{,}2 \\text{ рад/с}^2}$$"
         }
       ],

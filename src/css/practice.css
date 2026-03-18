@@ -118,7 +118,8 @@
 .prac-algo-header {
   display: flex;
   align-items: center;
-  gap: 12px;
+  flex-wrap: wrap;
+  gap: 8px 12px;
   padding: 16px 22px;
   background: rgba(99, 102, 241, 0.04);
   border-bottom: 1px solid var(--border);
@@ -142,6 +143,7 @@
   font-size: 0.95rem;
   color: var(--text);
   flex: 1;
+  min-width: 200px;
 }
 
 .prac-algo-badge {
@@ -152,6 +154,10 @@
   color: var(--accent);
   font-weight: 500;
   line-height: 1.4;
+  order: 3;
+  flex-basis: 100%;
+  margin-left: 48px;
+  width: fit-content;
 }
 
 .prac-algo-steps {
