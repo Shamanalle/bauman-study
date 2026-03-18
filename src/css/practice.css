@@ -216,14 +216,10 @@
 /* ─── Topic Filters (compact) ─── */
 .prac-topic-filters {
   display: flex;
-  gap: 2px;
-  padding: 8px 0 4px;
-  overflow-x: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  flex-wrap: wrap;
+  gap: 4px 2px;
+  padding: 6px 0 2px;
 }
-
-.prac-topic-filters::-webkit-scrollbar { display: none; }
 
 .prac-topic-pill {
   padding: 4px 10px;

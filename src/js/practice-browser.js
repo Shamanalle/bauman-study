@@ -246,11 +246,33 @@ function renderProblems(el, section) {
   const topics = extractTopics(section.questions);
   const hasTopics = topics.size > 1;
 
+  // Shorten long topic names for compact display
+  const shortLabel = t => t
+    .replace('Иррациональная подстановка', 'Иррац.')
+    .replace('Универсальная подстановка', 'Вейерштрасс')
+    .replace('Подведение п.з.д.', 'Подведение')
+    .replace('Дроби (кратный + квадратичный)', 'Дроби (кр.+кв.)')
+    .replace('Площадь (декартовы)', 'Площ. (дек.)')
+    .replace('Площадь (полярные)', 'Площ. (пол.)')
+    .replace('Площадь (параметрическая)', 'Площ. (пар.)')
+    .replace('Площадь поверхности', 'Площ. пов.')
+    .replace('Длина дуги (параметрическая)', 'Дуга (пар.)')
+    .replace('Длина дуги (полярная)', 'Дуга (пол.)')
+    .replace('Объём (оболочек)', 'V (обол.)')
+    .replace('Объём (дисков по y)', 'V (диски Oy)')
+    .replace('Объём (дисков)', 'V (диски)')
+    .replace('Объём (колец)', 'V (кольца)')
+    .replace('Задача Коши / Понижение', 'Коши / Пониж.')
+    .replace('Составление ЛОДУ', 'Сост. ЛОДУ')
+    .replace('Вариация постоянных', 'Вариация')
+    .replace('Подбор частного', 'Подбор')
+    .replace('Полный дифференциал', 'Полный дифф.');
+
   el.innerHTML = `${hasTopics ? `
     <div class="prac-topic-filters" id="pracTopicFilters">
       <button class="prac-topic-pill active" data-topic="__all">Все</button>
       ${[...topics.entries()].map(([topic, count]) => `
-        <button class="prac-topic-pill" data-topic="${topic}">${topic}<span class="prac-topic-count">${count}</span></button>
+        <button class="prac-topic-pill" data-topic="${topic}">${shortLabel(topic)}<span class="prac-topic-count">${count}</span></button>
       `).join('')}
     </div>
   ` : ''}
