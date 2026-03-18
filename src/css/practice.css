@@ -213,62 +213,47 @@
   font-size: 0.92rem;
 }
 
-/* ─── Topic Filters ─── */
+/* ─── Topic Filters (compact) ─── */
 .prac-topic-filters {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  padding: 14px 0 6px;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background: var(--bg);
-  padding-bottom: 12px;
-  margin-bottom: -4px;
+  gap: 2px;
+  padding: 8px 0 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
+.prac-topic-filters::-webkit-scrollbar { display: none; }
+
 .prac-topic-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 7px 14px;
-  border-radius: 20px;
-  border: 1px solid var(--border);
-  background: var(--card);
-  color: var(--text2);
-  font-size: 0.78rem;
+  padding: 4px 10px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text3);
+  font-size: 0.72rem;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.15s;
   font-family: inherit;
   white-space: nowrap;
 }
 
 .prac-topic-pill:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  background: rgba(99, 102, 241, 0.06);
+  color: var(--text);
+  background: rgba(99, 102, 241, 0.05);
 }
 
 .prac-topic-pill.active {
-  background: var(--accent);
-  color: white;
-  border-color: var(--accent);
-  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+  color: var(--accent);
+  background: rgba(99, 102, 241, 0.08);
+  font-weight: 600;
 }
 
 .prac-topic-count {
-  font-size: 0.68rem;
-  font-weight: 700;
-  padding: 1px 6px;
-  border-radius: 10px;
-  background: rgba(0, 0, 0, 0.08);
-  min-width: 18px;
-  text-align: center;
-}
-
-.prac-topic-pill.active .prac-topic-count {
-  background: rgba(255, 255, 255, 0.25);
+  font-size: 0.65rem;
+  opacity: 0.5;
+  margin-left: 1px;
 }
 
 /* ─── Problem Solver (Tab 3) ─── */

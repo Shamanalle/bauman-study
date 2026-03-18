@@ -248,13 +248,9 @@ function renderProblems(el, section) {
 
   el.innerHTML = `${hasTopics ? `
     <div class="prac-topic-filters" id="pracTopicFilters">
-      <button class="prac-topic-pill active" data-topic="__all">
-        Все <span class="prac-topic-count">${section.questions.length}</span>
-      </button>
+      <button class="prac-topic-pill active" data-topic="__all">Все</button>
       ${[...topics.entries()].map(([topic, count]) => `
-        <button class="prac-topic-pill" data-topic="${topic}">
-          ${topic} <span class="prac-topic-count">${count}</span>
-        </button>
+        <button class="prac-topic-pill" data-topic="${topic}">${topic}<span class="prac-topic-count">${count}</span></button>
       `).join('')}
     </div>
   ` : ''}
