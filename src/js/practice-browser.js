@@ -59,8 +59,19 @@ function toggleReveal(el) {
   }
 }
 
+/**
+ * Toggle hint for a problem (show keyIdea/hint without full solution).
+ */
+function toggleHint(el) {
+  const card = el.closest('.prac-problem');
+  if (!card) return;
+  card.classList.add('hinted');
+  requestAnimationFrame(() => renderMath(card));
+}
+
 // Make it globally accessible for onclick
 window.__pracToggle = toggleReveal;
+window.__pracHint = toggleHint;
 
 /**
  * Toggle individual task solution inside a ticket.
@@ -223,17 +234,28 @@ function renderProblems(el, section) {
           </div>
         </div>
         <div class="prac-problem-statement">${md(q.formalText)}</div>
-        ${hasHint && !hasSolution ? `<div class="prac-problem-hint">💡 ${md(q.tldr || q.keyIdea)}</div>` : ''}
         ${hasSolution ? `
-          <button class="prac-problem-reveal" onclick="window.__pracToggle(this)">
-            <span class="reveal-icon">👁</span> <span class="reveal-text">Показать решение</span>
-          </button>
+          <div class="prac-problem-buttons">
+            ${hasHint ? `
+              <button class="prac-hint-btn" onclick="window.__pracHint(this)">
+                <span>💡</span> <span>Подсказка</span>
+              </button>
+            ` : ''}
+            <button class="prac-problem-reveal" onclick="window.__pracToggle(this)">
+              <span class="reveal-icon">👁</span> <span class="reveal-text">Показать решение</span>
+            </button>
+          </div>
+          ${hasHint ? `
+            <div class="prac-hint-content">
+              <div class="prac-hint-icon">💡</div>
+              <div class="prac-hint-text">${md(q.hint || q.keyIdea || q.tldr)}</div>
+            </div>
+          ` : ''}
           <button class="prac-problem-collapse" onclick="window.__pracToggle(this)">
             <span>▲</span> Свернуть решение
           </button>
           <div class="prac-problem-solution">
             ${q.plot ? `<div class="prac-plot-wrap"><canvas class="prac-plot-canvas" data-plot='${JSON.stringify(q.plot)}'></canvas></div>` : ''}
-            ${hasHint ? `<div class="prac-solution-hint">💡 <em>${md(q.tldr || q.keyIdea)}</em></div>` : ''}
             <div class="prac-solution-steps">
               ${(q.steps || []).map(s => `
                 <div class="prac-solution-step">

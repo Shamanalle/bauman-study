@@ -279,6 +279,69 @@
   color: var(--text);
 }
 
+/* Buttons container */
+.prac-problem-buttons {
+  display: flex;
+  gap: 10px;
+  padding: 0 20px 16px;
+}
+
+/* Hint button */
+.prac-hint-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px dashed rgba(245, 158, 11, 0.4);
+  background: rgba(245, 158, 11, 0.04);
+  color: #d97706;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.prac-hint-btn:hover {
+  background: rgba(245, 158, 11, 0.1);
+  border-color: #d97706;
+}
+
+.prac-problem.hinted .prac-hint-btn {
+  display: none;
+}
+
+/* Hint content (shown on hint click) */
+.prac-hint-content {
+  display: none;
+  padding: 12px 20px;
+  margin: 0 20px 12px;
+  background: rgba(245, 158, 11, 0.06);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  border-radius: 10px;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.prac-problem.hinted .prac-hint-content {
+  display: flex;
+}
+
+.prac-hint-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.prac-hint-text {
+  font-size: 0.87rem;
+  line-height: 1.55;
+  color: var(--text2);
+}
+
 /* Reveal / Collapse buttons */
 .prac-problem-reveal,
 .prac-problem-collapse {
@@ -286,8 +349,7 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  width: calc(100% - 40px);
-  margin: 0 20px 16px;
+  flex: 1;
   padding: 10px;
   border-radius: 10px;
   border: 1px dashed var(--border);
@@ -310,10 +372,12 @@
   display: none;
   border-style: solid;
   background: rgba(99, 102, 241, 0.06);
-  margin-top: 12px;
+  margin: 12px 20px 0;
+  width: calc(100% - 40px);
 }
 
-.prac-problem.revealed .prac-problem-reveal {
+.prac-problem.revealed .prac-problem-reveal,
+.prac-problem.revealed .prac-problem-buttons {
   display: none;
 }
 
