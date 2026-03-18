@@ -3,56 +3,62 @@
   "icon": "🎫",
   "questions": [
     {
-      "id": "1",
-      "title": "Вариант 1 (простой класс + наследование)",
-      "type": "Вариант экзамена · 2 задачи",
-      "formalText": "**Задача 1** Создать класс «целое число» с полем (private), конструктором и методом вычисления остатка от деления на 5.\n\n**Задача 2** Создать базовый класс «точка на плоскости» и производный «точка в 3D». Обеспечить динамический полиморфизм через указатель.",
+      "id": "t-1",
+      "title": "Вариант 1",
+      "type": "Экзамен",
+      "formalText": "**Задача 1**\nСоздать класс «круг» (поле radius — private; конструктор; метод площади πr²). Создать объект и вывести площадь.\n\n**Задача 2**\nСоздать базовый класс «круг» (virtual area = πr²) и производный «шар» (volume = 4/3·πr³). Обеспечить динамический полиморфизм через указатель.\n\n**Задача 3**\nСоздать два потока, каждый печатает 10 натуральных чисел с именем потока. Обеспечить синхронизацию через mutex.",
       "steps": [
         {
-          "title": "Задача 1 · Простой класс",
-          "text": "**Тип:** простой класс с полем и методом.\n<pre class=\"code-block\"><code>class IntNumber {\n    int value;\npublic:\n    IntNumber(int v) : value(v) {}\n    int remainder() const { return value % 5; }\n};\n\nint main() {\n    IntNumber num(17);\n    cout << num.remainder() << endl; // 2\n    return 0;\n}</code></pre>",
-          "math": ""
+          "title": "Задача 1 — Круг: площадь",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <cmath>\n\nclass Circle {\n    double radius;\npublic:\n    Circle(double r) : radius(r) {}\n    double area() const { return M_PI * radius * radius; }\n};\n\nint main() {\n    Circle c(5.0);\n    std::cout << \"S=\" << c.area() << std::endl;\n    return 0;\n}</code></pre>"
         },
         {
-          "title": "Задача 2 · Наследование + динамический полиморфизм",
-          "text": "**Тип:** наследование с virtual/override.\n**Ключевое:** virtual print() в Base, override в Derived, указатель Base* вызывает метод реального типа.\n<pre class=\"code-block\"><code>class Point2D {\nprotected:\n    double x, y;\npublic:\n    Point2D(double x, double y) : x(x), y(y) {}\n    virtual void print() {\n        cout << \"x=\" << x << \", y=\" << y;\n    }\n    virtual ~Point2D() {}\n};\n\nclass Point3D : public Point2D {\n    double z;\npublic:\n    Point3D(double x, double y, double z)\n        : Point2D(x, y), z(z) {}\n    void print() override {\n        Point2D::print();\n        cout << \", z=\" << z;\n    }\n};\n\nint main() {\n    Point2D p2(1, 2);\n    Point3D p3(3, 4, 5);\n    Point2D* p = &p2;\n    p->print(); cout << endl;  // x=1, y=2\n    p = &p3;\n    p->print(); cout << endl;  // x=3, y=4, z=5\n    return 0;\n}</code></pre>",
-          "math": ""
+          "title": "Задача 2 — Круг → Шар (dynamic)",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <cmath>\n\nclass Circle {\nprotected: double r;\npublic:\n    Circle(double r) : r(r) {}\n    virtual double calc() const { return M_PI*r*r; }\n    virtual void print() const { std::cout << \"S=\" << calc() << std::endl; }\n    virtual ~Circle() {}\n};\n\nclass Sphere : public Circle {\npublic:\n    Sphere(double r) : Circle(r) {}\n    double calc() const override { return 4.0/3.0*M_PI*r*r*r; }\n    void print() const override { std::cout << \"V=\" << calc() << std::endl; }\n};\n\nint main() {\n    Circle c(3); Sphere s(3);\n    Circle* p = &c; p->print();\n    p = &s; p->print();\n    return 0;\n}</code></pre>"
+        },
+        {
+          "title": "Задача 3 — Два потока с mutex",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <thread>\n#include <mutex>\n#include <string>\n\nstd::mutex mtx;\nvoid printN(int n, const std::string& name) {\n    for (int i=1;i<=n;++i) {\n        std::lock_guard<std::mutex> lk(mtx);\n        std::cout << name << \": \" << i << std::endl;\n    }\n}\n\nint main() {\n    std::thread t1(printN,10,\"T1\"), t2(printN,10,\"T2\");\n    t1.join(); t2.join();\n    return 0;\n}</code></pre>"
         }
       ]
     },
     {
-      "id": "2",
-      "title": "Вариант 2 (исключение + многопоточность)",
-      "type": "Вариант экзамена · 2 задачи",
-      "formalText": "**Задача 1** Реализовать класс «Время» (часы, минуты, секунды). При недопустимых параметрах — бросить исключение из своего класса, производного от out_of_range.\n\n**Задача 2** Создать два потока для печати натуральных чисел с синхронизацией через mutex.",
+      "id": "t-2",
+      "title": "Вариант 2",
+      "type": "Экзамен",
+      "formalText": "**Задача 1**\nСоздать класс «целое число» (поле int — private; конструктор; метод проверки чётности, возвращает 1/0). Создать объект, проверить и вывести.\n\n**Задача 2**\nБазовый «сотрудник» (ФИО, оклад protected; print()). Производный «начальник» (+надбавка; зарплата = оклад + надбавка; override print()). Статический полиморфизм.\n\n**Задача 3**\nКласс «Время» (часы, минуты, секунды). При недопустимых параметрах — исключение TimeError : out_of_range. Продемонстрировать оба сценария.",
       "steps": [
         {
-          "title": "Задача 1 · Исключения",
-          "text": "**Тип:** свой класс исключения от out_of_range.\n<pre class=\"code-block\"><code>class TimeError : public out_of_range {\n    int h, m, s;\npublic:\n    TimeError(int h, int m, int s)\n        : out_of_range(\"Invalid time\"), h(h), m(m), s(s) {}\n    void print() const {\n        cerr << what() << \": \" << h << \":\" << m << \":\" << s << endl;\n    }\n};\n\nclass Time {\n    int h, m, s;\npublic:\n    Time(int h, int m, int s) : h(h), m(m), s(s) {\n        if (h<0||h>23||m<0||m>59||s<0||s>59)\n            throw TimeError(h, m, s);\n    }\n    void print() const {\n        cout << h << \":\" << m << \":\" << s << endl;\n    }\n};\n\nint main() {\n    try {\n        Time t1(10, 30, 0); t1.print();\n        Time t2(25, 99, -1);\n    }\n    catch (const TimeError& e) { e.print(); }\n    return 0;\n}</code></pre>",
-          "math": ""
+          "title": "Задача 1 — Чётность",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n\nclass IntNumber {\n    int value;\npublic:\n    IntNumber(int v) : value(v) {}\n    int isEven() const { return (value%2==0)?1:0; }\n};\n\nint main() {\n    IntNumber n(14);\n    std::cout << (n.isEven() ? \"Чётное\" : \"Нечётное\") << std::endl;\n    return 0;\n}</code></pre>"
         },
         {
-          "title": "Задача 2 · Многопоточность (mutex)",
-          "text": "**Тип:** два потока + lock_guard для синхронизации.\n<pre class=\"code-block\"><code>#include <thread>\n#include <mutex>\nmutex mtx;\n\nvoid printNumbers(int n, const string& name) {\n    for (int i = 1; i <= n; i++) {\n        lock_guard<mutex> lock(mtx);\n        cout << name << \": \" << i << endl;\n    }\n}\n\nint main() {\n    thread t1(printNumbers, 5, \"T1\");\n    thread t2(printNumbers, 5, \"T2\");\n    t1.join(); t2.join();\n    return 0;\n}</code></pre>",
-          "math": ""
+          "title": "Задача 2 — Сотрудник → Начальник (static)",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <string>\n\nclass Employee {\nprotected: std::string name; double salary;\npublic:\n    Employee(const std::string& n, double s) : name(n), salary(s) {}\n    void print() const {\n        std::cout << name << \" оклад=\" << salary << std::endl;\n    }\n};\n\nclass Boss : public Employee {\n    double bonus;\npublic:\n    Boss(const std::string& n, double s, double b)\n        : Employee(n,s), bonus(b) {}\n    void print() const {\n        Employee::print();\n        std::cout << \"Зарплата=\" << (salary+bonus) << std::endl;\n    }\n};\n\nint main() {\n    Employee e(\"Иванов\",50000); Boss b(\"Петров\",60000,20000);\n    Employee* p = &e; p->print();\n    p = &b; p->print();  // статический → Employee::print()\n    b.print();           // прямой вызов\n    return 0;\n}</code></pre>"
+        },
+        {
+          "title": "Задача 3 — Время + исключение",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <stdexcept>\n#include <string>\n\nclass TimeError : public std::out_of_range {\n    int h,m,s;\npublic:\n    TimeError(const std::string& msg,int h,int m,int s)\n        : std::out_of_range(msg),h(h),m(m),s(s) {}\n    void printData() const {\n        std::cerr << h<<\":\"<<m<<\":\"<<s << std::endl;\n    }\n};\n\nclass Time {\n    int h,m,s;\npublic:\n    Time(int h,int m,int s):h(h),m(m),s(s){\n        if(h<0||h>23||m<0||m>59||s<0||s>59)\n            throw TimeError(\"Bad time\",h,m,s);\n    }\n    void print() const { std::cout<<h<<\":\"<<m<<\":\"<<s<<std::endl; }\n};\n\nint main() {\n    try { Time t(10,30,0); t.print(); } catch(const TimeError& e) { e.printData(); }\n    try { Time t(25,70,-1); } catch(const TimeError& e) {\n        std::cerr<<e.what()<<std::endl; e.printData();\n    }\n    return 0;\n}</code></pre>"
         }
       ]
     },
     {
-      "id": "3",
-      "title": "Вариант 3 (наследование static + condition_variable)",
-      "type": "Вариант экзамена · 2 задачи",
-      "formalText": "**Задача 1** Создать базовый «квадрат» и производный «куб». Объём куба = площадь × сторона. Обеспечить статический полиморфизм (без virtual).\n\n**Задача 2** Создать поток для печати ПСЧ. Главный поток ожидает оповещения через condition_variable.",
+      "id": "t-3",
+      "title": "Вариант 3",
+      "type": "Экзамен",
+      "formalText": "**Задача 1**\nСоздать класс «квадрат» (поле side — private; конструктор; метод площади). Создать объект и вывести.\n\n**Задача 2**\nБазовый «вектор 2D» (protected x,y; virtual length(); virtual print()). Производный «вектор 3D» (+z; override). Динамический полиморфизм.\n\n**Задача 3**\nПоток печатает 5 радомных чисел и оповещает главный поток через condition_variable.",
       "steps": [
         {
-          "title": "Задача 1 · Статический полиморфизм",
-          "text": "**Тип:** наследование БЕЗ virtual → указатель Base* вызывает Base::print().\n<pre class=\"code-block\"><code>class Square {\nprotected:\n    double side;\npublic:\n    Square(double s) : side(s) {}\n    double area() { return side * side; }\n    void print() {\n        cout << \"side=\" << side << \", area=\" << area();\n    }\n};\n\nclass Cube : public Square {\npublic:\n    Cube(double s) : Square(s) {}\n    double volume() { return area() * side; }\n    void print() {\n        cout << \"side=\" << side << \", V=\" << volume();\n    }\n};\n\nint main() {\n    Square sq(5); Cube cu(5);\n    Square* p = &sq;\n    p->print(); cout << endl;  // side=5, area=25\n    p = &cu;\n    p->print(); cout << endl;  // side=5, area=25 (статически!)\n    cu.print(); cout << endl;  // side=5, V=125\n    return 0;\n}</code></pre>",
-          "math": ""
+          "title": "Задача 1 — Квадрат",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n\nclass Square {\n    double side;\npublic:\n    Square(double s) : side(s) {}\n    double area() const { return side*side; }\n};\n\nint main() {\n    Square sq(4);\n    std::cout << \"S=\" << sq.area() << std::endl;\n    return 0;\n}</code></pre>"
         },
         {
-          "title": "Задача 2 · condition_variable",
-          "text": "**Тип:** оповещение от дочернего потока главному.\n<pre class=\"code-block\"><code>#include <thread>\n#include <mutex>\n#include <condition_variable>\n#include <cstdlib>\nmutex mtx;\ncondition_variable cv;\nbool done = false;\n\nvoid printRandom(int n, const string& name) {\n    for (int i = 0; i < n; i++) {\n        lock_guard<mutex> lk(mtx);\n        cout << name << \": \" << rand()%100 << endl;\n    }\n    { lock_guard<mutex> lk(mtx); done = true; }\n    cv.notify_one();\n}\n\nint main() {\n    srand(42);\n    thread t(printRandom, 5, \"Child\");\n    unique_lock<mutex> lock(mtx);\n    cv.wait(lock, []{ return done; });\n    cout << \"Main: child done!\" << endl;\n    t.join();\n    return 0;\n}</code></pre>",
-          "math": ""
+          "title": "Задача 2 — Вектор 2D → 3D (dynamic)",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <cmath>\n\nclass Vec2D {\nprotected: double x,y;\npublic:\n    Vec2D(double x,double y):x(x),y(y){}\n    virtual double length() const { return std::sqrt(x*x+y*y); }\n    virtual void print() const {\n        std::cout<<\"(\"<<x<<\",\"<<y<<\") len=\"<<length()<<std::endl;\n    }\n    virtual ~Vec2D(){}\n};\n\nclass Vec3D : public Vec2D {\n    double z;\npublic:\n    Vec3D(double x,double y,double z):Vec2D(x,y),z(z){}\n    double length() const override { return std::sqrt(x*x+y*y+z*z); }\n    void print() const override {\n        Vec2D::print();\n        std::cout<<\"z=\"<<z<<\" len3D=\"<<length()<<std::endl;\n    }\n};\n\nint main() {\n    Vec2D v2(3,4); Vec3D v3(1,2,2);\n    Vec2D* p=&v2; p->print();\n    p=&v3; p->print();\n    return 0;\n}</code></pre>"
+        },
+        {
+          "title": "Задача 3 — cv + rand",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <thread>\n#include <mutex>\n#include <condition_variable>\n#include <cstdlib>\n#include <string>\n\nstd::mutex mtx;\nstd::condition_variable cv;\nbool done=false;\n\nvoid worker(int n) {\n    for(int i=0;i<n;++i){\n        std::lock_guard<std::mutex> lk(mtx);\n        std::cout<<\"Rand: \"<<rand()<<std::endl;\n    }\n    {std::lock_guard<std::mutex> lk(mtx); done=true;}\n    cv.notify_one();\n}\n\nint main() {\n    srand(42);\n    std::thread t(worker,5);\n    std::unique_lock<std::mutex> lk(mtx);\n    cv.wait(lk,[]{ return done; });\n    std::cout<<\"Done!\"<<std::endl;\n    t.join();\n    return 0;\n}</code></pre>"
         }
       ]
     }

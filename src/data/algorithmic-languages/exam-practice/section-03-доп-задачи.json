@@ -1,218 +1,424 @@
 {
-  "section": "🎯 Доп. задачи",
+  "section": "✏️ Доп. задачи",
   "icon": "✏️",
   "questions": [
     {
-      "id": "Д1",
-      "title": "Класс «температура» — перевод в Фаренгейт",
-      "type": "Задача · Простые классы",
-      "formalText": "Создать класс «температура» с полем в Цельсиях (private). Конструктор. Метод перевода в Фаренгейт: F = C × 9/5 + 32.\nСоздать объект, вывести температуру в Фаренгейтах.",
-      "tldr": "class + F = C * 9.0/5.0 + 32",
-      "hint": "Формула: fahrenheit = celsius * 9.0 / 5.0 + 32.0",
+      "id": "d-1",
+      "title": "Класс «Температура» — перевод °C → °F",
+      "type": "Задача · Классы",
+      "formalText": "Создать класс «Температура» (поле °C, private). Метод для перевода в °F.\nФормула: F = C × 9/5 + 32.",
+      "tldr": "class + celsius + F = C*9/5+32",
+      "hint": "Формула: `celsius * 9.0/5.0 + 32.0`.",
       "steps": [
         {
-          "title": "Полный код",
-          "text": "<pre class=\"code-block\"><code>#include <iostream>\nusing namespace std;\n\nclass Temperature {\n    double celsius;\npublic:\n    Temperature(double c) : celsius(c) {}\n    double toFahrenheit() const {\n        return celsius * 9.0 / 5.0 + 32.0;\n    }\n};\n\nint main() {\n    Temperature t(100.0);\n    cout << \"Fahrenheit: \" << t.toFahrenheit() << endl;\n    // Вывод: Fahrenheit: 212\n    return 0;\n}</code></pre>"
+          "title": "Класс и main",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n\nclass Temperature {\n    double celsius;\npublic:\n    Temperature(double c) : celsius(c) {}\n    double toFahrenheit() const {\n        return celsius * 9.0 / 5.0 + 32.0;\n    }\n};\n\nint main() {\n    Temperature t(100.0);\n    std::cout << \"F=\" << t.toFahrenheit() << std::endl; // 212\n    return 0;\n}</code></pre>"
         }
       ]
     },
     {
-      "id": "Д2",
-      "title": "Класс «прямоугольник» — площадь и периметр",
-      "type": "Задача · Простые классы",
-      "formalText": "Создать класс «прямоугольник» с полями a, b (private). Конструктор. Методы: площадь (a×b), периметр (2(a+b)).\nСоздать объект, вывести площадь и периметр.",
-      "tldr": "class + area=a*b, perim=2*(a+b)",
-      "hint": "Два private поля double a, b. Два метода: area() и perimeter()",
+      "id": "d-2",
+      "title": "Класс «Прямоугольник» — диагональ",
+      "type": "Задача · Классы",
+      "formalText": "Создать класс «Прямоугольник» (поля a, b — private). Метод вычисления диагонали.",
+      "tldr": "class + a,b + √(a²+b²)",
+      "hint": "Диагональ: `sqrt(a*a + b*b)`.",
       "steps": [
         {
-          "title": "Полный код",
-          "text": "<pre class=\"code-block\"><code>#include <iostream>\nusing namespace std;\n\nclass Rectangle {\n    double a, b;\npublic:\n    Rectangle(double a, double b) : a(a), b(b) {}\n    double area() const { return a * b; }\n    double perimeter() const { return 2 * (a + b); }\n};\n\nint main() {\n    Rectangle r(3.0, 5.0);\n    cout << \"Площадь: \" << r.area() << endl;       // 15\n    cout << \"Периметр: \" << r.perimeter() << endl; // 16\n    return 0;\n}</code></pre>"
+          "title": "Класс и main",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <cmath>\n\nclass Rect {\n    double a, b;\npublic:\n    Rect(double a, double b) : a(a), b(b) {}\n    double diagonal() const { return std::sqrt(a*a + b*b); }\n};\n\nint main() {\n    Rect r(3,4);\n    std::cout << \"d=\" << r.diagonal() << std::endl; // 5\n    return 0;\n}</code></pre>"
         }
       ]
     },
     {
-      "id": "Д3",
-      "title": "Класс «строка» — подсчёт символов",
-      "type": "Задача · Простые классы",
-      "formalText": "Создать класс с полем string (private). Конструктор. Метод count(char c) — считает количество вхождений символа c в строку.\nСоздать объект, вывести количество вхождений.",
-      "tldr": "class + count() через for-each по string",
-      "hint": "Пробегаем строку циклом, считаем совпадения: if (s[i] == c) cnt++",
+      "id": "d-3",
+      "title": "Класс «Счётчик» — инкремент/декремент",
+      "type": "Задача · Классы",
+      "formalText": "Создать класс «Счётчик» (поле count — private). Методы increment(), decrement(), getValue().",
+      "tldr": "class + int count + inc/dec",
+      "hint": "Три метода: `++count`, `--count`, `return count`.",
       "steps": [
         {
-          "title": "Полный код",
-          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <string>\nusing namespace std;\n\nclass MyString {\n    string str;\npublic:\n    MyString(const string& s) : str(s) {}\n    int count(char c) const {\n        int cnt = 0;\n        for (char ch : str)\n            if (ch == c) cnt++;\n        return cnt;\n    }\n};\n\nint main() {\n    MyString s(\"hello world\");\n    cout << \"Кол-во 'l': \" << s.count('l') << endl; // 3\n    return 0;\n}</code></pre>"
+          "title": "Класс и main",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n\nclass Counter {\n    int count;\npublic:\n    Counter(int c = 0) : count(c) {}\n    void increment() { ++count; }\n    void decrement() { --count; }\n    int getValue() const { return count; }\n};\n\nint main() {\n    Counter c;\n    c.increment(); c.increment(); c.decrement();\n    std::cout << c.getValue() << std::endl; // 1\n    return 0;\n}</code></pre>"
         }
       ]
     },
     {
-      "id": "Д4",
-      "title": "Класс «дробь» — сложение",
-      "type": "Задача · Простые классы",
-      "formalText": "Создать класс «дробь» (числитель, знаменатель — private). Конструктор. Метод add(Fraction) — сложение двух дробей.\nСоздать два объекта, вывести сумму.",
-      "tldr": "class Fraction + add: a/b + c/d = (a*d+c*b)/(b*d)",
-      "hint": "a/b + c/d = (a*d + c*b) / (b*d). Можно сократить через НОД",
+      "id": "d-4",
+      "title": "Класс «Дробь» — сложение",
+      "type": "Задача · Классы",
+      "formalText": "Создать класс «Дробь» (числитель, знаменатель — private). Метод add() складывает с другой дробью. Метод print().",
+      "tldr": "class + num/den + add(Fraction)",
+      "hint": "Сложение: `a/b + c/d = (a*d + c*b) / (b*d)`. Можно без сокращения.",
       "steps": [
         {
-          "title": "Полный код",
-          "text": "<pre class=\"code-block\"><code>#include <iostream>\nusing namespace std;\n\nclass Fraction {\n    int num, den;\npublic:\n    Fraction(int n, int d) : num(n), den(d) {}\n    Fraction add(const Fraction& f) const {\n        return Fraction(num * f.den + f.num * den,\n                        den * f.den);\n    }\n    void print() const {\n        cout << num << \"/\" << den;\n    }\n};\n\nint main() {\n    Fraction a(1, 3), b(1, 6);\n    Fraction c = a.add(b);\n    c.print();  // 9/18 (= 1/2)\n    return 0;\n}</code></pre>"
+          "title": "Класс и main",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n\nclass Fraction {\n    int num, den;\npublic:\n    Fraction(int n, int d) : num(n), den(d) {}\n    Fraction add(const Fraction& o) const {\n        return Fraction(num*o.den + o.num*den, den*o.den);\n    }\n    void print() const {\n        std::cout << num << \"/\" << den;\n    }\n};\n\nint main() {\n    Fraction a(1,3), b(1,6);\n    Fraction c = a.add(b);\n    c.print(); // 9/18 = 1/2\n    std::cout << std::endl;\n    return 0;\n}</code></pre>"
         }
       ]
     },
     {
-      "id": "Д5",
-      "title": "Фигура «треугольник» → «равнобедренный» (наследование, dynamic)",
+      "id": "d-5",
+      "title": "Класс «Строка» — подсчёт гласных",
+      "type": "Задача · Классы",
+      "formalText": "Создать класс «Строка» (поле std::string — private). Метод countVowels() считает гласные (a, e, i, o, u).",
+      "tldr": "class + string + countVowels",
+      "hint": "Пройти по символам, проверить каждый через `tolower()` и сравнить с 'a','e','i','o','u'.",
+      "steps": [
+        {
+          "title": "Класс и main",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <string>\n#include <cctype>\n\nclass MyString {\n    std::string s;\npublic:\n    MyString(const std::string& str) : s(str) {}\n    int countVowels() const {\n        int cnt = 0;\n        for (char c : s) {\n            char lc = std::tolower(c);\n            if (lc=='a'||lc=='e'||lc=='i'||lc=='o'||lc=='u') ++cnt;\n        }\n        return cnt;\n    }\n};\n\nint main() {\n    MyString ms(\"Hello World\");\n    std::cout << \"Гласных: \" << ms.countVowels() << std::endl; // 3\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "d-6",
+      "title": "Класс «Массив» — максимум",
+      "type": "Задача · Классы",
+      "formalText": "Создать класс «Массив» (динамический массив int — private). Конструктор(n), метод set(i,val), метод max().",
+      "tldr": "class + int* data + max()",
+      "hint": "Динамический массив: `new int[n]`. Не забудь деструктор с `delete[]`.",
+      "steps": [
+        {
+          "title": "Класс и main",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n\nclass Array {\n    int* data;\n    int size;\npublic:\n    Array(int n) : data(new int[n]), size(n) {}\n    ~Array() { delete[] data; }\n    void set(int i, int val) { data[i] = val; }\n    int max() const {\n        int m = data[0];\n        for (int i = 1; i < size; ++i)\n            if (data[i] > m) m = data[i];\n        return m;\n    }\n};\n\nint main() {\n    Array a(4);\n    a.set(0,3); a.set(1,7); a.set(2,1); a.set(3,5);\n    std::cout << \"Max=\" << a.max() << std::endl; // 7\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "d-7",
+      "title": "Класс «Точка» — расстояние до начала координат",
+      "type": "Задача · Классы",
+      "formalText": "Создать класс «Точка» (поля x, y — private). Метод distanceToOrigin() — расстояние до (0,0).",
+      "tldr": "class + x,y + √(x²+y²)",
+      "hint": "Расстояние: `sqrt(x*x + y*y)`.",
+      "steps": [
+        {
+          "title": "Класс и main",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <cmath>\n\nclass Point {\n    double x, y;\npublic:\n    Point(double x, double y) : x(x), y(y) {}\n    double distToOrigin() const { return std::sqrt(x*x+y*y); }\n};\n\nint main() {\n    Point p(3,4);\n    std::cout << \"d=\" << p.distToOrigin() << std::endl; // 5\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "d-8",
+      "title": "Класс «Стек» на массиве",
+      "type": "Задача · Классы",
+      "formalText": "Создать класс «Стек» (массив int, private). Методы push(), pop(), top(), isEmpty().",
+      "tldr": "class + int arr[] + push/pop/top",
+      "hint": "Стек: `arr[topIdx++] = val` для push, `return arr[--topIdx]` для pop.",
+      "steps": [
+        {
+          "title": "Класс и main",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n\nclass Stack {\n    int data[100];\n    int topIdx;\npublic:\n    Stack() : topIdx(0) {}\n    void push(int v) { data[topIdx++] = v; }\n    int pop() { return data[--topIdx]; }\n    int top() const { return data[topIdx-1]; }\n    bool isEmpty() const { return topIdx == 0; }\n};\n\nint main() {\n    Stack s;\n    s.push(10); s.push(20); s.push(30);\n    std::cout << s.top() << std::endl; // 30\n    s.pop();\n    std::cout << s.top() << std::endl; // 20\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "d-9",
+      "title": "Животное → Собака (dynamic)",
       "type": "Задача · Наследование",
-      "formalText": "Создать базовый класс «треугольник» (стороны a, b, c — protected; virtual площадь по Герону; virtual печать).\nСоздать производный класс «равнобедренный треугольник» (основание и боковая сторона; переопределённая печать).\nДинамический полиморфизм.",
-      "tldr": "Triangle(Герон) → Isosceles(a=b), virtual",
-      "hint": "Площадь по Герону: p=(a+b+c)/2, S=sqrt(p(p-a)(p-b)(p-c)). virtual + override",
-      "steps": [
-        {
-          "title": "Базовый и производный классы",
-          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <cmath>\nusing namespace std;\n\nclass Triangle {\nprotected:\n    double a, b, c;\npublic:\n    Triangle(double a, double b, double c) : a(a), b(b), c(c) {}\n    virtual double area() {\n        double p = (a + b + c) / 2;\n        return sqrt(p * (p-a) * (p-b) * (p-c));\n    }\n    virtual void print() {\n        cout << \"a=\" << a << \", b=\" << b << \", c=\" << c\n             << \", S=\" << area();\n    }\n    virtual ~Triangle() {}\n};\n\nclass Isosceles : public Triangle {\npublic:\n    Isosceles(double base, double side)\n        : Triangle(base, side, side) {}\n    void print() override {\n        Triangle::print();\n        cout << \" (равнобедренный)\";\n    }\n};</code></pre>"
-        },
-        {
-          "title": "main",
-          "text": "<pre class=\"code-block\"><code>int main() {\n    Triangle t(3, 4, 5);\n    Isosceles iso(6, 5);\n\n    Triangle* p = &t;\n    p->print(); cout << endl;  // a=3, b=4, c=5, S=6\n\n    p = &iso;\n    p->print(); cout << endl;  // a=6, b=5, c=5, S=12 (равнобедренный)\n    return 0;\n}</code></pre>"
-        }
-      ]
-    },
-    {
-      "id": "Д6",
-      "title": "Животное → Кошка → Собака (наследование, dynamic)",
-      "type": "Задача · Наследование",
-      "formalText": "Создать базовый класс «животное» (имя — protected; virtual метод speak()).\nСоздать два производных класса «кошка» (speak → \"Мяу\") и «собака» (speak → \"Гав\").\nПродемонстрировать динамический полиморфизм через массив указателей.",
-      "tldr": "Animal → Cat(Мяу), Dog(Гав), массив Animal*",
-      "hint": "virtual void speak() в базовом. Cat/Dog — override. Массив Animal* animals[] для полиморфизма",
+      "formalText": "Базовый «Животное» (имя, virtual speak()). Производный «Собака» (override speak → \"Гав!\").\nДинамический полиморфизм.",
+      "tldr": "Animal → Dog, virtual speak()",
+      "hint": "В `Dog::speak()` выводи \"Гав!\", в `Animal::speak()` — \"...\".",
       "steps": [
         {
           "title": "Полный код",
-          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <string>\nusing namespace std;\n\nclass Animal {\nprotected:\n    string name;\npublic:\n    Animal(string n) : name(n) {}\n    virtual void speak() {\n        cout << name << \" говорит: ...\";\n    }\n    virtual ~Animal() {}\n};\n\nclass Cat : public Animal {\npublic:\n    Cat(string n) : Animal(n) {}\n    void speak() override {\n        cout << name << \" говорит: Мяу!\";\n    }\n};\n\nclass Dog : public Animal {\npublic:\n    Dog(string n) : Animal(n) {}\n    void speak() override {\n        cout << name << \" говорит: Гав!\";\n    }\n};\n\nint main() {\n    Animal* animals[] = {\n        new Cat(\"Мурка\"),\n        new Dog(\"Шарик\"),\n        new Cat(\"Барсик\")\n    };\n    for (auto a : animals) {\n        a->speak(); cout << endl;\n    }\n    for (auto a : animals) delete a;\n    return 0;\n}</code></pre>"
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <string>\n\nclass Animal {\nprotected:\n    std::string name;\npublic:\n    Animal(const std::string& n) : name(n) {}\n    virtual void speak() const {\n        std::cout << name << \": ...\" << std::endl;\n    }\n    virtual ~Animal() {}\n};\n\nclass Dog : public Animal {\npublic:\n    Dog(const std::string& n) : Animal(n) {}\n    void speak() const override {\n        std::cout << name << \": Гав!\" << std::endl;\n    }\n};\n\nint main() {\n    Animal a(\"Зверь\"); Dog d(\"Шарик\");\n    Animal* p = &a; p->speak(); // Зверь: ...\n    p = &d; p->speak();         // Шарик: Гав!\n    return 0;\n}</code></pre>"
         }
       ]
     },
     {
-      "id": "Д7",
-      "title": "Стек с исключением при переполнении",
+      "id": "d-10",
+      "title": "Фигура → Треугольник (dynamic)",
+      "type": "Задача · Наследование",
+      "formalText": "Базовый «Фигура» (virtual area()=0). Производный «Треугольник» (a, h; area = a*h/2).\nДинамический полиморфизм.",
+      "tldr": "Shape (pure virtual) → Triangle (a*h/2)",
+      "hint": "Чисто виртуальная `area()=0` делает класс абстрактным.",
+      "steps": [
+        {
+          "title": "Полный код",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n\nclass Shape {\npublic:\n    virtual double area() const = 0;\n    virtual void print() const {\n        std::cout << \"S=\" << area() << std::endl;\n    }\n    virtual ~Shape() {}\n};\n\nclass Triangle : public Shape {\n    double a, h;\npublic:\n    Triangle(double a, double h) : a(a), h(h) {}\n    double area() const override { return a*h/2.0; }\n};\n\nint main() {\n    Triangle t(6, 4);\n    Shape* p = &t;\n    p->print(); // S=12\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "d-11",
+      "title": "Матрица → Квадратная матрица (static)",
+      "type": "Задача · Наследование",
+      "formalText": "Базовый «Матрица» (rows, cols, print()). Производный «Квадратная матрица» (determinant для 2×2).\nСтатический полиморфизм.",
+      "tldr": "Matrix → SquareMatrix (det=ad-bc)",
+      "hint": "Определитель 2×2: `data[0]*data[3] - data[1]*data[2]`.",
+      "steps": [
+        {
+          "title": "Полный код",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n\nclass Matrix {\nprotected:\n    double data[4]; int rows, cols;\npublic:\n    Matrix(int r, int c) : rows(r), cols(c) {}\n    void set(int i, double v) { data[i] = v; }\n    void print() const {\n        for (int i=0;i<rows*cols;++i)\n            std::cout << data[i] << \" \";\n        std::cout << std::endl;\n    }\n};\n\nclass SquareMatrix : public Matrix {\npublic:\n    SquareMatrix() : Matrix(2,2) {}\n    double det() const {\n        return data[0]*data[3] - data[1]*data[2];\n    }\n};\n\nint main() {\n    SquareMatrix m;\n    m.set(0,1); m.set(1,2); m.set(2,3); m.set(3,4);\n    m.print();  // 1 2 3 4\n    std::cout << \"det=\" << m.det() << std::endl; // -2\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "d-12",
+      "title": "Персона → Студент (dynamic)",
+      "type": "Задача · Наследование",
+      "formalText": "Базовый «Персона» (ФИО, virtual print()). Производный «Студент» (+группа, +средний балл, override print()).\nДинамический полиморфизм.",
+      "tldr": "Person → Student (+group, +gpa)",
+      "hint": "В `Student::print()` вызови `Person::print()` первым.",
+      "steps": [
+        {
+          "title": "Полный код",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <string>\n\nclass Person {\nprotected:\n    std::string name;\npublic:\n    Person(const std::string& n) : name(n) {}\n    virtual void print() const {\n        std::cout << \"ФИО: \" << name << std::endl;\n    }\n    virtual ~Person() {}\n};\n\nclass Student : public Person {\n    std::string group; double gpa;\npublic:\n    Student(const std::string& n, const std::string& g, double gpa)\n        : Person(n), group(g), gpa(gpa) {}\n    void print() const override {\n        Person::print();\n        std::cout << \"Группа: \" << group\n                  << \" GPA: \" << gpa << std::endl;\n    }\n};\n\nint main() {\n    Person p(\"Иванов\"); Student s(\"Петров\",\"ИУ5-31Б\",4.5);\n    Person* ptr = &p; ptr->print();\n    ptr = &s; ptr->print();\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "d-13",
+      "title": "Цилиндр → Конус (dynamic)",
+      "type": "Задача · Наследование",
+      "formalText": "Базовый «Цилиндр» (r, h; virtual volume = πr²h). Производный «Конус» (volume = πr²h/3).\nДинамический полиморфизм.",
+      "tldr": "Cylinder → Cone (V/3)",
+      "hint": "Объём цилиндра: `M_PI*r*r*h`. Конуса: делим на 3.",
+      "steps": [
+        {
+          "title": "Полный код",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <cmath>\n\nclass Cylinder {\nprotected:\n    double r, h;\npublic:\n    Cylinder(double r, double h) : r(r), h(h) {}\n    virtual double volume() const { return M_PI*r*r*h; }\n    virtual void print() const {\n        std::cout << \"V=\" << volume() << std::endl;\n    }\n    virtual ~Cylinder() {}\n};\n\nclass Cone : public Cylinder {\npublic:\n    Cone(double r, double h) : Cylinder(r,h) {}\n    double volume() const override {\n        return Cylinder::volume()/3.0;\n    }\n};\n\nint main() {\n    Cylinder cy(3,10); Cone co(3,10);\n    Cylinder* p = &cy; p->print(); // V=282.7\n    p = &co; p->print();            // V=94.2\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "d-14",
+      "title": "Банковский счёт → Кредитный (dynamic)",
+      "type": "Задача · Наследование",
+      "formalText": "Базовый «Счёт» (баланс, virtual withdraw()). Производный «Кредитный» (разрешён овердрафт до лимита).",
+      "tldr": "Account → CreditAccount (overdraft)",
+      "hint": "Кредитный счёт допускает отрицательный баланс до `-limit`.",
+      "steps": [
+        {
+          "title": "Полный код",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n\nclass Account {\nprotected:\n    double balance;\npublic:\n    Account(double b) : balance(b) {}\n    virtual bool withdraw(double amount) {\n        if (amount > balance) return false;\n        balance -= amount; return true;\n    }\n    void print() const {\n        std::cout << \"Баланс: \" << balance << std::endl;\n    }\n    virtual ~Account() {}\n};\n\nclass CreditAccount : public Account {\n    double limit;\npublic:\n    CreditAccount(double b, double lim)\n        : Account(b), limit(lim) {}\n    bool withdraw(double amount) override {\n        if (amount > balance + limit) return false;\n        balance -= amount; return true;\n    }\n};\n\nint main() {\n    Account a(1000); CreditAccount ca(1000, 500);\n    Account* p = &a;\n    p->withdraw(1200); p->print(); // 1000 (не снято)\n    p = &ca;\n    p->withdraw(1200); p->print(); // -200 (овердрафт)\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "d-15",
+      "title": "Список → Отсортированный список (static)",
+      "type": "Задача · Наследование",
+      "formalText": "Базовый «Список» (vector<int>, add(), print()). Производный «СортСписок» (add() вставляет в нужное место).",
+      "tldr": "List → SortedList (insert sorted)",
+      "hint": "В `SortedList::add()` найди позицию через `lower_bound` и вставь `insert()`.",
+      "steps": [
+        {
+          "title": "Полный код",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <vector>\n#include <algorithm>\n\nclass List {\nprotected:\n    std::vector<int> data;\npublic:\n    void add(int v) { data.push_back(v); }\n    void print() const {\n        for (int x : data) std::cout << x << \" \";\n        std::cout << std::endl;\n    }\n};\n\nclass SortedList : public List {\npublic:\n    void add(int v) {\n        auto it = std::lower_bound(data.begin(), data.end(), v);\n        data.insert(it, v);\n    }\n};\n\nint main() {\n    SortedList sl;\n    sl.add(5); sl.add(1); sl.add(3); sl.add(2);\n    sl.print(); // 1 2 3 5\n    List* p = &sl;\n    p->add(4);  // статический — List::add (в конец!)\n    p->print(); // 1 2 3 5 4\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "d-16",
+      "title": "Часы → Будильник (dynamic)",
+      "type": "Задача · Наследование",
+      "formalText": "Базовый «Часы» (h, m; virtual tick(), virtual print()). Производный «Будильник» (+alarmH, +alarmM, tick() проверяет совпадение).",
+      "tldr": "Clock → AlarmClock (check alarm)",
+      "hint": "В `AlarmClock::tick()` после вызова `Clock::tick()` проверь, совпало ли время с будильником.",
+      "steps": [
+        {
+          "title": "Полный код",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n\nclass Clock {\nprotected:\n    int h, m;\npublic:\n    Clock(int h, int m) : h(h), m(m) {}\n    virtual void tick() {\n        if (++m >= 60) { m=0; h=(h+1)%24; }\n    }\n    virtual void print() const {\n        std::cout << h << \":\" << m << std::endl;\n    }\n    virtual ~Clock() {}\n};\n\nclass AlarmClock : public Clock {\n    int ah, am;\npublic:\n    AlarmClock(int h, int m, int ah, int am)\n        : Clock(h,m), ah(ah), am(am) {}\n    void tick() override {\n        Clock::tick();\n        if (h==ah && m==am)\n            std::cout << \"ALARM!\" << std::endl;\n    }\n};\n\nint main() {\n    AlarmClock ac(7,58, 8,0);\n    Clock* p = &ac;\n    p->tick(); p->print(); // 7:59\n    p->tick(); p->print(); // 8:0 + ALARM!\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "d-17",
+      "title": "Класс «Вектор» — исключение при выходе за границы",
       "type": "Задача · Исключения",
-      "formalText": "Создать класс «стек фиксированного размера» (массив int, текущий размер — private). Методы push и pop.\nПри переполнении (push в полный) — throw. При извлечении из пустого (pop) — throw.\nПродемонстрировать оба исключения.",
-      "tldr": "Stack + push/pop + throw overflow/underflow",
-      "hint": "class StackError : public runtime_error. push: if(top >= MAX) throw. pop: if(top <= 0) throw",
+      "formalText": "Класс «Вектор» (динамический массив). Метод at(i) бросает исключение IndexError : out_of_range при i < 0 или i >= size.",
+      "tldr": "Vector + IndexError : out_of_range",
+      "hint": "Класс `IndexError` хранит индекс, при котором произошла ошибка.",
       "steps": [
         {
           "title": "Полный код",
-          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <stdexcept>\nusing namespace std;\n\nclass Stack {\n    static const int MAX = 5;\n    int data[MAX];\n    int top;\npublic:\n    Stack() : top(0) {}\n    void push(int val) {\n        if (top >= MAX)\n            throw overflow_error(\"Stack overflow\");\n        data[top++] = val;\n    }\n    int pop() {\n        if (top <= 0)\n            throw underflow_error(\"Stack underflow\");\n        return data[--top];\n    }\n};\n\nint main() {\n    Stack s;\n    try {\n        for (int i = 0; i < 6; i++)  // 6 > MAX=5\n            s.push(i * 10);\n    }\n    catch (const overflow_error& e) {\n        cerr << e.what() << endl;  // Stack overflow\n    }\n\n    try {\n        while (true) s.pop();  // извлекаем до пустого\n    }\n    catch (const underflow_error& e) {\n        cerr << e.what() << endl;  // Stack underflow\n    }\n    return 0;\n}</code></pre>"
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <stdexcept>\n\nclass IndexError : public std::out_of_range {\n    int idx;\npublic:\n    IndexError(int i)\n        : std::out_of_range(\"Index out of range\"), idx(i) {}\n    void printData() const {\n        std::cerr << \"Индекс: \" << idx << std::endl;\n    }\n};\n\nclass Vector {\n    int* data; int sz;\npublic:\n    Vector(int n) : data(new int[n]), sz(n) {}\n    ~Vector() { delete[] data; }\n    void set(int i, int v) { data[i] = v; }\n    int at(int i) const {\n        if (i<0||i>=sz) throw IndexError(i);\n        return data[i];\n    }\n};\n\nint main() {\n    Vector v(3);\n    v.set(0,10); v.set(1,20); v.set(2,30);\n    try {\n        std::cout << v.at(1) << std::endl; // 20\n        std::cout << v.at(5) << std::endl; // exception\n    } catch (const IndexError& e) {\n        std::cerr << e.what() << std::endl;\n        e.printData();\n    }\n    return 0;\n}</code></pre>"
         }
       ]
     },
     {
-      "id": "Д8",
-      "title": "Матрица с исключением при выходе за границы",
+      "id": "d-18",
+      "title": "Деление с исключением при делении на ноль",
       "type": "Задача · Исключения",
-      "formalText": "Создать класс «матрица» (2D массив, размеры — private). Метод at(i,j) — доступ к элементу.\nПри выходе индекса за границы — throw.\nПродемонстрировать обработку исключения.",
-      "tldr": "Matrix + at(i,j) + throw out_of_range",
-      "hint": "at(i,j): if (i>=rows || j>=cols) throw out_of_range(\"...\"); return data[i][j]",
+      "formalText": "Класс «Калькулятор». Метод divide(a,b) бросает DivisionByZero : runtime_error при b == 0.",
+      "tldr": "Calculator + DivisionByZero",
+      "hint": "Наследуй от `std::runtime_error`. Проверяй `b == 0` перед делением.",
       "steps": [
         {
           "title": "Полный код",
-          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <stdexcept>\n#include <vector>\nusing namespace std;\n\nclass Matrix {\n    vector<vector<int>> data;\n    int rows, cols;\npublic:\n    Matrix(int r, int c) : rows(r), cols(c),\n        data(r, vector<int>(c, 0)) {}\n    int& at(int i, int j) {\n        if (i < 0 || i >= rows || j < 0 || j >= cols)\n            throw out_of_range(\"Index out of bounds\");\n        return data[i][j];\n    }\n};\n\nint main() {\n    Matrix m(3, 3);\n    m.at(0, 0) = 42;\n    cout << m.at(0, 0) << endl;  // 42\n\n    try {\n        m.at(5, 5) = 10;  // throw!\n    }\n    catch (const out_of_range& e) {\n        cerr << e.what() << endl;  // Index out of bounds\n    }\n    return 0;\n}</code></pre>"
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <stdexcept>\n\nclass DivisionByZero : public std::runtime_error {\n    double a;\npublic:\n    DivisionByZero(double a)\n        : std::runtime_error(\"Division by zero\"), a(a) {}\n    void printData() const {\n        std::cerr << \"Попытка: \" << a << \" / 0\" << std::endl;\n    }\n};\n\nclass Calculator {\npublic:\n    double divide(double a, double b) {\n        if (b == 0) throw DivisionByZero(a);\n        return a / b;\n    }\n};\n\nint main() {\n    Calculator calc;\n    try {\n        std::cout << calc.divide(10,3) << std::endl; // 3.33\n        std::cout << calc.divide(5,0) << std::endl;  // throws\n    } catch (const DivisionByZero& e) {\n        std::cerr << e.what() << std::endl;\n        e.printData();\n    }\n    return 0;\n}</code></pre>"
         }
       ]
     },
     {
-      "id": "Д9",
-      "title": "Три потока: параллельная сумма массива",
-      "type": "Задача · Многопоточность",
-      "formalText": "Создать массив из 30 элементов. Разбить на 3 части по 10. Каждый поток суммирует свою часть.\nГлавный поток собирает частичные суммы и выводит общую.",
-      "tldr": "3 threads, каждый суммирует 1/3 массива, mutex для результата",
-      "hint": "Общая переменная total — защищена mutex. Каждый поток: sum += arr[i], затем { lock_guard; total += sum; }",
+      "id": "d-19",
+      "title": "Класс «Матрица» — исключение при несовместимых размерах",
+      "type": "Задача · Исключения",
+      "formalText": "Сложение двух матриц. Бросать SizeError : logic_error, если размеры не совпадают.",
+      "tldr": "Matrix + SizeError : logic_error",
+      "hint": "Храни в `SizeError` оба размера и выводи их в `printData()`.",
       "steps": [
         {
           "title": "Полный код",
-          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <thread>\n#include <mutex>\n#include <vector>\nusing namespace std;\n\nmutex mtx;\nint total = 0;\n\nvoid partialSum(const vector<int>& arr, int from, int to) {\n    int sum = 0;\n    for (int i = from; i < to; i++) sum += arr[i];\n    lock_guard<mutex> lock(mtx);\n    total += sum;\n}\n\nint main() {\n    vector<int> arr(30);\n    for (int i = 0; i < 30; i++) arr[i] = i + 1;\n\n    thread t1(partialSum, ref(arr), 0, 10);\n    thread t2(partialSum, ref(arr), 10, 20);\n    thread t3(partialSum, ref(arr), 20, 30);\n    t1.join(); t2.join(); t3.join();\n\n    cout << \"Total: \" << total << endl;  // 465\n    return 0;\n}</code></pre>"
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <stdexcept>\n#include <string>\n\nclass SizeError : public std::logic_error {\n    int r1,c1,r2,c2;\npublic:\n    SizeError(int r1,int c1,int r2,int c2)\n        : std::logic_error(\"Size mismatch\"),\n          r1(r1),c1(c1),r2(r2),c2(c2) {}\n    void printData() const {\n        std::cerr << r1<<\"x\"<<c1<<\" vs \"<<r2<<\"x\"<<c2<<std::endl;\n    }\n};\n\nclass Matrix {\n    int rows, cols;\npublic:\n    Matrix(int r, int c) : rows(r), cols(c) {}\n    Matrix add(const Matrix& o) const {\n        if (rows!=o.rows||cols!=o.cols)\n            throw SizeError(rows,cols,o.rows,o.cols);\n        return Matrix(rows,cols);\n    }\n};\n\nint main() {\n    Matrix a(2,3), b(3,2);\n    try { a.add(b); }\n    catch (const SizeError& e) {\n        std::cerr << e.what() << std::endl;\n        e.printData(); // 2x3 vs 3x2\n    }\n    return 0;\n}</code></pre>"
         }
       ]
     },
     {
-      "id": "Д10",
-      "title": "Производитель-потребитель (condition_variable)",
-      "type": "Задача · Многопоточность",
-      "formalText": "Реализовать паттерн «производитель-потребитель». Производитель помещает числа в буфер. Потребитель извлекает и печатает.\nИспользовать condition_variable для синхронизации — потребитель ждёт, пока буфер не пуст.",
-      "tldr": "producer-consumer + cv.wait + cv.notify_one",
-      "hint": "queue<int> buffer, cv.notify_one() при push, cv.wait(lock, []{return !buffer.empty();}) при pop",
+      "id": "d-20",
+      "title": "Класс «Возраст» — исключение при < 0 или > 150",
+      "type": "Задача · Исключения",
+      "formalText": "Класс «Человек» (имя, возраст). При возрасте < 0 или > 150 бросать AgeError : out_of_range.",
+      "tldr": "Person + AgeError : out_of_range",
+      "hint": "Аналогично Time/Date: валидация в конструкторе.",
       "steps": [
         {
           "title": "Полный код",
-          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <thread>\n#include <mutex>\n#include <condition_variable>\n#include <queue>\nusing namespace std;\n\nmutex mtx;\ncondition_variable cv;\nqueue<int> buffer;\nbool finished = false;\n\nvoid producer(int n) {\n    for (int i = 1; i <= n; i++) {\n        { lock_guard<mutex> lk(mtx); buffer.push(i); }\n        cv.notify_one();\n    }\n    { lock_guard<mutex> lk(mtx); finished = true; }\n    cv.notify_one();\n}\n\nvoid consumer() {\n    while (true) {\n        unique_lock<mutex> lk(mtx);\n        cv.wait(lk, []{ return !buffer.empty() || finished; });\n        while (!buffer.empty()) {\n            cout << \"Got: \" << buffer.front() << endl;\n            buffer.pop();\n        }\n        if (finished && buffer.empty()) break;\n    }\n}\n\nint main() {\n    thread p(producer, 5);\n    thread c(consumer);\n    p.join(); c.join();\n    return 0;\n}</code></pre>"
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <stdexcept>\n#include <string>\n\nclass AgeError : public std::out_of_range {\n    int age;\npublic:\n    AgeError(int a)\n        : std::out_of_range(\"Invalid age\"), age(a) {}\n    void printData() const {\n        std::cerr << \"Возраст: \" << age << std::endl;\n    }\n};\n\nclass Person {\n    std::string name; int age;\npublic:\n    Person(const std::string& n, int a) : name(n), age(a) {\n        if (a<0||a>150) throw AgeError(a);\n    }\n};\n\nint main() {\n    try { Person p(\"Иванов\", 200); }\n    catch (const AgeError& e) {\n        std::cerr << e.what() << std::endl;\n        e.printData();\n    }\n    return 0;\n}</code></pre>"
         }
       ]
     },
     {
-      "id": "Д11",
-      "title": "Класс «счётчик» со static полем",
-      "type": "Задача · Простые классы",
-      "formalText": "Создать класс с static полем count для подсчёта созданных объектов. Конструктор инкрементирует count, деструктор декрементирует.\nStatic метод getCount(). Продемонстрировать в main.",
-      "tldr": "static int count + конструктор++ + деструктор--",
-      "hint": "static int count; инициализация за классом: int A::count = 0; static int getCount() { return count; }",
+      "id": "d-21",
+      "title": "Стек с исключениями push/pop",
+      "type": "Задача · Исключения",
+      "formalText": "Класс «Стек» (фиксированный размер). push() бросает StackOverflow, pop() бросает StackUnderflow.",
+      "tldr": "Stack + StackOverflow + StackUnderflow",
+      "hint": "Два класса исключений, оба от `std::runtime_error`.",
       "steps": [
         {
           "title": "Полный код",
-          "text": "<pre class=\"code-block\"><code>#include <iostream>\nusing namespace std;\n\nclass Counter {\n    static int count;\npublic:\n    Counter()  { count++; }\n    ~Counter() { count--; }\n    static int getCount() { return count; }\n};\nint Counter::count = 0;\n\nint main() {\n    cout << Counter::getCount() << endl;  // 0\n    Counter a, b, c;\n    cout << Counter::getCount() << endl;  // 3\n    {\n        Counter d;\n        cout << Counter::getCount() << endl;  // 4\n    }  // d уничтожен\n    cout << Counter::getCount() << endl;  // 3\n    return 0;\n}</code></pre>"
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <stdexcept>\n\nclass StackOverflow : public std::runtime_error {\npublic: StackOverflow() : std::runtime_error(\"Stack overflow\") {} };\nclass StackUnderflow : public std::runtime_error {\npublic: StackUnderflow() : std::runtime_error(\"Stack underflow\") {} };\n\nclass Stack {\n    int data[3]; int top;\npublic:\n    Stack() : top(0) {}\n    void push(int v) {\n        if (top>=3) throw StackOverflow();\n        data[top++]=v;\n    }\n    int pop() {\n        if (top<=0) throw StackUnderflow();\n        return data[--top];\n    }\n};\n\nint main() {\n    Stack s;\n    try {\n        s.push(1); s.push(2); s.push(3);\n        s.push(4); // overflow!\n    } catch (const std::runtime_error& e) {\n        std::cerr << e.what() << std::endl;\n    }\n    try { Stack s2; s2.pop(); } // underflow\n    catch (const std::runtime_error& e) {\n        std::cerr << e.what() << std::endl;\n    }\n    return 0;\n}</code></pre>"
         }
       ]
     },
     {
-      "id": "Д12",
-      "title": "Перегрузка operator+ и operator<<",
-      "type": "Задача · Простые классы",
-      "formalText": "Создать класс «вектор 2D» (x, y). Перегрузить operator+ как метод класса. Перегрузить operator<< как дружественную функцию.\nПродемонстрировать сложение и вывод.",
-      "tldr": "operator+ (метод) + friend operator<< ",
-      "hint": "Vec operator+(const Vec& b) — метод. friend ostream& operator<<(ostream&, const Vec&) — друг",
+      "id": "d-22",
+      "title": "Класс «Скорость» — исключение при превышении",
+      "type": "Задача · Исключения",
+      "formalText": "Класс «Автомобиль» (макс. скорость). Метод accelerate(v) бросает SpeedError если v > maxSpeed.",
+      "tldr": "Car + SpeedError : out_of_range",
+      "hint": "Храни в исключении запрошенную скорость и максимальную.",
       "steps": [
         {
           "title": "Полный код",
-          "text": "<pre class=\"code-block\"><code>#include <iostream>\nusing namespace std;\n\nclass Vec2D {\n    double x, y;\npublic:\n    Vec2D(double x = 0, double y = 0) : x(x), y(y) {}\n    Vec2D operator+(const Vec2D& b) const {\n        return Vec2D(x + b.x, y + b.y);\n    }\n    friend ostream& operator<<(ostream& os, const Vec2D& v) {\n        return os << \"(\" << v.x << \", \" << v.y << \")\";\n    }\n};\n\nint main() {\n    Vec2D a(1, 2), b(3, 4);\n    Vec2D c = a + b;\n    cout << a << \" + \" << b << \" = \" << c << endl;\n    // (1, 2) + (3, 4) = (4, 6)\n    return 0;\n}</code></pre>"
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <stdexcept>\n#include <string>\n\nclass SpeedError : public std::out_of_range {\n    double requested, maxAllowed;\npublic:\n    SpeedError(double r, double m)\n        : std::out_of_range(\"Speed exceeded\"), requested(r), maxAllowed(m) {}\n    void printData() const {\n        std::cerr << \"Запрос=\" << requested\n                  << \" Макс=\" << maxAllowed << std::endl;\n    }\n};\n\nclass Car {\n    double maxSpeed, curSpeed;\npublic:\n    Car(double ms) : maxSpeed(ms), curSpeed(0) {}\n    void accelerate(double v) {\n        if (v > maxSpeed) throw SpeedError(v, maxSpeed);\n        curSpeed = v;\n    }\n};\n\nint main() {\n    Car c(200);\n    try {\n        c.accelerate(150); // OK\n        c.accelerate(250); // throws\n    } catch (const SpeedError& e) {\n        std::cerr << e.what() << std::endl;\n        e.printData();\n    }\n    return 0;\n}</code></pre>"
         }
       ]
     },
     {
-      "id": "Д13",
-      "title": "Шаблон класса «пара значений»",
-      "type": "Задача · Простые классы",
-      "formalText": "Создать шаблонный класс Pair<T1, T2> с двумя полями. Конструктор. Методы getFirst(), getSecond().\nСоздать объекты Pair<int, string> и Pair<double, double>.",
-      "tldr": "template<class T1, class T2> class Pair",
-      "hint": "template<class T1, class T2> class Pair { T1 first; T2 second; ... };",
+      "id": "d-23",
+      "title": "Параллельная сумма массива (2 потока)",
+      "type": "Задача · Потоки",
+      "formalText": "Два потока считают сумму своей половины массива. Главный поток складывает результаты.",
+      "tldr": "thread + partial_sum + mutex",
+      "hint": "Каждый поток суммирует свой диапазон [lo..hi) и записывает результат в общую переменную под мьютексом.",
       "steps": [
         {
           "title": "Полный код",
-          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <string>\nusing namespace std;\n\ntemplate<class T1, class T2>\nclass Pair {\n    T1 first;\n    T2 second;\npublic:\n    Pair(T1 f, T2 s) : first(f), second(s) {}\n    T1 getFirst()  const { return first; }\n    T2 getSecond() const { return second; }\n};\n\nint main() {\n    Pair<int, string> p1(42, \"hello\");\n    cout << p1.getFirst() << \", \" << p1.getSecond() << endl;\n    // 42, hello\n\n    Pair<double, double> p2(3.14, 2.71);\n    cout << p2.getFirst() << \", \" << p2.getSecond() << endl;\n    // 3.14, 2.71\n    return 0;\n}</code></pre>"
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <thread>\n#include <mutex>\n#include <vector>\n\nstd::mutex mtx;\nlong long totalSum = 0;\n\nvoid partialSum(const std::vector<int>& arr, int lo, int hi) {\n    long long s = 0;\n    for (int i = lo; i < hi; ++i) s += arr[i];\n    std::lock_guard<std::mutex> lk(mtx);\n    totalSum += s;\n}\n\nint main() {\n    std::vector<int> arr(100);\n    for (int i=0;i<100;++i) arr[i]=i+1;\n    int mid = arr.size()/2;\n    std::thread t1(partialSum, std::ref(arr), 0, mid);\n    std::thread t2(partialSum, std::ref(arr), mid, (int)arr.size());\n    t1.join(); t2.join();\n    std::cout << \"Sum=\" << totalSum << std::endl; // 5050\n    return 0;\n}</code></pre>"
         }
       ]
     },
     {
-      "id": "Д14",
-      "title": "Фигура (абстрактный класс) → Круг, Квадрат",
-      "type": "Задача · Наследование",
-      "formalText": "Создать абстрактный класс Shape с чисто виртуальным методом area().\nСоздать производные классы Circle и Square.\nМассив Shape* — продемонстрировать полиморфизм.",
-      "tldr": "Shape(pure virtual area) → Circle, Square",
-      "hint": "virtual double area() = 0; — чисто виртуальная. Circle: π*r², Square: s²",
+      "id": "d-24",
+      "title": "Производитель-Потребитель (condition_variable)",
+      "type": "Задача · Потоки",
+      "formalText": "Один поток кладёт числа в очередь, другой вынимает. Синхронизация через condition_variable.",
+      "tldr": "producer-consumer + cv + queue",
+      "hint": "Производитель: push + notify_one(). Потребитель: wait(lk, pred) + pop().",
       "steps": [
         {
           "title": "Полный код",
-          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <cmath>\nusing namespace std;\n\nclass Shape {\npublic:\n    virtual double area() = 0;  // чисто виртуальная\n    virtual void print() {\n        cout << \"Area = \" << area();\n    }\n    virtual ~Shape() {}\n};\n\nclass Circle : public Shape {\n    double r;\npublic:\n    Circle(double r) : r(r) {}\n    double area() override { return M_PI * r * r; }\n};\n\nclass Square : public Shape {\n    double s;\npublic:\n    Square(double s) : s(s) {}\n    double area() override { return s * s; }\n};\n\nint main() {\n    Shape* shapes[] = { new Circle(5), new Square(4) };\n    for (auto s : shapes) {\n        s->print(); cout << endl;\n    }\n    // Area = 78.5398\n    // Area = 16\n    for (auto s : shapes) delete s;\n    return 0;\n}</code></pre>"
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <thread>\n#include <mutex>\n#include <condition_variable>\n#include <queue>\n\nstd::mutex mtx;\nstd::condition_variable cv;\nstd::queue<int> q;\nbool finished = false;\n\nvoid producer(int n) {\n    for (int i=1;i<=n;++i) {\n        { std::lock_guard<std::mutex> lk(mtx); q.push(i); }\n        cv.notify_one();\n    }\n    { std::lock_guard<std::mutex> lk(mtx); finished=true; }\n    cv.notify_one();\n}\n\nvoid consumer() {\n    while (true) {\n        std::unique_lock<std::mutex> lk(mtx);\n        cv.wait(lk, []{ return !q.empty()||finished; });\n        while (!q.empty()) {\n            std::cout << \"Got: \" << q.front() << std::endl;\n            q.pop();\n        }\n        if (finished && q.empty()) break;\n    }\n}\n\nint main() {\n    std::thread p(producer, 5);\n    std::thread c(consumer);\n    p.join(); c.join();\n    return 0;\n}</code></pre>"
         }
       ]
     },
     {
-      "id": "Д15",
-      "title": "async + future: параллельное вычисление",
-      "type": "Задача · Многопоточность",
-      "formalText": "Создать функцию для вычисления суммы 1..n. Запустить через std::async. Получить результат через std::future. Вывести.",
-      "tldr": "async(func, args) + future.get()",
-      "hint": "auto f = async(sumRange, 1, 1000000); int result = f.get();",
+      "id": "d-25",
+      "title": "Счётчик в N потоках (atomic)",
+      "type": "Задача · Потоки",
+      "formalText": "N потоков инкрементируют общий счётчик 1000 раз каждый. Использовать atomic для корректности.",
+      "tldr": "N threads + atomic<int> counter",
+      "hint": "Без atomic результат будет < N*1000 из-за гонки данных.",
       "steps": [
         {
           "title": "Полный код",
-          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <future>\nusing namespace std;\n\nlong long sumRange(int from, int to) {\n    long long s = 0;\n    for (int i = from; i <= to; i++) s += i;\n    return s;\n}\n\nint main() {\n    auto f1 = async(sumRange, 1, 500000);\n    auto f2 = async(sumRange, 500001, 1000000);\n\n    long long total = f1.get() + f2.get();\n    cout << \"Sum 1..1000000 = \" << total << endl;\n    // Sum 1..1000000 = 500000500000\n    return 0;\n}</code></pre>"
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <thread>\n#include <atomic>\n#include <vector>\n\nstd::atomic<int> counter(0);\n\nvoid increment(int times) {\n    for (int i=0;i<times;++i) ++counter;\n}\n\nint main() {\n    const int N=4, TIMES=1000;\n    std::vector<std::thread> threads;\n    for (int i=0;i<N;++i)\n        threads.emplace_back(increment, TIMES);\n    for (auto& t : threads) t.join();\n    std::cout << \"Counter=\" << counter\n              << \" (expected \" << N*TIMES << \")\" << std::endl;\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "d-26",
+      "title": "Параллельный поиск максимума (2 потока)",
+      "type": "Задача · Потоки",
+      "formalText": "Два потока ищут максимум в своей половине массива. Главный поток выбирает больший из двух.",
+      "tldr": "thread + partial max + mutex",
+      "hint": "Каждый поток записывает свой максимум подмассива в общую переменную.",
+      "steps": [
+        {
+          "title": "Полный код",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <thread>\n#include <mutex>\n#include <vector>\n#include <climits>\n\nstd::mutex mtx;\nint globalMax = INT_MIN;\n\nvoid partialMax(const std::vector<int>& arr, int lo, int hi) {\n    int m = arr[lo];\n    for (int i=lo+1;i<hi;++i) if(arr[i]>m) m=arr[i];\n    std::lock_guard<std::mutex> lk(mtx);\n    if (m > globalMax) globalMax = m;\n}\n\nint main() {\n    std::vector<int> arr = {3,7,1,9,2,8,5,4,6,10};\n    int mid = arr.size()/2;\n    std::thread t1(partialMax, std::ref(arr), 0, mid);\n    std::thread t2(partialMax, std::ref(arr), mid, (int)arr.size());\n    t1.join(); t2.join();\n    std::cout << \"Max=\" << globalMax << std::endl; // 10\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "d-27",
+      "title": "Пинг-понг между двумя потоками",
+      "type": "Задача · Потоки",
+      "formalText": "Два потока поочерёдно печатают «Ping» и «Pong» N раз. Синхронизация через condition_variable.",
+      "tldr": "ping-pong + cv + bool turn",
+      "hint": "Общий флаг `bool pingTurn`. Каждый поток ждёт своей очереди.",
+      "steps": [
+        {
+          "title": "Полный код",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <thread>\n#include <mutex>\n#include <condition_variable>\n\nstd::mutex mtx;\nstd::condition_variable cv;\nbool pingTurn = true;\n\nvoid ping(int n) {\n    for (int i=0;i<n;++i) {\n        std::unique_lock<std::mutex> lk(mtx);\n        cv.wait(lk, []{ return pingTurn; });\n        std::cout << \"Ping\" << std::endl;\n        pingTurn = false;\n        cv.notify_one();\n    }\n}\nvoid pong(int n) {\n    for (int i=0;i<n;++i) {\n        std::unique_lock<std::mutex> lk(mtx);\n        cv.wait(lk, []{ return !pingTurn; });\n        std::cout << \"Pong\" << std::endl;\n        pingTurn = true;\n        cv.notify_one();\n    }\n}\n\nint main() {\n    std::thread t1(ping, 3), t2(pong, 3);\n    t1.join(); t2.join();\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "d-28",
+      "title": "Таймер в отдельном потоке",
+      "type": "Задача · Потоки",
+      "formalText": "Поток-таймер считает секунды. Главный поток через cv посылает сигнал остановки.",
+      "tldr": "thread + cv + chrono + stop flag",
+      "hint": "Используй `cv.wait_for(lk, 1s, pred)` для ожидания с таймаутом.",
+      "steps": [
+        {
+          "title": "Полный код",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <thread>\n#include <mutex>\n#include <condition_variable>\n#include <chrono>\n\nstd::mutex mtx;\nstd::condition_variable cv;\nbool stopFlag = false;\n\nvoid timer() {\n    int sec = 0;\n    while (true) {\n        std::unique_lock<std::mutex> lk(mtx);\n        if (cv.wait_for(lk, std::chrono::seconds(1),\n                        []{ return stopFlag; }))\n            break;\n        ++sec;\n        std::cout << \"Tick: \" << sec << \"s\" << std::endl;\n    }\n    std::cout << \"Timer stopped\" << std::endl;\n}\n\nint main() {\n    std::thread t(timer);\n    std::this_thread::sleep_for(std::chrono::seconds(3));\n    { std::lock_guard<std::mutex> lk(mtx); stopFlag=true; }\n    cv.notify_one();\n    t.join();\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "d-29",
+      "title": "Потокобезопасный стек",
+      "type": "Задача · Потоки",
+      "formalText": "Класс ThreadSafeStack с push() и pop() под мьютексом. Два потока одновременно добавляют и извлекают.",
+      "tldr": "class ThreadSafeStack + mutex",
+      "hint": "Каждый метод захватывает `lock_guard<mutex>`. pop() ждёт через cv, если стек пуст.",
+      "steps": [
+        {
+          "title": "Полный код",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <thread>\n#include <mutex>\n#include <condition_variable>\n#include <stack>\n\nclass TSStack {\n    std::stack<int> s;\n    std::mutex mtx;\n    std::condition_variable cv;\npublic:\n    void push(int v) {\n        { std::lock_guard<std::mutex> lk(mtx); s.push(v); }\n        cv.notify_one();\n    }\n    int pop() {\n        std::unique_lock<std::mutex> lk(mtx);\n        cv.wait(lk, [&]{ return !s.empty(); });\n        int v = s.top(); s.pop();\n        return v;\n    }\n};\n\nint main() {\n    TSStack st;\n    std::thread producer([&]{\n        for (int i=1;i<=5;++i) st.push(i);\n    });\n    std::thread consumer([&]{\n        for (int i=0;i<5;++i)\n            std::cout << \"Pop: \" << st.pop() << std::endl;\n    });\n    producer.join(); consumer.join();\n    return 0;\n}</code></pre>"
+        }
+      ]
+    },
+    {
+      "id": "d-30",
+      "title": "Барьер: все потоки ждут друг друга",
+      "type": "Задача · Потоки",
+      "formalText": "N потоков выполняют работу и ждут на барьере. Когда все дошли — продолжают.",
+      "tldr": "N threads + barrier via cv + counter",
+      "hint": "Счётчик `arrived`. Каждый поток инкрементирует и ждёт. Последний — `notify_all()`.",
+      "steps": [
+        {
+          "title": "Полный код",
+          "text": "<pre class=\"code-block\"><code>#include <iostream>\n#include <thread>\n#include <mutex>\n#include <condition_variable>\n#include <vector>\n\nstd::mutex mtx;\nstd::condition_variable cv;\nint arrived = 0;\nconst int N = 4;\n\nvoid worker(int id) {\n    std::cout << \"Thread \" << id << \" working...\" << std::endl;\n    { std::lock_guard<std::mutex> lk(mtx); ++arrived; }\n    if (arrived == N) cv.notify_all();\n    std::unique_lock<std::mutex> lk(mtx);\n    cv.wait(lk, []{ return arrived == N; });\n    std::cout << \"Thread \" << id << \" past barrier\" << std::endl;\n}\n\nint main() {\n    std::vector<std::thread> ts;\n    for (int i=0;i<N;++i) ts.emplace_back(worker, i);\n    for (auto& t : ts) t.join();\n    return 0;\n}</code></pre>"
         }
       ]
     }
