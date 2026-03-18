@@ -222,7 +222,10 @@ function getSubjectsConfigLocal() {
     {
       id: 'math-cs-foundations', title: 'Мат. основы информатики',
       subtitle: 'Булевы функции, нормальные формы, теорема Поста', icon: '🔢',
-      assessments: [{ name: 'Зачёт', assessment: 'zachet', type: 'exam', icon: '✅' }],
+      assessments: [
+        { name: 'Зачёт', assessment: 'zachet', type: 'exam', icon: '✅' },
+        { name: 'Учебное пособие', assessment: null, type: 'textbook', icon: '📖', href: '?subject=math-cs-foundations&type=textbook' },
+      ],
     },
   ];
 }
