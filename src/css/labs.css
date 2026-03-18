@@ -622,6 +622,57 @@
   font-size: 0.84rem;
 }
 
+/* --- Drawer Copy Button --- */
+.drawer-copy-btn {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text3);
+  cursor: pointer;
+  font-size: 0.78rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  opacity: 0;
+  padding: 0;
+}
+
+.drawer-item:hover .drawer-copy-btn {
+  opacity: 1;
+}
+
+.drawer-copy-btn:hover {
+  background: rgba(99, 102, 241, 0.12);
+  color: var(--accent);
+  border-color: rgba(99, 102, 241, 0.2);
+}
+
+.drawer-copy-btn.copied {
+  opacity: 1;
+  background: rgba(45, 164, 78, 0.12);
+  color: #2da44e;
+  border-color: rgba(45, 164, 78, 0.2);
+}
+
+/* Clickable command in drawer */
+.drawer-cmd {
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.drawer-cmd:hover {
+  background: rgba(99, 102, 241, 0.15);
+}
+
+.drawer-cmd.copied {
+  background: rgba(45, 164, 78, 0.12) !important;
+  color: #2da44e !important;
+}
+
 /* --- SVG Diagrams --- */
 .lab-diagram {
   margin: 16px 0;

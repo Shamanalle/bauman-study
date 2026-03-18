@@ -393,7 +393,8 @@ function renderDrawerContent(filter) {
       <div class="drawer-section-title">${cat}</div>
       ${cmds.map(c => `
         <div class="drawer-item">
-          <span class="drawer-cmd">${c.cmd}</span>
+          <span class="drawer-cmd" title="Нажмите, чтобы скопировать">${c.cmd}</span>
+          <button class="drawer-copy-btn" data-cmd="${c.cmd.replace(/"/g, '&quot;')}" title="Копировать команду">📋</button>
           <span class="drawer-desc">${c.desc}</span>
           <span class="drawer-lab-badge">Lab ${c.lab}</span>
         </div>
@@ -420,6 +421,39 @@ function renderDrawerContent(filter) {
   }
 
   body.innerHTML = html;
+
+  // Wire up copy buttons for commands
+  body.querySelectorAll('.drawer-copy-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const cmd = btn.dataset.cmd;
+      navigator.clipboard.writeText(cmd).then(() => {
+        btn.textContent = '✓';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = '📋';
+          btn.classList.remove('copied');
+        }, 1200);
+      });
+    });
+  });
+
+  // Also make .drawer-cmd clickable to copy
+  body.querySelectorAll('.drawer-cmd').forEach(cmdEl => {
+    cmdEl.style.cursor = 'pointer';
+    cmdEl.addEventListener('click', () => {
+      const text = cmdEl.textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        const original = cmdEl.textContent;
+        cmdEl.textContent = '✓ Скопировано';
+        cmdEl.classList.add('copied');
+        setTimeout(() => {
+          cmdEl.textContent = original;
+          cmdEl.classList.remove('copied');
+        }, 1200);
+      });
+    });
+  });
 }
 
 // ─── Helpers ───
