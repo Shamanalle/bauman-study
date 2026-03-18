@@ -1,0 +1,720 @@
+{
+  "section": "🎯 Доп. задачи",
+  "icon": "✏️",
+  "questions": [
+    {
+      "id": "Д1.1",
+      "title": "y'=xy",
+      "type": "Задача · Разделяющиеся",
+      "formalText": "Решить $y' = xy$.",
+      "hint": "Разделяем: $\\frac{dy}{y}=x\\,dx$",
+      "steps": [
+        {
+          "title": "Разделение",
+          "math": "$$\\frac{dy}{y}=x\\,dx \\Rightarrow \\ln|y|=\\frac{x^2}{2}+C_1 \\Rightarrow y=Ce^{x^2/2}$$"
+        }
+      ],
+      "formula": "y=Ce^{x^2/2}"
+    },
+    {
+      "id": "Д1.2",
+      "title": "y'=y/x",
+      "type": "Задача · Разделяющиеся",
+      "formalText": "Решить $y' = \\frac{y}{x}$.",
+      "hint": "$\\frac{dy}{y}=\\frac{dx}{x}$ → $\\ln|y|=\\ln|x|+C$",
+      "steps": [
+        {
+          "title": "Разделение",
+          "math": "$$\\ln|y|=\\ln|x|+C_1 \\Rightarrow y=Cx$$"
+        }
+      ],
+      "formula": "y=Cx"
+    },
+    {
+      "id": "Д1.3",
+      "title": "y'=(1+y²)",
+      "type": "Задача · Разделяющиеся",
+      "formalText": "Решить $y' = 1+y^2$.",
+      "hint": "$\\frac{dy}{1+y^2}=dx$ → $\\arctan y = x + C$",
+      "steps": [
+        {
+          "title": "Разделение",
+          "math": "$$\\int\\frac{dy}{1+y^2}=\\int dx \\Rightarrow \\arctan y = x+C \\Rightarrow y=\\tan(x+C)$$"
+        }
+      ],
+      "formula": "y=\\tan(x+C)"
+    },
+    {
+      "id": "Д1.4",
+      "title": "y'=eˣ⁺ʸ",
+      "type": "Задача · Разделяющиеся",
+      "formalText": "Решить $y' = e^{x+y}$.",
+      "hint": "$e^{x+y}=e^x \\cdot e^y$ → $e^{-y}dy=e^x dx$",
+      "steps": [
+        {
+          "title": "Разделение",
+          "math": "$$\\int e^{-y}\\,dy=\\int e^x\\,dx \\Rightarrow -e^{-y}=e^x+C \\Rightarrow e^{-y}=-e^x+C_1$$"
+        }
+      ],
+      "formula": "e^{-y}+e^x=C"
+    },
+    {
+      "id": "Д1.5",
+      "title": "y'cos x = y sin x",
+      "type": "Задача · Разделяющиеся",
+      "formalText": "Решить $y'\\cos x = y\\sin x$.",
+      "hint": "$\\frac{dy}{y}=\\tan x\\,dx$ → $\\ln|y|=-\\ln|\\cos x|+C$",
+      "steps": [
+        {
+          "title": "Разделение",
+          "math": "$$\\int\\frac{dy}{y}=\\int\\tan x\\,dx \\Rightarrow \\ln|y|=-\\ln|\\cos x|+C \\Rightarrow y=\\frac{C}{\\cos x}$$"
+        }
+      ],
+      "formula": "y=\\frac{C}{\\cos x}"
+    },
+    {
+      "id": "Д1.6",
+      "title": "xy'+y=0",
+      "type": "Задача · Разделяющиеся",
+      "formalText": "Решить $xy'+y=0$.",
+      "hint": "$\\frac{dy}{y}=-\\frac{dx}{x}$",
+      "steps": [
+        {
+          "title": "Разделение",
+          "math": "$$\\ln|y|=-\\ln|x|+C \\Rightarrow y=\\frac{C}{x}$$"
+        }
+      ],
+      "formula": "y=C/x"
+    },
+    {
+      "id": "Д1.7",
+      "title": "y'=y²sin x",
+      "type": "Задача · Разделяющиеся",
+      "formalText": "Решить $y'=y^2\\sin x$.",
+      "hint": "$\\frac{dy}{y^2}=\\sin x\\,dx$",
+      "steps": [
+        {
+          "title": "Разделение",
+          "math": "$$-\\frac{1}{y}=-\\cos x+C \\Rightarrow y=\\frac{1}{\\cos x+C}$$"
+        }
+      ],
+      "formula": "y=\\frac{1}{\\cos x + C}"
+    },
+    {
+      "id": "Д1.8",
+      "title": "(1+x²)dy + xy dx = 0",
+      "type": "Задача · Разделяющиеся",
+      "formalText": "Решить $(1+x^2)\\,dy + xy\\,dx = 0$.",
+      "hint": "$\\frac{dy}{y}=-\\frac{x\\,dx}{1+x^2}$",
+      "steps": [
+        {
+          "title": "Разделение",
+          "math": "$$\\ln|y|=-\\frac{1}{2}\\ln(1+x^2)+C \\Rightarrow y=\\frac{C}{\\sqrt{1+x^2}}$$"
+        }
+      ],
+      "formula": "y=\\frac{C}{\\sqrt{1+x^2}}"
+    },
+    {
+      "id": "Д1.9",
+      "title": "y'=x/y, y(0)=2",
+      "type": "Задача · Разделяющиеся",
+      "formalText": "Решить задачу Коши: $y'=\\frac{x}{y}$, $y(0)=2$.",
+      "hint": "$y\\,dy=x\\,dx$",
+      "steps": [
+        {
+          "title": "Разделение",
+          "math": "$$\\frac{y^2}{2}=\\frac{x^2}{2}+C \\Rightarrow y^2=x^2+C_1$$"
+        },
+        {
+          "title": "НУ",
+          "text": "$y(0)=2$: $4=0+C_1$ → $C_1=4$.",
+          "math": "$$y=\\sqrt{x^2+4}$$"
+        }
+      ],
+      "formula": "y=\\sqrt{x^2+4}"
+    },
+    {
+      "id": "Д1.10",
+      "title": "y'=2xy², y(0)=1",
+      "type": "Задача · Разделяющиеся",
+      "formalText": "Решить $y'=2xy^2$, $y(0)=1$.",
+      "hint": "$\\frac{dy}{y^2}=2x\\,dx$",
+      "steps": [
+        {
+          "title": "Разделение",
+          "math": "$$-\\frac{1}{y}=x^2+C \\Rightarrow y=-\\frac{1}{x^2+C}$$"
+        },
+        {
+          "title": "НУ",
+          "text": "$y(0)=1$: $1=-1/C$ → $C=-1$.",
+          "math": "$$y=\\frac{1}{1-x^2}$$"
+        }
+      ],
+      "formula": "y=\\frac{1}{1-x^2}"
+    },
+    {
+      "id": "Д1.11",
+      "title": "y'=cos x·cos y",
+      "type": "Задача · Разделяющиеся",
+      "formalText": "Решить $y'=\\cos x\\cos y$.",
+      "hint": "$\\frac{dy}{\\cos y}=\\cos x\\,dx$ → $\\int\\sec y\\,dy$",
+      "steps": [
+        {
+          "title": "Разделение",
+          "math": "$$\\ln|\\sec y+\\tan y|=\\sin x+C$$"
+        }
+      ],
+      "formula": "\\ln|\\sec y+\\tan y|=\\sin x+C"
+    },
+    {
+      "id": "Д1.12",
+      "title": "x²y'+y²=0",
+      "type": "Задача · Разделяющиеся",
+      "formalText": "Решить $x^2 y'+y^2=0$.",
+      "hint": "$\\frac{dy}{y^2}=-\\frac{dx}{x^2}$",
+      "steps": [
+        {
+          "title": "Разделение",
+          "math": "$$-\\frac{1}{y}=\\frac{1}{x}+C \\Rightarrow \\frac{1}{y}+\\frac{1}{x}=C$$"
+        }
+      ],
+      "formula": "\\frac{1}{x}+\\frac{1}{y}=C"
+    },
+    {
+      "id": "Д1.13",
+      "title": "y'·eʸ=x",
+      "type": "Задача · Разделяющиеся",
+      "formalText": "Решить $y'e^y=x$.",
+      "hint": "$e^y\\,dy=x\\,dx$",
+      "steps": [
+        {
+          "title": "Разделение",
+          "math": "$$e^y=\\frac{x^2}{2}+C$$"
+        }
+      ],
+      "formula": "e^y=\\frac{x^2}{2}+C"
+    },
+    {
+      "id": "Д1.14",
+      "title": "√(1-y²)dx=√(1-x²)dy",
+      "type": "Задача · Разделяющиеся",
+      "formalText": "Решить $\\sqrt{1-y^2}\\,dx=\\sqrt{1-x^2}\\,dy$.",
+      "hint": "$\\frac{dx}{\\sqrt{1-x^2}}=\\frac{dy}{\\sqrt{1-y^2}}$ → арксинусы",
+      "steps": [
+        {
+          "title": "Разделение",
+          "math": "$$\\arcsin x=\\arcsin y+C \\Rightarrow \\arcsin x-\\arcsin y=C$$"
+        }
+      ],
+      "formula": "\\arcsin x - \\arcsin y = C"
+    },
+    {
+      "id": "Д2.1",
+      "title": "y'=(y/x)+1",
+      "type": "Задача · Однородное ОДУ",
+      "formalText": "Решить $y'=\\frac{y}{x}+1$.",
+      "hint": "Однородное: $t=y/x$, $y=tx$, $y'=t+xt'$. Тогда $xt'=1$",
+      "steps": [
+        {
+          "title": "Подстановка",
+          "text": "$y=tx$ → $t+xt'=t+1$ → $xt'=1$.",
+          "math": "$$\\frac{dt}{1}=\\frac{dx}{x} \\Rightarrow t=\\ln|x|+C \\Rightarrow y=x\\ln|x|+Cx$$"
+        }
+      ],
+      "formula": "y=x\\ln|x|+Cx"
+    },
+    {
+      "id": "Д2.2",
+      "title": "y'=(x+y)/x",
+      "type": "Задача · Однородное ОДУ",
+      "formalText": "Решить $y'=\\frac{x+y}{x}=1+\\frac{y}{x}$.",
+      "hint": "Однородное: $t=y/x$ → $xt'=1$",
+      "steps": [
+        {
+          "title": "Подстановка",
+          "math": "$$t+xt'=1+t \\Rightarrow xt'=1 \\Rightarrow y=x\\ln|x|+Cx$$"
+        }
+      ],
+      "formula": "y=x(\\ln|x|+C)"
+    },
+    {
+      "id": "Д2.3",
+      "title": "xy'=y+x·eʸ/ˣ",
+      "type": "Задача · Однородное ОДУ",
+      "formalText": "Решить $xy'=y+xe^{y/x}$.",
+      "hint": "Однородное: $t=y/x$. $y'=t+xt'=t+e^t$ → $xt'=e^t$",
+      "steps": [
+        {
+          "title": "Подстановка",
+          "math": "$$e^{-t}\\,dt=\\frac{dx}{x} \\Rightarrow -e^{-t}=\\ln|x|+C \\Rightarrow -e^{-y/x}=\\ln|x|+C$$"
+        }
+      ],
+      "formula": "e^{-y/x}+\\ln|x|=C"
+    },
+    {
+      "id": "Д2.4",
+      "title": "(x²+y²)dx-2xy dy=0",
+      "type": "Задача · Однородное ОДУ",
+      "formalText": "Решить $(x^2+y^2)\\,dx-2xy\\,dy=0$.",
+      "hint": "Делим на $x^2 dx$: $y'=\\frac{1+t^2}{2t}$, $t=y/x$",
+      "steps": [
+        {
+          "title": "Подстановка",
+          "text": "$t=y/x$, $y'=t+xt'=\\frac{1+t^2}{2t}$.",
+          "math": "$$xt'=\\frac{1+t^2}{2t}-t=\\frac{1-t^2}{2t} \\Rightarrow \\frac{2t\\,dt}{1-t^2}=\\frac{dx}{x}$$"
+        },
+        {
+          "title": "Интегрирование",
+          "math": "$$-\\ln|1-t^2|=\\ln|x|+C \\Rightarrow \\frac{1}{1-y^2/x^2}=Cx \\Rightarrow \\frac{x^2}{x^2-y^2}=Cx$$"
+        }
+      ],
+      "formula": "x^2=C(x^2-y^2)\\cdot x"
+    },
+    {
+      "id": "Д2.5",
+      "title": "y'=(y²-x²)/(2xy)",
+      "type": "Задача · Однородное ОДУ",
+      "formalText": "Решить $y'=\\frac{y^2-x^2}{2xy}$.",
+      "hint": "Однородное: $t=y/x$, $y'=\\frac{t^2-1}{2t}$",
+      "steps": [
+        {
+          "title": "Подстановка",
+          "text": "$xt'=\\frac{t^2-1}{2t}-t=\\frac{-t^2-1}{2t}$.",
+          "math": "$$\\frac{2t\\,dt}{t^2+1}=-\\frac{dx}{x} \\Rightarrow \\ln(t^2+1)=-\\ln|x|+C \\Rightarrow x(y^2/x^2+1)=C$$"
+        },
+        {
+          "title": "Упрощение",
+          "math": "$$x^2+y^2=Cx$$"
+        }
+      ],
+      "formula": "x^2+y^2=Cx"
+    },
+    {
+      "id": "Д2.6",
+      "title": "y'=y/x+sin(y/x)",
+      "type": "Задача · Однородное ОДУ",
+      "formalText": "Решить $y'=\\frac{y}{x}+\\sin\\frac{y}{x}$.",
+      "hint": "$t=y/x$ → $xt'=\\sin t$",
+      "steps": [
+        {
+          "title": "Подстановка",
+          "math": "$$\\frac{dt}{\\sin t}=\\frac{dx}{x} \\Rightarrow \\ln|\\tan(t/2)|=\\ln|x|+C \\Rightarrow \\tan\\frac{y}{2x}=Cx$$"
+        }
+      ],
+      "formula": "\\tan\\frac{y}{2x}=Cx"
+    },
+    {
+      "id": "Д2.7",
+      "title": "(x+y)dx+(y-x)dy=0",
+      "type": "Задача · Однородное ОДУ",
+      "formalText": "Решить $(x+y)dx+(y-x)dy=0$.",
+      "hint": "$y'=\\frac{x+y}{x-y}=\\frac{1+t}{1-t}$, $t=y/x$",
+      "steps": [
+        {
+          "title": "Подстановка",
+          "text": "$xt'=\\frac{1+t}{1-t}-t=\\frac{1+t^2}{1-t}$.",
+          "math": "$$\\frac{(1-t)\\,dt}{1+t^2}=\\frac{dx}{x} \\Rightarrow \\arctan t-\\frac{1}{2}\\ln(1+t^2)=\\ln|x|+C$$"
+        }
+      ],
+      "formula": "\\arctan\\frac{y}{x}-\\frac{1}{2}\\ln(x^2+y^2)+\\ln|x|=C"
+    },
+    {
+      "id": "Д2.8",
+      "title": "xy'=y+√(x²-y²)",
+      "type": "Задача · Однородное ОДУ",
+      "formalText": "Решить $xy'=y+\\sqrt{x^2-y^2}$.",
+      "hint": "$t=y/x$ → $xt'=\\sqrt{1-t^2}$",
+      "steps": [
+        {
+          "title": "Подстановка",
+          "math": "$$\\frac{dt}{\\sqrt{1-t^2}}=\\frac{dx}{x} \\Rightarrow \\arcsin t=\\ln|x|+C \\Rightarrow \\arcsin\\frac{y}{x}=\\ln|x|+C$$"
+        }
+      ],
+      "formula": "\\arcsin\\frac{y}{x}=\\ln|x|+C"
+    },
+    {
+      "id": "Д3.1",
+      "title": "y'+y=eˣ",
+      "type": "Задача · Линейное ДУ",
+      "formalText": "Решить $y'+y=e^x$.",
+      "hint": "Линейное: ИМ $\\mu=e^{\\int 1\\,dx}=e^x$. Или $y=uv$",
+      "steps": [
+        {
+          "title": "ИМ",
+          "text": "$\\mu=e^x$. $(e^x y)'=e^{2x}$.",
+          "math": "$$e^x y=\\frac{e^{2x}}{2}+C \\Rightarrow y=\\frac{e^x}{2}+Ce^{-x}$$"
+        }
+      ],
+      "formula": "y=\\frac{e^x}{2}+Ce^{-x}"
+    },
+    {
+      "id": "Д3.2",
+      "title": "y'-2y=x",
+      "type": "Задача · Линейное ДУ",
+      "formalText": "Решить $y'-2y=x$.",
+      "hint": "ИМ $\\mu=e^{-2x}$. $(ye^{-2x})'=xe^{-2x}$",
+      "steps": [
+        {
+          "title": "ИМ",
+          "math": "$$ye^{-2x}=\\int xe^{-2x}dx=-\\frac{x}{2}e^{-2x}-\\frac{1}{4}e^{-2x}+C$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$y=-\\frac{x}{2}-\\frac{1}{4}+Ce^{2x}$$"
+        }
+      ],
+      "formula": "y=Ce^{2x}-\\frac{x}{2}-\\frac{1}{4}"
+    },
+    {
+      "id": "Д3.3",
+      "title": "y'+y·tg x=cos x",
+      "type": "Задача · Линейное ДУ",
+      "formalText": "Решить $y'+y\\tan x=\\cos x$.",
+      "hint": "ИМ $\\mu=e^{\\int\\tan x\\,dx}=e^{-\\ln\\cos x}=\\sec x$",
+      "steps": [
+        {
+          "title": "ИМ",
+          "text": "$\\mu=\\sec x$. $(y\\sec x)'=1$.",
+          "math": "$$y\\sec x=x+C \\Rightarrow y=(x+C)\\cos x$$"
+        }
+      ],
+      "formula": "y=(x+C)\\cos x"
+    },
+    {
+      "id": "Д3.4",
+      "title": "y'+y/x=x²",
+      "type": "Задача · Линейное ДУ",
+      "formalText": "Решить $y'+\\frac{y}{x}=x^2$.",
+      "hint": "ИМ $\\mu=e^{\\int dx/x}=x$. $(xy)'=x^3$",
+      "steps": [
+        {
+          "title": "ИМ",
+          "math": "$$xy=\\frac{x^4}{4}+C \\Rightarrow y=\\frac{x^3}{4}+\\frac{C}{x}$$"
+        }
+      ],
+      "formula": "y=\\frac{x^3}{4}+\\frac{C}{x}"
+    },
+    {
+      "id": "Д3.5",
+      "title": "xy'-y=x²eˣ",
+      "type": "Задача · Линейное ДУ",
+      "formalText": "Решить $xy'-y=x^2 e^x$.",
+      "hint": "Приведи к стандартному: $y'-y/x=xe^x$. ИМ $\\mu=1/x$",
+      "steps": [
+        {
+          "title": "ИМ",
+          "text": "$\\mu=e^{-\\int dx/x}=1/x$. $(y/x)'=e^x$.",
+          "math": "$$\\frac{y}{x}=e^x+C \\Rightarrow y=xe^x+Cx$$"
+        }
+      ],
+      "formula": "y=xe^x+Cx"
+    },
+    {
+      "id": "Д3.6",
+      "title": "y'+2xy=2xe⁻ˣ²",
+      "type": "Задача · Линейное ДУ",
+      "formalText": "Решить $y'+2xy=2xe^{-x^2}$.",
+      "hint": "ИМ $\\mu=e^{x^2}$. $(ye^{x^2})'=2x$",
+      "steps": [
+        {
+          "title": "ИМ",
+          "math": "$$ye^{x^2}=x^2+C \\Rightarrow y=(x^2+C)e^{-x^2}$$"
+        }
+      ],
+      "formula": "y=(x^2+C)e^{-x^2}"
+    },
+    {
+      "id": "Д3.7",
+      "title": "y'-y=sin x",
+      "type": "Задача · Линейное ДУ",
+      "formalText": "Решить $y'-y=\\sin x$.",
+      "hint": "ИМ $\\mu=e^{-x}$. $(ye^{-x})'=e^{-x}\\sin x$",
+      "steps": [
+        {
+          "title": "ИМ",
+          "math": "$$ye^{-x}=\\int e^{-x}\\sin x\\,dx=\\frac{e^{-x}(-\\sin x-\\cos x)}{2}+C$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$y=Ce^x-\\frac{\\sin x+\\cos x}{2}$$"
+        }
+      ],
+      "formula": "y=Ce^x-\\frac{\\sin x+\\cos x}{2}"
+    },
+    {
+      "id": "Д3.8",
+      "title": "y'+y=1, y(0)=0",
+      "type": "Задача · Линейное ДУ",
+      "formalText": "Задача Коши: $y'+y=1$, $y(0)=0$.",
+      "hint": "ИМ $\\mu=e^x$. $(ye^x)'=e^x$",
+      "steps": [
+        {
+          "title": "Решение",
+          "math": "$$ye^x=e^x+C \\Rightarrow y=1+Ce^{-x}$$"
+        },
+        {
+          "title": "НУ",
+          "text": "$y(0)=0$: $0=1+C$ → $C=-1$.",
+          "math": "$$y=1-e^{-x}$$"
+        }
+      ],
+      "formula": "y=1-e^{-x}"
+    },
+    {
+      "id": "Д3.9",
+      "title": "y'+3y=6",
+      "type": "Задача · Линейное ДУ",
+      "formalText": "Решить $y'+3y=6$.",
+      "hint": "ИМ $\\mu=e^{3x}$. $(ye^{3x})'=6e^{3x}$",
+      "steps": [
+        {
+          "title": "Решение",
+          "math": "$$ye^{3x}=2e^{3x}+C \\Rightarrow y=2+Ce^{-3x}$$"
+        }
+      ],
+      "formula": "y=2+Ce^{-3x}"
+    },
+    {
+      "id": "Д3.10",
+      "title": "y'+y·cot x=2cos x",
+      "type": "Задача · Линейное ДУ",
+      "formalText": "Решить $y'+y\\cot x=2\\cos x$.",
+      "hint": "ИМ $\\mu=e^{\\int\\cot x\\,dx}=\\sin x$. $(y\\sin x)'=\\sin 2x$",
+      "steps": [
+        {
+          "title": "ИМ",
+          "math": "$$y\\sin x=\\int\\sin 2x\\,dx=-\\frac{\\cos 2x}{2}+C$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$y=\\frac{C-\\frac{1}{2}\\cos 2x}{\\sin x}=\\frac{2C-1+2\\sin^2 x}{2\\sin x}$$"
+        }
+      ],
+      "formula": "y=\\sin x+\\frac{C}{\\sin x}-\\frac{1}{2\\sin x}"
+    },
+    {
+      "id": "Д4.1",
+      "title": "y'+y=y²",
+      "type": "Задача · Бернулли",
+      "formalText": "Решить $y'+y=y^2$.",
+      "hint": "Бернулли ($n=2$). Замена $z=y^{-1}$ → $z'-z=-1$",
+      "steps": [
+        {
+          "title": "Замена",
+          "text": "$z=y^{-1}$, $z'=-y^{-2}y'$. Делим на $y^2$: $y^{-2}y'+y^{-1}=1$ → $-z'+z=1$ → $z'-z=-1$.",
+          "math": "$$z=Ce^x+1 \\Rightarrow y=\\frac{1}{Ce^x+1}$$"
+        }
+      ],
+      "formula": "y=\\frac{1}{Ce^x+1}"
+    },
+    {
+      "id": "Д4.2",
+      "title": "y'-y=xy²",
+      "type": "Задача · Бернулли",
+      "formalText": "Решить $y'-y=xy^2$.",
+      "hint": "Бернулли ($n=2$). $z=y^{-1}$ → $z'+z=-x$",
+      "steps": [
+        {
+          "title": "Замена",
+          "text": "$z'+z=-x$. ИМ $\\mu=e^x$.",
+          "math": "$$ze^x=\\int-xe^x\\,dx=-xe^x+e^x+C \\Rightarrow z=-x+1+Ce^{-x}$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$y=\\frac{1}{1-x+Ce^{-x}}$$"
+        }
+      ],
+      "formula": "y=\\frac{1}{1-x+Ce^{-x}}"
+    },
+    {
+      "id": "Д4.3",
+      "title": "y'+y/x=y²ln x",
+      "type": "Задача · Бернулли",
+      "formalText": "Решить $y'+\\frac{y}{x}=y^2\\ln x$.",
+      "hint": "Бернулли. $z=y^{-1}$ → $z'-z/x=-\\ln x$",
+      "steps": [
+        {
+          "title": "Замена",
+          "text": "$z'-z/x=-\\ln x$. ИМ $\\mu=1/x$.",
+          "math": "$$\\frac{z}{x}=-\\int\\frac{\\ln x}{x}\\,dx=-\\frac{\\ln^2 x}{2}+C$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$z=Cx-\\frac{x\\ln^2 x}{2} \\Rightarrow y=\\frac{1}{Cx-\\frac{x\\ln^2 x}{2}}$$"
+        }
+      ],
+      "formula": "y=\\frac{2}{x(2C-\\ln^2 x)}"
+    },
+    {
+      "id": "Д4.4",
+      "title": "y'+y=y³eˣ",
+      "type": "Задача · Бернулли",
+      "formalText": "Решить $y'+y=y^3 e^x$.",
+      "hint": "Бернулли ($n=3$). $z=y^{-2}$ → $z'-2z=-2e^x$",
+      "steps": [
+        {
+          "title": "Замена",
+          "text": "Делим на $y^3$: $y^{-3}y'+y^{-2}=e^x$. $z=y^{-2}$, $z'=-2y^{-3}y'$ → $z'-2z=-2e^x$.",
+          "math": "$$ze^{-2x}=-2\\int e^{-x}\\,dx=2e^{-x}+C \\Rightarrow z=2e^x+Ce^{2x}$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$y^{-2}=2e^x+Ce^{2x} \\Rightarrow y=\\frac{1}{\\sqrt{2e^x+Ce^{2x}}}$$"
+        }
+      ],
+      "formula": "y=\\frac{1}{\\sqrt{Ce^{2x}+2e^x}}"
+    },
+    {
+      "id": "Д4.5",
+      "title": "xy'+y=x²y²",
+      "type": "Задача · Бернулли",
+      "formalText": "Решить $xy'+y=x^2 y^2$.",
+      "hint": "Приведи: $y'+y/x=xy^2$. Бернулли, $z=1/y$",
+      "steps": [
+        {
+          "title": "Замена",
+          "text": "$z'-z/x=-x$. ИМ $\\mu=1/x$.",
+          "math": "$$\\frac{z}{x}=-\\int dx=-x+C \\Rightarrow z=Cx-x^2$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$y=\\frac{1}{Cx-x^2}=\\frac{1}{x(C-x)}$$"
+        }
+      ],
+      "formula": "y=\\frac{1}{x(C-x)}"
+    },
+    {
+      "id": "Д4.6",
+      "title": "y'-2y/x=3x²√y",
+      "type": "Задача · Бернулли",
+      "formalText": "Решить $y'-\\frac{2y}{x}=3x^2\\sqrt{y}$.",
+      "hint": "Бернулли ($n=1/2$). $z=y^{1/2}$ → $z'-z/x=\\frac{3}{2}x^2$",
+      "steps": [
+        {
+          "title": "Замена",
+          "text": "$z=\\sqrt{y}$, $z'=y'/(2\\sqrt{y})$ → $2z'-\\frac{2z}{x}=3x^2$ → $z'-z/x=\\frac{3x^2}{2}$.",
+          "math": "$$\\frac{z}{x}=\\frac{3}{2}\\int x\\,dx=\\frac{3x^2}{4}+C \\Rightarrow z=\\frac{3x^3}{4}+Cx$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\sqrt{y}=\\frac{3x^3}{4}+Cx \\Rightarrow y=\\left(\\frac{3x^3}{4}+Cx\\right)^2$$"
+        }
+      ],
+      "formula": "y=\\left(\\frac{3x^3}{4}+Cx\\right)^2"
+    },
+    {
+      "id": "Д5.1",
+      "title": "(2x+3y)dx+(3x+4y)dy=0",
+      "type": "Задача · Полный дифференциал",
+      "formalText": "Решить $(2x+3y)\\,dx+(3x+4y)\\,dy=0$.",
+      "hint": "Проверка: $\\frac{\\partial P}{\\partial y}=3=\\frac{\\partial Q}{\\partial x}$. Полный дифференциал!",
+      "steps": [
+        {
+          "title": "Проверка",
+          "text": "$P_y=3$, $Q_x=3$ ✓"
+        },
+        {
+          "title": "Потенциал",
+          "math": "$$F=\\int(2x+3y)\\,dx=x^2+3xy+\\varphi(y)$$"
+        },
+        {
+          "title": "Из Q",
+          "text": "$F_y=3x+\\varphi'(y)=3x+4y$ → $\\varphi'=4y$ → $\\varphi=2y^2$.",
+          "math": "$$x^2+3xy+2y^2=C$$"
+        }
+      ],
+      "formula": "x^2+3xy+2y^2=C"
+    },
+    {
+      "id": "Д5.2",
+      "title": "(eˣsin y)dx+(eˣcos y)dy=0",
+      "type": "Задача · Полный дифференциал",
+      "formalText": "Решить $(e^x\\sin y)\\,dx+(e^x\\cos y)\\,dy=0$.",
+      "hint": "$P_y=e^x\\cos y=Q_x$ ✓. $F=e^x\\sin y$",
+      "steps": [
+        {
+          "title": "Потенциал",
+          "math": "$$F=\\int e^x\\sin y\\,dx=e^x\\sin y+\\varphi(y)$$"
+        },
+        {
+          "title": "Из Q",
+          "text": "$F_y=e^x\\cos y+\\varphi'(y)=e^x\\cos y$ → $\\varphi=0$.",
+          "math": "$$e^x\\sin y=C$$"
+        }
+      ],
+      "formula": "e^x\\sin y=C"
+    },
+    {
+      "id": "Д5.3",
+      "title": "(y/x+ln x)dx+ln x·dy=0",
+      "type": "Задача · Полный дифференциал",
+      "formalText": "Решить $\\left(\\frac{y}{x}+\\ln x\\right)dx+\\ln x\\,dy=0$.",
+      "hint": "$P_y=1/x$. $Q_x=1/x$ ✓",
+      "steps": [
+        {
+          "title": "Потенциал",
+          "math": "$$F=\\int\\ln x\\,dy=y\\ln x+\\psi(x)$$"
+        },
+        {
+          "title": "Из P",
+          "text": "$F_x=y/x+\\psi'(x)=y/x+\\ln x$ → $\\psi=x\\ln x-x$.",
+          "math": "$$y\\ln x+x\\ln x-x=C$$"
+        }
+      ],
+      "formula": "(y+x)\\ln x-x=C"
+    },
+    {
+      "id": "Д5.4",
+      "title": "(2xy+1)dx+(x²+2y)dy=0",
+      "type": "Задача · Полный дифференциал",
+      "formalText": "Решить $(2xy+1)\\,dx+(x^2+2y)\\,dy=0$.",
+      "hint": "$P_y=2x=Q_x$ ✓. $F=x^2 y+x+y^2$",
+      "steps": [
+        {
+          "title": "Потенциал",
+          "math": "$$F=\\int(2xy+1)\\,dx=x^2 y+x+\\varphi(y)$$"
+        },
+        {
+          "title": "Из Q",
+          "text": "$F_y=x^2+\\varphi'=x^2+2y$ → $\\varphi=y^2$.",
+          "math": "$$x^2 y+x+y^2=C$$"
+        }
+      ],
+      "formula": "x^2 y+x+y^2=C"
+    },
+    {
+      "id": "Д5.5",
+      "title": "(3x²+y)dx+(x-2y)dy=0",
+      "type": "Задача · Полный дифференциал",
+      "formalText": "Решить $(3x^2+y)\\,dx+(x-2y)\\,dy=0$.",
+      "hint": "$P_y=1=Q_x$ ✓",
+      "steps": [
+        {
+          "title": "Потенциал",
+          "math": "$$F=\\int(3x^2+y)\\,dx=x^3+xy+\\varphi(y)$$"
+        },
+        {
+          "title": "Из Q",
+          "text": "$F_y=x+\\varphi'=x-2y$ → $\\varphi=-y^2$.",
+          "math": "$$x^3+xy-y^2=C$$"
+        }
+      ],
+      "formula": "x^3+xy-y^2=C"
+    },
+    {
+      "id": "Д5.6",
+      "title": "(yeˣʸ+1)dx+xeˣʸdy=0",
+      "type": "Задача · Полный дифференциал",
+      "formalText": "Решить $(ye^{xy}+1)\\,dx+xe^{xy}\\,dy=0$.",
+      "hint": "$P_y=e^{xy}+xye^{xy}$. $Q_x=e^{xy}+xye^{xy}$ ✓",
+      "steps": [
+        {
+          "title": "Потенциал",
+          "text": "Заметим: $d(e^{xy})=ye^{xy}dx+xe^{xy}dy$.",
+          "math": "$$F=e^{xy}+x \\Rightarrow e^{xy}+x=C$$"
+        }
+      ],
+      "formula": "e^{xy}+x=C"
+    }
+  ]
+}

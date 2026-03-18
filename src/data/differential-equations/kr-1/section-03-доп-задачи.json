@@ -1,0 +1,1178 @@
+{
+  "section": "🎯 Доп. задачи",
+  "icon": "✏️",
+  "questions": [
+    {
+      "id": "Д1.1",
+      "title": "∫ x/(x²+1) dx",
+      "type": "Задача · Подведение п.з.д.",
+      "formalText": "Вычислить $\\int\\frac{x\\,dx}{x^2+1}$.",
+      "hint": "$d(x^2+1)=2x\\,dx$ → $\\frac{1}{2}\\int\\frac{du}{u}$",
+      "steps": [
+        {
+          "title": "Подведение",
+          "math": "$$\\int\\frac{x\\,dx}{x^2+1}=\\frac{1}{2}\\int\\frac{d(x^2+1)}{x^2+1}=\\frac{1}{2}\\ln(x^2+1)+C$$"
+        }
+      ],
+      "formula": "\\frac{1}{2}\\ln(x^2+1)+C"
+    },
+    {
+      "id": "Д1.2",
+      "title": "∫ cos³x·sin x dx",
+      "type": "Задача · Подведение п.з.д.",
+      "formalText": "Вычислить $\\int\\cos^3 x\\sin x\\,dx$.",
+      "hint": "$d(\\cos x)=-\\sin x\\,dx$ → $-\\int\\cos^3 x\\,d(\\cos x)$",
+      "steps": [
+        {
+          "title": "Подведение",
+          "math": "$$-\\int\\cos^3 x\\,d(\\cos x)=-\\frac{\\cos^4 x}{4}+C$$"
+        }
+      ],
+      "formula": "-\\frac{\\cos^4 x}{4}+C"
+    },
+    {
+      "id": "Д1.3",
+      "title": "∫ eˢⁱⁿˣ·cos x dx",
+      "type": "Задача · Подведение п.з.д.",
+      "formalText": "Вычислить $\\int e^{\\sin x}\\cos x\\,dx$.",
+      "hint": "$d(\\sin x)=\\cos x\\,dx$ → $\\int e^u\\,du$",
+      "steps": [
+        {
+          "title": "Подведение",
+          "math": "$$\\int e^{\\sin x}\\,d(\\sin x)=e^{\\sin x}+C$$"
+        }
+      ],
+      "formula": "e^{\\sin x}+C"
+    },
+    {
+      "id": "Д1.4",
+      "title": "∫ tg x dx",
+      "type": "Задача · Подведение п.з.д.",
+      "formalText": "Вычислить $\\int\\tan x\\,dx$.",
+      "hint": "$\\tan x=\\frac{\\sin x}{\\cos x}$. $d(\\cos x)=-\\sin x\\,dx$",
+      "steps": [
+        {
+          "title": "Подведение",
+          "math": "$$\\int\\frac{\\sin x}{\\cos x}\\,dx=-\\int\\frac{d(\\cos x)}{\\cos x}=-\\ln|\\cos x|+C$$"
+        }
+      ],
+      "formula": "-\\ln|\\cos x|+C"
+    },
+    {
+      "id": "Д1.5",
+      "title": "∫ dx/(x·ln x)",
+      "type": "Задача · Подведение п.з.д.",
+      "formalText": "Вычислить $\\int\\frac{dx}{x\\ln x}$.",
+      "hint": "$d(\\ln x)=dx/x$ → $\\int\\frac{du}{u}$",
+      "steps": [
+        {
+          "title": "Подведение",
+          "math": "$$\\int\\frac{d(\\ln x)}{\\ln x}=\\ln|\\ln x|+C$$"
+        }
+      ],
+      "formula": "\\ln|\\ln x|+C"
+    },
+    {
+      "id": "Д1.6",
+      "title": "∫ x√(1-x²) dx",
+      "type": "Задача · Подведение п.з.д.",
+      "formalText": "Вычислить $\\int x\\sqrt{1-x^2}\\,dx$.",
+      "hint": "$d(1-x^2)=-2x\\,dx$ → $-\\frac{1}{2}\\int\\sqrt{u}\\,du$",
+      "steps": [
+        {
+          "title": "Подведение",
+          "math": "$$-\\frac{1}{2}\\int(1-x^2)^{1/2}\\,d(1-x^2)=-\\frac{1}{2}\\cdot\\frac{2}{3}(1-x^2)^{3/2}+C=-\\frac{(1-x^2)^{3/2}}{3}+C$$"
+        }
+      ],
+      "formula": "-\\frac{(1-x^2)^{3/2}}{3}+C"
+    },
+    {
+      "id": "Д1.7",
+      "title": "∫ dx/(1+eˣ)",
+      "type": "Задача · Подведение п.з.д.",
+      "formalText": "Вычислить $\\int\\frac{dx}{1+e^x}$.",
+      "hint": "Раздели числитель и знаменатель на $e^x$: $\\int\\frac{e^{-x}dx}{e^{-x}+1}$",
+      "steps": [
+        {
+          "title": "Преобразование",
+          "math": "$$\\int\\frac{dx}{1+e^x}=\\int\\frac{e^x+1-e^x}{1+e^x}dx=\\int dx-\\int\\frac{e^x\\,dx}{1+e^x}=x-\\ln(1+e^x)+C$$"
+        }
+      ],
+      "formula": "x-\\ln(1+e^x)+C"
+    },
+    {
+      "id": "Д1.8",
+      "title": "∫ sin(ln x)/x dx",
+      "type": "Задача · Подведение п.з.д.",
+      "formalText": "Вычислить $\\int\\frac{\\sin(\\ln x)}{x}\\,dx$.",
+      "hint": "$d(\\ln x)=dx/x$ → $\\int\\sin u\\,du$",
+      "steps": [
+        {
+          "title": "Подведение",
+          "math": "$$\\int\\sin(\\ln x)\\,d(\\ln x)=-\\cos(\\ln x)+C$$"
+        }
+      ],
+      "formula": "-\\cos(\\ln x)+C"
+    },
+    {
+      "id": "Д1.9",
+      "title": "∫ arctan x/(1+x²) dx",
+      "type": "Задача · Подведение п.з.д.",
+      "formalText": "Вычислить $\\int\\frac{\\arctan x}{1+x^2}\\,dx$.",
+      "hint": "$d(\\arctan x)=dx/(1+x^2)$ → $\\int u\\,du$",
+      "steps": [
+        {
+          "title": "Подведение",
+          "math": "$$\\int\\arctan x\\,d(\\arctan x)=\\frac{\\arctan^2 x}{2}+C$$"
+        }
+      ],
+      "formula": "\\frac{\\arctan^2 x}{2}+C"
+    },
+    {
+      "id": "Д1.10",
+      "title": "∫ x²/(x³+1)² dx",
+      "type": "Задача · Подведение п.з.д.",
+      "formalText": "Вычислить $\\int\\frac{x^2\\,dx}{(x^3+1)^2}$.",
+      "hint": "$d(x^3+1)=3x^2\\,dx$ → $\\frac{1}{3}\\int u^{-2}\\,du$",
+      "steps": [
+        {
+          "title": "Подведение",
+          "math": "$$\\frac{1}{3}\\int(x^3+1)^{-2}\\,d(x^3+1)=\\frac{1}{3}\\cdot\\frac{(x^3+1)^{-1}}{-1}+C=-\\frac{1}{3(x^3+1)}+C$$"
+        }
+      ],
+      "formula": "-\\frac{1}{3(x^3+1)}+C"
+    },
+    {
+      "id": "Д1.11",
+      "title": "∫ sec²x/(1+tg x)³ dx",
+      "type": "Задача · Подведение п.з.д.",
+      "formalText": "Вычислить $\\int\\frac{\\sec^2 x}{(1+\\tan x)^3}\\,dx$.",
+      "hint": "$d(\\tan x)=\\sec^2 x\\,dx$ → $\\int(1+u)^{-3}\\,du$",
+      "steps": [
+        {
+          "title": "Подведение",
+          "math": "$$\\int(1+\\tan x)^{-3}\\,d(\\tan x)=\\frac{(1+\\tan x)^{-2}}{-2}+C=-\\frac{1}{2(1+\\tan x)^2}+C$$"
+        }
+      ],
+      "formula": "-\\frac{1}{2(1+\\tan x)^2}+C"
+    },
+    {
+      "id": "Д1.12",
+      "title": "∫ eˣ/(eˣ+3) dx",
+      "type": "Задача · Подведение п.з.д.",
+      "formalText": "Вычислить $\\int\\frac{e^x\\,dx}{e^x+3}$.",
+      "hint": "$d(e^x+3)=e^x\\,dx$ → $\\int\\frac{du}{u}$",
+      "steps": [
+        {
+          "title": "Подведение",
+          "math": "$$\\int\\frac{d(e^x+3)}{e^x+3}=\\ln(e^x+3)+C$$"
+        }
+      ],
+      "formula": "\\ln(e^x+3)+C"
+    },
+    {
+      "id": "Д1.13",
+      "title": "∫ cos x/√(1+sin x) dx",
+      "type": "Задача · Подведение п.з.д.",
+      "formalText": "Вычислить $\\int\\frac{\\cos x}{\\sqrt{1+\\sin x}}\\,dx$.",
+      "hint": "$d(1+\\sin x)=\\cos x\\,dx$ → $\\int u^{-1/2}\\,du$",
+      "steps": [
+        {
+          "title": "Подведение",
+          "math": "$$\\int(1+\\sin x)^{-1/2}\\,d(1+\\sin x)=2\\sqrt{1+\\sin x}+C$$"
+        }
+      ],
+      "formula": "2\\sqrt{1+\\sin x}+C"
+    },
+    {
+      "id": "Д1.14",
+      "title": "∫ dx/(x²+4)",
+      "type": "Задача · Подведение п.з.д.",
+      "formalText": "Вычислить $\\int\\frac{dx}{x^2+4}$.",
+      "hint": "Табличный: $\\int\\frac{dx}{x^2+a^2}=\\frac{1}{a}\\arctan\\frac{x}{a}$",
+      "steps": [
+        {
+          "title": "Табличный",
+          "math": "$$\\frac{1}{2}\\arctan\\frac{x}{2}+C$$"
+        }
+      ],
+      "formula": "\\frac{1}{2}\\arctan\\frac{x}{2}+C"
+    },
+    {
+      "id": "Д1.15",
+      "title": "∫ dx/√(9-x²)",
+      "type": "Задача · Подведение п.з.д.",
+      "formalText": "Вычислить $\\int\\frac{dx}{\\sqrt{9-x^2}}$.",
+      "hint": "Табличный: $\\int\\frac{dx}{\\sqrt{a^2-x^2}}=\\arcsin\\frac{x}{a}$",
+      "steps": [
+        {
+          "title": "Табличный",
+          "math": "$$\\arcsin\\frac{x}{3}+C$$"
+        }
+      ],
+      "formula": "\\arcsin\\frac{x}{3}+C"
+    },
+    {
+      "id": "Д1.16",
+      "title": "∫ x·eˣ² dx",
+      "type": "Задача · Подведение п.з.д.",
+      "formalText": "Вычислить $\\int xe^{x^2}\\,dx$.",
+      "hint": "$d(x^2)=2x\\,dx$ → $\\frac{1}{2}\\int e^u\\,du$",
+      "steps": [
+        {
+          "title": "Подведение",
+          "math": "$$\\frac{1}{2}\\int e^{x^2}\\,d(x^2)=\\frac{e^{x^2}}{2}+C$$"
+        }
+      ],
+      "formula": "\\frac{e^{x^2}}{2}+C"
+    },
+    {
+      "id": "Д1.17",
+      "title": "∫ sin 3x·cos 5x dx",
+      "type": "Задача · Подведение п.з.д.",
+      "formalText": "Вычислить $\\int\\sin 3x\\cos 5x\\,dx$.",
+      "hint": "Формула произведения: $\\sin\\alpha\\cos\\beta=\\frac{1}{2}[\\sin(\\alpha+\\beta)+\\sin(\\alpha-\\beta)]$",
+      "steps": [
+        {
+          "title": "Формула",
+          "math": "$$\\frac{1}{2}\\int[\\sin 8x+\\sin(-2x)]\\,dx=\\frac{1}{2}\\left(-\\frac{\\cos 8x}{8}+\\frac{\\cos 2x}{2}\\right)+C$$"
+        }
+      ],
+      "formula": "-\\frac{\\cos 8x}{16}+\\frac{\\cos 2x}{4}+C"
+    },
+    {
+      "id": "Д1.18",
+      "title": "∫ sh x·ch x dx",
+      "type": "Задача · Подведение п.з.д.",
+      "formalText": "Вычислить $\\int\\sinh x\\cosh x\\,dx$.",
+      "hint": "$d(\\sinh x)=\\cosh x\\,dx$ или $\\sinh x\\cosh x=\\frac{1}{2}\\sinh 2x$",
+      "steps": [
+        {
+          "title": "Подведение",
+          "math": "$$\\int\\sinh x\\,d(\\sinh x)=\\frac{\\sinh^2 x}{2}+C$$"
+        }
+      ],
+      "formula": "\\frac{\\sinh^2 x}{2}+C"
+    },
+    {
+      "id": "Д1.19",
+      "title": "∫ dx/(x·√(x²-1))",
+      "type": "Задача · Подведение п.з.д.",
+      "formalText": "Вычислить $\\int\\frac{dx}{x\\sqrt{x^2-1}}$ ($x>1$).",
+      "hint": "Подстановка $x=\\sec t$ или табличный",
+      "steps": [
+        {
+          "title": "Табличный",
+          "math": "$$\\arccos\\frac{1}{|x|}+C=\\text{arcsec}\\,|x|+C$$"
+        }
+      ],
+      "formula": "\\arccos\\frac{1}{|x|}+C"
+    },
+    {
+      "id": "Д1.20",
+      "title": "∫ (2x+3)/(x²+3x+5) dx",
+      "type": "Задача · Подведение п.з.д.",
+      "formalText": "Вычислить $\\int\\frac{2x+3}{x^2+3x+5}\\,dx$.",
+      "hint": "Числитель = производная знаменателя! $d(x^2+3x+5)=(2x+3)dx$",
+      "steps": [
+        {
+          "title": "Подведение",
+          "math": "$$\\int\\frac{d(x^2+3x+5)}{x^2+3x+5}=\\ln|x^2+3x+5|+C$$"
+        }
+      ],
+      "formula": "\\ln(x^2+3x+5)+C"
+    },
+    {
+      "id": "Д2.1",
+      "title": "∫ x·sin x dx",
+      "type": "Задача · По частям",
+      "formalText": "Вычислить $\\int x\\sin x\\,dx$.",
+      "hint": "По частям: $u=x$, $dv=\\sin x\\,dx$",
+      "steps": [
+        {
+          "title": "По частям",
+          "math": "$$-x\\cos x+\\int\\cos x\\,dx=-x\\cos x+\\sin x+C$$"
+        }
+      ],
+      "formula": "-x\\cos x+\\sin x+C"
+    },
+    {
+      "id": "Д2.2",
+      "title": "∫ x·eˣ dx",
+      "type": "Задача · По частям",
+      "formalText": "Вычислить $\\int xe^x\\,dx$.",
+      "hint": "$u=x$, $dv=e^x dx$",
+      "steps": [
+        {
+          "title": "По частям",
+          "math": "$$xe^x-\\int e^x\\,dx=xe^x-e^x+C=(x-1)e^x+C$$"
+        }
+      ],
+      "formula": "(x-1)e^x+C"
+    },
+    {
+      "id": "Д2.3",
+      "title": "∫ x²·sin x dx",
+      "type": "Задача · По частям",
+      "formalText": "Вычислить $\\int x^2\\sin x\\,dx$.",
+      "hint": "Дважды по частям. $u=x^2$, $dv=\\sin x\\,dx$",
+      "steps": [
+        {
+          "title": "1-й раз",
+          "math": "$$-x^2\\cos x+2\\int x\\cos x\\,dx$$"
+        },
+        {
+          "title": "2-й раз",
+          "math": "$$=-x^2\\cos x+2(x\\sin x+\\cos x)+C=-x^2\\cos x+2x\\sin x+2\\cos x+C$$"
+        }
+      ],
+      "formula": "(2-x^2)\\cos x+2x\\sin x+C"
+    },
+    {
+      "id": "Д2.4",
+      "title": "∫ ln²x dx",
+      "type": "Задача · По частям",
+      "formalText": "Вычислить $\\int\\ln^2 x\\,dx$.",
+      "hint": "$u=\\ln^2 x$, $dv=dx$ → дважды",
+      "steps": [
+        {
+          "title": "1-й раз",
+          "math": "$$x\\ln^2 x-2\\int\\ln x\\,dx$$"
+        },
+        {
+          "title": "2-й раз",
+          "text": "$\\int\\ln x\\,dx=x\\ln x-x$.",
+          "math": "$$=x\\ln^2 x-2x\\ln x+2x+C$$"
+        }
+      ],
+      "formula": "x\\ln^2 x-2x\\ln x+2x+C"
+    },
+    {
+      "id": "Д2.5",
+      "title": "∫ x·arctan x dx",
+      "type": "Задача · По частям",
+      "formalText": "Вычислить $\\int x\\arctan x\\,dx$.",
+      "hint": "$u=\\arctan x$, $dv=x\\,dx$",
+      "steps": [
+        {
+          "title": "По частям",
+          "math": "$$\\frac{x^2}{2}\\arctan x-\\frac{1}{2}\\int\\frac{x^2}{1+x^2}\\,dx=\\frac{x^2}{2}\\arctan x-\\frac{1}{2}\\int\\left(1-\\frac{1}{1+x^2}\\right)dx$$"
+        },
+        {
+          "title": "Итого",
+          "math": "$$=\\frac{x^2}{2}\\arctan x-\\frac{x}{2}+\\frac{\\arctan x}{2}+C=\\frac{x^2+1}{2}\\arctan x-\\frac{x}{2}+C$$"
+        }
+      ],
+      "formula": "\\frac{x^2+1}{2}\\arctan x-\\frac{x}{2}+C"
+    },
+    {
+      "id": "Д2.6",
+      "title": "∫ eˣ·sin x dx",
+      "type": "Задача · По частям",
+      "formalText": "Вычислить $\\int e^x\\sin x\\,dx$.",
+      "hint": "Дважды по частям → уравнение $I=...-I$ → $2I=...$",
+      "steps": [
+        {
+          "title": "Цикл",
+          "text": "$I=e^x\\sin x-\\int e^x\\cos x\\,dx=e^x\\sin x-e^x\\cos x-I$.",
+          "math": "$$2I=e^x(\\sin x-\\cos x) \\Rightarrow I=\\frac{e^x(\\sin x-\\cos x)}{2}+C$$"
+        }
+      ],
+      "formula": "\\frac{e^x(\\sin x-\\cos x)}{2}+C"
+    },
+    {
+      "id": "Д2.7",
+      "title": "∫ x/cos²x dx",
+      "type": "Задача · По частям",
+      "formalText": "Вычислить $\\int\\frac{x}{\\cos^2 x}\\,dx$.",
+      "hint": "$u=x$, $dv=\\sec^2 x\\,dx$, $v=\\tan x$",
+      "steps": [
+        {
+          "title": "По частям",
+          "math": "$$x\\tan x-\\int\\tan x\\,dx=x\\tan x+\\ln|\\cos x|+C$$"
+        }
+      ],
+      "formula": "x\\tan x+\\ln|\\cos x|+C"
+    },
+    {
+      "id": "Д2.8",
+      "title": "∫ arcsin x dx",
+      "type": "Задача · По частям",
+      "formalText": "Вычислить $\\int\\arcsin x\\,dx$.",
+      "hint": "$u=\\arcsin x$, $dv=dx$",
+      "steps": [
+        {
+          "title": "По частям",
+          "math": "$$x\\arcsin x-\\int\\frac{x\\,dx}{\\sqrt{1-x^2}}=x\\arcsin x+\\sqrt{1-x^2}+C$$"
+        }
+      ],
+      "formula": "x\\arcsin x+\\sqrt{1-x^2}+C"
+    },
+    {
+      "id": "Д2.9",
+      "title": "∫ x²·eˣ dx",
+      "type": "Задача · По частям",
+      "formalText": "Вычислить $\\int x^2 e^x\\,dx$.",
+      "hint": "Дважды по частям (или таблицу)",
+      "steps": [
+        {
+          "title": "Формула",
+          "math": "$$x^2 e^x-2xe^x+2e^x+C=(x^2-2x+2)e^x+C$$"
+        }
+      ],
+      "formula": "(x^2-2x+2)e^x+C"
+    },
+    {
+      "id": "Д2.10",
+      "title": "∫ x·ln x dx",
+      "type": "Задача · По частям",
+      "formalText": "Вычислить $\\int x\\ln x\\,dx$.",
+      "hint": "$u=\\ln x$, $dv=x\\,dx$",
+      "steps": [
+        {
+          "title": "По частям",
+          "math": "$$\\frac{x^2}{2}\\ln x-\\int\\frac{x}{2}\\,dx=\\frac{x^2}{2}\\ln x-\\frac{x^2}{4}+C$$"
+        }
+      ],
+      "formula": "\\frac{x^2\\ln x}{2}-\\frac{x^2}{4}+C"
+    },
+    {
+      "id": "Д2.11",
+      "title": "∫ x³·ln x dx",
+      "type": "Задача · По частям",
+      "formalText": "Вычислить $\\int x^3\\ln x\\,dx$.",
+      "hint": "$u=\\ln x$, $dv=x^3 dx$",
+      "steps": [
+        {
+          "title": "По частям",
+          "math": "$$\\frac{x^4}{4}\\ln x-\\frac{1}{4}\\int x^3\\,dx=\\frac{x^4}{4}\\ln x-\\frac{x^4}{16}+C$$"
+        }
+      ],
+      "formula": "\\frac{x^4}{4}\\ln x-\\frac{x^4}{16}+C"
+    },
+    {
+      "id": "Д2.12",
+      "title": "∫ ln(1+x²) dx",
+      "type": "Задача · По частям",
+      "formalText": "Вычислить $\\int\\ln(1+x^2)\\,dx$.",
+      "hint": "$u=\\ln(1+x^2)$, $dv=dx$. Остаток: $\\int\\frac{2x^2}{1+x^2}dx$",
+      "steps": [
+        {
+          "title": "По частям",
+          "math": "$$x\\ln(1+x^2)-\\int\\frac{2x^2}{1+x^2}\\,dx=x\\ln(1+x^2)-2x+2\\arctan x+C$$"
+        }
+      ],
+      "formula": "x\\ln(1+x^2)-2x+2\\arctan x+C"
+    },
+    {
+      "id": "Д2.13",
+      "title": "∫ eˣ·cos 2x dx",
+      "type": "Задача · По частям",
+      "formalText": "Вычислить $\\int e^x\\cos 2x\\,dx$.",
+      "hint": "Дважды по частям → уравнение: $I=\\frac{e^x(\\cos 2x+2\\sin 2x)}{5}$",
+      "steps": [
+        {
+          "title": "Цикл",
+          "math": "$$I=e^x\\cos 2x+2\\int e^x\\sin 2x\\,dx=e^x\\cos 2x+2e^x\\sin 2x-4I$$"
+        },
+        {
+          "title": "Решение",
+          "math": "$$5I=e^x(\\cos 2x+2\\sin 2x) \\Rightarrow I=\\frac{e^x(\\cos 2x+2\\sin 2x)}{5}+C$$"
+        }
+      ],
+      "formula": "\\frac{e^x(\\cos 2x+2\\sin 2x)}{5}+C"
+    },
+    {
+      "id": "Д2.14",
+      "title": "∫ √(x²+1) dx",
+      "type": "Задача · По частям",
+      "formalText": "Вычислить $\\int\\sqrt{x^2+1}\\,dx$.",
+      "hint": "По частям: $u=\\sqrt{x^2+1}$, $dv=dx$ → сведётся к $\\int\\frac{dx}{\\sqrt{x^2+1}}$",
+      "steps": [
+        {
+          "title": "По частям",
+          "text": "$I=x\\sqrt{x^2+1}-\\int\\frac{x^2}{\\sqrt{x^2+1}}dx=x\\sqrt{x^2+1}-I+\\int\\frac{dx}{\\sqrt{x^2+1}}$.",
+          "math": "$$2I=x\\sqrt{x^2+1}+\\ln(x+\\sqrt{x^2+1}) \\Rightarrow I=\\frac{x\\sqrt{x^2+1}+\\ln(x+\\sqrt{x^2+1})}{2}+C$$"
+        }
+      ],
+      "formula": "\\frac{x\\sqrt{x^2+1}+\\ln(x+\\sqrt{x^2+1})}{2}+C"
+    },
+    {
+      "id": "Д2.15",
+      "title": "∫ (ln x)²/x² dx",
+      "type": "Задача · По частям",
+      "formalText": "Вычислить $\\int\\frac{\\ln^2 x}{x^2}\\,dx$.",
+      "hint": "$u=\\ln^2 x$, $dv=x^{-2}dx$. Дважды",
+      "steps": [
+        {
+          "title": "1-й раз",
+          "math": "$$-\\frac{\\ln^2 x}{x}+2\\int\\frac{\\ln x}{x^2}\\,dx$$"
+        },
+        {
+          "title": "2-й раз",
+          "math": "$$=-\\frac{\\ln^2 x}{x}+2\\left(-\\frac{\\ln x}{x}+\\int\\frac{dx}{x^2}\\right)=-\\frac{\\ln^2 x}{x}-\\frac{2\\ln x}{x}-\\frac{2}{x}+C$$"
+        }
+      ],
+      "formula": "-\\frac{\\ln^2 x+2\\ln x+2}{x}+C"
+    },
+    {
+      "id": "Д2.16",
+      "title": "∫ x·arcsin x dx",
+      "type": "Задача · По частям",
+      "formalText": "Вычислить $\\int x\\arcsin x\\,dx$.",
+      "hint": "$u=\\arcsin x$, $dv=x\\,dx$",
+      "steps": [
+        {
+          "title": "По частям",
+          "math": "$$\\frac{x^2}{2}\\arcsin x-\\frac{1}{2}\\int\\frac{x^2}{\\sqrt{1-x^2}}dx$$"
+        },
+        {
+          "title": "Остаток",
+          "text": "$\\frac{x^2}{\\sqrt{1-x^2}}=\\frac{1-\\sqrt{1-x^2}\\cdot\\sqrt{1-x^2}}{\\sqrt{1-x^2}}=-\\sqrt{1-x^2}+\\frac{1}{\\sqrt{1-x^2}}$.",
+          "math": "$$=\\frac{x^2}{2}\\arcsin x+\\frac{\\sqrt{1-x^2}}{2}\\cdot x... \\Rightarrow \\frac{2x^2-1}{4}\\arcsin x+\\frac{x\\sqrt{1-x^2}}{4}+C$$"
+        }
+      ],
+      "formula": "\\frac{2x^2-1}{4}\\arcsin x+\\frac{x\\sqrt{1-x^2}}{4}+C"
+    },
+    {
+      "id": "Д2.17",
+      "title": "∫ x²·cos x dx",
+      "type": "Задача · По частям",
+      "formalText": "Вычислить $\\int x^2\\cos x\\,dx$.",
+      "hint": "Дважды по частям: $u=x^2$, $dv=\\cos x\\,dx$",
+      "steps": [
+        {
+          "title": "2 раза",
+          "math": "$$x^2\\sin x+2x\\cos x-2\\sin x+C=(x^2-2)\\sin x+2x\\cos x+C$$"
+        }
+      ],
+      "formula": "(x^2-2)\\sin x+2x\\cos x+C"
+    },
+    {
+      "id": "Д2.18",
+      "title": "∫ x·cosh x dx",
+      "type": "Задача · По частям",
+      "formalText": "Вычислить $\\int x\\cosh x\\,dx$.",
+      "hint": "$u=x$, $dv=\\cosh x\\,dx$, $v=\\sinh x$",
+      "steps": [
+        {
+          "title": "По частям",
+          "math": "$$x\\sinh x-\\int\\sinh x\\,dx=x\\sinh x-\\cosh x+C$$"
+        }
+      ],
+      "formula": "x\\sinh x-\\cosh x+C"
+    },
+    {
+      "id": "Д2.19",
+      "title": "∫ (arctan x)² dx",
+      "type": "Задача · По частям",
+      "formalText": "Вычислить $\\int\\arctan^2 x\\,dx$.",
+      "hint": "$u=\\arctan^2 x$, $dv=dx$. Остаток: $\\int\\frac{2x\\arctan x}{1+x^2}dx$ — снова по частям",
+      "steps": [
+        {
+          "title": "1-й раз",
+          "math": "$$x\\arctan^2 x-\\int\\frac{2x\\arctan x}{1+x^2}\\,dx$$"
+        },
+        {
+          "title": "2-й раз",
+          "text": "$u=\\arctan x$, $dv=\\frac{2x}{1+x^2}dx=d(\\ln(1+x^2))$.",
+          "math": "$$=x\\arctan^2 x-\\arctan x\\cdot\\ln(1+x^2)+\\int\\frac{\\ln(1+x^2)}{1+x^2}\\,dx$$"
+        },
+        {
+          "title": "Итого (приближение)",
+          "text": "Последний интеграл не берётся в элементарных функциях. На КР такая задача не встретится, но формула до этого шага — полезна."
+        }
+      ],
+      "formula": "x\\arctan^2 x-\\arctan x\\ln(1+x^2)+\\int\\frac{\\ln(1+x^2)}{1+x^2}dx+C"
+    },
+    {
+      "id": "Д2.20",
+      "title": "∫ x/(sin²x) dx",
+      "type": "Задача · По частям",
+      "formalText": "Вычислить $\\int\\frac{x}{\\sin^2 x}\\,dx$.",
+      "hint": "$u=x$, $dv=\\csc^2 x\\,dx$, $v=-\\cot x$",
+      "steps": [
+        {
+          "title": "По частям",
+          "math": "$$-x\\cot x+\\int\\cot x\\,dx=-x\\cot x+\\ln|\\sin x|+C$$"
+        }
+      ],
+      "formula": "-x\\cot x+\\ln|\\sin x|+C"
+    },
+    {
+      "id": "Д3.1",
+      "title": "∫ dx/(x²+2x+5)",
+      "type": "Задача · Кв. трёхчлен",
+      "formalText": "Вычислить $\\int\\frac{dx}{x^2+2x+5}$.",
+      "hint": "Выделяем $(x+1)^2+4$ → $\\frac{1}{a}\\arctan$",
+      "steps": [
+        {
+          "title": "Квадрат",
+          "math": "$$x^2+2x+5=(x+1)^2+4$$"
+        },
+        {
+          "title": "Табличный",
+          "math": "$$\\int\\frac{dx}{(x+1)^2+4}=\\frac{1}{2}\\arctan\\frac{x+1}{2}+C$$"
+        }
+      ],
+      "formula": "\\frac{1}{2}\\arctan\\frac{x+1}{2}+C"
+    },
+    {
+      "id": "Д3.2",
+      "title": "∫ dx/√(x²-6x+13)",
+      "type": "Задача · Кв. трёхчлен",
+      "formalText": "Вычислить $\\int\\frac{dx}{\\sqrt{x^2-6x+13}}$.",
+      "hint": "$(x-3)^2+4$ → $\\int\\frac{du}{\\sqrt{u^2+4}}=\\ln(u+\\sqrt{u^2+4})$",
+      "steps": [
+        {
+          "title": "Квадрат",
+          "math": "$$x^2-6x+13=(x-3)^2+4$$"
+        },
+        {
+          "title": "Табличный",
+          "math": "$$\\ln\\left(x-3+\\sqrt{x^2-6x+13}\\right)+C$$"
+        }
+      ],
+      "formula": "\\ln(x-3+\\sqrt{x^2-6x+13})+C"
+    },
+    {
+      "id": "Д3.3",
+      "title": "∫ (3x+1)/(x²+4x+8) dx",
+      "type": "Задача · Кв. трёхчлен",
+      "formalText": "Вычислить $\\int\\frac{3x+1}{x^2+4x+8}\\,dx$.",
+      "hint": "Числитель: $3x+1=\\frac{3}{2}(2x+4)-5$ → разбиваем на два",
+      "steps": [
+        {
+          "title": "Разбиение",
+          "math": "$$\\frac{3}{2}\\int\\frac{2x+4}{x^2+4x+8}\\,dx-5\\int\\frac{dx}{(x+2)^2+4}$$"
+        },
+        {
+          "title": "Итого",
+          "math": "$$=\\frac{3}{2}\\ln(x^2+4x+8)-\\frac{5}{2}\\arctan\\frac{x+2}{2}+C$$"
+        }
+      ],
+      "formula": "\\frac{3}{2}\\ln(x^2+4x+8)-\\frac{5}{2}\\arctan\\frac{x+2}{2}+C"
+    },
+    {
+      "id": "Д3.4",
+      "title": "∫ dx/√(3+2x-x²)",
+      "type": "Задача · Кв. трёхчлен",
+      "formalText": "Вычислить $\\int\\frac{dx}{\\sqrt{3+2x-x^2}}$.",
+      "hint": "$3+2x-x^2=4-(x-1)^2$ → $\\arcsin\\frac{x-1}{2}$",
+      "steps": [
+        {
+          "title": "Квадрат",
+          "math": "$$3+2x-x^2=-(x^2-2x-3)=-(x-1)^2+4=4-(x-1)^2$$"
+        },
+        {
+          "title": "Табличный",
+          "math": "$$\\arcsin\\frac{x-1}{2}+C$$"
+        }
+      ],
+      "formula": "\\arcsin\\frac{x-1}{2}+C"
+    },
+    {
+      "id": "Д3.5",
+      "title": "∫ dx/(x²+x+1)",
+      "type": "Задача · Кв. трёхчлен",
+      "formalText": "Вычислить $\\int\\frac{dx}{x^2+x+1}$.",
+      "hint": "$(x+1/2)^2+3/4$ → $\\frac{1}{a}\\arctan$",
+      "steps": [
+        {
+          "title": "Квадрат",
+          "math": "$$x^2+x+1=\\left(x+\\frac{1}{2}\\right)^2+\\frac{3}{4}$$"
+        },
+        {
+          "title": "Табличный",
+          "math": "$$\\frac{2}{\\sqrt{3}}\\arctan\\frac{2x+1}{\\sqrt{3}}+C$$"
+        }
+      ],
+      "formula": "\\frac{2}{\\sqrt{3}}\\arctan\\frac{2x+1}{\\sqrt{3}}+C"
+    },
+    {
+      "id": "Д3.6",
+      "title": "∫ (x+2)/√(x²+4x+5) dx",
+      "type": "Задача · Кв. трёхчлен",
+      "formalText": "Вычислить $\\int\\frac{x+2}{\\sqrt{x^2+4x+5}}\\,dx$.",
+      "hint": "$x+2=\\frac{1}{2}(2x+4)$ — производная подкоренного",
+      "steps": [
+        {
+          "title": "Подведение",
+          "math": "$$\\frac{1}{2}\\int\\frac{d(x^2+4x+5)}{\\sqrt{x^2+4x+5}}=\\sqrt{x^2+4x+5}+C$$"
+        }
+      ],
+      "formula": "\\sqrt{x^2+4x+5}+C"
+    },
+    {
+      "id": "Д3.7",
+      "title": "∫ dx/√(x²+2x)",
+      "type": "Задача · Кв. трёхчлен",
+      "formalText": "Вычислить $\\int\\frac{dx}{\\sqrt{x^2+2x}}$.",
+      "hint": "$x^2+2x=(x+1)^2-1$ → $\\int\\frac{du}{\\sqrt{u^2-1}}=\\ln|u+\\sqrt{u^2-1}|$",
+      "steps": [
+        {
+          "title": "Квадрат и табличный",
+          "math": "$$\\ln|x+1+\\sqrt{x^2+2x}|+C$$"
+        }
+      ],
+      "formula": "\\ln|x+1+\\sqrt{x^2+2x}|+C"
+    },
+    {
+      "id": "Д3.8",
+      "title": "∫ (2x-1)/√(x²-2x+5) dx",
+      "type": "Задача · Кв. трёхчлен",
+      "formalText": "Вычислить $\\int\\frac{2x-1}{\\sqrt{x^2-2x+5}}\\,dx$.",
+      "hint": "$2x-1=(2x-2)+1$ → разбить. $(x-1)^2+4$",
+      "steps": [
+        {
+          "title": "Разбиение",
+          "math": "$$\\int\\frac{2x-2}{\\sqrt{x^2-2x+5}}\\,dx+\\int\\frac{dx}{\\sqrt{(x-1)^2+4}}$$"
+        },
+        {
+          "title": "Итого",
+          "math": "$$=2\\sqrt{x^2-2x+5}+\\ln(x-1+\\sqrt{x^2-2x+5})+C$$"
+        }
+      ],
+      "formula": "2\\sqrt{x^2-2x+5}+\\ln(x-1+\\sqrt{x^2-2x+5})+C"
+    },
+    {
+      "id": "Д3.9",
+      "title": "∫ dx/(2x²+4x+10)",
+      "type": "Задача · Кв. трёхчлен",
+      "formalText": "Вычислить $\\int\\frac{dx}{2x^2+4x+10}$.",
+      "hint": "Вынеси 2: $\\frac{1}{2}\\int\\frac{dx}{x^2+2x+5}$. Далее $(x+1)^2+4$",
+      "steps": [
+        {
+          "title": "Формула",
+          "math": "$$\\frac{1}{2}\\cdot\\frac{1}{2}\\arctan\\frac{x+1}{2}+C=\\frac{1}{4}\\arctan\\frac{x+1}{2}+C$$"
+        }
+      ],
+      "formula": "\\frac{1}{4}\\arctan\\frac{x+1}{2}+C"
+    },
+    {
+      "id": "Д3.10",
+      "title": "∫ dx/√(5-4x-x²)",
+      "type": "Задача · Кв. трёхчлен",
+      "formalText": "Вычислить $\\int\\frac{dx}{\\sqrt{5-4x-x^2}}$.",
+      "hint": "$5-4x-x^2=9-(x+2)^2$ → $\\arcsin\\frac{x+2}{3}$",
+      "steps": [
+        {
+          "title": "Квадрат",
+          "math": "$$5-4x-x^2=-(x^2+4x-5)=-(x+2)^2+9$$"
+        },
+        {
+          "title": "Табличный",
+          "math": "$$\\arcsin\\frac{x+2}{3}+C$$"
+        }
+      ],
+      "formula": "\\arcsin\\frac{x+2}{3}+C"
+    },
+    {
+      "id": "Д4.1",
+      "title": "∫ dx/((x-1)(x+2))",
+      "type": "Задача · Простые дроби",
+      "formalText": "Вычислить $\\int\\frac{dx}{(x-1)(x+2)}$.",
+      "hint": "$\\frac{1}{(x-1)(x+2)}=\\frac{1}{3}\\left(\\frac{1}{x-1}-\\frac{1}{x+2}\\right)$",
+      "steps": [
+        {
+          "title": "Разложение",
+          "math": "$$\\frac{1}{3}\\int\\left(\\frac{1}{x-1}-\\frac{1}{x+2}\\right)dx=\\frac{1}{3}\\ln\\left|\\frac{x-1}{x+2}\\right|+C$$"
+        }
+      ],
+      "formula": "\\frac{1}{3}\\ln\\left|\\frac{x-1}{x+2}\\right|+C"
+    },
+    {
+      "id": "Д4.2",
+      "title": "∫ dx/(x²-4)",
+      "type": "Задача · Простые дроби",
+      "formalText": "Вычислить $\\int\\frac{dx}{x^2-4}$.",
+      "hint": "$x^2-4=(x-2)(x+2)$ → $\\frac{1}{4}\\left(\\frac{1}{x-2}-\\frac{1}{x+2}\\right)$",
+      "steps": [
+        {
+          "title": "Разложение",
+          "math": "$$\\frac{1}{4}\\ln\\left|\\frac{x-2}{x+2}\\right|+C$$"
+        }
+      ],
+      "formula": "\\frac{1}{4}\\ln\\left|\\frac{x-2}{x+2}\\right|+C"
+    },
+    {
+      "id": "Д4.3",
+      "title": "∫ x²/(x²-1) dx",
+      "type": "Задача · Простые дроби",
+      "formalText": "Вычислить $\\int\\frac{x^2}{x^2-1}\\,dx$.",
+      "hint": "Деление: $\\frac{x^2}{x^2-1}=1+\\frac{1}{x^2-1}$",
+      "steps": [
+        {
+          "title": "Деление + дроби",
+          "math": "$$x+\\frac{1}{2}\\ln\\left|\\frac{x-1}{x+1}\\right|+C$$"
+        }
+      ],
+      "formula": "x+\\frac{1}{2}\\ln\\left|\\frac{x-1}{x+1}\\right|+C"
+    },
+    {
+      "id": "Д4.4",
+      "title": "∫ dx/(x(x²+1))",
+      "type": "Задача · Простые дроби",
+      "formalText": "Вычислить $\\int\\frac{dx}{x(x^2+1)}$.",
+      "hint": "$\\frac{1}{x(x^2+1)}=\\frac{1}{x}-\\frac{x}{x^2+1}$",
+      "steps": [
+        {
+          "title": "Разложение",
+          "math": "$$\\int\\left(\\frac{1}{x}-\\frac{x}{x^2+1}\\right)dx=\\ln|x|-\\frac{1}{2}\\ln(x^2+1)+C$$"
+        }
+      ],
+      "formula": "\\ln|x|-\\frac{1}{2}\\ln(x^2+1)+C"
+    },
+    {
+      "id": "Д4.5",
+      "title": "∫ (2x+1)/((x+1)(x²+1)) dx",
+      "type": "Задача · Простые дроби",
+      "formalText": "Вычислить $\\int\\frac{2x+1}{(x+1)(x^2+1)}\\,dx$.",
+      "hint": "Метод неопределённых коэффициентов: $\\frac{A}{x+1}+\\frac{Bx+C}{x^2+1}$",
+      "steps": [
+        {
+          "title": "Разложение",
+          "text": "$x=-1$: $A=\\frac{-2+1}{2}=-\\frac{1}{2}$. Сравнение: $B=1/2$, $C=3/2$.",
+          "math": "$$-\\frac{1}{2}\\ln|x+1|+\\frac{1}{4}\\ln(x^2+1)+\\frac{3}{2}\\arctan x+C$$"
+        }
+      ],
+      "formula": "-\\frac{1}{2}\\ln|x+1|+\\frac{1}{4}\\ln(x^2+1)+\\frac{3}{2}\\arctan x+C"
+    },
+    {
+      "id": "Д4.6",
+      "title": "∫ dx/(x²(x+1))",
+      "type": "Задача · Простые дроби",
+      "formalText": "Вычислить $\\int\\frac{dx}{x^2(x+1)}$.",
+      "hint": "$\\frac{1}{x^2(x+1)}=\\frac{A}{x}+\\frac{B}{x^2}+\\frac{C}{x+1}$",
+      "steps": [
+        {
+          "title": "Коэффициенты",
+          "text": "$B=1$ (при $x=0$), $C=1$ (при $x=-1$), $A=-1$ (сравнение).",
+          "math": "$$-\\ln|x|-\\frac{1}{x}+\\ln|x+1|+C=\\ln\\left|\\frac{x+1}{x}\\right|-\\frac{1}{x}+C$$"
+        }
+      ],
+      "formula": "\\ln\\left|\\frac{x+1}{x}\\right|-\\frac{1}{x}+C"
+    },
+    {
+      "id": "Д4.7",
+      "title": "∫ x³/(x²+1) dx",
+      "type": "Задача · Простые дроби",
+      "formalText": "Вычислить $\\int\\frac{x^3}{x^2+1}\\,dx$.",
+      "hint": "Деление: $\\frac{x^3}{x^2+1}=x-\\frac{x}{x^2+1}$",
+      "steps": [
+        {
+          "title": "",
+          "math": "$$\\frac{x^2}{2}-\\frac{1}{2}\\ln(x^2+1)+C$$"
+        }
+      ],
+      "formula": "\\frac{x^2}{2}-\\frac{1}{2}\\ln(x^2+1)+C"
+    },
+    {
+      "id": "Д4.8",
+      "title": "∫ dx/((x²+1)²)",
+      "type": "Задача · Простые дроби",
+      "formalText": "Вычислить $\\int\\frac{dx}{(x^2+1)^2}$.",
+      "hint": "Подстановка $x=\\tan t$ → $\\int\\cos^2 t\\,dt$",
+      "steps": [
+        {
+          "title": "Подстановка",
+          "math": "$$x=\\tan t,\\;dx=\\sec^2 t\\,dt,\\;(x^2+1)^2=\\sec^4 t$$"
+        },
+        {
+          "title": "Интеграл",
+          "math": "$$\\int\\cos^2 t\\,dt=\\frac{t}{2}+\\frac{\\sin 2t}{4}=\\frac{\\arctan x}{2}+\\frac{x}{2(1+x^2)}+C$$"
+        }
+      ],
+      "formula": "\\frac{\\arctan x}{2}+\\frac{x}{2(1+x^2)}+C"
+    },
+    {
+      "id": "Д4.9",
+      "title": "∫ (3x²+1)/((x-1)(x²+x+1)) dx",
+      "type": "Задача · Простые дроби",
+      "formalText": "Вычислить $\\int\\frac{3x^2+1}{(x-1)(x^2+x+1)}\\,dx$.",
+      "hint": "$x^3-1=(x-1)(x^2+x+1)$. Заметь: $3x^2+1=?$ через $x^3-1$",
+      "steps": [
+        {
+          "title": "Разложение",
+          "text": "$\\frac{A}{x-1}+\\frac{Bx+C}{x^2+x+1}$. При $x=1$: $A=4/3$. Сравнение: $B=5/3$, $C=-1/3$.",
+          "math": "$$\\frac{4}{3}\\ln|x-1|+\\frac{5}{6}\\ln(x^2+x+1)-\\frac{\\sqrt{3}}{\\sqrt{3}}\\arctan\\frac{2x+1}{\\sqrt{3}}+C$$"
+        }
+      ],
+      "formula": "\\frac{4}{3}\\ln|x-1|+\\frac{5}{6}\\ln(x^2+x+1)+C_1\\arctan\\ldots+C"
+    },
+    {
+      "id": "Д4.10",
+      "title": "∫ dx/(x³+x)",
+      "type": "Задача · Простые дроби",
+      "formalText": "Вычислить $\\int\\frac{dx}{x^3+x}$.",
+      "hint": "$x^3+x=x(x^2+1)$ → $\\frac{1}{x}-\\frac{x}{x^2+1}$",
+      "steps": [
+        {
+          "title": "Разложение",
+          "math": "$$\\ln|x|-\\frac{1}{2}\\ln(x^2+1)+C=\\frac{1}{2}\\ln\\frac{x^2}{x^2+1}+C$$"
+        }
+      ],
+      "formula": "\\ln|x|-\\frac{1}{2}\\ln(x^2+1)+C"
+    },
+    {
+      "id": "Д4.11",
+      "title": "∫ (x+3)/((x-1)²(x+1)) dx",
+      "type": "Задача · Простые дроби",
+      "formalText": "Вычислить $\\int\\frac{x+3}{(x-1)^2(x+1)}\\,dx$.",
+      "hint": "$\\frac{A}{x-1}+\\frac{B}{(x-1)^2}+\\frac{C}{x+1}$",
+      "steps": [
+        {
+          "title": "Коэффициенты",
+          "text": "$x=1$: $B=2$. $x=-1$: $C=-1/2$. Сравнение: $A=1/2$.",
+          "math": "$$\\frac{1}{2}\\ln|x-1|-\\frac{2}{x-1}-\\frac{1}{2}\\ln|x+1|+C$$"
+        }
+      ],
+      "formula": "\\frac{1}{2}\\ln\\left|\\frac{x-1}{x+1}\\right|-\\frac{2}{x-1}+C"
+    },
+    {
+      "id": "Д4.12",
+      "title": "∫ x/(x⁴-1) dx",
+      "type": "Задача · Простые дроби",
+      "formalText": "Вычислить $\\int\\frac{x\\,dx}{x^4-1}$.",
+      "hint": "$x^4-1=(x^2-1)(x^2+1)$. Подстановка $u=x^2$ → $\\frac{1}{2}\\int\\frac{du}{u^2-1}$",
+      "steps": [
+        {
+          "title": "Подстановка",
+          "math": "$$\\frac{1}{2}\\int\\frac{du}{u^2-1}=\\frac{1}{4}\\ln\\left|\\frac{u-1}{u+1}\\right|+C=\\frac{1}{4}\\ln\\left|\\frac{x^2-1}{x^2+1}\\right|+C$$"
+        }
+      ],
+      "formula": "\\frac{1}{4}\\ln\\left|\\frac{x^2-1}{x^2+1}\\right|+C"
+    },
+    {
+      "id": "Д5.1",
+      "title": "∫ sin⁴x dx",
+      "type": "Задача · Тригонометрия",
+      "formalText": "Вычислить $\\int\\sin^4 x\\,dx$.",
+      "hint": "Понижение степени: $\\sin^4 x=\\left(\\frac{1-\\cos 2x}{2}\\right)^2$",
+      "steps": [
+        {
+          "title": "Формула",
+          "math": "$$\\frac{1}{4}\\int(1-2\\cos 2x+\\cos^2 2x)\\,dx=\\frac{3x}{8}-\\frac{\\sin 2x}{4}+\\frac{\\sin 4x}{32}+C$$"
+        }
+      ],
+      "formula": "\\frac{3x}{8}-\\frac{\\sin 2x}{4}+\\frac{\\sin 4x}{32}+C"
+    },
+    {
+      "id": "Д5.2",
+      "title": "∫ sin³x·cos²x dx",
+      "type": "Задача · Тригонометрия",
+      "formalText": "Вычислить $\\int\\sin^3 x\\cos^2 x\\,dx$.",
+      "hint": "Отщепляем $\\sin x$: $\\sin^2 x=1-\\cos^2 x$ → $d(\\cos x)$",
+      "steps": [
+        {
+          "title": "Подведение",
+          "math": "$$-\\int(1-\\cos^2 x)\\cos^2 x\\,d(\\cos x)=-\\int(\\cos^2 x-\\cos^4 x)\\,d(\\cos x)$$"
+        },
+        {
+          "title": "Итого",
+          "math": "$$=-\\frac{\\cos^3 x}{3}+\\frac{\\cos^5 x}{5}+C$$"
+        }
+      ],
+      "formula": "-\\frac{\\cos^3 x}{3}+\\frac{\\cos^5 x}{5}+C"
+    },
+    {
+      "id": "Д5.3",
+      "title": "∫ tg⁴x dx",
+      "type": "Задача · Тригонометрия",
+      "formalText": "Вычислить $\\int\\tan^4 x\\,dx$.",
+      "hint": "$\\tan^4 x=\\tan^2 x(\\sec^2 x-1)=\\tan^2 x\\sec^2 x-\\tan^2 x$",
+      "steps": [
+        {
+          "title": "Рекурсия",
+          "math": "$$\\int\\tan^2 x\\sec^2 x\\,dx-\\int(\\sec^2 x-1)\\,dx=\\frac{\\tan^3 x}{3}-\\tan x+x+C$$"
+        }
+      ],
+      "formula": "\\frac{\\tan^3 x}{3}-\\tan x+x+C"
+    },
+    {
+      "id": "Д5.4",
+      "title": "∫ dx/(sin x·cos x)",
+      "type": "Задача · Тригонометрия",
+      "formalText": "Вычислить $\\int\\frac{dx}{\\sin x\\cos x}$.",
+      "hint": "$\\sin x\\cos x=\\frac{1}{2}\\sin 2x$ → $\\int\\frac{2\\,dx}{\\sin 2x}=\\int\\csc 2x\\cdot 2\\,dx$",
+      "steps": [
+        {
+          "title": "Преобразование",
+          "text": "Или: $\\frac{1}{\\sin x\\cos x}=\\frac{\\sin^2 x+\\cos^2 x}{\\sin x\\cos x}=\\tan x+\\cot x$.",
+          "math": "$$\\int(\\tan x+\\cot x)\\,dx=-\\ln|\\cos x|+\\ln|\\sin x|+C=\\ln|\\tan x|+C$$"
+        }
+      ],
+      "formula": "\\ln|\\tan x|+C"
+    },
+    {
+      "id": "Д5.5",
+      "title": "∫ cos⁴x dx",
+      "type": "Задача · Тригонометрия",
+      "formalText": "Вычислить $\\int\\cos^4 x\\,dx$.",
+      "hint": "$\\cos^4 x=\\left(\\frac{1+\\cos 2x}{2}\\right)^2$",
+      "steps": [
+        {
+          "title": "Формула",
+          "math": "$$\\frac{3x}{8}+\\frac{\\sin 2x}{4}+\\frac{\\sin 4x}{32}+C$$"
+        }
+      ],
+      "formula": "\\frac{3x}{8}+\\frac{\\sin 2x}{4}+\\frac{\\sin 4x}{32}+C"
+    },
+    {
+      "id": "Д5.6",
+      "title": "∫ sin²x·cos²x dx",
+      "type": "Задача · Тригонометрия",
+      "formalText": "Вычислить $\\int\\sin^2 x\\cos^2 x\\,dx$.",
+      "hint": "$\\sin^2 x\\cos^2 x=\\frac{1}{4}\\sin^2 2x=\\frac{1-\\cos 4x}{8}$",
+      "steps": [
+        {
+          "title": "Формула",
+          "math": "$$\\frac{1}{8}\\int(1-\\cos 4x)\\,dx=\\frac{x}{8}-\\frac{\\sin 4x}{32}+C$$"
+        }
+      ],
+      "formula": "\\frac{x}{8}-\\frac{\\sin 4x}{32}+C"
+    },
+    {
+      "id": "Д5.7",
+      "title": "∫ dx/sin³x",
+      "type": "Задача · Тригонометрия",
+      "formalText": "Вычислить $\\int\\csc^3 x\\,dx$.",
+      "hint": "По частям: $u=\\csc x$, $dv=\\csc^2 x\\,dx$ → рекуррентная формула",
+      "steps": [
+        {
+          "title": "По частям",
+          "text": "$I=-\\csc x\\cot x-\\int\\csc x\\cot^2 x\\,dx=-\\csc x\\cot x-\\int\\csc x(\\csc^2 x-1)\\,dx$.",
+          "math": "$$I=-\\csc x\\cot x-I+\\int\\csc x\\,dx \\Rightarrow 2I=-\\csc x\\cot x+\\ln|\\csc x-\\cot x|$$"
+        },
+        {
+          "title": "Итого",
+          "math": "$$I=-\\frac{\\csc x\\cot x}{2}+\\frac{1}{2}\\ln|\\csc x-\\cot x|+C$$"
+        }
+      ],
+      "formula": "-\\frac{\\csc x\\cot x}{2}+\\frac{1}{2}\\ln|\\csc x-\\cot x|+C"
+    },
+    {
+      "id": "Д5.8",
+      "title": "∫ sin 2x·cos 3x dx",
+      "type": "Задача · Тригонометрия",
+      "formalText": "Вычислить $\\int\\sin 2x\\cos 3x\\,dx$.",
+      "hint": "Произведение → сумма: $\\sin\\alpha\\cos\\beta=\\frac{1}{2}[\\sin(\\alpha+\\beta)+\\sin(\\alpha-\\beta)]$",
+      "steps": [
+        {
+          "title": "Формула",
+          "math": "$$\\frac{1}{2}\\int[\\sin 5x+\\sin(-x)]\\,dx=-\\frac{\\cos 5x}{10}+\\frac{\\cos x}{2}+C$$"
+        }
+      ],
+      "formula": "-\\frac{\\cos 5x}{10}+\\frac{\\cos x}{2}+C"
+    },
+    {
+      "id": "Д5.9",
+      "title": "∫ dx/(3+5cos x)",
+      "type": "Задача · Тригонометрия",
+      "formalText": "Вычислить $\\int\\frac{dx}{3+5\\cos x}$.",
+      "hint": "Универсальная подстановка: $t=\\tan(x/2)$",
+      "steps": [
+        {
+          "title": "Подстановка",
+          "text": "$\\cos x=\\frac{1-t^2}{1+t^2}$, $dx=\\frac{2\\,dt}{1+t^2}$.",
+          "math": "$$\\int\\frac{2\\,dt}{3(1+t^2)+5(1-t^2)}=\\int\\frac{2\\,dt}{8-2t^2}=\\int\\frac{dt}{4-t^2}$$"
+        },
+        {
+          "title": "Дроби",
+          "math": "$$=\\frac{1}{4}\\ln\\left|\\frac{2+t}{2-t}\\right|+C=\\frac{1}{4}\\ln\\left|\\frac{2+\\tan(x/2)}{2-\\tan(x/2)}\\right|+C$$"
+        }
+      ],
+      "formula": "\\frac{1}{4}\\ln\\left|\\frac{2+\\tan(x/2)}{2-\\tan(x/2)}\\right|+C"
+    },
+    {
+      "id": "Д5.10",
+      "title": "∫ cos⁵x dx",
+      "type": "Задача · Тригонометрия",
+      "formalText": "Вычислить $\\int\\cos^5 x\\,dx$.",
+      "hint": "Отщепляем $\\cos x$: $\\cos^4 x=(1-\\sin^2 x)^2$ → $d(\\sin x)$",
+      "steps": [
+        {
+          "title": "Подведение",
+          "math": "$$\\int(1-\\sin^2 x)^2\\,d(\\sin x)=\\int(1-2u^2+u^4)\\,du=\\sin x-\\frac{2\\sin^3 x}{3}+\\frac{\\sin^5 x}{5}+C$$"
+        }
+      ],
+      "formula": "\\sin x-\\frac{2\\sin^3 x}{3}+\\frac{\\sin^5 x}{5}+C"
+    },
+    {
+      "id": "Д6.1",
+      "title": "∫ dx/(x+√x)",
+      "type": "Задача · Иррациональная",
+      "formalText": "Вычислить $\\int\\frac{dx}{x+\\sqrt{x}}$.",
+      "hint": "$t=\\sqrt{x}$ → $x=t^2$, $dx=2t\\,dt$",
+      "steps": [
+        {
+          "title": "Подстановка",
+          "math": "$$\\int\\frac{2t\\,dt}{t^2+t}=2\\int\\frac{dt}{t+1}=2\\ln|t+1|+C=2\\ln(\\sqrt{x}+1)+C$$"
+        }
+      ],
+      "formula": "2\\ln(\\sqrt{x}+1)+C"
+    },
+    {
+      "id": "Д6.2",
+      "title": "∫ √x/(1+∛x) dx",
+      "type": "Задача · Иррациональная",
+      "formalText": "Вычислить $\\int\\frac{\\sqrt{x}}{1+\\sqrt[3]{x}}\\,dx$.",
+      "hint": "$t=x^{1/6}$ (общий знаменатель дробей $1/2$ и $1/3$)",
+      "steps": [
+        {
+          "title": "Подстановка",
+          "text": "$x=t^6$, $dx=6t^5 dt$, $\\sqrt{x}=t^3$, $\\sqrt[3]{x}=t^2$.",
+          "math": "$$\\int\\frac{t^3\\cdot 6t^5\\,dt}{1+t^2}=6\\int\\frac{t^8}{1+t^2}\\,dt$$"
+        },
+        {
+          "title": "Деление",
+          "text": "$t^8/(1+t^2)=t^6-t^4+t^2-1+1/(1+t^2)$.",
+          "math": "$$=6\\left(\\frac{t^7}{7}-\\frac{t^5}{5}+\\frac{t^3}{3}-t+\\arctan t\\right)+C$$"
+        }
+      ],
+      "formula": "\\frac{6t^7}{7}-\\frac{6t^5}{5}+2t^3-6t+6\\arctan t+C,\\; t=x^{1/6}"
+    },
+    {
+      "id": "Д6.3",
+      "title": "∫ dx/√(x²+2x+5)",
+      "type": "Задача · Иррациональная",
+      "formalText": "Вычислить $\\int\\frac{dx}{\\sqrt{x^2+2x+5}}$.",
+      "hint": "$(x+1)^2+4$ → тригонометрическая подстановка $x+1=2\\tan\\theta$ или табличный",
+      "steps": [
+        {
+          "title": "Табличный",
+          "math": "$$\\ln(x+1+\\sqrt{x^2+2x+5})+C$$"
+        }
+      ],
+      "formula": "\\ln(x+1+\\sqrt{x^2+2x+5})+C"
+    },
+    {
+      "id": "Д6.4",
+      "title": "∫ dx/(1+∛(x+2))",
+      "type": "Задача · Иррациональная",
+      "formalText": "Вычислить $\\int\\frac{dx}{1+\\sqrt[3]{x+2}}$.",
+      "hint": "$t=\\sqrt[3]{x+2}$ → $x=t^3-2$, $dx=3t^2\\,dt$",
+      "steps": [
+        {
+          "title": "Подстановка",
+          "math": "$$3\\int\\frac{t^2\\,dt}{1+t}=3\\int\\left(t-1+\\frac{1}{1+t}\\right)dt=\\frac{3t^2}{2}-3t+3\\ln|1+t|+C$$"
+        }
+      ],
+      "formula": "\\frac{3t^2}{2}-3t+3\\ln|1+t|+C,\\; t=\\sqrt[3]{x+2}"
+    },
+    {
+      "id": "Д6.5",
+      "title": "∫ x/√(1+x²) dx",
+      "type": "Задача · Иррациональная",
+      "formalText": "Вычислить $\\int\\frac{x\\,dx}{\\sqrt{1+x^2}}$.",
+      "hint": "$d(1+x^2)=2x\\,dx$ → $\\frac{1}{2}\\int u^{-1/2}\\,du$",
+      "steps": [
+        {
+          "title": "Подведение",
+          "math": "$$\\frac{1}{2}\\int(1+x^2)^{-1/2}\\,d(1+x^2)=\\sqrt{1+x^2}+C$$"
+        }
+      ],
+      "formula": "\\sqrt{1+x^2}+C"
+    }
+  ]
+}

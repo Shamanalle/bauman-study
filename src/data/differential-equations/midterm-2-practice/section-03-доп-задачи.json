@@ -1,0 +1,594 @@
+{
+  "section": "🎯 Доп. задачи",
+  "icon": "✏️",
+  "questions": [
+    {
+      "id": "Д1.1",
+      "title": "ЛОДУ по корням λ=1,1,−3",
+      "type": "Задача · Составление ЛОДУ",
+      "formalText": "Составить ЛОДУ с корнями $\\lambda_1=1$ (кратн. 2), $\\lambda_2=-3$.",
+      "hint": "Хар. ур.: $(\\lambda-1)^2(\\lambda+3)=0$ → раскрой",
+      "steps": [
+        {
+          "title": "Хар. уравнение",
+          "math": "$$(\\lambda-1)^2(\\lambda+3)=\\lambda^3+\\lambda^2-5\\lambda+3=0$$"
+        },
+        {
+          "title": "ОДУ",
+          "math": "$$y'''+y''-5y'+3y=0$$"
+        }
+      ],
+      "formula": "y'''+y''-5y'+3y=0"
+    },
+    {
+      "id": "Д1.2",
+      "title": "ЛОДУ по корням λ=±2i",
+      "type": "Задача · Составление ЛОДУ",
+      "formalText": "Составить ЛОДУ: $\\lambda_{1,2}=\\pm 2i$.",
+      "hint": "$(\\lambda-2i)(\\lambda+2i)=\\lambda^2+4=0$",
+      "steps": [
+        {
+          "title": "Хар. уравнение",
+          "math": "$$\\lambda^2+4=0 \\Rightarrow y''+4y=0$$"
+        }
+      ],
+      "formula": "y''+4y=0"
+    },
+    {
+      "id": "Д1.3",
+      "title": "ЛОДУ по корням λ=1±i",
+      "type": "Задача · Составление ЛОДУ",
+      "formalText": "Составить ЛОДУ: $\\lambda_{1,2}=1\\pm i$.",
+      "hint": "$(\\lambda-1)^2+1=\\lambda^2-2\\lambda+2=0$",
+      "steps": [
+        {
+          "title": "Хар. уравнение",
+          "math": "$$\\lambda^2-2\\lambda+2=0 \\Rightarrow y''-2y'+2y=0$$"
+        }
+      ],
+      "formula": "y''-2y'+2y=0"
+    },
+    {
+      "id": "Д1.4",
+      "title": "ЛОДУ по ФСР: eˣ, e²ˣ",
+      "type": "Задача · Составление ЛОДУ",
+      "formalText": "Составить ЛОДУ с ФСР: $e^x$, $e^{2x}$.",
+      "hint": "Корни $\\lambda=1,2$ → $(\\lambda-1)(\\lambda-2)=\\lambda^2-3\\lambda+2$",
+      "steps": [
+        {
+          "title": "Хар. уравнение",
+          "math": "$$\\lambda^2-3\\lambda+2=0 \\Rightarrow y''-3y'+2y=0$$"
+        }
+      ],
+      "formula": "y''-3y'+2y=0"
+    },
+    {
+      "id": "Д1.5",
+      "title": "ЛОДУ по ФСР: 1, x, x²",
+      "type": "Задача · Составление ЛОДУ",
+      "formalText": "Составить ЛОДУ с ФСР: $1$, $x$, $x^2$.",
+      "hint": "$\\lambda=0$ (кратн. 3) → $\\lambda^3=0$",
+      "steps": [
+        {
+          "title": "Хар. уравнение",
+          "math": "$$\\lambda^3=0 \\Rightarrow y'''=0$$"
+        }
+      ],
+      "formula": "y'''=0"
+    },
+    {
+      "id": "Д1.6",
+      "title": "ЛОДУ по ФСР: cos 3x, sin 3x",
+      "type": "Задача · Составление ЛОДУ",
+      "formalText": "ЛОДУ с ФСР: $\\cos 3x$, $\\sin 3x$.",
+      "hint": "$\\lambda=\\pm 3i$ → $\\lambda^2+9=0$",
+      "steps": [
+        {
+          "title": "ОДУ",
+          "math": "$$y''+9y=0$$"
+        }
+      ],
+      "formula": "y''+9y=0"
+    },
+    {
+      "id": "Д1.7",
+      "title": "ЛОДУ по ФСР: eˣcos 2x, eˣsin 2x",
+      "type": "Задача · Составление ЛОДУ",
+      "formalText": "ЛОДУ с ФСР: $e^x\\cos 2x$, $e^x\\sin 2x$.",
+      "hint": "$\\lambda=1\\pm 2i$ → $(\\lambda-1)^2+4=\\lambda^2-2\\lambda+5$",
+      "steps": [
+        {
+          "title": "ОДУ",
+          "math": "$$y''-2y'+5y=0$$"
+        }
+      ],
+      "formula": "y''-2y'+5y=0"
+    },
+    {
+      "id": "Д1.8",
+      "title": "ЛНДУ: y=C₁eˣ+C₂e⁻ˣ+x²",
+      "type": "Задача · Составление ЛОДУ",
+      "formalText": "Составить ЛНДУ если $y=C_1 e^x+C_2 e^{-x}+x^2$.",
+      "hint": "Однородное: $\\lambda=\\pm 1$ → $y''-y=0$. Частное $y_0=x^2$ → $f(x)=y_0''-y_0$",
+      "steps": [
+        {
+          "title": "Однородное",
+          "text": "$\\lambda^2-1=0$ → $y''-y=0$."
+        },
+        {
+          "title": "Правая часть",
+          "math": "$$f(x)=y_0''-y_0=(x^2)''-x^2=2-x^2$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$y''-y=2-x^2$$"
+        }
+      ],
+      "formula": "y''-y=2-x^2"
+    },
+    {
+      "id": "Д1.9",
+      "title": "ЛОДУ по корням λ=0,0,3",
+      "type": "Задача · Составление ЛОДУ",
+      "formalText": "ЛОДУ: $\\lambda_1=0$ (кратн. 2), $\\lambda_2=3$.",
+      "hint": "$\\lambda^2(\\lambda-3)=\\lambda^3-3\\lambda^2=0$",
+      "steps": [
+        {
+          "title": "ОДУ",
+          "math": "$$y'''-3y''=0$$"
+        }
+      ],
+      "formula": "y'''-3y''=0"
+    },
+    {
+      "id": "Д1.10",
+      "title": "ЛОДУ по корням λ=2,2,±i",
+      "type": "Задача · Составление ЛОДУ",
+      "formalText": "ЛОДУ: $\\lambda=2$ (кратн. 2), $\\lambda=\\pm i$.",
+      "hint": "$(\\lambda-2)^2(\\lambda^2+1)=0$ → раскрой",
+      "steps": [
+        {
+          "title": "Хар. уравнение",
+          "math": "$$(\\lambda^2-4\\lambda+4)(\\lambda^2+1)=\\lambda^4-4\\lambda^3+5\\lambda^2-4\\lambda+4$$"
+        },
+        {
+          "title": "ОДУ",
+          "math": "$$y^{(4)}-4y'''+5y''-4y'+4y=0$$"
+        }
+      ],
+      "formula": "y^{(4)}-4y'''+5y''-4y'+4y=0"
+    },
+    {
+      "id": "Д2.1",
+      "title": "y''+4y=0, y(0)=1, y'(0)=0",
+      "type": "Задача · Задача Коши / Понижение",
+      "formalText": "Задача Коши: $y''+4y=0$, $y(0)=1$, $y'(0)=0$.",
+      "hint": "Хар. ур.: $\\lambda^2+4=0$ → $\\lambda=\\pm 2i$ → $y=C_1\\cos 2x+C_2\\sin 2x$",
+      "steps": [
+        {
+          "title": "Общее решение",
+          "math": "$$y=C_1\\cos 2x+C_2\\sin 2x$$"
+        },
+        {
+          "title": "НУ",
+          "text": "$y(0)=C_1=1$. $y'=-2C_1\\sin 2x+2C_2\\cos 2x$ → $y'(0)=2C_2=0$ → $C_2=0$.",
+          "math": "$$y=\\cos 2x$$"
+        }
+      ],
+      "formula": "y=\\cos 2x"
+    },
+    {
+      "id": "Д2.2",
+      "title": "y''-3y'+2y=0, y(0)=0, y'(0)=1",
+      "type": "Задача · Задача Коши / Понижение",
+      "formalText": "Задача Коши: $y''-3y'+2y=0$, $y(0)=0$, $y'(0)=1$.",
+      "hint": "$\\lambda^2-3\\lambda+2=(\\lambda-1)(\\lambda-2)=0$",
+      "steps": [
+        {
+          "title": "Общее",
+          "math": "$$y=C_1 e^x+C_2 e^{2x}$$"
+        },
+        {
+          "title": "НУ",
+          "text": "$C_1+C_2=0$, $C_1+2C_2=1$ → $C_2=1$, $C_1=-1$.",
+          "math": "$$y=e^{2x}-e^x$$"
+        }
+      ],
+      "formula": "y=e^{2x}-e^x"
+    },
+    {
+      "id": "Д2.3",
+      "title": "y''-2y'+y=0, y(0)=1, y'(0)=3",
+      "type": "Задача · Задача Коши / Понижение",
+      "formalText": "Задача Коши: $y''-2y'+y=0$, $y(0)=1$, $y'(0)=3$.",
+      "hint": "$(\\lambda-1)^2=0$ → $y=(C_1+C_2 x)e^x$",
+      "steps": [
+        {
+          "title": "Общее",
+          "math": "$$y=(C_1+C_2 x)e^x$$"
+        },
+        {
+          "title": "НУ",
+          "text": "$C_1=1$. $y'=(C_2+C_1+C_2 x)e^x$ → $y'(0)=C_2+1=3$ → $C_2=2$.",
+          "math": "$$y=(1+2x)e^x$$"
+        }
+      ],
+      "formula": "y=(1+2x)e^x"
+    },
+    {
+      "id": "Д2.4",
+      "title": "y''=6x, y(0)=1, y'(0)=2",
+      "type": "Задача · Задача Коши / Понижение",
+      "formalText": "Задача Коши: $y''=6x$.",
+      "hint": "Интегрируем дважды: $y'=3x^2+C_1$, $y=x^3+C_1 x+C_2$",
+      "steps": [
+        {
+          "title": "Интегрирование",
+          "math": "$$y'=3x^2+C_1,\\quad y=x^3+C_1 x+C_2$$"
+        },
+        {
+          "title": "НУ",
+          "text": "$y(0)=C_2=1$. $y'(0)=C_1=2$.",
+          "math": "$$y=x^3+2x+1$$"
+        }
+      ],
+      "formula": "y=x^3+2x+1"
+    },
+    {
+      "id": "Д2.5",
+      "title": "y''+y'=0 (понижение порядка)",
+      "type": "Задача · Задача Коши / Понижение",
+      "formalText": "Решить $y''+y'=0$.",
+      "hint": "Подстановка $p=y'$: $p'+p=0$",
+      "steps": [
+        {
+          "title": "Понижение",
+          "math": "$$p=Ce^{-x} \\Rightarrow y'=Ce^{-x} \\Rightarrow y=-Ce^{-x}+C_2=C_1 e^{-x}+C_2$$"
+        }
+      ],
+      "formula": "y=C_1 e^{-x}+C_2"
+    },
+    {
+      "id": "Д2.6",
+      "title": "y''+(y')²=0 (не содержит x)",
+      "type": "Задача · Задача Коши / Понижение",
+      "formalText": "Решить $y''+(y')^2=0$.",
+      "hint": "Не содержит $x$: $y'=p(y)$, $y''=p\\frac{dp}{dy}$",
+      "steps": [
+        {
+          "title": "Подстановка",
+          "math": "$$p\\frac{dp}{dy}+p^2=0 \\Rightarrow p(p'+p)=0$$"
+        },
+        {
+          "title": "p≠0",
+          "math": "$$\\frac{dp}{dy}=-p \\Rightarrow p=Ce^{-y} \\Rightarrow \\frac{dy}{dx}=Ce^{-y} \\Rightarrow e^y\\,dy=C\\,dx$$"
+        },
+        {
+          "title": "Итого",
+          "math": "$$e^y=Cx+C_2$$"
+        }
+      ],
+      "formula": "e^y=C_1 x+C_2"
+    },
+    {
+      "id": "Д2.7",
+      "title": "xy''=y' (не содержит y)",
+      "type": "Задача · Задача Коши / Понижение",
+      "formalText": "Решить $xy''=y'$.",
+      "hint": "Не содержит $y$: $p=y'$, $xp'=p$",
+      "steps": [
+        {
+          "title": "Разделяющееся",
+          "math": "$$\\frac{dp}{p}=\\frac{dx}{x} \\Rightarrow p=C_1 x \\Rightarrow y=\\frac{C_1 x^2}{2}+C_2$$"
+        }
+      ],
+      "formula": "y=C_1 x^2+C_2"
+    },
+    {
+      "id": "Д2.8",
+      "title": "y''+9y=0, y(π/6)=1, y'(π/6)=0",
+      "type": "Задача · Задача Коши / Понижение",
+      "formalText": "Задача Коши: $y''+9y=0$, $y(\\pi/6)=1$, $y'(\\pi/6)=0$.",
+      "hint": "$\\lambda=\\pm 3i$ → $y=C_1\\cos 3x+C_2\\sin 3x$. НУ при $x=\\pi/6$",
+      "steps": [
+        {
+          "title": "Общее",
+          "math": "$$y=C_1\\cos 3x+C_2\\sin 3x$$"
+        },
+        {
+          "title": "НУ",
+          "text": "$\\cos(\\pi/2)=0$, $\\sin(\\pi/2)=1$ → $C_2=1$. $y'=-3C_1\\sin 3x+3C_2\\cos 3x$ → $y'(\\pi/6)=-3C_1=0$ → $C_1=0$.",
+          "math": "$$y=\\sin 3x$$"
+        }
+      ],
+      "formula": "y=\\sin 3x"
+    },
+    {
+      "id": "Д3.1",
+      "title": "y''+y=1/cos x",
+      "type": "Задача · Вариация постоянных",
+      "formalText": "Решить $y''+y=\\frac{1}{\\cos x}$.",
+      "hint": "Однородное: $y_0=C_1\\cos x+C_2\\sin x$. Вариация: система $C_1'\\cos x+C_2'\\sin x=0$, $-C_1'\\sin x+C_2'\\cos x=1/\\cos x$",
+      "steps": [
+        {
+          "title": "Однородное",
+          "math": "$$y_0=C_1\\cos x+C_2\\sin x$$"
+        },
+        {
+          "title": "Система",
+          "text": "$C_1'=-\\tan x$, $C_2'=1$.",
+          "math": "$$C_1=\\ln|\\cos x|,\\quad C_2=x$$"
+        },
+        {
+          "title": "Частное",
+          "math": "$$y_ч=\\cos x\\ln|\\cos x|+x\\sin x$$"
+        },
+        {
+          "title": "Общее",
+          "math": "$$y=C_1\\cos x+C_2\\sin x+\\cos x\\ln|\\cos x|+x\\sin x$$"
+        }
+      ],
+      "formula": "y=C_1\\cos x+C_2\\sin x+\\cos x\\ln|\\cos x|+x\\sin x"
+    },
+    {
+      "id": "Д3.2",
+      "title": "y''-y=2/(eˣ+1)",
+      "type": "Задача · Вариация постоянных",
+      "formalText": "Решить $y''-y=\\frac{2}{e^x+1}$.",
+      "hint": "ФСР: $e^x$, $e^{-x}$. Вариация",
+      "steps": [
+        {
+          "title": "Система",
+          "text": "$C_1' e^x+C_2' e^{-x}=0$, $C_1' e^x-C_2' e^{-x}=\\frac{2}{e^x+1}$.",
+          "math": "$$C_1'=\\frac{1}{e^x+1}=\\frac{e^{-x}}{1+e^{-x}},\\quad C_2'=-\\frac{e^x}{e^x+1}$$"
+        },
+        {
+          "title": "Интегрирование",
+          "math": "$$C_1=-\\ln(1+e^{-x}),\\quad C_2=-x+\\ln(1+e^x)$$"
+        }
+      ],
+      "formula": "y=C_1 e^x+C_2 e^{-x}+y_{\\text{ч}}"
+    },
+    {
+      "id": "Д3.3",
+      "title": "y''+y=tan x",
+      "type": "Задача · Вариация постоянных",
+      "formalText": "Решить $y''+y=\\tan x$.",
+      "hint": "ФСР: $\\cos x$, $\\sin x$. Вариация",
+      "steps": [
+        {
+          "title": "Система",
+          "text": "$C_1'=-\\sin x\\tan x=-\\frac{\\sin^2 x}{\\cos x}$, $C_2'=\\cos x\\tan x=\\sin x$.",
+          "math": "$$C_1=\\sin x-\\ln|\\sec x+\\tan x|,\\quad C_2=-\\cos x$$"
+        },
+        {
+          "title": "Частное",
+          "math": "$$y_ч=-\\cos x\\ln|\\sec x+\\tan x|$$"
+        },
+        {
+          "title": "Общее",
+          "math": "$$y=C_1\\cos x+C_2\\sin x-\\cos x\\ln|\\sec x+\\tan x|$$"
+        }
+      ],
+      "formula": "y=C_1\\cos x+C_2\\sin x-\\cos x\\ln|\\sec x+\\tan x|"
+    },
+    {
+      "id": "Д3.4",
+      "title": "y''-2y'+y=eˣ/x",
+      "type": "Задача · Вариация постоянных",
+      "formalText": "Решить $y''-2y'+y=\\frac{e^x}{x}$.",
+      "hint": "$(\\lambda-1)^2=0$ → ФСР: $e^x$, $xe^x$. Вариация",
+      "steps": [
+        {
+          "title": "Система",
+          "text": "Вронскиан $W=e^{2x}$. $C_1'=-\\frac{xe^x\\cdot e^x/x}{e^{2x}}=-1$, $C_2'=\\frac{e^x\\cdot e^x/x}{e^{2x}}=1/x$.",
+          "math": "$$C_1=-x,\\quad C_2=\\ln|x|$$"
+        },
+        {
+          "title": "Частное",
+          "math": "$$y_ч=-xe^x+xe^x\\ln|x|=xe^x(\\ln|x|-1)$$"
+        }
+      ],
+      "formula": "y=(C_1+C_2 x)e^x+xe^x\\ln|x|"
+    },
+    {
+      "id": "Д4.1",
+      "title": "y''+y=3x+2",
+      "type": "Задача · Подбор частного",
+      "formalText": "Найти вид $y_ч$ для $y''+y=3x+2$.",
+      "hint": "$f(x)=3x+2$: полином степени 1, $\\alpha=0$ не корень хар. ур. → $y_ч=Ax+B$",
+      "steps": [
+        {
+          "title": "Анализ",
+          "text": "$f(x)=e^{0\\cdot x}(3x+2)$. $\\alpha=0$ не корень $\\lambda^2+1=0$. $s=0$."
+        },
+        {
+          "title": "Форма",
+          "math": "$$y_ч=Ax+B$$"
+        },
+        {
+          "title": "Подстановка",
+          "text": "$y_ч''=0$ → $Ax+B=3x+2$ → $A=3$, $B=2$.",
+          "math": "$$y_ч=3x+2$$"
+        }
+      ],
+      "formula": "y_ч=3x+2"
+    },
+    {
+      "id": "Д4.2",
+      "title": "y''-y=e²ˣ",
+      "type": "Задача · Подбор частного",
+      "formalText": "Найти $y_ч$ для $y''-y=e^{2x}$.",
+      "hint": "$\\alpha=2$ не корень $\\lambda^2-1=0$ → $y_ч=Ae^{2x}$, $s=0$",
+      "steps": [
+        {
+          "title": "Подстановка",
+          "math": "$$4Ae^{2x}-Ae^{2x}=e^{2x} \\Rightarrow 3A=1 \\Rightarrow A=\\frac{1}{3}$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$y_ч=\\frac{e^{2x}}{3}$$"
+        }
+      ],
+      "formula": "y_ч=\\frac{e^{2x}}{3}"
+    },
+    {
+      "id": "Д4.3",
+      "title": "y''-3y'+2y=eˣ",
+      "type": "Задача · Подбор частного",
+      "formalText": "Найти $y_ч$ для $y''-3y'+2y=e^x$.",
+      "hint": "$\\alpha=1$ — **простой** корень $\\lambda^2-3\\lambda+2=(\\lambda-1)(\\lambda-2)$ → $s=1$ → $y_ч=Axe^x$",
+      "steps": [
+        {
+          "title": "Подведение",
+          "text": "$y_ч=Axe^x$ → $y_ч'=A(1+x)e^x$ → $y_ч''=A(2+x)e^x$.",
+          "math": "$$A(2+x)e^x-3A(1+x)e^x+2Axe^x=e^x \\Rightarrow -Ae^x=e^x \\Rightarrow A=-1$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$y_ч=-xe^x$$"
+        }
+      ],
+      "formula": "y_ч=-xe^x"
+    },
+    {
+      "id": "Д4.4",
+      "title": "y''+4y=cos 2x",
+      "type": "Задача · Подбор частного",
+      "formalText": "Найти $y_ч$ для $y''+4y=\\cos 2x$.",
+      "hint": "$f=e^{i\\cdot 2x}$, $\\alpha=2i$ — корень $\\lambda^2+4=0$ ($s=1$) → $y_ч=x(A\\cos 2x+B\\sin 2x)$",
+      "steps": [
+        {
+          "title": "Форма",
+          "math": "$$y_ч=x(A\\cos 2x+B\\sin 2x)$$"
+        },
+        {
+          "title": "Подстановка",
+          "text": "Вычисляем $y_ч''$ и подставляем.",
+          "math": "$$4B\\cos 2x-4A\\sin 2x=\\cos 2x \\Rightarrow B=\\frac{1}{4},\\;A=0$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$y_ч=\\frac{x\\sin 2x}{4}$$"
+        }
+      ],
+      "formula": "y_ч=\\frac{x\\sin 2x}{4}"
+    },
+    {
+      "id": "Д4.5",
+      "title": "y''-y=x·eˣ",
+      "type": "Задача · Подбор частного",
+      "formalText": "Найти $y_ч$ для $y''-y=xe^x$.",
+      "hint": "$\\alpha=1$ — простой корень $(\\lambda-1)(\\lambda+1)=0$, $s=1$ → $y_ч=x(Ax+B)e^x$",
+      "steps": [
+        {
+          "title": "Форма",
+          "math": "$$y_ч=x(Ax+B)e^x=(Ax^2+Bx)e^x$$"
+        },
+        {
+          "title": "Подстановка и сравнение",
+          "math": "$$4Ax+2A+2B=x \\Rightarrow A=\\frac{1}{4},\\;B=-\\frac{1}{4}$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$y_ч=\\frac{x(x-1)}{4}e^x$$"
+        }
+      ],
+      "formula": "y_ч=\\frac{x^2-x}{4}e^x"
+    },
+    {
+      "id": "Д4.6",
+      "title": "y''+y=sin x",
+      "type": "Задача · Подбор частного",
+      "formalText": "Найти $y_ч$ для $y''+y=\\sin x$.",
+      "hint": "$\\alpha=i$ — корень $\\lambda^2+1=0$ ($s=1$) → $y_ч=x(A\\cos x+B\\sin x)$",
+      "steps": [
+        {
+          "title": "Форма и подстановка",
+          "math": "$$2B\\cos x-2A\\sin x=\\sin x \\Rightarrow A=-\\frac{1}{2},\\;B=0$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$y_ч=-\\frac{x\\cos x}{2}$$"
+        }
+      ],
+      "formula": "y_ч=-\\frac{x\\cos x}{2}"
+    },
+    {
+      "id": "Д4.7",
+      "title": "y''-4y=8e²ˣ",
+      "type": "Задача · Подбор частного",
+      "formalText": "Найти $y_ч$ для $y''-4y=8e^{2x}$.",
+      "hint": "$\\alpha=2$ — простой корень $(\\lambda-2)(\\lambda+2)=0$, $s=1$ → $y_ч=Axe^{2x}$",
+      "steps": [
+        {
+          "title": "Подстановка",
+          "math": "$$A(4x+4)e^{2x}-4Axe^{2x}=8e^{2x} \\Rightarrow 4A=8 \\Rightarrow A=2$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$y_ч=2xe^{2x}$$"
+        }
+      ],
+      "formula": "y_ч=2xe^{2x}"
+    },
+    {
+      "id": "Д4.8",
+      "title": "y''-2y'+y=eˣ",
+      "type": "Задача · Подбор частного",
+      "formalText": "Найти $y_ч$ для $y''-2y'+y=e^x$.",
+      "hint": "$\\alpha=1$ — **двукратный** корень $(\\lambda-1)^2=0$, $s=2$ → $y_ч=Ax^2 e^x$",
+      "steps": [
+        {
+          "title": "Подстановка",
+          "math": "$$2Ae^x=e^x \\Rightarrow A=\\frac{1}{2}$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$y_ч=\\frac{x^2}{2}e^x$$"
+        }
+      ],
+      "formula": "y_ч=\\frac{x^2 e^x}{2}"
+    },
+    {
+      "id": "Д4.9",
+      "title": "y''+y=x²+1",
+      "type": "Задача · Подбор частного",
+      "formalText": "Найти $y_ч$ для $y''+y=x^2+1$.",
+      "hint": "$\\alpha=0$ не корень → $y_ч=Ax^2+Bx+C$, $s=0$",
+      "steps": [
+        {
+          "title": "Подстановка",
+          "math": "$$2A+Ax^2+Bx+C=x^2+1 \\Rightarrow A=1,\\;B=0,\\;2A+C=1 \\Rightarrow C=-1$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$y_ч=x^2-1$$"
+        }
+      ],
+      "formula": "y_ч=x^2-1"
+    },
+    {
+      "id": "Д4.10",
+      "title": "y''+y'=x+2",
+      "type": "Задача · Подбор частного",
+      "formalText": "Найти $y_ч$ для $y''+y'=x+2$.",
+      "hint": "$\\alpha=0$ — простой корень $\\lambda(\\lambda+1)=0$, $s=1$ → $y_ч=x(Ax+B)$",
+      "steps": [
+        {
+          "title": "Форма",
+          "math": "$$y_ч=Ax^2+Bx$$"
+        },
+        {
+          "title": "Подстановка",
+          "math": "$$2A+2Ax+B=x+2 \\Rightarrow A=\\frac{1}{2},\\;2A+B=2 \\Rightarrow B=1$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$y_ч=\\frac{x^2}{2}+x$$"
+        }
+      ],
+      "formula": "y_ч=\\frac{x^2}{2}+x"
+    }
+  ]
+}
