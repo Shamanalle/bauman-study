@@ -142,22 +142,24 @@
   border-radius: 12px;
   margin-bottom: 16px;
   border: 1px solid var(--border);
-  overflow-x: auto;
+  flex-wrap: wrap;
 }
 
 .lab-tab {
   flex: 1;
-  padding: 10px 16px;
+  padding: 8px 10px;
   border: none;
   border-radius: 8px;
   background: transparent;
   color: var(--text3);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s;
   white-space: nowrap;
   font-family: inherit;
+  min-width: 0;
+  text-align: center;
 }
 
 .lab-tab:hover {
