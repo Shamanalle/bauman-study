@@ -451,15 +451,50 @@
 }
 
 .prac-solution-step {
-  padding: 6px 0;
+  padding: 0 0 14px 0;
+  position: relative;
+}
+
+.prac-solution-step:last-child {
+  padding-bottom: 0;
+}
+
+.prac-sol-step-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.prac-sol-step-num {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.prac-sol-step-header strong {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.88rem;
+}
+
+.prac-sol-step-text {
+  padding-left: 34px;
   font-size: 0.87rem;
   line-height: 1.6;
   color: var(--text2);
 }
 
-.prac-solution-step strong {
-  color: var(--accent);
-  font-weight: 600;
+.prac-solution-step .prac-step-math {
+  padding-left: 34px;
 }
 
 .prac-problem-answer {

@@ -279,7 +279,7 @@ function renderProblems(el, section) {
   <div class="prac-problem-list" id="pracProblemList">
     ${section.questions.map(q => {
       const hasSolution = (q.steps && q.steps.length) || q.formula;
-      const hasHint = q.tldr || q.keyIdea;
+      const hasHint = q.hint || q.tldr || q.keyIdea;
       return `
       <div class="prac-problem" id="prob-${q.id}" data-topic="${getQuestionTopic(q)}">
         <div class="prac-problem-head">
@@ -313,10 +313,13 @@ function renderProblems(el, section) {
           <div class="prac-problem-solution">
             ${q.plot ? `<div class="prac-plot-wrap"><canvas class="prac-plot-canvas" data-plot='${JSON.stringify(q.plot)}'></canvas></div>` : ''}
             <div class="prac-solution-steps">
-              ${(q.steps || []).map(s => `
+              ${(q.steps || []).map((s, si) => `
                 <div class="prac-solution-step">
-                  ${s.title ? `<strong>${md(s.title)}:</strong> ` : ''}
-                  ${md(s.text || '')}
+                  <div class="prac-sol-step-header">
+                    <span class="prac-sol-step-num">${si + 1}</span>
+                    ${s.title ? `<strong>${md(s.title)}</strong>` : ''}
+                  </div>
+                  ${s.text ? `<div class="prac-sol-step-text">${md(s.text)}</div>` : ''}
                   ${s.math ? `<div class="prac-step-math">${s.math}</div>` : ''}
                 </div>
               `).join('')}
