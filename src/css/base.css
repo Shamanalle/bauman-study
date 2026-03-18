@@ -150,14 +150,14 @@ code { font-family: "JetBrains Mono", monospace; }
   text-align: left !important;
 }
 
-/* Display math in card text: left-aligned for ИиДУ (too many formulas → eyes jump) */
-body[data-subject="differential-equations"] .card-formal-text .katex-display,
-body[data-subject="differential-equations"] .step-text .katex-display {
+/* Display math in card text and proof steps: left-aligned globally */
+.card-formal-text .katex-display,
+.step-text .katex-display {
   text-align: left !important;
   margin: 8px 0 !important;
 }
-body[data-subject="differential-equations"] .card-formal .katex-display > .katex,
-body[data-subject="differential-equations"] .step-content .katex-display > .katex {
+.card-formal .katex-display > .katex,
+.step-content .katex-display > .katex {
   text-align: left !important;
 }
 
