@@ -1,6 +1,9 @@
 {
   "sections": [
-    "section-01-физические-основы-механики.json",
-    "section-02-теория-колебаний.json"
+    "section-00-формулы.json",
+    "section-01-методы.json",
+    "section-02-задачи.json",
+    "section-03-доп-задачи.json",
+    "section-04-билеты.json"
   ]
 }

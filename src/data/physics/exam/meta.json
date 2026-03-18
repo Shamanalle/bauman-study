@@ -1,7 +1,8 @@
 {
   "title": "Физика",
-  "subtitle": "Экзамен за 2-й семестр",
+  "subtitle": "Экзамен · Все разделы",
   "icon": "⚛️",
   "shortCode": "phex",
-  "bundleName": "Физика_Экзамен"
+  "bundleName": "Физика_Экзамен",
+  "practiceMode": true
 }

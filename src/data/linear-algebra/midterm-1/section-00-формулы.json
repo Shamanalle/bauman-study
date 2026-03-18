@@ -1,0 +1,46 @@
+{
+  "section": "📋 Формулы и справочник",
+  "icon": "📋",
+  "questions": [
+    {
+      "id": "f-1",
+      "title": "Матрица перехода и координаты",
+      "formalText": "**Матрица перехода** от базиса $\\mathcal{B}$ к базису $\\mathcal{B}'$:\n$$\\vec{e}' = \\vec{e} \\cdot T$$\n\n**Преобразование координат вектора:**\n$$X = T \\cdot X'$$\n$$X' = T^{-1} \\cdot X$$\n\nгде $X$ — координаты в старом базисе, $X'$ — в новом."
+    },
+    {
+      "id": "f-2",
+      "title": "Матрица линейного оператора",
+      "formalText": "**Действие оператора** $\\mathcal{A}$ в базисе $\\mathcal{B}$:\n$$Y = A \\cdot X$$\n\n**Преобразование матрицы оператора** при переходе к базису $\\mathcal{B}'$:\n$$A_{\\mathcal{B}'} = T^{-1} \\cdot A_{\\mathcal{B}} \\cdot T$$\n\nгде $T$ — матрица перехода от $\\mathcal{B}$ к $\\mathcal{B}'$."
+    },
+    {
+      "id": "f-3",
+      "title": "Собственные числа и вектора",
+      "formalText": "**Характеристическое уравнение:**\n$$\\det(A - \\lambda E) = 0$$\n\n**Собственные вектора** при $\\lambda_i$:\n$$(A - \\lambda_i E) \\cdot \\vec{x} = \\vec{0}$$\n\n**След матрицы:** $\\text{tr}\\,A = \\sum \\lambda_i$\n\n**Определитель:** $\\det A = \\prod \\lambda_i$"
+    },
+    {
+      "id": "f-4",
+      "title": "Ортогонализация Грама–Шмидта",
+      "formalText": "Из базиса $\\{a_1, \\ldots, a_n\\}$ строим ортогональный $\\{b_1, \\ldots, b_n\\}$:\n\n$$b_1 = a_1$$\n\n$$b_k = a_k - \\sum_{j=1}^{k-1} \\frac{(a_k, b_j)}{(b_j, b_j)} \\cdot b_j, \\quad k = 2, \\ldots, n$$\n\n**Нормировка:** $e_k = \\frac{b_k}{\\|b_k\\|}$"
+    },
+    {
+      "id": "f-5",
+      "title": "Квадратичная форма",
+      "formalText": "**Квадратичная форма:**\n$$Q(X) = X^T \\cdot A \\cdot X$$\n\n**Преобразование матрицы КФ** при переходе к новому базису:\n$$A' = T^T \\cdot A \\cdot T$$\n\n**Канонический вид:** $Q = \\lambda_1 y_1^2 + \\lambda_2 y_2^2 + \\ldots + \\lambda_n y_n^2$\n\nгде $\\lambda_i$ — собственные числа матрицы $A$."
+    },
+    {
+      "id": "f-6",
+      "title": "Критерий Сильвестра",
+      "formalText": "**Угловые миноры** матрицы $A$:\n$$\\Delta_1 = a_{11}, \\quad \\Delta_2 = \\begin{vmatrix} a_{11} & a_{12} \\\\ a_{21} & a_{22} \\end{vmatrix}, \\quad \\ldots$$\n\n**Положительно определённая:** $\\Delta_1 > 0,\\; \\Delta_2 > 0,\\; \\ldots,\\; \\Delta_n > 0$\n\n**Отрицательно определённая:** $(-1)^k \\Delta_k > 0$ для всех $k$\n\n**Неопределённая:** не выполняется ни одно из условий выше."
+    },
+    {
+      "id": "f-7",
+      "title": "Скалярное произведение и нормы",
+      "formalText": "**Скалярное произведение** (стандартное в $\\mathbb{R}^n$):\n$$(x, y) = \\sum_{i=1}^{n} x_i y_i$$\n\n**Норма:** $\\|x\\| = \\sqrt{(x, x)}$\n\n**Неравенство Коши–Буняковского:**\n$$|(x, y)|^2 \\le (x, x) \\cdot (y, y)$$\n\n**Угол:**\n$$\\cos \\varphi = \\frac{(x, y)}{\\|x\\| \\cdot \\|y\\|}$$"
+    },
+    {
+      "id": "f-8",
+      "title": "Матрицы поворота",
+      "formalText": "**Поворот вокруг $\\vec{k}$ на $\\varphi$:**\n$$R_z(\\varphi) = \\begin{pmatrix} \\cos\\varphi & -\\sin\\varphi & 0 \\\\ \\sin\\varphi & \\cos\\varphi & 0 \\\\ 0 & 0 & 1 \\end{pmatrix}$$\n\n**Вокруг $\\vec{i}$:**\n$$R_x(\\varphi) = \\begin{pmatrix} 1 & 0 & 0 \\\\ 0 & \\cos\\varphi & -\\sin\\varphi \\\\ 0 & \\sin\\varphi & \\cos\\varphi \\end{pmatrix}$$\n\n**Вокруг $\\vec{j}$:**\n$$R_y(\\varphi) = \\begin{pmatrix} \\cos\\varphi & 0 & \\sin\\varphi \\\\ 0 & 1 & 0 \\\\ -\\sin\\varphi & 0 & \\cos\\varphi \\end{pmatrix}$$"
+    }
+  ]
+}

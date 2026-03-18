@@ -1,0 +1,46 @@
+{
+  "section": "📋 Формулы и справочник",
+  "icon": "📋",
+  "questions": [
+    {
+      "id": "f-1",
+      "title": "Касательная плоскость и нормаль",
+      "formalText": "**Поверхность** $F(x,y,z) = 0$, точка $M_0(x_0,y_0,z_0)$:\n\n**Касательная плоскость:**\n$$F_x'(M_0)(x-x_0) + F_y'(M_0)(y-y_0) + F_z'(M_0)(z-z_0) = 0$$\n\n**Нормаль:**\n$$\\frac{x-x_0}{F_x'} = \\frac{y-y_0}{F_y'} = \\frac{z-z_0}{F_z'}$$\n\n**Для** $z = f(x,y)$, $F = z - f(x,y)$:\n$$z - z_0 = f_x'(x-x_0) + f_y'(y-y_0)$$"
+    },
+    {
+      "id": "f-2",
+      "title": "Градиент и производная по направлению",
+      "formalText": "**Градиент:**\n$$\\nabla f = \\left(\\frac{\\partial f}{\\partial x},\\; \\frac{\\partial f}{\\partial y},\\; \\frac{\\partial f}{\\partial z}\\right)$$\n\n**Производная по направлению** $\\vec{l}$:\n$$\\frac{\\partial f}{\\partial l} = \\nabla f \\cdot \\frac{\\vec{l}}{|\\vec{l}|} = \\sum f_{x_i}' \\cos\\alpha_i$$\n\n**Свойства:**\n- $|\\nabla f|$ — максимальная скорость роста $f$\n- $\\nabla f$ перпендикулярен линиям (поверхностям) уровня"
+    },
+    {
+      "id": "f-3",
+      "title": "Экстремум ФНП",
+      "formalText": "**Необходимое условие:** $f_x' = 0$, $f_y' = 0$ (стационарная точка).\n\n**Достаточное условие** (для $z = f(x,y)$):\n$$A = f_{xx}'', \\quad B = f_{xy}'', \\quad C = f_{yy}''$$\n$$\\Delta = AC - B^2$$\n\n- $\\Delta > 0$, $A > 0$ → **минимум**\n- $\\Delta > 0$, $A < 0$ → **максимум**\n- $\\Delta < 0$ → **седлова точка** (нет экстремума)\n- $\\Delta = 0$ → требуется доп. исследование"
+    },
+    {
+      "id": "f-4",
+      "title": "Условный экстремум (Лагранж)",
+      "formalText": "**Задача:** $f(x,y,z) \\to \\text{extr}$ при $g(x,y,z) = 0$.\n\n**Функция Лагранжа:**\n$$L = f + \\lambda g$$\n\n**Необходимое условие:**\n$$L_x' = 0, \\quad L_y' = 0, \\quad L_z' = 0, \\quad g = 0$$\n\n**Достаточное условие:** окаймлённый гессиан:\n$$\\bar{H} = \\begin{vmatrix} 0 & g_x' & g_y' \\\\ g_x' & L_{xx}'' & L_{xy}'' \\\\ g_y' & L_{yx}'' & L_{yy}'' \\end{vmatrix}$$\n$\\bar{H} > 0$ → минимум, $\\bar{H} < 0$ → максимум."
+    },
+    {
+      "id": "f-5",
+      "title": "Неявная функция",
+      "formalText": "Уравнение $F(x,y,z) = 0$ задаёт $z = z(x,y)$ неявно, если $F_z' \\ne 0$.\n\n**Частные производные:**\n$$z_x' = -\\frac{F_x'}{F_z'}, \\qquad z_y' = -\\frac{F_y'}{F_z'}$$\n\n**Дифференциал:**\n$$dz = z_x'\\,dx + z_y'\\,dy$$\n\n**Приближение:**\n$$z(x_0+\\Delta x,\\; y_0+\\Delta y) \\approx z_0 + dz$$"
+    },
+    {
+      "id": "f-6",
+      "title": "Цепное правило (сложная функция)",
+      "formalText": "**Для** $z = f(u(x,y),\\; v(x,y))$:\n$$z_x' = f_u' \\cdot u_x' + f_v' \\cdot v_x'$$\n$$z_y' = f_u' \\cdot u_y' + f_v' \\cdot v_y'$$\n\n**Для** $u = f(x(t),\\; y(t),\\; z(t))$:\n$$\\frac{du}{dt} = f_x' \\cdot x'(t) + f_y' \\cdot y'(t) + f_z' \\cdot z'(t)$$"
+    },
+    {
+      "id": "f-7",
+      "title": "Формула Тейлора (2 переменные)",
+      "formalText": "**Формула Тейлора** для $f(x,y)$ в окрестности $(a,b)$:\n$$f(x,y) = f(a,b) + df(a,b) + \\frac{1}{2!}d^2f(a,b) + \\ldots$$\n\nгде $dx = x-a$, $dy = y-b$:\n$$d^2f = f_{xx}''dx^2 + 2f_{xy}''dxdy + f_{yy}''dy^2$$"
+    },
+    {
+      "id": "f-8",
+      "title": "Полный дифференциал",
+      "formalText": "**Условие полного дифференциала:**\n$P(x,y)dx + Q(x,y)dy$ является полным дифференциалом $\\Leftrightarrow$\n$$\\frac{\\partial P}{\\partial y} = \\frac{\\partial Q}{\\partial x}$$\n\n**Восстановление функции:**\n$$f(x,y) = \\int P(x,y)\\,dx + \\varphi(y)$$\nгде $\\varphi(y)$ определяется из $f_y' = Q$."
+    }
+  ]
+}

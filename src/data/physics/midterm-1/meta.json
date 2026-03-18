@@ -1,7 +1,8 @@
 {
   "title": "Физика",
-  "subtitle": "Рубежный контроль №1 · Механика, колебания",
+  "subtitle": "РК-1 · Механика, колебания",
   "icon": "⚛️",
   "shortCode": "phrk1",
-  "bundleName": "Физика_РК-1"
+  "bundleName": "Физика_РК-1",
+  "practiceMode": true
 }
