@@ -60,13 +60,15 @@ function toggleReveal(el) {
 }
 
 /**
- * Toggle hint for a problem (show keyIdea/hint without full solution).
+ * Toggle hint for a problem (show/hide keyIdea/hint without full solution).
  */
 function toggleHint(el) {
   const card = el.closest('.prac-problem');
   if (!card) return;
-  card.classList.add('hinted');
-  requestAnimationFrame(() => renderMath(card));
+  card.classList.toggle('hinted');
+  if (card.classList.contains('hinted')) {
+    requestAnimationFrame(() => renderMath(card));
+  }
 }
 
 // Make it globally accessible for onclick

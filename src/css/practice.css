@@ -311,7 +311,9 @@
 }
 
 .prac-problem.hinted .prac-hint-btn {
-  display: none;
+  border-style: solid;
+  background: rgba(245, 158, 11, 0.1);
+  border-color: rgba(245, 158, 11, 0.5);
 }
 
 /* Hint content (shown on hint click) */
