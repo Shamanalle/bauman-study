@@ -130,26 +130,16 @@ code { font-family: "JetBrains Mono", monospace; }
 .hljs-literal { color: #0550ae; font-weight: 600; }
 .hljs-title { color: #116329; font-weight: 600; }
 
-/* Math box */
+/* Math box — главная формула карточки: по центру для акцента */
 .math-box {
   background: rgba(255, 255, 255, 0.7);
   border-radius: 8px;
   padding: 12px 16px;
   margin: 10px 0;
-  text-align: left;
+  text-align: center;
   font-size: 1.05rem;
   overflow-x: auto;
 }
-
-/* Display math in math-box: left-aligned (formula = ключевая формула, не нужно центрировать) */
-.math-box .katex-display {
-  text-align: left !important;
-  margin: 8px 0 !important;
-}
-.math-box .katex-display > .katex {
-  text-align: left !important;
-}
-
 /* Display math: left-aligned globally (text → formula → text без прыжков) */
 .katex-display {
   text-align: left !important;
@@ -157,6 +147,14 @@ code { font-family: "JetBrains Mono", monospace; }
 }
 .katex-display > .katex {
   text-align: left !important;
+}
+
+/* Math-box (главная формула карточки): по центру как исключение */
+.math-box .katex-display {
+  text-align: center !important;
+}
+.math-box .katex-display > .katex {
+  text-align: center !important;
 }
 
 /* App container */
