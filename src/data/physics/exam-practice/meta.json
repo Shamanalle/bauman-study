@@ -1,0 +1,8 @@
+{
+  "title": "Физика",
+  "subtitle": "Экзамен · Практика",
+  "icon": "⚛️",
+  "shortCode": "phexp",
+  "bundleName": "Физика_Экзамен_Практика",
+  "practiceMode": true
+}

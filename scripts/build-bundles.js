@@ -28,8 +28,11 @@ const SUBJECTS = [
     id: 'physics', title: 'Физика', icon: '⚛️',
     assessments: [
       { id: 'exam', name: 'Экзамен', bundleName: 'Физика_Экзамен' },
+      { id: 'exam-practice', name: 'Экзамен · Практика', bundleName: 'Физика_Экзамен_Практика' },
       { id: 'midterm-1', name: 'РК-1', bundleName: 'Физика_РК-1' },
+      { id: 'midterm-1-practice', name: 'РК-1 · Практика', bundleName: 'Физика_РК-1_Практика' },
       { id: 'midterm-2', name: 'РК-2', bundleName: 'Физика_РК-2' },
+      { id: 'midterm-2-practice', name: 'РК-2 · Практика', bundleName: 'Физика_РК-2_Практика' },
     ],
   },
   {

@@ -28,9 +28,12 @@ const SUBJECTS = [
   {
     id: 'physics', title: 'Физика', subtitle: 'Механика, термодинамика, волны', icon: '⚛️',
     assessments: [
-      { id: 'exam', name: 'Экзамен', icon: '📋' },
-      { id: 'midterm-1', name: 'РК-1', icon: '📝' },
-      { id: 'midterm-2', name: 'РК-2', icon: '📝' },
+      { id: 'exam', name: 'Экзамен · Теория', icon: '📋' },
+      { id: 'exam-practice', name: 'Экзамен · Практика', icon: '✏️' },
+      { id: 'midterm-1', name: 'РК-1 · Теория', icon: '📝' },
+      { id: 'midterm-1-practice', name: 'РК-1 · Практика', icon: '✏️' },
+      { id: 'midterm-2', name: 'РК-2 · Теория', icon: '📝' },
+      { id: 'midterm-2-practice', name: 'РК-2 · Практика', icon: '✏️' },
       { id: null, name: 'Учебное пособие', icon: '📖', href: '?subject=physics&type=textbook', skipBundle: true },
     ],
   },

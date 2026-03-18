@@ -174,9 +174,12 @@ function getSubjectsConfigLocal() {
     {
       id: 'physics', title: 'Физика', subtitle: 'Механика, термодинамика, волны',
       icon: '⚛️', assessments: [
-        { name: 'Экзамен', assessment: 'exam', type: 'exam', icon: '📋' },
-        { name: 'РК-1', assessment: 'midterm-1', type: 'midterm', icon: '📝' },
-        { name: 'РК-2', assessment: 'midterm-2', type: 'midterm', icon: '📝' },
+        { name: 'Экзамен · Теория', assessment: 'exam', type: 'exam', icon: '📋' },
+        { name: 'Экзамен · Практика', assessment: 'exam-practice', type: 'kr', icon: '✏️' },
+        { name: 'РК-1 · Теория', assessment: 'midterm-1', type: 'midterm', icon: '📝' },
+        { name: 'РК-1 · Практика', assessment: 'midterm-1-practice', type: 'kr', icon: '✏️' },
+        { name: 'РК-2 · Теория', assessment: 'midterm-2', type: 'midterm', icon: '📝' },
+        { name: 'РК-2 · Практика', assessment: 'midterm-2-practice', type: 'kr', icon: '✏️' },
         { name: 'Учебное пособие', assessment: null, type: 'textbook', icon: '📖', href: '?subject=physics&type=textbook' },
       ],
     },
