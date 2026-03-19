@@ -28,7 +28,8 @@ export function nl(str) {
     p = p
       .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
     // Normalize literal \n (backslash + n from JSON) → real newline
-    p = p.replace(/\\n/g, '\n');
+    // (?![a-zA-Z]) protects LaTeX commands: \nabla, \neq, \newline, etc.
+    p = p.replace(/\\n(?![a-zA-Z])/g, '\n');
     // Now handle uniformly: double+ newlines → paragraph, single → <br>
     p = p
       .replace(/\n{2,}/g, '</p><p class="nl-p">')             // double+ newlines → paragraph break
