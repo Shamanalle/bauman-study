@@ -56,15 +56,15 @@
       "type": "Билет · МКТ",
       "formalText": "**Билет 3, задача 3:** Азот 56 г расширяется от 1 л до 7,39 л при $T = 27°$C. Работа газа?",
       "tldr": "A = νRT ln(V₂/V₁)",
-      "hint": "$\\nu = m/M = 56/28 = 2$ моль, $T = 300$ К",
+      "hint": "$\nu = m/M = 56/28 = 2$ моль, $T = 300$ К",
       "steps": [
         {
           "title": "Данные",
-          "text": "$\\nu = 56/28 = 2$ моль, $T = 300$ К.\n$V_1 = 1$ л, $V_2 = 7{,}39$ л."
+          "text": "$\nu = 56/28 = 2$ моль, $T = 300$ К.\n$V_1 = 1$ л, $V_2 = 7{,}39$ л."
         },
         {
           "title": "Работа",
-          "text": "$A = \\nu RT \\ln(V_2/V_1) = 2 \\cdot 8{,}31 \\cdot 300 \\cdot \\ln 7{,}39$.\n$\\ln 7{,}39 = 2{,}0$.\n$A = 2 \\cdot 8{,}31 \\cdot 300 \\cdot 2 = 9972$ Дж."
+          "text": "$A = \nu RT \\ln(V_2/V_1) = 2 \\cdot 8{,}31 \\cdot 300 \\cdot \\ln 7{,}39$.\n$\\ln 7{,}39 = 2{,}0$.\n$A = 2 \\cdot 8{,}31 \\cdot 300 \\cdot 2 = 9972$ Дж."
         },
         {
           "title": "Ответ",
@@ -80,15 +80,15 @@
       "type": "Билет · МКТ",
       "formalText": "**Билет 4, задача 3:** $V = 10$ л, H₂, $p_0 = 1$ атм, $Q = 10^4$ Дж. Во сколько раз повысилось давление?",
       "tldr": "V = const → Q = νCvΔT, p/p₀ = T₂/T₁",
-      "hint": "$Q = \\nu C_v \\Delta T$, $p_0 V = \\nu R T_1$",
+      "hint": "$Q = \nu C_v \\Delta T$, $p_0 V = \nu R T_1$",
       "steps": [
         {
           "title": "Данные",
-          "text": "$p_0 = 101325$ Па, $V = 0{,}01$ м$^3$.\n$\\nu = p_0 V/(RT_1)$ — не знаем $T_1$, но не нужно."
+          "text": "$p_0 = 101325$ Па, $V = 0{,}01$ м$^3$.\n$\nu = p_0 V/(RT_1)$ — не знаем $T_1$, но не нужно."
         },
         {
           "title": "Из первого начала",
-          "text": "$Q = \\nu C_v \\Delta T = \\nu \\frac{i}{2}R\\Delta T = \\frac{i}{2}p_0 V \\cdot \\frac{\\Delta T}{T_1}$.\nH₂ — двухатомный, $i = 5$.\n$\\frac{\\Delta T}{T_1} = \\frac{2Q}{ip_0 V} = \\frac{2 \\cdot 10^4}{5 \\cdot 1013{,}25} = 3{,}95$."
+          "text": "$Q = \nu C_v \\Delta T = \nu \\frac{i}{2}R\\Delta T = \\frac{i}{2}p_0 V \\cdot \\frac{\\Delta T}{T_1}$.\nH₂ — двухатомный, $i = 5$.\n$\\frac{\\Delta T}{T_1} = \\frac{2Q}{ip_0 V} = \\frac{2 \\cdot 10^4}{5 \\cdot 1013{,}25} = 3{,}95$."
         },
         {
           "title": "Давление",
@@ -136,12 +136,12 @@
         },
         {
           "title": "Частота и скорость",
-          "text": "$\\nu = \\omega/(2\\pi) = 143{,}2$ Гц.\n$v = \\omega/k = 900/10{,}6 \\approx 84{,}9$ м/с.\n$\\vec{k} = -10{,}6 \\vec{e}_x$ (бежит влево)."
+          "text": "$\nu = \\omega/(2\\pi) = 143{,}2$ Гц.\n$v = \\omega/k = 900/10{,}6 \\approx 84{,}9$ м/с.\n$\\vec{k} = -10{,}6 \\vec{e}_x$ (бежит влево)."
         },
         {
           "title": "Ускорение",
           "text": "$a_{\\max} = A\\omega^2 = 30 \\cdot 10^{-6} \\cdot 810000 = 24{,}3$ м/с$^2$.",
-          "math": "$$\\boxed{\\nu \\approx 143 \\text{ Гц}, \\; v \\approx 85 \\text{ м/с}, \\; a_{\\max} \\approx 24{,}3 \\text{ м/с}^2}$$"
+          "math": "$$\\boxed{\nu \\approx 143 \\text{ Гц}, \\; v \\approx 85 \\text{ м/с}, \\; a_{\\max} \\approx 24{,}3 \\text{ м/с}^2}$$"
         }
       ],
       "formula": "v \\approx 85 \\text{ м/с}"
@@ -176,7 +176,7 @@
       "type": "Билет · Термодинамика",
       "formalText": "**Билет 8, задача 3:** Одноатомный газ: $p = \\alpha V^3$, $V_0 \\to 2V_0$. Работа? Во сколько раз возрастает $U$?",
       "tldr": "A = ∫p dV = α∫V³ dV",
-      "hint": "$T = pV/(\\nu R) = \\alpha V^4/(\\nu R)$",
+      "hint": "$T = pV/(\nu R) = \\alpha V^4/(\nu R)$",
       "steps": [
         {
           "title": "Работа",
@@ -184,7 +184,7 @@
         },
         {
           "title": "Внутренняя энергия",
-          "text": "$U = \\frac{3}{2}\\nu RT = \\frac{3}{2}\\alpha V^4$.\n$U_2/U_1 = (2V_0)^4/V_0^4 = 16$."
+          "text": "$U = \\frac{3}{2}\nu RT = \\frac{3}{2}\\alpha V^4$.\n$U_2/U_1 = (2V_0)^4/V_0^4 = 16$."
         },
         {
           "title": "Ответ",
@@ -228,11 +228,11 @@
       "steps": [
         {
           "title": "Связь Q и A",
-          "text": "$A = \\nu R \\Delta T$, $Q = \\nu C_p \\Delta T = \\nu \\frac{i+2}{2}R\\Delta T$.\n$Q = \\frac{i+2}{2}A = \\frac{7}{2} \\cdot 157 = 549{,}5$ Дж."
+          "text": "$A = \nu R \\Delta T$, $Q = \nu C_p \\Delta T = \nu \\frac{i+2}{2}R\\Delta T$.\n$Q = \\frac{i+2}{2}A = \\frac{7}{2} \\cdot 157 = 549{,}5$ Дж."
         },
         {
           "title": "ΔU",
-          "text": "$\\Delta U = Q - A = 549{,}5 - 157 = 392{,}5$ Дж.\nИли: $\\Delta U = \\nu C_v \\Delta T = \\frac{i}{2}A = \\frac{5}{2} \\cdot 157 = 392{,}5$ Дж."
+          "text": "$\\Delta U = Q - A = 549{,}5 - 157 = 392{,}5$ Дж.\nИли: $\\Delta U = \nu C_v \\Delta T = \\frac{i}{2}A = \\frac{5}{2} \\cdot 157 = 392{,}5$ Дж."
         },
         {
           "title": "Ответ",
@@ -300,7 +300,7 @@
       "steps": [
         {
           "title": "Cp",
-          "text": "$C_p = Q/(\\nu \\Delta T) = 300/(2 \\cdot 10) = 15$ Дж/(моль$\\cdot$К)."
+          "text": "$C_p = Q/(\nu \\Delta T) = 300/(2 \\cdot 10) = 15$ Дж/(моль$\\cdot$К)."
         },
         {
           "title": "Cv",
@@ -308,7 +308,7 @@
         },
         {
           "title": "ΔU",
-          "text": "$\\Delta U = \\nu C_v \\Delta T = 2 \\cdot 6{,}69 \\cdot 10 = 133{,}8$ Дж.\nПроверка: $A = \\nu R \\Delta T = 166{,}2$ Дж. $Q = 300$ ✓.",
+          "text": "$\\Delta U = \nu C_v \\Delta T = 2 \\cdot 6{,}69 \\cdot 10 = 133{,}8$ Дж.\nПроверка: $A = \nu R \\Delta T = 166{,}2$ Дж. $Q = 300$ ✓.",
           "math": "$$\\boxed{\\Delta U \\approx 134 \\text{ Дж}}$$"
         }
       ],
@@ -468,7 +468,7 @@
       "steps": [
         {
           "title": "Параметры",
-          "text": "$\\omega = 600$ с$^{-1}$, $k = 15{,}6$ м$^{-1}$.\n$\\nu = \\omega/(2\\pi) = 95{,}5$ Гц."
+          "text": "$\\omega = 600$ с$^{-1}$, $k = 15{,}6$ м$^{-1}$.\n$\nu = \\omega/(2\\pi) = 95{,}5$ Гц."
         },
         {
           "title": "Скорость и длина волны",
@@ -477,7 +477,7 @@
         {
           "title": "Ускорение",
           "text": "$A(1) = 15$ мкм.\n$a_{\\max} = A\\omega^2 = 15 \\cdot 10^{-6} \\cdot 360000 = 5{,}4$ м/с$^2$.",
-          "math": "$$\\boxed{\\nu \\approx 95{,}5 \\text{ Гц}, \\; v \\approx 38{,}5 \\text{ м/с}}$$"
+          "math": "$$\\boxed{\nu \\approx 95{,}5 \\text{ Гц}, \\; v \\approx 38{,}5 \\text{ м/с}}$$"
         }
       ],
       "formula": "v \\approx 38{,}5 \\text{ м/с}"
@@ -496,7 +496,7 @@
         },
         {
           "title": "Уравнение Пуассона",
-          "text": "$PV^\\gamma = \\text{const}$.\nПодставляя $P = \\nu RT/V$:\n$\\frac{\\nu RT}{V} \\cdot V^{5/3} = \\text{const}$.\n$T V^{2/3} = \\text{const}$."
+          "text": "$PV^\\gamma = \\text{const}$.\nПодставляя $P = \nu RT/V$:\n$\\frac{\nu RT}{V} \\cdot V^{5/3} = \\text{const}$.\n$T V^{2/3} = \\text{const}$."
         },
         {
           "title": "Ответ",
@@ -592,7 +592,7 @@
         },
         {
           "title": "Теплота",
-          "text": "$Q = \\nu C_v \\Delta T = 1 \\cdot \\frac{5R}{2} \\cdot (1200 - 300) = \\frac{5 \\cdot 8{,}31 \\cdot 900}{2} = 18697$ Дж."
+          "text": "$Q = \nu C_v \\Delta T = 1 \\cdot \\frac{5R}{2} \\cdot (1200 - 300) = \\frac{5 \\cdot 8{,}31 \\cdot 900}{2} = 18697$ Дж."
         },
         {
           "title": "Ответ",
@@ -660,11 +660,11 @@
       "steps": [
         {
           "title": "Масса и моли",
-          "text": "$m = \\rho V = 1{,}6 \\cdot 2 \\cdot 10^{-3} = 3{,}2 \\cdot 10^{-3}$ кг.\n$\\nu = m/M = 3{,}2 \\cdot 10^{-3}/44 \\cdot 10^{-3} = 0{,}0727$ моль."
+          "text": "$m = \\rho V = 1{,}6 \\cdot 2 \\cdot 10^{-3} = 3{,}2 \\cdot 10^{-3}$ кг.\n$\nu = m/M = 3{,}2 \\cdot 10^{-3}/44 \\cdot 10^{-3} = 0{,}0727$ моль."
         },
         {
           "title": "Теплота",
-          "text": "CO₂: $i = 6$, $V = \\text{const}$.\n$Q = \\nu C_v \\Delta T = 0{,}0727 \\cdot 3 \\cdot 8{,}31 \\cdot 100 = 181{,}4$ Дж."
+          "text": "CO₂: $i = 6$, $V = \\text{const}$.\n$Q = \nu C_v \\Delta T = 0{,}0727 \\cdot 3 \\cdot 8{,}31 \\cdot 100 = 181{,}4$ Дж."
         },
         {
           "title": "Ответ",
@@ -680,19 +680,19 @@
       "type": "Билет · Термодинамика",
       "formalText": "**Билет 29, задача 3:** CO₂ 8 г, $\\Delta T = 20°$C, $p = \\text{const}$. Работа? $\\Delta U$?",
       "tldr": "A = νRΔT, ΔU = νCvΔT",
-      "hint": "$\\nu = 8/44 \\approx 0{,}182$ моль",
+      "hint": "$\nu = 8/44 \\approx 0{,}182$ моль",
       "steps": [
         {
           "title": "Данные",
-          "text": "$M = 44$ г/моль, $i = 6$.\n$\\nu = 8/44 \\approx 0{,}182$ моль."
+          "text": "$M = 44$ г/моль, $i = 6$.\n$\nu = 8/44 \\approx 0{,}182$ моль."
         },
         {
           "title": "Работа",
-          "text": "$A = \\nu R \\Delta T = 0{,}182 \\cdot 8{,}31 \\cdot 20 = 30{,}2$ Дж."
+          "text": "$A = \nu R \\Delta T = 0{,}182 \\cdot 8{,}31 \\cdot 20 = 30{,}2$ Дж."
         },
         {
           "title": "ΔU",
-          "text": "$\\Delta U = \\nu C_v \\Delta T = 0{,}182 \\cdot 3 \\cdot 8{,}31 \\cdot 20 = 90{,}7$ Дж.\nПроверка: $Q = A + \\Delta U = 120{,}9$ Дж. $Q/A = C_p/R = 4$ ✓.",
+          "text": "$\\Delta U = \nu C_v \\Delta T = 0{,}182 \\cdot 3 \\cdot 8{,}31 \\cdot 20 = 90{,}7$ Дж.\nПроверка: $Q = A + \\Delta U = 120{,}9$ Дж. $Q/A = C_p/R = 4$ ✓.",
           "math": "$$\\boxed{A \\approx 30 \\text{ Дж}, \\; \\Delta U \\approx 91 \\text{ Дж}}$$"
         }
       ],

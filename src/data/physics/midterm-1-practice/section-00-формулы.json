@@ -10,7 +10,7 @@
     {
       "id": "f-2",
       "title": "Вращательное движение",
-      "formalText": "**Угловая скорость и ускорение:**\n$$\\omega = \\frac{d\\varphi}{dt}, \\qquad \\varepsilon = \\frac{d\\omega}{dt} = \\frac{d^2\\varphi}{dt^2}$$\n\n**Связь с линейными величинами:**\n$$v = \\omega R, \\qquad a_\\tau = \\varepsilon R, \\qquad a_n = \\omega^2 R$$\n\n**Период и частота:**\n$$T = \\frac{2\\pi}{\\omega}, \\qquad \\nu = \\frac{1}{T} = \\frac{\\omega}{2\\pi}$$\n\n**Равноускоренное вращение:**\n$$\\omega = \\omega_0 + \\varepsilon t, \\qquad \\varphi = \\omega_0 t + \\frac{\\varepsilon t^2}{2}$$"
+      "formalText": "**Угловая скорость и ускорение:**\n$$\\omega = \\frac{d\\varphi}{dt}, \\qquad \\varepsilon = \\frac{d\\omega}{dt} = \\frac{d^2\\varphi}{dt^2}$$\n\n**Связь с линейными величинами:**\n$$v = \\omega R, \\qquad a_\\tau = \\varepsilon R, \\qquad a_n = \\omega^2 R$$\n\n**Период и частота:**\n$$T = \\frac{2\\pi}{\\omega}, \\qquad \nu = \\frac{1}{T} = \\frac{\\omega}{2\\pi}$$\n\n**Равноускоренное вращение:**\n$$\\omega = \\omega_0 + \\varepsilon t, \\qquad \\varphi = \\omega_0 t + \\frac{\\varepsilon t^2}{2}$$"
     },
     {
       "id": "f-3",

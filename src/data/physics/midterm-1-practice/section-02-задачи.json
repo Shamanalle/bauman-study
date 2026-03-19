@@ -248,11 +248,11 @@
       "type": "Билет · Энергия",
       "formalText": "**Билет 11, задача 3:** $U = 3x - 4y + 5z$ (СИ). Вектор силы? Модуль ускорения ($m = 2$ кг)?",
       "tldr": "F = -grad U",
-      "hint": "$\\vec{F} = -\\nabla U = (-3, 4, -5)$ Н",
+      "hint": "$\\vec{F} = -\nabla U = (-3, 4, -5)$ Н",
       "steps": [
         {
           "title": "Градиент",
-          "text": "$\\vec{F} = -\\nabla U = \\left(-\\frac{\\partial U}{\\partial x}, -\\frac{\\partial U}{\\partial y}, -\\frac{\\partial U}{\\partial z}\\right) = (-3, 4, -5)$ Н."
+          "text": "$\\vec{F} = -\nabla U = \\left(-\\frac{\\partial U}{\\partial x}, -\\frac{\\partial U}{\\partial y}, -\\frac{\\partial U}{\\partial z}\\right) = (-3, 4, -5)$ Н."
         },
         {
           "title": "Модуль",

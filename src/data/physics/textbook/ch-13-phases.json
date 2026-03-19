@@ -123,7 +123,7 @@
         },
         {
           "type": "formula",
-          "tex": "T_{\\text{кр}} = \\frac{8a}{27Rb}, \\quad V_{\\text{кр}} = 3\\nu b, \\quad p_{\\text{кр}} = \\frac{a}{27b^2}",
+          "tex": "T_{\\text{кр}} = \\frac{8a}{27Rb}, \\quad V_{\\text{кр}} = 3\nu b, \\quad p_{\\text{кр}} = \\frac{a}{27b^2}",
           "label": "(2)"
         },
         {
@@ -343,12 +343,12 @@
           "rows": [
             [
               "Скрытая теплота",
-              "\\(L \\neq 0\\)",
+              "\\(L \neq 0\\)",
               "\\(L = 0\\)"
             ],
             [
               "Скачок объёма",
-              "\\(\\Delta V \\neq 0\\)",
+              "\\(\\Delta V \neq 0\\)",
               "\\(\\Delta V = 0\\)"
             ],
             [

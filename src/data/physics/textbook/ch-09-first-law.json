@@ -44,7 +44,7 @@
         {
           "type": "definition",
           "term": "Внутренняя энергия",
-          "content": "Функция <strong>состояния</strong>: \\(U = U(T, V, \\ldots)\\). Для идеального газа: \\(U = \\nu \\frac{i}{2}RT\\). Для реального газа: \\(U = U(T, V)\\). Изменение \\(\\Delta U = U_2 - U_1\\) не зависит от пути — только от начального и конечного состояний."
+          "content": "Функция <strong>состояния</strong>: \\(U = U(T, V, \\ldots)\\). Для идеального газа: \\(U = \nu \\frac{i}{2}RT\\). Для реального газа: \\(U = U(T, V)\\). Изменение \\(\\Delta U = U_2 - U_1\\) не зависит от пути — только от начального и конечного состояний."
         },
         {
           "type": "theorem",
@@ -71,7 +71,7 @@
         },
         {
           "type": "text",
-          "content": "<strong>Удельная</strong> теплоёмкость: \\(c = C/m\\) [Дж/(кг·К)]. <strong>Молярная</strong> теплоёмкость: \\(C_m = C/\\nu\\) [Дж/(моль·К)]."
+          "content": "<strong>Удельная</strong> теплоёмкость: \\(c = C/m\\) [Дж/(кг·К)]. <strong>Молярная</strong> теплоёмкость: \\(C_m = C/\nu\\) [Дж/(моль·К)]."
         },
         {
           "type": "warning",
@@ -83,7 +83,7 @@
         },
         {
           "type": "formula",
-          "tex": "\\delta Q = dU = \\nu c_V\\,dT \\;\\Rightarrow\\; c_V = \\frac{1}{\\nu}\\frac{dU}{dT} = \\frac{i}{2}R",
+          "tex": "\\delta Q = dU = \nu c_V\\,dT \\;\\Rightarrow\\; c_V = \\frac{1}{\nu}\\frac{dU}{dT} = \\frac{i}{2}R",
           "label": "(1)"
         },
         {
@@ -92,7 +92,7 @@
         },
         {
           "type": "formula",
-          "tex": "\\delta Q = dU + p\\,dV = \\nu c_V\\,dT + \\nu R\\,dT = \\nu(c_V + R)\\,dT"
+          "tex": "\\delta Q = dU + p\\,dV = \nu c_V\\,dT + \nu R\\,dT = \nu(c_V + R)\\,dT"
         },
         {
           "type": "formula",
@@ -102,7 +102,7 @@
         {
           "type": "theorem",
           "name": "Уравнение Майера",
-          "content": "$$c_p - c_V = R$$\nПри нагревании при \\(p = \\text{const}\\) газ расширяется и <strong>совершает работу</strong> \\(\\nu R\\,dT\\) на расширение. Поэтому \\(c_p > c_V\\) ровно на \\(R\\)."
+          "content": "$$c_p - c_V = R$$\nПри нагревании при \\(p = \\text{const}\\) газ расширяется и <strong>совершает работу</strong> \\(\nu R\\,dT\\) на расширение. Поэтому \\(c_p > c_V\\) ровно на \\(R\\)."
         },
         {
           "type": "definition",
@@ -166,7 +166,7 @@
         },
         {
           "type": "formula",
-          "tex": "A = 0, \\qquad Q = \\Delta U = \\nu c_V(T_2 - T_1), \\qquad \\frac{p_1}{T_1} = \\frac{p_2}{T_2}"
+          "tex": "A = 0, \\qquad Q = \\Delta U = \nu c_V(T_2 - T_1), \\qquad \\frac{p_1}{T_1} = \\frac{p_2}{T_2}"
         },
         {
           "type": "text",
@@ -178,7 +178,7 @@
         },
         {
           "type": "formula",
-          "tex": "A = p(V_2 - V_1) = \\nu R(T_2 - T_1), \\qquad Q = \\nu c_p(T_2 - T_1), \\qquad \\frac{V_1}{T_1} = \\frac{V_2}{T_2}"
+          "tex": "A = p(V_2 - V_1) = \nu R(T_2 - T_1), \\qquad Q = \nu c_p(T_2 - T_1), \\qquad \\frac{V_1}{T_1} = \\frac{V_2}{T_2}"
         },
         {
           "type": "text",
@@ -190,17 +190,17 @@
         },
         {
           "type": "formula",
-          "tex": "\\Delta U = 0, \\qquad Q = A = \\int_{V_1}^{V_2} p\\,dV = \\int_{V_1}^{V_2} \\frac{\\nu RT}{V}dV = \\nu RT\\ln\\frac{V_2}{V_1}"
+          "tex": "\\Delta U = 0, \\qquad Q = A = \\int_{V_1}^{V_2} p\\,dV = \\int_{V_1}^{V_2} \\frac{\nu RT}{V}dV = \nu RT\\ln\\frac{V_2}{V_1}"
         },
         {
           "type": "text",
-          "content": "Или: \\(A = \\nu RT\\ln(p_1/p_2)\\). На \\(p\\)-\\(V\\) — <strong>гипербола</strong> \\(pV = \\text{const}\\). Вся теплота превращается в работу (внутренняя энергия не меняется)."
+          "content": "Или: \\(A = \nu RT\\ln(p_1/p_2)\\). На \\(p\\)-\\(V\\) — <strong>гипербола</strong> \\(pV = \\text{const}\\). Вся теплота превращается в работу (внутренняя энергия не меняется)."
         },
         {
           "type": "example",
           "title": "Изотермическое сжатие",
           "content": "1 моль воздуха при \\(T = 300\\) К сжимается изотермически от 10 л до 1 л. Какую работу нужно затратить?",
-          "solution": "\\(A = \\nu RT\\ln(V_2/V_1) = 1 \\cdot 8{,}314 \\cdot 300 \\cdot \\ln(1/10) = -2494 \\cdot 2{,}303 \\approx -5746\\) Дж.\n\nОтрицательная работа — работа совершается <strong>над газом</strong>. Нужно затратить ~5,7 кДж (теплота отводится в термостат)."
+          "solution": "\\(A = \nu RT\\ln(V_2/V_1) = 1 \\cdot 8{,}314 \\cdot 300 \\cdot \\ln(1/10) = -2494 \\cdot 2{,}303 \\approx -5746\\) Дж.\n\nОтрицательная работа — работа совершается <strong>над газом</strong>. Нужно затратить ~5,7 кДж (теплота отводится в термостат)."
         }
       ]
     },
@@ -214,19 +214,19 @@
         },
         {
           "type": "text",
-          "content": "<strong>Вывод уравнения Пуассона.</strong> Из I начала: \\(0 = dU + pdV\\), т.е. \\(\\nu c_V dT = -pdV\\)."
+          "content": "<strong>Вывод уравнения Пуассона.</strong> Из I начала: \\(0 = dU + pdV\\), т.е. \\(\nu c_V dT = -pdV\\)."
         },
         {
           "type": "text",
-          "content": "Из уравнения состояния: \\(pV = \\nu RT\\) \\(\\Rightarrow\\) \\(pdV + Vdp = \\nu RdT\\)."
+          "content": "Из уравнения состояния: \\(pV = \nu RT\\) \\(\\Rightarrow\\) \\(pdV + Vdp = \nu RdT\\)."
         },
         {
           "type": "text",
-          "content": "Из первого: \\(dT = -pdV/(\\nu c_V)\\). Подставляя во второе:"
+          "content": "Из первого: \\(dT = -pdV/(\nu c_V)\\). Подставляя во второе:"
         },
         {
           "type": "formula",
-          "tex": "pdV + Vdp = \\nu R \\cdot \\left(-\\frac{pdV}{\\nu c_V}\\right) = -\\frac{R}{c_V}pdV"
+          "tex": "pdV + Vdp = \nu R \\cdot \\left(-\\frac{pdV}{\nu c_V}\\right) = -\\frac{R}{c_V}pdV"
         },
         {
           "type": "formula",
@@ -251,7 +251,7 @@
         },
         {
           "type": "formula",
-          "tex": "A = -\\Delta U = \\nu c_V(T_1 - T_2) = \\frac{\\nu R(T_1 - T_2)}{\\gamma - 1} = \\frac{p_1V_1 - p_2V_2}{\\gamma - 1}",
+          "tex": "A = -\\Delta U = \nu c_V(T_1 - T_2) = \\frac{\nu R(T_1 - T_2)}{\\gamma - 1} = \\frac{p_1V_1 - p_2V_2}{\\gamma - 1}",
           "label": "(3)"
         },
         {
@@ -326,16 +326,16 @@
         },
         {
           "type": "text",
-          "content": "<strong>Поправка на объём:</strong> молекулы занимают объём \\(\\nu b\\), где \\(b\\) — «собственный объём» 1 моля (\\(b \\approx 4N_A \\cdot \\frac{4}{3}\\pi(d/2)^3\\)). Свободный объём: \\(V - \\nu b\\)."
+          "content": "<strong>Поправка на объём:</strong> молекулы занимают объём \\(\nu b\\), где \\(b\\) — «собственный объём» 1 моля (\\(b \\approx 4N_A \\cdot \\frac{4}{3}\\pi(d/2)^3\\)). Свободный объём: \\(V - \nu b\\)."
         },
         {
           "type": "text",
-          "content": "<strong>Поправка на притяжение:</strong> молекулы у стенки притягиваются внутренними молекулами, давление на стенку <strong>уменьшается</strong> на \\(a\\nu^2/V^2\\). Эта поправка пропорциональна \\(n^2\\)."
+          "content": "<strong>Поправка на притяжение:</strong> молекулы у стенки притягиваются внутренними молекулами, давление на стенку <strong>уменьшается</strong> на \\(a\nu^2/V^2\\). Эта поправка пропорциональна \\(n^2\\)."
         },
         {
           "type": "theorem",
-          "name": "Уравнение Ван-дер-Ваальса (для \\(\\nu\\) молей)",
-          "content": "$$\\left(p + \\frac{a\\nu^2}{V^2}\\right)(V - \\nu b) = \\nu RT$$\n\nДля 1 моля (\\(V_m = V/\\nu\\)):\n$$\\left(p + \\frac{a}{V_m^2}\\right)(V_m - b) = RT$$"
+          "name": "Уравнение Ван-дер-Ваальса (для \\(\nu\\) молей)",
+          "content": "$$\\left(p + \\frac{a\nu^2}{V^2}\\right)(V - \nu b) = \nu RT$$\n\nДля 1 моля (\\(V_m = V/\nu\\)):\n$$\\left(p + \\frac{a}{V_m^2}\\right)(V_m - b) = RT$$"
         },
         {
           "type": "text",
@@ -386,12 +386,12 @@
         },
         {
           "type": "formula",
-          "tex": "U = \\nu c_V T - \\frac{a\\nu^2}{V} + \\text{const}",
+          "tex": "U = \nu c_V T - \\frac{a\nu^2}{V} + \\text{const}",
           "label": "(5)"
         },
         {
           "type": "text",
-          "content": "Слагаемое \\(-a\\nu^2/V\\) — <strong>потенциальная энергия межмолекулярного взаимодействия</strong>. При расширении реального газа эта энергия растёт (молекулы удаляются «против» сил притяжения), газ совершает внутреннюю работу и охлаждается (<strong>эффект Джоуля—Томсона</strong>)."
+          "content": "Слагаемое \\(-a\nu^2/V\\) — <strong>потенциальная энергия межмолекулярного взаимодействия</strong>. При расширении реального газа эта энергия растёт (молекулы удаляются «против» сил притяжения), газ совершает внутреннюю работу и охлаждается (<strong>эффект Джоуля—Томсона</strong>)."
         }
       ]
     }

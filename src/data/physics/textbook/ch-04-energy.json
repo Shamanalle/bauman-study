@@ -169,7 +169,7 @@
         },
         {
           "type": "text",
-          "content": "<strong>Математический критерий:</strong> \\(\\text{rot}\\,\\vec{F} = \\nabla \\times \\vec{F} = \\vec{0}\\)."
+          "content": "<strong>Математический критерий:</strong> \\(\\text{rot}\\,\\vec{F} = \nabla \\times \\vec{F} = \\vec{0}\\)."
         },
         {
           "type": "text",
@@ -256,7 +256,7 @@
         },
         {
           "type": "formula",
-          "tex": "\\vec{F} = -\\nabla U = -\\text{grad}\\, U",
+          "tex": "\\vec{F} = -\nabla U = -\\text{grad}\\, U",
           "label": "(6)"
         },
         {
@@ -449,7 +449,7 @@
             ],
             [
               "Связь силы и \\(U\\)",
-              "\\(\\vec{F} = -\\nabla U\\)",
+              "\\(\\vec{F} = -\nabla U\\)",
               "—"
             ],
             [
