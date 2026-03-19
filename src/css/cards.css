@@ -41,7 +41,7 @@
 
 /* Card body */
 .tp-body { display: none; padding: 0 24px 24px; }
-.theorem-page.open .tp-body { padding: 28px 32px; display: flex; flex-direction: column; gap: 20px; }
+.theorem-page.open .tp-body { padding: 28px 32px; display: flex; flex-direction: column; gap: 16px; }
 
 /* Card content blocks */
 
@@ -67,12 +67,12 @@
   font-size: 0.78rem; font-weight: 700; color: var(--accent);
   text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px;
 }
-.card-formal-text { font-size: 0.95rem; line-height: 1.85; color: var(--text); margin: 0; }
+.card-formal-text { font-size: 0.95rem; line-height: 1.8; color: var(--text); margin: 0; }
 /* Consistent paragraph spacing inside formal text (double newlines → <p>) */
-.card-formal-text p.nl-p { margin: 0.6em 0 0 0; }
+.card-formal-text p.nl-p { margin: 10px 0 0 0; }
 /* Tighter display math spacing inside formal text */
-.card-formal-text .katex-display { margin: 0.5em 0 !important; }
-.card-formal-text ul, .card-formal-text ol { padding-left: 24px; margin: 0.6em 0; }
+.card-formal-text .katex-display { margin: 8px 0 !important; }
+.card-formal-text ul, .card-formal-text ol { padding-left: 24px; margin: 10px 0; }
 .card-formal-text li { margin-bottom: 6px; }
 .card-cond { margin: 12px 0; padding-left: 0; list-style: none; }
 .card-cond li {
@@ -98,7 +98,7 @@
   border: 1px solid var(--orange-border); border-radius: 8px;
   padding: 10px 14px; margin-bottom: 12px; line-height: 1.6; font-weight: 500;
 }
-.proof-text { font-size: 0.9rem; color: var(--text); line-height: 1.85; padding: 12px 0; }
+.proof-text { font-size: 0.9rem; color: var(--text); line-height: 1.8; padding: 12px 0; }
 
 /* Steps */
 .proof-steps { counter-reset: step; }
@@ -111,7 +111,7 @@
 }
 .step-content { flex: 1; }
 .step-title { font-weight: 700; font-size: 0.88rem; color: var(--purple); margin-bottom: 4px; }
-.step-text { font-size: 0.9rem; color: var(--text); line-height: 1.85; }
+.step-text { font-size: 0.9rem; color: var(--text); line-height: 1.8; }
 .step-math {
   background: var(--purple-bg); border: 1px solid var(--purple-border);
   border-radius: 8px; padding: 10px 14px; margin: 8px 0;
@@ -196,7 +196,7 @@
   text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px;
 }
 .card-insight-text {
-  font-size: 0.92rem; color: #0c4a6e; line-height: 1.75;
+  font-size: 0.92rem; color: #0c4a6e; line-height: 1.8;
   margin: 0; font-style: italic;
 }
 

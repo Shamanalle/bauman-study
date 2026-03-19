@@ -92,9 +92,9 @@ body {
 }
 
 /* Paragraph breaks from \n\n — consistent spacing */
-p.nl-p { margin: 0.6em 0 0 0; }
+p.nl-p { margin: 10px 0 0 0; }
 /* First nl-p after a katex-display needs no extra top margin */
-.katex-display + p.nl-p { margin-top: 0.3em; }
+.katex-display + p.nl-p { margin-top: 4px; }
 
 code { font-family: "JetBrains Mono", monospace; }
 
@@ -148,7 +148,7 @@ code { font-family: "JetBrains Mono", monospace; }
 /* Display math: left-aligned globally (text → formula → text без прыжков) */
 .katex-display {
   text-align: left !important;
-  margin: 0.4em 0 !important;
+  margin: 8px 0 !important;
 }
 .katex-display > .katex {
   text-align: left !important;
