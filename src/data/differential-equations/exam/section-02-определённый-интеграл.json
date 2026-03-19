@@ -21,7 +21,7 @@
         {
           "title": "Предел неотрицательных величин",
           "text": "Сумма неотрицательных слагаемых неотрицательна. Предел неотрицательных величин неотрицателен:",
-          "math": "$$\\int_a^b f(x)\\,dx \\ge 0 \\quad \\blacksquare$$"
+          "math": "$$\\int_a^b f(x)\\,dx \\ge 0 \\quad $$"
         }
       ],
       "example": {
@@ -45,7 +45,7 @@
         },
         {
           "title": "Раскроем по линейности",
-          "math": "$$\\int_a^b f\\,dx \\ge m(b-a), \\quad M(b-a) \\ge \\int_a^b f\\,dx \\quad \\blacksquare$$"
+          "math": "$$\\int_a^b f\\,dx \\ge m(b-a), \\quad M(b-a) \\ge \\int_a^b f\\,dx \\quad $$"
         },
         {
           "title": "Объединение",
@@ -74,7 +74,7 @@
         {
           "title": "Предельный переход",
           "text": "При $\\lambda \\to 0$ оба предела существуют, неравенство сохраняется:",
-          "math": "$$\\left|\\int_a^b f\\,dx\\right| \\le \\int_a^b |f|\\,dx \\quad \\blacksquare$$"
+          "math": "$$\\left|\\int_a^b f\\,dx\\right| \\le \\int_a^b |f|\\,dx \\quad $$"
         },
         {
           "title": "Замечание",
@@ -102,7 +102,7 @@
         {
           "title": "Теорема о промежуточном значении",
           "text": "$\\mu = \\frac{1}{b-a}\\int f\\,dx$ лежит между $m$ и $M$. Т.к. $f$ непрерывна и принимает $m$, $M$, существует $c$: $f(c) = \\mu$.",
-          "math": "$$\\int_a^b f\\,dx = f(c)(b-a) \\quad \\blacksquare$$"
+          "math": "$$\\int_a^b f\\,dx = f(c)(b-a) \\quad $$"
         },
         {
           "title": "Геометрический смысл",
@@ -130,7 +130,7 @@
         {
           "title": "Оценим через непрерывность",
           "text": "По непрерывности $f$ в $x_0$: $|f(t)-f(x_0)| < \\varepsilon$ при $|t-x_0| < \\delta$.",
-          "math": "$$\\left|\\frac{1}{\\Delta x}\\int_{x_0}^{x_0+\\Delta x}[f(t)-f(x_0)]\\,dt\\right| \\le \\varepsilon \\quad \\blacksquare$$"
+          "math": "$$\\left|\\frac{1}{\\Delta x}\\int_{x_0}^{x_0+\\Delta x}[f(t)-f(x_0)]\\,dt\\right| \\le \\varepsilon \\quad $$"
         },
         {
           "title": "Итог",
@@ -161,7 +161,7 @@
         },
         {
           "title": "Подставим x = b",
-          "math": "$$\\int_a^b f\\,dx = \\Phi(b) = F(b) - F(a) \\quad \\blacksquare$$"
+          "math": "$$\\int_a^b f\\,dx = \\Phi(b) = F(b) - F(a) \\quad $$"
         }
       ],
       "example": {
@@ -188,7 +188,7 @@
         {
           "title": "Подставим граничные значения",
           "text": "$\\varphi(\\alpha) = a$, $\\varphi(\\beta) = b$:",
-          "math": "$$F(\\varphi(\\beta)) - F(\\varphi(\\alpha)) = F(b) - F(a) \\quad \\blacksquare$$"
+          "math": "$$F(\\varphi(\\beta)) - F(\\varphi(\\alpha)) = F(b) - F(a) \\quad $$"
         }
       ],
       "example": {
@@ -218,7 +218,7 @@
         },
         {
           "title": "Нечётная: f(-x) = -f(x)",
-          "math": "$$= \\int_0^a 0\\,dx = 0 \\quad \\blacksquare$$"
+          "math": "$$= \\int_0^a 0\\,dx = 0 \\quad $$"
         }
       ],
       "example": {
@@ -245,7 +245,7 @@
         },
         {
           "title": "По Ньютону-Лейбницу",
-          "math": "$$\\int_a^b uv'\\,dx = H(b) - H(a) = uv\\Big|_a^b - \\int_a^b u'v\\,dx \\quad \\blacksquare$$"
+          "math": "$$\\int_a^b uv'\\,dx = H(b) - H(a) = uv\\Big|_a^b - \\int_a^b u'v\\,dx \\quad $$"
         }
       ],
       "example": {

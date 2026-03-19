@@ -41,7 +41,7 @@
         {
           "title": "Получаем волновое уравнение",
           "text": "Подставляя и сокращая на $S\\Delta x$:",
-          "math": "$$\\rho\\frac{\\partial^2 u}{\\partial t^2} = E\\frac{\\partial^2 u}{\\partial x^2} \\Rightarrow \\frac{\\partial^2 u}{\\partial t^2} = \\frac{E}{\\rho}\\frac{\\partial^2 u}{\\partial x^2} \\quad \\blacksquare$$"
+          "math": "$$\\rho\\frac{\\partial^2 u}{\\partial t^2} = E\\frac{\\partial^2 u}{\\partial x^2} \\Rightarrow \\frac{\\partial^2 u}{\\partial t^2} = \\frac{E}{\\rho}\\frac{\\partial^2 u}{\\partial x^2} \\quad $$"
         }
       ],
       "example": {
@@ -70,7 +70,7 @@
         {
           "title": "Находим среднее и вектор Умова",
           "text": "Среднее $\\langle\\sin^2\\rangle = 1/2$, поэтому $\\langle w\\rangle = \\rho\\omega^2 A^2/2$. Энергия переносится со скоростью $v$:",
-          "math": "$$\\vec{j} = w \\cdot \\vec{v} \\quad \\blacksquare$$"
+          "math": "$$\\vec{j} = w \\cdot \\vec{v} \\quad $$"
         }
       ],
       "example": {

@@ -44,7 +44,7 @@
         {
           "title": "Время",
           "text": "Выражая $t'$:",
-          "math": "$$t' = \\frac{t - Vx/c^2}{\\sqrt{1 - V^2/c^2}} \\quad \\blacksquare$$"
+          "math": "$$t' = \\frac{t - Vx/c^2}{\\sqrt{1 - V^2/c^2}} \\quad $$"
         }
       ],
       "example": {
@@ -68,12 +68,12 @@
         {
           "title": "Считаем время в $K$",
           "text": "$c\\Delta t/2 = \\sqrt{d^2 + (V\\Delta t/2)^2}$. Решая:",
-          "math": "$$\\Delta t = \\frac{\\Delta t'}{\\sqrt{1 - V^2/c^2}} \\quad \\blacksquare$$"
+          "math": "$$\\Delta t = \\frac{\\Delta t'}{\\sqrt{1 - V^2/c^2}} \\quad $$"
         },
         {
           "title": "Сокращение длины",
           "text": "$l/V = \\Delta t_0$, $l_0/V = \\Delta t'$. $\\Delta t_0 = \\Delta t'/\\sqrt{1-V^2/c^2}$.",
-          "math": "$$l = l_0\\sqrt{1 - V^2/c^2} \\quad \\blacksquare$$"
+          "math": "$$l = l_0\\sqrt{1 - V^2/c^2} \\quad $$"
         }
       ],
       "example": {
@@ -101,7 +101,7 @@
         {
           "title": "Перекрёстные члены сокращаются",
           "text": "Остаётся:",
-          "math": "$$s'^2 = c^2\\Delta t^2 - \\Delta x^2 - \\Delta y^2 - \\Delta z^2 = s^2 \\quad \\blacksquare$$"
+          "math": "$$s'^2 = c^2\\Delta t^2 - \\Delta x^2 - \\Delta y^2 - \\Delta z^2 = s^2 \\quad $$"
         }
       ],
       "example": {
@@ -125,7 +125,7 @@
         {
           "title": "Запись уравнения движения",
           "text": "По аналогии: $d\\vec{p}/dt = \\vec{F}$, $\\vec{p} = m(v)\\vec{v}$.",
-          "math": "$$\\frac{d}{dt}\\left(\\frac{m_0\\vec{v}}{\\sqrt{1-v^2/c^2}}\\right) = \\vec{F} \\quad \\blacksquare$$"
+          "math": "$$\\frac{d}{dt}\\left(\\frac{m_0\\vec{v}}{\\sqrt{1-v^2/c^2}}\\right) = \\vec{F} \\quad $$"
         },
         {
           "title": "Разделение ускорения",
@@ -157,7 +157,7 @@
         {
           "title": "$T(0) = 0 \\Rightarrow C = -m_0 c^2$",
           "text": "Итого:",
-          "math": "$$T = \\frac{m_0 c^2}{\\sqrt{1-v^2/c^2}} - m_0 c^2 \\quad \\blacksquare$$"
+          "math": "$$T = \\frac{m_0 c^2}{\\sqrt{1-v^2/c^2}} - m_0 c^2 \\quad $$"
         }
       ],
       "example": {
@@ -187,7 +187,7 @@
         {
           "title": "Правая часть — инвариант",
           "text": "$m_0$ и $c$ не зависят от ИСО, поэтому $E^2 - p^2c^2 = \\text{inv}$.",
-          "math": "$$E^2 - p^2c^2 = m_0^2 c^4 \\quad \\blacksquare$$"
+          "math": "$$E^2 - p^2c^2 = m_0^2 c^4 \\quad $$"
         }
       ],
       "example": {

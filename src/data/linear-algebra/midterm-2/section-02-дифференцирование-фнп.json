@@ -22,7 +22,7 @@
         {
           "title": "Заключаем непрерывность",
           "text": "$\\Delta f \\to 0$ при $\\Delta\\mathbf{x} \\to \\mathbf{0}$ означает $\\lim_{\\mathbf{x}\\to\\mathbf{a}} f(\\mathbf{x}) = f(\\mathbf{a})$, т.е. $f$ непрерывна в $\\mathbf{a}$.",
-          "math": "$$\\lim_{\\Delta\\mathbf{x}\\to\\mathbf{0}} \\Delta f = 0 \\;\\Rightarrow\\; f \\text{ непрерывна} \\quad \\blacksquare$$"
+          "math": "$$\\lim_{\\Delta\\mathbf{x}\\to\\mathbf{0}} \\Delta f = 0 \\;\\Rightarrow\\; f \\text{ непрерывна} \\quad $$"
         }
       ],
       "example": {
@@ -52,7 +52,7 @@
         {
           "title": "Перейдём к пределу",
           "text": "При $\\Delta x_i \\to 0$: $\\frac{o(|\\Delta x_i|)}{\\Delta x_i} \\to 0$. Значит предел существует и равен $A_i$:",
-          "math": "$$\\frac{\\partial f}{\\partial x_i}(\\mathbf{a}) = \\lim_{\\Delta x_i \\to 0} \\frac{\\Delta f}{\\Delta x_i} = A_i \\quad \\blacksquare$$"
+          "math": "$$\\frac{\\partial f}{\\partial x_i}(\\mathbf{a}) = \\lim_{\\Delta x_i \\to 0} \\frac{\\Delta f}{\\Delta x_i} = A_i \\quad $$"
         }
       ],
       "example": {
@@ -141,7 +141,7 @@
         {
           "title": "Аналогично через $f''_{yx}$",
           "text": "Группируя по другой переменной: $\\Phi = hk \\cdot f''_{yx}(a+\\theta_3 h, b+\\theta_4 k)$. При $h,k \\to 0$ и непрерывности обеих производных:",
-          "math": "$$f''_{xy}(a,b) = \\lim \\frac{\\Phi}{hk} = f''_{yx}(a,b) \\quad \\blacksquare$$",
+          "math": "$$f''_{xy}(a,b) = \\lim \\frac{\\Phi}{hk} = f''_{yx}(a,b) \\quad $$",
           "tip": "Ключевое: одну и ту же величину $\\Phi$ представляем двумя способами, затем устремляем $h,k \\to 0$."
         }
       ],
@@ -171,7 +171,7 @@
         {
           "title": "Проверим $f'_y = Q$",
           "text": "$f'_y = \\int_{x_0}^x P'_y(t,y)\\,dt + Q(x_0,y) = \\int_{x_0}^x Q'_x(t,y)\\,dt + Q(x_0,y) = Q(x,y) - Q(x_0,y) + Q(x_0,y) = Q(x,y)$.",
-          "math": "$$f'_y = Q \\quad \\blacksquare$$",
+          "math": "$$f'_y = Q \\quad $$",
           "tip": "Использовали условие $P'_y = Q'_x$ для замены подынтегральной функции."
         }
       ],
@@ -232,7 +232,7 @@
         {
           "title": "Дифференцируемость $y(x)$",
           "text": "Продифференцируем $F(x,y(x)) = 0$ по $x$: $F'_x + F'_y \\cdot y' = 0$, откуда:",
-          "math": "$$y'(x) = -\\frac{F'_x}{F'_y} \\quad \\blacksquare$$",
+          "math": "$$y'(x) = -\\frac{F'_x}{F'_y} \\quad $$",
           "tip": "$y(x)$ непрерывно дифференцируема, т.к. $F'_x$ и $F'_y$ непрерывны."
         }
       ],

@@ -23,7 +23,7 @@
         {
           "title": "Приравняем столбцы координат",
           "text": "Разложение вектора по базису $E$ единственно (базис — ЛНЗ система). Значит столбцы координат должны совпасть:",
-          "math": "$$\\mathbf{x} = T \\cdot \\mathbf{x}' \\quad \\blacksquare$$",
+          "math": "$$\\mathbf{x} = T \\cdot \\mathbf{x}' \\quad $$",
           "tip": "Единственность разложения по базису — ключевой шаг. Без ЛНЗ базиса приравнивание столбцов невозможно."
         }
       ],
@@ -54,7 +54,7 @@
         {
           "title": "Получаем КБ",
           "text": "Делим на 4:",
-          "math": "$$(\\mathbf{x},\\mathbf{y})^2 \\leq (\\mathbf{x},\\mathbf{x})(\\mathbf{y},\\mathbf{y}) \\quad \\blacksquare$$"
+          "math": "$$(\\mathbf{x},\\mathbf{y})^2 \\leq (\\mathbf{x},\\mathbf{x})(\\mathbf{y},\\mathbf{y}) \\quad $$"
         },
         {
           "title": "Выведем неравенство треугольника",
@@ -95,7 +95,7 @@
         {
           "title": "Сравним с определением матрицы оператора в $E'$",
           "text": "В базисе $E'$: $\\mathbf{y}_{E'} = A_{E'} \\cdot \\mathbf{x}_{E'}$. Сравнивая, получаем:",
-          "math": "$$A_{E'} = T^{-1} A_E T \\quad \\blacksquare$$",
+          "math": "$$A_{E'} = T^{-1} A_E T \\quad $$",
           "tip": "Порядок множителей фиксирован: $T^{-1}$ слева, $T$ справа. Это отношение подобия матриц."
         }
       ],
@@ -126,7 +126,7 @@
         {
           "title": "Инвариантность следа",
           "text": "Для любых матриц $P, Q$ (для которых оба произведения определены): $\\text{tr}(PQ) = \\text{tr}(QP)$. Применим к $A' = T^{-1}(AT)$:",
-          "math": "$$\\text{tr}(A') = \\text{tr}(T^{-1} \\cdot AT) = \\text{tr}(AT \\cdot T^{-1}) = \\text{tr}(A) \\quad \\blacksquare$$",
+          "math": "$$\\text{tr}(A') = \\text{tr}(T^{-1} \\cdot AT) = \\text{tr}(AT \\cdot T^{-1}) = \\text{tr}(A) \\quad $$",
           "tip": "Свойство $\\text{tr}(PQ) = \\text{tr}(QP)$ доказывается прямым вычислением: $\\text{tr}(PQ) = \\sum_i \\sum_j p_{ij}q_{ji} = \\sum_j \\sum_i q_{ji}p_{ij} = \\text{tr}(QP)$."
         }
       ],
@@ -165,7 +165,7 @@
         {
           "title": "Заключаем $c_i = 0$",
           "text": "По предположению индукции $\\mathbf{x}_1,\\ldots,\\mathbf{x}_s$ ЛНЗ $\\Rightarrow$ $c_i(\\lambda_i-\\lambda_{s+1})=0$. Так как $\\lambda_i \\neq \\lambda_{s+1}$: $c_i=0$ для $i=1,\\ldots,s$. Из (*): $c_{s+1}\\mathbf{x}_{s+1}=\\mathbf{0}$, $\\mathbf{x}_{s+1} \\neq \\mathbf{0}$ $\\Rightarrow$ $c_{s+1}=0$.",
-          "math": "$$c_1 = \\ldots = c_{s+1} = 0 \\quad \\blacksquare$$"
+          "math": "$$c_1 = \\ldots = c_{s+1} = 0 \\quad $$"
         }
       ],
       "example": {
@@ -200,7 +200,7 @@
         {
           "title": "Сравним с определением матрицы $B'$",
           "text": "В базисе $E'$: $Q = \\mathbf{x}_{E'}^T B' \\mathbf{x}_{E'}$. Сравнивая:",
-          "math": "$$B' = T^T B T \\quad \\blacksquare$$",
+          "math": "$$B' = T^T B T \\quad $$",
           "tip": "Ключевое отличие от оператора: $T^T$ (транспонирование) вместо $T^{-1}$ (обращение). При ортогональном $T$: $T^T = T^{-1}$, формулы совпадают."
         }
       ],

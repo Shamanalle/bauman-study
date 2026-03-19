@@ -24,7 +24,7 @@
         },
         {
           "title": "Итоговая формула",
-          "math": "$$y = e^{-\\int p\\,dx}\\left(\\int q\\,e^{\\int p\\,dx}\\,dx + C\\right) \\quad \\blacksquare$$"
+          "math": "$$y = e^{-\\int p\\,dx}\\left(\\int q\\,e^{\\int p\\,dx}\\,dx + C\\right) \\quad $$"
         }
       ],
       "example": {
@@ -51,7 +51,7 @@
         {
           "title": "Единственность",
           "text": "Разность двух решений удовлетворяет оценке Гронуолла и тождественно равна нулю:",
-          "math": "$$\\|y_1 - y_2\\| = 0 \\quad \\blacksquare$$"
+          "math": "$$\\|y_1 - y_2\\| = 0 \\quad $$"
         }
       ],
       "example": {
@@ -105,7 +105,7 @@
         {
           "title": "Глобальное существование",
           "text": "Линейность правой части по $y$ гарантирует: метод Пикара сходится на всём $[a,b]$:",
-          "math": "$$\\exists!\\, y(x) \\text{ на } [a,b] \\quad \\blacksquare$$"
+          "math": "$$\\exists!\\, y(x) \\text{ на } [a,b] \\quad $$"
         }
       ],
       "example": {
@@ -132,7 +132,7 @@
         {
           "title": "Размерность = n",
           "text": "ФСР из $n$ элементов существует, любое решение через них выражается:",
-          "math": "$$\\dim(V) = n \\quad \\blacksquare$$"
+          "math": "$$\\dim(V) = n \\quad $$"
         }
       ],
       "example": {
@@ -158,7 +158,7 @@
         },
         {
           "title": "Определитель = 0",
-          "math": "$$W(x) = 0 \\quad \\forall x \\quad \\blacksquare$$"
+          "math": "$$W(x) = 0 \\quad \\forall x \\quad $$"
         }
       ],
       "example": {
@@ -186,7 +186,7 @@
         {
           "title": "Заключение",
           "text": "$W(x_0) \\ne 0 \\Rightarrow W(x) \\ne 0$ всюду. $W(x_0) = 0 \\Rightarrow W(x) \\equiv 0$.",
-          "math": "$$\\blacksquare$$"
+          "math": "$$$$"
         }
       ],
       "example": {
@@ -214,7 +214,7 @@
         {
           "title": "Полнота: СЛАУ на C_i разрешима",
           "text": "СЛАУ (совпадение НУ) с определителем $W(x_0) \\ne 0$ однозначно разрешима:",
-          "math": "$$\\tilde{y} = C_1 y_1 + \\ldots + C_n y_n \\quad \\blacksquare$$"
+          "math": "$$\\tilde{y} = C_1 y_1 + \\ldots + C_n y_n \\quad $$"
         }
       ],
       "example": {
@@ -242,7 +242,7 @@
         },
         {
           "title": "Решаем W' = -pW",
-          "math": "$$W(x) = W(x_0)e^{-\\int_{x_0}^x p\\,dt} \\quad \\blacksquare$$",
+          "math": "$$W(x) = W(x_0)e^{-\\int_{x_0}^x p\\,dt} \\quad $$",
           "tip": "При $p \\equiv 0$: $W = \\text{const}$."
         }
       ],
@@ -270,7 +270,7 @@
         },
         {
           "title": "Интегрируем",
-          "math": "$$y_2 = y_1 \\int \\frac{e^{-\\int p\\,dx}}{y_1^2}\\,dx \\quad \\blacksquare$$"
+          "math": "$$y_2 = y_1 \\int \\frac{e^{-\\int p\\,dx}}{y_1^2}\\,dx \\quad $$"
         }
       ],
       "example": {
@@ -297,7 +297,7 @@
         },
         {
           "title": "y = z + y*",
-          "math": "$$y = C_1 y_1 + \\ldots + C_n y_n + y_* \\quad \\blacksquare$$"
+          "math": "$$y = C_1 y_1 + \\ldots + C_n y_n + y_* \\quad $$"
         }
       ],
       "example": {
@@ -325,7 +325,7 @@
         },
         {
           "title": "ЛНЗ",
-          "math": "$$W = e^{2\\lambda x} \\ne 0 \\quad \\blacksquare$$"
+          "math": "$$W = e^{2\\lambda x} \\ne 0 \\quad $$"
         }
       ],
       "example": {
@@ -352,7 +352,7 @@
         },
         {
           "title": "ЛНЗ",
-          "math": "$$W = \\beta e^{2\\alpha x} \\ne 0 \\quad \\blacksquare$$"
+          "math": "$$W = \\beta e^{2\\alpha x} \\ne 0 \\quad $$"
         }
       ],
       "example": {
@@ -384,7 +384,7 @@
         },
         {
           "title": "СЛАУ и интегрирование",
-          "math": "$$C_1' = \\frac{-y_2 f}{W}, \\quad C_2' = \\frac{y_1 f}{W}, \\quad C_i = \\int C_i'\\,dx \\quad \\blacksquare$$"
+          "math": "$$C_1' = \\frac{-y_2 f}{W}, \\quad C_2' = \\frac{y_1 f}{W}, \\quad C_i = \\int C_i'\\,dx \\quad $$"
         }
       ],
       "example": {

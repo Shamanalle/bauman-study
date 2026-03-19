@@ -16,7 +16,7 @@
         {
           "title": "F(b) монотонна и ограничена",
           "text": "$F(b) = \\int_a^b f\\,dx$ возрастает ($f \\ge 0$) и ограничена сверху $K$. По теореме Вейерштрасса предел существует.",
-          "math": "$$\\int_a^{+\\infty} f\\,dx \\text{ сходится} \\quad \\blacksquare$$"
+          "math": "$$\\int_a^{+\\infty} f\\,dx \\text{ сходится} \\quad $$"
         },
         {
           "title": "Вторая часть — контрапозиция",
@@ -48,7 +48,7 @@
         {
           "title": "Сходимость в другую",
           "text": "Если $\\int f$ сходится, из $\\frac{L}{2}g < f$: $\\int g$ сходится.",
-          "math": "$$\\int f \\text{ сх.} \\iff \\int g \\text{ сх.} \\quad \\blacksquare$$"
+          "math": "$$\\int f \\text{ сх.} \\iff \\int g \\text{ сх.} \\quad $$"
         }
       ],
       "example": {
@@ -74,7 +74,7 @@
         },
         {
           "title": "Разность сходящихся",
-          "math": "$$\\int f = \\int(f+|f|) - \\int|f| \\quad \\blacksquare$$"
+          "math": "$$\\int f = \\int(f+|f|) - \\int|f| \\quad $$"
         }
       ],
       "example": {
@@ -109,7 +109,7 @@
         },
         {
           "title": "Пределы обеих сумм равны интегралу",
-          "math": "$$S = \\int_a^b f(x)\\,dx \\quad \\blacksquare$$",
+          "math": "$$S = \\int_a^b f(x)\\,dx \\quad $$",
           "tip": "Теорема о двух милиционерах: $S$ зажата между двумя последовательностями с одним пределом."
         }
       ],
@@ -133,7 +133,7 @@
         },
         {
           "title": "Суммирование",
-          "math": "$$S = \\frac{1}{2}\\int_\\alpha^\\beta \\rho^2(\\varphi)\\,d\\varphi \\quad \\blacksquare$$"
+          "math": "$$S = \\frac{1}{2}\\int_\\alpha^\\beta \\rho^2(\\varphi)\\,d\\varphi \\quad $$"
         },
         {
           "title": "Проверка на круге",
@@ -161,7 +161,7 @@
         },
         {
           "title": "Интегрирование",
-          "math": "$$V = \\pi\\int_a^b f^2(x)\\,dx \\quad \\blacksquare$$"
+          "math": "$$V = \\pi\\int_a^b f^2(x)\\,dx \\quad $$"
         },
         {
           "title": "Обоснование: теорема Кавальери",
@@ -188,7 +188,7 @@
         },
         {
           "title": "Интегрирование",
-          "math": "$$L = \\int_a^b\\sqrt{1+f'^2}\\,dx \\quad \\blacksquare$$"
+          "math": "$$L = \\int_a^b\\sqrt{1+f'^2}\\,dx \\quad $$"
         },
         {
           "title": "Параметрический случай",
@@ -219,7 +219,7 @@
         },
         {
           "title": "Результат",
-          "math": "$$L = \\int_\\alpha^\\beta \\sqrt{\\rho^2+(\\rho')^2}\\,d\\varphi \\quad \\blacksquare$$"
+          "math": "$$L = \\int_\\alpha^\\beta \\sqrt{\\rho^2+(\\rho')^2}\\,d\\varphi \\quad $$"
         }
       ],
       "example": {

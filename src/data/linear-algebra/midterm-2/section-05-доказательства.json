@@ -26,7 +26,7 @@
         {
           "title": "Заключение",
           "text": "Обе части стремятся к нулю, значит $\\Delta f \\to 0$ при $\\Delta\\mathbf{x} \\to \\mathbf{0}$:",
-          "math": "$$\\lim_{\\Delta\\mathbf{x} \\to \\mathbf{0}} \\Delta f = 0 \\;\\Rightarrow\\; f \\text{ непрерывна в } \\mathbf{a} \\quad \\blacksquare$$"
+          "math": "$$\\lim_{\\Delta\\mathbf{x} \\to \\mathbf{0}} \\Delta f = 0 \\;\\Rightarrow\\; f \\text{ непрерывна в } \\mathbf{a} \\quad $$"
         }
       ],
       "example": {
@@ -60,7 +60,7 @@
         {
           "title": "Перейдём к пределу",
           "text": "Разделим на $hk$ и устремим $h,k \\to 0$. По непрерывности $f''_{xy}$ и $f''_{yx}$:",
-          "math": "$$\\lim_{h,k\\to 0} \\frac{\\Phi}{hk} = f''_{xy}(a,b) = f''_{yx}(a,b) \\quad \\blacksquare$$",
+          "math": "$$\\lim_{h,k\\to 0} \\frac{\\Phi}{hk} = f''_{xy}(a,b) = f''_{yx}(a,b) \\quad $$",
           "tip": "Один и тот же $\\Phi$ даёт два представления; деление на $hk$ и предельный переход завершают доказательство."
         }
       ],
@@ -96,7 +96,7 @@
         {
           "title": "Предельный переход",
           "text": "При $\\Delta x \\to 0$: $\\frac{\\Delta u}{\\Delta x} \\to u'_x$, $\\frac{\\Delta v}{\\Delta x} \\to v'_x$, $\\alpha_1,\\alpha_2 \\to 0$:",
-          "math": "$$\\frac{\\partial z}{\\partial x} = \\frac{\\partial f}{\\partial u}\\frac{\\partial u}{\\partial x} + \\frac{\\partial f}{\\partial v}\\frac{\\partial v}{\\partial x} \\quad \\blacksquare$$"
+          "math": "$$\\frac{\\partial z}{\\partial x} = \\frac{\\partial f}{\\partial u}\\frac{\\partial u}{\\partial x} + \\frac{\\partial f}{\\partial v}\\frac{\\partial v}{\\partial x} \\quad $$"
         }
       ],
       "example": {
@@ -125,7 +125,7 @@
         {
           "title": "Выразим $y'(x)$",
           "text": "Перенесём $F'_x$ в правую часть и разделим на $F'_y$ (по условию $F'_y \\neq 0$):",
-          "math": "$$y'(x) = -\\frac{F'_x}{F'_y} \\quad \\blacksquare$$",
+          "math": "$$y'(x) = -\\frac{F'_x}{F'_y} \\quad $$",
           "tip": "Аналогично для $F(x,y,z) = 0$: $z'_x = -F'_x/F'_z$, $z'_y = -F'_y/F'_z$."
         }
       ],
@@ -155,7 +155,7 @@
         {
           "title": "Заключение",
           "text": "$(\\nabla f, \\mathbf{r}'(t)) = 0$ при всех $t$. Вектор $\\mathbf{r}'(t)$ — касательный к линии уровня. Значит $\\nabla f$ перпендикулярен касательной, т.е. ортогонален линии уровня.",
-          "math": "$$\\nabla f \\perp \\text{линии уровня} \\quad \\blacksquare$$"
+          "math": "$$\\nabla f \\perp \\text{линии уровня} \\quad $$"
         }
       ],
       "example": {
@@ -190,7 +190,7 @@
         {
           "title": "Заключение",
           "text": "Остаток $\\alpha_1\\Delta x + \\alpha_2\\Delta y$: $|\\alpha_1\\Delta x + \\alpha_2\\Delta y| \\leq (|\\alpha_1|+|\\alpha_2|)\\|\\Delta\\mathbf{x}\\| = o(\\|\\Delta\\mathbf{x}\\|)$, т.к. $\\alpha_1,\\alpha_2 \\to 0$. Это определение дифференцируемости.",
-          "math": "$$\\Delta f = f'_x \\Delta x + f'_y \\Delta y + o(\\|\\Delta\\mathbf{x}\\|) \\quad \\blacksquare$$"
+          "math": "$$\\Delta f = f'_x \\Delta x + f'_y \\Delta y + o(\\|\\Delta\\mathbf{x}\\|) \\quad $$"
         }
       ],
       "example": {

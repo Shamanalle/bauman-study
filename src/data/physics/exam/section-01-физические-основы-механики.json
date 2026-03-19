@@ -75,7 +75,7 @@
         {
           "title": "Если $\\vec{F}_{\\text{внеш}} = 0$, то $\\vec{p}_\\Sigma = \\text{const}$",
           "text": "ЦМ: $M\\vec{a}_C = 0 \\Rightarrow \\vec{v}_C = \\text{const}$.",
-          "math": "$$\\vec{p}_\\Sigma = \\text{const} \\quad \\blacksquare$$"
+          "math": "$$\\vec{p}_\\Sigma = \\text{const} \\quad $$"
         }
       ],
       "example": {
@@ -109,7 +109,7 @@
         {
           "title": "Результат",
           "text": "$I_2 = I_1 + Md^2$.",
-          "math": "$$I = I_0 + Md^2 \\quad \\blacksquare$$"
+          "math": "$$I = I_0 + Md^2 \\quad $$"
         }
       ],
       "example": {
@@ -137,7 +137,7 @@
         {
           "title": "Второе = момент силы",
           "text": "$\\vec{r} \\times \\dot{\\vec{p}} = \\vec{r} \\times \\vec{F} = \\vec{M}_0$.",
-          "math": "$$\\frac{d\\vec{L}}{dt} = \\vec{M}_0 \\quad \\blacksquare$$"
+          "math": "$$\\frac{d\\vec{L}}{dt} = \\vec{M}_0 \\quad $$"
         },
         {
           "title": "Для системы: внутренние моменты = 0",
@@ -166,7 +166,7 @@
         {
           "title": "Интегрируем вдоль пути",
           "text": "Получаем:",
-          "math": "$$\\int \\vec{F}\\cdot d\\vec{r} = \\frac{mv_{\\text{кон}}^2}{2} - \\frac{mv_{\\text{нач}}^2}{2} \\quad \\blacksquare$$"
+          "math": "$$\\int \\vec{F}\\cdot d\\vec{r} = \\frac{mv_{\\text{кон}}^2}{2} - \\frac{mv_{\\text{нач}}^2}{2} \\quad $$"
         },
         {
           "title": "Вращение: $v_i = \\omega r_{\\perp i}$",
@@ -212,7 +212,7 @@
         {
           "title": "Подставляем",
           "text": "$E_{\\text{кин}}^{\\text{кон}} + W_{\\text{кон}} = E_{\\text{кин}}^{\\text{нач}} + W_{\\text{нач}}$.",
-          "math": "$$E_{\\text{мех}} = \\text{const} \\quad \\blacksquare$$"
+          "math": "$$E_{\\text{мех}} = \\text{const} \\quad $$"
         }
       ],
       "example": {

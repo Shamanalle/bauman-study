@@ -22,7 +22,7 @@
         {
           "title": "Это СЛАУ с ненулевым решением",
           "text": "Система — однородная СЛАУ относительно $\\alpha_1, \\ldots, \\alpha_n$, матрица — транспонированная матрица Вронского. Существует ненулевое решение $(\\alpha_1, \\ldots, \\alpha_n)$, значит определитель равен нулю:",
-          "math": "$$W(x) = 0 \\quad \\forall\\, x \\in [a, b] \\quad \\blacksquare$$",
+          "math": "$$W(x) = 0 \\quad \\forall\\, x \\in [a, b] \\quad $$",
           "tip": "СЛАУ имеет ненулевое решение $\\Leftrightarrow$ определитель = 0."
         }
       ],
@@ -51,7 +51,7 @@
         {
           "title": "Применим теорему единственности",
           "text": "Функция $z(x)$ удовлетворяет нулевым начальным условиям. Тождественный нуль тоже решает ЛОДУ с теми же условиями. По теореме единственности $z(x) \\equiv 0$ — нетривиальная линейная комбинация тождественно нулевая. Противоречие с линейной независимостью.",
-          "math": "$$\\Rightarrow W(x) \\ne 0 \\quad \\forall\\, x \\in I \\quad \\blacksquare$$",
+          "math": "$$\\Rightarrow W(x) \\ne 0 \\quad \\forall\\, x \\in I \\quad $$",
           "tip": "Факт: для решений ЛОДУ достаточно проверить $W \\ne 0$ в ОДНОЙ точке — из формулы Лиувилля."
         }
       ],
@@ -80,7 +80,7 @@
         {
           "title": "Вронскиан в точке x0 = 1",
           "text": "Матрица Вронского в $x_0$ — единичная матрица:",
-          "math": "$$W(x_0) = \\begin{vmatrix} 1 & 0 & \\cdots & 0 \\\\ 0 & 1 & \\cdots & 0 \\\\ \\vdots & & \\ddots & \\vdots \\\\ 0 & 0 & \\cdots & 1 \\end{vmatrix} = 1 \\ne 0 \\quad \\blacksquare$$",
+          "math": "$$W(x_0) = \\begin{vmatrix} 1 & 0 & \\cdots & 0 \\\\ 0 & 1 & \\cdots & 0 \\\\ \\vdots & & \\ddots & \\vdots \\\\ 0 & 0 & \\cdots & 1 \\end{vmatrix} = 1 \\ne 0 \\quad $$",
           "tip": "$W(x_0) \\ne 0$ $\\Rightarrow$ решения линейно независимы $\\Rightarrow$ образуют ФСР."
         }
       ],
@@ -110,7 +110,7 @@
         {
           "title": "СЛАУ разрешима: W(x0) не равен нулю",
           "text": "Определитель СЛАУ — вронскиан $W(x_0) \\ne 0$ (ФСР линейно независима). Система имеет единственное решение $C_1, \\ldots, C_n$. По теореме единственности:",
-          "math": "$$\\tilde{y}(x) = C_1 y_1(x) + \\ldots + C_n y_n(x) \\quad \\blacksquare$$",
+          "math": "$$\\tilde{y}(x) = C_1 y_1(x) + \\ldots + C_n y_n(x) \\quad $$",
           "tip": "Две функции удовлетворяют одному ЛОДУ и одним начальным условиям $\\Rightarrow$ совпадают."
         }
       ],
@@ -141,7 +141,7 @@
         {
           "title": "Получим результат",
           "text": "Так как $y = z + y_*$:",
-          "math": "$$y = C_1 y_1 + \\ldots + C_n y_n + y_* \\quad \\blacksquare$$",
+          "math": "$$y = C_1 y_1 + \\ldots + C_n y_n + y_* \\quad $$",
           "tip": "Частное решение $y_*$ может быть любым — результат не зависит от его выбора."
         }
       ],
@@ -166,7 +166,7 @@
         {
           "title": "Подставим известные значения",
           "text": "$L[y_1^*] = f_1(x)$, $L[y_2^*] = f_2(x)$. Значит:",
-          "math": "$$L[y_1^* + y_2^*] = f_1(x) + f_2(x) \\quad \\blacksquare$$"
+          "math": "$$L[y_1^* + y_2^*] = f_1(x) + f_2(x) \\quad $$"
         },
         {
           "title": "Обобщение на конечное число слагаемых",
@@ -199,7 +199,7 @@
         {
           "title": "Размерность равна n",
           "text": "По теореме о существовании ФСР: существует $n$ линейно независимых решений, и любое решение выражается через них:",
-          "math": "$$\\dim(\\text{пр-во решений}) = n \\quad \\blacksquare$$"
+          "math": "$$\\dim(\\text{пр-во решений}) = n \\quad $$"
         }
       ],
       "example": {
@@ -229,7 +229,7 @@
         {
           "title": "Решим ОДУ W' = -pW",
           "text": "Это линейное ОДУ 1-го порядка с разделяющимися переменными. Решение:",
-          "math": "$$W(x) = W(x_0) \\exp\\left(-\\int_{x_0}^x p(t)\\,dt\\right) \\quad \\blacksquare$$",
+          "math": "$$W(x) = W(x_0) \\exp\\left(-\\int_{x_0}^x p(t)\\,dt\\right) \\quad $$",
           "tip": "При $p \\equiv 0$: $W = \\text{const}$ (например, для $y'' + y = 0$: $W[\\cos x, \\sin x] = 1$)."
         }
       ],
@@ -259,7 +259,7 @@
         {
           "title": "Проверим линейную независимость",
           "text": "Вронскиан:",
-          "math": "$$W = \\begin{vmatrix} e^{\\lambda_1 x} & e^{\\lambda_2 x} \\\\ \\lambda_1 e^{\\lambda_1 x} & \\lambda_2 e^{\\lambda_2 x} \\end{vmatrix} = (\\lambda_2 - \\lambda_1)e^{(\\lambda_1+\\lambda_2)x} \\ne 0 \\quad \\blacksquare$$",
+          "math": "$$W = \\begin{vmatrix} e^{\\lambda_1 x} & e^{\\lambda_2 x} \\\\ \\lambda_1 e^{\\lambda_1 x} & \\lambda_2 e^{\\lambda_2 x} \\end{vmatrix} = (\\lambda_2 - \\lambda_1)e^{(\\lambda_1+\\lambda_2)x} \\ne 0 \\quad $$",
           "tip": "$\\lambda_1 \\ne \\lambda_2$ $\\Rightarrow$ $\\lambda_2 - \\lambda_1 \\ne 0$, экспонента тоже $\\ne 0$."
         }
       ],
@@ -290,7 +290,7 @@
         {
           "title": "Проверим линейную независимость",
           "text": "Вронскиан:",
-          "math": "$$W = e^{2\\alpha x}\\beta(\\cos^2\\beta x + \\sin^2\\beta x) = \\beta e^{2\\alpha x} \\ne 0 \\quad \\blacksquare$$",
+          "math": "$$W = e^{2\\alpha x}\\beta(\\cos^2\\beta x + \\sin^2\\beta x) = \\beta e^{2\\alpha x} \\ne 0 \\quad $$",
           "tip": "При $\\alpha = 0$ — чистые колебания: $\\cos\\beta x$ и $\\sin\\beta x$."
         }
       ],
@@ -321,7 +321,7 @@
         {
           "title": "Линейная независимость",
           "text": "Вронскиан $y_1 = e^{\\lambda_0 x}$ и $y_2 = xe^{\\lambda_0 x}$:",
-          "math": "$$W = e^{2\\lambda_0 x} \\ne 0 \\quad \\blacksquare$$"
+          "math": "$$W = e^{2\\lambda_0 x} \\ne 0 \\quad $$"
         }
       ],
       "example": {
@@ -356,7 +356,7 @@
         {
           "title": "Решаем СЛАУ и интегрируем",
           "text": "Из СЛАУ находим $C_1'(x)$ и $C_2'(x)$ (по Крамеру или подстановкой). Интегрируем:",
-          "math": "$$C_i(x) = \\int C_i'(x)\\,dx \\quad \\blacksquare$$"
+          "math": "$$C_i(x) = \\int C_i'(x)\\,dx \\quad $$"
         }
       ],
       "example": {

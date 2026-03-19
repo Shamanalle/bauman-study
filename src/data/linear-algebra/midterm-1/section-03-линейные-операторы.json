@@ -41,7 +41,7 @@
         {
           "title": "Получим матрицу в новом базисе",
           "text": "Сравнивая с $\\mathbf{y}_{E'} = A_{E'} \\cdot \\mathbf{x}_{E'}$, получаем:",
-          "math": "$$A_{E'} = T^{-1} A_E T \\quad \\blacksquare$$",
+          "math": "$$A_{E'} = T^{-1} A_E T \\quad $$",
           "tip": "Порядок важен: $T^{-1}$ слева, $T$ справа. Для квадратичной формы формула другая: $B'=T^TAT$. Не путайте!"
         }
       ],
@@ -98,7 +98,7 @@
         {
           "title": "Применим предположение индукции",
           "text": "Система $\\mathbf{x}_1,\\ldots,\\mathbf{x}_s$ ЛНЗ, значит $c_i(\\lambda_i-\\lambda_{s+1})=0$ для всех $i$. Так как $\\lambda_i \\neq \\lambda_{s+1}$, получаем $c_i=0$. Подставив в (*): $c_{s+1}=0$.",
-          "math": "$$c_1 = c_2 = \\ldots = c_{s+1} = 0 \\quad \\blacksquare$$",
+          "math": "$$c_1 = c_2 = \\ldots = c_{s+1} = 0 \\quad $$",
           "tip": "$\\lambda_i-\\lambda_{s+1} \\neq 0$ именно потому, что все собственные значения попарно различны!"
         }
       ],
@@ -146,7 +146,7 @@
         {
           "title": "Получаем противоречие",
           "text": "Так как $\\mathbf{z} \\neq \\mathbf{0}$, $(\\mathbf{z}, \\mathbf{z}) > 0$. Сокращаем: $\\lambda = \\bar{\\lambda}$, значит $\\lambda \\in \\mathbb{R}$ — противоречие с $\\beta \\neq 0$.",
-          "math": "$$\\lambda = \\bar{\\lambda} \\;\\Rightarrow\\; \\lambda \\in \\mathbb{R} \\quad \\blacksquare$$",
+          "math": "$$\\lambda = \\bar{\\lambda} \\;\\Rightarrow\\; \\lambda \\in \\mathbb{R} \\quad $$",
           "tip": "Доказательство опирается на положительную определённость $(\\mathbf{z},\\mathbf{z}) > 0$ — без неё нельзя сократить."
         }
       ],
@@ -182,7 +182,7 @@
         {
           "title": "Получим ортогональность",
           "text": "$(\\lambda_1 - \\lambda_2)(\\mathbf{x}_1, \\mathbf{x}_2) = 0$. Так как $\\lambda_1 \\neq \\lambda_2$:",
-          "math": "$$(\\mathbf{x}_1, \\mathbf{x}_2) = 0 \\quad \\blacksquare$$",
+          "math": "$$(\\mathbf{x}_1, \\mathbf{x}_2) = 0 \\quad $$",
           "tip": "Доказательство в 3 строки: самосопряжённость + различность собственных значений = ортогональность."
         }
       ],
@@ -221,7 +221,7 @@
         {
           "title": "Запишем матрицу в ОНБ",
           "text": "$A\\mathbf{e}_i = \\lambda_i\\mathbf{e}_i$ означает, что $i$-й столбец матрицы оператора = $(0,\\ldots,\\lambda_i,\\ldots,0)^T$. Значит матрица диагональна:",
-          "math": "$$A_{\\text{ОНБ}} = \\text{diag}(\\lambda_1, \\ldots, \\lambda_n) \\quad \\blacksquare$$"
+          "math": "$$A_{\\text{ОНБ}} = \\text{diag}(\\lambda_1, \\ldots, \\lambda_n) \\quad $$"
         }
       ],
       "example": {

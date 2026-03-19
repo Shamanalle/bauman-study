@@ -41,7 +41,7 @@
         {
           "title": "Результат",
           "text": "Сокращая $S\\Delta x$:",
-          "math": "$$\\frac{\\partial^2 u}{\\partial t^2} = \\frac{E}{\\rho}\\frac{\\partial^2 u}{\\partial x^2} \\quad \\blacksquare$$"
+          "math": "$$\\frac{\\partial^2 u}{\\partial t^2} = \\frac{E}{\\rho}\\frac{\\partial^2 u}{\\partial x^2} \\quad $$"
         }
       ],
       "example": {
@@ -70,7 +70,7 @@
         {
           "title": "Вектор Умова",
           "text": "Энергия переносится со скоростью волны:",
-          "math": "$$\\vec{j} = w\\vec{v} \\quad \\blacksquare$$"
+          "math": "$$\\vec{j} = w\\vec{v} \\quad $$"
         }
       ],
       "example": {

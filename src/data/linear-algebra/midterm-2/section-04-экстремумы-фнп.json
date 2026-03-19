@@ -34,7 +34,7 @@
         {
           "title": "Вернёмся к частной производной",
           "text": "Но $g'(a_i) = \\frac{\\partial f}{\\partial x_i}(\\mathbf{a})$. Так как $i$ произвольное:",
-          "math": "$$\\frac{\\partial f}{\\partial x_i}(\\mathbf{a}) = 0 \\quad \\text{для каждого } i \\quad \\blacksquare$$"
+          "math": "$$\\frac{\\partial f}{\\partial x_i}(\\mathbf{a}) = 0 \\quad \\text{для каждого } i \\quad $$"
         }
       ],
       "example": {
@@ -64,7 +64,7 @@
         {
           "title": "Случай $D < 0$: седловая точка",
           "text": "Если $D < 0$, квадратичная форма неопределена: существуют направления с $Q > 0$ и $Q < 0$, значит $\\Delta f$ меняет знак — нет экстремума.",
-          "math": "$$D > 0,\\, A > 0 \\Rightarrow \\min;\\quad D > 0,\\, A < 0 \\Rightarrow \\max;\\quad D < 0 \\Rightarrow \\text{седло} \\quad \\blacksquare$$"
+          "math": "$$D > 0,\\, A > 0 \\Rightarrow \\min;\\quad D > 0,\\, A < 0 \\Rightarrow \\max;\\quad D < 0 \\Rightarrow \\text{седло} \\quad $$"
         }
       ],
       "example": {
@@ -107,7 +107,7 @@
         {
           "title": "Ограничения как дополнительные уравнения",
           "text": "Производные $L$ по $\\lambda_k$ дают: $\\frac{\\partial L}{\\partial \\lambda_k} = \\varphi_k(\\mathbf{x}) = 0$ — это исходные ограничения. Получаем систему из $n+m$ уравнений на $n+m$ неизвестных.",
-          "math": "$$\\nabla_\\mathbf{x} L = \\mathbf{0},\\quad \\varphi_k = 0 \\quad \\blacksquare$$",
+          "math": "$$\\nabla_\\mathbf{x} L = \\mathbf{0},\\quad \\varphi_k = 0 \\quad $$",
           "tip": "Геометрический смысл: в точке условного экстремума градиент $f$ перпендикулярен поверхности ограничений."
         }
       ],
@@ -138,7 +138,7 @@
         {
           "title": "Критерий знака",
           "text": "$\\bar{H} > 0$ означает, что $d^2L < 0$ на касательной (максимум). $\\bar{H} < 0$ — $d^2L > 0$ (минимум). Знаки «противоположны» из-за особенности окаймления.",
-          "math": "$$\\bar{H} > 0 \\Rightarrow \\max;\\quad \\bar{H} < 0 \\Rightarrow \\min \\quad \\blacksquare$$"
+          "math": "$$\\bar{H} > 0 \\Rightarrow \\max;\\quad \\bar{H} < 0 \\Rightarrow \\min \\quad $$"
         }
       ],
       "example": {

@@ -67,7 +67,7 @@
         {
           "title": "Получаем закон сохранения импульса",
           "text": "Левая часть: $\\sum m_i \\vec{a}_i = M\\vec{a}_C = \\frac{d\\vec{p}_\\Sigma}{dt}$. Если $\\vec{F}_{\\text{внеш}} = 0$, то $\\vec{p}_\\Sigma = \\text{const}$.",
-          "math": "$$\\frac{d\\vec{p}_\\Sigma}{dt} = \\vec{F}_{\\text{внеш}} = 0 \\Rightarrow \\vec{p}_\\Sigma = \\text{const} \\quad \\blacksquare$$"
+          "math": "$$\\frac{d\\vec{p}_\\Sigma}{dt} = \\vec{F}_{\\text{внеш}} = 0 \\Rightarrow \\vec{p}_\\Sigma = \\text{const} \\quad $$"
         }
       ],
       "example": {
@@ -107,7 +107,7 @@
         {
           "title": "Получаем теорему Штейнера",
           "text": "Подставляя в формулу:",
-          "math": "$$I_2 = I_1 + Md^2 \\quad \\blacksquare$$"
+          "math": "$$I_2 = I_1 + Md^2 \\quad $$"
         }
       ],
       "example": {
@@ -136,7 +136,7 @@
         {
           "title": "Второе слагаемое даёт момент силы",
           "text": "По II закону Ньютона $\\frac{d\\vec{p}}{dt} = \\vec{F}$, поэтому $\\vec{r} \\times \\frac{d\\vec{p}}{dt} = \\vec{r} \\times \\vec{F} = \\vec{M}_0$.",
-          "math": "$$\\frac{d\\vec{L}}{dt} = \\vec{M}_0 \\quad \\blacksquare$$"
+          "math": "$$\\frac{d\\vec{L}}{dt} = \\vec{M}_0 \\quad $$"
         },
         {
           "title": "Для системы: внутренние моменты компенсируются",
@@ -171,7 +171,7 @@
         {
           "title": "Интегрируем вдоль пути",
           "text": "Интегрируя обе части от начальной до конечной точки:",
-          "math": "$$\\int_{\\text{путь}} \\vec{F} \\cdot d\\vec{r} = \\frac{mv_{\\text{кон}}^2}{2} - \\frac{mv_{\\text{нач}}^2}{2} \\quad \\blacksquare$$"
+          "math": "$$\\int_{\\text{путь}} \\vec{F} \\cdot d\\vec{r} = \\frac{mv_{\\text{кон}}^2}{2} - \\frac{mv_{\\text{нач}}^2}{2} \\quad $$"
         },
         {
           "title": "Вращательная энергия: подставляем $v = \\omega R$",
@@ -218,7 +218,7 @@
         {
           "title": "Подставляем и получаем ЗСЭ",
           "text": "Подставляя работу:",
-          "math": "$$E_{\\text{кин}}^{\\text{кон}} - E_{\\text{кин}}^{\\text{нач}} = W_{\\text{нач}} - W_{\\text{кон}} \\Rightarrow E_{\\text{кин}}^{\\text{кон}} + W_{\\text{кон}} = E_{\\text{кин}}^{\\text{нач}} + W_{\\text{нач}} \\quad \\blacksquare$$"
+          "math": "$$E_{\\text{кин}}^{\\text{кон}} - E_{\\text{кин}}^{\\text{нач}} = W_{\\text{нач}} - W_{\\text{кон}} \\Rightarrow E_{\\text{кин}}^{\\text{кон}} + W_{\\text{кон}} = E_{\\text{кин}}^{\\text{нач}} + W_{\\text{нач}} \\quad $$"
         }
       ],
       "example": {

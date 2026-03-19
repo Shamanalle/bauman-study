@@ -48,7 +48,7 @@
         {
           "title": "Заключение",
           "text": "Вектор $\\mathbf{r}'(t)$ — касательный к линии уровня. $(\\nabla f, \\mathbf{r}'(t)) = 0$ означает, что $\\nabla f \\perp$ касательной, т.е. $\\nabla f$ ортогонален линии уровня.",
-          "math": "$$\\nabla f \\perp \\text{линии уровня} \\quad \\blacksquare$$"
+          "math": "$$\\nabla f \\perp \\text{линии уровня} \\quad $$"
         }
       ],
       "example": {

@@ -40,7 +40,7 @@
         {
           "title": "Получаем неравенство Коши-Буняковского",
           "text": "Из $D \\leq 0$ следует:",
-          "math": "$$(\\mathbf{x},\\mathbf{y})^2 \\leq (\\mathbf{x},\\mathbf{x}) \\cdot (\\mathbf{y},\\mathbf{y}) \\quad \\blacksquare$$"
+          "math": "$$(\\mathbf{x},\\mathbf{y})^2 \\leq (\\mathbf{x},\\mathbf{x}) \\cdot (\\mathbf{y},\\mathbf{y}) \\quad $$"
         },
         {
           "title": "Выведем неравенство треугольника из КБ",
@@ -94,7 +94,7 @@
         {
           "title": "Заключение",
           "text": "Поскольку $\\mathbf{e}_i \\neq \\mathbf{0}$, то $(\\mathbf{e}_i, \\mathbf{e}_i) > 0$ (аксиома 4). Значит $\\lambda_i = 0$. Так как $i$ произвольный, все $\\lambda_i = 0$, система ЛНЗ.",
-          "math": "$$\\lambda_i = 0 \\;\\text{ для всех } i \\quad \\blacksquare$$"
+          "math": "$$\\lambda_i = 0 \\;\\text{ для всех } i \\quad $$"
         }
       ],
       "example": {

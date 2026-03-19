@@ -28,7 +28,7 @@
         {
           "title": "Применение правила произведения",
           "text": "По правилу произведения (комбинаторика), общее число различных функций:",
-          "math": "$$|P_2(n)| = \\underbrace{2 \\times 2 \\times \\cdots \\times 2}_{2^n} = 2^{2^n}. \\quad \\blacksquare$$"
+          "math": "$$|P_2(n)| = \\underbrace{2 \\times 2 \\times \\cdots \\times 2}_{2^n} = 2^{2^n}. \\quad $$"
         }
       ],
       "example": {

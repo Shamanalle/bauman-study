@@ -31,7 +31,7 @@
         {
           "title": "II закон Ньютона",
           "text": "$m\\ddot{x} = -k_0 x \\Rightarrow \\ddot{x} + \\omega_0^2 x = 0$.",
-          "math": "$$\\omega_0^2 = k_0/m \\quad \\blacksquare$$"
+          "math": "$$\\omega_0^2 = k_0/m \\quad $$"
         },
         {
           "title": "Математический маятник",
@@ -92,7 +92,7 @@
         {
           "title": "При $\\beta < \\omega_0$: колебательный режим",
           "text": "$\\omega = \\sqrt{\\omega_0^2 - \\beta^2}$. По формуле Эйлера:",
-          "math": "$$x = A_0 e^{-\\beta t}\\sin(\\omega t + \\varphi) \\quad \\blacksquare$$",
+          "math": "$$x = A_0 e^{-\\beta t}\\sin(\\omega t + \\varphi) \\quad $$",
           "tip": "При $\\beta > \\omega_0$ — апериодический режим (нет колебаний)."
         }
       ],
@@ -122,7 +122,7 @@
         {
           "title": "Амплитуда",
           "text": "Извлекаем $A_\\Omega$:",
-          "math": "$$A_\\Omega = \\frac{f_0}{\\sqrt{(\\omega_0^2 - \\Omega^2)^2 + 4\\beta^2\\Omega^2}} \\quad \\blacksquare$$"
+          "math": "$$A_\\Omega = \\frac{f_0}{\\sqrt{(\\omega_0^2 - \\Omega^2)^2 + 4\\beta^2\\Omega^2}} \\quad $$"
         },
         {
           "title": "Резонансная частота",

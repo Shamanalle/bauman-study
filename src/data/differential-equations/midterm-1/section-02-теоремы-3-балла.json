@@ -53,7 +53,7 @@
         {
           "title": "Получим результат",
           "text": "Умножим обе части на $(b-a)$:",
-          "math": "$$\\int_a^b f(x)\\,dx = f(c)(b-a) \\quad \\blacksquare$$",
+          "math": "$$\\int_a^b f(x)\\,dx = f(c)(b-a) \\quad $$",
           "tip": "Ключевой момент: непрерывность функции + теорема о промежуточном значении гарантируют существование точки $c$."
         }
       ],
@@ -84,7 +84,7 @@
         {
           "title": "Используем непрерывность f в точке x0",
           "text": "По непрерывности: для любого $\\varepsilon > 0$ существует $\\delta > 0$ такое, что $|f(t) - f(x_0)| < \\varepsilon$ при $|t - x_0| < \\delta$. Тогда при $|\\Delta x| < \\delta$:",
-          "math": "$$\\le \\frac{1}{|\\Delta x|} \\cdot \\varepsilon \\cdot |\\Delta x| = \\varepsilon \\quad \\blacksquare$$",
+          "math": "$$\\le \\frac{1}{|\\Delta x|} \\cdot \\varepsilon \\cdot |\\Delta x| = \\varepsilon \\quad $$",
           "tip": "Эпсилон-дельта аргумент: непрерывность $f$ позволяет сделать подынтегральное выражение сколь угодно малым."
         }
       ],
@@ -115,7 +115,7 @@
         {
           "title": "Подставим x = b и получим результат",
           "text": "Из $\\Phi(x) = F(x) - F(a)$ при $x = b$:",
-          "math": "$$\\int_a^b f(x)\\,dx = \\Phi(b) = F(b) - F(a) \\quad \\blacksquare$$"
+          "math": "$$\\int_a^b f(x)\\,dx = \\Phi(b) = F(b) - F(a) \\quad $$"
         }
       ],
       "example": {
@@ -144,7 +144,7 @@
         {
           "title": "Применим формулу Ньютона-Лейбница",
           "text": "По формуле Ньютона-Лейбница:",
-          "math": "$$\\int_a^b u v'\\,dx = H(b) - H(a) = \\left[uv - \\int_a^x u'v\\,dt\\right]_a^b = uv\\Big|_a^b - \\int_a^b v\\,du \\quad \\blacksquare$$",
+          "math": "$$\\int_a^b u v'\\,dx = H(b) - H(a) = \\left[uv - \\int_a^x u'v\\,dt\\right]_a^b = uv\\Big|_a^b - \\int_a^b v\\,du \\quad $$",
           "tip": "При $x = a$: $H(a) = u(a)v(a) - 0 = u(a)v(a)$."
         }
       ],
@@ -174,7 +174,7 @@
         {
           "title": "Расходимость f влечёт расходимость g (контрапозиция)",
           "text": "Если $\\int_a^{+\\infty} f(x)\\,dx$ расходится, а $\\int_a^{+\\infty} g(x)\\,dx$ сходится — противоречие с только что доказанным. Значит, $\\int_a^{+\\infty} g(x)\\,dx$ тоже расходится.",
-          "math": "$$\\blacksquare$$"
+          "math": "$$$$"
         }
       ],
       "example": {
@@ -203,7 +203,7 @@
         {
           "title": "Остальные утверждения — аналогично",
           "text": "Все четыре случая (сходимость/расходимость каждого из двух интегралов) доказываются по той же схеме: оценка через $\\varepsilon$-окрестность предела + признак сравнения.",
-          "math": "$$\\blacksquare$$"
+          "math": "$$$$"
         }
       ],
       "example": {
@@ -231,7 +231,7 @@
         {
           "title": "Выразим исходный интеграл как разность",
           "text": "Запишем $f(x) = (f(x) + |f(x)|) - |f(x)|$. Оба интеграла в правой части сходятся, значит:",
-          "math": "$$\\int_a^{+\\infty} f(x)\\,dx = \\int_a^{+\\infty} (f(x) + |f(x)|)\\,dx - \\int_a^{+\\infty} |f(x)|\\,dx \\quad \\blacksquare$$",
+          "math": "$$\\int_a^{+\\infty} f(x)\\,dx = \\int_a^{+\\infty} (f(x) + |f(x)|)\\,dx - \\int_a^{+\\infty} |f(x)|\\,dx \\quad $$",
           "tip": "Трюк: $f(x) + |f(x)|$ — неотрицательная функция (равна $0$ или $2|f(x)|$), что позволяет применить признак сравнения."
         }
       ],
@@ -261,7 +261,7 @@
         {
           "title": "Перейдём к пределу",
           "text": "Суммируя и переходя к пределу при $\\max \\Delta\\varphi_i \\to 0$:",
-          "math": "$$S = \\lim \\sum \\frac{1}{2} \\rho^2(\\xi_i)\\,\\Delta\\varphi_i = \\frac{1}{2}\\int_\\alpha^\\beta \\rho^2(\\varphi)\\,d\\varphi \\quad \\blacksquare$$",
+          "math": "$$S = \\lim \\sum \\frac{1}{2} \\rho^2(\\xi_i)\\,\\Delta\\varphi_i = \\frac{1}{2}\\int_\\alpha^\\beta \\rho^2(\\varphi)\\,d\\varphi \\quad $$",
           "tip": "Формула — интеграл Римана от $\\frac{1}{2}\\rho^2(\\varphi)$ по углу $\\varphi$."
         }
       ],
@@ -292,7 +292,7 @@
         {
           "title": "Частный случай: явно заданная кривая",
           "text": "Если $y = f(x)$, то $x$ сам является параметром ($x' = 1$, $y' = f'(x)$):",
-          "math": "$$L = \\int_a^b \\sqrt{1 + (f'(x))^2}\\,dx \\quad \\blacksquare$$",
+          "math": "$$L = \\int_a^b \\sqrt{1 + (f'(x))^2}\\,dx \\quad $$",
           "tip": "Формула следует из теоремы Пифагора для бесконечно малого элемента дуги."
         }
       ],
