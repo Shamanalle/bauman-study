@@ -6,25 +6,25 @@
       "id": 1,
       "title": "Дополнительные операции преобразования типов: const_cast, dynamic_cast, static_cast, reinterpret_cast",
       "type": "Понятие",
-      "formalText": "C++ предоставляет четыре оператора **явного приведения типов**, каждый для своей цели:\\n\\n**1. `static_cast<T>(expr)`** — преобразование между совместимыми типами на этапе **компиляции**:\\n- Числовые преобразования: `int` -> `double`\\n- Приведение вверх/вниз по иерархии классов (без проверки в runtime)\\n<pre class=\"code-block\"><code class=\"language-cpp\">double d = 3.14;\nint i = static_cast<int>(d);  // 3</code></pre>\\n\\n**2. `dynamic_cast<T>(expr)`** — безопасное приведение **полиморфных типов** в runtime:\\n- Работает только с указателями/ссылками на классы с `virtual`\\n- При неудаче: `nullptr` (для указателей) или `std::bad_cast` (для ссылок)\\n<pre class=\"code-block\"><code class=\"language-cpp\">Base* bp = new Derived();\nDerived* dp = dynamic_cast<Derived*>(bp);  // OK\n// Если bp указывает не на Derived → dp == nullptr</code></pre>\\n\\n**3. `const_cast<T>(expr)`** — снятие/добавление `const` и `volatile`:\\n<pre class=\"code-block\"><code class=\"language-cpp\">const int* cp = &x;\nint* p = const_cast<int*>(cp);  // снятие const</code></pre>\\n\\n**4. `reinterpret_cast<T>(expr)`** — **битовая** реинтерпретация указателя как другого типа. Самый опасный — нет никаких проверок:\\n<pre class=\"code-block\"><code class=\"language-cpp\">int* ip = new int(42);\nchar* cp = reinterpret_cast<char*>(ip);  // побайтовый доступ</code></pre>",
-      "insight": "Четыре cast — четыре уровня опасности. static_cast — безопасный лифт между этажами (типами). dynamic_cast — лифт с проверкой пропуска (runtime check). const_cast — взлом замка (снятие const). reinterpret_cast — телепортация без гарантий (битовая переинтерпретация).",
+      "insight": "4 каста — 4 уровня опасности: static (безопасный), dynamic (с проверкой), const (снимает const), reinterpret (побитовый).",
+      "formalText": "**static_cast** — между совместимыми типами (compile-time):\\n<pre class=\"code-block\"><code>int i = static_cast<int>(3.14);   // 3</code></pre>\\n\\n**dynamic_cast** — безопасный для полиморфных типов (runtime):\\n<pre class=\"code-block\"><code>Base* bp = new Derived();\nDerived* dp = dynamic_cast<Derived*>(bp);\n// если bp не Derived → dp == nullptr</code></pre>\\n\\n**const_cast** — снятие/добавление const:\\n<pre class=\"code-block\"><code>const int* cp = &x;\nint* p = const_cast<int*>(cp);</code></pre>\\n\\n**reinterpret_cast** — побитовая реинтерпретация (опасно!):\\n<pre class=\"code-block\"><code>int* ip = new int(42);\nchar* cp = reinterpret_cast<char*>(ip);</code></pre>",
+      "note": "dynamic_cast требует virtual в базовом. Указатель → nullptr при неудаче, ссылка → bad_cast.",
       "example": {
-        "title": "📝 dynamic_cast для проверки типа",
-        "text": "<pre class=\"code-block\"><code class=\"language-cpp\">void process(Base* b) {\n    if (auto d = dynamic_cast<Derived*>(b)) {\n        d->derivedMethod();  // безопасно\n    } else {\n        cout << \"Это не Derived\";\n    }\n}</code></pre>"
-      },
-      "note": "dynamic_cast требует хотя бы одну virtual функцию в базовом классе (включает RTTI). static_cast быстрее, но без проверки — если тип не совпадает, UB."
+        "title": "📝 Проверка типа",
+        "text": "<pre class=\"code-block\"><code>if (auto d = dynamic_cast<Derived*>(base_ptr)) {\n    d->derivedMethod();  // безопасно\n}</code></pre>"
+      }
     },
     {
       "id": 2,
       "title": "Динамическая идентификация типов (RTTI). Операция typeid. Класс typeinfo",
       "type": "Понятие",
-      "formalText": "**RTTI (Run-Time Type Information)** — механизм определения типа объекта **во время выполнения** программы.\\n\\n**Операция `typeid`** — возвращает объект типа `std::type_info`, содержащий информацию о типе:\\n<pre class=\"code-block\"><code class=\"language-cpp\">#include <typeinfo>\n\nint x = 42;\ncout << typeid(x).name();     // \"int\" (зависит от компилятора)\ncout << typeid(3.14).name();  // \"double\"</code></pre>\\n\\n**Основные функции класса `type_info`:**\\n- `name()` — возвращает имя типа (implementation-defined)\\n- `operator==()` — сравнение двух type_info (одинаковые типы?)\\n- `operator!=()` — различие типов\\n\\n**С полиморфными типами** (есть virtual): typeid определяет **фактический** тип объекта:\\n<pre class=\"code-block\"><code class=\"language-cpp\">Base* p = new Derived();\ncout << typeid(*p).name();  // \"Derived\" — фактический тип!\n\nif (typeid(*p) == typeid(Derived)) {\n    cout << \"Это Derived\";\n}</code></pre>\\n\\n**Без virtual:** typeid возвращает **статический** тип (тип переменной, а не объекта).",
-      "insight": "typeid — как бейдж с именем: для обычных объектов бейдж приклеен намертво (статический тип). Для полиморфных — считывается NFC-чип из vtable (динамический тип). Без virtual функций typeid не может «заглянуть внутрь» — видит только тип указателя.",
+      "insight": "typeid определяет тип объекта в runtime (если есть virtual). Возвращает type_info с именем типа.",
+      "formalText": "<pre class=\"code-block\"><code>#include <typeinfo>\n\nBase* p = new Derived();\n\ncout << typeid(*p).name();   // \"Derived\" (если есть virtual)\n\nif (typeid(*p) == typeid(Derived))\n    cout << \"Это Derived\";</code></pre>\\n\\n- `name()` — имя типа (зависит от компилятора)\\n- `operator==` — сравнение типов\\n- Без `virtual` → только **статический** тип (тип указателя)\\n- Разыменовать: `typeid(*p)`, не `typeid(p)`",
+      "note": "typeid(*p) — разыменовать! typeid(p) покажет тип указателя. Требует virtual в базовом.",
       "example": {
-        "title": "📝 Сравнение типов",
-        "text": "<pre class=\"code-block\"><code class=\"language-cpp\">void identify(Base* p) {\n    if (typeid(*p) == typeid(Circle))\n        cout << \"Circle\";\n    else if (typeid(*p) == typeid(Square))\n        cout << \"Square\";\n    else\n        cout << typeid(*p).name();\n}</code></pre>"
-      },
-      "note": "typeid работает с динамическими типами только если в классе есть хотя бы одна virtual функция. Для typeid указатель нужно разыменовать: `typeid(*p)`, не `typeid(p)` — иначе получишь тип указателя."
+        "title": "📝 Определение типа",
+        "text": "<pre class=\"code-block\"><code>void identify(Base* p) {\n    if (typeid(*p) == typeid(Circle))\n        cout << \"Circle\";\n    else\n        cout << typeid(*p).name();\n}</code></pre>"
+      }
     }
   ]
 }
