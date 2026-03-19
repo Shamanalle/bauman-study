@@ -1,221 +1,203 @@
 {
   "section": "Доказательства повышенной сложности",
-  "icon": "🧮",
+  "icon": "📝",
   "questions": [
     {
       "id": 1,
-      "title": "Доказательство необходимых условий дифференцируемости ФНП",
+      "title": "Доказательство: дифференцируемость влечёт непрерывность",
       "type": "Теорема",
-      "tldr": "Дифференцируемая -> частные производные существуют и равны коэффициентам.",
-      "intuition": "Если функция линейно приближается во всех направлениях сразу, то приблизить вдоль каждой оси тем более можно. Коэффициенты линейного приближения = частные производные.",
-      "formalText": "**Теорема.** Если $f$ дифференцируема в $\\mathbf{a}$: $\\Delta f = \\sum A_i\\Delta x_i + o(\\|\\Delta\\mathbf{x}\\|)$, то $\\exists\\, \\frac{\\partial f}{\\partial x_i}(\\mathbf{a}) = A_i$.",
-      "formula": "A_i = \\frac{\\partial f}{\\partial x_i}(\\mathbf{a})",
-      "keyIdea": "Доказательство: подставить приращение только по одной переменной $x_i$ (остальные = 0), разделить на $\\Delta x_i$, перейти к пределу.",
+      "formalText": "**Теорема.** Если ФНП $f(\\mathbf{x})$ дифференцируема в точке $\\mathbf{a}$, то она непрерывна в этой точке.",
+      "formula": "\\text{дифф-ть} \\;\\Rightarrow\\; \\text{непрерывность}",
+      "insight": "Дифференцируемость — приращение можно разложить на линейную часть и «мусор» ($o(\\|\\Delta\\mathbf{x}\\|)$). Оба стремятся к нулю, значит приращение стремится к нулю — это и есть непрерывность.",
       "steps": [
         {
-          "title": "Выберем специальное приращение",
-          "text": "Положим $\\Delta x_j = 0$ для $j \\neq i$, оставив $\\Delta x_i \\neq 0$. Тогда $\\|\\Delta\\mathbf{x}\\| = |\\Delta x_i|$."
+          "title": "Запишем определение дифференцируемости",
+          "text": "По условию: $\\Delta f = \\sum_{i=1}^n A_i \\Delta x_i + \\alpha(\\Delta\\mathbf{x})\\|\\Delta\\mathbf{x}\\|$, где $\\alpha \\to 0$ при $\\Delta\\mathbf{x} \\to \\mathbf{0}$."
         },
         {
-          "title": "Подставим в формулу дифференцируемости",
-          "text": "Получаем:",
-          "math": "$$\\Delta f = A_i\\Delta x_i + o(|\\Delta x_i|)$$"
+          "title": "Оценим линейную часть",
+          "text": "Для каждого слагаемого: $|A_i \\Delta x_i| \\leq |A_i| \\cdot \\|\\Delta\\mathbf{x}\\|$. Значит:",
+          "math": "$$\\left|\\sum A_i \\Delta x_i\\right| \\leq \\left(\\sum |A_i|\\right) \\|\\Delta\\mathbf{x}\\| \\to 0$$"
         },
         {
-          "title": "Разделим на $\\Delta x_i$ и перейдем к пределу",
-          "text": "Делим обе части на $\\Delta x_i$:",
-          "math": "$$\\frac{\\Delta f}{\\Delta x_i} = A_i + \\frac{o(|\\Delta x_i|)}{\\Delta x_i} \\xrightarrow{\\Delta x_i \\to 0} A_i$$"
+          "title": "Оценим остаток",
+          "text": "$|\\alpha(\\Delta\\mathbf{x})| \\cdot \\|\\Delta\\mathbf{x}\\| \\to 0$, так как $\\alpha \\to 0$ и $\\|\\Delta\\mathbf{x}\\| \\to 0$."
         },
         {
           "title": "Заключение",
-          "text": "Предел существует и равен $A_i$, значит $\\frac{\\partial f}{\\partial x_i}(\\mathbf{a}) = A_i$.",
-          "math": "$$\\frac{\\partial f}{\\partial x_i}(\\mathbf{a}) = A_i \\quad \\blacksquare$$"
+          "text": "Обе части стремятся к нулю, значит $\\Delta f \\to 0$ при $\\Delta\\mathbf{x} \\to \\mathbf{0}$:",
+          "math": "$$\\lim_{\\Delta\\mathbf{x} \\to \\mathbf{0}} \\Delta f = 0 \\;\\Rightarrow\\; f \\text{ непрерывна в } \\mathbf{a} \\quad \\blacksquare$$"
         }
       ],
       "example": {
-        "title": "Пример",
-        "text": "$f(x,y) = x^2+3y$ дифференцируема в $(1,2)$: $\\Delta f = 2\\Delta x + 3\\Delta y + (\\Delta x)^2$. Коэффициенты: $A_1 = 2 = f_x'(1,2)$, $A_2 = 3 = f_y'(1,2)$."
+        "title": "📝 Пример",
+        "text": "Обратное неверно: $f(x,y) = \\sqrt{x^2+y^2}$ непрерывна в $(0,0)$, но не дифференцируема (нет линейного приближения — конус)."
       },
-      "examSay": "Доказательство: подставить $\\Delta x_j=0$ ($j\\neq i$), разделить на $\\Delta x_i$, предел = $A_i = f_{x_i}'$.",
       "proofTitle": "📐 Доказательство"
     },
     {
       "id": 2,
-      "title": "Доказательство достаточных условий дифференцируемости ФНП",
+      "title": "Доказательство теоремы о независимости порядка дифференцирования (Шварца)",
       "type": "Теорема",
-      "tldr": "Непрерывные частные производные -> дифференцируемость.",
-      "intuition": "Если скорости изменения функции вдоль осей плавно меняются от точки к точке, то функция дифференцируема -- линейное приближение работает во всех направлениях.",
-      "formalText": "**Теорема.** Если частные производные $f_{x_i}'$ существуют в окрестности $\\mathbf{a}$ и непрерывны в $\\mathbf{a}$, то $f$ дифференцируема в $\\mathbf{a}$.",
-      "formula": "f \\in C^1 \\;\\Rightarrow\\; f \\text{ дифф-ма}",
-      "keyIdea": "Идея: теорема Лагранжа + непрерывность производных позволяют заменить производные в промежуточных точках на значения в $\\mathbf{a}$ с малой ошибкой.",
+      "formalText": "**Теорема Шварца.** Если $f''_{xy}$ и $f''_{yx}$ непрерывны в точке $(a,b)$, то $f''_{xy}(a,b) = f''_{yx}(a,b)$.",
+      "formula": "f''_{xy} = f''_{yx}",
+      "insight": "Одну вспомогательную функцию $\\Phi$ представляем через $f''_{xy}$ и через $f''_{yx}$ — получаем равенство в пределе благодаря непрерывности.",
       "steps": [
         {
-          "title": "Разобьем приращение на слагаемые (для двух переменных)",
-          "text": "$\\Delta f = f(a+h, b+k) - f(a,b) = [f(a+h, b+k) - f(a, b+k)] + [f(a, b+k) - f(a,b)]$."
+          "title": "Введём вспомогательную функцию",
+          "text": "Определим:",
+          "math": "$$\\Phi = f(a+h,b+k) - f(a+h,b) - f(a,b+k) + f(a,b)$$"
         },
         {
-          "title": "Применим теорему Лагранжа к каждой скобке",
-          "text": "К первой (по $x$): $= f_x'(a+\\theta_1 h, b+k)\\cdot h$.\\nКо второй (по $y$): $= f_y'(a, b+\\theta_2 k)\\cdot k$.",
-          "math": "$$\\Delta f = f_x'(a+\\theta_1 h, b+k)\\cdot h + f_y'(a, b+\\theta_2 k)\\cdot k$$"
+          "title": "Выразим $\\Phi$ через $f''_{xy}$",
+          "text": "Обозначим $\\varphi(x) = f(x,b+k) - f(x,b)$. Тогда $\\Phi = \\varphi(a+h) - \\varphi(a)$.\n\nПо теореме Лагранжа: $\\Phi = h \\cdot \\varphi'(a+\\theta_1 h)$, где $0<\\theta_1<1$.\n\n$\\varphi'(x) = f'_x(x,b+k) - f'_x(x,b)$. Снова Лагранж по $y$:",
+          "math": "$$\\Phi = h \\cdot k \\cdot f''_{xy}(a+\\theta_1 h, b+\\theta_2 k)$$"
         },
         {
-          "title": "Запишем отклонения от значений в $(a,b)$",
-          "text": "Обозначим $\\alpha = f_x'(a+\\theta_1 h, b+k) - f_x'(a,b)$ и $\\beta = f_y'(a, b+\\theta_2 k) - f_y'(a,b)$. Из непрерывности: $\\alpha, \\beta \\to 0$ при $(h,k) \\to (0,0)$.",
-          "math": "$$\\Delta f = f_x'(a,b)h + f_y'(a,b)k + \\alpha h + \\beta k$$"
+          "title": "Выразим $\\Phi$ через $f''_{yx}$",
+          "text": "Аналогично, группируя сначала по $y$: $\\psi(y) = f(a+h,y) - f(a,y)$. $\\Phi = \\psi(b+k) - \\psi(b) = hk \\cdot f''_{yx}(a+\\theta_3 h, b+\\theta_4 k)$."
         },
         {
-          "title": "Покажем, что остаток -- $o(\\|\\Delta\\mathbf{x}\\|)$",
-          "text": "$|\\alpha h + \\beta k| \\leq (|\\alpha|+|\\beta|)\\sqrt{h^2+k^2}$. Так как $\\alpha, \\beta \\to 0$, остаток $= o(\\sqrt{h^2+k^2})$.",
-          "math": "$$\\Delta f = f_x'(a,b)h + f_y'(a,b)k + o(\\sqrt{h^2+k^2}) \\quad \\blacksquare$$",
-          "tip": "Ключевой момент: непрерывность нужна для того, чтобы $\\alpha \\to 0$ и $\\beta \\to 0$."
+          "title": "Перейдём к пределу",
+          "text": "Разделим на $hk$ и устремим $h,k \\to 0$. По непрерывности $f''_{xy}$ и $f''_{yx}$:",
+          "math": "$$\\lim_{h,k\\to 0} \\frac{\\Phi}{hk} = f''_{xy}(a,b) = f''_{yx}(a,b) \\quad \\blacksquare$$",
+          "tip": "Один и тот же $\\Phi$ даёт два представления; деление на $hk$ и предельный переход завершают доказательство."
         }
       ],
       "example": {
-        "title": "Пример",
-        "text": "$f(x,y) = x^2\\sin y$: $f_x' = 2x\\sin y$, $f_y' = x^2\\cos y$ -- непрерывны всюду, значит $f$ дифференцируема."
+        "title": "📝 Пример",
+        "text": "$f(x,y) = x^3y^2$. $f''_{xy} = 6x^2y$, $f''_{yx} = 6x^2y$ — совпадают."
       },
-      "examSay": "Доказательство: разбить $\\Delta f$ на две скобки, Лагранж к каждой, непрерывность дает $\\alpha,\\beta \\to 0$, остаток = $o(\\|\\Delta\\mathbf{x}\\|)$.",
       "proofTitle": "📐 Доказательство"
     },
     {
       "id": 3,
-      "title": "Доказательство независимости смешанных производных от порядка",
-      "type": "Теорема",
-      "tldr": "Если f_xy'' и f_yx'' непрерывны, то f_xy'' = f_yx'' (теорема Шварца).",
-      "intuition": "Два пути дифференцирования (сначала по $x$, потом по $y$ или наоборот) дают одинаковый результат, если смешанные производные ведут себя «прилично» (непрерывны).",
-      "formalText": "**Теорема (Шварц).** Если $f_{xy}''$ и $f_{yx}''$ непрерывны в точке $(a,b)$, то $f_{xy}''(a,b) = f_{yx}''(a,b)$.",
-      "formula": "f_{xy}'' = f_{yx}''",
-      "keyIdea": "Доказательство использует двойное приращение $\\Phi$ и две группировки: по $x$ и по $y$, с последующим предельным переходом.",
-      "steps": [
-        {
-          "title": "Определим двойное приращение",
-          "text": "Пусть $\\Phi(h,k) = f(a+h,b+k) - f(a+h,b) - f(a,b+k) + f(a,b)$."
-        },
-        {
-          "title": "Сгруппируем по $x$",
-          "text": "Обозначим $g(x) = f(x,b+k) - f(x,b)$. Тогда $\\Phi = g(a+h) - g(a)$. По теореме Лагранжа: $\\Phi = g'(a+\\theta_1 h)\\cdot h = [f_x'(a+\\theta_1 h, b+k) - f_x'(a+\\theta_1 h, b)]\\cdot h$. Ещё раз Лагранж:",
-          "math": "$$\\Phi = f_{xy}''(a+\\theta_1 h, b+\\theta_2 k)\\cdot h \\cdot k$$"
-        },
-        {
-          "title": "Сгруппируем по $y$",
-          "text": "Обозначим $\\psi(y) = f(a+h,y) - f(a,y)$. Тогда $\\Phi = \\psi(b+k)-\\psi(b)$. По Лагранжу дважды:",
-          "math": "$$\\Phi = f_{yx}''(a+\\eta_1 h, b+\\eta_2 k)\\cdot h \\cdot k$$"
-        },
-        {
-          "title": "Приравняем и перейдем к пределу",
-          "text": "Из двух представлений $\\Phi$: $f_{xy}''(a+\\theta_1 h, b+\\theta_2 k) = f_{yx}''(a+\\eta_1 h, b+\\eta_2 k)$. При $h,k \\to 0$ из непрерывности:",
-          "math": "$$f_{xy}''(a,b) = f_{yx}''(a,b) \\quad \\blacksquare$$"
-        }
-      ],
-      "example": {
-        "title": "Пример",
-        "text": "$f = x^2y^3$: $f_{xy}'' = 6xy^2$, $f_{yx}'' = 6xy^2$ -- совпадают (обе непрерывны)."
-      },
-      "examSay": "Доказательство: двойное приращение $\\Phi$, два способа группировки, Лагранж по каждой переменной, предел.",
-      "proofTitle": "📐 Доказательство (Шварц)"
-    },
-    {
-      "id": 4,
-      "title": "Вывод формулы дифференцирования сложной ФНП",
-      "type": "Теорема",
-      "tldr": "dz/dt = (dz/dx)(dx/dt) + (dz/dy)(dy/dt) -- цепное правило.",
-      "intuition": "Изменение $t$ воздействует на $z$ через $x(t)$ и $y(t)$. Общее изменение = сумма всех «путей влияния».",
-      "formalText": "**Теорема.** Если $z = f(x,y)$ дифференцируема, $x = x(t)$, $y = y(t)$ дифференцируемы, то:\\n\\n$$\\frac{dz}{dt} = \\frac{\\partial f}{\\partial x}\\cdot\\frac{dx}{dt} + \\frac{\\partial f}{\\partial y}\\cdot\\frac{dy}{dt}$$",
-      "formula": "\\frac{dz}{dt} = f_x'\\dot{x} + f_y'\\dot{y}",
-      "keyIdea": "Вывод: из $dz = f_x'dx + f_y'dy$ формально делим на $dt$ (или строго через пределы).",
+      "title": "Вывод формулы производной сложной функции",
+      "type": "Формула + вывод",
+      "formalText": "**Утверждение.** Если $z = f(u,v)$ дифференцируема, $u = u(x,y)$, $v = v(x,y)$ дифференцируемы, то:\n\n$$\\frac{\\partial z}{\\partial x} = \\frac{\\partial f}{\\partial u}\\frac{\\partial u}{\\partial x} + \\frac{\\partial f}{\\partial v}\\frac{\\partial v}{\\partial x}$$",
+      "formula": "\\frac{\\partial z}{\\partial x} = \\frac{\\partial f}{\\partial u}\\frac{\\partial u}{\\partial x} + \\frac{\\partial f}{\\partial v}\\frac{\\partial v}{\\partial x}",
+      "insight": "Каждый «путь» влияния $x$ на $z$ (через $u$ и через $v$) даёт свой вклад в производную, и вклады суммируются — как токи в параллельной электрической цепи.",
       "steps": [
         {
           "title": "Запишем приращение $z$",
-          "text": "Из дифференцируемости $f$: $\\Delta z = f_x'\\Delta x + f_y'\\Delta y + \\alpha\\Delta x + \\beta\\Delta y$, где $\\alpha, \\beta \\to 0$ при $(\\Delta x, \\Delta y) \\to (0,0)$."
+          "text": "По дифференцируемости $f$:",
+          "math": "$$\\Delta z = \\frac{\\partial f}{\\partial u}\\Delta u + \\frac{\\partial f}{\\partial v}\\Delta v + \\alpha_1\\Delta u + \\alpha_2\\Delta v$$",
+          "tip": "Где $\\alpha_1, \\alpha_2 \\to 0$ при $\\Delta u, \\Delta v \\to 0$."
         },
         {
-          "title": "Разделим на $\\Delta t$",
-          "text": "Делим обе части на $\\Delta t \\neq 0$:",
-          "math": "$$\\frac{\\Delta z}{\\Delta t} = f_x'\\frac{\\Delta x}{\\Delta t} + f_y'\\frac{\\Delta y}{\\Delta t} + \\alpha\\frac{\\Delta x}{\\Delta t} + \\beta\\frac{\\Delta y}{\\Delta t}$$"
+          "title": "Выразим $\\Delta u$ и $\\Delta v$ через $\\Delta x$",
+          "text": "При $\\Delta y = 0$ (берём частную производную по $x$): $\\Delta u \\approx u'_x \\Delta x$, $\\Delta v \\approx v'_x \\Delta x$."
         },
         {
-          "title": "Перейдем к пределу при $\\Delta t \\to 0$",
-          "text": "Так как $x(t)$, $y(t)$ дифференцируемы: $\\frac{\\Delta x}{\\Delta t} \\to x'(t)$, $\\frac{\\Delta y}{\\Delta t} \\to y'(t)$. Также $\\alpha \\to 0$, $\\beta \\to 0$.",
-          "math": "$$\\frac{dz}{dt} = f_x'\\cdot x'(t) + f_y'\\cdot y'(t) \\quad \\blacksquare$$",
-          "tip": "Остатки $\\alpha x'(t) + \\beta y'(t) \\to 0$, так как $\\alpha, \\beta \\to 0$, а $x'(t), y'(t)$ -- конечные."
+          "title": "Разделим на $\\Delta x$ и перейдём к пределу",
+          "text": "Делим:", 
+          "math": "$$\\frac{\\Delta z}{\\Delta x} = \\frac{\\partial f}{\\partial u}\\frac{\\Delta u}{\\Delta x} + \\frac{\\partial f}{\\partial v}\\frac{\\Delta v}{\\Delta x} + \\alpha_1\\frac{\\Delta u}{\\Delta x} + \\alpha_2\\frac{\\Delta v}{\\Delta x}$$"
+        },
+        {
+          "title": "Предельный переход",
+          "text": "При $\\Delta x \\to 0$: $\\frac{\\Delta u}{\\Delta x} \\to u'_x$, $\\frac{\\Delta v}{\\Delta x} \\to v'_x$, $\\alpha_1,\\alpha_2 \\to 0$:",
+          "math": "$$\\frac{\\partial z}{\\partial x} = \\frac{\\partial f}{\\partial u}\\frac{\\partial u}{\\partial x} + \\frac{\\partial f}{\\partial v}\\frac{\\partial v}{\\partial x} \\quad \\blacksquare$$"
         }
       ],
       "example": {
-        "title": "Пример",
-        "text": "$z = x^2+y^2$, $x = \\cos t$, $y = \\sin t$. $\\frac{dz}{dt} = 2x(-\\sin t)+2y\\cos t = -2\\cos t\\sin t + 2\\sin t\\cos t = 0$. Верно: $z = 1 = \\text{const}$."
+        "title": "📝 Пример",
+        "text": "$z = \\sin(u/v)$, $u = x^2$, $v = y$.\n\n$\\frac{\\partial z}{\\partial x} = \\cos(u/v) \\cdot \\frac{1}{v} \\cdot 2x = \\frac{2x}{y}\\cos\\frac{x^2}{y}$."
       },
-      "examSay": "Вывод: $\\Delta z = f_x'\\Delta x + f_y'\\Delta y + \\alpha\\Delta x + \\beta\\Delta y$, делим на $\\Delta t$, предел.",
-      "proofTitle": "📐 Вывод цепного правила"
-    },
-    {
-      "id": 5,
-      "title": "Теорема о неявной функции и вывод формул для частных производных",
-      "type": "Теорема",
-      "tldr": "F(x,y,z)=0 при F_z'!=0 задает z(x,y). z_x' = -F_x'/F_z'.",
-      "intuition": "Уравнение поверхности неявно определяет одну координату через остальные. Формула производной получается дифференцированием тождества.",
-      "formalText": "**Теорема.** Пусть $F \\in C^1$, $F(x_0,y_0,z_0) = 0$, $F_z'(x_0,y_0,z_0) \\neq 0$. Тогда в окрестности $(x_0,y_0)$ существует $z = z(x,y) \\in C^1$, $z(x_0,y_0) = z_0$, $F(x,y,z(x,y)) \\equiv 0$.\\n\\nЧастные производные: $z_x' = -\\frac{F_x'}{F_z'}$, $z_y' = -\\frac{F_y'}{F_z'}$.",
-      "formula": "z_x' = -\\frac{F_x'}{F_z'},\\quad z_y' = -\\frac{F_y'}{F_z'}",
-      "keyIdea": "Вывод формул: дифференцируем тождество $F(x,y,z(x,y)) = 0$ по $x$ и по $y$ с помощью цепного правила.",
-      "steps": [
-        {
-          "title": "Запишем тождество",
-          "text": "$F(x, y, z(x,y)) \\equiv 0$ в окрестности $(x_0, y_0)$."
-        },
-        {
-          "title": "Дифференцируем по $x$ (при фикс. $y$)",
-          "text": "По цепному правилу:",
-          "math": "$$\\frac{\\partial F}{\\partial x} + \\frac{\\partial F}{\\partial z}\\cdot\\frac{\\partial z}{\\partial x} = 0$$"
-        },
-        {
-          "title": "Выразим $z_x'$",
-          "text": "Так как $F_z' \\neq 0$:",
-          "math": "$$z_x' = -\\frac{F_x'}{F_z'} \\quad \\blacksquare$$",
-          "tip": "Для $z_y'$: дифференцируем тождество по $y$ и получаем $z_y' = -F_y'/F_z'$."
-        }
-      ],
-      "example": {
-        "title": "Пример",
-        "text": "$F = x^3+y^3+z^3-3xyz = 0$. $F_x' = 3x^2-3yz$, $F_z' = 3z^2-3xy$.\\n\\n$z_x' = -\\frac{3x^2-3yz}{3z^2-3xy} = -\\frac{x^2-yz}{z^2-xy}$ (при $z^2 \\neq xy$)."
-      },
-      "examSay": "Вывод: $F_x' + F_z'z_x' = 0$, откуда $z_x' = -F_x'/F_z'$. Обязательно укажите условие $F_z' \\neq 0$.",
       "proofTitle": "📐 Вывод формулы"
     },
     {
-      "id": 6,
-      "title": "Вывод уравнения касательной плоскости к поверхности F(x,y,z) = 0",
-      "type": "Теорема",
-      "tldr": "Нормаль = grad F. Касательная: F_x'(x-x0)+F_y'(y-y0)+F_z'(z-z0)=0.",
-      "intuition": "Градиент $F$ перпендикулярен поверхности уровня $F=0$. Касательная плоскость проходит через точку и перпендикулярна градиенту.",
-      "formalText": "**Теорема.** Если $\\nabla F(M_0) \\neq \\mathbf{0}$, то касательная плоскость к $F(x,y,z) = 0$ в точке $M_0(x_0,y_0,z_0)$:\\n\\n$$F_x'(M_0)(x-x_0) + F_y'(M_0)(y-y_0) + F_z'(M_0)(z-z_0) = 0$$",
-      "formula": "F_x'(x-x_0)+F_y'(y-y_0)+F_z'(z-z_0) = 0",
-      "keyIdea": "Вывод: $\\nabla F$ перпендикулярен любому касательному вектору к поверхности, значит служит нормалью к касательной плоскости.",
+      "id": 4,
+      "title": "Вывод формулы производной неявной функции",
+      "type": "Формула + вывод",
+      "formalText": "**Утверждение.** Если $F(x,y) = 0$ задаёт $y = y(x)$ и $F'_y \\neq 0$, то:\n\n$$y'(x) = -\\frac{F'_x}{F'_y}$$",
+      "formula": "y' = -\\frac{F'_x}{F'_y}",
+      "insight": "Производная неявной функции получается дифференцированием тождества $F(x,y(x)) \\equiv 0$. Знак минус — $x$ и $y$ «компенсируют» друг друга, чтобы $F$ осталось нулём.",
       "steps": [
         {
-          "title": "Рассмотрим кривую на поверхности",
-          "text": "Пусть $\\mathbf{r}(t) = (x(t), y(t), z(t))$ -- гладкая кривая на $F=0$, $\\mathbf{r}(t_0) = M_0$. Тогда $F(x(t),y(t),z(t)) \\equiv 0$."
+          "title": "Запишем тождество $F(x,y(x)) \\equiv 0$",
+          "text": "По условию: $F(x, y(x)) = 0$ для всех $x$ в окрестности $x_0$. Так как это верно тождественно, мы можем дифференцировать обе части по $x$."
         },
         {
-          "title": "Дифференцируем по $t$",
-          "text": "По цепному правилу:",
-          "math": "$$F_x'x'(t) + F_y'y'(t) + F_z'z'(t) = 0$$"
+          "title": "Продифференцируем по $x$ (цепное правило)",
+          "text": "По правилу сложной функции: $y$ зависит от $x$, поэтому:",
+          "math": "$$\\frac{d}{dx}F(x,y(x)) = F'_x \\cdot 1 + F'_y \\cdot y'(x) = 0$$"
         },
         {
-          "title": "Интерпретируем геометрически",
-          "text": "Это скалярное произведение $(\\nabla F, \\mathbf{r}'(t)) = 0$. Значит $\\nabla F \\perp \\mathbf{r}'(t_0)$ для любой кривой на поверхности. Следовательно, $\\nabla F$ -- нормаль.",
-          "math": "$$\\nabla F \\perp \\text{(любой касательный вектор)}$$"
-        },
-        {
-          "title": "Запишем уравнение плоскости",
-          "text": "Плоскость с нормалью $\\nabla F(M_0)$ через $M_0$:",
-          "math": "$$F_x'(x-x_0)+F_y'(y-y_0)+F_z'(z-z_0) = 0 \\quad \\blacksquare$$"
+          "title": "Выразим $y'(x)$",
+          "text": "Перенесём $F'_x$ в правую часть и разделим на $F'_y$ (по условию $F'_y \\neq 0$):",
+          "math": "$$y'(x) = -\\frac{F'_x}{F'_y} \\quad \\blacksquare$$",
+          "tip": "Аналогично для $F(x,y,z) = 0$: $z'_x = -F'_x/F'_z$, $z'_y = -F'_y/F'_z$."
         }
       ],
       "example": {
-        "title": "Пример",
-        "text": "$F = z - x^2 - y^2 = 0$ (параболоид) в $(1,1,2)$. $\\nabla F = (-2x, -2y, 1) = (-2,-2,1)$.\\n\\nКасательная: $-2(x-1) - 2(y-1) + (z-2) = 0$, т.е. $z = 2x+2y-2$."
+        "title": "📝 Пример",
+        "text": "$F = x^2 + y^2 - 1 = 0$. $F'_x = 2x$, $F'_y = 2y$.\n\n$y' = -\\frac{2x}{2y} = -\\frac{x}{y}$ (при $y \\neq 0$). Проверка: $y = \\sqrt{1-x^2}$, $y' = \\frac{-x}{\\sqrt{1-x^2}} = -\\frac{x}{y}$."
       },
-      "examSay": "Вывод: кривая на $F=0$ дает $(\\nabla F, \\mathbf{r}') = 0$, т.е. $\\nabla F$ -- нормаль. Уравнение плоскости через скалярное произведение.",
-      "proofTitle": "📐 Вывод уравнения"
+      "proofTitle": "📐 Вывод формулы"
+    },
+    {
+      "id": 5,
+      "title": "Доказательство ортогональности градиента и линии уровня",
+      "type": "Теорема",
+      "formalText": "**Теорема.** Градиент $\\nabla f(\\mathbf{a})$ ортогонален линии уровня $f(\\mathbf{x}) = c$, проходящей через $\\mathbf{a}$.",
+      "formula": "(\\nabla f, \\mathbf{r}'(t)) = 0",
+      "insight": "Вдоль линии уровня функция постоянна. Значит скорость изменения в касательном направлении = 0. А скорость изменения — это скалярное произведение с градиентом. Значит градиент перпендикулярен.",
+      "steps": [
+        {
+          "title": "Параметризуем линию уровня",
+          "text": "Пусть $\\mathbf{r}(t)$ — гладкая параметризация линии уровня: $f(\\mathbf{r}(t)) = c$ для всех $t$."
+        },
+        {
+          "title": "Продифференцируем по $t$",
+          "text": "Дифференцируем тождество $f(\\mathbf{r}(t)) = c$ по $t$. По цепному правилу:",
+          "math": "$$\\frac{d}{dt}f(\\mathbf{r}(t)) = \\sum_{i=1}^n \\frac{\\partial f}{\\partial x_i}\\frac{dr_i}{dt} = (\\nabla f, \\mathbf{r}'(t)) = 0$$"
+        },
+        {
+          "title": "Заключение",
+          "text": "$(\\nabla f, \\mathbf{r}'(t)) = 0$ при всех $t$. Вектор $\\mathbf{r}'(t)$ — касательный к линии уровня. Значит $\\nabla f$ перпендикулярен касательной, т.е. ортогонален линии уровня.",
+          "math": "$$\\nabla f \\perp \\text{линии уровня} \\quad \\blacksquare$$"
+        }
+      ],
+      "example": {
+        "title": "📝 Пример",
+        "text": "$f(x,y) = x^2+y^2$. Линии уровня: окружности $x^2+y^2=c$, $\\mathbf{r}(t) = (\\sqrt{c}\\cos t, \\sqrt{c}\\sin t)$.\n\n$\\nabla f = (2x,2y) = 2(\\sqrt{c}\\cos t, \\sqrt{c}\\sin t)$, $\\mathbf{r}' = (-\\sqrt{c}\\sin t, \\sqrt{c}\\cos t)$.\n\n$(\\nabla f, \\mathbf{r}') = -2c\\cos t\\sin t + 2c\\sin t\\cos t = 0$."
+      },
+      "proofTitle": "📐 Доказательство"
+    },
+    {
+      "id": 6,
+      "title": "Доказательство достаточных условий дифференцируемости",
+      "type": "Теорема",
+      "formalText": "**Теорема.** Если $f'_x$ и $f'_y$ непрерывны в точке $(a,b)$, то $f$ дифференцируема в $(a,b)$.",
+      "formula": "f'_x, f'_y \\text{ непрерывны} \\;\\Rightarrow\\; f \\text{ дифф-ма}",
+      "insight": "Непрерывность частных производных означает отсутствие «разрывов» в касательных наклонах. Это гарантирует, что линейное приближение работает одинаково хорошо по всем направлениям.",
+      "steps": [
+        {
+          "title": "Запишем приращение через теорему Лагранжа",
+          "text": "Добавим и вычтем промежуточное значение:",
+          "math": "$$\\Delta f = [f(a+\\Delta x, b+\\Delta y) - f(a+\\Delta x, b)] + [f(a+\\Delta x, b) - f(a,b)]$$"
+        },
+        {
+          "title": "Применим теорему Лагранжа отдельно по каждой переменной",
+          "text": "По теореме о среднем для 1-й скобки (по $y$) и 2-й (по $x$):",
+          "math": "$$\\Delta f = f'_y(a+\\Delta x, b+\\theta_1\\Delta y)\\Delta y + f'_x(a+\\theta_2\\Delta x, b)\\Delta x$$"
+        },
+        {
+          "title": "Используем непрерывность частных производных",
+          "text": "$f'_x(a+\\theta_2\\Delta x, b) = f'_x(a,b) + \\alpha_1$, $f'_y(a+\\Delta x, b+\\theta_1\\Delta y) = f'_y(a,b) + \\alpha_2$, где $\\alpha_1,\\alpha_2 \\to 0$ при $\\Delta\\mathbf{x} \\to \\mathbf{0}$.",
+          "math": "$$\\Delta f = f'_x(a,b)\\Delta x + f'_y(a,b)\\Delta y + \\alpha_1\\Delta x + \\alpha_2\\Delta y$$"
+        },
+        {
+          "title": "Заключение",
+          "text": "Остаток $\\alpha_1\\Delta x + \\alpha_2\\Delta y$: $|\\alpha_1\\Delta x + \\alpha_2\\Delta y| \\leq (|\\alpha_1|+|\\alpha_2|)\\|\\Delta\\mathbf{x}\\| = o(\\|\\Delta\\mathbf{x}\\|)$, т.к. $\\alpha_1,\\alpha_2 \\to 0$. Это определение дифференцируемости.",
+          "math": "$$\\Delta f = f'_x \\Delta x + f'_y \\Delta y + o(\\|\\Delta\\mathbf{x}\\|) \\quad \\blacksquare$$"
+        }
+      ],
+      "example": {
+        "title": "📝 Пример",
+        "text": "$f(x,y) = x \\sin y$. $f'_x = \\sin y$, $f'_y = x\\cos y$ — обе непрерывны $\\Rightarrow$ $f$ дифференцируема всюду."
+      },
+      "proofTitle": "📐 Доказательство"
     }
   ]
 }

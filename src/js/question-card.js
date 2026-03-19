@@ -28,6 +28,15 @@ export function buildQuestionCard(q) {
 
 /**
  * Build just the body content (used in both card view and quiz/flashcard views).
+ *
+ * Card layout (5-block structure):
+ *   ① 📖 Definition    (formalText)  — always, labeled block
+ *   ② Formula          (formula)     — optional, prominent math box after definition
+ *   ③ 💡 Plain words   (insight)     — always, labeled block  [NEW: merges old tldr+intuition+keyIdea]
+ *   ④ 📌 Note          (note)        — optional               [NEW: merges old examSay+note]
+ *   ⑤ Proof / Example  (steps, example) — collapsible toggles
+ *
+ *   Legacy fields (tldr, intuition, keyIdea, examSay) are also supported for backward compatibility.
  */
 export function buildQuestionBody(q, proofLabel, exampleLabel) {
   if (!proofLabel) {
@@ -48,26 +57,34 @@ export function buildQuestionBody(q, proofLabel, exampleLabel) {
     return buildPracticeModeBody(q, proofLabel, exampleLabel);
   }
 
-  // --- Theory mode: standard rendering ---
+  // --- Theory mode: 5-block structure ---
   const proofContent = buildProofContent(q);
   const proofTitle = q.proofTitle || proofLabel;
 
+  // Resolve insight: new field or legacy fallback
+  const insightText = q.insight || buildLegacyInsight(q);
+
+  // Resolve note: new field or legacy fallback
+  const noteText = q.note || q.examSay || '';
+
+  // Determine label for the formal block based on type
+  const formalLabel = getFormalLabel(q.type);
+
   return `
-    ${q.tldr ? `<div class="card-tldr">${q.tldr}</div>` : ''}
-    ${q.intuition ? `<p class="card-intuition">${nl(q.intuition)}</p>` : ''}
-    ${q.analogy ? `<p class="card-analogy">${q.analogy}</p>` : ''}
-    ${q.visual ? `<div class="visual-block">${q.visual}${q.visualLabel ? `<div class="visual-label">${q.visualLabel}</div>` : ''}</div>` : ''}
     <div class="card-formal">
+      <div class="card-formal-label">${formalLabel}</div>
       <div class="card-formal-text">${nl(q.formalText || q.statement || '')}</div>
       ${q.conditions ? '<ul class="card-cond">' + q.conditions.map(c => '<li>' + c + '</li>').join('') + '</ul>' : ''}
-      ${q.formula ? `<div class="math-box">$$${q.formula}$$</div>` : ''}
     </div>
+    ${q.formula ? `<div class="math-box">$$${q.formula}$$</div>` : ''}
+    ${q.visual ? `<div class="visual-block">${q.visual}${q.visualLabel ? `<div class="visual-label">${q.visualLabel}</div>` : ''}</div>` : ''}
+    ${insightText ? `<div class="card-insight"><div class="card-insight-label">💡 Простыми словами</div><p class="card-insight-text">${nl(insightText)}</p></div>` : ''}
+    ${noteText ? `<p class="card-note">📌 ${nl(noteText)}</p>` : ''}
     ${proofContent ? `
       <div class="proof-toggle" onclick="this.classList.toggle('open');window.__renderMath?.(this.closest('.theorem-page') || this.closest('.quiz-card'))">
-        <span class="proof-toggle-icon">${proofTitle.includes('📐') ? '' : '📐'}</span> ${proofTitle} <span class="adv-chevron">▸</span>
+        <span class="proof-toggle-icon">📐</span> ${proofTitle} <span class="adv-chevron">▸</span>
       </div>
       <div class="proof-body">
-        ${q.keyIdea ? `<div class="proof-key-idea">🔑 ${nl(q.keyIdea)}</div>` : ''}
         ${proofContent}
       </div>` : ''}
     ${q.example ? `
@@ -78,8 +95,6 @@ export function buildQuestionBody(q, proofLabel, exampleLabel) {
         <div class="card-example-text">${nl(typeof q.example === 'string' ? q.example : q.example.text)}</div>
         ${q.example?.math ? `<div class="math-box">${q.example.math}</div>` : ''}
       </div>` : ''}
-    ${q.examSay ? `<p class="card-exam-say">🎓 <em>${nl(q.examSay)}</em></p>` : ''}
-    ${q.note ? `<p class="card-note">💡 ${nl(q.note)}</p>` : ''}
     ${q.advanced ? `
       <div class="adv-toggle" onclick="this.classList.toggle('open');window.__renderMath?.(this.closest('.theorem-page'))">
         <span class="adv-toggle-icon">🎓</span> Строгая формулировка <span class="adv-chevron">▸</span>
@@ -90,23 +105,51 @@ export function buildQuestionBody(q, proofLabel, exampleLabel) {
 }
 
 /**
+ * Get the label for the formal text block based on card type.
+ */
+function getFormalLabel(type) {
+  if (!type) return '📖 Формулировка';
+  const t = type.toLowerCase();
+  if (t.includes('определение')) return '📖 Определение';
+  if (t.includes('теорема')) return '📖 Теорема';
+  if (t.includes('закон')) return '📖 Закон';
+  if (t.includes('формула')) return '📖 Формула';
+  if (t.includes('понятие')) return '📖 Понятие';
+  return '📖 Формулировка';
+}
+
+/**
+ * Build legacy insight from old tldr + intuition + keyIdea fields.
+ * Supports old card format for backward compatibility.
+ */
+function buildLegacyInsight(q) {
+  const parts = [];
+  // intuition is the most valuable legacy field (contains analogy)
+  if (q.intuition) parts.push(q.intuition);
+  // keyIdea adds the key takeaway if not already in intuition
+  if (q.keyIdea && !q.intuition?.includes(q.keyIdea)) parts.push(q.keyIdea);
+  // tldr only if nothing else (it's usually redundant)
+  if (parts.length === 0 && q.tldr) parts.push(q.tldr);
+  return parts.join(' ');
+}
+
+/**
  * Build body for practice-mode cards: only formalText visible, rest hidden.
  */
 function buildPracticeModeBody(q, proofLabel, exampleLabel) {
   const isAlgorithm = q.type === 'Алгоритм' || q.type === 'Справочник' || q.type === 'Метод';
   
-  // Algorithm/reference cards in practice bundles are shown fully (they ARE the theory reference)
+  // Algorithm/reference cards in practice bundles are shown fully
   if (isAlgorithm) {
     const proofContent = buildProofContent(q);
+    const insightText = q.insight || buildLegacyInsight(q);
     return `
-      ${q.tldr ? `<div class="card-tldr">${q.tldr}</div>` : ''}
-      ${q.intuition ? `<p class="card-intuition">${nl(q.intuition)}</p>` : ''}
+      ${insightText ? `<div class="card-insight"><div class="card-insight-label">💡 Простыми словами</div><p class="card-insight-text">${nl(insightText)}</p></div>` : ''}
       <div class="card-formal">
         <div class="card-formal-text">${nl(q.formalText || '')}</div>
         ${q.conditions ? '<ul class="card-cond">' + q.conditions.map(c => '<li>' + c + '</li>').join('') + '</ul>' : ''}
         ${q.formula ? `<div class="math-box">$$${q.formula}$$</div>` : ''}
       </div>
-      ${q.keyIdea ? `<div class="proof-key-idea">🔑 ${nl(q.keyIdea)}</div>` : ''}
       ${proofContent || ''}
       ${q.example ? `
         <div class="example-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('show')">
@@ -116,12 +159,13 @@ function buildPracticeModeBody(q, proofLabel, exampleLabel) {
           <div class="card-example-text">${nl(typeof q.example === 'string' ? q.example : q.example.text)}</div>
           ${q.example?.math ? `<div class="math-box">${q.example.math}</div>` : ''}
         </div>` : ''}
-      ${q.note ? `<p class="card-note">💡 ${nl(q.note)}</p>` : ''}`;
+      ${q.note ? `<p class="card-note">📌 ${nl(q.note)}</p>` : ''}`;
   }
 
   // Task cards: only formalText visible, rest behind solution-reveal
-  const hasSolution = q.tldr || q.keyIdea || q.steps?.length || q.proof || q.formula || q.example || q.examSay || q.note;
+  const hasSolution = q.insight || q.tldr || q.keyIdea || q.steps?.length || q.proof || q.formula || q.example || q.note || q.examSay;
   const proofContent = buildProofContent(q);
+  const insightText = q.insight || buildLegacyInsight(q);
 
   return `
     <div class="card-formal practice-condition">
@@ -135,15 +179,13 @@ function buildPracticeModeBody(q, proofLabel, exampleLabel) {
         <span class="adv-chevron">▸</span>
       </div>
       <div class="solution-body">
-        ${q.tldr ? `<div class="card-tldr">${q.tldr}</div>` : ''}
-        ${q.keyIdea ? `<div class="proof-key-idea">🔑 ${nl(q.keyIdea)}</div>` : ''}
+        ${insightText ? `<div class="card-insight"><div class="card-insight-label">💡 Простыми словами</div><p class="card-insight-text">${nl(insightText)}</p></div>` : ''}
         ${proofContent || ''}
         ${q.formula ? `<div class="solution-answer"><span class="solution-answer-label">Ответ:</span> <div class="math-box">$$${q.formula}$$</div></div>` : ''}
         ${q.example ? `
           <div class="card-example-text">${nl(typeof q.example === 'string' ? q.example : q.example.text)}</div>
           ${q.example?.math ? `<div class="math-box">${q.example.math}</div>` : ''}` : ''}
-        ${q.examSay ? `<p class="card-exam-say">🎓 <em>${nl(q.examSay)}</em></p>` : ''}
-        ${q.note ? `<p class="card-note">💡 ${nl(q.note)}</p>` : ''}
+        ${q.note || q.examSay ? `<p class="card-note">📌 ${nl(q.note || q.examSay)}</p>` : ''}
       </div>` : ''}`;
 }
 

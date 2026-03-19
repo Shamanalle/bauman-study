@@ -44,6 +44,8 @@
 .theorem-page.open .tp-body { padding: 28px 32px; display: flex; flex-direction: column; gap: 20px; }
 
 /* Card content blocks */
+
+/* Legacy blocks (backward compat) */
 .card-tldr {
   font-size: 1.15rem; font-weight: 800; color: var(--text);
   line-height: 1.5; letter-spacing: -0.02em;
@@ -59,8 +61,12 @@
   border-radius: 10px; border: 1px solid var(--accent-border);
 }
 
-/* Formal text */
+/* Formal text block with label */
 .card-formal { margin: 0; }
+.card-formal-label {
+  font-size: 0.78rem; font-weight: 700; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px;
+}
 .card-formal-text { font-size: 0.95rem; line-height: 1.85; color: var(--text); margin: 0 0 12px; }
 .card-formal-text ul, .card-formal-text ol { padding-left: 24px; margin: 12px 0; }
 .card-formal-text li { margin-bottom: 8px; }
@@ -169,7 +175,26 @@
 
 /* Exam/Note text */
 .card-exam-say { font-size: 0.85rem; color: var(--text2); line-height: 1.7; margin: 0; padding-top: 8px; border-top: 1px solid var(--border); }
-.card-note { font-size: 0.85rem; color: var(--text2); line-height: 1.7; margin: 0; }
+.card-note {
+  font-size: 0.85rem; color: var(--text2); line-height: 1.7; margin: 0;
+  padding: 10px 14px; background: var(--accent-bg); border-radius: 8px;
+  border: 1px solid var(--accent-border);
+}
+
+/* Insight block (💡 Простыми словами) */
+.card-insight {
+  padding: 14px 18px; border-radius: 10px;
+  background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+  border: 1px solid #bae6fd;
+}
+.card-insight-label {
+  font-size: 0.78rem; font-weight: 700; color: #0284c7;
+  text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px;
+}
+.card-insight-text {
+  font-size: 0.92rem; color: #0c4a6e; line-height: 1.75;
+  margin: 0; font-style: italic;
+}
 
 /* Key idea */
 .key-idea { background: var(--orange-bg); border: 1px solid var(--orange-border); border-radius: var(--radius); padding: 14px 18px; }
