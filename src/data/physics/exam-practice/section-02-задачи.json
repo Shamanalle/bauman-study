@@ -10,9 +10,19 @@
       "tldr": "dω = (M/I)dt → интегрируем",
       "hint": "$I = mR^2/2$, $\\omega = \\gamma t^3/(3I)$",
       "steps": [
-        {"title": "Момент инерции", "text": "$I = mR^2/2 = 1 \\cdot 0{,}01/2 = 0{,}005$ кг·м²."},
-        {"title": "Угловая скорость", "text": "$d\\omega = \\frac{M}{I}dt = \\frac{\\gamma t^2}{I}dt$.\n$\\omega = \\frac{\\gamma t^3}{3I} = \\frac{5 \\cdot 125}{3 \\cdot 0{,}005} = \\frac{625}{0{,}015} \\approx 41667$ рад/с."},
-        {"title": "Работа", "text": "$A = \\int_0^5 M \\cdot \\omega\\, dt = \\frac{\\gamma^2}{3I}\\int_0^5 t^5\\, dt = \\frac{\\gamma^2 t^6}{18I}$.\n$A = \\frac{25 \\cdot 15625}{18 \\cdot 0{,}005} \\approx 4{,}34$ МДж.", "math": "$$\\boxed{\\omega \\approx 41667 \\text{ рад/с}, \\; A \\approx 4340 \\text{ кДж}}$$"}
+        {
+          "title": "Момент инерции",
+          "text": "$I = mR^2/2 = 1 \\cdot 0{,}01/2 = 0{,}005$ кг·м²."
+        },
+        {
+          "title": "Угловая скорость",
+          "text": "$d\\omega = \\frac{M}{I}dt = \\frac{\\gamma t^2}{I}dt$.\n$\\omega = \\frac{\\gamma t^3}{3I} = \\frac{5 \\cdot 125}{3 \\cdot 0{,}005} = \\frac{625}{0{,}015} \\approx 41667$ рад/с."
+        },
+        {
+          "title": "Работа",
+          "text": "$A = \\int_0^5 M \\cdot \\omega\\, dt = \\frac{\\gamma^2}{3I}\\int_0^5 t^5\\, dt = \\frac{\\gamma^2 t^6}{18I}$.\n$A = \\frac{25 \\cdot 15625}{18 \\cdot 0{,}005} \\approx 4{,}34$ МДж.",
+          "math": "$$\\boxed{\\omega \\approx 41667 \\text{ рад/с}, \\; A \\approx 4340 \\text{ кДж}}$$"
+        }
       ],
       "formula": "\\omega = \\gamma t^3/(3I)"
     },
@@ -24,9 +34,19 @@
       "tldr": "v_max = Aω, w = ρA²ω²/2, j = wv",
       "hint": "ω = 0,5 мс⁻¹ = 500 с⁻¹",
       "steps": [
-        {"title": "Параметры", "text": "$A = 2 \\cdot 10^{-3}$ м, $\\omega = 500$ с$^{-1}$, $k = 2{,}65$ м$^{-1}$."},
-        {"title": "Скорость частиц", "text": "$v_{\\max} = A\\omega = 2 \\cdot 10^{-3} \\cdot 500 = 1$ м/с."},
-        {"title": "Энергия и Умов", "text": "$v_{\\text{фаз}} = \\omega/k = 500/2{,}65 \\approx 188{,}7$ м/с.\n$\\langle w \\rangle = \\rho A^2\\omega^2/2$.\n$|\\vec{j}| = \\langle w \\rangle \\cdot v_{\\text{фаз}}$.", "math": "$$\\boxed{v_{\\max} = 1 \\text{ м/с}, \\; v_{\\text{фаз}} \\approx 189 \\text{ м/с}}$$"}
+        {
+          "title": "Параметры",
+          "text": "$A = 2 \\cdot 10^{-3}$ м, $\\omega = 500$ с$^{-1}$, $k = 2{,}65$ м$^{-1}$."
+        },
+        {
+          "title": "Скорость частиц",
+          "text": "$v_{\\max} = A\\omega = 2 \\cdot 10^{-3} \\cdot 500 = 1$ м/с."
+        },
+        {
+          "title": "Энергия и Умов",
+          "text": "$v_{\\text{фаз}} = \\omega/k = 500/2{,}65 \\approx 188{,}7$ м/с.\n$\\langle w \\rangle = \\rho A^2\\omega^2/2$.\n$|\\vec{j}| = \\langle w \\rangle \\cdot v_{\\text{фаз}}$.",
+          "math": "$$\\boxed{v_{\\max} = 1 \\text{ м/с}, \\; v_{\\text{фаз}} \\approx 189 \\text{ м/с}}$$"
+        }
       ],
       "formula": "v_{\\max} = 1 \\text{ м/с}"
     },
@@ -38,9 +58,19 @@
       "tldr": "m dv = (b/t)dt → v = (b/m)ln(t₂/t₁)",
       "hint": "Интегрируем: $v = (b/m)\\ln(t_2/t_1)$",
       "steps": [
-        {"title": "Скорость", "text": "$m\\frac{dv}{dt} = \\frac{b}{t} \\Rightarrow v = \\frac{b}{m}\\ln\\frac{t_2}{t_1}$.\n$5 = 5\\ln\\frac{t_2}{10} \\Rightarrow \\ln\\frac{t_2}{10} = 1$.\n$t_2 = 10e \\approx 27{,}2$ с."},
-        {"title": "Работа", "text": "По теореме о кин. энергии:\n$A = \\Delta E_k = mv^2/2 = 2 \\cdot 25/2 = 25$ Дж."},
-        {"title": "Ответ", "text": "", "math": "$$\\boxed{t_2 = 10e \\approx 27 \\text{ с}, \\; A = 25 \\text{ Дж}}$$"}
+        {
+          "title": "Скорость",
+          "text": "$m\\frac{dv}{dt} = \\frac{b}{t} \\Rightarrow v = \\frac{b}{m}\\ln\\frac{t_2}{t_1}$.\n$5 = 5\\ln\\frac{t_2}{10} \\Rightarrow \\ln\\frac{t_2}{10} = 1$.\n$t_2 = 10e \\approx 27{,}2$ с."
+        },
+        {
+          "title": "Работа",
+          "text": "По теореме о кин. энергии:\n$A = \\Delta E_k = mv^2/2 = 2 \\cdot 25/2 = 25$ Дж."
+        },
+        {
+          "title": "Ответ",
+          "text": "",
+          "math": "$$\\boxed{t_2 = 10e \\approx 27 \\text{ с}, \\; A = 25 \\text{ Дж}}$$"
+        }
       ],
       "formula": "t_2 = 10e \\approx 27 \\text{ с}"
     },
@@ -52,9 +82,19 @@
       "tldr": "ε = M_сил/I, теорема Штейнера",
       "hint": "$I = I_{\\text{шар}} + I_{\\text{ст}} = \\frac{7ml^2}{10} + \\frac{ml^2}{3} = \\frac{31ml^2}{30}$",
       "steps": [
-        {"title": "Моменты инерции", "text": "$I_{\\text{шар}} = \\frac{2}{5}(2m)(l/2)^2 + 2m(l/2)^2 = \\frac{7ml^2}{10}$.\n$I_{\\text{ст}} = \\frac{ml^2}{12} + m(l/2)^2 = \\frac{ml^2}{3}$.\n$I = \\frac{31ml^2}{30}$."},
-        {"title": "Момент сил", "text": "$M = (2m+m)g\\frac{l}{2}\\sin\\varphi = \\frac{3mgl}{2}\\sin 30° = \\frac{3mgl}{4}$."},
-        {"title": "Ответ", "text": "$\\varepsilon = \\frac{M}{I} = \\frac{45g\\sin\\varphi}{62l} = \\frac{45 \\cdot 10 \\cdot 0{,}5}{31 \\cdot 0{,}7} \\approx 10{,}4$ рад/с².", "math": "$$\\boxed{\\varepsilon \\approx 10{,}4 \\text{ рад/с}^2}$$"}
+        {
+          "title": "Моменты инерции",
+          "text": "$I_{\\text{шар}} = \\frac{2}{5}(2m)(l/2)^2 + 2m(l/2)^2 = \\frac{7ml^2}{10}$.\n$I_{\\text{ст}} = \\frac{ml^2}{12} + m(l/2)^2 = \\frac{ml^2}{3}$.\n$I = \\frac{31ml^2}{30}$."
+        },
+        {
+          "title": "Момент сил",
+          "text": "$M = (2m+m)g\\frac{l}{2}\\sin\\varphi = \\frac{3mgl}{2}\\sin 30° = \\frac{3mgl}{4}$."
+        },
+        {
+          "title": "Ответ",
+          "text": "$\\varepsilon = \\frac{M}{I} = \\frac{45g\\sin\\varphi}{62l} = \\frac{45 \\cdot 10 \\cdot 0{,}5}{31 \\cdot 0{,}7} \\approx 10{,}4$ рад/с².",
+          "math": "$$\\boxed{\\varepsilon \\approx 10{,}4 \\text{ рад/с}^2}$$"
+        }
       ],
       "formula": "\\varepsilon = 45g\\sin\\varphi/(62l)"
     },
@@ -66,9 +106,19 @@
       "tldr": "TV^(γ-1) = const, λ = 1/(√2 πd²n)",
       "hint": "Ar одноатомный: γ = 5/3, γ−1 = 2/3",
       "steps": [
-        {"title": "Объём", "text": "$T_0 V_0^{2/3} = (T_0/\\alpha) V_1^{2/3}$.\n$V_1 = V_0 \\alpha^{3/2}$."},
-        {"title": "Длина пробега", "text": "$\\langle l \\rangle = \\frac{V_1}{\\sqrt{2}\\pi d^2 \\nu N_A}$."},
-        {"title": "Вязкость", "text": "$\\eta = \\frac{1}{3}\\rho \\langle l\\rangle \\langle v \\rangle = \\frac{2}{3\\pi d^2 N_A}\\sqrt{\\frac{\\mu R T_1}{\\pi}}$.", "math": "$$\\boxed{V_1 = V_0\\alpha^{3/2}}$$"}
+        {
+          "title": "Объём",
+          "text": "$T_0 V_0^{2/3} = (T_0/\\alpha) V_1^{2/3}$.\n$V_1 = V_0 \\alpha^{3/2}$."
+        },
+        {
+          "title": "Длина пробега",
+          "text": "$\\langle l \\rangle = \\frac{V_1}{\\sqrt{2}\\pi d^2 \\nu N_A}$."
+        },
+        {
+          "title": "Вязкость",
+          "text": "$\\eta = \\frac{1}{3}\\rho \\langle l\\rangle \\langle v \\rangle = \\frac{2}{3\\pi d^2 N_A}\\sqrt{\\frac{\\mu R T_1}{\\pi}}$.",
+          "math": "$$\\boxed{V_1 = V_0\\alpha^{3/2}}$$"
+        }
       ],
       "formula": "V_1 = V_0 \\alpha^{3/2}"
     },
@@ -80,9 +130,19 @@
       "tldr": "A/A₀ = e^{βt}, β = ω₀/(2Q)",
       "hint": "$\\omega_0 = \\sqrt{g/l}$, $\\beta \\approx \\omega_0/(2Q)$",
       "steps": [
-        {"title": "Параметры", "text": "$\\omega_0 = \\sqrt{9{,}8/0{,}64} \\approx 3{,}91$ рад/с.\n$\\beta = \\omega_0/(2Q) = 3{,}91/200 \\approx 0{,}0196$ с⁻¹."},
-        {"title": "Изменение", "text": "$A_0/A(t) = e^{\\beta t} = e^{0{,}0196 \\cdot 785} = e^{15{,}4} \\approx 4{,}8 \\cdot 10^6$."},
-        {"title": "Ответ", "text": "Амплитуда уменьшится в ~5 миллионов раз.", "math": "$$\\boxed{A_0/A \\approx 5 \\cdot 10^6}$$"}
+        {
+          "title": "Параметры",
+          "text": "$\\omega_0 = \\sqrt{9{,}8/0{,}64} \\approx 3{,}91$ рад/с.\n$\\beta = \\omega_0/(2Q) = 3{,}91/200 \\approx 0{,}0196$ с⁻¹."
+        },
+        {
+          "title": "Изменение",
+          "text": "$A_0/A(t) = e^{\\beta t} = e^{0{,}0196 \\cdot 785} = e^{15{,}4} \\approx 4{,}8 \\cdot 10^6$."
+        },
+        {
+          "title": "Ответ",
+          "text": "Амплитуда уменьшится в ~5 миллионов раз.",
+          "math": "$$\\boxed{A_0/A \\approx 5 \\cdot 10^6}$$"
+        }
       ],
       "formula": "A_0/A \\approx 5 \\cdot 10^6"
     },
@@ -94,9 +154,19 @@
       "tldr": "ω₀ = sqrt(mgl_c/I), I = (31/30)ml²",
       "hint": "Совпадает со структурой билета 4 (шар + стержень), но другие ц.м.",
       "steps": [
-        {"title": "Моменты инерции", "text": "$I = \\frac{ml^2}{3} + \\frac{7ml^2}{10} = \\frac{31ml^2}{30}$ (аналогично билету 4)."},
-        {"title": "Центр масс", "text": "$l_c = \\frac{m \\cdot l/2 + 2m \\cdot l/2}{3m} = l/2$."},
-        {"title": "Частота", "text": "$\\omega_0 = \\sqrt{\\frac{3mg \\cdot l/2}{31ml^2/30}} = \\sqrt{\\frac{45g}{31l}}$.\n$= \\sqrt{\\frac{45 \\cdot 10}{31 \\cdot 0{,}656}} \\approx 2{,}72$ рад/с.", "math": "$$\\boxed{\\omega_0 \\approx 2{,}72 \\text{ рад/с}}$$"}
+        {
+          "title": "Моменты инерции",
+          "text": "$I = \\frac{ml^2}{3} + \\frac{7ml^2}{10} = \\frac{31ml^2}{30}$ (аналогично билету 4)."
+        },
+        {
+          "title": "Центр масс",
+          "text": "$l_c = \\frac{m \\cdot l/2 + 2m \\cdot l/2}{3m} = l/2$."
+        },
+        {
+          "title": "Частота",
+          "text": "$\\omega_0 = \\sqrt{\\frac{3mg \\cdot l/2}{31ml^2/30}} = \\sqrt{\\frac{45g}{31l}}$.\n$= \\sqrt{\\frac{45 \\cdot 10}{31 \\cdot 0{,}656}} \\approx 2{,}72$ рад/с.",
+          "math": "$$\\boxed{\\omega_0 \\approx 2{,}72 \\text{ рад/с}}$$"
+        }
       ],
       "formula": "\\omega_0 \\approx 2{,}72 \\text{ рад/с}"
     },
@@ -108,9 +178,19 @@
       "tldr": "Релятивистская формула сложения скоростей",
       "hint": "Используйте 4-скорость или формулу для перпендикулярных скоростей",
       "steps": [
-        {"title": "Формула", "text": "При $v_1 \\perp v_2$:\n$v_{\\text{отн}} = \\sqrt{v_1^2 + v_2^2 - \\frac{v_1^2 v_2^2}{c^2}}$."},
-        {"title": "Предел", "text": "При $v_1, v_2 \\ll c$: $v_{\\text{отн}} = \\sqrt{v_1^2+v_2^2}$ — классика.\nПри $v_1 = v_2 = c$: $v_{\\text{отн}} = c$ — не может превышать $c$."},
-        {"title": "Ответ", "text": "", "math": "$$\\boxed{v_{\\text{отн}} = \\sqrt{v_1^2 + v_2^2 - v_1^2 v_2^2/c^2}}$$"}
+        {
+          "title": "Формула",
+          "text": "При $v_1 \\perp v_2$:\n$v_{\\text{отн}} = \\sqrt{v_1^2 + v_2^2 - \\frac{v_1^2 v_2^2}{c^2}}$."
+        },
+        {
+          "title": "Предел",
+          "text": "При $v_1, v_2 \\ll c$: $v_{\\text{отн}} = \\sqrt{v_1^2+v_2^2}$ — классика.\nПри $v_1 = v_2 = c$: $v_{\\text{отн}} = c$ — не может превышать $c$."
+        },
+        {
+          "title": "Ответ",
+          "text": "",
+          "math": "$$\\boxed{v_{\\text{отн}} = \\sqrt{v_1^2 + v_2^2 - v_1^2 v_2^2/c^2}}$$"
+        }
       ],
       "formula": "v_{\\text{отн}} = \\sqrt{v_1^2 + v_2^2 - v_1^2 v_2^2/c^2}"
     },
@@ -122,9 +202,19 @@
       "tldr": "M = Σ(γᵢmᵢ) из ЗСЭ",
       "hint": "$E_i = \\gamma_i m_i c^2$, $\\gamma = 1/\\sqrt{1-v^2/c^2}$",
       "steps": [
-        {"title": "Энергии", "text": "$E_1 = \\frac{0{,}8m}{\\sqrt{1-0{,}36}} = \\frac{0{,}8m}{0{,}8} = mc^2$.\n$E_2 = \\frac{0{,}6m}{\\sqrt{1-0{,}64}} = \\frac{0{,}6m}{0{,}6} = mc^2$.\n$E_3 = \\frac{0{,}4m}{\\sqrt{1-0{,}36}} = \\frac{0{,}4m}{0{,}8} = 0{,}5mc^2$."},
-        {"title": "ЗСЭ", "text": "$Mc^2 = E_1+E_2+E_3 = (1+1+0{,}5)mc^2 = 2{,}5mc^2$."},
-        {"title": "Ответ", "text": "", "math": "$$\\boxed{M = 2{,}5m}$$"}
+        {
+          "title": "Энергии",
+          "text": "$E_1 = \\frac{0{,}8m}{\\sqrt{1-0{,}36}} = \\frac{0{,}8m}{0{,}8} = mc^2$.\n$E_2 = \\frac{0{,}6m}{\\sqrt{1-0{,}64}} = \\frac{0{,}6m}{0{,}6} = mc^2$.\n$E_3 = \\frac{0{,}4m}{\\sqrt{1-0{,}36}} = \\frac{0{,}4m}{0{,}8} = 0{,}5mc^2$."
+        },
+        {
+          "title": "ЗСЭ",
+          "text": "$Mc^2 = E_1+E_2+E_3 = (1+1+0{,}5)mc^2 = 2{,}5mc^2$."
+        },
+        {
+          "title": "Ответ",
+          "text": "",
+          "math": "$$\\boxed{M = 2{,}5m}$$"
+        }
       ],
       "formula": "M = 2{,}5m"
     },
@@ -136,9 +226,19 @@
       "tldr": "ΔU = 3νRΔT, A = -νRΔT → Q = 2νRΔT",
       "hint": "$V = 2b/T$, при $T$ растёт — $V$ падает → газ сжимается",
       "steps": [
-        {"title": "ΔU", "text": "$\\Delta U = \\frac{i}{2}\\nu R\\Delta T = 3 \\cdot 1 \\cdot R\\Delta T = 3R\\Delta T$."},
-        {"title": "Работа", "text": "$A = \\int \\frac{\\nu RT}{V}dV$. Так как $T = 2b/V \\Rightarrow V = 2b/T$.\n$A = \\nu R(T_1 - T_2) = -\\nu R\\Delta T = -R\\Delta T$."},
-        {"title": "Теплота", "text": "$Q = \\Delta U + A = 3R\\Delta T - R\\Delta T = 2R\\Delta T$.", "math": "$$\\boxed{\\Delta U = 3R\\Delta T, \\; Q = 2R\\Delta T}$$"}
+        {
+          "title": "ΔU",
+          "text": "$\\Delta U = \\frac{i}{2}\\nu R\\Delta T = 3 \\cdot 1 \\cdot R\\Delta T = 3R\\Delta T$."
+        },
+        {
+          "title": "Работа",
+          "text": "$A = \\int \\frac{\\nu RT}{V}dV$. Так как $T = 2b/V \\Rightarrow V = 2b/T$.\n$A = \\nu R(T_1 - T_2) = -\\nu R\\Delta T = -R\\Delta T$."
+        },
+        {
+          "title": "Теплота",
+          "text": "$Q = \\Delta U + A = 3R\\Delta T - R\\Delta T = 2R\\Delta T$.",
+          "math": "$$\\boxed{\\Delta U = 3R\\Delta T, \\; Q = 2R\\Delta T}$$"
+        }
       ],
       "formula": "Q = 2R\\Delta T"
     },
@@ -150,9 +250,19 @@
       "tldr": "s² = c²Δt² - Δl² = c²Δt'² - Δl'²",
       "hint": "Инвариантность интервала",
       "steps": [
-        {"title": "Интервал", "text": "$c\\Delta t = 15$ км.\n$s^2 = 15^2 - 12^2 = 225 - 144 = 81$ км²."},
-        {"title": "Расстояние в K'", "text": "$c\\Delta t' = 3 \\cdot 10^{-5} \\cdot 3 \\cdot 10^8 = 9$ км.\n$\\Delta l'^2 = (c\\Delta t')^2 - s^2 = 81 - 81 = 0$."},
-        {"title": "Ответ", "text": "В K' оба события происходят в одной точке!", "math": "$$\\boxed{\\Delta l' = 0}$$"}
+        {
+          "title": "Интервал",
+          "text": "$c\\Delta t = 15$ км.\n$s^2 = 15^2 - 12^2 = 225 - 144 = 81$ км²."
+        },
+        {
+          "title": "Расстояние в K'",
+          "text": "$c\\Delta t' = 3 \\cdot 10^{-5} \\cdot 3 \\cdot 10^8 = 9$ км.\n$\\Delta l'^2 = (c\\Delta t')^2 - s^2 = 81 - 81 = 0$."
+        },
+        {
+          "title": "Ответ",
+          "text": "В K' оба события происходят в одной точке!",
+          "math": "$$\\boxed{\\Delta l' = 0}$$"
+        }
       ],
       "formula": "\\Delta l' = 0"
     },
@@ -164,9 +274,19 @@
       "tldr": "γ_смеси = Cp_см/Cv_см, усреднение по молям",
       "hint": "$\\nu_{N_2} = m/28$, $\\nu_{Ne} = m/20$",
       "steps": [
-        {"title": "γ смеси", "text": "При равных массах $m$:\n$\\nu_1 = m/28$, $\\nu_2 = m/20$.\n$C_{v,\\text{см}} = (\\nu_1 \\cdot 5R/2 + \\nu_2 \\cdot 3R/2)/(\\nu_1+\\nu_2)$.\n$\\gamma_{\\text{см}} \\approx 1{,}5$."},
-        {"title": "Нагрев", "text": "$Q = C_{v,\\text{total}} \\cdot \\Delta T$.\n$\\Delta T = Q/(C_{v,\\text{total}} \\cdot m_{\\text{total}}) \\approx 0{,}124$ К."},
-        {"title": "Энтропия", "text": "$\\Delta S = C_v \\ln(T_2/T_1) \\approx 1{,}66$ Дж/К.", "math": "$$\\boxed{\\gamma \\approx 1{,}5, \\; \\Delta T \\approx 0{,}12 \\text{ К}}$$"}
+        {
+          "title": "γ смеси",
+          "text": "При равных массах $m$:\n$\\nu_1 = m/28$, $\\nu_2 = m/20$.\n$C_{v,\\text{см}} = (\\nu_1 \\cdot 5R/2 + \\nu_2 \\cdot 3R/2)/(\\nu_1+\\nu_2)$.\n$\\gamma_{\\text{см}} \\approx 1{,}5$."
+        },
+        {
+          "title": "Нагрев",
+          "text": "$Q = C_{v,\\text{total}} \\cdot \\Delta T$.\n$\\Delta T = Q/(C_{v,\\text{total}} \\cdot m_{\\text{total}}) \\approx 0{,}124$ К."
+        },
+        {
+          "title": "Энтропия",
+          "text": "$\\Delta S = C_v \\ln(T_2/T_1) \\approx 1{,}66$ Дж/К.",
+          "math": "$$\\boxed{\\gamma \\approx 1{,}5, \\; \\Delta T \\approx 0{,}12 \\text{ К}}$$"
+        }
       ],
       "formula": "\\gamma \\approx 1{,}5"
     },
@@ -178,9 +298,19 @@
       "tldr": "k = -5.3 (бежит в -y), v = ω/k",
       "hint": "ω = 2 мс⁻¹ = 2000 рад/с",
       "steps": [
-        {"title": "Параметры", "text": "$A = 3 \\cdot 10^{-3}$ м, $\\omega = 2000$ рад/с, $k = 5{,}3$ м⁻¹.\n$\\vec{k} = -5{,}3\\vec{e}_y$ (волна в $-y$)."},
-        {"title": "Фазовая скорость", "text": "$v = \\omega/|k| = 2000/5{,}3 \\approx 377{,}4$ м/с."},
-        {"title": "Энергия", "text": "$\\langle w \\rangle = \\rho A^2\\omega^2/2 = \\frac{\\rho \\cdot 9 \\cdot 10^{-6} \\cdot 4 \\cdot 10^6}{2} = 18\\rho$.\n$|\\vec{j}| = \\langle w \\rangle v = 18\\rho \\cdot 377 = 6793\\rho$ Вт/м².", "math": "$$\\boxed{v \\approx 377 \\text{ м/с}, \\; \\langle w \\rangle = 18\\rho}$$"}
+        {
+          "title": "Параметры",
+          "text": "$A = 3 \\cdot 10^{-3}$ м, $\\omega = 2000$ рад/с, $k = 5{,}3$ м⁻¹.\n$\\vec{k} = -5{,}3\\vec{e}_y$ (волна в $-y$)."
+        },
+        {
+          "title": "Фазовая скорость",
+          "text": "$v = \\omega/|k| = 2000/5{,}3 \\approx 377{,}4$ м/с."
+        },
+        {
+          "title": "Энергия",
+          "text": "$\\langle w \\rangle = \\rho A^2\\omega^2/2 = \\frac{\\rho \\cdot 9 \\cdot 10^{-6} \\cdot 4 \\cdot 10^6}{2} = 18\\rho$.\n$|\\vec{j}| = \\langle w \\rangle v = 18\\rho \\cdot 377 = 6793\\rho$ Вт/м².",
+          "math": "$$\\boxed{v \\approx 377 \\text{ м/с}, \\; \\langle w \\rangle = 18\\rho}$$"
+        }
       ],
       "formula": "v \\approx 377 \\text{ м/с}"
     },
@@ -192,9 +322,19 @@
       "tldr": "P = P₀ exp(μgh/(RT))",
       "hint": "На дне давление БОЛЬШЕ → экспонента со знаком «+»",
       "steps": [
-        {"title": "Формула", "text": "Барометрическая формула (вниз):\n$p = p_0 \\exp\\left(\\frac{\\mu g h}{RT}\\right)$."},
-        {"title": "Подстановка", "text": "$\\frac{\\mu g h}{RT} = \\frac{29 \\cdot 10^{-3} \\cdot 10 \\cdot 5000}{8{,}31 \\cdot 285} = \\frac{1450}{2368} = 0{,}612$."},
-        {"title": "Ответ", "text": "$p = 10^5 \\cdot e^{0{,}612} = 10^5 \\cdot 1{,}84 = 1{,}84 \\cdot 10^5$ Па.", "math": "$$\\boxed{p \\approx 1{,}84 \\cdot 10^5 \\text{ Па}}$$"}
+        {
+          "title": "Формула",
+          "text": "Барометрическая формула (вниз):\n$p = p_0 \\exp\\left(\\frac{\\mu g h}{RT}\\right)$."
+        },
+        {
+          "title": "Подстановка",
+          "text": "$\\frac{\\mu g h}{RT} = \\frac{29 \\cdot 10^{-3} \\cdot 10 \\cdot 5000}{8{,}31 \\cdot 285} = \\frac{1450}{2368} = 0{,}612$."
+        },
+        {
+          "title": "Ответ",
+          "text": "$p = 10^5 \\cdot e^{0{,}612} = 10^5 \\cdot 1{,}84 = 1{,}84 \\cdot 10^5$ Па.",
+          "math": "$$\\boxed{p \\approx 1{,}84 \\cdot 10^5 \\text{ Па}}$$"
+        }
       ],
       "formula": "p \\approx 1{,}84 \\cdot 10^5 \\text{ Па}"
     },
@@ -206,9 +346,19 @@
       "tldr": "A₀/A = e^{βt}, Q = π/λ",
       "hint": "$\\beta = \\lambda\\omega_0/(2\\pi)$",
       "steps": [
-        {"title": "Параметры", "text": "$\\omega_0 = \\sqrt{k/m} = 2$ рад/с.\n$Q = \\pi/\\lambda = 200$.\n$\\beta = \\lambda\\omega_0/(2\\pi) = 0{,}0157 \\cdot 2/(2\\pi) \\approx 0{,}005$ с⁻¹."},
-        {"title": "Уменьшение", "text": "$A_0/A = e^{\\beta t} = e^{0{,}005 \\cdot 314{,}15} = e^{1{,}57} \\approx 4{,}8$."},
-        {"title": "Ответ", "text": "", "math": "$$\\boxed{A_0/A \\approx 4{,}8, \\; Q = 200}$$"}
+        {
+          "title": "Параметры",
+          "text": "$\\omega_0 = \\sqrt{k/m} = 2$ рад/с.\n$Q = \\pi/\\lambda = 200$.\n$\\beta = \\lambda\\omega_0/(2\\pi) = 0{,}0157 \\cdot 2/(2\\pi) \\approx 0{,}005$ с⁻¹."
+        },
+        {
+          "title": "Уменьшение",
+          "text": "$A_0/A = e^{\\beta t} = e^{0{,}005 \\cdot 314{,}15} = e^{1{,}57} \\approx 4{,}8$."
+        },
+        {
+          "title": "Ответ",
+          "text": "",
+          "math": "$$\\boxed{A_0/A \\approx 4{,}8, \\; Q = 200}$$"
+        }
       ],
       "formula": "A_0/A \\approx 4{,}8"
     },
@@ -220,9 +370,19 @@
       "tldr": "ΔS = νCv ln(T₂/T₁), N = νNA",
       "hint": "$T_1 = 249{,}85$ К, $T_2 = 374{,}85$ К",
       "steps": [
-        {"title": "Число молей", "text": "$\\Delta S = \\nu C_v \\ln(T_2/T_1) = \\nu \\frac{5R}{2}\\ln\\frac{374{,}85}{249{,}85}$.\n$\\ln(1{,}5) = 0{,}405$.\n$\\nu = \\frac{2 \\cdot 8430}{5 \\cdot 8{,}31 \\cdot 0{,}405} \\approx 1002$ моль."},
-        {"title": "Молекулы", "text": "$N = \\nu N_A \\approx 6 \\cdot 10^{26}$."},
-        {"title": "Стат. вес", "text": "$\\Omega_2/\\Omega_1 = e^{\\Delta S/k} = e^{8430/(1{,}38 \\cdot 10^{-23})} = e^{6{,}1 \\cdot 10^{26}}$.", "math": "$$\\boxed{N \\approx 6 \\cdot 10^{26}}$$"}
+        {
+          "title": "Число молей",
+          "text": "$\\Delta S = \\nu C_v \\ln(T_2/T_1) = \\nu \\frac{5R}{2}\\ln\\frac{374{,}85}{249{,}85}$.\n$\\ln(1{,}5) = 0{,}405$.\n$\\nu = \\frac{2 \\cdot 8430}{5 \\cdot 8{,}31 \\cdot 0{,}405} \\approx 1002$ моль."
+        },
+        {
+          "title": "Молекулы",
+          "text": "$N = \\nu N_A \\approx 6 \\cdot 10^{26}$."
+        },
+        {
+          "title": "Стат. вес",
+          "text": "$\\Omega_2/\\Omega_1 = e^{\\Delta S/k} = e^{8430/(1{,}38 \\cdot 10^{-23})} = e^{6{,}1 \\cdot 10^{26}}$.",
+          "math": "$$\\boxed{N \\approx 6 \\cdot 10^{26}}$$"
+        }
       ],
       "formula": "N \\approx 6 \\cdot 10^{26}"
     },
@@ -234,9 +394,19 @@
       "tldr": "T₂ = T₁·(V₁/V₂)^(γ-1), ΔU = νCvΔT → m",
       "hint": "Kr одноатомный: γ = 5/3, μ = 84 г/моль",
       "steps": [
-        {"title": "Температура после", "text": "$T_2 = 300 \\cdot 5^{2/3} \\approx 300 \\cdot 2{,}924 = 877$ К.\n$\\Delta T = 577$ К."},
-        {"title": "Масса", "text": "$\\Delta U = \\nu C_v \\Delta T = \\frac{m}{\\mu} \\cdot \\frac{3R}{2} \\cdot 577$.\n$m = \\frac{2\\mu \\cdot \\Delta U}{3R\\Delta T} = \\frac{2 \\cdot 0{,}084 \\cdot 32000}{3 \\cdot 8{,}31 \\cdot 577} = \\frac{5376}{14391} \\approx 0{,}37$ кг."},
-        {"title": "Ответ", "text": "", "math": "$$\\boxed{m \\approx 0{,}37 \\text{ кг}}$$"}
+        {
+          "title": "Температура после",
+          "text": "$T_2 = 300 \\cdot 5^{2/3} \\approx 300 \\cdot 2{,}924 = 877$ К.\n$\\Delta T = 577$ К."
+        },
+        {
+          "title": "Масса",
+          "text": "$\\Delta U = \\nu C_v \\Delta T = \\frac{m}{\\mu} \\cdot \\frac{3R}{2} \\cdot 577$.\n$m = \\frac{2\\mu \\cdot \\Delta U}{3R\\Delta T} = \\frac{2 \\cdot 0{,}084 \\cdot 32000}{3 \\cdot 8{,}31 \\cdot 577} = \\frac{5376}{14391} \\approx 0{,}37$ кг."
+        },
+        {
+          "title": "Ответ",
+          "text": "",
+          "math": "$$\\boxed{m \\approx 0{,}37 \\text{ кг}}$$"
+        }
       ],
       "formula": "m \\approx 0{,}37 \\text{ кг}"
     },
@@ -248,9 +418,19 @@
       "tldr": "dω = (M/I)dt → ω = nτ⁴/(4I)",
       "hint": "$I = mR^2/2$",
       "steps": [
-        {"title": "Угловая скорость", "text": "$\\omega = \\frac{1}{I}\\int_0^\\tau nt^3\\, dt = \\frac{n\\tau^4}{4I} = \\frac{n\\tau^4}{2mR^2}$."},
-        {"title": "Работа", "text": "$A = \\frac{I\\omega^2}{2} = \\frac{n^2\\tau^8}{16mR^2}$."},
-        {"title": "Ответ", "text": "", "math": "$$\\boxed{\\omega = \\frac{n\\tau^4}{2mR^2}, \\; A = \\frac{n^2\\tau^8}{16mR^2}}$$"}
+        {
+          "title": "Угловая скорость",
+          "text": "$\\omega = \\frac{1}{I}\\int_0^\\tau nt^3\\, dt = \\frac{n\\tau^4}{4I} = \\frac{n\\tau^4}{2mR^2}$."
+        },
+        {
+          "title": "Работа",
+          "text": "$A = \\frac{I\\omega^2}{2} = \\frac{n^2\\tau^8}{16mR^2}$."
+        },
+        {
+          "title": "Ответ",
+          "text": "",
+          "math": "$$\\boxed{\\omega = \\frac{n\\tau^4}{2mR^2}, \\; A = \\frac{n^2\\tau^8}{16mR^2}}$$"
+        }
       ],
       "formula": "\\omega = n\\tau^4/(2mR^2)"
     },
@@ -262,9 +442,19 @@
       "tldr": "ΔS = λm/T₁ + (m/M)C ln(T₂/T₁)",
       "hint": "Два этапа: плавление (при T = const) + нагрев",
       "steps": [
-        {"title": "Плавление", "text": "$\\Delta S_1 = \\frac{\\lambda m}{T_1} = \\frac{333000 \\cdot 0{,}18}{273} = 219{,}6$ Дж/К."},
-        {"title": "Нагрев", "text": "$\\Delta S_2 = \\frac{m}{M}C\\ln\\frac{T_2}{T_1} = \\frac{0{,}18}{0{,}018} \\cdot 75{,}4 \\cdot \\ln\\frac{363}{273}$.\n$= 10 \\cdot 75{,}4 \\cdot 0{,}285 = 214{,}9$ Дж/К."},
-        {"title": "Итого", "text": "$\\Delta S = 219{,}6 + 214{,}9 = 434{,}5$ Дж/К.", "math": "$$\\boxed{\\Delta S \\approx 435 \\text{ Дж/К}}$$"}
+        {
+          "title": "Плавление",
+          "text": "$\\Delta S_1 = \\frac{\\lambda m}{T_1} = \\frac{333000 \\cdot 0{,}18}{273} = 219{,}6$ Дж/К."
+        },
+        {
+          "title": "Нагрев",
+          "text": "$\\Delta S_2 = \\frac{m}{M}C\\ln\\frac{T_2}{T_1} = \\frac{0{,}18}{0{,}018} \\cdot 75{,}4 \\cdot \\ln\\frac{363}{273}$.\n$= 10 \\cdot 75{,}4 \\cdot 0{,}285 = 214{,}9$ Дж/К."
+        },
+        {
+          "title": "Итого",
+          "text": "$\\Delta S = 219{,}6 + 214{,}9 = 434{,}5$ Дж/К.",
+          "math": "$$\\boxed{\\Delta S \\approx 435 \\text{ Дж/К}}$$"
+        }
       ],
       "formula": "\\Delta S \\approx 435 \\text{ Дж/К}"
     },
@@ -276,9 +466,19 @@
       "tldr": "TV^(γ-1) = const, A = νCvΔT",
       "hint": "$\\gamma = 4/3$, $\\gamma-1 = 1/3$, $\\nu = 88/44 = 2$",
       "steps": [
-        {"title": "Температура", "text": "$T_2 = T_1(V_1/V_2)^{1/3} = 300/27^{1/3} = 300/3 = 100$ К.\nТемпература уменьшилась в 3 раза."},
-        {"title": "Работа", "text": "$A = \\nu C_v(T_1 - T_2) = 2 \\cdot 3R \\cdot 200 = \\frac{2 \\cdot 3 \\cdot 8{,}31 \\cdot 200}{1} = 9972$ Дж.\nИли: $A = \\frac{\\nu R(T_1-T_2)}{\\gamma-1} = \\frac{2 \\cdot 8{,}31 \\cdot 200}{1/3} = 9972$ Дж."},
-        {"title": "Ответ", "text": "", "math": "$$\\boxed{T \\text{ уменьш. в 3 раза}, \\; A \\approx 10 \\text{ кДж}}$$"}
+        {
+          "title": "Температура",
+          "text": "$T_2 = T_1(V_1/V_2)^{1/3} = 300/27^{1/3} = 300/3 = 100$ К.\nТемпература уменьшилась в 3 раза."
+        },
+        {
+          "title": "Работа",
+          "text": "$A = \\nu C_v(T_1 - T_2) = 2 \\cdot 3R \\cdot 200 = \\frac{2 \\cdot 3 \\cdot 8{,}31 \\cdot 200}{1} = 9972$ Дж.\nИли: $A = \\frac{\\nu R(T_1-T_2)}{\\gamma-1} = \\frac{2 \\cdot 8{,}31 \\cdot 200}{1/3} = 9972$ Дж."
+        },
+        {
+          "title": "Ответ",
+          "text": "",
+          "math": "$$\\boxed{T \\text{ уменьш. в 3 раза}, \\; A \\approx 10 \\text{ кДж}}$$"
+        }
       ],
       "formula": "A \\approx 10 \\text{ кДж}"
     },
@@ -290,9 +490,19 @@
       "tldr": "A = ∫βV² dV = (p₂^{3/2}-p₁^{3/2})/(3√β)",
       "hint": "$V = \\sqrt{p/\\beta}$, $T = \\beta V^3/(\\nu R)$",
       "steps": [
-        {"title": "Работа", "text": "$A = \\int \\beta V^2 dV = \\frac{\\beta}{3}(V_2^3-V_1^3) = \\frac{p_2^{3/2}-p_1^{3/2}}{3\\sqrt{\\beta}}$."},
-        {"title": "ΔU", "text": "$T \\propto V^3 \\Rightarrow \\Delta U = 3\\beta(V_2^3-V_1^3) = 9A$."},
-        {"title": "ΔS", "text": "$\\Delta S = 10\\nu R \\ln(V_2/V_1) = 5\\nu R \\ln(p_2/p_1)$.", "math": "$$\\boxed{A = \\frac{p_2^{3/2}-p_1^{3/2}}{3\\sqrt{\\beta}}, \\; \\Delta U = 9A}$$"}
+        {
+          "title": "Работа",
+          "text": "$A = \\int \\beta V^2 dV = \\frac{\\beta}{3}(V_2^3-V_1^3) = \\frac{p_2^{3/2}-p_1^{3/2}}{3\\sqrt{\\beta}}$."
+        },
+        {
+          "title": "ΔU",
+          "text": "$T \\propto V^3 \\Rightarrow \\Delta U = 3\\beta(V_2^3-V_1^3) = 9A$."
+        },
+        {
+          "title": "ΔS",
+          "text": "$\\Delta S = 10\\nu R \\ln(V_2/V_1) = 5\\nu R \\ln(p_2/p_1)$.",
+          "math": "$$\\boxed{A = \\frac{p_2^{3/2}-p_1^{3/2}}{3\\sqrt{\\beta}}, \\; \\Delta U = 9A}$$"
+        }
       ],
       "formula": "\\Delta U = 9A"
     },
@@ -304,9 +514,19 @@
       "tldr": "A = (2α/3)(V₂^{3/2}-V₁^{3/2})",
       "hint": "$T = \\alpha V^{3/2}/(\\nu R)$",
       "steps": [
-        {"title": "Работа", "text": "$A = \\int_{V_1}^{V_2} \\alpha V^{1/2} dV = \\frac{2\\alpha}{3}(V_2^{3/2}-V_1^{3/2})$."},
-        {"title": "ΔU", "text": "$U \\propto T \\propto V^{3/2}$.\n$\\Delta U = 3\\alpha(V_2^{3/2} - V_1^{3/2})$."},
-        {"title": "ΔS", "text": "$\\Delta S = 5{,}5R\\ln(V_2/V_1)$ (для $\\nu = 1$, $i = 6$).", "math": "$$\\boxed{A = \\frac{2\\alpha}{3}(V_2^{3/2}-V_1^{3/2})}$$"}
+        {
+          "title": "Работа",
+          "text": "$A = \\int_{V_1}^{V_2} \\alpha V^{1/2} dV = \\frac{2\\alpha}{3}(V_2^{3/2}-V_1^{3/2})$."
+        },
+        {
+          "title": "ΔU",
+          "text": "$U \\propto T \\propto V^{3/2}$.\n$\\Delta U = 3\\alpha(V_2^{3/2} - V_1^{3/2})$."
+        },
+        {
+          "title": "ΔS",
+          "text": "$\\Delta S = 5{,}5R\\ln(V_2/V_1)$ (для $\\nu = 1$, $i = 6$).",
+          "math": "$$\\boxed{A = \\frac{2\\alpha}{3}(V_2^{3/2}-V_1^{3/2})}$$"
+        }
       ],
       "formula": "\\Delta U = 3\\alpha(V_2^{3/2}-V_1^{3/2})"
     },
@@ -318,9 +538,19 @@
       "tldr": "A = ∫(F₀+b√x)dx = E_k",
       "hint": "$A = F_0 x + \\frac{2b}{3}x^{3/2}$",
       "steps": [
-        {"title": "Работа = E_k", "text": "$A = \\int_0^{10}(1 + 3\\sqrt{x})dx = 10 + 3 \\cdot \\frac{2}{3} \\cdot 10^{3/2} = 10 + 2 \\cdot 31{,}62 = 73{,}25$ Дж."},
-        {"title": "Импульс", "text": "$p = \\sqrt{2mE_k} = \\sqrt{2 \\cdot 3 \\cdot 73{,}25} = \\sqrt{439{,}5} \\approx 21$ кг·м/с."},
-        {"title": "Ответ", "text": "", "math": "$$\\boxed{E_k \\approx 73 \\text{ Дж}, \\; p \\approx 21 \\text{ кг·м/с}}$$"}
+        {
+          "title": "Работа = E_k",
+          "text": "$A = \\int_0^{10}(1 + 3\\sqrt{x})dx = 10 + 3 \\cdot \\frac{2}{3} \\cdot 10^{3/2} = 10 + 2 \\cdot 31{,}62 = 73{,}25$ Дж."
+        },
+        {
+          "title": "Импульс",
+          "text": "$p = \\sqrt{2mE_k} = \\sqrt{2 \\cdot 3 \\cdot 73{,}25} = \\sqrt{439{,}5} \\approx 21$ кг·м/с."
+        },
+        {
+          "title": "Ответ",
+          "text": "",
+          "math": "$$\\boxed{E_k \\approx 73 \\text{ Дж}, \\; p \\approx 21 \\text{ кг·м/с}}$$"
+        }
       ],
       "formula": "E_k \\approx 73 \\text{ Дж}"
     },
@@ -332,9 +562,19 @@
       "tldr": "w = ρA²ω²/2, v = √(E/ρ), ω = 2πv/λ",
       "hint": "$\\omega = 2\\pi v/\\lambda = 2\\pi\\sqrt{E/\\rho}/\\lambda$",
       "steps": [
-        {"title": "Скорость", "text": "$v = \\sqrt{E/\\rho}$."},
-        {"title": "Частота", "text": "$\\omega = 2\\pi v/\\lambda = 2\\pi\\sqrt{E/\\rho}/\\lambda$."},
-        {"title": "Плотность энергии", "text": "$\\langle w \\rangle = \\frac{\\rho A^2 \\omega^2}{2} = \\frac{\\rho A^2}{2} \\cdot \\frac{4\\pi^2 E}{\\rho\\lambda^2} = \\frac{2\\pi^2 A^2 E}{\\lambda^2}$.", "math": "$$\\boxed{\\langle w \\rangle = \\frac{2\\pi^2 A^2 E}{\\lambda^2}}$$"}
+        {
+          "title": "Скорость",
+          "text": "$v = \\sqrt{E/\\rho}$."
+        },
+        {
+          "title": "Частота",
+          "text": "$\\omega = 2\\pi v/\\lambda = 2\\pi\\sqrt{E/\\rho}/\\lambda$."
+        },
+        {
+          "title": "Плотность энергии",
+          "text": "$\\langle w \\rangle = \\frac{\\rho A^2 \\omega^2}{2} = \\frac{\\rho A^2}{2} \\cdot \\frac{4\\pi^2 E}{\\rho\\lambda^2} = \\frac{2\\pi^2 A^2 E}{\\lambda^2}$.",
+          "math": "$$\\boxed{\\langle w \\rangle = \\frac{2\\pi^2 A^2 E}{\\lambda^2}}$$"
+        }
       ],
       "formula": "\\langle w \\rangle = 2\\pi^2 A^2 E/\\lambda^2"
     },
@@ -346,9 +586,19 @@
       "tldr": "ε = M/I, Штейнер для шара и стержня",
       "hint": "$I = ml^2/3 + (2mR^2/5 + m(2R)^2) = (71/15)mR^2$",
       "steps": [
-        {"title": "Моменты инерции", "text": "$I_{\\text{ст}} = mR^2/3$.\n$I_{\\text{шар}} = 2mR^2/5 + m(2R)^2 = 2mR^2/5 + 4mR^2 = 22mR^2/5$.\n$I = mR^2/3 + 22mR^2/5 = 71mR^2/15$."},
-        {"title": "Момент сил", "text": "$M = mg \\cdot R/2 + mg \\cdot 2R = 5mgR/2$."},
-        {"title": "Ответ", "text": "$\\varepsilon = \\frac{5mgR/2}{71mR^2/15} = \\frac{75g}{142R} = \\frac{75 \\cdot 10}{142 \\cdot 0{,}146} \\approx 36{,}2$ рад/с².", "math": "$$\\boxed{\\varepsilon \\approx 36 \\text{ рад/с}^2}$$"}
+        {
+          "title": "Моменты инерции",
+          "text": "$I_{\\text{ст}} = mR^2/3$.\n$I_{\\text{шар}} = 2mR^2/5 + m(2R)^2 = 2mR^2/5 + 4mR^2 = 22mR^2/5$.\n$I = mR^2/3 + 22mR^2/5 = 71mR^2/15$."
+        },
+        {
+          "title": "Момент сил",
+          "text": "$M = mg \\cdot R/2 + mg \\cdot 2R = 5mgR/2$."
+        },
+        {
+          "title": "Ответ",
+          "text": "$\\varepsilon = \\frac{5mgR/2}{71mR^2/15} = \\frac{75g}{142R} = \\frac{75 \\cdot 10}{142 \\cdot 0{,}146} \\approx 36{,}2$ рад/с².",
+          "math": "$$\\boxed{\\varepsilon \\approx 36 \\text{ рад/с}^2}$$"
+        }
       ],
       "formula": "\\varepsilon = 75g/(142R)"
     },
@@ -360,9 +610,19 @@
       "tldr": "L = Iω = const → ω изменяется",
       "hint": "$I_0 = Ml^2/3 + m(l/2)^2$, $I_1 = Ml^2/3 + ml^2$",
       "steps": [
-        {"title": "Моменты инерции", "text": "$I_0 = l^2(M/3 + m/4) = l^2(3 + 5{,}5)/1000 = 8{,}5 \\cdot 10^{-3} l^2$.\n$I_1 = l^2(M/3 + m) = l^2(3+22)/1000 = 25 \\cdot 10^{-3} l^2$."},
-        {"title": "ЗСМИ", "text": "$\\nu_1 = \\nu_0 \\cdot I_0/I_1 = 10 \\cdot 8{,}5/25 = 3{,}4$ Гц."},
-        {"title": "ΔE", "text": "$\\Delta E = \\frac{1}{2}(I_1\\omega_1^2 - I_0\\omega_0^2) < 0$ — энергия уменьшилась.", "math": "$$\\boxed{\\nu_1 = 3{,}4 \\text{ Гц}}$$"}
+        {
+          "title": "Моменты инерции",
+          "text": "$I_0 = l^2(M/3 + m/4) = l^2(3 + 5{,}5)/1000 = 8{,}5 \\cdot 10^{-3} l^2$.\n$I_1 = l^2(M/3 + m) = l^2(3+22)/1000 = 25 \\cdot 10^{-3} l^2$."
+        },
+        {
+          "title": "ЗСМИ",
+          "text": "$\\nu_1 = \\nu_0 \\cdot I_0/I_1 = 10 \\cdot 8{,}5/25 = 3{,}4$ Гц."
+        },
+        {
+          "title": "ΔE",
+          "text": "$\\Delta E = \\frac{1}{2}(I_1\\omega_1^2 - I_0\\omega_0^2) < 0$ — энергия уменьшилась.",
+          "math": "$$\\boxed{\\nu_1 = 3{,}4 \\text{ Гц}}$$"
+        }
       ],
       "formula": "\\nu_1 = 3{,}4 \\text{ Гц}"
     },
@@ -374,9 +634,19 @@
       "tldr": "Q = ∫T dS, η = 1 - Q_отд/Q_полученное",
       "hint": "На T-S диаграмме: $Q = $ площадь под кривой",
       "steps": [
-        {"title": "Q₁₂ (полученное)", "text": "$Q_{12} = 2T_0(2S_0 - S_0) = 2T_0 S_0$ (изотерма)."},
-        {"title": "Q₃₁ (отданное)", "text": "$Q_{31} = $ площадь треугольника = $\\frac{(T_0+2T_0)}{2} \\cdot S_0 = 1{,}5T_0 S_0$.\nНо $S$ убывает ⇒ $Q_{31} = -1{,}5T_0 S_0$ (отдано)."},
-        {"title": "КПД", "text": "$A = Q_{12} + Q_{23} + Q_{31} = 2T_0S_0 - 1{,}5T_0S_0 = 0{,}5T_0S_0$.\n$\\eta = A/Q_{\\text{пол}} = 0{,}5/2 = 0{,}25$.", "math": "$$\\boxed{\\eta = 25\\%}$$"}
+        {
+          "title": "Q₁₂ (полученное)",
+          "text": "$Q_{12} = 2T_0(2S_0 - S_0) = 2T_0 S_0$ (изотерма)."
+        },
+        {
+          "title": "Q₃₁ (отданное)",
+          "text": "$Q_{31} = $ площадь треугольника = $\\frac{(T_0+2T_0)}{2} \\cdot S_0 = 1{,}5T_0 S_0$.\nНо $S$ убывает ⇒ $Q_{31} = -1{,}5T_0 S_0$ (отдано)."
+        },
+        {
+          "title": "КПД",
+          "text": "$A = Q_{12} + Q_{23} + Q_{31} = 2T_0S_0 - 1{,}5T_0S_0 = 0{,}5T_0S_0$.\n$\\eta = A/Q_{\\text{пол}} = 0{,}5/2 = 0{,}25$.",
+          "math": "$$\\boxed{\\eta = 25\\%}$$"
+        }
       ],
       "formula": "\\eta = 25\\%"
     },
@@ -388,9 +658,19 @@
       "tldr": "ΔS₁ = νCv ln(1/e) = -νCv, ΔS₂ = νCp ln(e)",
       "hint": "$\\Delta S = \\nu(C_p - C_v) = \\nu R$",
       "steps": [
-        {"title": "Изохорное охлаждение", "text": "$\\Delta S_1 = \\nu C_v \\ln(T_2/T_1) = \\nu C_v \\ln(1/e) = -\\nu C_v$."},
-        {"title": "Изобарное расширение", "text": "Вернуться к $T$: $\\Delta S_2 = \\nu C_p \\ln(T_1/T_2) = \\nu C_p \\ln(e) = \\nu C_p$."},
-        {"title": "Итого", "text": "$\\Delta S = \\nu(C_p - C_v) = \\nu R = 10 \\cdot 8{,}31 = 83{,}1$ Дж/К.", "math": "$$\\boxed{\\Delta S = \\nu R \\approx 83 \\text{ Дж/К}}$$"}
+        {
+          "title": "Изохорное охлаждение",
+          "text": "$\\Delta S_1 = \\nu C_v \\ln(T_2/T_1) = \\nu C_v \\ln(1/e) = -\\nu C_v$."
+        },
+        {
+          "title": "Изобарное расширение",
+          "text": "Вернуться к $T$: $\\Delta S_2 = \\nu C_p \\ln(T_1/T_2) = \\nu C_p \\ln(e) = \\nu C_p$."
+        },
+        {
+          "title": "Итого",
+          "text": "$\\Delta S = \\nu(C_p - C_v) = \\nu R = 10 \\cdot 8{,}31 = 83{,}1$ Дж/К.",
+          "math": "$$\\boxed{\\Delta S = \\nu R \\approx 83 \\text{ Дж/К}}$$"
+        }
       ],
       "formula": "\\Delta S = \\nu R \\approx 83 \\text{ Дж/К}"
     },
@@ -402,9 +682,19 @@
       "tldr": "n = n₀ exp(-μgh/RT)",
       "hint": "Отношение: $n_{O_2}/n_{CO_2} = (n_{O_2}^0/n_{CO_2}^0) \\cdot \\exp((\\mu_{CO_2}-\\mu_{O_2})gh/(RT))$",
       "steps": [
-        {"title": "Формула", "text": "$\\frac{n_{O_2}}{n_{CO_2}} = \\frac{n_{O_2}^0}{n_{CO_2}^0} \\exp\\left(\\frac{(\\mu_{CO_2}-\\mu_{O_2})gh}{RT}\\right)$.\nРазница = 5%: $\\exp(\\ldots) = 1{,}05$."},
-        {"title": "Высота", "text": "$\\frac{(44-32) \\cdot 10^{-3} \\cdot 10 \\cdot h}{8{,}31 \\cdot 300} = \\ln 1{,}05 = 0{,}0488$.\n$h = \\frac{0{,}0488 \\cdot 2493}{0{,}12} \\approx 1014$ м."},
-        {"title": "Ответ", "text": "", "math": "$$\\boxed{h \\approx 1{,}01 \\text{ км}}$$"}
+        {
+          "title": "Формула",
+          "text": "$\\frac{n_{O_2}}{n_{CO_2}} = \\frac{n_{O_2}^0}{n_{CO_2}^0} \\exp\\left(\\frac{(\\mu_{CO_2}-\\mu_{O_2})gh}{RT}\\right)$.\nРазница = 5%: $\\exp(\\ldots) = 1{,}05$."
+        },
+        {
+          "title": "Высота",
+          "text": "$\\frac{(44-32) \\cdot 10^{-3} \\cdot 10 \\cdot h}{8{,}31 \\cdot 300} = \\ln 1{,}05 = 0{,}0488$.\n$h = \\frac{0{,}0488 \\cdot 2493}{0{,}12} \\approx 1014$ м."
+        },
+        {
+          "title": "Ответ",
+          "text": "",
+          "math": "$$\\boxed{h \\approx 1{,}01 \\text{ км}}$$"
+        }
       ],
       "formula": "h \\approx 1 \\text{ км}"
     },
@@ -416,9 +706,19 @@
       "tldr": "ЗСМИ: v₁R₁ = v₂R₂, ЗСЭ",
       "hint": "Центральное гравитационное поле: $L = mv_1R_1 = \\text{const}$",
       "steps": [
-        {"title": "ЗСМИ", "text": "$v_1 R_1 = v_2 R_2 \\Rightarrow v_2 = v_1 R_1/R_2$."},
-        {"title": "ЗСЭ", "text": "$\\frac{v_1^2}{2} - \\frac{GM}{R_1} = \\frac{v_2^2}{2} - \\frac{GM}{R_2}$.\nПодставляя $v_2$: $R_2 = \\frac{v_1^2 R_1^2}{2GM - v_1^2 R_1}$."},
-        {"title": "Ответ", "text": "", "math": "$$\\boxed{v_2 = \\frac{v_1 R_1}{R_2}, \\; R_2 = \\frac{v_1^2 R_1^2}{2GM - v_1^2 R_1}}$$"}
+        {
+          "title": "ЗСМИ",
+          "text": "$v_1 R_1 = v_2 R_2 \\Rightarrow v_2 = v_1 R_1/R_2$."
+        },
+        {
+          "title": "ЗСЭ",
+          "text": "$\\frac{v_1^2}{2} - \\frac{GM}{R_1} = \\frac{v_2^2}{2} - \\frac{GM}{R_2}$.\nПодставляя $v_2$: $R_2 = \\frac{v_1^2 R_1^2}{2GM - v_1^2 R_1}$."
+        },
+        {
+          "title": "Ответ",
+          "text": "",
+          "math": "$$\\boxed{v_2 = \\frac{v_1 R_1}{R_2}, \\; R_2 = \\frac{v_1^2 R_1^2}{2GM - v_1^2 R_1}}$$"
+        }
       ],
       "formula": "v_1 R_1 = v_2 R_2"
     }

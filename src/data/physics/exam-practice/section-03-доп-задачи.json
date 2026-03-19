@@ -10,9 +10,19 @@
       "tldr": "mv²/2 = kx²/2",
       "hint": "ЗСЭ: $mv_0^2/2 = kx_{\\max}^2/2$",
       "steps": [
-        {"title": "ЗСЭ", "text": "$$\\frac{mv_0^2}{2} = \\frac{kx_{\\max}^2}{2}$$"},
-        {"title": "Решение", "text": "$x_{\\max} = v_0\\sqrt{m/k} = 3\\sqrt{2/200} = 0{,}3$ м."},
-        {"title": "Ответ", "text": "Сжатие 30 см.", "math": "$$\\boxed{x_{\\max} = 0{,}3 \\text{ м}}$$"}
+        {
+          "title": "ЗСЭ",
+          "text": "$$\\frac{mv_0^2}{2} = \\frac{kx_{\\max}^2}{2}$$"
+        },
+        {
+          "title": "Решение",
+          "text": "$x_{\\max} = v_0\\sqrt{m/k} = 3\\sqrt{2/200} = 0{,}3$ м."
+        },
+        {
+          "title": "Ответ",
+          "text": "Сжатие 30 см.",
+          "math": "$$\\boxed{x_{\\max} = 0{,}3 \\text{ м}}$$"
+        }
       ],
       "formula": "x_{\\max} = 0{,}3 \\text{ м}"
     },
@@ -24,9 +34,19 @@
       "tldr": "a = (m1-m2)g/(m1+m2+I/R²)",
       "hint": "$a = (m_1-m_2)g/(m_1+m_2+I/R^2)$",
       "steps": [
-        {"title": "Эфф. масса блока", "text": "$I/R^2 = 0{,}04/0{,}01 = 4$ кг."},
-        {"title": "Ускорение", "text": "$a = (5-3) \\cdot 9{,}8/(5+3+4) = 19{,}6/12 = 1{,}63$ м/с$^2$."},
-        {"title": "Сравнение без блока", "text": "Без блока: $a = 2{,}45$ м/с$^2$ — блок замедляет.", "math": "$$\\boxed{a = 1{,}63 \\text{ м/с}^2}$$"}
+        {
+          "title": "Эфф. масса блока",
+          "text": "$I/R^2 = 0{,}04/0{,}01 = 4$ кг."
+        },
+        {
+          "title": "Ускорение",
+          "text": "$a = (5-3) \\cdot 9{,}8/(5+3+4) = 19{,}6/12 = 1{,}63$ м/с$^2$."
+        },
+        {
+          "title": "Сравнение без блока",
+          "text": "Без блока: $a = 2{,}45$ м/с$^2$ — блок замедляет.",
+          "math": "$$\\boxed{a = 1{,}63 \\text{ м/с}^2}$$"
+        }
       ],
       "formula": "a = 1{,}63 \\text{ м/с}^2"
     },
@@ -38,9 +58,19 @@
       "tldr": "Штейнер + физ маятник",
       "hint": "$I = ml^2/12 + m(l/12)^2$. Расст. до ц.м.: $d = l/4$",
       "steps": [
-        {"title": "Момент инерции", "text": "Ц.м. стержня в середине. Ось на $l/4$ от конца = $l/4$ от ц.м.\n$I = ml^2/12 + m(l/4)^2 = ml^2(1/12 + 1/16) = 7ml^2/48$."},
-        {"title": "Расстояние до ц.м.", "text": "$d = l/2 - l/4 = l/4 = 0{,}15$ м."},
-        {"title": "Период", "text": "$T = 2\\pi\\sqrt{I/(mgd)} = 2\\pi\\sqrt{7l/(48 \\cdot g/4)} = 2\\pi\\sqrt{7l/(12g)} = 2\\pi\\sqrt{7 \\cdot 0{,}6/(12 \\cdot 9{,}8)} \\approx 1{,}22$ с.", "math": "$$\\boxed{T \\approx 1{,}22 \\text{ с}}$$"}
+        {
+          "title": "Момент инерции",
+          "text": "Ц.м. стержня в середине. Ось на $l/4$ от конца = $l/4$ от ц.м.\n$I = ml^2/12 + m(l/4)^2 = ml^2(1/12 + 1/16) = 7ml^2/48$."
+        },
+        {
+          "title": "Расстояние до ц.м.",
+          "text": "$d = l/2 - l/4 = l/4 = 0{,}15$ м."
+        },
+        {
+          "title": "Период",
+          "text": "$T = 2\\pi\\sqrt{I/(mgd)} = 2\\pi\\sqrt{7l/(48 \\cdot g/4)} = 2\\pi\\sqrt{7l/(12g)} = 2\\pi\\sqrt{7 \\cdot 0{,}6/(12 \\cdot 9{,}8)} \\approx 1{,}22$ с.",
+          "math": "$$\\boxed{T \\approx 1{,}22 \\text{ с}}$$"
+        }
       ],
       "formula": "T \\approx 1{,}22 \\text{ с}"
     },
@@ -52,9 +82,19 @@
       "tldr": "v = sqrt(gamma RT/M)",
       "hint": "$v = \\sqrt{\\gamma RT/M}$",
       "steps": [
-        {"title": "Формула", "text": "$v = \\sqrt{\\gamma RT/M}$."},
-        {"title": "Подстановка", "text": "$v = \\sqrt{5/3 \\cdot 8314 \\cdot 300/4} = \\sqrt{1{,}04 \\cdot 10^6} \\approx 1020$ м/с."},
-        {"title": "Ответ", "text": "В гелии звук распространяется втрое быстрее, чем в воздухе.", "math": "$$\\boxed{v \\approx 1020 \\text{ м/с}}$$"}
+        {
+          "title": "Формула",
+          "text": "$v = \\sqrt{\\gamma RT/M}$."
+        },
+        {
+          "title": "Подстановка",
+          "text": "$v = \\sqrt{5/3 \\cdot 8314 \\cdot 300/4} = \\sqrt{1{,}04 \\cdot 10^6} \\approx 1020$ м/с."
+        },
+        {
+          "title": "Ответ",
+          "text": "В гелии звук распространяется втрое быстрее, чем в воздухе.",
+          "math": "$$\\boxed{v \\approx 1020 \\text{ м/с}}$$"
+        }
       ],
       "formula": "v \\approx 1020 \\text{ м/с}"
     },
@@ -66,9 +106,19 @@
       "tldr": "eta = 1-T2/T1, Q1 = A/eta",
       "hint": "$\\eta = 0{,}4$. $Q_1 = A/\\eta$, $|Q_2| = Q_1 - A$",
       "steps": [
-        {"title": "КПД", "text": "$\\eta = 1 - 300/500 = 0{,}4 = 40\\%$."},
-        {"title": "Теплота нагревателя", "text": "$Q_1 = A/\\eta = 1000/0{,}4 = 2500$ Дж."},
-        {"title": "Теплота холодильника", "text": "$|Q_2| = Q_1 - A = 2500 - 1000 = 1500$ Дж.", "math": "$$\\boxed{Q_1 = 2{,}5 \\text{ кДж}, \\; |Q_2| = 1{,}5 \\text{ кДж}}$$"}
+        {
+          "title": "КПД",
+          "text": "$\\eta = 1 - 300/500 = 0{,}4 = 40\\%$."
+        },
+        {
+          "title": "Теплота нагревателя",
+          "text": "$Q_1 = A/\\eta = 1000/0{,}4 = 2500$ Дж."
+        },
+        {
+          "title": "Теплота холодильника",
+          "text": "$|Q_2| = Q_1 - A = 2500 - 1000 = 1500$ Дж.",
+          "math": "$$\\boxed{Q_1 = 2{,}5 \\text{ кДж}, \\; |Q_2| = 1{,}5 \\text{ кДж}}$$"
+        }
       ],
       "formula": "\\eta = 40\\%"
     },
@@ -80,9 +130,19 @@
       "tldr": "p = gamma m0 v, p/p_кл = gamma",
       "hint": "$\\gamma_L = 1/\\sqrt{1-0{,}81} \\approx 2{,}29$",
       "steps": [
-        {"title": "Фактор Лоренца", "text": "$\\gamma_L = 1/\\sqrt{0{,}19} \\approx 2{,}294$."},
-        {"title": "Импульс", "text": "$p = \\gamma_L m_0 v = 2{,}294 \\cdot 9{,}1 \\cdot 10^{-31} \\cdot 2{,}7 \\cdot 10^8 = 5{,}64 \\cdot 10^{-22}$ кг·м/с."},
-        {"title": "Отношение", "text": "$p/p_{\\text{кл}} = \\gamma_L \\approx 2{,}3$.", "math": "$$\\boxed{p/p_{\\text{кл}} \\approx 2{,}3}$$"}
+        {
+          "title": "Фактор Лоренца",
+          "text": "$\\gamma_L = 1/\\sqrt{0{,}19} \\approx 2{,}294$."
+        },
+        {
+          "title": "Импульс",
+          "text": "$p = \\gamma_L m_0 v = 2{,}294 \\cdot 9{,}1 \\cdot 10^{-31} \\cdot 2{,}7 \\cdot 10^8 = 5{,}64 \\cdot 10^{-22}$ кг·м/с."
+        },
+        {
+          "title": "Отношение",
+          "text": "$p/p_{\\text{кл}} = \\gamma_L \\approx 2{,}3$.",
+          "math": "$$\\boxed{p/p_{\\text{кл}} \\approx 2{,}3}$$"
+        }
       ],
       "formula": "p/p_{\\text{кл}} \\approx 2{,}3"
     },
@@ -94,9 +154,19 @@
       "tldr": "v = sqrt(10gh/7) для шара",
       "hint": "$mgh = 7mv^2/10$. Точечное тело: $v = \\sqrt{2gh}$",
       "steps": [
-        {"title": "ЗСЭ", "text": "$mgh = mv^2/2 + I\\omega^2/2 = 7mv^2/10$."},
-        {"title": "Скорость", "text": "$v = \\sqrt{10gh/7} = \\sqrt{10 \\cdot 9{,}8 \\cdot 5/7} = \\sqrt{70} \\approx 8{,}37$ м/с."},
-        {"title": "Сравнение", "text": "Точечное: $\\sqrt{2gh} = \\sqrt{98} \\approx 9{,}9$ м/с (на 18% быстрее).", "math": "$$\\boxed{v \\approx 8{,}37 \\text{ м/с (шар)}, \\; 9{,}9 \\text{ м/с (точка)}}$$"}
+        {
+          "title": "ЗСЭ",
+          "text": "$mgh = mv^2/2 + I\\omega^2/2 = 7mv^2/10$."
+        },
+        {
+          "title": "Скорость",
+          "text": "$v = \\sqrt{10gh/7} = \\sqrt{10 \\cdot 9{,}8 \\cdot 5/7} = \\sqrt{70} \\approx 8{,}37$ м/с."
+        },
+        {
+          "title": "Сравнение",
+          "text": "Точечное: $\\sqrt{2gh} = \\sqrt{98} \\approx 9{,}9$ м/с (на 18% быстрее).",
+          "math": "$$\\boxed{v \\approx 8{,}37 \\text{ м/с (шар)}, \\; 9{,}9 \\text{ м/с (точка)}}$$"
+        }
       ],
       "formula": "v \\approx 8{,}37 \\text{ м/с}"
     },
@@ -108,9 +178,19 @@
       "tldr": "p2/p1 = (V1/V2)^gamma = 8^{5/3}",
       "hint": "$p_2/p_1 = 8^{5/3} = 2^5 = 32$",
       "steps": [
-        {"title": "Уравнение адиабаты", "text": "$pV^\\gamma = \\text{const}$ → $p_2/p_1 = (V_1/V_2)^\\gamma$."},
-        {"title": "Подстановка", "text": "$8^{5/3} = (2^3)^{5/3} = 2^5 = 32$."},
-        {"title": "Ответ", "text": "Давление вырастет в 32 раза.", "math": "$$\\boxed{p_2/p_1 = 32}$$"}
+        {
+          "title": "Уравнение адиабаты",
+          "text": "$pV^\\gamma = \\text{const}$ → $p_2/p_1 = (V_1/V_2)^\\gamma$."
+        },
+        {
+          "title": "Подстановка",
+          "text": "$8^{5/3} = (2^3)^{5/3} = 2^5 = 32$."
+        },
+        {
+          "title": "Ответ",
+          "text": "Давление вырастет в 32 раза.",
+          "math": "$$\\boxed{p_2/p_1 = 32}$$"
+        }
       ],
       "formula": "p_2/p_1 = 32"
     },
@@ -122,9 +202,19 @@
       "tldr": "T_б = 1/|nu1-nu2|",
       "hint": "$\\nu_{\\text{б}} = |\\nu_1 - \\nu_2| = 2$ Гц → $T_{\\text{б}} = 0{,}5$ с",
       "steps": [
-        {"title": "Частота биений", "text": "$\\nu_{\\text{б}} = |\\nu_1 - \\nu_2| = 2$ Гц."},
-        {"title": "Период", "text": "$T_{\\text{б}} = 1/\\nu_{\\text{б}} = 0{,}5$ с."},
-        {"title": "Амплитуда", "text": "$A_{\\max} = 2A$ (при равных амплитудах).", "math": "$$\\boxed{T_{\\text{б}} = 0{,}5 \\text{ с}}$$"}
+        {
+          "title": "Частота биений",
+          "text": "$\\nu_{\\text{б}} = |\\nu_1 - \\nu_2| = 2$ Гц."
+        },
+        {
+          "title": "Период",
+          "text": "$T_{\\text{б}} = 1/\\nu_{\\text{б}} = 0{,}5$ с."
+        },
+        {
+          "title": "Амплитуда",
+          "text": "$A_{\\max} = 2A$ (при равных амплитудах).",
+          "math": "$$\\boxed{T_{\\text{б}} = 0{,}5 \\text{ с}}$$"
+        }
       ],
       "formula": "T_{\\text{б}} = 0{,}5 \\text{ с}"
     },
@@ -136,9 +226,19 @@
       "tldr": "u = (v+u')/(1+vu'/c²)",
       "hint": "$u = (0{,}6+0{,}8)c/(1+0{,}48) = 0{,}946c$",
       "steps": [
-        {"title": "Формула", "text": "$u = (v + u')/(1 + vu'/c^2)$."},
-        {"title": "Подстановка", "text": "$u = 1{,}4c/1{,}48 = 0{,}946c$."},
-        {"title": "Классика", "text": "Классически: $1{,}4c > c$!", "math": "$$\\boxed{u \\approx 0{,}946c}$$"}
+        {
+          "title": "Формула",
+          "text": "$u = (v + u')/(1 + vu'/c^2)$."
+        },
+        {
+          "title": "Подстановка",
+          "text": "$u = 1{,}4c/1{,}48 = 0{,}946c$."
+        },
+        {
+          "title": "Классика",
+          "text": "Классически: $1{,}4c > c$!",
+          "math": "$$\\boxed{u \\approx 0{,}946c}$$"
+        }
       ],
       "formula": "u \\approx 0{,}946c"
     },
@@ -150,9 +250,19 @@
       "tldr": "A = nuRT ln(V2/V1)",
       "hint": "$A = \\nu RT \\ln 3$",
       "steps": [
-        {"title": "Формула", "text": "$A = \\nu RT \\ln(V_2/V_1) = 2 \\cdot 8{,}314 \\cdot 400 \\cdot \\ln 3$."},
-        {"title": "Подстановка", "text": "$A = 6651 \\cdot 1{,}099 = 7309$ Дж."},
-        {"title": "Ответ", "text": "Работа расширения $\\approx 7{,}3$ кДж.", "math": "$$\\boxed{A \\approx 7{,}31 \\text{ кДж}}$$"}
+        {
+          "title": "Формула",
+          "text": "$A = \\nu RT \\ln(V_2/V_1) = 2 \\cdot 8{,}314 \\cdot 400 \\cdot \\ln 3$."
+        },
+        {
+          "title": "Подстановка",
+          "text": "$A = 6651 \\cdot 1{,}099 = 7309$ Дж."
+        },
+        {
+          "title": "Ответ",
+          "text": "Работа расширения $\\approx 7{,}3$ кДж.",
+          "math": "$$\\boxed{A \\approx 7{,}31 \\text{ кДж}}$$"
+        }
       ],
       "formula": "A \\approx 7{,}31 \\text{ кДж}"
     },
@@ -164,9 +274,19 @@
       "tldr": "nu_n = nv/(2L)",
       "hint": "$\\nu_n = nv/(2L)$",
       "steps": [
-        {"title": "Основная частота", "text": "$\\nu_1 = v/(2L) = 250/1 = 250$ Гц."},
-        {"title": "3-я гармоника", "text": "$\\nu_3 = 3\\nu_1 = 750$ Гц."},
-        {"title": "Число узлов/пучностей", "text": "3-я гармоника: 3 пучности, 4 узла.", "math": "$$\\boxed{\\nu_1 = 250 \\text{ Гц}, \\; \\nu_3 = 750 \\text{ Гц}}$$"}
+        {
+          "title": "Основная частота",
+          "text": "$\\nu_1 = v/(2L) = 250/1 = 250$ Гц."
+        },
+        {
+          "title": "3-я гармоника",
+          "text": "$\\nu_3 = 3\\nu_1 = 750$ Гц."
+        },
+        {
+          "title": "Число узлов/пучностей",
+          "text": "3-я гармоника: 3 пучности, 4 узла.",
+          "math": "$$\\boxed{\\nu_1 = 250 \\text{ Гц}, \\; \\nu_3 = 750 \\text{ Гц}}$$"
+        }
       ],
       "formula": "\\nu_1 = 250 \\text{ Гц}"
     },
@@ -178,9 +298,19 @@
       "tldr": "T = 2pi sqrt(l cos(theta)/g)",
       "hint": "$T = 2\\pi\\sqrt{l\\cos\\theta/g}$",
       "steps": [
-        {"title": "Из уравнений", "text": "$T\\cos\\theta = mg$, $T\\sin\\theta = m\\omega^2 l\\sin\\theta$."},
-        {"title": "Период", "text": "$T_p = 2\\pi\\sqrt{l\\cos\\theta/g} = 2\\pi\\sqrt{1 \\cdot 0{,}866/9{,}8} = 2\\pi \\cdot 0{,}297 = 1{,}87$ с."},
-        {"title": "Скорость", "text": "$v = 2\\pi l\\sin\\theta/T_p \\approx 1{,}68$ м/с.", "math": "$$\\boxed{T_p \\approx 1{,}87 \\text{ с}}$$"}
+        {
+          "title": "Из уравнений",
+          "text": "$T\\cos\\theta = mg$, $T\\sin\\theta = m\\omega^2 l\\sin\\theta$."
+        },
+        {
+          "title": "Период",
+          "text": "$T_p = 2\\pi\\sqrt{l\\cos\\theta/g} = 2\\pi\\sqrt{1 \\cdot 0{,}866/9{,}8} = 2\\pi \\cdot 0{,}297 = 1{,}87$ с."
+        },
+        {
+          "title": "Скорость",
+          "text": "$v = 2\\pi l\\sin\\theta/T_p \\approx 1{,}68$ м/с.",
+          "math": "$$\\boxed{T_p \\approx 1{,}87 \\text{ с}}$$"
+        }
       ],
       "formula": "T_p \\approx 1{,}87 \\text{ с}"
     },
@@ -192,9 +322,19 @@
       "tldr": "dS = nuCp ln(T2/T1)",
       "hint": "$\\Delta S = \\nu C_p \\ln(T_2/T_1)$, $C_p = 5R/2$",
       "steps": [
-        {"title": "Формула", "text": "$\\Delta S = \\nu C_p \\ln(T_2/T_1) = 2 \\cdot 20{,}79 \\cdot \\ln 3$."},
-        {"title": "Подстановка", "text": "$\\Delta S = 41{,}6 \\cdot 1{,}099 = 45{,}7$ Дж/К."},
-        {"title": "Ответ", "text": "Энтропия выросла на 45{,}7 Дж/К.", "math": "$$\\boxed{\\Delta S \\approx 45{,}7 \\text{ Дж/К}}$$"}
+        {
+          "title": "Формула",
+          "text": "$\\Delta S = \\nu C_p \\ln(T_2/T_1) = 2 \\cdot 20{,}79 \\cdot \\ln 3$."
+        },
+        {
+          "title": "Подстановка",
+          "text": "$\\Delta S = 41{,}6 \\cdot 1{,}099 = 45{,}7$ Дж/К."
+        },
+        {
+          "title": "Ответ",
+          "text": "Энтропия выросла на 45{,}7 Дж/К.",
+          "math": "$$\\boxed{\\Delta S \\approx 45{,}7 \\text{ Дж/К}}$$"
+        }
       ],
       "formula": "\\Delta S \\approx 45{,}7 \\text{ Дж/К}"
     },
@@ -206,9 +346,19 @@
       "tldr": "АНУУ: u = mv/(m+M), h = u²/(2g)",
       "hint": "$u = mv/(m+M)$, $h = u^2/(2g)$",
       "steps": [
-        {"title": "АНУУ", "text": "$u = 0{,}01 \\cdot 600/2{,}01 \\approx 2{,}99$ м/с."},
-        {"title": "Высота", "text": "$h = u^2/(2g) = 8{,}9/(19{,}6) \\approx 0{,}455$ м."},
-        {"title": "Проверка", "text": "$h < l = 1$ м — маятник не делает полный оборот.", "math": "$$\\boxed{h \\approx 45{,}5 \\text{ см}}$$"}
+        {
+          "title": "АНУУ",
+          "text": "$u = 0{,}01 \\cdot 600/2{,}01 \\approx 2{,}99$ м/с."
+        },
+        {
+          "title": "Высота",
+          "text": "$h = u^2/(2g) = 8{,}9/(19{,}6) \\approx 0{,}455$ м."
+        },
+        {
+          "title": "Проверка",
+          "text": "$h < l = 1$ м — маятник не делает полный оборот.",
+          "math": "$$\\boxed{h \\approx 45{,}5 \\text{ см}}$$"
+        }
       ],
       "formula": "h \\approx 45{,}5 \\text{ см}"
     },
@@ -220,9 +370,19 @@
       "tldr": "tau = gamma tau0, l = v tau",
       "hint": "$\\gamma_L = 1/\\sqrt{1-0{,}99} \\approx 10$",
       "steps": [
-        {"title": "Фактор Лоренца", "text": "$\\gamma_L = 1/\\sqrt{1-0{,}990} \\approx 10{,}0$."},
-        {"title": "Время жизни", "text": "$\\tau = 10{,}0 \\cdot 2{,}2 = 22$ мкс."},
-        {"title": "Путь", "text": "$l = 0{,}995 \\cdot 3 \\cdot 10^8 \\cdot 22 \\cdot 10^{-6} \\approx 6{,}6$ км.", "math": "$$\\boxed{l \\approx 6{,}6 \\text{ км}}$$"}
+        {
+          "title": "Фактор Лоренца",
+          "text": "$\\gamma_L = 1/\\sqrt{1-0{,}990} \\approx 10{,}0$."
+        },
+        {
+          "title": "Время жизни",
+          "text": "$\\tau = 10{,}0 \\cdot 2{,}2 = 22$ мкс."
+        },
+        {
+          "title": "Путь",
+          "text": "$l = 0{,}995 \\cdot 3 \\cdot 10^8 \\cdot 22 \\cdot 10^{-6} \\approx 6{,}6$ км.",
+          "math": "$$\\boxed{l \\approx 6{,}6 \\text{ км}}$$"
+        }
       ],
       "formula": "l \\approx 6{,}6 \\text{ км}"
     },
@@ -234,9 +394,19 @@
       "tldr": "T = 2pi sqrt(m/k), v_max = A omega, a_max = A omega²",
       "hint": "$\\omega = \\sqrt{k/m} = 10$ рад/с",
       "steps": [
-        {"title": "Частота и период", "text": "$\\omega = \\sqrt{50/0{,}5} = 10$ рад/с. $T = 2\\pi/10 = 0{,}628$ с."},
-        {"title": "Max скорость", "text": "$v_{\\max} = A\\omega = 0{,}03 \\cdot 10 = 0{,}3$ м/с."},
-        {"title": "Max ускорение", "text": "$a_{\\max} = A\\omega^2 = 0{,}03 \\cdot 100 = 3$ м/с$^2$.", "math": "$$\\boxed{T = 0{,}63 \\text{ с}, \\; v_{\\max} = 0{,}3 \\text{ м/с}, \\; a_{\\max} = 3 \\text{ м/с}^2}$$"}
+        {
+          "title": "Частота и период",
+          "text": "$\\omega = \\sqrt{50/0{,}5} = 10$ рад/с. $T = 2\\pi/10 = 0{,}628$ с."
+        },
+        {
+          "title": "Max скорость",
+          "text": "$v_{\\max} = A\\omega = 0{,}03 \\cdot 10 = 0{,}3$ м/с."
+        },
+        {
+          "title": "Max ускорение",
+          "text": "$a_{\\max} = A\\omega^2 = 0{,}03 \\cdot 100 = 3$ м/с$^2$.",
+          "math": "$$\\boxed{T = 0{,}63 \\text{ с}, \\; v_{\\max} = 0{,}3 \\text{ м/с}, \\; a_{\\max} = 3 \\text{ м/с}^2}$$"
+        }
       ],
       "formula": "T = 0{,}63 \\text{ с}"
     },
@@ -248,9 +418,19 @@
       "tldr": "h = RT ln2/(Mg)",
       "hint": "$h = RT\\ln 2/(Mg)$",
       "steps": [
-        {"title": "Формула", "text": "$p = p_0/2$ → $Mgh/(RT) = \\ln 2$."},
-        {"title": "Высота", "text": "$h = 8{,}314 \\cdot 290 \\cdot 0{,}693/(0{,}029 \\cdot 9{,}8) = 5880$ м."},
-        {"title": "Ответ", "text": "Примерно 5{,}9 км.", "math": "$$\\boxed{h \\approx 5{,}9 \\text{ км}}$$"}
+        {
+          "title": "Формула",
+          "text": "$p = p_0/2$ → $Mgh/(RT) = \\ln 2$."
+        },
+        {
+          "title": "Высота",
+          "text": "$h = 8{,}314 \\cdot 290 \\cdot 0{,}693/(0{,}029 \\cdot 9{,}8) = 5880$ м."
+        },
+        {
+          "title": "Ответ",
+          "text": "Примерно 5{,}9 км.",
+          "math": "$$\\boxed{h \\approx 5{,}9 \\text{ км}}$$"
+        }
       ],
       "formula": "h \\approx 5{,}9 \\text{ км}"
     },
@@ -262,9 +442,19 @@
       "tldr": "dv = u ln(M0/(M0-m))",
       "hint": "Циолковский: $\\Delta v = u\\ln(M_0/(M_0-m))$",
       "steps": [
-        {"title": "Формула", "text": "$\\Delta v = u\\ln(M_0/(M_0-m)) = 2000\\ln(1000/800)$."},
-        {"title": "Подстановка", "text": "$\\Delta v = 2000 \\cdot \\ln 1{,}25 = 2000 \\cdot 0{,}223 = 446$ м/с."},
-        {"title": "Ответ", "text": "Приращение скорости 446 м/с.", "math": "$$\\boxed{\\Delta v \\approx 446 \\text{ м/с}}$$"}
+        {
+          "title": "Формула",
+          "text": "$\\Delta v = u\\ln(M_0/(M_0-m)) = 2000\\ln(1000/800)$."
+        },
+        {
+          "title": "Подстановка",
+          "text": "$\\Delta v = 2000 \\cdot \\ln 1{,}25 = 2000 \\cdot 0{,}223 = 446$ м/с."
+        },
+        {
+          "title": "Ответ",
+          "text": "Приращение скорости 446 м/с.",
+          "math": "$$\\boxed{\\Delta v \\approx 446 \\text{ м/с}}$$"
+        }
       ],
       "formula": "\\Delta v \\approx 446 \\text{ м/с}"
     },
@@ -276,9 +466,19 @@
       "tldr": "nu = nu0 v/(v-vs)",
       "hint": "Приближение: $\\nu = \\nu_0 v/(v-v_s)$",
       "steps": [
-        {"title": "Формула Доплера", "text": "$\\nu = \\nu_0 \\cdot v/(v - v_s) = 800 \\cdot 340/310$."},
-        {"title": "Результат", "text": "$\\nu \\approx 877$ Гц."},
-        {"title": "При удалении", "text": "$\\nu' = 800 \\cdot 340/370 \\approx 735$ Гц.", "math": "$$\\boxed{\\nu_{\\text{прибл}} = 877, \\; \\nu_{\\text{удал}} = 735 \\text{ Гц}}$$"}
+        {
+          "title": "Формула Доплера",
+          "text": "$\\nu = \\nu_0 \\cdot v/(v - v_s) = 800 \\cdot 340/310$."
+        },
+        {
+          "title": "Результат",
+          "text": "$\\nu \\approx 877$ Гц."
+        },
+        {
+          "title": "При удалении",
+          "text": "$\\nu' = 800 \\cdot 340/370 \\approx 735$ Гц.",
+          "math": "$$\\boxed{\\nu_{\\text{прибл}} = 877, \\; \\nu_{\\text{удал}} = 735 \\text{ Гц}}$$"
+        }
       ],
       "formula": "\\nu = 877 \\text{ Гц}"
     },
@@ -290,9 +490,19 @@
       "tldr": "F = -dU/dx = 0, omega = sqrt(U''/m)",
       "hint": "$x_0 = 2$ м. $\\omega = \\sqrt{6/2} = \\sqrt{3}$",
       "steps": [
-        {"title": "Равновесие", "text": "$F = -dU/dx = -(6x-12) = 0$ → $x_0 = 2$ м."},
-        {"title": "Устойчивость", "text": "$U'' = 6 > 0$ — минимум, устойчиво."},
-        {"title": "Частота", "text": "$\\omega = \\sqrt{U''/m} = \\sqrt{3} \\approx 1{,}73$ рад/с.", "math": "$$\\boxed{x_0 = 2 \\text{ м}, \\; \\omega \\approx 1{,}73 \\text{ рад/с}}$$"}
+        {
+          "title": "Равновесие",
+          "text": "$F = -dU/dx = -(6x-12) = 0$ → $x_0 = 2$ м."
+        },
+        {
+          "title": "Устойчивость",
+          "text": "$U'' = 6 > 0$ — минимум, устойчиво."
+        },
+        {
+          "title": "Частота",
+          "text": "$\\omega = \\sqrt{U''/m} = \\sqrt{3} \\approx 1{,}73$ рад/с.",
+          "math": "$$\\boxed{x_0 = 2 \\text{ м}, \\; \\omega \\approx 1{,}73 \\text{ рад/с}}$$"
+        }
       ],
       "formula": "x_0 = 2 \\text{ м}"
     },
@@ -304,9 +514,19 @@
       "tldr": "v_в = sqrt(2RT/M), и др.",
       "hint": "$v_{\\text{в}} = \\sqrt{2 \\cdot 8314 \\cdot 300/32}$",
       "steps": [
-        {"title": "Наиболее вероятная", "text": "$v_{\\text{в}} = \\sqrt{2RT/M} \\approx 395$ м/с."},
-        {"title": "Средняя", "text": "$\\bar{v} = v_{\\text{в}}\\sqrt{4/\\pi} \\approx 446$ м/с."},
-        {"title": "Среднеквадратичная", "text": "$v_{\\text{ск}} = v_{\\text{в}}\\sqrt{3/2} \\approx 484$ м/с.", "math": "$$\\boxed{v_{\\text{в}} \\approx 395, \\; \\bar{v} \\approx 446, \\; v_{\\text{ск}} \\approx 484 \\text{ м/с}}$$"}
+        {
+          "title": "Наиболее вероятная",
+          "text": "$v_{\\text{в}} = \\sqrt{2RT/M} \\approx 395$ м/с."
+        },
+        {
+          "title": "Средняя",
+          "text": "$\\bar{v} = v_{\\text{в}}\\sqrt{4/\\pi} \\approx 446$ м/с."
+        },
+        {
+          "title": "Среднеквадратичная",
+          "text": "$v_{\\text{ск}} = v_{\\text{в}}\\sqrt{3/2} \\approx 484$ м/с.",
+          "math": "$$\\boxed{v_{\\text{в}} \\approx 395, \\; \\bar{v} \\approx 446, \\; v_{\\text{ск}} \\approx 484 \\text{ м/с}}$$"
+        }
       ],
       "formula": "v_{\\text{в}} \\approx 395 \\text{ м/с}"
     },
@@ -318,9 +538,19 @@
       "tldr": "M = I w0/t, N = w0 t/(4pi)",
       "hint": "$\\omega_0 = 24\\pi \\approx 75{,}4$ рад/с",
       "steps": [
-        {"title": "Начальная частота", "text": "$\\omega_0 = 2\\pi \\cdot 720/60 = 24\\pi \\approx 75{,}4$ рад/с."},
-        {"title": "Момент трения", "text": "$M = I\\omega_0/t = 50 \\cdot 75{,}4/60 \\approx 62{,}8$ Н·м."},
-        {"title": "Число оборотов", "text": "$N = \\omega_0 t/(4\\pi) = 360$.", "math": "$$\\boxed{M \\approx 62{,}8 \\text{ Н·м}, \\; N = 360}$$"}
+        {
+          "title": "Начальная частота",
+          "text": "$\\omega_0 = 2\\pi \\cdot 720/60 = 24\\pi \\approx 75{,}4$ рад/с."
+        },
+        {
+          "title": "Момент трения",
+          "text": "$M = I\\omega_0/t = 50 \\cdot 75{,}4/60 \\approx 62{,}8$ Н·м."
+        },
+        {
+          "title": "Число оборотов",
+          "text": "$N = \\omega_0 t/(4\\pi) = 360$.",
+          "math": "$$\\boxed{M \\approx 62{,}8 \\text{ Н·м}, \\; N = 360}$$"
+        }
       ],
       "formula": "M \\approx 62{,}8 \\text{ Н·м}"
     },
@@ -332,9 +562,19 @@
       "tldr": "l = 1/(sqrt(2) pi d² n)",
       "hint": "$\\langle l \\rangle = 1/(\\sqrt{2}\\pi d^2 n)$",
       "steps": [
-        {"title": "Формула", "text": "$\\langle l \\rangle = 1/(\\sqrt{2}\\pi d^2 n)$."},
-        {"title": "Подстановка", "text": "$= 1/(1{,}414 \\cdot 3{,}14 \\cdot 1{,}37 \\cdot 10^{-19} \\cdot 2{,}69 \\cdot 10^{25})$."},
-        {"title": "Ответ", "text": "$\\langle l \\rangle \\approx 6{,}1 \\cdot 10^{-8}$ м $= 61$ нм.", "math": "$$\\boxed{\\langle l \\rangle \\approx 61 \\text{ нм}}$$"}
+        {
+          "title": "Формула",
+          "text": "$\\langle l \\rangle = 1/(\\sqrt{2}\\pi d^2 n)$."
+        },
+        {
+          "title": "Подстановка",
+          "text": "$= 1/(1{,}414 \\cdot 3{,}14 \\cdot 1{,}37 \\cdot 10^{-19} \\cdot 2{,}69 \\cdot 10^{25})$."
+        },
+        {
+          "title": "Ответ",
+          "text": "$\\langle l \\rangle \\approx 6{,}1 \\cdot 10^{-8}$ м $= 61$ нм.",
+          "math": "$$\\boxed{\\langle l \\rangle \\approx 61 \\text{ нм}}$$"
+        }
       ],
       "formula": "\\langle l \\rangle \\approx 61 \\text{ нм}"
     },
@@ -346,9 +586,19 @@
       "tldr": "v = sqrt(2gR)",
       "hint": "$v = \\sqrt{2gR_З}$",
       "steps": [
-        {"title": "ЗСЭ", "text": "$mv^2/2 = GmM/R = mgR$ → $v = \\sqrt{2gR}$."},
-        {"title": "Подстановка", "text": "$v = \\sqrt{2 \\cdot 9{,}8 \\cdot 6{,}4 \\cdot 10^6} \\approx 11{,}2$ км/с."},
-        {"title": "Ответ", "text": "2-я космическая скорость.", "math": "$$\\boxed{v_2 \\approx 11{,}2 \\text{ км/с}}$$"}
+        {
+          "title": "ЗСЭ",
+          "text": "$mv^2/2 = GmM/R = mgR$ → $v = \\sqrt{2gR}$."
+        },
+        {
+          "title": "Подстановка",
+          "text": "$v = \\sqrt{2 \\cdot 9{,}8 \\cdot 6{,}4 \\cdot 10^6} \\approx 11{,}2$ км/с."
+        },
+        {
+          "title": "Ответ",
+          "text": "2-я космическая скорость.",
+          "math": "$$\\boxed{v_2 \\approx 11{,}2 \\text{ км/с}}$$"
+        }
       ],
       "formula": "v_2 \\approx 11{,}2 \\text{ км/с}"
     },
@@ -360,9 +610,19 @@
       "tldr": "ЗСМИ: I_d w0 = (I_d+I_r)w",
       "hint": "$I_r = mR^2 = 0{,}25$. $\\omega = I_d\\omega_0/(I_d+I_r)$",
       "steps": [
-        {"title": "ЗСМИ", "text": "$I_d\\omega_0 = (I_d+I_r)\\omega$. $I_r = mR^2 = 0{,}25$."},
-        {"title": "Решение", "text": "$\\omega = 2 \\cdot 5/(2+0{,}25) = 10/2{,}25 \\approx 4{,}44$ рад/с."},
-        {"title": "Потери энергии", "text": "$\\Delta E = I_d\\omega_0^2/2 - (I_d+I_r)\\omega^2/2 = 25-22{,}2 = 2{,}8$ Дж.", "math": "$$\\boxed{\\omega \\approx 4{,}44 \\text{ рад/с}}$$"}
+        {
+          "title": "ЗСМИ",
+          "text": "$I_d\\omega_0 = (I_d+I_r)\\omega$. $I_r = mR^2 = 0{,}25$."
+        },
+        {
+          "title": "Решение",
+          "text": "$\\omega = 2 \\cdot 5/(2+0{,}25) = 10/2{,}25 \\approx 4{,}44$ рад/с."
+        },
+        {
+          "title": "Потери энергии",
+          "text": "$\\Delta E = I_d\\omega_0^2/2 - (I_d+I_r)\\omega^2/2 = 25-22{,}2 = 2{,}8$ Дж.",
+          "math": "$$\\boxed{\\omega \\approx 4{,}44 \\text{ рад/с}}$$"
+        }
       ],
       "formula": "\\omega \\approx 4{,}44 \\text{ рад/с}"
     },
@@ -374,9 +634,19 @@
       "tldr": "delta = r2-r1, lambda = v/nu",
       "hint": "$\\Delta = 0{,}68$ м $= \\lambda = v/\\nu$",
       "steps": [
-        {"title": "Разность хода", "text": "$\\Delta = r_2 - r_1 = 0{,}68$ м."},
-        {"title": "Длина волны", "text": "$\\lambda = v/\\nu = 340/500 = 0{,}68$ м."},
-        {"title": "Результат", "text": "$\\Delta = \\lambda$ — максимум.", "math": "$$\\boxed{\\Delta = \\lambda \\Rightarrow \\text{усиление}}$$"}
+        {
+          "title": "Разность хода",
+          "text": "$\\Delta = r_2 - r_1 = 0{,}68$ м."
+        },
+        {
+          "title": "Длина волны",
+          "text": "$\\lambda = v/\\nu = 340/500 = 0{,}68$ м."
+        },
+        {
+          "title": "Результат",
+          "text": "$\\Delta = \\lambda$ — максимум.",
+          "math": "$$\\boxed{\\Delta = \\lambda \\Rightarrow \\text{усиление}}$$"
+        }
       ],
       "formula": "\\Delta = \\lambda"
     },
@@ -388,9 +658,19 @@
       "tldr": "T = const, dS = nuR ln(V2/V1)",
       "hint": "$Q = A = 0$, $\\Delta U = 0$ → $T = \\text{const}$",
       "steps": [
-        {"title": "Температура", "text": "Нет работы, нет теплообмена: $T_2 = T_1 = 300$ К."},
-        {"title": "Энтропия", "text": "$\\Delta S = \\nu R \\ln(V_2/V_1) = R\\ln 2 = 5{,}76$ Дж/К."},
-        {"title": "Ответ", "text": "Необратимый процесс: $\\Delta S > 0$.", "math": "$$\\boxed{T = 300 \\text{ К}, \\; \\Delta S = R\\ln 2 \\approx 5{,}76 \\text{ Дж/К}}$$"}
+        {
+          "title": "Температура",
+          "text": "Нет работы, нет теплообмена: $T_2 = T_1 = 300$ К."
+        },
+        {
+          "title": "Энтропия",
+          "text": "$\\Delta S = \\nu R \\ln(V_2/V_1) = R\\ln 2 = 5{,}76$ Дж/К."
+        },
+        {
+          "title": "Ответ",
+          "text": "Необратимый процесс: $\\Delta S > 0$.",
+          "math": "$$\\boxed{T = 300 \\text{ К}, \\; \\Delta S = R\\ln 2 \\approx 5{,}76 \\text{ Дж/К}}$$"
+        }
       ],
       "formula": "\\Delta S = R\\ln 2"
     },
@@ -402,9 +682,19 @@
       "tldr": "dm = P/c²",
       "hint": "$\\Delta m = P/c^2$",
       "steps": [
-        {"title": "Формула", "text": "$\\Delta m/\\Delta t = P/c^2$."},
-        {"title": "Подстановка", "text": "$= 3{,}85 \\cdot 10^{26}/(9 \\cdot 10^{16}) = 4{,}28 \\cdot 10^9$ кг/с."},
-        {"title": "Ответ", "text": "$\\approx 4{,}3$ млн тонн/с.", "math": "$$\\boxed{\\Delta m \\approx 4{,}3 \\cdot 10^9 \\text{ кг/с}}$$"}
+        {
+          "title": "Формула",
+          "text": "$\\Delta m/\\Delta t = P/c^2$."
+        },
+        {
+          "title": "Подстановка",
+          "text": "$= 3{,}85 \\cdot 10^{26}/(9 \\cdot 10^{16}) = 4{,}28 \\cdot 10^9$ кг/с."
+        },
+        {
+          "title": "Ответ",
+          "text": "$\\approx 4{,}3$ млн тонн/с.",
+          "math": "$$\\boxed{\\Delta m \\approx 4{,}3 \\cdot 10^9 \\text{ кг/с}}$$"
+        }
       ],
       "formula": "\\Delta m \\approx 4{,}3 \\cdot 10^9 \\text{ кг/с}"
     },
@@ -416,9 +706,19 @@
       "tldr": "ЗСЭ: mg(l/2) = Iw²/2, v = wl",
       "hint": "$I = ml^2/3$. $v = \\sqrt{3gl}$",
       "steps": [
-        {"title": "ЗСЭ", "text": "$mg(l/2) = I\\omega^2/2 = ml^2\\omega^2/6$. $\\omega = \\sqrt{3g/l}$."},
-        {"title": "Скорость конца", "text": "$v = \\omega l = \\sqrt{3gl} = \\sqrt{3 \\cdot 9{,}8 \\cdot 1{,}2} \\approx 5{,}94$ м/с."},
-        {"title": "Ответ", "text": "Скорость конца при горизонтальном положении.", "math": "$$\\boxed{v \\approx 5{,}94 \\text{ м/с}}$$"}
+        {
+          "title": "ЗСЭ",
+          "text": "$mg(l/2) = I\\omega^2/2 = ml^2\\omega^2/6$. $\\omega = \\sqrt{3g/l}$."
+        },
+        {
+          "title": "Скорость конца",
+          "text": "$v = \\omega l = \\sqrt{3gl} = \\sqrt{3 \\cdot 9{,}8 \\cdot 1{,}2} \\approx 5{,}94$ м/с."
+        },
+        {
+          "title": "Ответ",
+          "text": "Скорость конца при горизонтальном положении.",
+          "math": "$$\\boxed{v \\approx 5{,}94 \\text{ м/с}}$$"
+        }
       ],
       "formula": "v \\approx 5{,}94 \\text{ м/с}"
     },
@@ -430,9 +730,19 @@
       "tldr": "A_рез = F0/(m 2beta w_рез)",
       "hint": "$A_{\\text{рез}} = F_0/(m \\cdot 2\\beta\\omega_{\\text{рез}})$",
       "steps": [
-        {"title": "Резонансная частота", "text": "$\\omega_{\\text{рез}} = \\sqrt{\\omega_0^2 - 2\\beta^2} \\approx 9{,}97$ рад/с."},
-        {"title": "Амплитуда", "text": "$A_{\\text{рез}} = (F_0/m)/(2\\beta\\omega_{\\text{рез}}) = 20/(2 \\cdot 0{,}5 \\cdot 9{,}97) = 2{,}01$ м."},
-        {"title": "Ответ", "text": "Амплитуда при резонансе $\\approx 2$ м.", "math": "$$\\boxed{A_{\\text{рез}} \\approx 2{,}0 \\text{ м}}$$"}
+        {
+          "title": "Резонансная частота",
+          "text": "$\\omega_{\\text{рез}} = \\sqrt{\\omega_0^2 - 2\\beta^2} \\approx 9{,}97$ рад/с."
+        },
+        {
+          "title": "Амплитуда",
+          "text": "$A_{\\text{рез}} = (F_0/m)/(2\\beta\\omega_{\\text{рез}}) = 20/(2 \\cdot 0{,}5 \\cdot 9{,}97) = 2{,}01$ м."
+        },
+        {
+          "title": "Ответ",
+          "text": "Амплитуда при резонансе $\\approx 2$ м.",
+          "math": "$$\\boxed{A_{\\text{рез}} \\approx 2{,}0 \\text{ м}}$$"
+        }
       ],
       "formula": "A_{\\text{рез}} \\approx 2{,}0 \\text{ м}"
     },
@@ -444,9 +754,19 @@
       "tldr": "p = (nu1+nu2)RT/V",
       "hint": "$\\nu_1 = \\nu_2 = 1$ моль. $p = 2RT/V$",
       "steps": [
-        {"title": "Число молей", "text": "$\\nu_1 = 4/4 = 1$, $\\nu_2 = 32/32 = 1$."},
-        {"title": "Давление", "text": "$p = 2 \\cdot 8{,}314 \\cdot 300/0{,}01 = 499$ кПа."},
-        {"title": "Ответ", "text": "Около 5 атм.", "math": "$$\\boxed{p \\approx 5{,}0 \\cdot 10^5 \\text{ Па}}$$"}
+        {
+          "title": "Число молей",
+          "text": "$\\nu_1 = 4/4 = 1$, $\\nu_2 = 32/32 = 1$."
+        },
+        {
+          "title": "Давление",
+          "text": "$p = 2 \\cdot 8{,}314 \\cdot 300/0{,}01 = 499$ кПа."
+        },
+        {
+          "title": "Ответ",
+          "text": "Около 5 атм.",
+          "math": "$$\\boxed{p \\approx 5{,}0 \\cdot 10^5 \\text{ Па}}$$"
+        }
       ],
       "formula": "p \\approx 5 \\text{ атм}"
     },
@@ -458,9 +778,19 @@
       "tldr": "E = hc/lambda, p = E/c",
       "hint": "$hc = 1240$ нм$\\cdot$эВ",
       "steps": [
-        {"title": "Энергия", "text": "$E = hc/\\lambda = 1240/500 = 2{,}48$ эВ."},
-        {"title": "Импульс", "text": "$p = h/\\lambda = 6{,}63 \\cdot 10^{-34}/5 \\cdot 10^{-7} = 1{,}33 \\cdot 10^{-27}$ кг·м/с."},
-        {"title": "Масса покоя", "text": "Фотон: $m_0 = 0$, $E = pc$.", "math": "$$\\boxed{E = 2{,}48 \\text{ эВ}}$$"}
+        {
+          "title": "Энергия",
+          "text": "$E = hc/\\lambda = 1240/500 = 2{,}48$ эВ."
+        },
+        {
+          "title": "Импульс",
+          "text": "$p = h/\\lambda = 6{,}63 \\cdot 10^{-34}/5 \\cdot 10^{-7} = 1{,}33 \\cdot 10^{-27}$ кг·м/с."
+        },
+        {
+          "title": "Масса покоя",
+          "text": "Фотон: $m_0 = 0$, $E = pc$.",
+          "math": "$$\\boxed{E = 2{,}48 \\text{ эВ}}$$"
+        }
       ],
       "formula": "E = 2{,}48 \\text{ эВ}"
     },
@@ -472,9 +802,19 @@
       "tldr": "ЗСМИ: (I+mR²)w0 = (I+mr²)w",
       "hint": "$(100+157{,}5) \\cdot 2 = (100+17{,}5)\\omega$",
       "steps": [
-        {"title": "ЗСМИ", "text": "$(I+mR^2)\\omega_0 = (I+mr^2)\\omega$. $(257{,}5) \\cdot 2 = (117{,}5)\\omega$."},
-        {"title": "Решение", "text": "$\\omega = 515/117{,}5 \\approx 4{,}38$ рад/с."},
-        {"title": "Ответ", "text": "Скорость выросла в $\\approx 2{,}2$ раза.", "math": "$$\\boxed{\\omega \\approx 4{,}38 \\text{ рад/с}}$$"}
+        {
+          "title": "ЗСМИ",
+          "text": "$(I+mR^2)\\omega_0 = (I+mr^2)\\omega$. $(257{,}5) \\cdot 2 = (117{,}5)\\omega$."
+        },
+        {
+          "title": "Решение",
+          "text": "$\\omega = 515/117{,}5 \\approx 4{,}38$ рад/с."
+        },
+        {
+          "title": "Ответ",
+          "text": "Скорость выросла в $\\approx 2{,}2$ раза.",
+          "math": "$$\\boxed{\\omega \\approx 4{,}38 \\text{ рад/с}}$$"
+        }
       ],
       "formula": "\\omega \\approx 4{,}38 \\text{ рад/с}"
     },
@@ -486,9 +826,19 @@
       "tldr": "a_max = A omega²",
       "hint": "$a_{\\max} = A\\omega^2 = 0{,}002 \\cdot (1000\\pi)^2$",
       "steps": [
-        {"title": "Ускорение", "text": "$a = -A\\omega^2\\cos(\\omega t - kx)$."},
-        {"title": "Максимум", "text": "$a_{\\max} = 0{,}002 \\cdot (1000\\pi)^2 \\approx 1{,}97 \\cdot 10^4$ м/с$^2$."},
-        {"title": "Ответ", "text": "$\\approx 2000g$.", "math": "$$\\boxed{a_{\\max} \\approx 2 \\cdot 10^4 \\text{ м/с}^2}$$"}
+        {
+          "title": "Ускорение",
+          "text": "$a = -A\\omega^2\\cos(\\omega t - kx)$."
+        },
+        {
+          "title": "Максимум",
+          "text": "$a_{\\max} = 0{,}002 \\cdot (1000\\pi)^2 \\approx 1{,}97 \\cdot 10^4$ м/с$^2$."
+        },
+        {
+          "title": "Ответ",
+          "text": "$\\approx 2000g$.",
+          "math": "$$\\boxed{a_{\\max} \\approx 2 \\cdot 10^4 \\text{ м/с}^2}$$"
+        }
       ],
       "formula": "a_{\\max} \\approx 2 \\cdot 10^4 \\text{ м/с}^2"
     },
@@ -500,9 +850,19 @@
       "tldr": "p2 = p1 T2/T1, Q = nuCv dT",
       "hint": "$p_2 = 2p_1$. $Q = 2 \\cdot 20{,}8 \\cdot 300$",
       "steps": [
-        {"title": "Давление", "text": "$p_2 = p_1 T_2/T_1 = 2 \\cdot 10^5$ Па."},
-        {"title": "Теплота", "text": "$Q = \\nu C_V \\Delta T = 2 \\cdot 20{,}8 \\cdot 300 = 12{,}5$ кДж."},
-        {"title": "Работа", "text": "$A = 0$ (изохорный).", "math": "$$\\boxed{p_2 = 2 \\cdot 10^5 \\text{ Па}, \\; Q = 12{,}5 \\text{ кДж}}$$"}
+        {
+          "title": "Давление",
+          "text": "$p_2 = p_1 T_2/T_1 = 2 \\cdot 10^5$ Па."
+        },
+        {
+          "title": "Теплота",
+          "text": "$Q = \\nu C_V \\Delta T = 2 \\cdot 20{,}8 \\cdot 300 = 12{,}5$ кДж."
+        },
+        {
+          "title": "Работа",
+          "text": "$A = 0$ (изохорный).",
+          "math": "$$\\boxed{p_2 = 2 \\cdot 10^5 \\text{ Па}, \\; Q = 12{,}5 \\text{ кДж}}$$"
+        }
       ],
       "formula": "Q = 12{,}5 \\text{ кДж}"
     },
@@ -514,9 +874,19 @@
       "tldr": "gamma = 2, beta = sqrt(3)/2",
       "hint": "$\\gamma_L - 1 = 1$ → $\\gamma_L = 2$",
       "steps": [
-        {"title": "Фактор Лоренца", "text": "$T = (\\gamma_L-1)m_0c^2 = m_0c^2$ → $\\gamma_L = 2$."},
-        {"title": "Скорость", "text": "$\\beta = \\sqrt{1-1/4} = \\sqrt{3}/2 \\approx 0{,}866$."},
-        {"title": "Ответ", "text": "$v \\approx 0{,}87c$.", "math": "$$\\boxed{v = \\frac{\\sqrt{3}}{2}c \\approx 0{,}866c}$$"}
+        {
+          "title": "Фактор Лоренца",
+          "text": "$T = (\\gamma_L-1)m_0c^2 = m_0c^2$ → $\\gamma_L = 2$."
+        },
+        {
+          "title": "Скорость",
+          "text": "$\\beta = \\sqrt{1-1/4} = \\sqrt{3}/2 \\approx 0{,}866$."
+        },
+        {
+          "title": "Ответ",
+          "text": "$v \\approx 0{,}87c$.",
+          "math": "$$\\boxed{v = \\frac{\\sqrt{3}}{2}c \\approx 0{,}866c}$$"
+        }
       ],
       "formula": "v \\approx 0{,}866c"
     },
@@ -528,9 +898,19 @@
       "tldr": "T = mg + mw²l в нижней точке",
       "hint": "$\\omega = \\sqrt{(T_{\\max}/m - g)/l}$",
       "steps": [
-        {"title": "Нижняя точка", "text": "$T - mg = m\\omega^2 l$ → $\\omega = \\sqrt{(T_{\\max}/m - g)/l}$."},
-        {"title": "Подстановка", "text": "$= \\sqrt{(60-9{,}8)/0{,}8} = \\sqrt{62{,}75} \\approx 7{,}92$ рад/с."},
-        {"title": "Ответ", "text": "Нить порвётся при $\\omega > 7{,}9$ рад/с.", "math": "$$\\boxed{\\omega_{\\max} \\approx 7{,}9 \\text{ рад/с}}$$"}
+        {
+          "title": "Нижняя точка",
+          "text": "$T - mg = m\\omega^2 l$ → $\\omega = \\sqrt{(T_{\\max}/m - g)/l}$."
+        },
+        {
+          "title": "Подстановка",
+          "text": "$= \\sqrt{(60-9{,}8)/0{,}8} = \\sqrt{62{,}75} \\approx 7{,}92$ рад/с."
+        },
+        {
+          "title": "Ответ",
+          "text": "Нить порвётся при $\\omega > 7{,}9$ рад/с.",
+          "math": "$$\\boxed{\\omega_{\\max} \\approx 7{,}9 \\text{ рад/с}}$$"
+        }
       ],
       "formula": "\\omega_{\\max} \\approx 7{,}9 \\text{ рад/с}"
     },
@@ -542,9 +922,19 @@
       "tldr": "k_эфф = k1+k2, T = 2pi sqrt(m/k_эфф)",
       "hint": "$k_{\\text{эфф}} = k_1 + k_2 = 50$ Н/м",
       "steps": [
-        {"title": "Эффективная жёсткость", "text": "Обе пружины: $k_{\\text{эфф}} = 50$ Н/м."},
-        {"title": "Период", "text": "$T = 2\\pi\\sqrt{m/k_{\\text{эфф}}} = 2\\pi\\sqrt{0{,}01} = 0{,}628$ с."},
-        {"title": "Ответ", "text": "Период $\\approx 0{,}63$ с.", "math": "$$\\boxed{T \\approx 0{,}63 \\text{ с}}$$"}
+        {
+          "title": "Эффективная жёсткость",
+          "text": "Обе пружины: $k_{\\text{эфф}} = 50$ Н/м."
+        },
+        {
+          "title": "Период",
+          "text": "$T = 2\\pi\\sqrt{m/k_{\\text{эфф}}} = 2\\pi\\sqrt{0{,}01} = 0{,}628$ с."
+        },
+        {
+          "title": "Ответ",
+          "text": "Период $\\approx 0{,}63$ с.",
+          "math": "$$\\boxed{T \\approx 0{,}63 \\text{ с}}$$"
+        }
       ],
       "formula": "T \\approx 0{,}63 \\text{ с}"
     },
@@ -556,9 +946,19 @@
       "tldr": "C_n = Cv(gamma-n)/(1-n)",
       "hint": "$C_n = C_V(\\gamma-n)/(1-n)$, $n = 1{,}2$",
       "steps": [
-        {"title": "Формула", "text": "$C_n = C_V \\cdot (\\gamma-n)/(1-n) = (5R/2)(1{,}4-1{,}2)/(1-1{,}2)$."},
-        {"title": "Подстановка", "text": "$C_n = (5R/2)(0{,}2/(-0{,}2)) = -5R/2$."},
-        {"title": "Смысл", "text": "$C_n < 0$: газ остывает при расширении.", "math": "$$\\boxed{C_n = -5R/2}$$"}
+        {
+          "title": "Формула",
+          "text": "$C_n = C_V \\cdot (\\gamma-n)/(1-n) = (5R/2)(1{,}4-1{,}2)/(1-1{,}2)$."
+        },
+        {
+          "title": "Подстановка",
+          "text": "$C_n = (5R/2)(0{,}2/(-0{,}2)) = -5R/2$."
+        },
+        {
+          "title": "Смысл",
+          "text": "$C_n < 0$: газ остывает при расширении.",
+          "math": "$$\\boxed{C_n = -5R/2}$$"
+        }
       ],
       "formula": "C_n = -5R/2"
     },
@@ -570,9 +970,19 @@
       "tldr": "v_верх² = v0² - 4gR >= gR?",
       "hint": "ЗСЭ: $v_{\\text{верх}}^2 = v_0^2 - 4gR$. Условие: $v_{\\text{верх}}^2 \\geq gR$",
       "steps": [
-        {"title": "ЗСЭ", "text": "$v_{\\text{верх}}^2 = 100 - 4 \\cdot 9{,}8 \\cdot 2 = 21{,}6$ м$^2$/с$^2$."},
-        {"title": "Условие", "text": "$gR = 19{,}6$. $21{,}6 > 19{,}6$ — **пройдёт**."},
-        {"title": "Ответ", "text": "$v_{\\text{верх}} \\approx 4{,}65$ м/с.", "math": "$$\\boxed{v_{\\text{верх}} \\approx 4{,}65 \\text{ м/с — пройдёт}}$$"}
+        {
+          "title": "ЗСЭ",
+          "text": "$v_{\\text{верх}}^2 = 100 - 4 \\cdot 9{,}8 \\cdot 2 = 21{,}6$ м$^2$/с$^2$."
+        },
+        {
+          "title": "Условие",
+          "text": "$gR = 19{,}6$. $21{,}6 > 19{,}6$ — **пройдёт**."
+        },
+        {
+          "title": "Ответ",
+          "text": "$v_{\\text{верх}} \\approx 4{,}65$ м/с.",
+          "math": "$$\\boxed{v_{\\text{верх}} \\approx 4{,}65 \\text{ м/с — пройдёт}}$$"
+        }
       ],
       "formula": "v_{\\text{верх}} \\approx 4{,}65 \\text{ м/с}"
     },
@@ -584,9 +994,19 @@
       "tldr": "t = l/v, t0 = t/gamma",
       "hint": "$\\gamma_L = 5/3$. $t = 5$ лет. $t_0 = 3$ года",
       "steps": [
-        {"title": "По Земле", "text": "$t = 4/0{,}8 = 5$ лет."},
-        {"title": "По космонавту", "text": "$\\gamma_L = 1/\\sqrt{1-0{,}64} = 5/3$. $t_0 = 5/(5/3) = 3$ года."},
-        {"title": "Ответ", "text": "Космонавт моложе на 2 года.", "math": "$$\\boxed{t_{\\text{З}} = 5 \\text{ лет}, \\; t_{\\text{к}} = 3 \\text{ года}}$$"}
+        {
+          "title": "По Земле",
+          "text": "$t = 4/0{,}8 = 5$ лет."
+        },
+        {
+          "title": "По космонавту",
+          "text": "$\\gamma_L = 1/\\sqrt{1-0{,}64} = 5/3$. $t_0 = 5/(5/3) = 3$ года."
+        },
+        {
+          "title": "Ответ",
+          "text": "Космонавт моложе на 2 года.",
+          "math": "$$\\boxed{t_{\\text{З}} = 5 \\text{ лет}, \\; t_{\\text{к}} = 3 \\text{ года}}$$"
+        }
       ],
       "formula": "t_{\\text{к}} = 3 \\text{ года}"
     },
@@ -598,9 +1018,19 @@
       "tldr": "I = I_полн - I_выреза (Штейнер)",
       "hint": "$m_{\\text{выр}} = M/4$. $I_{\\text{выр}}$ по Штейнеру",
       "steps": [
-        {"title": "Масса выреза", "text": "$m = M(R/2)^2/R^2 = M/4$."},
-        {"title": "I выреза", "text": "$I_{\\text{выр}} = m(R/2)^2/2 + m(R/2)^2 = MR^2/32 + MR^2/16 = 3MR^2/32$."},
-        {"title": "Итого", "text": "$I = MR^2/2 - 3MR^2/32 = 13MR^2/32$.", "math": "$$\\boxed{I = \\frac{13MR^2}{32}}$$"}
+        {
+          "title": "Масса выреза",
+          "text": "$m = M(R/2)^2/R^2 = M/4$."
+        },
+        {
+          "title": "I выреза",
+          "text": "$I_{\\text{выр}} = m(R/2)^2/2 + m(R/2)^2 = MR^2/32 + MR^2/16 = 3MR^2/32$."
+        },
+        {
+          "title": "Итого",
+          "text": "$I = MR^2/2 - 3MR^2/32 = 13MR^2/32$.",
+          "math": "$$\\boxed{I = \\frac{13MR^2}{32}}$$"
+        }
       ],
       "formula": "I = 13MR^2/32"
     },
@@ -612,9 +1042,19 @@
       "tldr": "Cp = Cv+R, gamma = Cp/Cv",
       "hint": "Майер: $C_p = C_V + R = 7R/2$",
       "steps": [
-        {"title": "Cp", "text": "$C_p = C_V + R = 7R/2$."},
-        {"title": "Gamma", "text": "$\\gamma = 7/5 = 1{,}4$."},
-        {"title": "Молекула", "text": "$i = 2C_V/R = 5$ — двухатомный.", "math": "$$\\boxed{\\gamma = 1{,}4 \\text{ (двухатомный)}}$$"}
+        {
+          "title": "Cp",
+          "text": "$C_p = C_V + R = 7R/2$."
+        },
+        {
+          "title": "Gamma",
+          "text": "$\\gamma = 7/5 = 1{,}4$."
+        },
+        {
+          "title": "Молекула",
+          "text": "$i = 2C_V/R = 5$ — двухатомный.",
+          "math": "$$\\boxed{\\gamma = 1{,}4 \\text{ (двухатомный)}}$$"
+        }
       ],
       "formula": "\\gamma = 1{,}4"
     },
@@ -626,9 +1066,19 @@
       "tldr": "v = sqrt(2gl), T = 3mg",
       "hint": "$h = l$. $T - mg = mv^2/l$",
       "steps": [
-        {"title": "ЗСЭ", "text": "$mgl = mv^2/2$ → $v = \\sqrt{2gl} = \\sqrt{39{,}2} \\approx 6{,}26$ м/с."},
-        {"title": "Натяжение", "text": "$T = mg + mv^2/l = mg + 2mg = 3mg$."},
-        {"title": "Ответ", "text": "Натяжение в нижней точке = $3mg$.", "math": "$$\\boxed{v \\approx 6{,}26 \\text{ м/с}, \\; T = 3mg}$$"}
+        {
+          "title": "ЗСЭ",
+          "text": "$mgl = mv^2/2$ → $v = \\sqrt{2gl} = \\sqrt{39{,}2} \\approx 6{,}26$ м/с."
+        },
+        {
+          "title": "Натяжение",
+          "text": "$T = mg + mv^2/l = mg + 2mg = 3mg$."
+        },
+        {
+          "title": "Ответ",
+          "text": "Натяжение в нижней точке = $3mg$.",
+          "math": "$$\\boxed{v \\approx 6{,}26 \\text{ м/с}, \\; T = 3mg}$$"
+        }
       ],
       "formula": "T = 3mg"
     },
@@ -640,9 +1090,19 @@
       "tldr": "a = (2pi/T)² R",
       "hint": "$\\omega = 2\\pi/T$, $a = \\omega^2 R$",
       "steps": [
-        {"title": "Угловая скорость", "text": "$\\omega = 2\\pi/5400 \\approx 1{,}164 \\cdot 10^{-3}$ рад/с."},
-        {"title": "Ускорение", "text": "$a = \\omega^2 R = 1{,}355 \\cdot 10^{-6} \\cdot 6{,}8 \\cdot 10^6 = 9{,}21$ м/с$^2$."},
-        {"title": "Ответ", "text": "Примерно $g$.", "math": "$$\\boxed{a \\approx 9{,}2 \\text{ м/с}^2}$$"}
+        {
+          "title": "Угловая скорость",
+          "text": "$\\omega = 2\\pi/5400 \\approx 1{,}164 \\cdot 10^{-3}$ рад/с."
+        },
+        {
+          "title": "Ускорение",
+          "text": "$a = \\omega^2 R = 1{,}355 \\cdot 10^{-6} \\cdot 6{,}8 \\cdot 10^6 = 9{,}21$ м/с$^2$."
+        },
+        {
+          "title": "Ответ",
+          "text": "Примерно $g$.",
+          "math": "$$\\boxed{a \\approx 9{,}2 \\text{ м/с}^2}$$"
+        }
       ],
       "formula": "a \\approx 9{,}2 \\text{ м/с}^2"
     },
@@ -654,9 +1114,19 @@
       "tldr": "x0 = m(g+a)/k, T = 2pi sqrt(m/k)",
       "hint": "Период НЕ зависит от $g$!",
       "steps": [
-        {"title": "Равновесие", "text": "$kx_0 = m(g+a)$ → $x_0 = m(g+a)/k$."},
-        {"title": "Период", "text": "$T = 2\\pi\\sqrt{m/k}$ — не зависит от $g$ и ускорения лифта!"},
-        {"title": "Ответ", "text": "Удлинение больше, период тот же.", "math": "$$\\boxed{T = 2\\pi\\sqrt{m/k} \\text{ (не зависит от } g)}$$"}
+        {
+          "title": "Равновесие",
+          "text": "$kx_0 = m(g+a)$ → $x_0 = m(g+a)/k$."
+        },
+        {
+          "title": "Период",
+          "text": "$T = 2\\pi\\sqrt{m/k}$ — не зависит от $g$ и ускорения лифта!"
+        },
+        {
+          "title": "Ответ",
+          "text": "Удлинение больше, период тот же.",
+          "math": "$$\\boxed{T = 2\\pi\\sqrt{m/k} \\text{ (не зависит от } g)}$$"
+        }
       ],
       "formula": "T = 2\\pi\\sqrt{m/k}"
     },
@@ -668,9 +1138,19 @@
       "tldr": "T_см = (nu1 T1 + nu2 T2)/(nu1+nu2)",
       "hint": "Оба одноатомные, $C_V$ одинаковы",
       "steps": [
-        {"title": "Оба одноатомные", "text": "$T_{\\text{см}} = (\\nu_1 T_1 + \\nu_2 T_2)/(\\nu_1+\\nu_2)$."},
-        {"title": "Подстановка", "text": "$T_{\\text{см}} = (800+600)/5 = 280$ К."},
-        {"title": "Ответ", "text": "Температура смеси 280 К.", "math": "$$\\boxed{T_{\\text{см}} = 280 \\text{ К}}$$"}
+        {
+          "title": "Оба одноатомные",
+          "text": "$T_{\\text{см}} = (\\nu_1 T_1 + \\nu_2 T_2)/(\\nu_1+\\nu_2)$."
+        },
+        {
+          "title": "Подстановка",
+          "text": "$T_{\\text{см}} = (800+600)/5 = 280$ К."
+        },
+        {
+          "title": "Ответ",
+          "text": "Температура смеси 280 К.",
+          "math": "$$\\boxed{T_{\\text{см}} = 280 \\text{ К}}$$"
+        }
       ],
       "formula": "T_{\\text{см}} = 280 \\text{ К}"
     },
@@ -682,9 +1162,19 @@
       "tldr": "F = 2P/c",
       "hint": "Отражение: $F = 2P/c$",
       "steps": [
-        {"title": "Импульс", "text": "Поток: $p/t = P/c$."},
-        {"title": "Зеркало", "text": "Отражение удваивает изменение импульса."},
-        {"title": "Сила", "text": "$F = 2P/c = 20/(3 \\cdot 10^8) = 6{,}7 \\cdot 10^{-8}$ Н.", "math": "$$\\boxed{F \\approx 6{,}7 \\cdot 10^{-8} \\text{ Н}}$$"}
+        {
+          "title": "Импульс",
+          "text": "Поток: $p/t = P/c$."
+        },
+        {
+          "title": "Зеркало",
+          "text": "Отражение удваивает изменение импульса."
+        },
+        {
+          "title": "Сила",
+          "text": "$F = 2P/c = 20/(3 \\cdot 10^8) = 6{,}7 \\cdot 10^{-8}$ Н.",
+          "math": "$$\\boxed{F \\approx 6{,}7 \\cdot 10^{-8} \\text{ Н}}$$"
+        }
       ],
       "formula": "F = 2P/c"
     },
@@ -696,9 +1186,19 @@
       "tldr": "a = mg/(m+M/2)",
       "hint": "$T = Ma/2$, $ma = mg - T$",
       "steps": [
-        {"title": "Система", "text": "$ma = mg - T$, $I\\varepsilon = TR$, $a = \\varepsilon R$ → $T = Ma/2$."},
-        {"title": "Ускорение", "text": "$a = mg/(m+M/2) = 2 \\cdot 9{,}8/(2+2) = 4{,}9$ м/с$^2$."},
-        {"title": "Натяжение", "text": "$T = Ma/2 = 4 \\cdot 4{,}9/2 = 9{,}8$ Н.", "math": "$$\\boxed{a = 4{,}9 \\text{ м/с}^2}$$"}
+        {
+          "title": "Система",
+          "text": "$ma = mg - T$, $I\\varepsilon = TR$, $a = \\varepsilon R$ → $T = Ma/2$."
+        },
+        {
+          "title": "Ускорение",
+          "text": "$a = mg/(m+M/2) = 2 \\cdot 9{,}8/(2+2) = 4{,}9$ м/с$^2$."
+        },
+        {
+          "title": "Натяжение",
+          "text": "$T = Ma/2 = 4 \\cdot 4{,}9/2 = 9{,}8$ Н.",
+          "math": "$$\\boxed{a = 4{,}9 \\text{ м/с}^2}$$"
+        }
       ],
       "formula": "a = 4{,}9 \\text{ м/с}^2"
     }
