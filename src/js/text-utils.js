@@ -14,7 +14,7 @@ export function nl(str) {
     p = p.replace(/(?:^|\n)((?:\|[^\n]+\|\s*\n)+)/g, (_, tableBlock) => {
       const rows = tableBlock.trim().split('\n').map(r => r.trim()).filter(Boolean);
       if (rows.length < 2) return '\n' + tableBlock;
-      const sepIdx = rows.findIndex(r => /^\|[\s:]*-+[\s:]*(\|[\s:]*-+[\s:]*)*\|$/.test(r));
+      const sepIdx = rows.findIndex(r => /^\|[\s:]*-+[\s:]*([\s:]*\|[\s:]*-+[\s:]*)*\|$/.test(r));
       let html = '<table class="md-table">';
       rows.forEach((row, i) => {
         if (i === sepIdx) return;
@@ -27,9 +27,17 @@ export function nl(str) {
     });
     p = p
       .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-      .replace(/\\n(?![a-zA-Z])|\n/g, '<br>');
-    p = p.replace(/<br>\s*<table/g, '<table');
-    p = p.replace(/<\/table>\s*<br>/g, '</table>');
+      .replace(/\\n(?![a-zA-Z])|(?<!\n)\n(?!\n)/g, '<br>')   // single newlines → <br>
+      .replace(/(?:\\n){2,}|\n{2,}/g, '</p><p class="nl-p">');  // double+ newlines → paragraph break
+    // Strip <br> adjacent to display math $$ to prevent double-spacing
+    p = p.replace(/(<br\s*\/?>)+\s*(\$\$)/g, '$2');
+    p = p.replace(/(\$\$)\s*(<br\s*\/?>)+/g, '$1');
+    // Strip <br> adjacent to paragraph boundaries
+    p = p.replace(/(<br\s*\/?>)+\s*(<\/p>)/g, '$2');
+    p = p.replace(/(<p[^>]*>)\s*(<br\s*\/?>)+/g, '$1');
+    // Strip <br> around tables
+    p = p.replace(/<br\s*\/?>\s*<table/g, '<table');
+    p = p.replace(/<\/table>\s*<br\s*\/?>/g, '</table>');
     return p;
   }).join('');
 }

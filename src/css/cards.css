@@ -67,9 +67,13 @@
   font-size: 0.78rem; font-weight: 700; color: var(--accent);
   text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px;
 }
-.card-formal-text { font-size: 0.95rem; line-height: 1.85; color: var(--text); margin: 0 0 12px; }
-.card-formal-text ul, .card-formal-text ol { padding-left: 24px; margin: 12px 0; }
-.card-formal-text li { margin-bottom: 8px; }
+.card-formal-text { font-size: 0.95rem; line-height: 1.85; color: var(--text); margin: 0; }
+/* Consistent paragraph spacing inside formal text (double newlines → <p>) */
+.card-formal-text p.nl-p { margin: 0.6em 0 0 0; }
+/* Tighter display math spacing inside formal text */
+.card-formal-text .katex-display { margin: 0.5em 0 !important; }
+.card-formal-text ul, .card-formal-text ol { padding-left: 24px; margin: 0.6em 0; }
+.card-formal-text li { margin-bottom: 6px; }
 .card-cond { margin: 12px 0; padding-left: 0; list-style: none; }
 .card-cond li {
   position: relative; padding-left: 24px; margin: 6px 0;
