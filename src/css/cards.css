@@ -65,15 +65,22 @@
 .card-formal { margin: 0; }
 .card-formal-label {
   font-size: 0.78rem; font-weight: 700; color: var(--accent);
-  text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px;
+  text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px;
 }
-.card-formal-text { font-size: 0.95rem; line-height: 1.8; color: var(--text); margin: 0; }
-/* Consistent paragraph spacing inside formal text (double newlines → <p>) */
-.card-formal-text p.nl-p { margin: 10px 0 0 0; }
-/* Tighter display math spacing inside formal text */
-.card-formal-text .katex-display { margin: 8px 0 !important; }
+.card-formal-text {
+  font-size: 0.95rem; line-height: 1.8; color: var(--text); margin: 0;
+}
+
+/* ── Unified vertical rhythm inside card text: 12px between everything ── */
+.card-formal-text p.nl-p { margin: 12px 0 0 0; }
+.card-formal-text .katex-display { margin: 10px 0 !important; }
+.card-formal-text .katex-display + p.nl-p { margin-top: 10px; }
+.card-formal-text .katex-display + .katex-display { margin-top: 4px; }
 .card-formal-text ul, .card-formal-text ol { padding-left: 24px; margin: 10px 0; }
-.card-formal-text li { margin-bottom: 6px; }
+.card-formal-text li { margin-bottom: 4px; }
+
+/* Make <br> add consistent vertical space instead of just a line break */
+.card-formal-text br { display: block; content: ""; margin-top: 4px; }
 .card-cond { margin: 12px 0; padding-left: 0; list-style: none; }
 .card-cond li {
   position: relative; padding-left: 24px; margin: 6px 0;
