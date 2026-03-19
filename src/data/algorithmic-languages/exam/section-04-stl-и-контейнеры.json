@@ -6,49 +6,49 @@
       "id": 1,
       "title": "Требования к классам для последовательных контейнеров. Лямбда-функции и сортировка",
       "type": "Понятие",
-      "formalText": "**Требования к классам для последовательных контейнеров** (`vector`, `list`, `deque`):\\n- Конструктор по умолчанию\\n- Оператор сравнения `<` (для сортировки и упорядочивания)\\n- **Правило пяти**: деструктор, конструктор копирования, `operator=` копир., конструктор перемещения, `operator=` перемещ.\\n\\n**Лямбда-функция** — функция без имени, определяемая в месте использования:\\n<pre class=\"code-block\"><code class=\"language-cpp\">[capture](параметры) -> тип { тело }</code></pre>\\n\\n**Три способа сортировки контейнера:**\\n\\n**1. Перегрузка `operator<`** — алгоритм `sort` по умолчанию использует `<`.\\n\\n**2. Предикат** — обычная функция сравнения:\\n<pre class=\"code-block\"><code class=\"language-cpp\">bool predicate(int a, int b) { return a > b; }\nsort(vec.begin(), vec.end(), predicate);</code></pre>\\n\\n**3. Лямбда-функция:**\\n<pre class=\"code-block\"><code class=\"language-cpp\">sort(vec.begin(), vec.end(), [](int a, int b) {\n    return a > b;   // сортировка по убыванию\n});</code></pre>",
-      "insight": "Лямбда — это анонимный работник: ты описываешь задачу прямо на месте, не нанимая (не объявляя) именованную функцию. Для контейнеров ключевое: элементы должны уметь копироваться и сравниваться — иначе ни вставить, ни отсортировать.",
+      "insight": "vector/list хранят копии → объекту нужны конструктор копирования и operator=. Лямбда — анонимная функция.",
+      "formalText": "**Требования для vector/list:**\\n- Конструктор по умолчанию\\n- Конструктор копирования\\n- `operator=`\\n\\n**Лямбда-функция:**\\n<pre class=\"code-block\"><code>[capture](параметры) -> тип { тело }\n\nauto cmp = [](const A& a, const A& b) {\n    return a.x < b.x;\n};\nstd::sort(v.begin(), v.end(), cmp);</code></pre>\\n\\n- `[]` — ничего не захватывает\\n- `[&]` — всё по ссылке\\n- `[=]` — всё по значению\\n- `[&x, y]` — x по ссылке, y по значению",
+      "note": "На экзамене покажи лямбду с sort. Назови требования к элементу контейнера.",
       "example": {
-        "title": "📝 Лямбда в for_each и sort",
-        "text": "<pre class=\"code-block\"><code class=\"language-cpp\">vector<int> vec = {1, 3, 5, 7};\n\n// for_each с лямбдой\nfor_each(vec.begin(), vec.end(), [](int n) {\n    cout << n << \" \";\n});\n\n// sort с лямбдой (по убыванию)\nsort(vec.begin(), vec.end(), [](int a, int b) {\n    return a > b;\n});\n// vec = {7, 5, 3, 1}</code></pre>"
-      },
-      "note": "Capture list `[]` определяет, какие внешние переменные лямбда захватывает: `[=]` — все по значению, `[&]` — все по ссылке, `[x, &y]` — x по значению, y по ссылке."
+        "title": "📝 Сортировка по убыванию",
+        "text": "<pre class=\"code-block\"><code>vector<int> v = {3,1,4,1,5};\nsort(v.begin(), v.end(), [](int a, int b){\n    return a > b;\n});\n// v = {5,4,3,1,1}</code></pre>"
+      }
     },
     {
       "id": 2,
       "title": "Функциональные объекты (функторы), перегрузка операции ()",
       "type": "Понятие",
-      "formalText": "**Функтор** (функциональный объект) — объект класса, в котором перегружен **`operator()`**. Такой объект можно вызывать как функцию.\\n\\n**Преимущества перед обычными функциями:**\\n- Может хранить **состояние** (данные между вызовами)\\n- Может передаваться как параметр в алгоритмы STL\\n\\n<pre class=\"code-block\"><code class=\"language-cpp\">class Sum {\npublic:\n    int operator()(int a, int b) {\n        return a + b;\n    }\n};\n\nint main() {\n    Sum s;\n    cout << s(2, 3);  // 5 — вызов как функции\n}</code></pre>\\n\\n**Функтор с состоянием:**\\n<pre class=\"code-block\"><code class=\"language-cpp\">class Counter {\n    int count = 0;\npublic:\n    void operator()(int x) {\n        if (x > 0) count++;\n    }\n    int getCount() const { return count; }\n};</code></pre>",
-      "insight": "Функтор — это калькулятор с памятью: он не только считает (как функция), но и запоминает результаты между нажатиями. Лямбда с capture — по сути синтаксический сахар для функтора.",
+      "insight": "Функтор — объект, который можно вызвать как функцию. Нужен operator().",
+      "formalText": "<pre class=\"code-block\"><code>struct Greater {\n    bool operator()(int a, int b) const {\n        return a > b;\n    }\n};\n\nstd::sort(v.begin(), v.end(), Greater());</code></pre>\\n\\n- Функтор = класс с `operator()`\\n- Преимущества перед функцией: может хранить **состояние**\\n- STL использует функторы как предикаты и компараторы",
+      "note": "Покажи struct с operator() и передачу в sort. Объясни преимущество: функтор хранит состояние.",
       "example": {
-        "title": "📝 Функтор в алгоритме STL",
-        "text": "<pre class=\"code-block\"><code class=\"language-cpp\">vector<int> v = {1, -2, 3, -4, 5};\nCounter c = for_each(v.begin(), v.end(), Counter());\ncout << c.getCount();  // 3 — три положительных числа</code></pre>"
-      },
-      "note": "`operator()` может принимать любое количество параметров. Функтор часто используется как предикат в `sort`, `find_if`, `for_each`."
+        "title": "📝 Функтор с состоянием",
+        "text": "<pre class=\"code-block\"><code>struct Adder {\n    int n;\n    Adder(int n) : n(n) {}\n    int operator()(int x) { return x + n; }\n};\n\nAdder add5(5);\ncout << add5(10);   // 15</code></pre>"
+      }
     },
     {
       "id": 3,
       "title": "Требования к классам для контейнеров set и map",
       "type": "Понятие",
-      "formalText": "Контейнеры `set` и `map` хранят элементы в **отсортированном порядке** (реализованы как красно-чёрные деревья).\\n\\n**Требования к классам элементов:**\\n1. Определён **`operator<`** (строгое слабое упорядочивание) — используется для упорядочивания элементов\\n2. Для `map`: ключ также должен иметь `operator<`\\n3. Конструктор по умолчанию\\n\\nАльтернативно можно передать **пользовательский компаратор** как параметр шаблона:\\n<pre class=\"code-block\"><code class=\"language-cpp\">struct MyCompare {\n    bool operator()(const MyClass& a, const MyClass& b) const {\n        return a.getValue() < b.getValue();\n    }\n};\n\nset<MyClass, MyCompare> mySet;</code></pre>\\n\\n`operator==` для `set` не обязателен (равенство определяется как `!(a < b) && !(b < a)`), но для `map` часто полезен для поиска по ключу.",
-      "insight": "set/map — это библиотечный каталог: книги расставлены по алфавиту (operator<). Без понятия «какая буква раньше» библиотекарь не сможет разложить книги. Если стандартный `<` не подходит — дай свой компаратор.",
+      "insight": "set/map — упорядоченные контейнеры. Элементу нужен operator< (или компаратор).",
+      "formalText": "<pre class=\"code-block\"><code>struct Point {\n    int x, y;\n    bool operator<(const Point& p) const {\n        return x < p.x || (x == p.x && y < p.y);\n    }\n};\n\nstd::set<Point> s;       // использует operator<\nstd::map<Point, int> m;  // тоже operator<</code></pre>\\n\\n- set/map — красно-чёрные деревья (O(log n))\\n- Без `operator<` — передай компаратор: `set<T, Cmp>`\\n- multiset и multimap допускают дублирующиеся ключи",
+      "note": "Реализуй operator< для класса или передай компаратор третьим параметром шаблона.",
       "example": {
-        "title": "📝 Пользовательский класс в set",
-        "text": "<pre class=\"code-block\"><code class=\"language-cpp\">class Student {\n    string name;\n    int grade;\npublic:\n    Student(string n, int g) : name(n), grade(g) {}\n    bool operator<(const Student& s) const {\n        return name < s.name;  // сортировка по имени\n    }\n};\n\nset<Student> students;\nstudents.insert(Student(\"Alice\", 5));\nstudents.insert(Student(\"Bob\", 4));</code></pre>"
-      },
-      "note": "`operator<` должен быть const и реализовывать строгое слабое упорядочивание: если `a < b` — то `!(b < a)`. Иначе — undefined behavior."
+        "title": "📝 С функтором-компаратором",
+        "text": "<pre class=\"code-block\"><code>struct Cmp {\n    bool operator()(const Point& a, const Point& b) const {\n        return a.x < b.x;\n    }\n};\nstd::set<Point, Cmp> s;</code></pre>"
+      }
     },
     {
       "id": 4,
       "title": "Требования к классам для контейнеров unordered_set и unordered_map",
       "type": "Понятие",
-      "formalText": "Контейнеры `unordered_set` и `unordered_map` хранят элементы в **хеш-таблице** (без сортировки, быстрый доступ за $O(1)$ в среднем).\\n\\n**Требования к классам элементов:**\\n1. Определён **`operator==`** — для определения равенства двух объектов (разрешение коллизий)\\n2. Определён **хеш-код** (`std::hash`) — преобразует объект в значение типа `size_t`\\n\\n<pre class=\"code-block\"><code class=\"language-cpp\">class Point {\npublic:\n    int x, y;\n    bool operator==(const Point& p) const {\n        return x == p.x && y == p.y;\n    }\n};\n\n// Специализация std::hash для Point\nnamespace std {\n    template<>\n    struct hash<Point> {\n        size_t operator()(const Point& p) const {\n            return hash<int>()(p.x) ^ (hash<int>()(p.y) << 1);\n        }\n    };\n}\n\nunordered_set<Point> points;</code></pre>",
-      "insight": "unordered-контейнеры — это гардероб с номерками: хеш-функция вычисляет номер крючка (позицию в таблице), а `operator==` проверяет, твоя ли это куртка. Без хеша — не знаешь куда повесить, без == — не знаешь какую снять.",
+      "insight": "unordered — хеш-таблицы. Нужны std::hash<T> и operator==.",
+      "formalText": "<pre class=\"code-block\"><code>struct Point {\n    int x, y;\n    bool operator==(const Point& p) const {\n        return x == p.x && y == p.y;\n    }\n};\n\ntemplate<>\nstruct std::hash<Point> {\n    size_t operator()(const Point& p) const {\n        return hash<int>()(p.x) ^ (hash<int>()(p.y) << 1);\n    }\n};\n\nstd::unordered_set<Point> us;</code></pre>\\n\\n- O(1) в среднем (хеш-таблица), O(n) в худшем\\n- Нужны: `operator==` + `std::hash<T>` (или хеш-функтор)",
+      "note": "Два требования: operator== + хеш-функция. Покажи специализацию std::hash для своего класса.",
       "example": {
-        "title": "📝 Пользовательский хеш",
-        "text": "<pre class=\"code-block\"><code class=\"language-cpp\">unordered_set<Point> pts;\npts.insert({1, 2});\npts.insert({3, 4});\npts.insert({1, 2});   // дубликат — не добавится\ncout << pts.size();    // 2</code></pre>"
-      },
-      "note": "В отличие от set/map, здесь НЕ нужен `operator<`. Нужны `operator==` и `std::hash`. Хеш-функция должна минимизировать коллизии — одинаковые объекты обязаны давать одинаковый хеш."
+        "title": "📝 С хеш-функтором",
+        "text": "<pre class=\"code-block\"><code>struct PtHash {\n    size_t operator()(const Point& p) const {\n        return hash<int>()(p.x) ^ hash<int>()(p.y);\n    }\n};\nunordered_set<Point, PtHash> us;</code></pre>"
+      }
     }
   ]
 }

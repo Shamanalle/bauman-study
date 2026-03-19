@@ -6,73 +6,73 @@
       "id": 1,
       "title": "Наследование классов. Объявление производного класса",
       "type": "Понятие",
-      "formalText": "**Наследование** — создание нового класса (производного) на базе существующего (базового). Производный класс наследует поля и методы базового и может добавлять собственные.\\n\\nФормат объявления:\\n<pre class=\"code-block\"><code class=\"language-cpp\">class Derived : public Base { ... };      // одиночное\nclass D : public X, protected B { ... };  // множественное</code></pre>\\n\\n**Особенности конструкторов при наследовании:**\\n1. Конструктор производного класса **в первую очередь** вызывает конструктор базового\\n2. Если явно не указан — вызывается конструктор без параметров (если его нет — ошибка)\\n3. При множественном наследовании конструкторы вызываются в порядке перечисления базовых классов\\n\\n**Особенности деструкторов:**\\n- Деструктор производного класса после своего тела **неявно** вызывает деструкторы базовых\\n- Порядок разрушения **обратен** порядку создания\\n\\n<pre class=\"code-block\"><code class=\"language-cpp\">class Animal {\nprotected:\n    string name;\npublic:\n    Animal(string n) : name(n) {}\n    void show() { cout << name; }\n};\n\nclass Dog : public Animal {\n    string breed;\npublic:\n    Dog(string n, string b) : Animal(n), breed(b) {}\n    void showAll() { show(); cout << \" \" << breed; }\n};</code></pre>",
-      "insight": "Наследование — как семейный бизнес: сын наследует всё от отца (поля, методы), но может добавить свои отделы и переделать старые. Конструктор сына первым делом вызывает конструктор отца — нельзя работать, не унаследовав базу.",
+      "insight": "Наследник получает все поля и методы базового класса и может добавлять свои.",
+      "formalText": "<pre class=\"code-block\"><code>class Base {\nprotected:\n    int x;\npublic:\n    void show() { cout << x; }\n};\n\nclass Derived : public Base {   // наследование\n    int y;\npublic:\n    Derived(int a, int b) : Base(), y(b) { x = a; }\n};</code></pre>\\n\\n- `public`-наследование: интерфейс базового класса сохраняется\\n- `private`-наследование: всё от базового становится private\\n- `protected`-наследование: public → protected, protected → protected",
+      "note": "Обычно используют public-наследование. Покажи синтаксис + объясни 3 типа наследования.",
       "example": {
-        "title": "📝 Создание и использование",
-        "text": "<pre class=\"code-block\"><code class=\"language-cpp\">Dog d(\"Rex\", \"Labrador\");\nd.show();      // Rex       — метод базового класса\nd.showAll();   // Rex Labrador — метод производного</code></pre>"
-      },
-      "note": "Конструктор базового вызывается через список инициализации: `Dog(...) : Animal(n), breed(b) {}`. Если забыть — компилятор попытается вызвать конструктор без параметров."
+        "title": "📝 Полный пример",
+        "text": "<pre class=\"code-block\"><code>Derived d(10, 20);\nd.show();    // 10 — метод наследован от Base</code></pre>"
+      }
     },
     {
       "id": 2,
       "title": "Статусы доступа при наследовании классов",
       "type": "Понятие",
-      "formalText": "Перед именем базового класса указывается **статус доступа наследования** (`public`, `protected`, `private`), определяющий видимость наследуемых членов в производном классе.\\n\\n**Таблица преобразования доступа:**\\n\\n| Наследование | `public` в базовом | `protected` в базовом | `private` в базовом |\\n|---|---|---|---|\\n| `public` | `public` | `protected` | недоступно |\\n| `protected` | `protected` | `protected` | недоступно |\\n| `private` | `private` | `private` | недоступно |\\n\\n**Правила по умолчанию:**\\n- `class` — наследование `private`\\n- `struct` — наследование `public`\\n- С `union` производный класс **не определяется**\\n\\n`private`-члены базового класса **всегда недоступны** в производном — напрямую обратиться к ним нельзя (только через public/protected методы базового).",
-      "insight": "Статус наследования — это фильтр: чем строже наследование, тем больше закрывается. public-наследование сохраняет всё как есть, private — прячет всё внутрь. Помни: private-поля базового класса недоступны в потомках при ЛЮБОМ типе наследования.",
+      "insight": "Тип наследования определяет максимальный уровень доступа унаследованных членов.",
+      "formalText": "| Член в базовом | public | protected | private |\n|---|---|---|---|\n| public | public | protected | private |\n| protected | protected | protected | private |\n| private | недоступен | недоступен | недоступен |\\n\\n- `private`-члены базового класса **никогда** не доступны в наследнике напрямую\\n- Доступ к ним — через public/protected методы базового класса",
+      "note": "На экзамене нарисуй эту таблицу. Ключевое: private в базовом классе = недоступен наследнику.",
       "example": {
-        "title": "📝 Различия типов наследования",
-        "text": "<pre class=\"code-block\"><code class=\"language-cpp\">class Base {\npublic:    int a;\nprotected: int b;\nprivate:   int c;\n};\n\nclass D1 : public Base {\n    // a — public, b — protected, c — недоступен\n};\n\nclass D2 : private Base {\n    // a — private, b — private, c — недоступен\n};</code></pre>"
-      },
-      "note": "Самый частый тип — public-наследование (интерфейс базового класса сохраняется). Private-наследование используется для реализации «has-a» через «is-implemented-in-terms-of»."
+        "title": "📝 Пример",
+        "text": "<pre class=\"code-block\"><code>class B { public: int x; protected: int y; };\nclass D : public B {\n    void f() {\n        x = 1;  // OK — public остался public\n        y = 2;  // OK — protected остался protected\n    }\n};</code></pre>"
+      }
     },
     {
       "id": 3,
       "title": "Конструкторы и деструктор в производных классах",
       "type": "Понятие",
-      "formalText": "**Конструктор** — специальный метод для инициализации объекта. Имя совпадает с именем класса, нет возвращаемого значения, возможна перегрузка.\\n\\n**В производных классах:**\\n1. Конструктор производного **первым делом** вызывает конструктор базового через список инициализации\\n2. Если явный вызов отсутствует — вызывается конструктор базового без параметров\\n3. Если конструктора без параметров у базового нет — ошибка компиляции\\n\\n**Деструктор** (`~ИмяКласса()`) — метод для деинициализации. Не имеет параметров и возвращаемого значения, всегда один.\\n- В производных классах деструктор **автоматически** вызывает деструкторы базовых после своего тела\\n- Порядок вызова деструкторов **обратен** порядку конструкторов\\n\\n<pre class=\"code-block\"><code class=\"language-cpp\">class Base {\n    int a;\npublic:\n    Base(int a) : a(a) {\n        cout << \"Base(\" << a << \")\" << endl;\n    }\n    ~Base() { cout << \"~Base\" << endl; }\n};\n\nclass Derived : public Base {\n    int b;\npublic:\n    Derived(int a, int b) : Base(a), b(b) {  // вызов Base(a)\n        cout << \"Derived\" << endl;\n    }\n    ~Derived() { cout << \"~Derived\" << endl; }\n};</code></pre>",
-      "insight": "Создание объекта производного класса — как строительство дома: сначала фундамент (конструктор базового), потом стены (конструктор производного). Снос — в обратном порядке: сначала стены, потом фундамент.",
+      "insight": "Конструкторы вызываются от базового к производному, деструкторы — в обратном порядке.",
+      "formalText": "<pre class=\"code-block\"><code>class Base {\npublic:\n    Base(int n) { cout << \"Base(\" << n << \")\\n\"; }\n    ~Base()     { cout << \"~Base\\n\"; }\n};\n\nclass Derived : public Base {\npublic:\n    Derived(int n) : Base(n) {   // вызов конструктора базы\n        cout << \"Derived\\n\";\n    }\n    ~Derived() { cout << \"~Derived\\n\"; }\n};</code></pre>\\n\\n- Конструктор базового класса вызывается в **списке инициализации**\\n- Порядок: конструктор Base → конструктор Derived\\n- Порядок деструкции: ~Derived → ~Base (обратный)",
+      "note": "Порядок: создание Base → Derived, уничтожение ~Derived → ~Base. Базовый конструктор — в списке инициализации.",
       "example": {
-        "title": "📝 Порядок вызовов",
-        "text": "<pre class=\"code-block\"><code class=\"language-cpp\">{\n    Derived d(10, 20);\n    // Вывод:\n    // Base(10)\n    // Derived\n}  // при выходе из блока:\n   // ~Derived\n   // ~Base</code></pre>"
-      },
-      "note": "Если у базового класса есть виртуальные функции — деструктор базового должен быть `virtual`, иначе при `delete` через указатель на базовый деструктор производного не вызовется."
+        "title": "📝 Вывод",
+        "text": "<pre class=\"code-block\"><code>{ Derived d(5); }\n// Вывод:\n// Base(5)\n// Derived\n// ~Derived\n// ~Base</code></pre>"
+      }
     },
     {
       "id": 4,
       "title": "Множественное наследование и виртуальные базовые классы",
       "type": "Понятие",
-      "formalText": "**Множественное наследование** — класс может наследовать от нескольких базовых:\\n<pre class=\"code-block\"><code class=\"language-cpp\">class X { public: int k; void f() {} };\nclass Y : public X { };\nclass Z : public X { };\nclass A : public Y, public Z { };</code></pre>\\n\\n**Проблема ромбовидного наследования:** класс `A` получает **две копии** полей и методов `X` (через `Y` и через `Z`). Обращение неоднозначно:\\n<pre class=\"code-block\"><code class=\"language-cpp\">A d;\nd.Y::k = 5;   // копия через Y\nd.Z::k = 10;  // копия через Z — это разные поля!</code></pre>\\n\\n**Виртуальное наследование** устраняет дублирование. Класс X объявляется виртуальным базовым:\\n<pre class=\"code-block\"><code class=\"language-cpp\">class Y : virtual public X { };\nclass Z : virtual public X { };\nclass A : public Y, public Z { };\n// Теперь X — один экземпляр в A</code></pre>\\n\\nПри виртуальном наследовании в производном классе появляется **дополнительная ссылка** (указатель) на объект виртуального базового класса вместо прямого вложения.",
-      "insight": "Ромбовидное наследование — как два родителя, у которых общий дедушка: без virtual ребёнок получает двух дедушек (дублирование). С virtual — дедушка один, и все ссылаются на него. Ключевое слово virtual относится к способу наследования, а не к самому базовому классу.",
+      "insight": "Множественное наследование — от нескольких классов. Проблема «ромба» решается virtual-наследованием.",
+      "formalText": "<pre class=\"code-block\"><code>class A { public: int x; };\n\n// Без virtual — две копии A в C!\nclass B1 : public A {};\nclass B2 : public A {};\nclass C : public B1, public B2 {};  // C.B1::x и C.B2::x\n\n// С virtual — одна копия A!\nclass V1 : virtual public A {};\nclass V2 : virtual public A {};\nclass D : public V1, public V2 {};  // D.x — один</code></pre>\\n\\n- Без `virtual`: каждый путь к A создаёт свою копию полей\\n- С `virtual`: одна общая копия A (ромб решён)\\n- Неоднозначность без virtual: `c.B1::x` или `c.B2::x`",
+      "note": "Нарисуй ромб A→B1,B2→C. Покажи проблему (два x) и решение (virtual).",
       "example": {
-        "title": "📝 С virtual и без",
-        "text": "<pre class=\"code-block\"><code class=\"language-cpp\">// Без virtual:\nA a;\na.Y::k = 5;  a.Z::k = 10;  // два разных k!\n\n// С virtual:\nA a;\na.k = 5;  // один k на все пути наследования</code></pre>"
-      },
-      "note": "При виртуальном наследовании конструктор виртуального базового класса вызывается конструктором самого дальнего потомка (most derived class), а не промежуточными классами."
+        "title": "📝 Ромб",
+        "text": "<pre class=\"code-block\"><code>D d;\nd.x = 1;     // OK — один x (virtual)\n\nC c;\n// c.x = 1;  // ОШИБКА: неоднозначно!\nc.B1::x = 1; // надо уточнять</code></pre>"
+      }
     },
     {
       "id": 5,
       "title": "Виртуальные функции, статическое и динамическое связывание",
       "type": "Понятие",
-      "formalText": "**Переопределение функций** — в производном классе определяется функция с тем же именем и типом возвращаемого значения, что и в базовом.\\n\\n**Виртуальные функции** — объявляются с ключевым словом `virtual`. При вызове через указатель/ссылку на базовый класс вызывается функция **фактического** типа объекта.\\n\\n**Два типа связывания:**\\n- **Статическое** — выбор функции на этапе **компиляции** по типу переменной\\n- **Динамическое** — выбор функции **во время выполнения** через **таблицу виртуальных функций** (vtable)\\n\\n**Vtable** — массив указателей на виртуальные функции. Каждый класс с виртуальными функциями имеет свою vtable. Каждый объект хранит скрытый указатель vptr на vtable своего класса.\\n\\n<pre class=\"code-block\"><code class=\"language-cpp\">class Base {\npublic:\n    virtual void print() {\n        cout << \"Base\" << endl;\n    }\n};\n\nclass Derived : public Base {\npublic:\n    void print() override {\n        cout << \"Derived\" << endl;\n    }\n};</code></pre>",
-      "insight": "Без virtual вызов по указателю на базовый класс всегда идёт в базовый метод — компилятор «прибивает гвоздями» на этапе компиляции (статическое связывание). С virtual — вызов идёт через vtable, и программа на ходу определяет, чей метод вызывать (динамическое связывание). Это и есть полиморфизм.",
+      "insight": "virtual — вызов метода определяется типом объекта (в runtime), а не типом указателя.",
+      "formalText": "<pre class=\"code-block\"><code>class Base {\npublic:\n    virtual void f() { cout << \"Base\"; }\n    void g()         { cout << \"Base\"; }\n    virtual ~Base() {}   // обязательно!\n};\n\nclass Derived : public Base {\npublic:\n    void f() override { cout << \"Derived\"; }\n    void g()          { cout << \"Derived\"; }\n};</code></pre>\\n\\n<pre class=\"code-block\"><code>Base* p = new Derived();\np->f();    // \"Derived\" — динамическое (virtual)\np->g();    // \"Base\"    — статическое (не virtual)\ndelete p;  // ~Derived → ~Base (virtual деструктор!)</code></pre>\\n\\n- Без `virtual` → компилятор выбирает по типу указателя (compile-time)\\n- С `virtual` → выбор через vtable по типу объекта (runtime)\\n- `override` — явная пометка переопределения",
+      "note": "Деструктор базового класса должен быть virtual! Иначе delete через Base* не вызовет ~Derived.",
       "example": {
-        "title": "📝 Динамический полиморфизм",
-        "text": "<pre class=\"code-block\"><code class=\"language-cpp\">Base* p = new Base();\np->print();    // Base\ndelete p;\n\np = new Derived();\np->print();    // Derived — вызван метод фактического типа!\ndelete p;</code></pre>"
-      },
-      "note": "Используй `override` в производном классе — компилятор проверит, что ты действительно переопределяешь виртуальную функцию базового, а не создаёшь новую."
+        "title": "📝 vtable",
+        "text": "Каждый объект содержит скрытый указатель **vptr** → **vtable** (таблица указателей на виртуальные методы). При вызове виртуального метода — переход по vptr → vtable → нужная функция."
+      }
     },
     {
       "id": 6,
       "title": "Абстрактные и локальные классы в Си++",
       "type": "Понятие",
-      "formalText": "**Абстрактный класс** — класс, содержащий хотя бы одну **чисто виртуальную функцию**. Нельзя создать объект абстрактного класса.\\n\\n**Чисто виртуальная функция** — объявляется с `= 0`, не имеет реализации в данном классе:\\n<pre class=\"code-block\"><code class=\"language-cpp\">class Figure {\npublic:\n    virtual double getSquare() = 0;     // чисто виртуальная\n    virtual double getPerimeter() = 0;\n    virtual void showFigureType() = 0;\n};</code></pre>\\n\\nКласс-наследник **обязан** реализовать все чисто виртуальные функции, иначе сам становится абстрактным.\\n\\n**Локальный класс** — класс, объявленный **внутри функции**:\\n<pre class=\"code-block\"><code class=\"language-cpp\">void fun() {\n    class Test {   // локальный класс\n        int x;\n    public:\n        Test(int x) : x(x) {}\n        void show() { cout << x; }\n    };\n    Test t(42);\n    t.show();\n}\n// Test недоступен за пределами fun()</code></pre>\\n\\n**Ограничения локального класса:**\\n- Имя доступно **только** внутри функции\\n- Методы должны быть определены **внутри** класса\\n- Может иметь статические функции, но **не** статические поля",
-      "insight": "Абстрактный класс — это чертёж машины: он описывает интерфейс (руль, педали), но ехать на чертеже нельзя. Нужна конкретная реализация (Toyota, BMW). Локальный класс — это записная книжка, которую ты достаёшь только в одной комнате и нигде больше не используешь.",
+      "insight": "Абстрактный класс = «контракт»: задаёт интерфейс, но объект создавать нельзя.",
+      "formalText": "**Абстрактный класс** — содержит хотя бы одну **чисто виртуальную** функцию:\\n<pre class=\"code-block\"><code>class Shape {\npublic:\n    virtual double area() = 0;   // = 0 → чисто виртуальная\n    virtual ~Shape() {}\n};\n\nclass Circle : public Shape {\n    double r;\npublic:\n    Circle(double r) : r(r) {}\n    double area() override { return 3.14 * r * r; }\n};</code></pre>\\n\\n- `Shape s;` — **ошибка** (нельзя создать объект абстрактного класса)\\n- Указатель `Shape*` — можно (для полиморфизма)\\n\\n**Локальный класс** — определён внутри функции, виден только в ней.",
+      "note": "= 0 делает функцию чисто виртуальной → класс абстрактный. Нельзя создать объект, но можно указатель.",
       "example": {
-        "title": "📝 Реализация абстрактного класса",
-        "text": "<pre class=\"code-block\"><code class=\"language-cpp\">class Circle : public Figure {\n    double r;\npublic:\n    Circle(double r) : r(r) {}\n    double getSquare() override { return 3.14159 * r * r; }\n    double getPerimeter() override { return 2 * 3.14159 * r; }\n    void showFigureType() override { cout << \"Circle\"; }\n};\n\n// Figure f;       // ОШИБКА: абстрактный\nCircle c(5.0);     // OK: все функции реализованы</code></pre>"
-      },
-      "note": "Деструктор абстрактного класса должен быть `virtual` — иначе при `delete` через указатель на базовый не вызовется деструктор производного."
+        "title": "📝 Полиморфизм",
+        "text": "<pre class=\"code-block\"><code>Shape* shapes[] = { new Circle(5) };\ncout << shapes[0]->area();   // 78.5\ndelete shapes[0];</code></pre>"
+      }
     }
   ]
 }

@@ -4,99 +4,99 @@
   "questions": [
     {
       "id": 1,
-      "title": "Понятие особой (исключительной) ситуации в Си++. Общий формат try, catch, throw",
+      "title": "Понятие исключительной ситуации. Общая схема обработки",
       "type": "Понятие",
-      "formalText": "**Исключение** — специальный механизм обработки ошибок в C++. Позволяет передать управление из точки возникновения ошибки в обработчик, который может находиться на любом уровне стека вызовов.\\n\\n**Общий формат:**\\n<pre class=\"code-block\"><code class=\"language-cpp\">try {\n    // код, который может вызвать исключение\n    throw выражение;  // генерация исключения\n}\ncatch (тип_исключения переменная) {\n    // код обработки исключения\n}</code></pre>\\n\\n**Ключевые слова:**\\n- `try` — блок кода, в котором могут возникнуть исключения\\n- `throw` — генерация (выброс) исключения\\n- `catch` — перехват и обработка исключения\\n\\nЕсли исключение не перехвачено ни одним `catch`, программа завершается вызовом `std::terminate()`.",
-      "insight": "Исключения — это аварийный тормоз поезда: если машинист (функция) видит проблему — дёргает стоп-кран (throw), и поезд останавливается на ближайшей станции, где есть бригада ремонтников (catch). Без catch поезд просто встанет навсегда (terminate).",
+      "insight": "Исключение — ошибка в runtime, которую нельзя обработать на месте. Механизм: throw → catch.",
+      "formalText": "<pre class=\"code-block\"><code>try {\n    // код, который может сгенерировать исключение\n    throw 42;             // генерация\n}\ncatch (int e) {           // перехват по типу\n    cout << \"Ошибка: \" << e;\n}\ncatch (...) {             // перехват всех\n    cout << \"Неизвестная ошибка\";\n}</code></pre>\\n\\n- `throw` — генерация исключения (любой тип)\\n- `catch` — перехват по типу (сверху вниз, первый подходящий)\\n- `catch(...)` — ловит всё (ставится последним)",
+      "note": "Порядок catch важен: от частного к общему. catch(...) — всегда последний.",
       "example": {
-        "title": "📝 Базовый пример try-catch",
-        "text": "<pre class=\"code-block\"><code class=\"language-cpp\">try {\n    int x = 10, y = 0;\n    if (y == 0)\n        throw \"Деление на ноль!\";\n    cout << x / y;\n}\ncatch (const char* msg) {\n    cerr << \"Ошибка: \" << msg << endl;\n}</code></pre>"
-      },
-      "note": "throw может выбрасывать значение любого типа: int, string, const char*, объект класса. Тип в catch должен совпадать с типом throw."
+        "title": "📝 Полный пример",
+        "text": "<pre class=\"code-block\"><code>try {\n    int* p = new int[1000000000];\n} catch (const bad_alloc& e) {\n    cerr << e.what();\n}</code></pre>"
+      }
     },
     {
       "id": 2,
-      "title": "Обработка исключения внутри функции, в которой сгенерировано исключение",
+      "title": "Локальная обработка исключительных ситуаций с помощью функций стандартных библиотек",
       "type": "Понятие",
-      "formalText": "Исключение можно сгенерировать и обработать **в одной и той же функции**, поместив `throw` внутрь блока `try` этой функции:\\n\\n<pre class=\"code-block\"><code class=\"language-cpp\">void doSomething() {\n    int a = 5;\n    int b = 0;\n    try {\n        if (b == 0) {\n            throw std::runtime_error(\"Division by zero\");\n        }\n        int result = a / b;\n        std::cout << result << std::endl;\n    }\n    catch (std::exception& e) {\n        std::cout << \"Error: \" << e.what() << std::endl;\n    }\n}</code></pre>\\n\\nВ этом случае:\\n1. `throw` генерирует исключение типа `std::runtime_error`\\n2. Управление передаётся в `catch` **этой же функции**\\n3. Вызывающая функция не знает об ошибке — она обработана локально",
-      "insight": "Локальная обработка — как починить прокол колеса самому на обочине: проблема возникла и решена в одном месте, никто в офисе (вызывающая функция) даже не узнает. Используй, когда функция может сама исправить ситуацию.",
+      "insight": "Локальная обработка — ошибка обнаружена и обработана в одной функции без throw.",
+      "formalText": "**Способы локальной обработки:**\\n\\n1. **Возврат кода ошибки:**\\n<pre class=\"code-block\"><code>int divide(int a, int b, int& result) {\n    if (b == 0) return -1;   // код ошибки\n    result = a / b;\n    return 0;                // успех\n}</code></pre>\\n\\n2. **errno + perror:**\\n<pre class=\"code-block\"><code>FILE* f = fopen(\"file.txt\", \"r\");\nif (!f) {\n    perror(\"fopen\");   // выведет: fopen: No such file\n}</code></pre>\\n\\n- Проверка возвращаемых значений (`NULL`, `-1`, `errno`)\\n- `perror()` — вывод описания последней ошибки",
+      "note": "Локальная = без try/catch. Просто проверка if + return код ошибки или errno.",
       "example": {
-        "title": "📝 Локальная обработка с продолжением",
-        "text": "<pre class=\"code-block\"><code class=\"language-cpp\">void safeDivide(int a, int b) {\n    try {\n        if (b == 0) throw std::runtime_error(\"div by 0\");\n        cout << a / b;\n    }\n    catch (std::exception& e) {\n        cout << \"Используем значение по умолчанию: 0\";\n    }\n    // выполнение продолжается после catch\n    cout << \" — функция завершилась нормально\";\n}</code></pre>"
-      },
-      "note": "После обработки в catch выполнение продолжается **после** блока catch, а не после throw. Код между throw и концом try-блока пропускается."
+        "title": "📝 Использование errno",
+        "text": "<pre class=\"code-block\"><code>#include <cerrno>\ndouble x = sqrt(-1.0);\nif (errno == EDOM)\n    cerr << \"Ошибка области определения\";</code></pre>"
+      }
     },
     {
       "id": 3,
-      "title": "Обработка исключения вне функции, в которой оно сгенерировано",
+      "title": "Внешняя обработка исключительных ситуаций: try, catch, throw",
       "type": "Понятие",
-      "formalText": "Если исключение не обрабатывается в функции, где оно возникло, оно **распространяется** вверх по стеку вызовов до ближайшего подходящего `catch`.\\n\\nФункция, генерирующая исключение:\\n<pre class=\"code-block\"><code class=\"language-cpp\">void foo() {\n    throw std::runtime_error(\"Oops\");  // генерируем\n    // код после throw НЕ выполнится\n}</code></pre>\\n\\nВызывающая функция перехватывает:\\n<pre class=\"code-block\"><code class=\"language-cpp\">void bar() {\n    try {\n        foo();  // вызываем функцию, которая бросает\n    }\n    catch (std::exception& e) {\n        std::cout << \"Error: \" << e.what();\n    }\n}</code></pre>\\n\\n**Механизм раскрутки стека (stack unwinding):**\\nПри поиске обработчика автоматически вызываются деструкторы всех локальных объектов, созданных между `try` и `throw`.",
-      "insight": "Внешняя обработка — как эскалация проблемы начальнику: рядовой сотрудник (foo) не может решить — передаёт наверх (bar). Исключение летит вверх по стеку, пока не найдёт catch. По пути все локальные объекты корректно уничтожаются (RAII).",
+      "insight": "Внешняя обработка = функция генерирует throw, а ловит вызывающий код в catch.",
+      "formalText": "<pre class=\"code-block\"><code>double divide(double a, double b) {\n    if (b == 0)\n        throw runtime_error(\"деление на 0\");\n    return a / b;\n}\n\nint main() {\n    try {\n        cout << divide(10, 0);\n    } catch (const runtime_error& e) {\n        cerr << e.what();  // \"деление на 0\"\n    }\n}</code></pre>\\n\\n- Функция **не знает**, как обработать ошибку — кидает throw\\n- Вызывающий код **решает**, что делать — ловит catch\\n- Раскрутка стека: все локальные объекты уничтожаются (деструкторы вызываются)",
+      "note": "Раскрутка стека — ключевое: все локальные объекты до catch будут уничтожены.",
       "example": {
-        "title": "📝 Цепочка вызовов",
-        "text": "<pre class=\"code-block\"><code class=\"language-cpp\">void level3() { throw 42; }\nvoid level2() { level3(); }  // не ловит — пробрасывает\nvoid level1() {\n    try {\n        level2();\n    }\n    catch (int e) {\n        cout << \"Поймано: \" << e;  // Поймано: 42\n    }\n}</code></pre>"
-      },
-      "note": "Если ни один catch во всём стеке не подходит — вызывается `std::terminate()` и программа аварийно завершается."
+        "title": "📝 Раскрутка стека",
+        "text": "<pre class=\"code-block\"><code>void f() {\n    string s = \"hello\";  // будет уничтожен!\n    throw 42;\n}  // деструктор string вызовется</code></pre>"
+      }
     },
     {
       "id": 4,
-      "title": "Создание исключения как объекта класса",
+      "title": "Исключения: классы исключений стандартной библиотеки",
       "type": "Понятие",
-      "formalText": "Исключение можно создать как **объект пользовательского класса**, наследуя от `std::exception`:\\n\\n<pre class=\"code-block\"><code class=\"language-cpp\">class MyException : public std::exception {\npublic:\n    const char* what() const noexcept override {\n        return \"My exception occurred\";\n    }\n};\n\nvoid foo() {\n    throw MyException();  // объект класса как исключение\n}\n\nvoid bar() {\n    try {\n        foo();\n    }\n    catch (MyException& e) {\n        std::cout << \"Error: \" << e.what();\n    }\n}</code></pre>\\n\\n**Преимущества:**\\n- Класс может хранить **дополнительные данные** об ошибке (код, описание, контекст)\\n- Метод `what()` возвращает описание ошибки\\n- Иерархия классов исключений позволяет перехватывать группы ошибок через базовый класс",
-      "insight": "Класс-исключение — это подробный рапорт об аварии: не просто «сломалось» (throw 42), а «что сломалось, где, почему, и вот фотографии». Наследование от std::exception позволяет ловить все исключения одним catch(std::exception&).",
+      "insight": "Все стандартные исключения наследуют от std::exception. Метод what() — описание ошибки.",
+      "formalText": "<pre class=\"code-block\"><code>exception\n├── logic_error          // ошибки логики\n│   ├── invalid_argument\n│   ├── out_of_range\n│   └── domain_error\n└── runtime_error        // ошибки выполнения\n    ├── overflow_error\n    └── range_error</code></pre>\\n\\n- `exception::what()` — возвращает описание (const char*)\\n- `logic_error` — ошибки предотвратимые в коде\\n- `runtime_error` — ошибки, возникающие только в runtime",
+      "note": "Нарисуй дерево наследования. exception → logic_error + runtime_error → конкретные классы.",
       "example": {
-        "title": "📝 Класс с дополнительными данными",
-        "text": "<pre class=\"code-block\"><code class=\"language-cpp\">class FileError : public std::exception {\n    string filename;\n    string msg;\npublic:\n    FileError(string f) : filename(f) {\n        msg = \"Cannot open: \" + filename;\n    }\n    const char* what() const noexcept override {\n        return msg.c_str();\n    }\n};</code></pre>"
-      },
-      "note": "Всегда перехватывай исключения по ссылке (`catch (MyException& e)`), а не по значению — избегаешь срезки (slicing) при наследовании."
+        "title": "📝 Использование",
+        "text": "<pre class=\"code-block\"><code>try {\n    throw out_of_range(\"индекс вне диапазона\");\n} catch (const exception& e) {\n    cerr << e.what();  // ловим любой наследник\n}</code></pre>"
+      }
     },
     {
       "id": 5,
-      "title": "Формы обработчиков исключений (catch)",
+      "title": "Исключения: создание собственных классов исключений",
       "type": "Понятие",
-      "formalText": "После блока `try` может следовать **несколько блоков `catch`**, каждый для своего типа исключения:\\n\\n<pre class=\"code-block\"><code class=\"language-cpp\">try {\n    // код\n}\ncatch (тип1 переменная1) {\n    // обработка типа 1\n}\ncatch (тип2 переменная2) {\n    // обработка типа 2\n}\ncatch (...) {\n    // перехват ЛЮБОГО исключения\n}</code></pre>\\n\\n**Формы обработчиков:**\\n1. **По конкретному типу**: `catch (int e)`, `catch (std::exception& e)`\\n2. **По базовому классу**: `catch (std::exception& e)` — ловит все производные\\n3. **Универсальный**: `catch (...)` — ловит **любое** исключение (тип неизвестен)\\n\\n**Порядок важен:** обработчики проверяются **сверху вниз**. Производные классы — **перед** базовыми, иначе базовый перехватит раньше.\\n\\n**Перехват по ссылке** (`catch (Type& e)`) — предпочтительнее, чем по значению: избегает срезки объекта при наследовании.",
-      "insight": "Цепочка catch — как сортировочная линия на почте: посылки (исключения) проверяются по порядку: «это книга? нет. это хрупкое? нет. ладно, кидай в общую кучу (...)». Порядок важен — если поставить `catch(...)` первым, остальные никогда не сработают.",
+      "insight": "Свой класс исключения = наследник std::exception с дополнительными полями.",
+      "formalText": "<pre class=\"code-block\"><code>class FileError : public runtime_error {\n    string filename;\n    int code;\npublic:\n    FileError(const string& file, int c)\n        : runtime_error(\"File error: \" + file),\n          filename(file), code(c) {}\n    const string& getFile() const { return filename; }\n    int getCode() const { return code; }\n};</code></pre>\\n\\n- Наследуй от `exception` или его потомков\\n- Добавляй свои поля (код ошибки, имя файла и т.д.)\\n- В конструкторе передай сообщение в базовый класс",
+      "note": "Покажи наследование от runtime_error + свои поля + вызов what().",
       "example": {
-        "title": "📝 Несколько catch-блоков",
-        "text": "<pre class=\"code-block\"><code class=\"language-cpp\">try {\n    throw std::out_of_range(\"index\");\n}\ncatch (std::out_of_range& e) {\n    cout << \"Out of range: \" << e.what();\n}\ncatch (std::exception& e) {\n    cout << \"Exception: \" << e.what();\n}\ncatch (...) {\n    cout << \"Unknown exception\";\n}</code></pre>"
-      },
-      "note": "Порядок: сначала производные классы (out_of_range), потом базовые (exception), последним — `catch(...)`. Иначе компилятор предупредит, что catch недостижим."
+        "title": "📝 Перехват",
+        "text": "<pre class=\"code-block\"><code>try {\n    throw FileError(\"data.txt\", 404);\n} catch (const FileError& e) {\n    cerr << e.what() << \" code=\" << e.getCode();\n}</code></pre>"
+      }
     },
     {
       "id": 6,
-      "title": "Формы выражений генерации исключений (throw)",
+      "title": "Исключения: различные формы операции catch",
       "type": "Понятие",
-      "formalText": "Оператор `throw` имеет **три формы:**\\n\\n**1. `throw выражение;`** — генерация исключения с передачей данных:\\n<pre class=\"code-block\"><code class=\"language-cpp\">throw 42;                           // int\nthrow std::runtime_error(\"error\");   // объект класса\nthrow \"error message\";               // const char*</code></pre>\\n\\n**2. `throw тип();`** — генерация исключения без дополнительных данных:\\n<pre class=\"code-block\"><code class=\"language-cpp\">throw MyException();  // создаёт объект и бросает</code></pre>\\n\\n**3. `throw;`** (без аргументов) — **проброс** текущего исключения дальше по стеку. Используется внутри `catch` для передачи исключения вышестоящему обработчику:\\n<pre class=\"code-block\"><code class=\"language-cpp\">try {\n    try {\n        throw \"Ошибка!\";\n    }\n    catch (const char* msg) {\n        cerr << \"Обработали: \" << msg << endl;\n        throw;  // пробрасываем дальше\n    }\n}\ncatch (const char* msg) {\n    cerr << \"Проброшено: \" << msg << endl;\n}</code></pre>",
-      "insight": "throw с аргументом — кричишь «пожар!» и показываешь, где горит. throw без аргумента — передаёшь пожарную тревогу по цепочке начальников, не меняя описание. Третья форма полезна для логирования: поймал, записал, пробросил.",
+      "insight": "catch ловит по типу: по значению (копия), по ссылке (без срезки), по ... (всё подряд).",
+      "formalText": "<pre class=\"code-block\"><code>try { throw Derived(); }\n\ncatch (Base b)   { }   // 1. По значению — СРЕЗКА!\ncatch (Base& b)  { }   // 2. По ссылке — правильно\ncatch (Base* p)  { }   // 3. По указателю\ncatch (...)      { }   // 4. Ловит всё</code></pre>\\n\\n- **По ссылке** — лучший вариант (нет срезки, нет копирования)\\n- Срезка: если бросили Derived, а ловят Base по значению — обрежется до Base\\n- `catch(...)` — последний, ловит любой тип\\n- Порядок: от **наследников к базовым** классам",
+      "note": "Всегда ловить по const ссылке: catch(const exception& e). Порядок: от наследника к базе.",
       "example": {
-        "title": "📝 Проброс исключения",
-        "text": "<pre class=\"code-block\"><code class=\"language-cpp\">void middleware() {\n    try {\n        riskyOperation();\n    }\n    catch (std::exception& e) {\n        log(e.what());  // логируем\n        throw;          // пробрасываем — пусть решает вызывающий\n    }\n}</code></pre>"
-      },
-      "note": "`throw;` без аргумента можно использовать ТОЛЬКО внутри catch-блока. Вне catch вызовет `std::terminate()`."
+        "title": "📝 Правильный порядок",
+        "text": "<pre class=\"code-block\"><code>catch (const out_of_range& e) { }  // сначала наследник\ncatch (const logic_error& e) { }   // потом предок\ncatch (const exception& e) { }     // потом базовый\ncatch (...) { }                     // потом \"всё\"</code></pre>"
+      }
     },
     {
       "id": 7,
-      "title": "Обработка исключений в стандартной библиотеке: обзор основных классов",
+      "title": "Исключения: различные формы операции throw",
       "type": "Понятие",
-      "formalText": "Стандартная библиотека C++ содержит иерархию классов исключений с базовым классом `std::exception`.\\n\\n**Основные классы:**\\n\\n1. **`std::exception`** — базовый класс. Виртуальный метод `what()` возвращает описание ошибки.\\n\\n2. **`std::logic_error`** (наследник exception) — ошибки **логики** программы, обнаруживаемые до выполнения:\\n   - `std::invalid_argument` — недопустимый аргумент\\n   - `std::out_of_range` — выход за пределы\\n   - `std::domain_error` — ошибка области определения\\n\\n3. **`std::runtime_error`** (наследник exception) — ошибки **времени выполнения**:\\n   - `std::overflow_error` — переполнение\\n   - `std::underflow_error` — потеря значащих разрядов\\n   - `std::range_error` — ошибка диапазона\\n\\nВсе классы принимают строку-описание в конструкторе и возвращают её через `what()`:\\n<pre class=\"code-block\"><code class=\"language-cpp\">throw std::runtime_error(\"Деление на ноль!\");\n// ...\ncatch (std::exception& e) {\n    cerr << e.what();  // \"Деление на ноль!\"\n}</code></pre>",
-      "insight": "std::exception — это общая папка «Ошибки». Внутри два ящика: logic_error (ошибки программиста — можно избежать) и runtime_error (ошибки среды — нельзя предсказать). Ловя std::exception, ты ловишь все стандартные исключения разом.",
+      "insight": "throw бросает объект, throw; перебрасывает текущее исключение дальше.",
+      "formalText": "<pre class=\"code-block\"><code>throw 42;                        // 1. int\nthrow string(\"error\");           // 2. string\nthrow runtime_error(\"msg\");      // 3. объект класса\n\ncatch (const exception& e) {\n    // частичная обработка...\n    throw;   // 4. ПЕРЕБРОС текущего исключения\n}</code></pre>\\n\\n- `throw выражение` — создаёт копию объекта и раскручивает стек\\n- `throw;` (без аргумента) — перебрасывает **текущее** исключение\\n- `noexcept` — гарантия, что функция не бросает (иначе `terminate()`)",
+      "note": "throw; (без аргумента) — переброс текущего исключения. noexcept — функция не бросает.",
       "example": {
-        "title": "📝 Использование стандартных исключений",
-        "text": "<pre class=\"code-block\"><code class=\"language-cpp\">void divide(int a, int b) {\n    if (b == 0)\n        throw std::runtime_error(\"Деление на ноль!\");\n    cout << a / b;\n}\n\ntry {\n    divide(10, 0);\n}\ncatch (std::exception& e) {\n    cerr << \"Ошибка: \" << e.what();  // Деление на ноль!\n}</code></pre>"
-      },
-      "note": "Ловить по `std::exception&` — универсальный способ перехватить любое стандартное исключение. Метод `what()` — виртуальный, возвращает `const char*`."
+        "title": "📝 Переброс",
+        "text": "<pre class=\"code-block\"><code>void process() {\n    try { riskyOp(); }\n    catch (...) {\n        log(\"ошибка\");\n        throw;          // пусть вызывающий разберётся\n    }\n}</code></pre>"
+      }
     },
     {
       "id": 8,
-      "title": "Создание своего класса исключения на основе std::exception",
+      "title": "Исключения: стандартные исключения std::bad_alloc и std::bad_cast",
       "type": "Понятие",
-      "formalText": "Для создания собственного исключения нужно:\\n1. **Наследоваться** от `std::exception` (или его потомков)\\n2. **Переопределить** виртуальный метод `what()` с квалификаторами `const noexcept override`\\n3. Опционально: добавить конструкторы с параметрами для дополнительной информации\\n\\n<pre class=\"code-block\"><code class=\"language-cpp\">#include <exception>\n#include <string>\n\nclass MyException : public std::exception {\n    std::string message;\npublic:\n    MyException(const std::string& msg) : message(msg) {}\n    const char* what() const noexcept override {\n        return message.c_str();\n    }\n};\n\nint main() {\n    try {\n        throw MyException(\"Моя ошибка!\");\n    }\n    catch (std::exception& e) {\n        std::cerr << \"Ошибка: \" << e.what();\n    }\n}</code></pre>\\n\\nТакой класс:\\n- Перехватывается как `catch (MyException& e)` — конкретно\\n- Перехватывается как `catch (std::exception& e)` — обобщённо\\n- Может хранить дополнительные данные об ошибке",
-      "insight": "Свой класс исключения — это персональная визитка ошибки. Вместо безликого runtime_error ты создаёшь класс с нужными полями (имя файла, код ошибки, контекст). what() — обязательная «подпись» на визитке.",
+      "insight": "bad_alloc — не хватает памяти (new). bad_cast — неудачный dynamic_cast ссылки.",
+      "formalText": "**bad_alloc** — при неудачном `new`:\\n<pre class=\"code-block\"><code>try {\n    int* p = new int[999999999];\n} catch (const bad_alloc& e) {\n    cerr << e.what();   // \"bad allocation\"\n}</code></pre>\\n\\n**bad_cast** — при неудачном `dynamic_cast` ссылки:\\n<pre class=\"code-block\"><code>try {\n    Base& r = dynamic_cast<Derived&>(baseObj);\n} catch (const bad_cast& e) {\n    cerr << e.what();   // \"bad cast\"\n}</code></pre>\\n\\n- `new` без `nothrow` → кидает `bad_alloc`\\n- `new (nothrow)` → возвращает `nullptr` вместо исключения\\n- `dynamic_cast` указателя → `nullptr`, ссылки → `bad_cast`",
+      "note": "new кидает bad_alloc, dynamic_cast ссылки кидает bad_cast. Для указателей dynamic_cast просто возвращает nullptr.",
       "example": {
-        "title": "📝 Класс с дополнительными данными",
-        "text": "<pre class=\"code-block\"><code class=\"language-cpp\">class TimeError : public std::out_of_range {\n    int hours, minutes, seconds;\npublic:\n    TimeError(int h, int m, int s)\n        : std::out_of_range(\"Invalid time\"),\n          hours(h), minutes(m), seconds(s) {}\n    void print() const {\n        cerr << hours << \":\" << minutes << \":\" << seconds;\n    }\n};</code></pre>"
-      },
-      "note": "Сигнатура what(): `const char* what() const noexcept override`. Не забудь `noexcept` — метод what() не должен бросать исключений."
+        "title": "📝 nothrow",
+        "text": "<pre class=\"code-block\"><code>int* p = new (nothrow) int[999999999];\nif (!p) cerr << \"нет памяти\";  // без исключения</code></pre>"
+      }
     }
   ]
 }

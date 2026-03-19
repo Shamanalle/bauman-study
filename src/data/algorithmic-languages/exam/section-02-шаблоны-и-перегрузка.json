@@ -6,61 +6,61 @@
       "id": 1,
       "title": "Шаблоны классов в Си++",
       "type": "Понятие",
-      "formalText": "**Шаблон класса** задаёт семейство классов, параметризованных типами. При создании объекта указывается конкретный тип, и компилятор генерирует класс по шаблону.\\n\\nФормат:\\n<pre class=\"code-block\"><code class=\"language-cpp\">template <class T>  // T — параметр шаблона (тип)\nclass Vektor {\n    T* data;\n    int size;\npublic:\n    Vektor(int n = 10);\n    ~Vektor() { delete[] data; }\n    T& operator[](int i) { return data[i]; }\n    T getSum();\n};</code></pre>\\n\\n**Определение метода за пределами шаблона:**\\n<pre class=\"code-block\"><code class=\"language-cpp\">template <class T>\nVektor<T>::Vektor(int n) {\n    data = new T[n];\n    size = n;\n}\n\ntemplate <class T>\nT Vektor<T>::getSum() {\n    T sum = 0;\n    for (int i = 0; i < size; i++)\n        sum += data[i];\n    return sum;\n}</code></pre>\\n\\nSTL (Standard Template Library) — библиотека стандартных шаблонов. Контейнеры (`vector`, `list`, `set`, `stack`, `queue`) — шаблонные классы для хранения объектов любых типов.",
-      "insight": "Шаблон — это форма для печенья: одна форма (template), но ты можешь штамповать из разного теста (int, double, string). Компилятор для каждого указанного типа генерирует отдельный класс.",
+      "insight": "Шаблон — класс-заготовка, где тип задаётся при создании объекта. Один код для int, double, string и т.д.",
+      "formalText": "<pre class=\"code-block\"><code>template <typename T>\nclass Stack {\n    T* data;\n    int top;\npublic:\n    Stack(int n) : data(new T[n]), top(0) {}\n    void push(const T& val) { data[top++] = val; }\n    T pop() { return data[--top]; }\n    ~Stack() { delete[] data; }\n};</code></pre>\\n\\n- Параметр `T` заменяется реальным типом при создании объекта\\n- Создание: `Stack<int> si(100);`\\n- Метод вне класса: `template<typename T> void Stack<T>::push(...)`",
+      "note": "Покажи объявление шаблона + создание с разными типами. Не забудь template<typename T> перед методом вне класса.",
       "example": {
-        "title": "📝 Использование шаблона",
-        "text": "<pre class=\"code-block\"><code class=\"language-cpp\">Vektor<int> X(5);       // вектор int-ов\nX[0] = 101;\ncout << X[0];           // 101\n\nVektor<double> Y(10);   // вектор double\nfor (int i = 0; i < 10; i++) Y[i] = i;\ncout << Y.getSum();     // 45</code></pre>"
-      },
-      "note": "Перед каждым определением метода шаблона за пределами класса нужен `template <class T>`. Имя класса в определении — `Vektor<T>`, а не просто `Vektor`."
+        "title": "📝 Использование",
+        "text": "<pre class=\"code-block\"><code>Stack<int> si(100);\nStack<double> sd(50);\nsi.push(42);\nsd.push(3.14);\ncout << si.pop();   // 42</code></pre>"
+      }
     },
     {
       "id": 2,
       "title": "Перегрузка стандартных операций: оператор-функция принадлежит классу",
       "type": "Понятие",
-      "formalText": "В C++ возможна перегрузка стандартных операций, если хотя бы один из операндов — объект класса. Для этого создаётся **оператор-функция**:\\n<pre class=\"code-block\"><code class=\"language-cpp\">тип operator знак_операции (параметры) {\n    // тело\n}</code></pre>\\n\\n**Три способа перегрузки:**\\n1. Как функция, не принадлежащая классу\\n2. Как **функция класса** (компонентная)\\n3. Как дружественная функция класса\\n\\n**Особенности:**\\n- Можно перегружать только стандартные операции\\n- Не перегружаются: `.`, `.*`, `?:`, `::`, `sizeof`, `#`, `##`\\n- Сохраняется арность (унарная остаётся унарной, бинарная — бинарной)\\n- **Бинарная** как функция класса: один параметр (первый операнд — `*this`)\\n- **Унарная** как функция класса: без параметров (операнд — `*this`)\\n- Операции `=`, `[]`, `->` — **обязательно** как компонентные функции класса\\n\\n**Правило пяти (C++11):** если определён один из {деструктор, конструктор копирования, `operator=` копир., конструктор перемещения, `operator=` перемещ.} — определи все пять.",
-      "insight": "Перегрузка операций — как учить робота новым жестам: ты определяешь, что значит `+` или `==` для твоего класса. Если оператор-функция внутри класса — первый операнд всегда `*this`, второй — параметр.",
+      "insight": "Оператор как метод — левый аргумент = this, правый = параметр.",
+      "formalText": "<pre class=\"code-block\"><code>class Complex {\n    double re, im;\npublic:\n    Complex operator+(const Complex& r) const {\n        return {re + r.re, im + r.im};\n    }\n    Complex& operator=(const Complex& r) {\n        re = r.re; im = r.im;\n        return *this;  // возвращаем себя\n    }\n};</code></pre>\\n\\n- Левый операнд = `this`, правый = параметр\\n- `=` возвращает `*this` для цепочки: `a = b = c`\\n- Нельзя менять **приоритет** и **арность** оператора",
+      "note": "Для operator= обязательно return *this. Покажи разницу: бинарный оператор внутри класса имеет 1 параметр (this + param).",
       "example": {
-        "title": "📝 Перегрузка + внутри класса",
-        "text": "<pre class=\"code-block\"><code class=\"language-cpp\">class Vec {\n    int x, y;\npublic:\n    Vec(int x, int y) : x(x), y(y) {}\n    Vec operator+(const Vec& v) const {  // бинарная\n        return Vec(x + v.x, y + v.y);\n    }\n    Vec operator-() const {              // унарная\n        return Vec(-x, -y);\n    }\n};\n\nVec a(1, 2), b(3, 4);\nVec c = a + b;   // operator+(b), *this = a\nVec d = -a;      // operator-(), *this = a</code></pre>"
-      },
-      "note": "Бинарная операция как функция класса — один параметр (второй операнд); первый операнд — объект, для которого вызвана. Унарная — без параметров."
+        "title": "📝 Полный пример",
+        "text": "<pre class=\"code-block\"><code>Complex a{1,2}, b{3,4};\nComplex c = a + b;  // operator+\na = b = c;          // цепочка operator=</code></pre>"
+      }
     },
     {
       "id": 3,
       "title": "Перегрузка стандартных операций: оператор-функция не принадлежит классу",
       "type": "Понятие",
-      "formalText": "Когда оператор-функция **не принадлежит классу**, она определяется как обычная (или дружественная) функция.\\n\\n**Бинарная** — два параметра, один обязательно объект (ссылка) класса:\\n<pre class=\"code-block\"><code class=\"language-cpp\">Vec operator+(const Vec& a, const Vec& b) {\n    return Vec(a.getX() + b.getX(), a.getY() + b.getY());\n}</code></pre>\\n\\n**Унарная** — один параметр (объект/ссылка класса):\\n<pre class=\"code-block\"><code class=\"language-cpp\">Vec operator-(const Vec& v) {\n    return Vec(-v.getX(), -v.getY());\n}</code></pre>\\n\\nЕсли функции нужен доступ к `private`-полям, она объявляется как `friend` внутри класса.\\n\\n**Ограничения:**\\n- Операции `=`, `[]`, `->` **нельзя** перегрузить вне класса — только как компонентные\\n- Нельзя перегружать: `.`, `.*`, `?:`, `::`, `sizeof`\\n- Арность операции не меняется",
-      "insight": "Внешняя перегрузка полезна, когда левый операнд — не твой класс. Например, `cout << obj` — `cout` не твой класс, поэтому `operator<<` перегружается снаружи. А `=`, `[]`, `->` — только внутри, потому что они работают именно с «левым» объектом.",
+      "insight": "Свободная функция — когда левый операнд не наш объект (например, cout << obj).",
+      "formalText": "<pre class=\"code-block\"><code>class Complex {\n    double re, im;\npublic:\n    friend Complex operator+(const Complex& l,\n                             const Complex& r);\n};\n\n// Свободная функция\nComplex operator+(const Complex& l,\n                  const Complex& r) {\n    return {l.re + r.re, l.im + r.im};\n}</code></pre>\\n\\n- Оба операнда — параметры (нет this)\\n- Часто `friend` для доступа к private-полям\\n- Типичный кейс: `ostream& operator<<(ostream& os, const A& a)`",
+      "note": "Внутри = 1 параметр (this + param). Снаружи = 2 параметра. Для cout/cin — только снаружи.",
       "example": {
-        "title": "📝 Перегрузка << для вывода",
-        "text": "<pre class=\"code-block\"><code class=\"language-cpp\">class Point {\n    int x, y;\npublic:\n    Point(int x, int y) : x(x), y(y) {}\n    friend ostream& operator<<(ostream& os, const Point& p);\n};\n\nostream& operator<<(ostream& os, const Point& p) {\n    os << \"(\" << p.x << \", \" << p.y << \")\";\n    return os;\n}\n\nPoint p(3, 5);\ncout << p;  // (3, 5)</code></pre>"
-      },
-      "note": "Типичный паттерн: `operator<<` и `operator>>` всегда перегружаются вне класса (как friend), потому что первый операнд — поток, а не твой объект."
+        "title": "📝 Перегрузка вывода",
+        "text": "<pre class=\"code-block\"><code>ostream& operator<<(ostream& os, const Complex& c) {\n    return os << c.re << \"+\" << c.im << \"i\";\n}\ncout << c;  // теперь работает!</code></pre>"
+      }
     },
     {
       "id": 4,
       "title": "Особенности перегрузки операций ++ и -- в префиксной и постфиксной формах",
       "type": "Понятие",
-      "formalText": "Для различения **префиксной** и **постфиксной** форм `++`/`--` используется фиктивный параметр типа `int` в постфиксной форме.\\n\\n**Внутри класса:**\\n<pre class=\"code-block\"><code class=\"language-cpp\">class Vector {\npublic:\n    Vector& operator++();       // префикс: ++obj\n    Vector  operator++(int);    // постфикс: obj++\n                                // int — фиктивный параметр\n};</code></pre>\\n\\n**За пределами класса:**\\n<pre class=\"code-block\"><code class=\"language-cpp\">Vector& operator++(Vector& v);       // префикс\nVector  operator++(Vector& v, int);  // постфикс</code></pre>\\n\\n**Различия в реализации:**\\n- **Префикс** — изменяет объект и возвращает **ссылку** на него\\n- **Постфикс** — сохраняет копию текущего состояния, изменяет объект, возвращает **копию** (старое значение)\\n\\n<pre class=\"code-block\"><code class=\"language-cpp\">// Постфиксный ++\nVector Vector::operator++(int) {\n    Vector old(*this);  // сохраняем старое состояние\n    // ... изменяем текущий объект ...\n    return old;         // возвращаем старое\n}</code></pre>",
-      "insight": "Префикс — «сначала увеличь, потом отдай»: эффективнее, возвращает ссылку. Постфикс — «сначала отдай старое, потом увеличь»: нужна копия, поэтому медленнее. Фиктивный int — это просто маркер для компилятора, чтобы отличить одну форму от другой.",
+      "insight": "Префикс (++a) — без параметров, возвращает ссылку. Постфикс (a++) — с фиктивным int, возвращает копию.",
+      "formalText": "<pre class=\"code-block\"><code>class Counter {\n    int val;\npublic:\n    Counter& operator++() {       // ПРЕФИКС ++c\n        ++val;\n        return *this;             // ссылка на себя\n    }\n    Counter operator++(int) {     // ПОСТФИКС c++\n        Counter tmp = *this;     // сохраняем копию\n        ++val;\n        return tmp;              // возвращаем старое\n    }\n};</code></pre>\\n\\n- Постфикс дороже: создаёт копию\\n- `int` — фиктивный параметр-маркер (для компилятора)",
+      "note": "Главное: префикс — ссылка, постфикс — копия + фиктивный int. Покажи оба варианта.",
       "example": {
-        "title": "📝 Разница при использовании",
-        "text": "<pre class=\"code-block\"><code class=\"language-cpp\">Vector v;\nVector a = ++v;   // v изменён, a == v (ссылка)\nVector b = v++;   // b == старое v, v изменён</code></pre>"
-      },
-      "note": "Постфикс всегда возвращает значение (копию), а не ссылку. Это делает постфикс дороже префикса."
+        "title": "📝 Вызов",
+        "text": "<pre class=\"code-block\"><code>Counter c{0};\n++c;       // operator++()   — префикс\nc++;       // operator++(0)  — постфикс</code></pre>"
+      }
     },
     {
       "id": 5,
       "title": "Особенности перемещения объекта при перегрузке операции присваивания",
       "type": "Понятие",
-      "formalText": "По аналогии с конструкторами копирования и перемещения, в классе существуют **операторы присваивания:**\\n- **Присваивание с копированием**: `A& operator=(const A& ob)`\\n- **Присваивание с перемещением**: `A& operator=(A&& ob)`\\n\\nОба можно переопределять или удалять:\\n<pre class=\"code-block\"><code class=\"language-cpp\">A& operator=(const A& ob) = delete;  // удалить копирование\nA& operator=(A&& ob) = delete;        // удалить перемещение</code></pre>\\n\\n**Пример класса-вектора с перемещением:**\\n<pre class=\"code-block\"><code class=\"language-cpp\">class IntVec {\n    int* data;\n    int size;\npublic:\n    // Оператор присваивания с перемещением\n    IntVec& operator=(IntVec&& other) noexcept {\n        if (this != &other) {\n            delete[] data;           // освобождаем свои ресурсы\n            data = other.data;       // забираем чужие\n            size = other.size;\n            other.data = nullptr;    // обнуляем источник\n            other.size = 0;\n        }\n        return *this;\n    }\n};</code></pre>\\n\\n**Правило пяти (C++11):** если определён один из {деструктор, конструктор копирования, `operator=` копир., конструктор перемещения, `operator=` перемещ.} — определи все пять.",
-      "insight": "Копирование — это ксерокопия документа: оригинал остаётся, но тратится время и бумага. Перемещение — просто передаёшь папку из рук в руки: быстро, но у отдавшего папки больше нет. `std::move` превращает lvalue в rvalue, разрешая перемещение.",
+      "insight": "Перемещающее присваивание «ворует» ресурсы из временного объекта вместо копирования — быстрее.",
+      "formalText": "<pre class=\"code-block\"><code>class Buf {\n    int* data; int n;\npublic:\n    Buf& operator=(Buf&& other) noexcept {\n        if (this != &other) {\n            delete[] data;         // освобождаем своё\n            data = other.data;     // забираем чужое\n            n = other.n;\n            other.data = nullptr;  // обнуляем источник\n            other.n = 0;\n        }\n        return *this;\n    }\n};</code></pre>\\n\\n- Параметр `Buf&&` — rvalue-ссылка (временный объект)\\n- `noexcept` обязателен (иначе контейнеры не используют)\\n- Проверка `this != &other` — защита от самоприсваивания",
+      "note": "move = забрать указатель + обнулить источник. Не забудь проверку self-assignment и noexcept.",
       "example": {
-        "title": "📝 Перемещение vs копирование",
-        "text": "<pre class=\"code-block\"><code class=\"language-cpp\">IntVec a(1000);         // вектор из 1000 элементов\nIntVec b(500);\nb = std::move(a);       // перемещение: b забрал данные a\n// a.data == nullptr, a.size == 0\n// b теперь владеет массивом из 1000 элементов</code></pre>"
-      },
-      "note": "Не забудь проверку `if (this != &other)` — присваивание самому себе не должно ломать объект. После перемещения источник должен быть в валидном, но пустом состоянии."
+        "title": "📝 Вызов",
+        "text": "<pre class=\"code-block\"><code>Buf a(100), b(200);\nb = std::move(a);  // перемещающее присваивание\n// a теперь пуст (data == nullptr)</code></pre>"
+      }
     }
   ]
 }

@@ -6,73 +6,73 @@
       "id": 1,
       "title": "Многозадачность: высокоуровневый интерфейс (std::async и std::future)",
       "type": "Понятие",
-      "formalText": "**`std::async()`** — функция для создания асинхронной задачи. Запускает функцию в отдельном потоке и возвращает объект `std::future<T>`, содержащий будущий результат.\\n\\n**`std::future<T>`** — шаблонный класс для получения результата асинхронной операции. Метод `get()` блокирует текущий поток до завершения задачи и возвращает результат.\\n\\n<pre class=\"code-block\"><code class=\"language-cpp\">#include <future>\n\ndouble calculation(int x, double y) {\n    return x * y;\n}\n\nint main() {\n    int x = 10;\n    double y = 5.5;\n\n    // Запуск в отдельном потоке\n    std::future<double> result =\n        std::async(std::launch::async, calculation, x, y);\n\n    // ... можно делать другую работу ...\n\n    // Получаем результат (блокирует до готовности)\n    std::cout << \"Результат: \" << result.get();\n    return 0;\n}</code></pre>\\n\\n**Политики запуска:**\\n- `std::launch::async` — обязательно в отдельном потоке\\n- `std::launch::deferred` — ленивое вычисление (при вызове `get()`)\\n- По умолчанию — на усмотрение реализации",
-      "insight": "async + future — как заказать пиццу: ты звонишь (async), получаешь номер заказа (future) и занимаешься своими делами. Когда проголодался — звонишь \"где мой заказ?\" (get()) и ждёшь, пока привезут.",
+      "insight": "async запускает функцию в отдельном потоке, future хранит будущий результат. get() блокирует до готовности.",
+      "formalText": "<pre class=\"code-block\"><code>#include <future>\n\ndouble calc(int x, double y) { return x * y; }\n\nauto result = std::async(std::launch::async, calc, 10, 5.5);\n// ... другая работа ...\ncout << result.get();   // блокирует, ждёт, возвращает 55</code></pre>\\n\\n- `std::launch::async` — в отдельном потоке\\n- `std::launch::deferred` — ленивый (выполнится при get())\\n- `get()` можно вызвать **один раз**\\n- Если функция кинула исключение — `get()` его перебросит",
+      "note": "get() — один раз! Перебрасывает исключение из потока. Два политики: async и deferred.",
       "example": {
         "title": "📝 Параллельные вычисления",
-        "text": "<pre class=\"code-block\"><code class=\"language-cpp\">auto f1 = std::async(std::launch::async, []{ return 10; });\nauto f2 = std::async(std::launch::async, []{ return 20; });\ncout << f1.get() + f2.get();  // 30</code></pre>"
-      },
-      "note": "`get()` можно вызвать только **один раз** — повторный вызов приведёт к undefined behavior. Если в потоковой функции произошло исключение, `get()` его перебросит."
+        "text": "<pre class=\"code-block\"><code>auto f1 = async(launch::async, []{ return 10; });\nauto f2 = async(launch::async, []{ return 20; });\ncout << f1.get() + f2.get();  // 30</code></pre>"
+      }
     },
     {
       "id": 2,
       "title": "Многозадачность: низкоуровневый интерфейс (std::thread)",
       "type": "Понятие",
-      "formalText": "**`std::thread`** — класс для представления потока выполнения. Поток запускается при создании объекта и выполняет переданную функцию.\\n\\n<pre class=\"code-block\"><code class=\"language-cpp\">#include <thread>\n\nvoid print(int x) {\n    std::cout << \"Поток \" << std::this_thread::get_id()\n              << \": x = \" << x << std::endl;\n}\n\nint main() {\n    std::thread t1(print, 100);  // запуск потока 1\n    std::thread t2(print, 200);  // запуск потока 2\n\n    std::cout << \"Основной поток: \"\n              << std::this_thread::get_id() << std::endl;\n\n    t1.join();  // ожидание завершения потока 1\n    t2.join();  // ожидание завершения потока 2\n    return 0;\n}</code></pre>\\n\\n**Основные методы:**\\n- `join()` — блокирует текущий поток до завершения дочернего\\n- `detach()` — отсоединяет поток (работает автономно)\\n- `joinable()` — можно ли вызвать join/detach\\n\\n**Важно:** перед уничтожением объекта `thread` нужно вызвать `join()` или `detach()`, иначе вызовется `std::terminate()`.",
-      "insight": "std::thread — как нанять рабочего: ты даёшь ему задание (функцию) при найме (создании). join() — ждать, пока закончит. detach() — отпустить на вольные хлеба. Нельзя уволить рабочего (уничтожить thread), не дождавшись (join) или не отпустив (detach).",
+      "insight": "thread — отдельный поток выполнения. Перед уничтожением обязательно join() или detach().",
+      "formalText": "<pre class=\"code-block\"><code>#include <thread>\n\nvoid work(int x) {\n    cout << \"Поток: \" << x << endl;\n}\n\nstd::thread t1(work, 100);   // запуск\nstd::thread t2(work, 200);\nt1.join();    // ждём завершения\nt2.join();</code></pre>\\n\\n- `join()` — ждать завершения\\n- `detach()` — отсоединить (работает автономно)\\n- Без join/detach → `std::terminate()`\\n- Аргументы **копируются**. Для ссылки: `std::ref(x)`",
+      "note": "Перед уничтожением thread — обязательно join() или detach(), иначе terminate. std::ref для ссылок.",
       "example": {
-        "title": "📝 Передача аргументов по ссылке",
-        "text": "<pre class=\"code-block\"><code class=\"language-cpp\">void add(int& result, int value) {\n    result += value;\n}\n\nint x = 0;\nstd::thread t(add, std::ref(x), 42);  // std::ref!\nt.join();\ncout << x;  // 42</code></pre>"
-      },
-      "note": "Аргументы по умолчанию **копируются** в поток. Для передачи по ссылке используй `std::ref()`. Без std::ref получишь копию, а не ссылку."
+        "title": "📝 Передача по ссылке",
+        "text": "<pre class=\"code-block\"><code>int x = 0;\nthread t([](int& v){ v = 42; }, std::ref(x));\nt.join();\ncout << x;  // 42</code></pre>"
+      }
     },
     {
       "id": 3,
       "title": "Синхронизация: std::mutex (взаимное исключение)",
       "type": "Понятие",
-      "formalText": "**`std::mutex`** — объект для обеспечения **взаимного исключения** при доступе к общему ресурсу. Гарантирует, что только один поток одновременно находится в критической секции.\\n\\n**Основные методы:**\\n- `lock()` — захватить мьютекс (блокирует, если уже захвачен другим потоком)\\n- `unlock()` — освободить мьютекс\\n- `try_lock()` — попытка захвата без блокировки (возвращает bool)\\n\\n<pre class=\"code-block\"><code class=\"language-cpp\">#include <mutex>\n#include <thread>\n#include <vector>\n\nstd::mutex mtx;\n\nvoid add(std::vector<int>& v, int n) {\n    mtx.lock();              // захват\n    for (int i = 0; i < n; i++)\n        v.push_back(i);      // критическая секция\n    mtx.unlock();            // освобождение\n}\n\nint main() {\n    std::vector<int> v;\n    std::thread t1(add, std::ref(v), 100);\n    std::thread t2(add, std::ref(v), 100);\n    t1.join(); t2.join();\n    cout << v.size();  // 200\n}</code></pre>",
-      "insight": "mutex — как ключ от туалетной кабинки: lock() — заходишь и запираешь, unlock() — выходишь и отдаёшь ключ. Пока ты внутри, другие ждут в очереди. Без мьютекса два потока могут одновременно менять одни данные — хаос.",
+      "insight": "mutex — замок: lock() запирает, unlock() отпирает. Только один поток внутри критической секции.",
+      "formalText": "<pre class=\"code-block\"><code>#include <mutex>\n\nstd::mutex mtx;\n\nvoid add(vector<int>& v, int n) {\n    mtx.lock();                  // захват\n    for (int i = 0; i < n; i++)\n        v.push_back(i);          // критическая секция\n    mtx.unlock();                // освобождение\n}</code></pre>\\n\\n- `lock()` — захватить (блокирует, если занят)\\n- `unlock()` — освободить\\n- Без мьютекса: два потока пишут в vector → **UB**\\n- Забыл unlock → **deadlock**",
+      "note": "Забытый unlock = deadlock. Решение — lock_guard (см. следующий вопрос).",
       "example": {
         "title": "📝 Проблема без мьютекса",
-        "text": "<pre class=\"code-block\"><code class=\"language-cpp\">int counter = 0;\n// Без мьютекса: counter++ не атомарна!\n// Два потока могут одновременно прочитать 5,\n// увеличить до 6, и записать 6 — вместо 7</code></pre>"
-      },
-      "note": "Опасно забыть `unlock()` — другие потоки заблокируются навсегда (deadlock). Для защиты используй `lock_guard` (RAII-обёртка, см. следующий вопрос)."
+        "text": "<pre class=\"code-block\"><code>// counter++ без мьютекса — НЕ атомарна!\n// Поток1: read 5, +1=6, write 6\n// Поток2: read 5, +1=6, write 6  ← ПОТЕРЯ!</code></pre>"
+      }
     },
     {
       "id": 4,
       "title": "Блокировки: шаблон std::lock_guard",
       "type": "Понятие",
-      "formalText": "**`std::lock_guard<std::mutex>`** — RAII-обёртка для мьютекса. **Автоматически** захватывает мьютекс в конструкторе и освобождает в деструкторе (при выходе из блока).\\n\\n<pre class=\"code-block\"><code class=\"language-cpp\">#include <mutex>\n\nstd::mutex mtx;\n\nvoid func() {\n    std::lock_guard<std::mutex> lock(mtx);  // lock()\n    // Критическая секция\n    // ...\n}  // деструктор lock_guard вызывает unlock()\n</code></pre>\\n\\n**Преимущества перед ручным lock/unlock:**\\n1. **Безопасность при исключениях** — unlock вызовется даже при throw\\n2. **Невозможно забыть** unlock — деструктор сделает это автоматически\\n3. **Нет deadlock** из-за забытого unlock\\n\\n`std::lock_guard` **не может** быть скопирован или перемещён. Для более гибкого управления (ручной unlock, ожидание condition_variable) используется `std::unique_lock`.",
-      "insight": "lock_guard — как автоматическая дверь с пропуском: входишь — дверь закрывается (lock), выходишь — открывается (unlock). Невозможно забыть закрыть или оставить открытой. Это RAII: ресурс (мьютекс) привязан к времени жизни объекта.",
+      "insight": "lock_guard = RAII-обёртка: блокирует в конструкторе, освобождает в деструкторе. Невозможно забыть unlock.",
+      "formalText": "<pre class=\"code-block\"><code>void func() {\n    std::lock_guard<std::mutex> lock(mtx);  // lock()\n    // критическая секция\n    // ...\n}  // деструктор → unlock() — даже при throw!</code></pre>\\n\\n- Автоматический unlock при выходе из блока\\n- Безопасно при исключениях (unlock вызовется)\\n- Нельзя скопировать или переместить\\n- Для гибкого управления → `std::unique_lock`",
+      "note": "lock_guard — всегда вместо ручного lock/unlock. unique_lock — если нужен condition_variable.",
       "example": {
         "title": "📝 Безопасность при исключениях",
-        "text": "<pre class=\"code-block\"><code class=\"language-cpp\">void safe() {\n    std::lock_guard<std::mutex> lock(mtx);\n    // Если здесь throw — мьютекс всё равно\n    // освободится в деструкторе lock_guard\n    riskyOperation();\n}  // unlock() гарантирован</code></pre>"
-      },
-      "note": "Всегда предпочитай lock_guard вместо ручного lock/unlock. Используй unique_lock только когда нужен ручной unlock или condition_variable."
+        "text": "<pre class=\"code-block\"><code>void safe() {\n    lock_guard<mutex> lock(mtx);\n    riskyOp();  // если throw — unlock гарантирован\n}</code></pre>"
+      }
     },
     {
       "id": 5,
       "title": "Условные переменные (std::condition_variable)",
       "type": "Понятие",
-      "formalText": "**`std::condition_variable`** — механизм синхронизации, позволяющий потоку **ожидать** наступления определённого условия, не потребляя ресурсы CPU.\\n\\n**Основные методы:**\\n- `wait(lock, predicate)` — атомарно освобождает мьютекс и засыпает до оповещения\\n- `notify_one()` — разбудить один ожидающий поток\\n- `notify_all()` — разбудить все ожидающие потоки\\n\\n<pre class=\"code-block\"><code class=\"language-cpp\">#include <mutex>\n#include <condition_variable>\n#include <thread>\n\nstd::mutex mtx;\nstd::condition_variable cv;\nbool dataReady = false;\n\nvoid producer() {\n    // ... подготовка данных ...\n    {\n        std::lock_guard<std::mutex> lock(mtx);\n        dataReady = true;\n    }  // мьютекс освобождён\n    cv.notify_one();  // оповещаем consumer\n}\n\nvoid consumer() {\n    std::unique_lock<std::mutex> lock(mtx);\n    cv.wait(lock, []{ return dataReady; });\n    // dataReady == true, мьютекс захвачен\n    // ... обработка данных ...\n}</code></pre>\\n\\n**Важно:** `wait()` требует `std::unique_lock` (не lock_guard), потому что ему нужно временно освобождать и снова захватывать мьютекс.",
-      "insight": "condition_variable — как звонок в дверь: consumer засыпает и ждёт (wait), producer звонит в дверь (notify_one), consumer просыпается и открывает. Без CV consumer пришлось бы постоянно проверять «готово ли?» в цикле (busy waiting), тратя CPU.",
+      "insight": "condition_variable — способ уснуть и ждать, пока другой поток не разбудит. Без busy-waiting.",
+      "formalText": "<pre class=\"code-block\"><code>mutex mtx;\ncondition_variable cv;\nbool ready = false;\n\nvoid producer() {\n    { lock_guard<mutex> lk(mtx); ready = true; }\n    cv.notify_one();             // разбудить consumer\n}\n\nvoid consumer() {\n    unique_lock<mutex> lk(mtx);\n    cv.wait(lk, []{ return ready; });  // спит до ready\n    // ready == true, продолжаем\n}</code></pre>\\n\\n- `wait(lock, predicate)` — засыпает, пока предикат false\\n- `notify_one()` / `notify_all()` — разбудить\\n- Предикат защищает от **spurious wakeup** (ложных пробуждений)\\n- Требует `unique_lock` (не lock_guard)",
+      "note": "wait() требует unique_lock и предикат для защиты от spurious wakeup.",
       "example": {
         "title": "📝 Producer-Consumer",
-        "text": "<pre class=\"code-block\"><code class=\"language-cpp\">std::thread prod(producer);\nstd::thread cons(consumer);\n// consumer ждёт, пока producer установит dataReady\nprod.join();\ncons.join();</code></pre>"
-      },
-      "note": "Предикат в wait() нужен для защиты от **spurious wakeup** (ложных пробуждений). Без предиката поток может проснуться, даже если notify не вызывался."
+        "text": "<pre class=\"code-block\"><code>thread prod(producer);\nthread cons(consumer);\nprod.join(); cons.join();</code></pre>"
+      }
     },
     {
       "id": 6,
       "title": "Атомарные операции (std::atomic)",
       "type": "Понятие",
-      "formalText": "**`std::atomic<T>`** — шаблон для выполнения **атомарных** (неделимых) операций с данными. Гарантирует, что операция чтения-модификации-записи выполнится полностью, без прерывания другим потоком.\\n\\n<pre class=\"code-block\"><code class=\"language-cpp\">#include <atomic>\n#include <thread>\n\nstd::atomic<int> counter(0);\n\nvoid increment(int n) {\n    for (int i = 0; i < n; i++)\n        counter++;  // атомарное увеличение\n}\n\nint main() {\n    std::thread t1(increment, 10000);\n    std::thread t2(increment, 10000);\n    t1.join(); t2.join();\n    cout << counter;  // гарантированно 20000\n}</code></pre>\\n\\n**Основные атомарные операции:**\\n- `load()` — атомарное чтение\\n- `store(val)` — атомарная запись\\n- `fetch_add(val)` — атомарное увеличение\\n- `exchange(val)` — атомарный обмен\\n- Операторы `++`, `--`, `+=`, `-=` — атомарные\\n\\n**Преимущество перед mutex:** не блокирует потоки, нет overhead на lock/unlock. Но подходит только для **простых** операций с одной переменной.",
-      "insight": "atomic — как касса с одним окном: операция «расчёт» неделима, никто не влезет посередине. Для простого счётчика atomic эффективнее mutex — нет затрат на блокировку. Но если нужно защитить несколько переменных одновременно — нужен mutex.",
+      "insight": "atomic — неделимая операция: ++, -- и т.д. без мьютекса. Для простых переменных быстрее mutex.",
+      "formalText": "<pre class=\"code-block\"><code>#include <atomic>\n\nstd::atomic<int> counter(0);\n\nvoid inc(int n) {\n    for (int i = 0; i < n; i++)\n        counter++;               // атомарно!\n}\n\nthread t1(inc, 10000);\nthread t2(inc, 10000);\nt1.join(); t2.join();\ncout << counter;   // гарантированно 20000</code></pre>\\n\\n- `++`, `--`, `+=`, `-=` — атомарные\\n- Работает для `int`, `bool`, указателей\\n- Для сложных структур — используй mutex",
+      "note": "atomic — для простых типов (int, bool). Для защиты нескольких переменных — только mutex.",
       "example": {
-        "title": "📝 Без atomic vs с atomic",
-        "text": "<pre class=\"code-block\"><code class=\"language-cpp\">// БЕЗ atomic:\nint counter = 0;\n// counter++ = read + increment + write\n// Поток 1: read 5, +1 = 6, write 6\n// Поток 2: read 5, +1 = 6, write 6  // ПОТЕРЯ!\n\n// С atomic:\nstd::atomic<int> counter(0);\ncounter++;  // атомарно: гарантированно +1</code></pre>"
-      },
-      "note": "atomic работает для целых типов, указателей и bool. Для сложных структур данных используй mutex."
+        "title": "📝 load/store",
+        "text": "<pre class=\"code-block\"><code>atomic<int> x(0);\nx.store(42);          // атомарная запись\ncout << x.load();     // атомарное чтение</code></pre>"
+      }
     }
   ]
 }

@@ -6,73 +6,73 @@
       "id": 1,
       "title": "Умный указатель std::unique_ptr",
       "type": "Понятие",
-      "formalText": "**`std::unique_ptr<T>`** — умный указатель с **единоличным владением** ресурсом. Автоматически удаляет объект при уничтожении указателя.\\n\\n**Внутреннее устройство:** хранит сырой указатель. При уничтожении вызывает `delete` (или пользовательский deleter). Размер — как у обычного указателя.\\n\\n**Ключевые свойства:**\\n- **Нельзя копировать** — `unique_ptr(const unique_ptr&) = delete`\\n- **Можно перемещать** — `std::move()` передаёт владение\\n- Автоматическое удаление при выходе из области видимости\\n\\n<pre class=\"code-block\"><code class=\"language-cpp\">#include <memory>\n\nvoid func() {\n    std::unique_ptr<int> ptr(new int(10));\n    // Лучше:\n    auto ptr2 = std::make_unique<int>(20);\n\n    cout << *ptr;   // 10\n    cout << *ptr2;  // 20\n\n    // Передача владения:\n    auto ptr3 = std::move(ptr);\n    // ptr == nullptr, ptr3 владеет ресурсом\n\n}  // ptr2 и ptr3 автоматически удалены</code></pre>",
-      "insight": "unique_ptr — как паспорт: у вещи может быть только один владелец. Хочешь передать — отдай паспорт (move), но тогда у тебя его больше нет. Когда владелец «умирает» (выходит из scope) — вещь уничтожается.",
+      "insight": "unique_ptr — один владелец. Нельзя скопировать, можно переместить (move). Автоматически delete.",
+      "formalText": "<pre class=\"code-block\"><code>auto ptr = std::make_unique<int>(42);\ncout << *ptr;   // 42\n\nauto ptr2 = std::move(ptr);  // передача владения\n// ptr == nullptr, ptr2 владеет</code></pre>\\n\\n- Нельзя копировать → `unique_ptr(const unique_ptr&) = delete`\\n- Можно переместить → `std::move()`\\n- `make_unique<T>(args)` — лучше чем `new`\\n- Размер = обычный указатель",
+      "note": "make_unique вместо new. Нельзя скопировать — только move. При выходе из scope — автоматический delete.",
       "example": {
-        "title": "📝 unique_ptr для массива",
-        "text": "<pre class=\"code-block\"><code class=\"language-cpp\">auto arr = std::make_unique<int[]>(100);\narr[0] = 42;\n// delete[] вызовется автоматически</code></pre>"
-      },
-      "note": "Предпочитай `std::make_unique<T>(args)` вместо `new` — безопаснее при исключениях и не нужно писать тип дважды."
+        "title": "📝 Для массива",
+        "text": "<pre class=\"code-block\"><code>auto arr = make_unique<int[]>(100);\narr[0] = 42;   // delete[] автоматически</code></pre>"
+      }
     },
     {
       "id": 2,
       "title": "Умный указатель std::shared_ptr",
       "type": "Понятие",
-      "formalText": "**`std::shared_ptr<T>`** — умный указатель с **разделяемым владением**. Несколько shared_ptr могут указывать на один объект. Объект удаляется, когда **последний** shared_ptr уничтожается.\\n\\n**Внутреннее устройство:**\\n- Сырой указатель на объект\\n- Указатель на **контрольный блок** (счётчик ссылок + deleter)\\n- `use_count()` — текущее число владельцев\\n\\n<pre class=\"code-block\"><code class=\"language-cpp\">#include <memory>\n\nvoid func() {\n    std::shared_ptr<int> ptr1(new int(10));\n    // Лучше:\n    auto ptr1 = std::make_shared<int>(10);\n\n    {\n        std::shared_ptr<int> ptr2 = ptr1;  // копирование OK\n        cout << ptr1.use_count();  // 2\n    }  // ptr2 уничтожен, count = 1\n\n    cout << ptr1.use_count();  // 1\n}  // ptr1 уничтожен, count = 0 → объект удалён</code></pre>\\n\\n**Можно** копировать и перемещать. Счётчик ссылок — **потокобезопасный** (atomic).",
-      "insight": "shared_ptr — как подписка на журнал: несколько читателей, журнал существует, пока хоть один подписан. Последний отписался — тираж уничтожен. Контрольный блок — это бухгалтерия, считающая подписчиков.",
+      "insight": "shared_ptr — несколько владельцев. Считает ссылки. Последний уничтожается → объект удаляется.",
+      "formalText": "<pre class=\"code-block\"><code>auto p1 = std::make_shared<int>(42);\nauto p2 = p1;                    // use_count = 2\ncout << p1.use_count();          // 2\n\np1.reset();                      // use_count = 1\ncout << *p2;                     // 42 — объект жив</code></pre>\\n\\n- Копирование → счётчик +1\\n- Уничтожение → счётчик -1, при 0 → delete\\n- Счётчик потокобезопасный (atomic)\\n- `make_shared` — одна аллокация вместо двух",
+      "note": "make_shared эффективнее shared_ptr(new T). Проблема циклов — weak_ptr.",
       "example": {
-        "title": "📝 Цепочка владения",
-        "text": "<pre class=\"code-block\"><code class=\"language-cpp\">auto a = std::make_shared<int>(42);\nauto b = a;   // use_count = 2\nauto c = b;   // use_count = 3\nb.reset();    // use_count = 2  (b больше не владеет)\ncout << *c;   // 42 — объект жив</code></pre>"
-      },
-      "note": "make_shared эффективнее `shared_ptr(new T)`: выделяет один блок памяти вместо двух (объект + контрольный блок). Проблема циклических ссылок — решается через weak_ptr."
+        "title": "📝 Подсчёт ссылок",
+        "text": "<pre class=\"code-block\"><code>auto a = make_shared<int>(1);\n{ auto b = a; }    // b уничтожен, use_count=1\n// a уничтожен → use_count=0 → delete</code></pre>"
+      }
     },
     {
       "id": 3,
       "title": "Умный указатель std::weak_ptr",
       "type": "Понятие",
-      "formalText": "**`std::weak_ptr<T>`** — **слабая ссылка** на объект, управляемый `shared_ptr`. Не увеличивает счётчик ссылок и не влияет на время жизни объекта.\\n\\n**Назначение:**\\n- Разрешение **циклических ссылок** (два shared_ptr ссылаются друг на друга → утечка памяти)\\n- **Наблюдение** за объектом без владения им\\n\\n**Основные методы:**\\n- `lock()` — возвращает `shared_ptr`, если объект жив; пустой, если уже удалён\\n- `expired()` — проверка, удалён ли объект\\n\\n<pre class=\"code-block\"><code class=\"language-cpp\">#include <memory>\n\nvoid func() {\n    std::shared_ptr<int> sp = std::make_shared<int>(10);\n    std::weak_ptr<int> wp = sp;  // слабая ссылка\n\n    // Проверка и использование:\n    if (auto locked = wp.lock()) {\n        cout << *locked;  // 10 — объект жив\n    }\n\n    sp.reset();  // удаляем объект\n\n    if (wp.expired()) {\n        cout << \"Объект удалён\";\n    }\n}</code></pre>",
-      "insight": "weak_ptr — как номер телефона знакомого: ты можешь позвонить (lock), но не гарантируешь, что он ответит (объект мог быть удалён). И ты не мешаешь ему переехать (не увеличиваешь счётчик ссылок).",
+      "insight": "weak_ptr — наблюдает за shared_ptr, но не владеет. Не мешает удалению объекта. Решает циклы.",
+      "formalText": "<pre class=\"code-block\"><code>auto sp = make_shared<int>(42);\nweak_ptr<int> wp = sp;     // слабая ссылка\n\nif (auto locked = wp.lock()) {  // получить shared_ptr\n    cout << *locked;   // 42\n}\n\nsp.reset();             // объект удалён\ncout << wp.expired();   // true</code></pre>\\n\\n- `lock()` → shared_ptr (или пустой, если объект удалён)\\n- `expired()` → проверка жив ли объект\\n- Не увеличивает use_count\\n- **Решает циклы**: A→B (shared) + B→A (weak) = нет утечки",
+      "note": "lock() для доступа, expired() для проверки. Типичное применение — двусвязный список (prev = weak).",
       "example": {
-        "title": "📝 Решение циклической ссылки",
-        "text": "<pre class=\"code-block\"><code class=\"language-cpp\">struct Node {\n    std::shared_ptr<Node> next;\n    std::weak_ptr<Node> prev;  // weak! иначе утечка\n};\n\nauto a = std::make_shared<Node>();\nauto b = std::make_shared<Node>();\na->next = b;\nb->prev = a;  // weak_ptr — не увеличивает счётчик</code></pre>"
-      },
-      "note": "weak_ptr нельзя разыменовать напрямую — сначала `lock()`. Если lock() вернул пустой shared_ptr — объект уже удалён, работать с ним нельзя."
+        "title": "📝 Решение цикла",
+        "text": "<pre class=\"code-block\"><code>struct Node {\n    shared_ptr<Node> next;\n    weak_ptr<Node> prev;   // weak — нет цикла!\n};</code></pre>"
+      }
     },
     {
       "id": 4,
       "title": "Перегрузка операторов new и delete",
       "type": "Понятие",
-      "formalText": "Операторы `new` и `delete` можно **перегружать** для управления процессом выделения и освобождения динамической памяти.\\n\\n**Глобальная перегрузка** — заменяет стандартный аллокатор для всей программы:\\n<pre class=\"code-block\"><code class=\"language-cpp\">void* operator new(size_t size) {\n    cout << \"Выделение \" << size << \" байт\" << endl;\n    void* p = malloc(size);\n    if (!p) throw std::bad_alloc();\n    return p;\n}\n\nvoid operator delete(void* p) noexcept {\n    cout << \"Освобождение памяти\" << endl;\n    free(p);\n}</code></pre>\\n\\n**Перегрузка в классе** — только для объектов данного класса:\\n<pre class=\"code-block\"><code class=\"language-cpp\">class MyClass {\npublic:\n    static void* operator new(size_t size) {\n        return customAllocator(size);\n    }\n    static void operator delete(void* p) noexcept {\n        customDeallocator(p);\n    }\n};</code></pre>\\n\\n**Применения:** пулы памяти, отладка утечек, ограничение доступной памяти, логирование аллокаций.",
-      "insight": "Перегрузка new/delete — как замена стандартного склада на свой: ты решаешь, откуда брать коробки (память) и куда их возвращать. Полезно для оптимизации: свой аллокатор может быть быстрее стандартного для определённых объектов.",
+      "insight": "Можно заменить стандартный аллокатор на свой — для отладки, пулов памяти, логирования.",
+      "formalText": "**Глобальная перегрузка:**\\n<pre class=\"code-block\"><code>void* operator new(size_t size) {\n    cout << \"Alloc \" << size << endl;\n    void* p = malloc(size);\n    if (!p) throw bad_alloc();\n    return p;\n}\nvoid operator delete(void* p) noexcept {\n    free(p);\n}</code></pre>\\n\\n**В классе** — только для его объектов:\\n<pre class=\"code-block\"><code>class A {\npublic:\n    static void* operator new(size_t s) { ... }\n    static void operator delete(void* p) noexcept { ... }\n};</code></pre>\\n\\n- В классе неявно `static` (нет this — объект ещё не создан)\\n- `operator delete` — `noexcept`",
+      "note": "new в классе — static (нет this). delete — noexcept. Первый параметр — всегда size_t.",
       "example": {
-        "title": "📝 Использование перегруженного new",
-        "text": "<pre class=\"code-block\"><code class=\"language-cpp\">MyClass* obj = new MyClass();  // вызов MyClass::operator new\ndelete obj;                     // вызов MyClass::operator delete</code></pre>"
-      },
-      "note": "operator new в классе неявно static (не имеет this — вызывается до создания объекта). operator delete должен быть noexcept."
+        "title": "📝 Использование",
+        "text": "<pre class=\"code-block\"><code>A* p = new A();   // A::operator new\ndelete p;          // A::operator delete</code></pre>"
+      }
     },
     {
       "id": 5,
       "title": "Размещающий оператор new (placement new) и его перегрузка",
       "type": "Понятие",
-      "formalText": "**Размещающий (placement) new** — форма оператора new, которая **не выделяет** память, а конструирует объект **по указанному адресу**:\\n\\n<pre class=\"code-block\"><code class=\"language-cpp\">#include <new>  // для placement new\n\nchar buffer[sizeof(MyClass)];  // заранее выделенная память\n\nMyClass* obj = new (buffer) MyClass(args);\n// объект создан в buffer, без вызова malloc\n\nobj->~MyClass();  // явный вызов деструктора!\n// НЕ вызывать delete — память не выделялась через new</code></pre>\\n\\n**Применения:**\\n- Создание объектов в заранее выделенном буфере (пулы памяти)\\n- Контроль расположения объекта в памяти\\n- Приложения реального времени (избегание аллокаций)\\n- Многопоточность (размещение в shared memory)\\n\\n**Перегрузка** позволяет специфицировать условия выделения:\\n<pre class=\"code-block\"><code class=\"language-cpp\">void* operator new(size_t size, MemPool& pool) {\n    return pool.allocate(size);\n}</code></pre>",
-      "insight": "Обычный new — как купить квартиру: сначала строят дом (malloc), потом делают ремонт (конструктор). Placement new — ремонт в уже купленной квартире: ты указываешь адрес, и конструктор работает прямо там, без покупки нового жилья.",
+      "insight": "Placement new не выделяет память — конструирует объект по указанному адресу.",
+      "formalText": "<pre class=\"code-block\"><code>#include <new>\n\nchar buf[sizeof(int)];\nint* p = new (buf) int(42);   // объект в buf\ncout << *p;                    // 42\n// delete НЕ нужен — память не из кучи!</code></pre>\\n\\n- Не вызывает `malloc` — только конструктор\\n- Для удаления — **явный вызов деструктора**: `p->~T()`\\n- Нельзя `delete` — память не выделялась через `new`\\n- Применение: пулы памяти, shared memory, realtime",
+      "note": "После placement new — нельзя delete! Только явный деструктор p->~T().",
       "example": {
-        "title": "📝 Placement new с буфером",
-        "text": "<pre class=\"code-block\"><code class=\"language-cpp\">alignas(int) char buf[sizeof(int)];\nint* p = new (buf) int(42);  // объект в buf\ncout << *p;  // 42\n// delete НЕ нужен — память не из кучи</code></pre>"
-      },
-      "note": "При placement new **нельзя** вызывать delete — нужно явно вызвать деструктор: `obj->~MyClass()`. Память освобождается отдельно (или не освобождается, если это стековый буфер)."
+        "title": "📝 С деструктором",
+        "text": "<pre class=\"code-block\"><code>char buf[sizeof(MyClass)];\nMyClass* p = new (buf) MyClass();\np->~MyClass();   // явный деструктор!\n// НЕ delete p!</code></pre>"
+      }
     },
     {
       "id": 6,
       "title": "Передача дополнительных параметров в оператор new при его перегрузке",
       "type": "Понятие",
-      "formalText": "При перегрузке оператора `new` можно передавать **дополнительные параметры** помимо `size_t`. Значения передаются в скобках после ключевого слова `new`:\\n\\n<pre class=\"code-block\"><code class=\"language-cpp\">// Перегрузка с дополнительным параметром\nvoid* operator new(size_t size, const char* file, int line) {\n    cout << \"Alloc \" << size << \" bytes at \"\n         << file << \":\" << line << endl;\n    return malloc(size);\n}\n\n// Использование:\nint* p = new (__FILE__, __LINE__) int(42);\n</code></pre>\\n\\n**Применения дополнительных параметров:**\\n- Отладка: передача имени файла и номера строки для трассировки утечек\\n- Выбор аллокатора: передача пула памяти\\n- Контроль поведения: `std::nothrow` — вместо исключения возвращает `nullptr`:\\n\\n<pre class=\"code-block\"><code class=\"language-cpp\">int* p = new (std::nothrow) int(42);\nif (!p) cerr << \"Не удалось выделить память\";\n</code></pre>",
-      "insight": "Дополнительные параметры в new — как заказ с пометками: не просто «выдели память», а «выдели из этого пула / запиши откуда вызвали / верни nullptr вместо исключения». Стандартный `std::nothrow` — самый частый пример.",
+      "insight": "Можно передать в new дополнительные параметры — для отладки, выбора аллокатора, nothrow.",
+      "formalText": "<pre class=\"code-block\"><code>// Перегрузка с доп. параметрами\nvoid* operator new(size_t size, const char* file, int line) {\n    cout << file << \":\" << line << endl;\n    return malloc(size);\n}\n\n// Использование:\nint* p = new (__FILE__, __LINE__) int(42);</code></pre>\\n\\n- Первый параметр — всегда `size_t` (от компилятора)\\n- `new (std::nothrow) T` — вернёт nullptr вместо bad_alloc\\n- Placement new — частный случай (`new (buf) T`)",
+      "note": "std::nothrow — самый частый пример. Первый параметр size_t передаётся автоматически.",
       "example": {
-        "title": "📝 Отладочный аллокатор",
-        "text": "<pre class=\"code-block\"><code class=\"language-cpp\">#define DBG_NEW new (__FILE__, __LINE__)\n\nint* p = DBG_NEW int(10);\n// Вывод: Alloc 4 bytes at main.cpp:42</code></pre>"
-      },
-      "note": "Первый параметр перегруженного new — всегда `size_t size` (передаётся компилятором автоматически). Дополнительные параметры идут после него."
+        "title": "📝 nothrow",
+        "text": "<pre class=\"code-block\"><code>int* p = new (nothrow) int(42);\nif (!p) cerr << \"нет памяти\";</code></pre>"
+      }
     }
   ]
 }
