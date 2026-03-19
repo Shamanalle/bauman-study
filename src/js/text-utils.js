@@ -26,11 +26,13 @@ export function nl(str) {
       return '\n' + html + '\n';
     });
     p = p
-      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-      .replace(/(?:\\n\s*){2,}/g, '</p><p class="nl-p">')      // double+ escaped newlines → paragraph break
-      .replace(/\n\s*\n/g, '</p><p class="nl-p">')             // double+ real newlines → paragraph break
-      .replace(/\\n(?![a-zA-Z])/g, '<br>')                      // remaining single escaped \n → <br>
-      .replace(/\n/g, '<br>');                                   // remaining single real newlines → <br>
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    // Normalize literal \n (backslash + n from JSON) → real newline
+    p = p.replace(/\\n/g, '\n');
+    // Now handle uniformly: double+ newlines → paragraph, single → <br>
+    p = p
+      .replace(/\n{2,}/g, '</p><p class="nl-p">')             // double+ newlines → paragraph break
+      .replace(/\n/g, '<br>');                                  // remaining single newlines → <br>
     // Strip <br> adjacent to display math $$ to prevent double-spacing
     p = p.replace(/(<br\s*\/?>)+\s*(\$\$)/g, '$2');
     p = p.replace(/(\$\$)\s*(<br\s*\/?>)+/g, '$1');
