@@ -4,78 +4,58 @@
   "questions": [
     {
       "id": "f-1",
-      "title": "Кинематика: перемещение, скорость, ускорение",
-      "formalText": "**Вектор перемещения:**\n$$\\Delta\\vec{r} = \\vec{r}(t_2) - \\vec{r}(t_1)$$\n\n**Мгновенная скорость:**\n$$\\vec{v} = \\frac{d\\vec{r}}{dt}$$\n\n**Мгновенное ускорение:**\n$$\\vec{a} = \\frac{d\\vec{v}}{dt} = \\frac{d^2\\vec{r}}{dt^2}$$\n\n**Средняя путевая скорость:**\n$$v_{\\text{ср}} = \\frac{S}{\\Delta t}$$"
+      "title": "Кинематика материальной точки",
+      "formalText": "**Вектор перемещения:**\n$$\\vec{\\Delta r} = \\vec{r}(t_2) - \\vec{r}(t_1)$$\n\n**Мгновенная скорость:**\n$$\\vec{v} = \\frac{d\\vec{r}}{dt}$$\n\n**Мгновенное ускорение:**\n$$\\vec{a} = \\frac{d\\vec{v}}{dt} = \\frac{d^2\\vec{r}}{dt^2}$$\n\n**Тангенциальное ускорение** (изменяет модуль скорости):\n$$a_\\tau = \\frac{dv}{dt}$$\n\n**Нормальное ускорение** (изменяет направление):\n$$a_n = \\frac{v^2}{R}$$\n\n**Полное ускорение:**\n$$a = \\sqrt{a_\\tau^2 + a_n^2}$$"
     },
     {
       "id": "f-2",
-      "title": "Тангенциальное и нормальное ускорение",
-      "formalText": "**Полное ускорение:**\n$$\\vec{a} = \\vec{a}_\\tau + \\vec{a}_n$$\n\n**Тангенциальное:**\n$$a_\\tau = \\frac{dv}{dt}$$\n\n**Нормальное:**\n$$a_n = \\frac{v^2}{R}$$\n\n**Модуль полного ускорения:**\n$$a = \\sqrt{a_\\tau^2 + a_n^2}$$"
+      "title": "Вращательное движение",
+      "formalText": "**Угловая скорость и ускорение:**\n$$\\omega = \\frac{d\\varphi}{dt}, \\qquad \\varepsilon = \\frac{d\\omega}{dt} = \\frac{d^2\\varphi}{dt^2}$$\n\n**Связь с линейными величинами:**\n$$v = \\omega R, \\qquad a_\\tau = \\varepsilon R, \\qquad a_n = \\omega^2 R$$\n\n**Период и частота:**\n$$T = \\frac{2\\pi}{\\omega}, \\qquad \\nu = \\frac{1}{T} = \\frac{\\omega}{2\\pi}$$\n\n**Равноускоренное вращение:**\n$$\\omega = \\omega_0 + \\varepsilon t, \\qquad \\varphi = \\omega_0 t + \\frac{\\varepsilon t^2}{2}$$"
     },
     {
       "id": "f-3",
-      "title": "Вращательное движение",
-      "formalText": "**Угловая скорость:**\n$$\\omega = \\frac{d\\alpha}{dt}$$\n\n**Угловое ускорение:**\n$$\\varepsilon = \\frac{d\\omega}{dt} = \\frac{d^2\\alpha}{dt^2}$$\n\n**Связь с линейными:**\n$$v = \\omega R, \\quad a_\\tau = \\varepsilon R, \\quad a_n = \\omega^2 R$$\n\n**Период и частота:**\n$$T = \\frac{2\\pi}{\\omega}, \\quad \\nu = \\frac{1}{T}$$"
+      "title": "Законы Ньютона и типы сил",
+      "formalText": "**II закон Ньютона:**\n$$\\vec{F} = m\\vec{a} \\qquad \\text{или} \\qquad \\frac{d\\vec{p}}{dt} = \\vec{F}$$\n\n**Сила упругости (Гук):**\n$$F = -kx$$\n\n**Сила трения скольжения:**\n$$F_{\\text{тр}} = \\mu N$$\n\n**Закон всемирного тяготения:**\n$$F = G\\frac{m_1 m_2}{r^2}, \\quad G \\approx 6{,}67 \\cdot 10^{-11}\\;\\text{Н·м}^2/\\text{кг}^2$$\n\n**Сила сопротивления среды:**\n$$\\vec{F}_{\\text{сопр}} = -b\\vec{v}$$"
     },
     {
       "id": "f-4",
-      "title": "Законы Ньютона",
-      "formalText": "**Второй закон Ньютона:**\n$$m\\vec{a} = \\sum \\vec{F}$$\n\n**В импульсной форме:**\n$$\\frac{d\\vec{p}}{dt} = \\vec{F}$$\n\n**Третий закон:**\n$$\\vec{F}_{12} = -\\vec{F}_{21}$$\n\n**Закон Гука:** $F_{\\text{упр}} = -kx$\n\n**Закон тяготения:** $F = G\\dfrac{m_1 m_2}{r^2}$\n\n**Сила трения:** $F_{\\text{тр}} = \\mu N$"
+      "title": "Импульс и закон сохранения",
+      "formalText": "**Импульс тела:**\n$$\\vec{p} = m\\vec{v}$$\n\n**II закон Ньютона (импульсная форма):**\n$$\\frac{d\\vec{p}}{dt} = \\vec{F}_{\\text{внеш}}$$\n\n**Закон сохранения импульса** (при $\\vec{F}_{\\text{внеш}} = 0$):\n$$\\sum m_i \\vec{v}_i = \\text{const}$$\n\n**Центр масс:**\n$$\\vec{r}_C = \\frac{\\sum m_i \\vec{r}_i}{\\sum m_i}$$"
     },
     {
       "id": "f-5",
-      "title": "Импульс и закон сохранения",
-      "formalText": "**Импульс тела:**\n$$\\vec{p} = m\\vec{v}$$\n\n**Импульс силы:**\n$$\\Delta\\vec{p} = \\int_{t_1}^{t_2} \\vec{F}\\,dt$$\n\n**Закон сохранения импульса** (при $\\sum\\vec{F}_{\\text{внеш}} = 0$):\n$$\\vec{p}_\\Sigma = \\sum m_i \\vec{v}_i = \\text{const}$$\n\n**Центр масс:**\n$$\\vec{r}_C = \\frac{\\sum m_i \\vec{r}_i}{\\sum m_i}$$"
+      "title": "Моменты инерции стандартных тел",
+      "formalText": "| Тело | Ось | Момент инерции |\n|---|---|---|\n| Стержень | Через центр, ⊥ | $I = \\frac{ml^2}{12}$ |\n| Стержень | Через конец, ⊥ | $I = \\frac{ml^2}{3}$ |\n| Диск / цилиндр | Ось симметрии | $I = \\frac{mR^2}{2}$ |\n| Обруч / трубка | Ось симметрии | $I = mR^2$ |\n| Сплошной шар | Через центр | $I = \\frac{2}{5}mR^2$ |\n\n**Теорема Штейнера:**\n$$I = I_C + md^2$$\nгде $I_C$ — момент инерции через ц.м., $d$ — расстояние между осями."
     },
     {
       "id": "f-6",
-      "title": "Моменты инерции тел",
-      "formalText": "**Определение:**\n$$I_z = \\sum \\Delta m_i \\cdot r_{\\perp i}^2$$\n\n| Тело | Момент инерции |\n|---|---|\n| Стержень (центр) | $I = \\frac{ml^2}{12}$ |\n| Обруч/трубка | $I = mR^2$ |\n| Диск/цилиндр | $I = \\frac{mR^2}{2}$ |\n| Шар | $I = \\frac{2mR^2}{5}$ |\n\n**Теорема Штейнера:**\n$$I = I_C + md^2$$"
+      "title": "Момент силы и момент импульса",
+      "formalText": "**Момент силы:**\n$$\\vec{M} = \\vec{r} \\times \\vec{F}, \\qquad M = Fd$$\n\n**Момент импульса:**\n$$\\vec{L} = \\vec{r} \\times \\vec{p} = I\\vec{\\omega}$$\n\n**Уравнение моментов:**\n$$\\frac{d\\vec{L}}{dt} = \\vec{M}_{\\text{внеш}}$$\n\n**Основное уравнение динамики вращения:**\n$$I\\varepsilon = M$$\n\n**Закон сохранения момента импульса** (при $M_{\\text{внеш}} = 0$):\n$$I_1\\omega_1 = I_2\\omega_2$$"
     },
     {
       "id": "f-7",
-      "title": "Момент силы и момент импульса",
-      "formalText": "**Момент силы:**\n$$\\vec{M} = \\vec{r} \\times \\vec{F}$$\n\n**Момент импульса:**\n$$\\vec{L} = \\vec{r} \\times \\vec{p}$$\n\n**Для вращения вокруг оси:**\n$$L_z = I_z \\omega$$\n\n**Основное уравнение вращения:**\n$$I_z \\varepsilon = M_z$$\n\n**Закон сохранения:**\nПри $\\sum M_{\\text{внеш}} = 0$: $I\\omega = \\text{const}$"
+      "title": "Работа и энергия",
+      "formalText": "**Работа:**\n$$A = \\int \\vec{F} \\cdot d\\vec{r}$$\n\n**Кинетическая энергия:**\n$$E_k = \\frac{mv^2}{2}, \\qquad E_k^{\\text{вращ}} = \\frac{I\\omega^2}{2}$$\n\n**Полная кинетическая энергия** (поступательное + вращательное):\n$$E_k = \\frac{mv_C^2}{2} + \\frac{I_C\\omega^2}{2}$$\n\n**Потенциальная энергия:**\n$$W_{\\text{гр}} = mgh, \\quad W_{\\text{упр}} = \\frac{kx^2}{2}$$\n\n**Связь силы и потенциальной энергии:**\n$$\\vec{F} = -\\text{grad}\\,W = -\\left(\\frac{\\partial W}{\\partial x}, \\frac{\\partial W}{\\partial y}, \\frac{\\partial W}{\\partial z}\\right)$$\n\n**Теорема о кинетической энергии:**\n$$A = \\Delta E_k$$\n\n**Закон сохранения механической энергии:**\n$$E_k + W_{\\text{пот}} = \\text{const}$$"
     },
     {
       "id": "f-8",
-      "title": "Работа и кинетическая энергия",
-      "formalText": "**Работа:**\n$$A = \\int_\\text{пути} \\vec{F} \\cdot d\\vec{r}$$\n\n**Кинетическая энергия:**\n$$E_k = \\frac{mv^2}{2}$$\n\n**Теорема о кинетической энергии:**\n$$A = E_{k,\\text{кон}} - E_{k,\\text{нач}}$$\n\n**Кинетическая энергия вращения:**\n$$E_k = \\frac{I\\omega^2}{2}$$\n\n**Полная кинетическая энергия:**\n$$E_k = \\frac{mv_C^2}{2} + \\frac{I_C \\omega^2}{2}$$"
+      "title": "Столкновения",
+      "formalText": "**Абсолютно упругий удар (центральный):**\n$$v_1' = \\frac{m_1 - m_2}{m_1 + m_2}v_1 + \\frac{2m_2}{m_1 + m_2}v_2$$\n$$v_2' = \\frac{2m_1}{m_1 + m_2}v_1 + \\frac{m_2 - m_1}{m_1 + m_2}v_2$$\n\n**Абсолютно неупругий удар:**\n$$u = \\frac{m_1 v_1 + m_2 v_2}{m_1 + m_2}$$\n\n**Потеря энергии при неупругом ударе:**\n$$|\\Delta E_k| = \\frac{m_1 m_2}{2(m_1+m_2)}(v_1 - v_2)^2$$"
     },
     {
       "id": "f-9",
-      "title": "Потенциальная энергия и ЗСЭ",
-      "formalText": "**Потенциальная энергия упругости:**\n$$U_{\\text{упр}} = \\frac{kx^2}{2}$$\n\n**Потенциальная энергия тяжести:**\n$$U = mgh$$\n\n**Гравитационная:**\n$$U = -G\\frac{m_1 m_2}{r}$$\n\n**Закон сохранения мех. энергии** (при отсутствии неконсервативных сил):\n$$E_k + U = \\text{const}$$\n\n**Градиент:**\n$$\\vec{F} = -\\text{grad}\\,U = -\\left(\\frac{\\partial U}{\\partial x}, \\frac{\\partial U}{\\partial y}, \\frac{\\partial U}{\\partial z}\\right)$$"
+      "title": "Гармонические колебания",
+      "formalText": "**Уравнение и решение:**\n$$\\ddot{x} + \\omega_0^2 x = 0 \\quad \\Rightarrow \\quad x = A\\cos(\\omega_0 t + \\varphi_0)$$\n\n**Пружинный маятник:**\n$$\\omega_0 = \\sqrt{\\frac{k}{m}}, \\quad T = 2\\pi\\sqrt{\\frac{m}{k}}$$\n\n**Математический маятник:**\n$$\\omega_0 = \\sqrt{\\frac{g}{l}}, \\quad T = 2\\pi\\sqrt{\\frac{l}{g}}$$\n\n**Физический маятник:**\n$$\\omega_0 = \\sqrt{\\frac{mgd}{I}}, \\quad T = 2\\pi\\sqrt{\\frac{I}{mgd}}$$\nгде $d$ — расстояние от оси до ц.м.\n\n**Энергия колебаний:**\n$$E = \\frac{kA^2}{2} = \\frac{m\\omega_0^2 A^2}{2}$$"
     },
     {
       "id": "f-10",
-      "title": "Столкновения",
-      "formalText": "**Абсолютно упругий удар** (1D, $m_2$ покоится):\n$$v_1' = \\frac{m_1 - m_2}{m_1 + m_2}v_0, \\quad v_2' = \\frac{2m_1}{m_1 + m_2}v_0$$\n\n**Абсолютно неупругий удар:**\n$$\\vec{u} = \\frac{m_1\\vec{v}_1 + m_2\\vec{v}_2}{m_1 + m_2}$$\n\n**Потеря энергии при АНУУ:**\n$$\\Delta E_k = -\\frac{m_1 m_2}{2(m_1+m_2)}(\\vec{v}_1 - \\vec{v}_2)^2$$"
+      "title": "Затухающие и вынужденные колебания",
+      "formalText": "**Затухающие колебания:**\n$$\\ddot{x} + 2\\beta\\dot{x} + \\omega_0^2 x = 0$$\n$$x = A_0 e^{-\\beta t}\\cos(\\omega t + \\varphi), \\quad \\omega = \\sqrt{\\omega_0^2 - \\beta^2}$$\n\n**Коэффициент затухания:** $\\beta = \\frac{r}{2m}$\n\n**Время релаксации:** $\\tau = \\frac{1}{\\beta}$ (амплитуда убывает в $e$ раз)\n\n**Логарифмический декремент:** $\\delta = \\beta T = \\frac{T}{\\tau}$\n\n**Добротность:** $Q = \\frac{\\pi}{\\delta} = \\frac{\\omega_0}{2\\beta}$\n\n**Резонансная частота:**\n$$\\omega_{\\text{рез}} = \\sqrt{\\omega_0^2 - 2\\beta^2}$$"
     },
     {
       "id": "f-11",
-      "title": "Гармонические колебания",
-      "formalText": "**Уравнение:**\n$$x(t) = A\\cos(\\omega_0 t + \\varphi_0)$$\n\n**Скорость:**\n$$\\dot{x} = -A\\omega_0 \\sin(\\omega_0 t + \\varphi_0)$$\n\n**Ускорение:**\n$$\\ddot{x} = -A\\omega_0^2 \\cos(\\omega_0 t + \\varphi_0)$$\n\n**Диф. уравнение:**\n$$\\ddot{x} + \\omega_0^2 x = 0$$"
-    },
-    {
-      "id": "f-12",
-      "title": "Частоты маятников",
-      "formalText": "**Пружинный маятник:**\n$$\\omega_0 = \\sqrt{\\frac{k}{m}}, \\quad T = 2\\pi\\sqrt{\\frac{m}{k}}$$\n\n**Математический маятник:**\n$$\\omega_0 = \\sqrt{\\frac{g}{l}}, \\quad T = 2\\pi\\sqrt{\\frac{l}{g}}$$\n\n**Физический маятник:**\n$$\\omega_0 = \\sqrt{\\frac{mgd}{I}}, \\quad T = 2\\pi\\sqrt{\\frac{I}{mgd}}$$\n\nгде $d$ — расстояние от оси до центра масс"
-    },
-    {
-      "id": "f-13",
-      "title": "Затухающие колебания",
-      "formalText": "**Уравнение:**\n$$\\ddot{x} + 2\\beta\\dot{x} + \\omega_0^2 x = 0$$\n\n**Решение:**\n$$x = A_0 e^{-\\beta t}\\cos(\\omega t + \\varphi)$$\n\n**Частота:**\n$$\\omega = \\sqrt{\\omega_0^2 - \\beta^2}$$\n\n**Логарифмический декремент:**\n$$\\delta = \\beta T = \\ln\\frac{A(t)}{A(t+T)}$$\n\n**Добротность:**\n$$Q = \\frac{\\pi}{\\delta} = \\frac{\\omega}{2\\beta}$$\n\n**Время релаксации:** $\\tau = \\frac{1}{\\beta}$"
-    },
-    {
-      "id": "f-14",
-      "title": "Вынужденные колебания и резонанс",
-      "formalText": "**Уравнение:**\n$$\\ddot{x} + 2\\beta\\dot{x} + \\omega_0^2 x = f_0\\cos(\\Omega t + \\varphi)$$\n\n**Амплитуда установившихся колебаний:**\n$$A_\\text{уст} = \\frac{f_0}{\\sqrt{(\\omega_0^2 - \\Omega^2)^2 + 4\\beta^2\\Omega^2}}$$\n\n**Резонансная частота:**\n$$\\Omega_{\\text{рез}} = \\sqrt{\\omega_0^2 - 2\\beta^2}$$\n\n**Условие резонанса:** $\\beta < \\frac{\\omega_0}{\\sqrt{2}}$"
-    },
-    {
-      "id": "f-15",
       "title": "Сложение колебаний",
-      "formalText": "**Одного направления, одинаковые частоты:**\n$$A = \\sqrt{A_1^2 + A_2^2 + 2A_1 A_2\\cos(\\varphi_2 - \\varphi_1)}$$\n\n**Близкие частоты (биения):**\n$$x = 2A\\cos\\frac{\\Delta\\omega}{2}t \\cdot \\cos\\bar{\\omega}t$$\n$$\\omega_{\\text{биений}} = |\\omega_1 - \\omega_2|$$\n\n**Перпендикулярные, равные частоты:**\nЭллипс; при $\\Delta\\varphi = 0$ — прямая, $\\Delta\\varphi = \\pi/2$ — окружность"
+      "formalText": "**Одинаковое направление, равные частоты:**\n$$A = \\sqrt{A_1^2 + A_2^2 + 2A_1 A_2 \\cos(\\varphi_2 - \\varphi_1)}$$\n\n**Близкие частоты (биения):**\n$$x = 2A\\cos\\left(\\frac{\\Delta\\omega}{2}t\\right)\\cos(\\bar{\\omega}t)$$\n$$T_{\\text{биений}} = \\frac{2\\pi}{|\\omega_1 - \\omega_2|}$$"
     }
   ]
 }
