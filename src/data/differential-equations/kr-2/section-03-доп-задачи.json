@@ -213,7 +213,7 @@
         {
           "title": "НУ",
           "text": "$y(0)=2$: $4=0+C_1$ → $C_1=4$.",
-          "math": "$$y=\\sqrt{x^2+4}$$"
+          "math": "$$\\boxed{y=\\sqrt{x^2+4}}$$"
         }
       ],
       "formula": "y=\\sqrt{x^2+4}",
@@ -238,7 +238,7 @@
         {
           "title": "НУ",
           "text": "$y(0)=1$: $1=-1/C$ → $C=-1$.",
-          "math": "$$y=\\frac{1}{1-x^2}$$"
+          "math": "$$\\boxed{y=\\frac{1}{1-x^2}}$$"
         }
       ],
       "formula": "y=\\frac{1}{1-x^2}",
@@ -593,7 +593,7 @@
         {
           "title": "Ответ",
           "text": "Выполняем вычисления:",
-          "math": "$$y=-\\frac{x}{2}-\\frac{1}{4}+Ce^{2x}$$"
+          "math": "$$\\boxed{y=-\\frac{x}{2}-\\frac{1}{4}+Ce^{2x}}$$"
         }
       ],
       "formula": "y=Ce^{2x}-\\frac{x}{2}-\\frac{1}{4}",
@@ -734,7 +734,7 @@
         {
           "title": "Ответ",
           "text": "Выполняем вычисления:",
-          "math": "$$y=Ce^x-\\frac{\\sin x+\\cos x}{2}$$"
+          "math": "$$\\boxed{y=Ce^x-\\frac{\\sin x+\\cos x}{2}}$$"
         }
       ],
       "formula": "y=Ce^x-\\frac{\\sin x+\\cos x}{2}",
@@ -824,7 +824,7 @@
         {
           "title": "Ответ",
           "text": "Выполняем вычисления:",
-          "math": "$$y=\\frac{C-\\frac{1}{2}\\cos 2x}{\\sin x}=\\frac{2C-1+2\\sin^2 x}{2\\sin x}$$"
+          "math": "$$\\boxed{y=\\frac{C-\\frac{1}{2}\\cos 2x}{\\sin x}=\\frac{2C-1+2\\sin^2 x}{2\\sin x}}$$"
         }
       ],
       "formula": "y=\\sin x+\\frac{C}{\\sin x}-\\frac{1}{2\\sin x}",
@@ -873,7 +873,7 @@
         {
           "title": "Ответ",
           "text": "Решаем полученное линейное ОДУ:",
-          "math": "$$y=\\frac{1}{1-x+Ce^{-x}}$$"
+          "math": "$$\\boxed{y=\\frac{1}{1-x+Ce^{-x}}}$$"
         }
       ],
       "formula": "y=\\frac{1}{1-x+Ce^{-x}}",
@@ -898,7 +898,7 @@
         {
           "title": "Ответ",
           "text": "Решаем полученное линейное ОДУ:",
-          "math": "$$z=Cx-\\frac{x\\ln^2 x}{2} \\Rightarrow y=\\frac{1}{Cx-\\frac{x\\ln^2 x}{2}}$$"
+          "math": "$$\\boxed{z=Cx-\\frac{x\\ln^2 x}{2} \\Rightarrow y=\\frac{1}{Cx-\\frac{x\\ln^2 x}{2}}}$$"
         }
       ],
       "formula": "y=\\frac{2}{x(2C-\\ln^2 x)}",
@@ -923,7 +923,7 @@
         {
           "title": "Ответ",
           "text": "Решаем полученное линейное ОДУ:",
-          "math": "$$y^{-2}=2e^x+Ce^{2x} \\Rightarrow y=\\frac{1}{\\sqrt{2e^x+Ce^{2x}}}$$"
+          "math": "$$\\boxed{y^{-2}=2e^x+Ce^{2x} \\Rightarrow y=\\frac{1}{\\sqrt{2e^x+Ce^{2x}}}}$$"
         }
       ],
       "formula": "y=\\frac{1}{\\sqrt{Ce^{2x}+2e^x}}",
@@ -948,7 +948,7 @@
         {
           "title": "Ответ",
           "text": "Решаем полученное линейное ОДУ:",
-          "math": "$$y=\\frac{1}{Cx-x^2}=\\frac{1}{x(C-x)}$$"
+          "math": "$$\\boxed{y=\\frac{1}{Cx-x^2}=\\frac{1}{x(C-x)}}$$"
         }
       ],
       "formula": "y=\\frac{1}{x(C-x)}",
@@ -973,7 +973,7 @@
         {
           "title": "Ответ",
           "text": "Решаем полученное линейное ОДУ:",
-          "math": "$$\\sqrt{y}=\\frac{3x^3}{4}+Cx \\Rightarrow y=\\left(\\frac{3x^3}{4}+Cx\\right)^2$$"
+          "math": "$$\\boxed{\\sqrt{y}=\\frac{3x^3}{4}+Cx \\Rightarrow y=\\left(\\frac{3x^3}{4}+Cx\\right)^2}$$"
         }
       ],
       "formula": "y=\\left(\\frac{3x^3}{4}+Cx\\right)^2",

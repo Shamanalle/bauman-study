@@ -192,7 +192,7 @@
         },
         {
           "title": "Ответ",
-          "math": "$$y''-y=2-x^2$$"
+          "math": "$$\\boxed{y''-y=2-x^2}$$"
         }
       ],
       "formula": "y''-y=2-x^2",
@@ -408,7 +408,7 @@
         },
         {
           "title": "Итого",
-          "math": "$$e^y=Cx+C_2$$"
+          "math": "$$\\boxed{e^y=Cx+C_2}$$"
         }
       ],
       "formula": "e^y=C_1 x+C_2",
@@ -496,7 +496,7 @@
         {
           "title": "Общее",
           "text": "Записываем общее решение:",
-          "math": "$$y=C_1\\cos x+C_2\\sin x+\\cos x\\ln|\\cos x|+x\\sin x$$"
+          "math": "$$\\boxed{y=C_1\\cos x+C_2\\sin x+\\cos x\\ln|\\cos x|+x\\sin x}$$"
         }
       ],
       "formula": "y=C_1\\cos x+C_2\\sin x+\\cos x\\ln|\\cos x|+x\\sin x",
@@ -521,7 +521,7 @@
         {
           "title": "Интегрирование",
           "text": "Записываем общее решение:",
-          "math": "$$C_1=-\\ln(1+e^{-x}),\\quad C_2=-x+\\ln(1+e^x)$$"
+          "math": "$$\\boxed{C_1=-\\ln(1+e^{-x}),\\quad C_2=-x+\\ln(1+e^x)}$$"
         }
       ],
       "formula": "y=C_1 e^x+C_2 e^{-x}+y_{\\text{ч}}",
@@ -551,7 +551,7 @@
         {
           "title": "Общее",
           "text": "Записываем общее решение:",
-          "math": "$$y=C_1\\cos x+C_2\\sin x-\\cos x\\ln|\\sec x+\\tan x|$$"
+          "math": "$$\\boxed{y=C_1\\cos x+C_2\\sin x-\\cos x\\ln|\\sec x+\\tan x|}$$"
         }
       ],
       "formula": "y=C_1\\cos x+C_2\\sin x-\\cos x\\ln|\\sec x+\\tan x|",
@@ -576,7 +576,7 @@
         {
           "title": "Частное",
           "text": "Находим частное решение:",
-          "math": "$$y_ч=-xe^x+xe^x\\ln|x|=xe^x(\\ln|x|-1)$$"
+          "math": "$$\\boxed{y_ч=-xe^x+xe^x\\ln|x|=xe^x(\\ln|x|-1)}$$"
         }
       ],
       "formula": "y=(C_1+C_2 x)e^x+xe^x\\ln|x|",
@@ -600,7 +600,7 @@
         {
           "title": "Подстановка",
           "text": "$y_ч''=0$ → $Ax+B=3x+2$ → $A=3$, $B=2$.",
-          "math": "$$y_ч=3x+2$$"
+          "math": "$$\\boxed{y_ч=3x+2}$$"
         }
       ],
       "formula": "y_ч=3x+2",
@@ -625,7 +625,7 @@
         {
           "title": "Ответ",
           "text": "Выполняем вычисления:",
-          "math": "$$y_ч=\\frac{e^{2x}}{3}$$"
+          "math": "$$\\boxed{y_ч=\\frac{e^{2x}}{3}}$$"
         }
       ],
       "formula": "y_ч=\\frac{e^{2x}}{3}",
@@ -650,7 +650,7 @@
         {
           "title": "Ответ",
           "text": "Выполняем вычисления:",
-          "math": "$$y_ч=-xe^x$$"
+          "math": "$$\\boxed{y_ч=-xe^x}$$"
         }
       ],
       "formula": "y_ч=-xe^x",
@@ -680,7 +680,7 @@
         {
           "title": "Ответ",
           "text": "Выполняем вычисления:",
-          "math": "$$y_ч=\\frac{x\\sin 2x}{4}$$"
+          "math": "$$\\boxed{y_ч=\\frac{x\\sin 2x}{4}}$$"
         }
       ],
       "formula": "y_ч=\\frac{x\\sin 2x}{4}",
@@ -710,7 +710,7 @@
         {
           "title": "Ответ",
           "text": "Выполняем вычисления:",
-          "math": "$$y_ч=\\frac{x(x-1)}{4}e^x$$"
+          "math": "$$\\boxed{y_ч=\\frac{x(x-1)}{4}e^x}$$"
         }
       ],
       "formula": "y_ч=\\frac{x^2-x}{4}e^x",
@@ -735,7 +735,7 @@
         {
           "title": "Ответ",
           "text": "Выполняем вычисления:",
-          "math": "$$y_ч=-\\frac{x\\cos x}{2}$$"
+          "math": "$$\\boxed{y_ч=-\\frac{x\\cos x}{2}}$$"
         }
       ],
       "formula": "y_ч=-\\frac{x\\cos x}{2}",
@@ -760,7 +760,7 @@
         {
           "title": "Ответ",
           "text": "Выполняем вычисления:",
-          "math": "$$y_ч=2xe^{2x}$$"
+          "math": "$$\\boxed{y_ч=2xe^{2x}}$$"
         }
       ],
       "formula": "y_ч=2xe^{2x}",
@@ -785,7 +785,7 @@
         {
           "title": "Ответ",
           "text": "Выполняем вычисления:",
-          "math": "$$y_ч=\\frac{x^2}{2}e^x$$"
+          "math": "$$\\boxed{y_ч=\\frac{x^2}{2}e^x}$$"
         }
       ],
       "formula": "y_ч=\\frac{x^2 e^x}{2}",
@@ -810,7 +810,7 @@
         {
           "title": "Ответ",
           "text": "Выполняем вычисления:",
-          "math": "$$y_ч=x^2-1$$"
+          "math": "$$\\boxed{y_ч=x^2-1}$$"
         }
       ],
       "formula": "y_ч=x^2-1",
@@ -840,7 +840,7 @@
         {
           "title": "Ответ",
           "text": "Выполняем вычисления:",
-          "math": "$$y_ч=\\frac{x^2}{2}+x$$"
+          "math": "$$\\boxed{y_ч=\\frac{x^2}{2}+x}$$"
         }
       ],
       "formula": "y_ч=\\frac{x^2}{2}+x",

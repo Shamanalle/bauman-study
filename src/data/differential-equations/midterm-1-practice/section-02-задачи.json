@@ -28,7 +28,7 @@
         },
         {
           "title": "Ответ",
-          "math": "$$S = \\frac{16}{3} + \\frac{8}{3} = 8$$"
+          "math": "$$\\boxed{S = \\frac{16}{3} + \\frac{8}{3} = 8}$$"
         }
       ],
       "formula": "S = 8",
@@ -114,7 +114,7 @@
         {
           "title": "Интеграл Вальгиса",
           "text": "$\\int_0^{\\pi/2}\\sin^4 t\\cos^2 t\\,dt = \\frac{3 \\cdot 1 \\cdot 1}{6 \\cdot 4 \\cdot 2} \\cdot \\frac{\\pi}{2} = \\frac{\\pi}{32}$",
-          "math": "$$S = 12a^2 \\cdot \\frac{\\pi}{32} = \\frac{3\\pi a^2}{8}$$"
+          "math": "$$\\boxed{S = 12a^2 \\cdot \\frac{\\pi}{32} = \\frac{3\\pi a^2}{8}}$$"
         }
       ],
       "formula": "S = \\frac{3\\pi a^2}{8}",
@@ -192,7 +192,7 @@
         },
         {
           "title": "Вычисляем",
-          "math": "$$2\\left[\\frac{3\\varphi}{2} + 2\\sin\\varphi + \\frac{\\sin 2\\varphi}{4}\\right]_0^{\\pi/3} = 2\\left(\\frac{\\pi}{2} + \\sqrt{3} + \\frac{\\sqrt{3}}{8}\\right) = \\pi + \\frac{9\\sqrt{3}}{4}$$"
+          "math": "$$\\boxed{2\\left[\\frac{3\\varphi}{2} + 2\\sin\\varphi + \\frac{\\sin 2\\varphi}{4}\\right]_0^{\\pi/3} = 2\\left(\\frac{\\pi}{2} + \\sqrt{3} + \\frac{\\sqrt{3}}{8}\\right) = \\pi + \\frac{9\\sqrt{3}}{4}}$$"
         }
       ],
       "formula": "S = \\pi + \\frac{9\\sqrt{3}}{4}",
@@ -261,7 +261,7 @@
         },
         {
           "title": "Вычисляем",
-          "math": "$$2\\pi\\left[\\frac{x^4}{8}+\\frac{2x^3}{3}\\right]_{-4}^0 = 2\\pi\\left(0 - 32 + \\frac{128}{3}\\right) = 2\\pi \\cdot \\frac{32}{3} = \\frac{64\\pi}{3}$$"
+          "math": "$$\\boxed{2\\pi\\left[\\frac{x^4}{8}+\\frac{2x^3}{3}\\right]_{-4}^0 = 2\\pi\\left(0 - 32 + \\frac{128}{3}\\right) = 2\\pi \\cdot \\frac{32}{3} = \\frac{64\\pi}{3}}$$"
         }
       ],
       "formula": "V = \\frac{64\\pi}{3}",
@@ -348,7 +348,7 @@
         {
           "title": "Ответ",
           "text": "$\\int_0^1 t\\ln^2 t\\,dt = -(-\\frac{1}{4}) = \\frac{1}{4}$.",
-          "math": "$$V = 2\\pi a^3 \\cdot \\frac{1}{4} = \\frac{\\pi a^3}{2}$$"
+          "math": "$$\\boxed{V = 2\\pi a^3 \\cdot \\frac{1}{4} = \\frac{\\pi a^3}{2}}$$"
         }
       ],
       "formula": "V = \\frac{\\pi a^3}{2}",
@@ -401,7 +401,7 @@
         {
           "title": "Интеграл Вальгиса",
           "text": "$\\int_0^\\pi \\sin^7\\varphi\\,d\\varphi = 2\\int_0^{\\pi/2}\\sin^7\\varphi\\,d\\varphi = 2 \\cdot \\frac{6 \\cdot 4 \\cdot 2}{7 \\cdot 5 \\cdot 3 \\cdot 1} = \\frac{32}{35}$",
-          "math": "$$V = \\frac{2\\pi a^3}{3} \\cdot \\frac{32}{35} = \\frac{64\\pi a^3}{105}$$"
+          "math": "$$\\boxed{V = \\frac{2\\pi a^3}{3} \\cdot \\frac{32}{35} = \\frac{64\\pi a^3}{105}}$$"
         }
       ],
       "formula": "V = \\frac{64\\pi a^3}{105}",
@@ -466,7 +466,7 @@
         },
         {
           "title": "Ответ",
-          "math": "$$L = \\sqrt{5} + \\frac{1}{2}\\ln(2+\\sqrt{5})$$"
+          "math": "$$\\boxed{L = \\sqrt{5} + \\frac{1}{2}\\ln(2+\\sqrt{5})}$$"
         }
       ],
       "formula": "L = \\sqrt{5} + \\frac{1}{2}\\ln(2+\\sqrt{5})",
@@ -600,7 +600,7 @@
         {
           "title": "Сравнение с эталоном",
           "text": "Эквивалент $\\frac{C}{x}$ → сравниваем с $\\int\\frac{dx}{x}$ (расходится, $p = 1$).",
-          "math": "$$\\text{Интеграл расходится}$$"
+          "math": "$$\\boxed{\\text{Интеграл расходится}}$$"
         }
       ],
       "formula": "\\text{Расходится}",
@@ -621,7 +621,7 @@
         {
           "title": "Сравнение с эталоном",
           "text": "$\\int_1^\\infty \\frac{dx}{x^2}$ сходится ($p = 2 > 1$). По предельному признаку:",
-          "math": "$$\\text{Интеграл сходится}$$"
+          "math": "$$\\boxed{\\text{Интеграл сходится}}$$"
         }
       ],
       "formula": "\\text{Сходится}",
@@ -642,7 +642,7 @@
         {
           "title": "Сравнение с эталоном",
           "text": "$\\int_0^1 \\frac{dx}{x^{1/3}}$ сходится ($p = 1/3 < 1$).",
-          "math": "$$\\text{Интеграл сходится}$$"
+          "math": "$$\\boxed{\\text{Интеграл сходится}}$$"
         }
       ],
       "formula": "\\text{Сходится}",
@@ -667,7 +667,7 @@
         },
         {
           "title": "Ответ",
-          "math": "$$\\text{Интеграл расходится}$$"
+          "math": "$$\\boxed{\\text{Интеграл расходится}}$$"
         }
       ],
       "formula": "\\text{Расходится}",
@@ -691,7 +691,7 @@
         {
           "title": "Условие сходимости",
           "text": "НИ 2-го рода: $\\int_1^2 \\frac{dx}{(x-1)^p}$ сходится при $p < 1$.",
-          "math": "$$\\alpha - 1 < 1 \\quad \\Rightarrow \\quad \\alpha < 2$$"
+          "math": "$$\\boxed{\\alpha - 1 < 1 \\quad \\Rightarrow \\quad \\alpha < 2}$$"
         }
       ],
       "formula": "\\alpha < 2",

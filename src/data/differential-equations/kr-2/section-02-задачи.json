@@ -23,7 +23,7 @@
         },
         {
           "title": "Интегрируем",
-          "math": "$$x + 2\\ln|x| + y - \\ln|y| = C$$"
+          "math": "$$\\boxed{x + 2\\ln|x| + y - \\ln|y| = C}$$"
         }
       ],
       "formula": "x + 2\\ln|x| + y - \\ln|y| = C",
@@ -51,7 +51,7 @@
         },
         {
           "title": "Ответ",
-          "math": "$$\\ln|xy| + x - y = 2 - e$$"
+          "math": "$$\\boxed{\\ln|xy| + x - y = 2 - e}$$"
         }
       ],
       "formula": "\\ln|xy| + x - y = 2 - e",
@@ -84,7 +84,7 @@
         {
           "title": "Задача Коши: y(2)=1",
           "text": "$4 - 1 = C_1$ → $C_1 = 3$.",
-          "math": "$$x^2 - y^2 = 3y^3$$"
+          "math": "$$\\boxed{x^2 - y^2 = 3y^3}$$"
         }
       ],
       "formula": "x^2 - y^2 = 3y^3",
@@ -116,7 +116,7 @@
         },
         {
           "title": "Обратная замена u = y/x",
-          "math": "$$y + \\sqrt{y^2 - x^2} = Cx^2$$"
+          "math": "$$\\boxed{y + \\sqrt{y^2 - x^2} = Cx^2}$$"
         }
       ],
       "formula": "y + \\sqrt{y^2-x^2} = Cx^2",
@@ -144,7 +144,7 @@
         },
         {
           "title": "Задача Коши: y(0)=2",
-          "math": "$$C = 2 \\quad \\Rightarrow \\quad y = (x + 2)e^{-x}$$"
+          "math": "$$\\boxed{C = 2 \\quad \\Rightarrow \\quad y = (x + 2)e^{-x}}$$"
         }
       ],
       "formula": "y = (x+2)e^{-x}",
@@ -168,7 +168,7 @@
         },
         {
           "title": "Ответ",
-          "math": "$$x = \\frac{y^4}{2} + Cy^2$$"
+          "math": "$$\\boxed{x = \\frac{y^4}{2} + Cy^2}$$"
         }
       ],
       "formula": "x = \\frac{y^4}{2} + Cy^2",
@@ -207,7 +207,7 @@
         {
           "title": "Обратная замена + ЗК",
           "text": "Замена $z = 1/y$. Подставляем $y(0) = 1$, $z(0) = 1$, $\\cos 0 = 1$, $\\tan 0 = 0$:",
-          "math": "$$1 = 0 + 0 + C \\quad \\Rightarrow \\quad C = 1$$"
+          "math": "$$\\boxed{1 = 0 + 0 + C \\quad \\Rightarrow \\quad C = 1}$$"
         }
       ],
       "formula": "\\frac{1}{y\\cos^2 x} = \\frac{\\tan^2 x}{2} + \\ln|\\cos x| + 1",
@@ -239,7 +239,7 @@
         },
         {
           "title": "Ответ",
-          "math": "$$x^2 y + \\frac{y^3}{3} + y^2 = C$$"
+          "math": "$$\\boxed{x^2 y + \\frac{y^3}{3} + y^2 = C}$$"
         }
       ],
       "formula": "x^2 y + \\frac{y^3}{3} + y^2 = C",

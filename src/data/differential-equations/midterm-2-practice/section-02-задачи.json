@@ -25,7 +25,7 @@
         {
           "title": "Общее решение (ФСР)",
           "text": "Кратный корень 0: $1, x$. Комплексные $1 \\pm 3i$: $e^x\\cos 3x, e^x\\sin 3x$.",
-          "math": "$$y = C_1 + C_2 x + C_3 e^x \\cos 3x + C_4 e^x \\sin 3x$$"
+          "math": "$$\\boxed{y = C_1 + C_2 x + C_3 e^x \\cos 3x + C_4 e^x \\sin 3x}$$"
         }
       ],
       "formula": "y^{(4)} - 2y''' + 10y'' = 0",
@@ -58,7 +58,7 @@
         {
           "title": "Условие существования",
           "text": "Коэфф. при $y''$: $x^2 \\neq 0$ → при $x \\neq 0$.",
-          "math": "$$\\text{При } x \\neq 0$$"
+          "math": "$$\\boxed{\\text{При } x \\neq 0}$$"
         }
       ],
       "formula": "x^2 y'' - 3xy' + 3y = 0, \\quad x \\neq 0",
@@ -78,7 +78,7 @@
         {
           "title": "Хар. корни → ОДУ",
           "text": "$\\lambda_1 = 1$, $\\lambda_2 = -2$. Хар. уравнение: $(\\lambda-1)(\\lambda+2) = \\lambda^2+\\lambda-2 = 0$.",
-          "math": "$$y'' + y' - 2y = 0$$"
+          "math": "$$\\boxed{y'' + y' - 2y = 0}$$"
         }
       ],
       "formula": "y'' + y' - 2y = 0",
@@ -103,7 +103,7 @@
         },
         {
           "title": "ОДУ",
-          "math": "$$y'' - 2y' + 5y = 0$$"
+          "math": "$$\\boxed{y'' - 2y' + 5y = 0}$$"
         }
       ],
       "formula": "y'' - 2y' + 5y = 0",
@@ -127,7 +127,7 @@
         },
         {
           "title": "Ответ",
-          "math": "$$y' - y = \\cos x - \\sin x$$"
+          "math": "$$\\boxed{y' - y = \\cos x - \\sin x}$$"
         }
       ],
       "formula": "y' - y = \\cos x - \\sin x",
@@ -152,7 +152,7 @@
         },
         {
           "title": "Ответ",
-          "math": "$$y' + y\\tan x = \\tan x$$"
+          "math": "$$\\boxed{y' + y\\tan x = \\tan x}$$"
         }
       ],
       "formula": "y' + y\\tan x = \\tan x",
@@ -192,7 +192,7 @@
         },
         {
           "title": "Ответ",
-          "math": "$$y = -\\frac{x^2}{4} + 2\\ln x + 1 - 2\\ln 2$$"
+          "math": "$$\\boxed{y = -\\frac{x^2}{4} + 2\\ln x + 1 - 2\\ln 2}$$"
         }
       ],
       "formula": "y = -\\frac{x^2}{4} + 2\\ln x + 1 - 2\\ln 2",
@@ -231,7 +231,7 @@
         {
           "title": "Разделяем и интегрируем",
           "text": "При $y'(1) = 1 > 0$: берём +.",
-          "math": "$$\\int \\frac{y\\,dy}{\\sqrt{2-y^2}} = \\int dx$$"
+          "math": "$$\\boxed{\\int \\frac{y\\,dy}{\\sqrt{2-y^2}} = \\int dx}$$"
         }
       ],
       "formula": "\\text{Разделяется на переменные после замены}",
@@ -271,7 +271,7 @@
         },
         {
           "title": "Ответ",
-          "math": "$$y = \\tilde{C}_1\\cos x + \\tilde{C}_2\\sin x - \\sin x + x\\cos x - \\sin x\\ln|\\cos x|$$"
+          "math": "$$\\boxed{y = \\tilde{C}_1\\cos x + \\tilde{C}_2\\sin x - \\sin x + x\\cos x - \\sin x\\ln|\\cos x|}$$"
         }
       ],
       "formula": "y = C_1\\cos x + C_2\\sin x - \\sin x + x\\cos x - \\sin x\\ln|\\cos x|",
@@ -308,7 +308,7 @@
         },
         {
           "title": "Ответ",
-          "math": "$$y = (\\tilde{C}_1 + \\tilde{C}_2 x)e^{-2x} + (-x + x\\ln|x|)e^{-2x}$$"
+          "math": "$$\\boxed{y = (\\tilde{C}_1 + \\tilde{C}_2 x)e^{-2x} + (-x + x\\ln|x|)e^{-2x}}$$"
         }
       ],
       "formula": "y = (C_1 + C_2 x)e^{-2x} + xe^{-2x}(\\ln|x|-1)",
