@@ -421,7 +421,32 @@ function renderTickets(el, section) {
                   </div>
                 ` : ''}
               </div>`;
-            }).join('') : `<div class="prac-ticket-task-text">${md(q.formalText)}</div>`}
+            }).join('') : `
+              <div class="prac-ticket-task-text">${md(q.formalText)}</div>
+              ${steps.length > 0 ? `
+                <div class="prac-ticket-task-item">
+                  <button class="prac-ticket-task-reveal" onclick="window.__pracToggleTask(this)">
+                    👁 Показать решение
+                  </button>
+                  <div class="prac-ticket-task-solution">
+                    <button class="prac-ticket-task-collapse" onclick="window.__pracToggleTask(this)">
+                      ▲ Свернуть решение
+                    </button>
+                    <div class="prac-solution-steps">
+                      ${steps.map((s, si) => `
+                        <div class="prac-solution-step">
+                          <div class="prac-sol-step-header">
+                            <span class="prac-sol-step-num">${si + 1}</span>
+                            ${s.title ? `<strong>${md(s.title)}</strong>` : ''}
+                          </div>
+                          ${s.text ? `<div class="prac-sol-step-text">${md(s.text)}</div>` : ''}
+                          ${s.math ? `<div class="prac-step-math">${s.math}</div>` : ''}
+                        </div>
+                      `).join('')}
+                    </div>
+                  </div>
+                </div>
+              ` : ''}`}
           </div>
         </div>
       `;
