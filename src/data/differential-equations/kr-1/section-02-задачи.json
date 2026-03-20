@@ -104,21 +104,26 @@
       "steps": [
         {
           "title": "Анализ",
-          "text": "Подкоренное выражение $3 - \\cos x$ — функция от $\\cos x$. Замечаем: $\\sin x\\,dx = -d(\\cos x) = d(-\\cos x)$.\n\nТ.к. $d(3 - \\cos x) = \\sin x\\,dx$, можем подвести."
+          "text": "Подкоренное выражение $3 - \\cos x$ — функция от $\\cos x$. Проверяем: $d(3 - \\cos x) = \\sin x\\,dx$ — именно это стоит в числителе! Значит, можно **подвести под знак дифференциала**."
         },
         {
-          "title": "Замена",
-          "text": "$t = 3 - \\cos x$, $dt = \\sin x\\,dx$:",
-          "math": "$$\\int \\frac{dt}{t^{1/4}} = \\int t^{-1/4}\\,dt$$"
+          "title": "Шаг 1: Замена",
+          "text": "Пусть $t = 3 - \\cos x$, тогда $dt = \\sin x\\,dx$. Подынтегральное выражение полностью записывается через $t$:",
+          "math": "$$\\int \\frac{\\sin x\\,dx}{(3-\\cos x)^{1/4}} = \\int \\frac{dt}{t^{1/4}} = \\int t^{-1/4}\\,dt$$"
         },
         {
-          "title": "Интегрирование",
-          "text": "При $n = -1/4$:",
-          "math": "$$\\frac{t^{3/4}}{3/4} = \\frac{4}{3}\\,t^{3/4}$$"
+          "title": "Шаг 2: Табличный интеграл степенной функции",
+          "text": "По формуле $\\int t^n\\,dt = \\frac{t^{n+1}}{n+1}$ при $n = -1/4$:\n$$n+1 = 3/4$$",
+          "math": "$$\\int t^{-1/4}\\,dt = \\frac{t^{3/4}}{3/4} = \\frac{4}{3}\\,t^{3/4}$$"
         },
         {
           "title": "Ответ",
+          "text": "Обратная замена $t = 3 - \\cos x$:",
           "math": "$$\\boxed{\\frac{4}{3}(3-\\cos x)^{3/4} + C}$$"
+        },
+        {
+          "title": "Проверка",
+          "text": "Дифференцируем: $\\frac{4}{3} \\cdot \\frac{3}{4}(3-\\cos x)^{-1/4} \\cdot \\sin x = \\frac{\\sin x}{(3-\\cos x)^{1/4}}$ ✓"
         }
       ],
       "formula": "\\frac{4}{3}(3 - \\cos x)^{3/4} + C",
@@ -160,16 +165,21 @@
       "steps": [
         {
           "title": "Анализ",
-          "text": "Аргумент косинуса: $\\sqrt{x-1}$. Дифференцируем: $d(\\sqrt{x-1}) = \\frac{dx}{2\\sqrt{x-1}}$, значит $\\frac{dx}{\\sqrt{x-1}} = 2\\,d(\\sqrt{x-1})$."
+          "text": "Аргумент косинуса: $\\sqrt{x-1}$. Множитель $\\frac{1}{\\sqrt{x-1}}$ в знаменателе — это производная $\\sqrt{x-1}$ (с точностью до коэффициента). Проверяем: $d(\\sqrt{x-1}) = \\frac{dx}{2\\sqrt{x-1}}$, значит $\\frac{dx}{\\sqrt{x-1}} = 2\\,d(\\sqrt{x-1})$. Идеальное подведение."
         },
         {
-          "title": "Замена",
-          "text": "$t = \\sqrt{x-1}$, $dt = \\frac{dx}{2\\sqrt{x-1}}$, т.е. $\\frac{dx}{\\sqrt{x-1}} = 2\\,dt$:",
-          "math": "$$\\int \\cos t \\cdot 2\\,dt = 2\\sin t + C$$"
+          "title": "Шаг 1: Замена",
+          "text": "Пусть $t = \\sqrt{x-1}$, тогда $dt = \\frac{dx}{2\\sqrt{x-1}}$, т.е. $\\frac{dx}{\\sqrt{x-1}} = 2\\,dt$.\n\nИнтеграл становится табличным:",
+          "math": "$$\\int \\frac{\\cos\\sqrt{x-1}}{\\sqrt{x-1}}\\,dx = \\int \\cos t \\cdot 2\\,dt = 2\\int \\cos t\\,dt = 2\\sin t$$"
         },
         {
           "title": "Ответ",
+          "text": "Обратная замена $t = \\sqrt{x-1}$:",
           "math": "$$\\boxed{2\\sin\\sqrt{x-1} + C}$$"
+        },
+        {
+          "title": "Проверка",
+          "text": "$(2\\sin\\sqrt{x-1})' = 2\\cos\\sqrt{x-1} \\cdot \\frac{1}{2\\sqrt{x-1}} = \\frac{\\cos\\sqrt{x-1}}{\\sqrt{x-1}}$ ✓"
         }
       ],
       "formula": "2\\sin\\sqrt{x-1} + C",
@@ -300,19 +310,27 @@
       "formalText": "**Вычислить:**\n$$\\int e^{\\sqrt{x}}\\,dx$$",
       "steps": [
         {
-          "title": "Шаг 1: Замена t = √x",
-          "text": "Непосредственно взять нельзя — аргумент экспоненты иррациональный. Замена $t = \\sqrt{x}$, $x = t^2$, $dx = 2t\\,dt$:",
-          "math": "$$\\int e^{\\sqrt{x}}\\,dx = 2\\int t\\,e^{t}\\,dt$$"
+          "title": "Анализ",
+          "text": "Аргумент экспоненты $\\sqrt{x}$ — иррациональный. Непосредственно по частям не выйдет, т.к. ни $e^{\\sqrt{x}}$, ни $dx$ не упрощается при дифференцировании/интегрировании. Стандартный приём: **замена $t = \\sqrt{x}$**, убирающая корень, затем по частям."
         },
         {
-          "title": "Шаг 2: По частям",
-          "text": "$u = t$, $dv = e^t dt$ → $du = dt$, $v = e^t$:",
+          "title": "Шаг 1: Замена t = √x",
+          "text": "$t = \\sqrt{x}$, $x = t^2$, $dx = 2t\\,dt$:",
+          "math": "$$\\int e^{\\sqrt{x}}\\,dx = \\int e^t \\cdot 2t\\,dt = 2\\int t\\,e^{t}\\,dt$$"
+        },
+        {
+          "title": "Шаг 2: По частям (ЛИАП)",
+          "text": "В $\\int te^t\\,dt$: $t$ — алгебраическая (А), $e^t$ — показательная (П). По ЛИАП:\n\n$u = t$, $dv = e^t\\,dt$ → $du = dt$, $v = e^t$.\n\n$\\int u\\,dv = uv - \\int v\\,du$:",
           "math": "$$2\\int t\\,e^t\\,dt = 2\\left(te^t - \\int e^t\\,dt\\right) = 2(te^t - e^t) = 2e^t(t-1)$$"
         },
         {
           "title": "Ответ",
           "text": "Обратная замена $t = \\sqrt{x}$:",
           "math": "$$\\boxed{2e^{\\sqrt{x}}(\\sqrt{x}-1) + C}$$"
+        },
+        {
+          "title": "Проверка",
+          "text": "$(2e^{\\sqrt{x}}(\\sqrt{x}-1))' = 2\\left[\\frac{e^{\\sqrt{x}}}{2\\sqrt{x}}(\\sqrt{x}-1) + e^{\\sqrt{x}} \\cdot \\frac{1}{2\\sqrt{x}}\\right] = \\frac{e^{\\sqrt{x}}}{\\sqrt{x}}(\\sqrt{x}-1+1) = e^{\\sqrt{x}}$ ✓"
         }
       ],
       "formula": "2e^{\\sqrt{x}}(\\sqrt{x}-1) + C",
@@ -326,16 +344,21 @@
       "formalText": "**Вычислить:**\n$$\\int \\ln x\\,dx$$",
       "steps": [
         {
-          "title": "Шаг 1: По ЛИАП",
-          "text": "$\\ln x$ — Логарифмическая (первая в ЛИАП) → берём за $u$. $dv = dx$ → $v = x$.\n\n$du = \\frac{dx}{x}$."
+          "title": "Анализ",
+          "text": "Нет табличной формулы для $\\int\\ln x\\,dx$. Единственный путь — **по частям**. $\\ln x$ обязательно берём за $u$ (Л — первая буква в ЛИАП = наивысший приоритет)."
         },
         {
-          "title": "Шаг 2: Формула по частям",
+          "title": "Шаг 1: По ЛИАП",
+          "text": "$u = \\ln x$ → $du = \\frac{dx}{x}$.\n$dv = dx$ → $v = x$.\n\nФормула: $\\int u\\,dv = uv - \\int v\\,du$:",
           "math": "$$\\int\\ln x\\,dx = x\\ln x - \\int \\frac{x\\,dx}{x} = x\\ln x - \\int dx = x\\ln x - x$$"
         },
         {
           "title": "Ответ",
           "math": "$$\\boxed{x\\ln x - x + C}$$"
+        },
+        {
+          "title": "Проверка",
+          "text": "$(x\\ln x - x)' = \\ln x + 1 - 1 = \\ln x$ ✓"
         }
       ],
       "formula": "x\\ln x - x + C",
@@ -437,19 +460,27 @@
       "formalText": "**Вычислить:**\n$$\\int \\frac{dx}{\\cos^6 x}$$",
       "steps": [
         {
-          "title": "Шаг 1: Замена t = tg x",
-          "text": "Запишем $\\frac{1}{\\cos^6 x} = \\sec^6 x = \\sec^4 x \\cdot \\sec^2 x = (1+\\tan^2 x)^2 \\cdot \\sec^2 x$.\n\nПри замене $t = \\tan x$, $dt = \\sec^2 x\\,dx$:",
-          "math": "$$\\int (1+t^2)^2\\,dt$$"
+          "title": "Анализ",
+          "text": "Интеграл $\\int\\sec^{2k} x\\,dx$ ($k=3$). Стандартный приём: выделяем $\\sec^2 x\\,dx = d(\\tan x)$, а оставшиеся $\\sec^{2k-2}x$ выражаем через $\\tan x$ по формуле $\\sec^2 x = 1 + \\tan^2 x$."
         },
         {
-          "title": "Шаг 2: Раскрываем и интегрируем",
-          "text": "$(1+t^2)^2 = 1 + 2t^2 + t^4$:",
+          "title": "Шаг 1: Подготовка к замене",
+          "text": "Запишем $\\sec^6 x = \\sec^4 x \\cdot \\sec^2 x = (1+\\tan^2 x)^2 \\cdot \\sec^2 x$.\n\nЗамена $t = \\tan x$, $dt = \\sec^2 x\\,dx$:",
+          "math": "$$\\int \\sec^6 x\\,dx = \\int (1+t^2)^2\\,dt$$"
+        },
+        {
+          "title": "Шаг 2: Раскрываем и интегрируем почленно",
+          "text": "$(1+t^2)^2 = 1 + 2t^2 + t^4$. Каждое слагаемое интегрируется по формуле степенной функции:",
           "math": "$$\\int(1 + 2t^2 + t^4)\\,dt = t + \\frac{2t^3}{3} + \\frac{t^5}{5} + C$$"
         },
         {
           "title": "Ответ",
           "text": "Обратная замена $t = \\tan x$:",
           "math": "$$\\boxed{\\tan x + \\frac{2\\tan^3 x}{3} + \\frac{\\tan^5 x}{5} + C}$$"
+        },
+        {
+          "title": "Обобщение",
+          "text": "Для $\\int\\sec^{2k}x\\,dx$ всегда используем эту схему: отделяем $\\sec^2 x\\,dx$, оставшееся выражаем через $\\tan x$, интегрируем многочлен."
         }
       ],
       "formula": "\\tan x + \\frac{2\\tan^3 x}{3} + \\frac{\\tan^5 x}{5} + C",
@@ -581,19 +612,27 @@
       "tldr": "Замена t=√x, потом по частям",
       "steps": [
         {
-          "title": "Шаг 1: Замена t = √x",
-          "text": "Аргумент косинуса иррациональный. Замена $t = \\sqrt{x}$, $x = t^2$, $dx = 2t\\,dt$:",
-          "math": "$$\\int \\cos\\sqrt{x}\\,dx = 2\\int t\\cos t\\,dt$$"
+          "title": "Анализ",
+          "text": "Аргумент $\\cos$ — иррациональная функция $\\sqrt{x}$. Непосредственно по частям не получится (сложная композиция). Стандартный приём: **замена**, убирающая корень, а затем по частям."
         },
         {
-          "title": "Шаг 2: По частям",
-          "text": "По ЛИАП: $u = t$ (алгебраическая), $dv = \\cos t\\,dt$.\n$du = dt$, $v = \\sin t$:",
-          "math": "$$2\\int t\\cos t\\,dt = 2\\left(t\\sin t - \\int \\sin t\\,dt\\right) = 2(t\\sin t + \\cos t)$$"
+          "title": "Шаг 1: Замена t = √x",
+          "text": "Пусть $t = \\sqrt{x}$, тогда $x = t^2$, $dx = 2t\\,dt$. Подынтегральное выражение полностью переписывается через $t$:",
+          "math": "$$\\int \\cos\\sqrt{x}\\,dx = \\int \\cos t \\cdot 2t\\,dt = 2\\int t\\cos t\\,dt$$"
+        },
+        {
+          "title": "Шаг 2: По частям (ЛИАП)",
+          "text": "В $\\int t\\cos t\\,dt$ — произведение алгебраической и периодической. По ЛИАП: $u = t$ (А), $dv = \\cos t\\,dt$ (П).\n\n$du = dt$, $v = \\sin t$.\n\nПо формуле $\\int u\\,dv = uv - \\int v\\,du$:",
+          "math": "$$2\\int t\\cos t\\,dt = 2\\left(t\\sin t - \\int \\sin t\\,dt\\right) = 2\\left(t\\sin t + \\cos t\\right)$$"
         },
         {
           "title": "Ответ",
           "text": "Обратная замена $t = \\sqrt{x}$:",
           "math": "$$\\boxed{2(\\sqrt{x}\\sin\\sqrt{x} + \\cos\\sqrt{x}) + C}$$"
+        },
+        {
+          "title": "Проверка",
+          "text": "Дифференцируем: $\\frac{d}{dx}[2\\sqrt{x}\\sin\\sqrt{x}] = 2 \\cdot \\frac{\\sin\\sqrt{x}}{2\\sqrt{x}} + 2\\sqrt{x} \\cdot \\frac{\\cos\\sqrt{x}}{2\\sqrt{x}} = \\frac{\\sin\\sqrt{x}}{\\sqrt{x}} + \\cos\\sqrt{x}$.\n$\\frac{d}{dx}[2\\cos\\sqrt{x}] = -\\frac{\\sin\\sqrt{x}}{\\sqrt{x}}$. Сумма: $\\cos\\sqrt{x}$ ✓"
         }
       ],
       "formula": "2(\\sqrt{x}\\sin\\sqrt{x} + \\cos\\sqrt{x}) + C",
@@ -607,16 +646,26 @@
       "tldr": "По частям: u = ln x, dv = dx",
       "steps": [
         {
-          "title": "Шаг 1: По ЛИАП",
-          "text": "$\\ln x$ — Логарифмическая (первая в ЛИАП). Берём $u = \\ln x$, $dv = dx$.\n\n$du = \\frac{dx}{x}$, $v = x$."
+          "title": "Анализ",
+          "text": "Логарифм нельзя проинтегрировать напрямую — нет табличной формулы для $\\int\\ln x\\,dx$. Единственный способ — **по частям**, причём $\\ln x$ обязательно берём за $u$ (Логарифмическая → первая в ЛИАП)."
         },
         {
-          "title": "Шаг 2: Формула по частям",
-          "math": "$$\\int \\ln x\\,dx = x\\ln x - \\int \\frac{x\\,dx}{x} = x\\ln x - x$$"
+          "title": "Шаг 1: По ЛИАП",
+          "text": "$u = \\ln x$, $dv = dx$.\n\n$du = \\frac{dx}{x}$, $v = x$.\n\nФормула: $\\int u\\,dv = uv - \\int v\\,du$:",
+          "math": "$$\\int \\ln x\\,dx = x\\ln x - \\int \\frac{x\\,dx}{x} = x\\ln x - \\int dx$$"
+        },
+        {
+          "title": "Шаг 2: Завершение",
+          "text": "Оставшийся интеграл тривиален:",
+          "math": "$$x\\ln x - x + C$$"
         },
         {
           "title": "Ответ",
           "math": "$$\\boxed{x\\ln x - x + C}$$"
+        },
+        {
+          "title": "Проверка",
+          "text": "$(x\\ln x - x)' = \\ln x + x \\cdot \\frac{1}{x} - 1 = \\ln x + 1 - 1 = \\ln x$ ✓\n\n**Обобщение:** $\\int x^n \\ln x\\,dx$ — всегда по частям, $u = \\ln x$."
         }
       ],
       "formula": "x\\ln x - x + C",
@@ -630,18 +679,27 @@
       "tldr": "Замена t = 1/x → квадратный трёхчлен",
       "steps": [
         {
+          "title": "Анализ",
+          "text": "В знаменателе одновременно стоят $x$ и $\\sqrt{3x^2-2x-1}$ — нельзя подвести, нельзя выделить полный квадрат напрямую. Стандартный приём для $\\int\\frac{dx}{x\\sqrt{ax^2+bx+c}}$  — **подстановка $t = 1/x$**, которая убирает $x$ из-под корня."
+        },
+        {
           "title": "Шаг 1: Замена t = 1/x",
-          "text": "При наличии $x$ и $\\sqrt{ax^2+bx+c}$ одновременно в знаменателе полезна подстановка $t = 1/x$, $dx = -dt/t^2$:\n$$\\frac{dx}{x\\sqrt{3x^2-2x-1}} = \\frac{-dt/t^2}{(1/t)\\sqrt{3/t^2-2/t-1}} = \\frac{-dt}{\\sqrt{3-2t-t^2}}$$"
+          "text": "$t = 1/x$, $x = 1/t$, $dx = -dt/t^2$.\n\nЗнаменатель: $x\\sqrt{3x^2-2x-1} = \\frac{1}{t}\\sqrt{\\frac{3}{t^2}-\\frac{2}{t}-1} = \\frac{1}{t} \\cdot \\frac{1}{|t|}\\sqrt{3-2t-t^2}$.\n\nДробь упрощается:",
+          "math": "$$\\int\\frac{dx}{x\\sqrt{3x^2-2x-1}} = -\\int\\frac{dt}{\\sqrt{3-2t-t^2}}$$"
         },
         {
           "title": "Шаг 2: Полный квадрат",
-          "text": "Выделяем: $3-2t-t^2 = -(t^2+2t-3) = -(t^2+2t+1-4) = 4-(t+1)^2$.\n\nПо табличной формуле $\\int\\frac{du}{\\sqrt{a^2-u^2}} = \\arcsin\\frac{u}{a}$:",
-          "math": "$$-\\int\\frac{dt}{\\sqrt{4-(t+1)^2}} = -\\arcsin\\frac{t+1}{2}$$"
+          "text": "$3-2t-t^2 = -(t^2+2t-3) = -((t+1)^2-4) = 4-(t+1)^2$.\n\n$a = 2$, $u = t+1$. По табличной формуле $\\int\\frac{du}{\\sqrt{a^2-u^2}} = \\arcsin\\frac{u}{a}$:",
+          "math": "$$-\\int\\frac{dt}{\\sqrt{4-(t+1)^2}} = -\\arcsin\\frac{t+1}{2} + C$$"
         },
         {
           "title": "Ответ",
           "text": "Обратная замена $t = 1/x$:",
-          "math": "$$\\boxed{-\\arcsin\\frac{1+x}{2x} + C}$$"
+          "math": "$$\\boxed{-\\arcsin\\frac{1/x+1}{2} + C = -\\arcsin\\frac{1+x}{2x} + C}$$"
+        },
+        {
+          "title": "Проверка ОДЗ",
+          "text": "Подкоренное $3x^2-2x-1 > 0$: корни $x = 1$ и $x = -1/3$, значит $x > 1$ или $x < -1/3$. Аргумент арксинуса $\\frac{1+x}{2x} \\in [-1, 1]$ на этих промежутках ✓"
         }
       ],
       "formula": "-\\arcsin\\frac{1+x}{2x} + C",
@@ -655,18 +713,26 @@
       "tldr": "Делим на cos²x → замена t = tg x",
       "steps": [
         {
-          "title": "Шаг 1: Делим числитель и знаменатель на cos²x",
-          "text": "$$\\frac{dx}{4\\sin^2 x + 3\\cos^2 x} = \\frac{\\sec^2 x\\,dx}{4\\tan^2 x + 3}$$\n\nПри замене $t = \\tan x$, $dt = \\sec^2 x\\,dx$:",
-          "math": "$$\\int \\frac{dt}{4t^2+3} = \\int \\frac{dt}{4(t^2+3/4)}$$"
+          "title": "Анализ",
+          "text": "Интеграл вида $\\int\\frac{dx}{a\\sin^2 x + b\\cos^2 x}$. Стандартный приём: **делим на $\\cos^2 x$** — тогда в знаменателе остаётся $\\tan^2 x$, а в числителе — $\\sec^2 x\\,dx = d(\\tan x)$."
+        },
+        {
+          "title": "Шаг 1: Деление на cos²x",
+          "text": "Делим числитель и знаменатель на $\\cos^2 x$:\n$$\\frac{dx}{4\\sin^2 x + 3\\cos^2 x} = \\frac{\\sec^2 x\\,dx}{4\\tan^2 x + 3}$$\n\nЗамена $t = \\tan x$, $dt = \\sec^2 x\\,dx$:",
+          "math": "$$\\int \\frac{dt}{4t^2+3} = \\frac{1}{4}\\int \\frac{dt}{t^2+3/4}$$"
         },
         {
           "title": "Шаг 2: Табличный интеграл",
-          "text": "По формуле $\\int\\frac{dt}{t^2+a^2} = \\frac{1}{a}\\arctan\\frac{t}{a}$ при $a^2 = 3/4$, $a = \\sqrt{3}/2$:",
-          "math": "$$\\frac{1}{4} \\cdot \\frac{2}{\\sqrt{3}}\\arctan\\frac{2t}{\\sqrt{3}} = \\frac{1}{2\\sqrt{3}}\\arctan\\frac{2\\tan x}{\\sqrt{3}}$$"
+          "text": "По формуле $\\int\\frac{dt}{t^2+a^2} = \\frac{1}{a}\\arctan\\frac{t}{a}$ при $a = \\sqrt{3}/2$:\n$$\\frac{1}{4} \\cdot \\frac{1}{\\sqrt{3}/2}\\arctan\\frac{t}{\\sqrt{3}/2} = \\frac{1}{4} \\cdot \\frac{2}{\\sqrt{3}}\\arctan\\frac{2t}{\\sqrt{3}}$$",
+          "math": "$$= \\frac{1}{2\\sqrt{3}}\\arctan\\frac{2\\tan x}{\\sqrt{3}}$$"
         },
         {
           "title": "Ответ",
           "math": "$$\\boxed{\\frac{1}{2\\sqrt{3}}\\arctan\\frac{2\\tan x}{\\sqrt{3}} + C}$$"
+        },
+        {
+          "title": "Обобщение",
+          "text": "Для $\\int\\frac{dx}{a\\sin^2 x + b\\cos^2 x}$ ответ всегда $\\frac{1}{\\sqrt{ab}}\\arctan\\left(\\sqrt{\\frac{a}{b}}\\tan x\\right) + C$.\nЗдесь $a=4$, $b=3$: $\\frac{1}{\\sqrt{12}} = \\frac{1}{2\\sqrt{3}}$ ✓"
         }
       ],
       "formula": "\\frac{1}{2\\sqrt{3}}\\arctan\\frac{2\\tan x}{\\sqrt{3}} + C",
@@ -680,17 +746,26 @@
       "tldr": "Выносим cos²x → замена t = tg x",
       "steps": [
         {
-          "title": "Шаг 1: Преобразование",
-          "text": "$$\\sqrt{\\sin x\\cos^3 x} = \\cos^2 x\\sqrt{\\frac{\\sin x}{\\cos x}} = \\cos^2 x\\sqrt{\\tan x}$$\n\nЗначит:\n$$\\int\\frac{dx}{\\cos^2 x\\sqrt{\\tan x}} = \\int\\frac{\\sec^2 x\\,dx}{\\sqrt{\\tan x}}$$"
+          "title": "Анализ",
+          "text": "Корень содержит произведение $\\sin x \\cos^3 x$ — нужно привести к виду, где возникает $\\sec^2 x\\,dx = d(\\tan x)$. Ключ: вынести $\\cos^2 x$ из корня."
+        },
+        {
+          "title": "Шаг 1: Преобразование подкоренного",
+          "text": "Разбиваем: $\\sin x\\cos^3 x = \\cos^4 x \\cdot \\frac{\\sin x}{\\cos x} = \\cos^4 x \\cdot \\tan x$.\n\n$$\\sqrt{\\sin x\\cos^3 x} = \\cos^2 x \\cdot \\sqrt{\\tan x}$$\n\nЗначит:\n$$\\frac{1}{\\sqrt{\\sin x\\cos^3 x}} = \\frac{1}{\\cos^2 x \\cdot \\sqrt{\\tan x}} = \\frac{\\sec^2 x}{\\sqrt{\\tan x}}$$"
         },
         {
           "title": "Шаг 2: Замена t = tg x",
-          "text": "$t = \\tan x$, $dt = \\sec^2 x\\,dx$:",
-          "math": "$$\\int \\frac{dt}{\\sqrt{t}} = \\int t^{-1/2}\\,dt = 2\\sqrt{t}$$"
+          "text": "$t = \\tan x$, $dt = \\sec^2 x\\,dx$. Интеграл сводится к табличному:",
+          "math": "$$\\int \\frac{dt}{\\sqrt{t}} = \\int t^{-1/2}\\,dt = \\frac{t^{1/2}}{1/2} = 2\\sqrt{t}$$"
         },
         {
           "title": "Ответ",
+          "text": "Обратная замена $t = \\tan x$:",
           "math": "$$\\boxed{2\\sqrt{\\tan x} + C}$$"
+        },
+        {
+          "title": "Проверка",
+          "text": "$(2\\sqrt{\\tan x})' = 2 \\cdot \\frac{1}{2\\sqrt{\\tan x}} \\cdot \\sec^2 x = \\frac{\\sec^2 x}{\\sqrt{\\tan x}} = \\frac{1}{\\cos^2 x \\sqrt{\\tan x}} = \\frac{1}{\\sqrt{\\sin x \\cos^3 x}}$ ✓"
         }
       ],
       "formula": "2\\sqrt{\\tan x} + C",
@@ -814,16 +889,26 @@
       "tldr": "Подстановка Вейерштрасса t = tg(x/2)",
       "steps": [
         {
+          "title": "Анализ",
+          "text": "Интеграл $\\int R(\\sin x, \\cos x)\\,dx$, где $R$ — рациональная функция. Нет очевидных упрощений (нечётных степеней, однородности), поэтому используем **универсальную подстановку Вейерштрасса**."
+        },
+        {
           "title": "Шаг 1: Подстановка Вейерштрасса",
-          "text": "$t = \\tan\\frac{x}{2}$:\n$\\sin x = \\frac{2t}{1+t^2}$, $\\cos x = \\frac{1-t^2}{1+t^2}$, $dx = \\frac{2\\,dt}{1+t^2}$."
+          "text": "$t = \\tan\\frac{x}{2}$:\n$$\\sin x = \\frac{2t}{1+t^2}, \\quad \\cos x = \\frac{1-t^2}{1+t^2}, \\quad dx = \\frac{2\\,dt}{1+t^2}$$"
         },
         {
           "title": "Шаг 2: Подставляем в знаменатель",
-          "text": "$5 - \\frac{4t}{1+t^2} + \\frac{5(1-t^2)}{1+t^2} = \\frac{5(1+t^2)-4t+5(1-t^2)}{1+t^2} = \\frac{10-4t}{1+t^2}$.",
-          "math": "$$\\int\\frac{2\\,dt}{10-4t} = \\frac{1}{2}\\int\\frac{dt}{5/2-t} = -\\frac{1}{2}\\ln\\left|\\frac{5}{2}-t\\right|$$"
+          "text": "$5 - 2\\sin x + 5\\cos x$\n$= 5 - \\frac{4t}{1+t^2} + \\frac{5(1-t^2)}{1+t^2}$\n$= \\frac{5+5t^2-4t+5-5t^2}{1+t^2} = \\frac{10-4t}{1+t^2}$.\n\nДробь $(1+t^2)$ сокращается с $dx$:",
+          "math": "$$\\int\\frac{\\frac{2\\,dt}{1+t^2}}{\\frac{10-4t}{1+t^2}} = \\int\\frac{2\\,dt}{10-4t} = \\frac{1}{2}\\int\\frac{dt}{\\frac{5}{2}-t}$$"
+        },
+        {
+          "title": "Шаг 3: Табличный интеграл",
+          "text": "По формуле $\\int\\frac{dt}{a-t} = -\\ln|a-t| + C$:",
+          "math": "$$\\frac{1}{2} \\cdot (-1) \\cdot \\ln\\left|\\frac{5}{2}-t\\right| = -\\frac{1}{2}\\ln\\left|\\frac{5}{2}-t\\right|$$"
         },
         {
           "title": "Ответ",
+          "text": "Обратная замена $t = \\tan\\frac{x}{2}$:",
           "math": "$$\\boxed{-\\frac{1}{2}\\ln\\left|\\frac{5}{2} - \\tan\\frac{x}{2}\\right| + C}$$"
         }
       ],
