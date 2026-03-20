@@ -21,7 +21,7 @@
         },
         {
           "title": "Интеграл",
-          "math": "$$\\boxed{S = \\int_0^2 (2x - x^2)\\,dx = \\left[x^2 - \\frac{x^3}{3}\\right]_0^2 = 4 - \\frac{8}{3} = \\frac{4}{3}}$$"
+          "math": "$$\\boxed{S = \\frac{4}{3}}$$"
         }
       ],
       "formula": "S = \\frac{4}{3}",
@@ -90,7 +90,7 @@
         },
         {
           "title": "Интеграл",
-          "math": "$$\\boxed{S = \\int_0^1 (\\sqrt{x} - x^2)\\,dx = \\left[\\frac{2}{3}x^{3/2} - \\frac{x^3}{3}\\right]_0^1 = \\frac{2}{3} - \\frac{1}{3} = \\frac{1}{3}}$$"
+          "math": "$$\\boxed{S = \\frac{1}{3}}$$"
         }
       ],
       "formula": "S = \\frac{1}{3}"
@@ -113,7 +113,7 @@
         },
         {
           "title": "Интеграл",
-          "math": "$$\\boxed{S = \\int_0^1 (e^x - e^{-x})\\,dx = \\left[e^x + e^{-x}\\right]_0^1 = (e + e^{-1}) - (1 + 1) = e + \\frac{1}{e} - 2}$$"
+          "math": "$$\\boxed{S = e + \\frac{1}{e} - 2}$$"
         }
       ],
       "formula": "S = e + \\frac{1}{e} - 2"
@@ -140,7 +140,7 @@
         },
         {
           "title": "Подстановка",
-          "math": "$$\\boxed{= \\left(\\frac{\\sqrt{2}}{2} + \\frac{\\sqrt{2}}{2}\\right) - (0 + 1) = \\sqrt{2} - 1}$$"
+          "math": "$$\\boxed{S = \\sqrt{2} - 1}$$"
         }
       ],
       "formula": "S = \\sqrt{2} - 1"
@@ -172,7 +172,7 @@
         },
         {
           "title": "Ответ",
-          "math": "$$\\boxed{S = 1 - \\ln 2 + \\frac{1}{2} = \\frac{3}{2} - \\ln 2}$$"
+          "math": "$$\\boxed{S = \\frac{3}{2} - \\ln 2}$$"
         }
       ],
       "formula": "S = \\frac{3}{2} - \\ln 2"
@@ -199,7 +199,7 @@
         },
         {
           "title": "Подстановка",
-          "math": "$$\\boxed{= \\frac{4}{3} \\cdot 8 - \\frac{64}{12} = \\frac{32}{3} - \\frac{16}{3} = \\frac{16}{3}}$$"
+          "math": "$$\\boxed{S = \\frac{16}{3}}$$"
         }
       ],
       "formula": "S = \\frac{16}{3}"
@@ -223,7 +223,7 @@
         {
           "title": "Интегрирование по частям",
           "text": "$u = \\ln x$, $dv = dx$ → $du = \\frac{dx}{x}$, $v = x$.",
-          "math": "$$\\boxed{\\int_1^e \\ln x\\,dx = [x\\ln x]_1^e - \\int_1^e dx = e \\cdot 1 - 1 \\cdot 0 - (e - 1) = 1}$$"
+          "math": "$$\\boxed{S = 1}$$"
         }
       ],
       "formula": "S = 1"
@@ -247,7 +247,7 @@
         {
           "title": "При $x \\in [0,1]$",
           "text": "$x > x^3$ (при $x = 0{,}5$: $0{,}5 > 0{,}125$).",
-          "math": "$$\\boxed{S = 2\\int_0^1(x - x^3)\\,dx = 2\\left[\\frac{x^2}{2} - \\frac{x^4}{4}\\right]_0^1 = 2\\left(\\frac{1}{2} - \\frac{1}{4}\\right) = \\frac{1}{2}}$$"
+          "math": "$$\\boxed{S = \\frac{1}{2}}$$"
         }
       ],
       "formula": "S = \\frac{1}{2}"
@@ -271,7 +271,7 @@
         },
         {
           "title": "Вычисление",
-          "math": "$$\\boxed{= 4a^2 \\cdot \\left[\\frac{\\sin 2\\varphi}{2}\\right]_0^{\\pi/4} = 4a^2 \\cdot \\frac{1}{2} = 2a^2}$$"
+          "math": "$$\\boxed{S = 2a^2}$$"
         }
       ],
       "formula": "S = 2a^2"
@@ -305,7 +305,7 @@
         {
           "title": "Полная площадь",
           "text": "Подставляем и вычисляем:",
-          "math": "$$\\boxed{S = 3 \\cdot \\frac{\\pi}{12} = \\frac{\\pi}{4}}$$"
+          "math": "$$\\boxed{S = \\frac{\\pi}{4}}$$"
         }
       ],
       "formula": "S = \\frac{\\pi}{4}"
@@ -330,7 +330,7 @@
         {
           "title": "Вычисление",
           "text": "Подставляем и вычисляем:",
-          "math": "$$\\boxed{= \\pi\\left[\\frac{x^5}{5}\\right]_0^2 = \\pi \\cdot \\frac{32}{5} = \\frac{32\\pi}{5}}$$"
+          "math": "$$\\boxed{V = \\frac{32\\pi}{5}}$$"
         }
       ],
       "formula": "V = \\frac{32\\pi}{5}"
@@ -355,7 +355,7 @@
         {
           "title": "Вычисление",
           "text": "Подставляем и вычисляем:",
-          "math": "$$\\boxed{= 2\\pi\\left[\\frac{2}{5}x^{5/2}\\right]_0^4 = 2\\pi \\cdot \\frac{2}{5} \\cdot 32 = \\frac{128\\pi}{5}}$$"
+          "math": "$$\\boxed{V = \\frac{128\\pi}{5}}$$"
         }
       ],
       "formula": "V = \\frac{128\\pi}{5}"
@@ -380,7 +380,7 @@
         {
           "title": "Вычисление",
           "text": "Подставляем и вычисляем:",
-          "math": "$$\\boxed{= \\frac{\\pi}{2}\\left[x - \\frac{\\sin 2x}{2}\\right]_0^{\\pi} = \\frac{\\pi}{2}(\\pi - 0) = \\frac{\\pi^2}{2}}$$"
+          "math": "$$\\boxed{V = \\frac{\\pi^2}{2}}$$"
         }
       ],
       "formula": "V = \\frac{\\pi^2}{2}"
@@ -405,7 +405,7 @@
         {
           "title": "Вычисление",
           "text": "Подставляем и вычисляем:",
-          "math": "$$\\boxed{= \\pi\\left[\\frac{e^{2x}}{2}\\right]_0^1 = \\frac{\\pi}{2}(e^2 - 1)}$$"
+          "math": "$$\\boxed{V = \\frac{\\pi(e^2-1)}{2}}$$"
         }
       ],
       "formula": "V = \\frac{\\pi(e^2-1)}{2}"
@@ -434,7 +434,7 @@
         {
           "title": "Вычисление",
           "text": "Подставляем и вычисляем:",
-          "math": "$$\\boxed{= \\pi\\left[\\frac{x^3}{3} - \\frac{x^5}{5}\\right]_0^1 = \\pi\\left(\\frac{1}{3} - \\frac{1}{5}\\right) = \\frac{2\\pi}{15}}$$"
+          "math": "$$\\boxed{V = \\frac{2\\pi}{15}}$$"
         }
       ],
       "formula": "V = \\frac{2\\pi}{15}"
@@ -469,7 +469,7 @@
         {
           "title": "Подстановка",
           "text": "$\\sec(\\pi/3) = 2$, $\\tan(\\pi/3) = \\sqrt{3}$, $\\sec(0) = 1$, $\\tan(0) = 0$.",
-          "math": "$$\\boxed{= \\ln(2 + \\sqrt{3}) - \\ln 1 = \\ln(2 + \\sqrt{3})}$$"
+          "math": "$$\\boxed{L = \\ln(2+\\sqrt{3})}$$"
         }
       ],
       "formula": "L = \\ln(2+\\sqrt{3})"
@@ -504,7 +504,7 @@
         {
           "title": "Интеграл",
           "text": "Подставляем и вычисляем:",
-          "math": "$$\\boxed{L = \\int_0^{2\\pi} 2\\sin\\frac{t}{2}\\,dt = \\left[-4\\cos\\frac{t}{2}\\right]_0^{2\\pi} = -4(-1) + 4(1) = 8}$$"
+          "math": "$$\\boxed{L = 8}$$"
         }
       ],
       "formula": "L = 8"
@@ -564,7 +564,7 @@
         {
           "title": "Подстановка",
           "text": "$u = 1 + 9x^4$ → $du = 36x^3\\,dx$ → $x^3\\,dx = \\frac{du}{36}$.\nПри $x=0$: $u=1$; при $x=1$: $u=10$.",
-          "math": "$$\\boxed{S = 2\\pi \\cdot \\frac{1}{36}\\int_1^{10}\\sqrt{u}\\,du = \\frac{\\pi}{18}\\left[\\frac{2}{3}u^{3/2}\\right]_1^{10} = \\frac{\\pi}{27}(10\\sqrt{10}-1)}$$"
+          "math": "$$\\boxed{S = \\frac{\\pi}{27}(10\\sqrt{10}-1)}$$"
         }
       ],
       "formula": "S = \\frac{\\pi}{27}(10\\sqrt{10}-1)"
@@ -589,7 +589,7 @@
         {
           "title": "Вычисление",
           "text": "Выполняем вычисления:",
-          "math": "$$\\boxed{\\int_1^{+\\infty}\\frac{dx}{x^2+1} = \\lim_{b\\to+\\infty}[\\arctan x]_1^b = \\frac{\\pi}{2} - \\frac{\\pi}{4} = \\frac{\\pi}{4}}$$"
+          "math": "$$\\boxed{\\frac{\\pi}{4}}$$"
         }
       ],
       "formula": "\\frac{\\pi}{4}"
@@ -614,7 +614,7 @@
         {
           "title": "Предел",
           "text": "$\\lim_{b\\to+\\infty}(b+1)e^{-b} = 0$ (экспонента убывает быстрее полинома).",
-          "math": "$$\\boxed{\\int_0^{+\\infty}xe^{-x}\\,dx = 1}$$"
+          "math": "$$\\boxed{1}$$"
         }
       ],
       "formula": "1"
@@ -663,7 +663,7 @@
         {
           "title": "Вычисление",
           "text": "Выполняем вычисления:",
-          "math": "$$\\boxed{\\int_0^1 \\frac{dx}{\\sqrt{1-x^2}} = \\lim_{\\varepsilon\\to 0^+}[\\arcsin x]_0^{1-\\varepsilon} = \\arcsin 1 - \\arcsin 0 = \\frac{\\pi}{2}}$$"
+          "math": "$$\\boxed{\\frac{\\pi}{2}}$$"
         }
       ],
       "formula": "\\frac{\\pi}{2}"
@@ -688,7 +688,7 @@
         {
           "title": "Предел",
           "text": "$\\lim_{\\varepsilon\\to 0^+}\\varepsilon\\ln\\varepsilon = 0$ (замечательный предел).",
-          "math": "$$\\boxed{\\int_0^1 \\ln x\\,dx = 0 - 0 - 1 + 0 = -1}$$"
+          "math": "$$\\boxed{-1}$$"
         }
       ],
       "formula": "-1"
@@ -766,7 +766,7 @@
         {
           "title": "Интеграл",
           "text": "Вычисляем определённый интеграл:",
-          "math": "$$\\boxed{S = \\int_0^2(4x-x^2-x^2)\\,dx = \\int_0^2(4x-2x^2)\\,dx = \\left[2x^2-\\frac{2x^3}{3}\\right]_0^2 = 8 - \\frac{16}{3} = \\frac{8}{3}}$$"
+          "math": "$$\\boxed{S = \\frac{8}{3}}$$"
         }
       ],
       "formula": "S = \\frac{8}{3}",
@@ -790,7 +790,7 @@
         {
           "title": "Интеграл",
           "text": "Вычисляем определённый интеграл:",
-          "math": "$$\\boxed{S=\\int_0^4[(6x-x^2)-(x^2-2x)]\\,dx=\\int_0^4(8x-2x^2)\\,dx=\\left[4x^2-\\frac{2x^3}{3}\\right]_0^4=64-\\frac{128}{3}=\\frac{64}{3}}$$"
+          "math": "$$\\boxed{S = \\frac{64}{3}}$$"
         }
       ],
       "formula": "S = \\frac{64}{3}",
@@ -810,7 +810,7 @@
         {
           "title": "Интеграл",
           "text": "Вычисляем определённый интеграл:",
-          "math": "$$\\boxed{S=\\int_1^{e^2}\\frac{dx}{x}=[\\ln x]_1^{e^2}=\\ln e^2 - \\ln 1 = 2}$$"
+          "math": "$$\\boxed{S = 2}$$"
         }
       ],
       "formula": "S = 2",
@@ -837,7 +837,7 @@
         },
         {
           "title": "Подстановка",
-          "math": "$$\\boxed{=-\\left[(9-18+9)-(\\frac{1}{3}-2+3)\\right]=-\\left[0-\\frac{4}{3}\\right]=\\frac{4}{3}}$$"
+          "math": "$$\\boxed{S = \\frac{4}{3}}$$"
         }
       ],
       "formula": "S = \\frac{4}{3}",
@@ -861,7 +861,7 @@
         {
           "title": "Интеграл",
           "text": "Вычисляем определённый интеграл:",
-          "math": "$$\\boxed{S=2\\int_0^4\\sqrt{x}\\,dx=2\\left[\\frac{2}{3}x^{3/2}\\right]_0^4=\\frac{4}{3}\\cdot 8=\\frac{32}{3}}$$"
+          "math": "$$\\boxed{S = \\frac{32}{3}}$$"
         }
       ],
       "formula": "S = \\frac{32}{3}",
@@ -886,7 +886,7 @@
         },
         {
           "title": "Ответ",
-          "math": "$$\\boxed{S=1\\cdot\\frac{\\pi}{2}-1=\\frac{\\pi}{2}-1}$$"
+          "math": "$$\\boxed{S = \\frac{\\pi}{2}-1}$$"
         }
       ],
       "formula": "S = \\frac{\\pi}{2}-1",
@@ -911,7 +911,7 @@
         {
           "title": "Вычисление",
           "text": "Подставляем и вычисляем:",
-          "math": "$$\\boxed{=a^2\\int_0^{\\pi}\\left(\\frac{3}{2}-2\\cos\\varphi+\\frac{\\cos 2\\varphi}{2}\\right)d\\varphi=a^2\\left[\\frac{3\\varphi}{2}-2\\sin\\varphi+\\frac{\\sin 2\\varphi}{4}\\right]_0^{\\pi}=\\frac{3\\pi a^2}{2}}$$"
+          "math": "$$\\boxed{S = \\frac{3\\pi a^2}{2}}$$"
         }
       ],
       "formula": "S = \\frac{3\\pi a^2}{2}",
@@ -936,7 +936,7 @@
         {
           "title": "Полная площадь",
           "text": "Подставляем и вычисляем:",
-          "math": "$$\\boxed{S=4\\cdot\\frac{\\pi}{8}=\\frac{\\pi}{2}}$$"
+          "math": "$$\\boxed{S = \\frac{\\pi}{2}}$$"
         }
       ],
       "formula": "S = \\frac{\\pi}{2}",
@@ -956,7 +956,7 @@
         },
         {
           "title": "Вычисление",
-          "math": "$$\\boxed{=24\\cdot\\frac{\\pi}{4}=6\\pi}$$"
+          "math": "$$\\boxed{S = 6\\pi}$$"
         }
       ],
       "formula": "S = 6\\pi",
@@ -976,7 +976,7 @@
         },
         {
           "title": "Раскрываем",
-          "math": "$$\\boxed{=a^2\\int_0^{2\\pi}\\left(\\frac{3}{2}-2\\cos t+\\frac{\\cos 2t}{2}\\right)dt=a^2\\cdot 3\\pi}$$"
+          "math": "$$\\boxed{S = 3\\pi a^2}$$"
         }
       ],
       "formula": "S = 3\\pi a^2",
@@ -1001,7 +1001,7 @@
         {
           "title": "По частям (1)",
           "text": "$u=\\ln^2 x$, $dv=dx$.",
-          "math": "$$\\boxed{=\\pi\\left[x\\ln^2 x\\right]_1^e-2\\pi\\int_1^e\\ln x\\,dx=\\pi e-2\\pi(e-e+1)=\\pi(e-2)}$$"
+          "math": "$$\\boxed{V = \\pi(e-2)}$$"
         }
       ],
       "formula": "V = \\pi(e-2)",
@@ -1021,7 +1021,7 @@
         {
           "title": "Интеграл",
           "text": "Подставляем и вычисляем:",
-          "math": "$$\\boxed{V=\\pi\\int_1^3 x^{-2}\\,dx=\\pi\\left[-\\frac{1}{x}\\right]_1^3=\\pi\\left(-\\frac{1}{3}+1\\right)=\\frac{2\\pi}{3}}$$"
+          "math": "$$\\boxed{V = \\frac{2\\pi}{3}}$$"
         }
       ],
       "formula": "V = \\frac{2\\pi}{3}",
@@ -1045,7 +1045,7 @@
         {
           "title": "Формула",
           "text": "Подставляем и вычисляем:",
-          "math": "$$\\boxed{V=\\pi\\int_0^1(x-x^4)\\,dx=\\pi\\left[\\frac{x^2}{2}-\\frac{x^5}{5}\\right]_0^1=\\pi\\left(\\frac{1}{2}-\\frac{1}{5}\\right)=\\frac{3\\pi}{10}}$$"
+          "math": "$$\\boxed{V = \\frac{3\\pi}{10}}$$"
         }
       ],
       "formula": "V = \\frac{3\\pi}{10}",
@@ -1065,7 +1065,7 @@
         {
           "title": "Раскрываем",
           "text": "Подставляем и вычисляем:",
-          "math": "$$\\boxed{V=\\pi\\int_0^1(x^2-2x^3+x^4)\\,dx=\\pi\\left[\\frac{x^3}{3}-\\frac{x^4}{2}+\\frac{x^5}{5}\\right]_0^1=\\pi\\left(\\frac{1}{3}-\\frac{1}{2}+\\frac{1}{5}\\right)=\\frac{\\pi}{30}}$$"
+          "math": "$$\\boxed{V = \\frac{\\pi}{30}}$$"
         }
       ],
       "formula": "V = \\frac{\\pi}{30}",
@@ -1085,7 +1085,7 @@
         {
           "title": "Формула",
           "text": "Подставляем и вычисляем:",
-          "math": "$$\\boxed{V=2\\pi\\int_0^2 x^3\\,dx=2\\pi\\left[\\frac{x^4}{4}\\right]_0^2=2\\pi\\cdot 4=8\\pi}$$"
+          "math": "$$\\boxed{V = 8\\pi}$$"
         }
       ],
       "formula": "V = 8\\pi",
@@ -1110,7 +1110,7 @@
         {
           "title": "По частям",
           "text": "$u=x$, $dv=\\sin x\\,dx$ → $v=-\\cos x$.",
-          "math": "$$\\boxed{=2\\pi\\left([-x\\cos x]_0^{\\pi}+\\int_0^{\\pi}\\cos x\\,dx\\right)=2\\pi(\\pi+[\\sin x]_0^{\\pi})=2\\pi^2}$$"
+          "math": "$$\\boxed{V = 2\\pi^2}$$"
         }
       ],
       "formula": "V = 2\\pi^2",
@@ -1130,7 +1130,7 @@
         {
           "title": "Формула",
           "text": "Подставляем и вычисляем:",
-          "math": "$$\\boxed{L=\\int_{-1}^1\\sqrt{1+\\sinh^2 x}\\,dx=\\int_{-1}^1\\cosh x\\,dx=[\\sinh x]_{-1}^1=2\\sinh 1}$$"
+          "math": "$$\\boxed{L = 2\\sinh 1}$$"
         }
       ],
       "formula": "L = 2\\sinh 1",
@@ -1155,7 +1155,7 @@
         {
           "title": "Интеграл",
           "text": "$u=1+9x/4$, $du=9dx/4$.",
-          "math": "$$\\boxed{L=\\int_0^4\\sqrt{1+\\frac{9x}{4}}\\,dx=\\frac{4}{9}\\cdot\\frac{2}{3}\\left[\\left(1+\\frac{9x}{4}\\right)^{3/2}\\right]_0^4=\\frac{8}{27}(10\\sqrt{10}-1)}$$"
+          "math": "$$\\boxed{L = \\frac{8}{27}(10\\sqrt{10}-1)}$$"
         }
       ],
       "formula": "L = \\frac{8}{27}(10\\sqrt{10}-1)",
@@ -1175,7 +1175,7 @@
         {
           "title": "Формула",
           "text": "Подставляем и вычисляем:",
-          "math": "$$\\boxed{L=\\int_0^{2\\pi}\\sqrt{e^{2\\varphi}+e^{2\\varphi}}\\,d\\varphi=\\sqrt{2}\\int_0^{2\\pi}e^\\varphi\\,d\\varphi=\\sqrt{2}(e^{2\\pi}-1)}$$"
+          "math": "$$\\boxed{L = \\sqrt{2}(e^{2\\pi}-1)}$$"
         }
       ],
       "formula": "L = \\sqrt{2}(e^{2\\pi}-1)",
@@ -1200,7 +1200,7 @@
         {
           "title": "Подстановка",
           "text": "$u=x+1/4$, $du=dx$.",
-          "math": "$$\\boxed{=2\\pi\\left[\\frac{2}{3}u^{3/2}\\right]_{1/4}^{5/4}=\\frac{4\\pi}{3}\\left[\\left(\\frac{5}{4}\\right)^{3/2}-\\left(\\frac{1}{4}\\right)^{3/2}\\right]=\\frac{\\pi}{6}(5\\sqrt{5}-1)}$$"
+          "math": "$$\\boxed{S = \\frac{\\pi}{6}(5\\sqrt{5}-1)}$$"
         }
       ],
       "formula": "S = \\frac{\\pi}{6}(5\\sqrt{5}-1)",
@@ -1255,7 +1255,7 @@
         {
           "title": "Интеграл",
           "text": "Выполняем вычисления:",
-          "math": "$$\\boxed{\\int_1^{+\\infty}\\left(\\frac{1}{x}-\\frac{1}{x+1}\\right)dx=\\lim_{b\\to\\infty}\\left[\\ln\\frac{x}{x+1}\\right]_1^b=\\ln 1-\\ln\\frac{1}{2}=\\ln 2}$$"
+          "math": "$$\\boxed{\\ln 2}$$"
         }
       ],
       "formula": "\\ln 2",
@@ -1275,7 +1275,7 @@
         {
           "title": "Подстановка",
           "text": "$x=\\tan t$ → $1+x^2=\\sec^2 t$, $dx=\\sec^2 t\\,dt$.",
-          "math": "$$\\boxed{\\int_0^{+\\infty}\\frac{\\sec^2 t\\,dt}{\\sec^4 t}=\\int_0^{\\pi/2}\\cos^2 t\\,dt=\\frac{\\pi}{4}}$$"
+          "math": "$$\\boxed{\\frac{\\pi}{4}}$$"
         }
       ],
       "formula": "\\frac{\\pi}{4}",
@@ -1332,7 +1332,7 @@
         },
         {
           "title": "Итого",
-          "math": "$$\\boxed{=\\frac{\\pi}{4}+1-\\frac{\\pi}{4}=1}$$"
+          "math": "$$\\boxed{1}$$"
         }
       ],
       "formula": "1",
@@ -1362,7 +1362,7 @@
         {
           "title": "Итого",
           "text": "Выполняем вычисления:",
-          "math": "$$\\boxed{=e^{-1}+2\\cdot 2e^{-1}=5e^{-1}=\\frac{5}{e}}$$"
+          "math": "$$\\boxed{\\frac{5}{e}}$$"
         }
       ],
       "formula": "\\frac{5}{e}",
@@ -1387,7 +1387,7 @@
         {
           "title": "Интеграл",
           "text": "Выполняем вычисления:",
-          "math": "$$\\boxed{\\int_0^1\\frac{dx}{\\sqrt{1/4-(x-1/2)^2}}=\\left[\\arcsin\\frac{x-1/2}{1/2}\\right]_0^1=\\arcsin 1-\\arcsin(-1)=\\pi}$$"
+          "math": "$$\\boxed{\\pi}$$"
         }
       ],
       "formula": "\\pi",
@@ -1412,7 +1412,7 @@
         {
           "title": "Формула",
           "text": "Проще: $\\int_0^\\infty e^{-x}\\cos x\\,dx = \\frac{a}{a^2+b^2}$ при $a=1$, $b=1$.",
-          "math": "$$\\boxed{I=\\frac{1}{1^2+1^2}=\\frac{1}{2}}$$"
+          "math": "$$\\boxed{\\frac{1}{2}}$$"
         }
       ],
       "formula": "\\frac{1}{2}",
@@ -1437,7 +1437,7 @@
         {
           "title": "Подстановка",
           "text": "$t=e^{-x}$, $dt=-e^{-x}dx$.",
-          "math": "$$\\boxed{\\int_0^\\infty\\frac{e^{-x}\\,dx}{1+e^{-x}}=-\\int_1^0\\frac{dt}{1+t}=\\int_0^1\\frac{dt}{1+t}=[\\ln(1+t)]_0^1=\\ln 2}$$"
+          "math": "$$\\boxed{\\ln 2}$$"
         }
       ],
       "formula": "\\ln 2",
@@ -1457,7 +1457,7 @@
         {
           "title": "Интеграл",
           "text": "Выполняем вычисления:",
-          "math": "$$\\boxed{\\int_0^{+\\infty}\\frac{dx}{x^2+a^2}=\\frac{1}{a}\\left[\\arctan\\frac{x}{a}\\right]_0^\\infty=\\frac{1}{a}\\cdot\\frac{\\pi}{2}=\\frac{\\pi}{2a}}$$"
+          "math": "$$\\boxed{\\frac{\\pi}{2a}}$$"
         }
       ],
       "formula": "\\frac{\\pi}{2a}",
@@ -1477,7 +1477,7 @@
         {
           "title": "По частям",
           "text": "$u=\\ln x$, $v=-1/x$.",
-          "math": "$$\\boxed{=\\left[-\\frac{\\ln x}{x}\\right]_1^\\infty+\\int_1^\\infty\\frac{dx}{x^2}=0+\\left[-\\frac{1}{x}\\right]_1^\\infty=0+1=1}$$"
+          "math": "$$\\boxed{1}$$"
         }
       ],
       "formula": "1",
@@ -1502,7 +1502,7 @@
         {
           "title": "Вычисление",
           "text": "Выполняем вычисления:",
-          "math": "$$\\boxed{\\left[\\arccos\\frac{1}{x}\\right]_1^\\infty=\\frac{\\pi}{2}-0=\\frac{\\pi}{2}}$$"
+          "math": "$$\\boxed{\\frac{\\pi}{2}}$$"
         }
       ],
       "formula": "\\frac{\\pi}{2}",
@@ -1651,7 +1651,7 @@
         {
           "title": "Интеграл",
           "text": "$3-x^2>x^2-1$ между корнями.",
-          "math": "$$\\boxed{S=\\int_{-\\sqrt{2}}^{\\sqrt{2}}(4-2x^2)\\,dx=2\\int_0^{\\sqrt{2}}(4-2x^2)\\,dx=2\\left[4x-\\frac{2x^3}{3}\\right]_0^{\\sqrt{2}}=\\frac{16\\sqrt{2}}{3}}$$"
+          "math": "$$\\boxed{S = \\frac{16\\sqrt{2}}{3}}$$"
         }
       ],
       "formula": "S = \\frac{16\\sqrt{2}}{3}",
@@ -1671,7 +1671,7 @@
         {
           "title": "Формула",
           "text": "Подставляем и вычисляем:",
-          "math": "$$\\boxed{V=\\pi\\int_0^{+\\infty}e^{-2x}\\,dx=\\pi\\left[-\\frac{e^{-2x}}{2}\\right]_0^\\infty=\\frac{\\pi}{2}}$$"
+          "math": "$$\\boxed{V = \\frac{\\pi}{2}}$$"
         }
       ],
       "formula": "V = \\frac{\\pi}{2}",
@@ -1696,7 +1696,7 @@
         {
           "title": "Интеграл",
           "text": "Подставляем и вычисляем:",
-          "math": "$$\\boxed{L=\\int_{\\pi/4}^{\\pi/2}\\csc x\\,dx=\\left[-\\ln|\\csc x+\\cot x|\\right]_{\\pi/4}^{\\pi/2}=\\ln(\\sqrt{2}+1)}$$"
+          "math": "$$\\boxed{L = \\ln(\\sqrt{2}+1)}$$"
         }
       ],
       "formula": "L = \\ln(\\sqrt{2}+1)",
@@ -1721,7 +1721,7 @@
         {
           "title": "Интеграл",
           "text": "Вычисляем определённый интеграл:",
-          "math": "$$\\boxed{S=\\int_0^2(2x+1-x^2-1)\\,dx=\\int_0^2(2x-x^2)\\,dx=\\left[x^2-\\frac{x^3}{3}\\right]_0^2=\\frac{4}{3}}$$"
+          "math": "$$\\boxed{S=\\frac{4}{3}}$$"
         }
       ],
       "formula": "S=\\frac{4}{3}",
@@ -1741,7 +1741,7 @@
         {
           "title": "Интеграл",
           "text": "Вычисляем определённый интеграл:",
-          "math": "$$\\boxed{S=\\int_0^2(4-x^2)\\,dx=\\left[4x-\\frac{x^3}{3}\\right]_0^2=8-\\frac{8}{3}=\\frac{16}{3}}$$"
+          "math": "$$\\boxed{S=\\frac{16}{3}}$$"
         }
       ],
       "formula": "S=\\frac{16}{3}",
@@ -1786,7 +1786,7 @@
         {
           "title": "Интеграл",
           "text": "Подставляем и вычисляем:",
-          "math": "$$\\boxed{V=\\pi\\int_0^{\\pi/2}\\cos^2 x\\,dx=\\pi\\cdot\\frac{\\pi}{4}=\\frac{\\pi^2}{4}}$$"
+          "math": "$$\\boxed{V=\\frac{\\pi^2}{4}}$$"
         }
       ],
       "formula": "V=\\frac{\\pi^2}{4}",
@@ -1806,7 +1806,7 @@
         {
           "title": "Формула",
           "text": "Подставляем и вычисляем:",
-          "math": "$$\\boxed{V=2\\pi\\int_0^1(x-x^3)\\,dx=2\\pi\\left[\\frac{x^2}{2}-\\frac{x^4}{4}\\right]_0^1=2\\pi\\cdot\\frac{1}{4}=\\frac{\\pi}{2}}$$"
+          "math": "$$\\boxed{V=\\frac{\\pi}{2}}$$"
         }
       ],
       "formula": "V=\\frac{\\pi}{2}",
@@ -1826,7 +1826,7 @@
         {
           "title": "Формула",
           "text": "Подставляем и вычисляем:",
-          "math": "$$\\boxed{V=\\pi\\int_0^{p/2}2px\\,dx=\\pi p\\left[x^2\\right]_0^{p/2}=\\frac{\\pi p^3}{4}}$$"
+          "math": "$$\\boxed{V=\\frac{\\pi p^3}{4}}$$"
         }
       ],
       "formula": "V=\\frac{\\pi p^3}{4}",
@@ -1856,7 +1856,7 @@
         {
           "title": "Табличный",
           "text": "Подставляем и вычисляем:",
-          "math": "$$\\boxed{=2\\cdot\\frac{1}{2}\\left[t\\sqrt{t^2+1}+\\ln(t+\\sqrt{t^2+1})\\right]_0^{\\sqrt{3}}=2\\sqrt{3}+\\ln(\\sqrt{3}+2)}$$"
+          "math": "$$\\boxed{L=2\\sqrt{3}+\\ln(\\sqrt{3}+2)}$$"
         }
       ],
       "formula": "L=2\\sqrt{3}+\\ln(\\sqrt{3}+2)",
@@ -1881,7 +1881,7 @@
         {
           "title": "Интеграл",
           "text": "Подставляем и вычисляем:",
-          "math": "$$\\boxed{L=2\\int_0^{\\pi}2a\\cos\\frac{\\varphi}{2}\\,d\\varphi=4a\\left[2\\sin\\frac{\\varphi}{2}\\right]_0^{\\pi}=8a}$$"
+          "math": "$$\\boxed{L=8a}$$"
         }
       ],
       "formula": "L=8a",
@@ -1911,7 +1911,7 @@
         {
           "title": "Результат",
           "text": "Подставляем и вычисляем:",
-          "math": "$$\\boxed{=4\\pi\\cdot\\frac{1}{2}\\left[u\\sqrt{1+u^2}+\\ln(u+\\sqrt{1+u^2})\\right]_0^1=2\\pi(\\sqrt{2}+\\ln(1+\\sqrt{2}))}$$"
+          "math": "$$\\boxed{S=2\\pi(\\sqrt{2}+\\ln(1+\\sqrt{2}))}$$"
         }
       ],
       "formula": "S=2\\pi(\\sqrt{2}+\\ln(1+\\sqrt{2}))",
@@ -1931,7 +1931,7 @@
         {
           "title": "По частям",
           "text": "$u=x$, $dv=xe^{-x^2}dx$, $v=-\\frac{1}{2}e^{-x^2}$.",
-          "math": "$$\\boxed{=\\left[-\\frac{x}{2}e^{-x^2}\\right]_0^\\infty+\\frac{1}{2}\\int_0^\\infty e^{-x^2}\\,dx=0+\\frac{1}{2}\\cdot\\frac{\\sqrt{\\pi}}{2}=\\frac{\\sqrt{\\pi}}{4}}$$"
+          "math": "$$\\boxed{\\frac{\\sqrt{\\pi}}{4}}$$"
         }
       ],
       "formula": "\\frac{\\sqrt{\\pi}}{4}",
@@ -2007,7 +2007,7 @@
         {
           "title": "Подстановка",
           "text": "$t=e^{-x}$, $dt=-e^{-x}dx$.",
-          "math": "$$\\boxed{\\int_0^\\infty\\frac{2e^{-x}\\,dx}{1+e^{-2x}}=2\\int_0^1\\frac{dt}{1+t^2}=2\\left[\\arctan t\\right]_0^1=\\frac{\\pi}{2}}$$"
+          "math": "$$\\boxed{\\frac{\\pi}{2}}$$"
         }
       ],
       "formula": "\\frac{\\pi}{2}",
@@ -2027,7 +2027,7 @@
         {
           "title": "Подстановка",
           "text": "Выполняем вычисления:",
-          "math": "$$\\boxed{t=\\sqrt{x} \\Rightarrow \\int_0^1\\frac{2t\\,dt}{t(1+t^2)}=2\\int_0^1\\frac{dt}{1+t^2}=2\\arctan 1=\\frac{\\pi}{2}}$$"
+          "math": "$$\\boxed{\\frac{\\pi}{2}}$$"
         }
       ],
       "formula": "\\frac{\\pi}{2}",
@@ -2071,7 +2071,7 @@
         {
           "title": "Интеграл",
           "text": "Вычисляем определённый интеграл:",
-          "math": "$$\\boxed{S=\\int_0^{\\pi/4}\\tan x\\,dx=[-\\ln\\cos x]_0^{\\pi/4}=-\\ln\\frac{\\sqrt{2}}{2}+\\ln 1=\\frac{1}{2}\\ln 2}$$"
+          "math": "$$\\boxed{S=\\frac{\\ln 2}{2}}$$"
         }
       ],
       "formula": "S=\\frac{\\ln 2}{2}",
@@ -2090,7 +2090,7 @@
         },
         {
           "title": "Вычисление",
-          "math": "$$\\boxed{=\\left|\\left[\\frac{4t^3}{3}-t^4\\right]_0^2\\right|=\\left|\\frac{32}{3}-16\\right|=\\frac{16}{3}}$$"
+          "math": "$$\\boxed{S=\\frac{16}{3}}$$"
         }
       ],
       "formula": "S=\\frac{16}{3}",
@@ -2110,7 +2110,7 @@
         {
           "title": "Раскрываем",
           "text": "Подставляем и вычисляем:",
-          "math": "$$\\boxed{V=\\pi\\int_0^2(4x^2-4x^3+x^4)\\,dx=\\pi\\left[\\frac{4x^3}{3}-x^4+\\frac{x^5}{5}\\right]_0^2=\\frac{16\\pi}{15}}$$"
+          "math": "$$\\boxed{V=\\frac{16\\pi}{15}}$$"
         }
       ],
       "formula": "V=\\frac{16\\pi}{15}",
@@ -2130,7 +2130,7 @@
         {
           "title": "Диски по y",
           "text": "Подставляем и вычисляем:",
-          "math": "$$\\boxed{V=\\pi\\int_0^4 x^2\\,dy=\\pi\\int_0^4(4-y)\\,dy=\\pi\\left[4y-\\frac{y^2}{2}\\right]_0^4=8\\pi}$$"
+          "math": "$$\\boxed{V=8\\pi}$$"
         }
       ],
       "formula": "V=8\\pi",
@@ -2175,7 +2175,7 @@
         {
           "title": "Подстановка",
           "text": "Выполняем вычисления:",
-          "math": "$$\\boxed{\\int_0^\\infty xe^{-x^2}\\,dx=\\frac{1}{2}\\int_0^\\infty e^{-u}\\,du=\\frac{1}{2}[-e^{-u}]_0^\\infty=\\frac{1}{2}}$$"
+          "math": "$$\\boxed{\\frac{1}{2}}$$"
         }
       ],
       "formula": "\\frac{1}{2}",
@@ -2199,7 +2199,7 @@
         {
           "title": "Замена 2x=u",
           "text": "$\\int_0^{\\pi/2}\\ln\\sin 2x\\,dx=\\frac{1}{2}\\int_0^{\\pi}\\ln\\sin u\\,du=I$.",
-          "math": "$$\\boxed{2I=I-\\frac{\\pi}{2}\\ln 2 \\Rightarrow I=-\\frac{\\pi}{2}\\ln 2}$$"
+          "math": "$$\\boxed{-\\frac{\\pi}{2}\\ln 2}$$"
         }
       ],
       "formula": "-\\frac{\\pi}{2}\\ln 2",
@@ -2219,7 +2219,7 @@
         {
           "title": "Интеграл",
           "text": "Выполняем вычисления:",
-          "math": "$$\\boxed{\\int_0^1(1-x)^{-2/3}\\,dx=\\left[-3(1-x)^{1/3}\\right]_0^1=0-(-3)=3}$$"
+          "math": "$$\\boxed{3}$$"
         }
       ],
       "formula": "3",
@@ -2264,7 +2264,7 @@
         {
           "title": "По частям",
           "text": "$u=x$, $v=-e^{-x}$.",
-          "math": "$$\\boxed{S=[-xe^{-x}]_0^2+\\int_0^2 e^{-x}\\,dx=-2e^{-2}+[-e^{-x}]_0^2=-2e^{-2}-e^{-2}+1=1-3e^{-2}}$$"
+          "math": "$$\\boxed{S=1-\\frac{3}{e^2}}$$"
         }
       ],
       "formula": "S=1-\\frac{3}{e^2}",
@@ -2284,7 +2284,7 @@
         {
           "title": "Формула",
           "text": "Подставляем и вычисляем:",
-          "math": "$$\\boxed{V=\\pi\\int_{-R}^R(R^2-x^2)\\,dx=\\pi\\left[R^2 x-\\frac{x^3}{3}\\right]_{-R}^R=\\pi\\left(R^3-\\frac{R^3}{3}+R^3-\\frac{R^3}{3}\\right)=\\frac{4\\pi R^3}{3}}$$"
+          "math": "$$\\boxed{V=\\frac{4\\pi R^3}{3}}$$"
         }
       ],
       "formula": "V=\\frac{4\\pi R^3}{3}",
@@ -2304,7 +2304,7 @@
         {
           "title": "Формула",
           "text": "Подставляем и вычисляем:",
-          "math": "$$\\boxed{S=2\\pi\\int_{-R}^R\\sqrt{R^2-x^2}\\cdot\\frac{R}{\\sqrt{R^2-x^2}}\\,dx=2\\pi R\\int_{-R}^R dx=4\\pi R^2}$$"
+          "math": "$$\\boxed{S=4\\pi R^2}$$"
         }
       ],
       "formula": "S=4\\pi R^2",
@@ -2324,7 +2324,7 @@
         {
           "title": "Формула",
           "text": "Подставляем и вычисляем:",
-          "math": "$$\\boxed{L=\\int_0^{2\\pi}\\sqrt{R^2\\sin^2 t+R^2\\cos^2 t}\\,dt=R\\int_0^{2\\pi}dt=2\\pi R}$$"
+          "math": "$$\\boxed{L=2\\pi R}$$"
         }
       ],
       "formula": "L=2\\pi R",

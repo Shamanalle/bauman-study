@@ -144,7 +144,7 @@
         },
         {
           "title": "Задача Коши: y(0)=2",
-          "math": "$$\\boxed{C = 2 \\quad \\Rightarrow \\quad y = (x + 2)e^{-x}}$$"
+          "math": "$$\\boxed{y = (x+2)e^{-x}}$$"
         }
       ],
       "formula": "y = (x+2)e^{-x}",
@@ -207,7 +207,7 @@
         {
           "title": "Обратная замена + ЗК",
           "text": "Замена $z = 1/y$. Подставляем $y(0) = 1$, $z(0) = 1$, $\\cos 0 = 1$, $\\tan 0 = 0$:",
-          "math": "$$\\boxed{1 = 0 + 0 + C \\quad \\Rightarrow \\quad C = 1}$$"
+          "math": "$$\\boxed{\\frac{1}{y\\cos^2 x} = \\frac{\\tan^2 x}{2} + \\ln|\\cos x| + 1}$$"
         }
       ],
       "formula": "\\frac{1}{y\\cos^2 x} = \\frac{\\tan^2 x}{2} + \\ln|\\cos x| + 1",
