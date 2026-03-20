@@ -69,11 +69,11 @@
       "steps": [
         {
           "title": "Найди параметры каждого состояния",
-          "text": "Из $pV = \nu RT$. Для каждого состояния определи $(p, V, T)$.\n\nАдиабата: $TV^{\\gamma-1} = \\text{const}$, $pV^\\gamma = \\text{const}$."
+          "text": "Из $pV = \\nu RT$. Для каждого состояния определи $(p, V, T)$.\n\nАдиабата: $TV^{\\gamma-1} = \\text{const}$, $pV^\\gamma = \\text{const}$."
         },
         {
           "title": "Вычисли Q, A, ΔU для каждого участка",
-          "text": "Изобярный: $A = p\\Delta V$, $Q = \nu C_p \\Delta T$.\nИзохорный: $A = 0$, $Q = \nu C_V \\Delta T$.\nИзотермический: $\\Delta U = 0$, $A = Q = \nu RT\\ln(V_2/V_1)$.\nАдиабатный: $Q = 0$, $A = -\\Delta U$."
+          "text": "Изобярный: $A = p\\Delta V$, $Q = \\nu C_p \\Delta T$.\nИзохорный: $A = 0$, $Q = \\nu C_V \\Delta T$.\nИзотермический: $\\Delta U = 0$, $A = Q = \\nu RT\\ln(V_2/V_1)$.\nАдиабатный: $Q = 0$, $A = -\\Delta U$."
         },
         {
           "title": "Найди КПД",

@@ -195,7 +195,7 @@
           "math": "$$E^2 - p^2c^2 = m_0^2 c^4 = \\text{inv}$$"
         }
       ],
-      "note": "Для фотона $m_0 = 0 \\Rightarrow E = pc$. Это следует также из электродинамики ($E = h\nu$, $p = h\nu/c$).",
+      "note": "Для фотона $m_0 = 0 \\Rightarrow E = pc$. Это следует также из электродинамики ($E = h\\nu$, $p = h\\nu/c$).",
       "example": {
         "title": "📝 Фотон",
         "text": "Фотон: $m_0 = 0 \\Rightarrow E = pc$. При $E = 2$ эВ: $p = E/c = 2 \\cdot 1{,}6 \\cdot 10^{-19} / (3 \\cdot 10^8) \\approx 1{,}07 \\cdot 10^{-27}$ кг$\\cdot$м/с."
