@@ -12,8 +12,7 @@
       "steps": [
         {
           "title": "Вычисление интервала",
-          "text": "$c\\Delta t = 3 \\cdot 10^8 \\cdot \\frac{5}{3} \\cdot 10^{-5} = 5000$ м $= 5$ км:",
-          "math": "$$s^2 = 5^2 - 3^2 = 16 км^2. \\\\[4pt] s = 4 км.$$"
+          "text": "$c\\Delta t = 3 \\cdot 10^8 \\cdot \\frac{5}{3} \\cdot 10^{-5} = 5000$ м $= 5$ км.\n$s^2 = 5^2 - 3^2 = 16$ км$^2$.\n$s = 4$ км."
         },
         {
           "title": "В системе K'",
@@ -41,8 +40,7 @@
         },
         {
           "title": "Сложение скоростей",
-          "text": ":",
-          "math": "$$v = \\frac{v' + V}{1 + v'V/c^2} = \\frac{0{,}6c + 0{,}5c}{1 + 0{,}3} = \\frac{1{,}1c}{1{,}3} \\approx 0{,}846c$$"
+          "text": "$v = \\frac{v' + V}{1 + v'V/c^2} = \\frac{0{,}6c + 0{,}5c}{1 + 0{,}3} = \\frac{1{,}1c}{1{,}3} \\approx 0{,}846c$."
         },
         {
           "title": "Энергия в K",
@@ -66,8 +64,7 @@
         },
         {
           "title": "Работа",
-          "text": "$A = \\nu RT \\ln(V_2/V_1) = 2 \\cdot 8{,}31 \\cdot 300 \\cdot \\ln 7{,}39$:",
-          "math": "$$\\ln 7{,}39 = 2{,}0. \\\\[4pt] A = 2 \\cdot 8{,}31 \\cdot 300 \\cdot 2 = 9972 Дж.$$"
+          "text": "$A = \\nu RT \\ln(V_2/V_1) = 2 \\cdot 8{,}31 \\cdot 300 \\cdot \\ln 7{,}39$.\n$\\ln 7{,}39 = 2{,}0$.\n$A = 2 \\cdot 8{,}31 \\cdot 300 \\cdot 2 = 9972$ Дж."
         },
         {
           "title": "Ответ",
@@ -91,8 +88,7 @@
         },
         {
           "title": "Из первого начала",
-          "text": "$Q = \\nu C_v \\Delta T = \\nu \\frac{i}{2}R\\Delta T = \\frac{i}{2}p_0 V \\cdot \\frac{\\Delta T}{T_1}$.\nH$_2$ — двухатомный, $i = 5$:",
-          "math": "$$\\frac{\\Delta T}{T_1} = \\frac{2Q}{ip_0 V} = \\frac{2 \\cdot 10^4}{5 \\cdot 1013{,}25} = 3{,}95.$$"
+          "text": "$Q = \\nu C_v \\Delta T = \\nu \\frac{i}{2}R\\Delta T = \\frac{i}{2}p_0 V \\cdot \\frac{\\Delta T}{T_1}$.\nH$_2$ — двухатомный, $i = 5$.\n$\\frac{\\Delta T}{T_1} = \\frac{2Q}{ip_0 V} = \\frac{2 \\cdot 10^4}{5 \\cdot 1013{,}25} = 3{,}95$."
         },
         {
           "title": "Давление",
@@ -112,8 +108,7 @@
       "steps": [
         {
           "title": "Расстояние",
-          "text": "$c\\Delta t = 3 \\cdot 10^8 \\cdot 5 \\cdot 10^{-5} = 15$ км:",
-          "math": "$$\\Delta l = \\sqrt{15^2 - 12^2} = \\sqrt{81} = 9 км.$$"
+          "text": "$c\\Delta t = 3 \\cdot 10^8 \\cdot 5 \\cdot 10^{-5} = 15$ км.\n$\\Delta l = \\sqrt{15^2 - 12^2} = \\sqrt{81} = 9$ км."
         },
         {
           "title": "Интервал в K'",
@@ -141,8 +136,7 @@
         },
         {
           "title": "Частота и скорость",
-          "text": "$\\nu = \\omega/(2\\pi) = 143{,}2$ Гц:",
-          "math": "$$v = \\omega/k = 900/10{,}6 \\approx 84{,}9 м/с. \\\\[4pt] \\vec{k} = -10{,}6 \\vec{e}_x (бежит влево).$$"
+          "text": "$\\nu = \\omega/(2\\pi) = 143{,}2$ Гц.\n$v = \\omega/k = 900/10{,}6 \\approx 84{,}9$ м/с.\n$\\vec{k} = -10{,}6 \\vec{e}_x$ (бежит влево)."
         },
         {
           "title": "Ускорение",
@@ -166,8 +160,7 @@
         },
         {
           "title": "Давление",
-          "text": "$p_1 V_1^\\gamma = p_2 V_2^\\gamma$:",
-          "math": "$$p_2/p_1 = (V_1/V_2)^{4/3} = 8^{4/3} = (2^3)^{4/3} = 2^4 = 16.$$"
+          "text": "$p_1 V_1^\\gamma = p_2 V_2^\\gamma$.\n$p_2/p_1 = (V_1/V_2)^{4/3} = 8^{4/3} = (2^3)^{4/3} = 2^4 = 16$."
         },
         {
           "title": "Ответ",
@@ -187,13 +180,11 @@
       "steps": [
         {
           "title": "Работа",
-          "text": ":",
-          "math": "$$A = \\int_{V_0}^{2V_0} \\alpha V^3 dV = \\frac{\\alpha}{4}[(2V_0)^4 - V_0^4] = \\frac{15\\alpha V_0^4}{4}$$"
+          "text": "$A = \\int_{V_0}^{2V_0} \\alpha V^3 dV = \\frac{\\alpha}{4}[(2V_0)^4 - V_0^4] = \\frac{15\\alpha V_0^4}{4}$."
         },
         {
           "title": "Внутренняя энергия",
-          "text": "$U = \\frac{3}{2}\\nu RT = \\frac{3}{2}\\alpha V^4$:",
-          "math": "$$U_2/U_1 = (2V_0)^4/V_0^4 = 16.$$"
+          "text": "$U = \\frac{3}{2}\\nu RT = \\frac{3}{2}\\alpha V^4$.\n$U_2/U_1 = (2V_0)^4/V_0^4 = 16$."
         },
         {
           "title": "Ответ",
@@ -217,8 +208,7 @@
         },
         {
           "title": "Объём",
-          "text": "$T_1 V_1^{2/5} = T_2 V_2^{2/5}$:",
-          "math": "$$V_2/V_1 = (T_1/T_2)^{5/2} = 4^{5/2} = (2^2)^{5/2} = 2^5 = 32.$$"
+          "text": "$T_1 V_1^{2/5} = T_2 V_2^{2/5}$.\n$V_2/V_1 = (T_1/T_2)^{5/2} = 4^{5/2} = (2^2)^{5/2} = 2^5 = 32$."
         },
         {
           "title": "Ответ",
@@ -238,13 +228,11 @@
       "steps": [
         {
           "title": "Связь Q и A",
-          "text": "$A = \\nu R \\Delta T$, $Q = \\nu C_p \\Delta T = \\nu \\frac{i+2}{2}R\\Delta T$:",
-          "math": "$$Q = \\frac{i+2}{2}A = \\frac{7}{2} \\cdot 157 = 549{,}5 Дж.$$"
+          "text": "$A = \\nu R \\Delta T$, $Q = \\nu C_p \\Delta T = \\nu \\frac{i+2}{2}R\\Delta T$.\n$Q = \\frac{i+2}{2}A = \\frac{7}{2} \\cdot 157 = 549{,}5$ Дж."
         },
         {
           "title": "ΔU",
-          "text": "$\\Delta U = Q - A = 549{,}5 - 157 = 392{,}5$ Дж.:",
-          "math": "$$Или: $\\Delta U = \\nu C_v \\Delta T = \\frac{i}{2}A = \\frac{5}{2} \\cdot 157 = 392{,}5$ Дж$$"
+          "text": "$\\Delta U = Q - A = 549{,}5 - 157 = 392{,}5$ Дж.\nИли: $\\Delta U = \\nu C_v \\Delta T = \\frac{i}{2}A = \\frac{5}{2} \\cdot 157 = 392{,}5$ Дж."
         },
         {
           "title": "Ответ",
@@ -316,8 +304,7 @@
         },
         {
           "title": "Cv",
-          "text": "$C_v = C_p - R = 15 - 8{,}31 = 6{,}69$ Дж/(моль$\\cdot$К):",
-          "math": "$$i = 2C_v/R = 2 \\cdot 6{,}69/8{,}31 \\approx 1{,}6 \\approx не целое... но \\approx водяной пар?$$"
+          "text": "$C_v = C_p - R = 15 - 8{,}31 = 6{,}69$ Дж/(моль$\\cdot$К).\n$i = 2C_v/R = 2 \\cdot 6{,}69/8{,}31 \\approx 1{,}6$ $\\approx$ не целое... но $\\approx$ водяной пар?"
         },
         {
           "title": "ΔU",
@@ -389,8 +376,7 @@
         },
         {
           "title": "Импульс",
-          "text": "$p^2 = 4m_0^2 c^2 \\Rightarrow p = 2m_0 c$:",
-          "math": "$$p = 2 \\cdot 9{,}1 \\cdot 10^{-31} \\cdot 3 \\cdot 10^8 = 5{,}46 \\cdot 10^{-22} кг\\cdotм/с.$$"
+          "text": "$p^2 = 4m_0^2 c^2 \\Rightarrow p = 2m_0 c$.\n$p = 2 \\cdot 9{,}1 \\cdot 10^{-31} \\cdot 3 \\cdot 10^8 = 5{,}46 \\cdot 10^{-22}$ кг$\\cdot$м/с."
         },
         {
           "title": "Ответ",
@@ -414,8 +400,7 @@
         },
         {
           "title": "Работа",
-          "text": "$A = \\int_{V_0}^{4V_0} \\beta\\sqrt{V}\\, dV = \\frac{2\\beta}{3}\\left[(4V_0)^{3/2} - V_0^{3/2}\\right]$:",
-          "math": "$$= \\frac{2\\beta V_0^{3/2}}{3}(8 - 1) = \\frac{14\\beta V_0^{3/2}}{3}.$$"
+          "text": "$A = \\int_{V_0}^{4V_0} \\beta\\sqrt{V}\\, dV = \\frac{2\\beta}{3}\\left[(4V_0)^{3/2} - V_0^{3/2}\\right]$.\n$= \\frac{2\\beta V_0^{3/2}}{3}(8 - 1) = \\frac{14\\beta V_0^{3/2}}{3}$."
         },
         {
           "title": "Через p₀",
@@ -435,13 +420,11 @@
       "steps": [
         {
           "title": "Параметры",
-          "text": "$\\omega = 1800$ с$^{-1}$, $k = 10{,}6$ м$^{-1}$:",
-          "math": "$$\\vec{k} = 10{,}6\\vec{e}_y м^{-1} (вдоль +y).$$"
+          "text": "$\\omega = 1800$ с$^{-1}$, $k = 10{,}6$ м$^{-1}$.\n$\\vec{k} = 10{,}6\\vec{e}_y$ м$^{-1}$ (вдоль +y)."
         },
         {
           "title": "Скорость и длина волны",
-          "text": "$v = \\omega/k = 1800/10{,}6 \\approx 169{,}8$ м/с:",
-          "math": "$$\\lambda = 2\\pi/k = 2\\pi/10{,}6 \\approx 0{,}593 м.$$"
+          "text": "$v = \\omega/k = 1800/10{,}6 \\approx 169{,}8$ м/с.\n$\\lambda = 2\\pi/k = 2\\pi/10{,}6 \\approx 0{,}593$ м."
         },
         {
           "title": "Макс. скорость частиц",
@@ -485,8 +468,7 @@
       "steps": [
         {
           "title": "Параметры",
-          "text": "$\\omega = 600$ с$^{-1}$, $k = 15{,}6$ м$^{-1}$:",
-          "math": "$$\\nu = \\omega/(2\\pi) = 95{,}5 Гц.$$"
+          "text": "$\\omega = 600$ с$^{-1}$, $k = 15{,}6$ м$^{-1}$.\n$\\nu = \\omega/(2\\pi) = 95{,}5$ Гц."
         },
         {
           "title": "Скорость и длина волны",
@@ -514,8 +496,7 @@
         },
         {
           "title": "Уравнение Пуассона",
-          "text": "$PV^\\gamma = \\text{const}$.\nПодставляя $P = \\nu RT/V$:\n$\\frac{\\nu RT}{V} \\cdot V^{5/3} = \\text{const}$:",
-          "math": "$$T V^{2/3} = \\text{const}.$$"
+          "text": "$PV^\\gamma = \\text{const}$.\nПодставляя $P = \\nu RT/V$:\n$\\frac{\\nu RT}{V} \\cdot V^{5/3} = \\text{const}$.\n$T V^{2/3} = \\text{const}$."
         },
         {
           "title": "Ответ",
@@ -563,8 +544,7 @@
         },
         {
           "title": "Подстановка",
-          "text": "$T = 293$ К:",
-          "math": "$$N = \\frac{2 \\cdot 1500}{5 \\cdot 1{,}38 \\cdot 10^{-23} \\cdot 293} = \\frac{3000}{2{,}02 \\cdot 10^{-20}} \\approx 1{,}49 \\cdot 10^{23}.$$"
+          "text": "$T = 293$ К.\n$N = \\frac{2 \\cdot 1500}{5 \\cdot 1{,}38 \\cdot 10^{-23} \\cdot 293} = \\frac{3000}{2{,}02 \\cdot 10^{-20}} \\approx 1{,}49 \\cdot 10^{23}$."
         },
         {
           "title": "Ответ",
@@ -584,8 +564,7 @@
       "steps": [
         {
           "title": "Теполёмкость",
-          "text": "Дж/(кг$\\cdot$К).",
-          "math": "$$c_v = \\frac{i R}{2M} = \\frac{5 \\cdot 8{,}31}{2 \\cdot 0{,}032} = \\frac{41{,}55}{0{,}064} = 649$$"
+          "text": "$c_v = \\frac{i R}{2M} = \\frac{5 \\cdot 8{,}31}{2 \\cdot 0{,}032} = \\frac{41{,}55}{0{,}064} = 649$ Дж/(кг$\\cdot$К)."
         },
         {
           "title": "cp",
@@ -613,8 +592,7 @@
         },
         {
           "title": "Теплота",
-          "text": ":",
-          "math": "$$Q = \\nu C_v \\Delta T = 1 \\cdot \\frac{5R}{2} \\cdot (1200 - 300) = \\frac{5 \\cdot 8{,}31 \\cdot 900}{2} = 18697$$"
+          "text": "$Q = \\nu C_v \\Delta T = 1 \\cdot \\frac{5R}{2} \\cdot (1200 - 300) = \\frac{5 \\cdot 8{,}31 \\cdot 900}{2} = 18697$ Дж."
         },
         {
           "title": "Ответ",
@@ -634,13 +612,11 @@
       "steps": [
         {
           "title": "ЗСЭ",
-          "text": "$Mc^2 = \\frac{m_1 c^2}{\\sqrt{1-v_1^2/c^2}} + \\frac{m_2 c^2}{\\sqrt{1-v_2^2/c^2}}$:",
-          "math": "$$M = \\gamma_1 m_1 + \\gamma_2 m_2.$$"
+          "text": "$Mc^2 = \\frac{m_1 c^2}{\\sqrt{1-v_1^2/c^2}} + \\frac{m_2 c^2}{\\sqrt{1-v_2^2/c^2}}$.\n$M = \\gamma_1 m_1 + \\gamma_2 m_2$."
         },
         {
           "title": "ЗСИ",
-          "text": "(вектора!).\nЧастица покоилась $\\Rightarrow$ осколки летят в противоположные стороны.",
-          "math": "$$0 = \\gamma_1 m_1 v_1 + \\gamma_2 m_2 v_2$$"
+          "text": "$0 = \\gamma_1 m_1 v_1 + \\gamma_2 m_2 v_2$ (вектора!).\nЧастица покоилась $\\Rightarrow$ осколки летят в противоположные стороны."
         },
         {
           "title": "Ответ",
@@ -684,13 +660,11 @@
       "steps": [
         {
           "title": "Масса и моли",
-          "text": "$m = \\rho V = 1{,}6 \\cdot 2 \\cdot 10^{-3} = 3{,}2 \\cdot 10^{-3}$ кг:",
-          "math": "$$\\nu = m/M = 3{,}2 \\cdot 10^{-3}/44 \\cdot 10^{-3} = 0{,}0727 моль.$$"
+          "text": "$m = \\rho V = 1{,}6 \\cdot 2 \\cdot 10^{-3} = 3{,}2 \\cdot 10^{-3}$ кг.\n$\\nu = m/M = 3{,}2 \\cdot 10^{-3}/44 \\cdot 10^{-3} = 0{,}0727$ моль."
         },
         {
           "title": "Теплота",
-          "text": "CO$_2$: $i = 6$, $V = \\text{const}$:",
-          "math": "$$Q = \\nu C_v \\Delta T = 0{,}0727 \\cdot 3 \\cdot 8{,}31 \\cdot 100 = 181{,}4 Дж.$$"
+          "text": "CO$_2$: $i = 6$, $V = \\text{const}$.\n$Q = \\nu C_v \\Delta T = 0{,}0727 \\cdot 3 \\cdot 8{,}31 \\cdot 100 = 181{,}4$ Дж."
         },
         {
           "title": "Ответ",
@@ -734,13 +708,11 @@
       "steps": [
         {
           "title": "Работа",
-          "text": ":",
-          "math": "$$A = \\int_{V_0}^{3V_0} \\frac{\\alpha}{V^2} dV = \\alpha\\left[-\\frac{1}{V}\\right]_{V_0}^{3V_0} = \\alpha\\left(\\frac{1}{V_0} - \\frac{1}{3V_0}\\right) = \\frac{2\\alpha}{3V_0}$$"
+          "text": "$A = \\int_{V_0}^{3V_0} \\frac{\\alpha}{V^2} dV = \\alpha\\left[-\\frac{1}{V}\\right]_{V_0}^{3V_0} = \\alpha\\left(\\frac{1}{V_0} - \\frac{1}{3V_0}\\right) = \\frac{2\\alpha}{3V_0}$."
         },
         {
           "title": "Проверка размерности",
-          "text": "$[\\alpha] = \\text{Па} \\cdot \\text{м}^{6} = \\text{Н}\\cdot\\text{м}^4$:",
-          "math": "$$[A] = \\text{Н}\\cdot\\text{м}^4 / \\text{м}^3 = \\text{Дж} ✓.$$"
+          "text": "$[\\alpha] = \\text{Па} \\cdot \\text{м}^{6} = \\text{Н}\\cdot\\text{м}^4$.\n$[A] = \\text{Н}\\cdot\\text{м}^4 / \\text{м}^3 = \\text{Дж}$ ✓."
         },
         {
           "title": "Ответ",
