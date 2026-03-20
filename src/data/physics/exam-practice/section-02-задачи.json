@@ -1,6 +1,6 @@
 {
-  "section": "📝 Задачи из билетов экзамена",
-  "icon": "📝",
+  "section": "✏️ Задачи из билетов экзамена",
+  "icon": "✏️",
   "questions": [
     {
       "id": "t1",
@@ -12,7 +12,7 @@
       "steps": [
         {
           "title": "Момент инерции",
-          "text": "$I = mR^2/2 = 1 \\cdot 0{,}01/2 = 0{,}005$ кг·м²."
+          "text": "$I = mR^2/2 = 1 \\cdot 0{,}01/2 = 0{,}005$ кг·м$^2$."
         },
         {
           "title": "Угловая скорость",
@@ -92,7 +92,7 @@
         },
         {
           "title": "Ответ",
-          "text": "$\\varepsilon = \\frac{M}{I} = \\frac{45g\\sin\\varphi}{62l} = \\frac{45 \\cdot 10 \\cdot 0{,}5}{31 \\cdot 0{,}7} \\approx 10{,}4$ рад/с².",
+          "text": "$\\varepsilon = \\frac{M}{I} = \\frac{45g\\sin\\varphi}{62l} = \\frac{45 \\cdot 10 \\cdot 0{,}5}{31 \\cdot 0{,}7} \\approx 10{,}4$ рад/с$^2$.",
           "math": "$$\\boxed{\\varepsilon \\approx 10{,}4 \\text{ рад/с}^2}$$"
         }
       ],
@@ -132,7 +132,7 @@
       "steps": [
         {
           "title": "Параметры",
-          "text": "$\\omega_0 = \\sqrt{9{,}8/0{,}64} \\approx 3{,}91$ рад/с.\n$\\beta = \\omega_0/(2Q) = 3{,}91/200 \\approx 0{,}0196$ с⁻¹."
+          "text": "$\\omega_0 = \\sqrt{9{,}8/0{,}64} \\approx 3{,}91$ рад/с.\n$\\beta = \\omega_0/(2Q) = 3{,}91/200 \\approx 0{,}0196$ с⁻$^1$."
         },
         {
           "title": "Изменение",
@@ -156,7 +156,7 @@
       "steps": [
         {
           "title": "Моменты инерции",
-          "text": "$I = \\frac{ml^2}{3} + \\frac{7ml^2}{10} = \\frac{31ml^2}{30}$ (аналогично билету 4)."
+          "text": "$I = \\frac{ml^2}{3} + \\frac{7ml^2}{10} = \\frac{31ml^2}{30}$ (Таким же образом билету 4)."
         },
         {
           "title": "Центр масс",
@@ -252,7 +252,7 @@
       "steps": [
         {
           "title": "Интервал",
-          "text": "$c\\Delta t = 15$ км.\n$s^2 = 15^2 - 12^2 = 225 - 144 = 81$ км²."
+          "text": "$c\\Delta t = 15$ км.\n$s^2 = 15^2 - 12^2 = 225 - 144 = 81$ км$^2$."
         },
         {
           "title": "Расстояние в K'",
@@ -300,7 +300,7 @@
       "steps": [
         {
           "title": "Параметры",
-          "text": "$A = 3 \\cdot 10^{-3}$ м, $\\omega = 2000$ рад/с, $k = 5{,}3$ м⁻¹.\n$\\vec{k} = -5{,}3\\vec{e}_y$ (волна в $-y$)."
+          "text": "$A = 3 \\cdot 10^{-3}$ м, $\\omega = 2000$ рад/с, $k = 5{,}3$ м⁻$^1$.\n$\\vec{k} = -5{,}3\\vec{e}_y$ (волна в $-y$)."
         },
         {
           "title": "Фазовая скорость",
@@ -308,7 +308,7 @@
         },
         {
           "title": "Энергия",
-          "text": "$\\langle w \\rangle = \\rho A^2\\omega^2/2 = \\frac{\\rho \\cdot 9 \\cdot 10^{-6} \\cdot 4 \\cdot 10^6}{2} = 18\\rho$.\n$|\\vec{j}| = \\langle w \\rangle v = 18\\rho \\cdot 377 = 6793\\rho$ Вт/м².",
+          "text": "$\\langle w \\rangle = \\rho A^2\\omega^2/2 = \\frac{\\rho \\cdot 9 \\cdot 10^{-6} \\cdot 4 \\cdot 10^6}{2} = 18\\rho$.\n$|\\vec{j}| = \\langle w \\rangle v = 18\\rho \\cdot 377 = 6793\\rho$ Вт/м$^2$.",
           "math": "$$\\boxed{v \\approx 377 \\text{ м/с}, \\; \\langle w \\rangle = 18\\rho}$$"
         }
       ],
@@ -348,7 +348,7 @@
       "steps": [
         {
           "title": "Параметры",
-          "text": "$\\omega_0 = \\sqrt{k/m} = 2$ рад/с.\n$Q = \\pi/\\lambda = 200$.\n$\\beta = \\lambda\\omega_0/(2\\pi) = 0{,}0157 \\cdot 2/(2\\pi) \\approx 0{,}005$ с⁻¹."
+          "text": "$\\omega_0 = \\sqrt{k/m} = 2$ рад/с.\n$Q = \\pi/\\lambda = 200$.\n$\\beta = \\lambda\\omega_0/(2\\pi) = 0{,}0157 \\cdot 2/(2\\pi) \\approx 0{,}005$ с⁻$^1$."
         },
         {
           "title": "Уменьшение",
@@ -596,7 +596,7 @@
         },
         {
           "title": "Ответ",
-          "text": "$\\varepsilon = \\frac{5mgR/2}{71mR^2/15} = \\frac{75g}{142R} = \\frac{75 \\cdot 10}{142 \\cdot 0{,}146} \\approx 36{,}2$ рад/с².",
+          "text": "$\\varepsilon = \\frac{5mgR/2}{71mR^2/15} = \\frac{75g}{142R} = \\frac{75 \\cdot 10}{142 \\cdot 0{,}146} \\approx 36{,}2$ рад/с$^2$.",
           "math": "$$\\boxed{\\varepsilon \\approx 36 \\text{ рад/с}^2}$$"
         }
       ],
@@ -640,7 +640,7 @@
         },
         {
           "title": "Q₃₁ (отданное)",
-          "text": "$Q_{31} = $ площадь треугольника = $\\frac{(T_0+2T_0)}{2} \\cdot S_0 = 1{,}5T_0 S_0$.\nНо $S$ убывает ⇒ $Q_{31} = -1{,}5T_0 S_0$ (отдано)."
+          "text": "$Q_{31} = $ площадь треугольника = $\\frac{(T_0+2T_0)}{2} \\cdot S_0 = 1{,}5T_0 S_0$.\nНо $S$ убывает $\\Rightarrow$ $Q_{31} = -1{,}5T_0 S_0$ (отдано)."
         },
         {
           "title": "КПД",

@@ -1,6 +1,6 @@
 {
-  "section": "🔥 Дополнительные задачи",
-  "icon": "🔥",
+  "section": "🎯 Дополнительные задачи",
+  "icon": "✏️",
   "questions": [
     {
       "id": "d-1",
@@ -180,7 +180,7 @@
       "steps": [
         {
           "title": "Уравнение адиабаты",
-          "text": "$pV^\\gamma = \\text{const}$ → $p_2/p_1 = (V_1/V_2)^\\gamma$."
+          "text": "$pV^\\gamma = \\text{const}$ $\\to$ $p_2/p_1 = (V_1/V_2)^\\gamma$."
         },
         {
           "title": "Подстановка",
@@ -420,7 +420,7 @@
       "steps": [
         {
           "title": "Формула",
-          "text": "$p = p_0/2$ → $Mgh/(RT) = \\ln 2$."
+          "text": "$p = p_0/2$ $\\to$ $Mgh/(RT) = \\ln 2$."
         },
         {
           "title": "Высота",
@@ -492,7 +492,7 @@
       "steps": [
         {
           "title": "Равновесие",
-          "text": "$F = -dU/dx = -(6x-12) = 0$ → $x_0 = 2$ м."
+          "text": "$F = -dU/dx = -(6x-12) = 0$ $\\to$ $x_0 = 2$ м."
         },
         {
           "title": "Устойчивость",
@@ -588,7 +588,7 @@
       "steps": [
         {
           "title": "ЗСЭ",
-          "text": "$mv^2/2 = GmM/R = mgR$ → $v = \\sqrt{2gR}$."
+          "text": "$mv^2/2 = GmM/R = mgR$ $\\to$ $v = \\sqrt{2gR}$."
         },
         {
           "title": "Подстановка",
@@ -876,7 +876,7 @@
       "steps": [
         {
           "title": "Фактор Лоренца",
-          "text": "$T = (\\gamma_L-1)m_0c^2 = m_0c^2$ → $\\gamma_L = 2$."
+          "text": "$T = (\\gamma_L-1)m_0c^2 = m_0c^2$ $\\to$ $\\gamma_L = 2$."
         },
         {
           "title": "Скорость",
@@ -900,7 +900,7 @@
       "steps": [
         {
           "title": "Нижняя точка",
-          "text": "$T - mg = m\\omega^2 l$ → $\\omega = \\sqrt{(T_{\\max}/m - g)/l}$."
+          "text": "$T - mg = m\\omega^2 l$ $\\to$ $\\omega = \\sqrt{(T_{\\max}/m - g)/l}$."
         },
         {
           "title": "Подстановка",
@@ -1068,7 +1068,7 @@
       "steps": [
         {
           "title": "ЗСЭ",
-          "text": "$mgl = mv^2/2$ → $v = \\sqrt{2gl} = \\sqrt{39{,}2} \\approx 6{,}26$ м/с."
+          "text": "$mgl = mv^2/2$ $\\to$ $v = \\sqrt{2gl} = \\sqrt{39{,}2} \\approx 6{,}26$ м/с."
         },
         {
           "title": "Натяжение",
@@ -1116,7 +1116,7 @@
       "steps": [
         {
           "title": "Равновесие",
-          "text": "$kx_0 = m(g+a)$ → $x_0 = m(g+a)/k$."
+          "text": "$kx_0 = m(g+a)$ $\\to$ $x_0 = m(g+a)/k$."
         },
         {
           "title": "Период",
@@ -1188,7 +1188,7 @@
       "steps": [
         {
           "title": "Система",
-          "text": "$ma = mg - T$, $I\\varepsilon = TR$, $a = \\varepsilon R$ → $T = Ma/2$."
+          "text": "$ma = mg - T$, $I\\varepsilon = TR$, $a = \\varepsilon R$ $\\to$ $T = Ma/2$."
         },
         {
           "title": "Ускорение",

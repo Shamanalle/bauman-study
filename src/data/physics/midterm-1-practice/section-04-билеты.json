@@ -1,6 +1,6 @@
 {
-  "section": "🎟️ Билеты РК-1",
-  "icon": "🎟️",
+  "section": "🎫 Билеты РК-1",
+  "icon": "🎫",
   "questions": [
     {
       "id": "b1",
@@ -10,10 +10,26 @@
       "tldr": "ε = φ'', M = Iε, смена: ω = 0",
       "hint": "Дифференцируем дважды: ω = φ', ε = φ''",
       "steps": [
-        {"title": "ω(t) и ε(t)", "text": "$\\omega = \\varphi' = -t^2 - 10t + 25$.\n$\\varepsilon = \\omega' = -2t - 10$."},
-        {"title": "При t = 1 с", "text": "$\\varepsilon(1) = -2 - 10 = -12$ рад/с$^2$.\n$M = I\\varepsilon = 10 \\cdot (-12) = -120$ Н$\\cdot$м."},
-        {"title": "Смена направления", "text": "$\\omega = 0$: $t^2 + 10t - 25 = 0$.\n$t = (-10 + \\sqrt{200})/2 = (-10 + 14{,}14)/2 = 2{,}07$ с.\n$\\varepsilon(2{,}07) = -2 \\cdot 2{,}07 - 10 = -14{,}14$ рад/с$^2$."},
-        {"title": "Ответ", "text": "", "math": "$$\\boxed{\\varepsilon(1) = -12 \\text{ рад/с}^2, \\; M = -120 \\text{ Н·м}}$$"}
+        {
+          "title": "ω(t) и ε(t)",
+          "text": "$\\omega = \\varphi' = -t^2 - 10t + 25$.\n$\\varepsilon = \\omega' = -2t - 10$.",
+          "math": "$$\\boxed{\\varepsilon = \\omega' = -2t - 10}$$"
+        },
+        {
+          "title": "При t = 1 с",
+          "text": "$\\varepsilon(1) = -2 - 10 = -12$ рад/с$^2$.\n$M = I\\varepsilon = 10 \\cdot (-12) = -120$ Н$\\cdot$м.",
+          "math": "$$\\boxed{\\cdot}$$"
+        },
+        {
+          "title": "Смена направления",
+          "text": "$\\omega = 0$: $t^2 + 10t - 25 = 0$.\n$t = (-10 + \\sqrt{200})/2 = (-10 + 14{,}14)/2 = 2{,}07$ с.\n$\\varepsilon(2{,}07) = -2 \\cdot 2{,}07 - 10 = -14{,}14$ рад/с$^2$.",
+          "math": "$$\\boxed{^2}$$"
+        },
+        {
+          "title": "Ответ",
+          "text": "",
+          "math": "$$\\boxed{\\varepsilon(1) = -12 \\text{ рад/с}^2, \\; M = -120 \\text{ Н·м}}$$"
+        }
       ],
       "formula": "\\varepsilon(1) = -12 \\text{ рад/с}^2"
     },
@@ -25,10 +41,26 @@
       "tldr": "Центральное поле: L = mVR = const",
       "hint": "ЗСМИ для центрального поля + формула потенциальной энергии гравитации",
       "steps": [
-        {"title": "ЗСМИ", "text": "В центральном поле сила направлена к центру ⇒ момент импульса сохраняется:\n$mV_1R_1 = mV_2R_2$."},
-        {"title": "Скорость в перигелии", "text": "$V_2 = V_1 R_1/R_2$.\nБлиже к Солнцу — быстрее."},
-        {"title": "Потенциальная энергия", "text": "$U = -\\frac{GmM}{r}$.\n$\\frac{U_2}{U_1} = \\frac{R_1}{R_2}$ (по модулю).\nВ перигелии $|U|$ больше."},
-        {"title": "Ответ", "text": "", "math": "$$\\boxed{V_2 = \\frac{V_1 R_1}{R_2}, \\quad \\frac{U_{\\text{пер}}}{U_{\\text{аф}}} = \\frac{R_1}{R_2}}$$"}
+        {
+          "title": "ЗСМИ",
+          "text": "В центральном поле сила направлена к центру $\\Rightarrow$ момент импульса сохраняется:\n$mV_1R_1 = mV_2R_2$.",
+          "math": "$$\\boxed{mV_1R_1 = mV_2R_2}$$"
+        },
+        {
+          "title": "Скорость в перигелии",
+          "text": "$V_2 = V_1 R_1/R_2$.\nБлиже к Солнцу — быстрее.",
+          "math": "$$\\boxed{V_2 = V_1 R_1/R_2}$$"
+        },
+        {
+          "title": "Потенциальная энергия",
+          "text": "$U = -\\frac{GmM}{r}$.\n$\\frac{U_2}{U_1} = \\frac{R_1}{R_2}$ (по модулю).\nВ перигелии $|U|$ больше.",
+          "math": "$$\\boxed{|U|}$$"
+        },
+        {
+          "title": "Ответ",
+          "text": "",
+          "math": "$$\\boxed{V_2 = \\frac{V_1 R_1}{R_2}, \\quad \\frac{U_{\\text{пер}}}{U_{\\text{аф}}} = \\frac{R_1}{R_2}}$$"
+        }
       ],
       "formula": "V_2 = V_1 R_1/R_2"
     },
@@ -40,10 +72,26 @@
       "tldr": "Разделяем переменные в m dv/dt = -αv³",
       "hint": "Интегрируем $v^{-3} dv$, получаем $1/(2v^2)$",
       "steps": [
-        {"title": "Уравнение движения", "text": "$m\\frac{dv}{dt} = -\\alpha v^3 \\Rightarrow \\frac{dv}{v^3} = -\\frac{\\alpha}{m}dt$."},
-        {"title": "Время пролёта", "text": "$\\int_{V_0}^{V} v^{-3}dv = -\\frac{\\alpha}{m}t$.\n$\\left[-\\frac{1}{2v^2}\\right]_{V_0}^V = -\\frac{\\alpha t}{m}$.\n$\\frac{1}{2V_0^2} - \\frac{1}{2V^2} = -\\frac{\\alpha t}{m}$.\n$t = \\frac{m}{2\\alpha}\\left(\\frac{1}{V^2} - \\frac{1}{V_0^2}\\right)$."},
-        {"title": "Толщина доски", "text": "$m v \\frac{dv}{dx} = -\\alpha v^3 \\Rightarrow \\frac{dv}{v^2} = -\\frac{\\alpha}{m}dx$.\n$d = \\frac{m}{\\alpha}\\left(\\frac{1}{V} - \\frac{1}{V_0}\\right)$."},
-        {"title": "Ответ", "text": "", "math": "$$\\boxed{t = \\frac{m}{2\\alpha}\\left(\\frac{1}{V^2} - \\frac{1}{V_0^2}\\right), \\; d = \\frac{m}{\\alpha}\\left(\\frac{1}{V} - \\frac{1}{V_0}\\right)}$$"}
+        {
+          "title": "Уравнение движения",
+          "text": "$m\\frac{dv}{dt} = -\\alpha v^3 \\Rightarrow \\frac{dv}{v^3} = -\\frac{\\alpha}{m}dt$.",
+          "math": "$$\\boxed{m\\frac{dv}{dt} = -\\alpha v^3 \\Rightarrow \\frac{dv}{v^3} = -\\frac{\\alpha}{m}dt}$$"
+        },
+        {
+          "title": "Время пролёта",
+          "text": "$\\int_{V_0}^{V} v^{-3}dv = -\\frac{\\alpha}{m}t$.\n$\\left[-\\frac{1}{2v^2}\\right]_{V_0}^V = -\\frac{\\alpha t}{m}$.\n$\\frac{1}{2V_0^2} - \\frac{1}{2V^2} = -\\frac{\\alpha t}{m}$.\n$t = \\frac{m}{2\\alpha}\\left(\\frac{1}{V^2} - \\frac{1}{V_0^2}\\right)$.",
+          "math": "$$\\boxed{t = \\frac{m}{2\\alpha}\\left(\\frac{1}{V^2} - \\frac{1}{V_0^2}\\right)}$$"
+        },
+        {
+          "title": "Толщина доски",
+          "text": "$m v \\frac{dv}{dx} = -\\alpha v^3 \\Rightarrow \\frac{dv}{v^2} = -\\frac{\\alpha}{m}dx$.\n$d = \\frac{m}{\\alpha}\\left(\\frac{1}{V} - \\frac{1}{V_0}\\right)$.",
+          "math": "$$\\boxed{d = \\frac{m}{\\alpha}\\left(\\frac{1}{V} - \\frac{1}{V_0}\\right)}$$"
+        },
+        {
+          "title": "Ответ",
+          "text": "",
+          "math": "$$\\boxed{t = \\frac{m}{2\\alpha}\\left(\\frac{1}{V^2} - \\frac{1}{V_0^2}\\right), \\; d = \\frac{m}{\\alpha}\\left(\\frac{1}{V} - \\frac{1}{V_0}\\right)}$$"
+        }
       ],
       "formula": "t = \\frac{m}{2\\alpha}\\left(\\frac{1}{V^2} - \\frac{1}{V_0^2}\\right)"
     },
@@ -55,10 +103,26 @@
       "tldr": "ЗСЭ: в верхней точке ω = 0 (минимум)",
       "hint": "$I = ml^2/3$. Центр масс поднимается на $l$ (от нижней до верхней точки)",
       "steps": [
-        {"title": "ЗСЭ (из нижней в верхнюю)", "text": "Ц.м. поднимается на $l$: $\\frac{I\\omega_0^2}{2} \\geq mgl$.\n$\\frac{ml^2}{3} \\cdot \\frac{\\omega_0^2}{2} \\geq mgl$.\n$\\omega_0 \\geq \\sqrt{6g/l}$."},
-        {"title": "Скорость нижнего конца", "text": "$v_{\\min} = \\omega_0 l = l\\sqrt{\\frac{6g}{l}} = \\sqrt{6gl}$.\n$v = \\sqrt{6 \\cdot 9{,}8 \\cdot 0{,}85} = \\sqrt{49{,}98} \\approx 7{,}07$ м/с."},
-        {"title": "Максимальное ε", "text": "Максимальный момент при горизонтальном положении:\n$M_{\\max} = mg \\cdot l/2 \\Rightarrow \\varepsilon_{\\max} = \\frac{mgl/2}{ml^2/3} = \\frac{3g}{2l}$.\n$\\varepsilon_{\\max} = \\frac{3 \\cdot 9{,}8}{2 \\cdot 0{,}85} \\approx 17{,}3$ рад/с$^2$."},
-        {"title": "Ответ", "text": "", "math": "$$\\boxed{v_{\\min} \\approx 7{,}07 \\text{ м/с}, \\; \\varepsilon_{\\max} \\approx 17{,}3 \\text{ рад/с}^2}$$"}
+        {
+          "title": "ЗСЭ (из нижней в верхнюю)",
+          "text": "Ц.м. поднимается на $l$: $\\frac{I\\omega_0^2}{2} \\geq mgl$.\n$\\frac{ml^2}{3} \\cdot \\frac{\\omega_0^2}{2} \\geq mgl$.\n$\\omega_0 \\geq \\sqrt{6g/l}$.",
+          "math": "$$\\boxed{\\omega_0 \\geq \\sqrt{6g/l}}$$"
+        },
+        {
+          "title": "Скорость нижнего конца",
+          "text": "$v_{\\min} = \\omega_0 l = l\\sqrt{\\frac{6g}{l}} = \\sqrt{6gl}$.\n$v = \\sqrt{6 \\cdot 9{,}8 \\cdot 0{,}85} = \\sqrt{49{,}98} \\approx 7{,}07$ м/с.",
+          "math": "$$\\boxed{v = \\sqrt{6 \\cdot 9{,}8 \\cdot 0{,}85} = \\sqrt{49{,}98} \\approx 7{,}07}$$"
+        },
+        {
+          "title": "Максимальное ε",
+          "text": "Максимальный момент при горизонтальном положении:\n$M_{\\max} = mg \\cdot l/2 \\Rightarrow \\varepsilon_{\\max} = \\frac{mgl/2}{ml^2/3} = \\frac{3g}{2l}$.\n$\\varepsilon_{\\max} = \\frac{3 \\cdot 9{,}8}{2 \\cdot 0{,}85} \\approx 17{,}3$ рад/с$^2$.",
+          "math": "$$\\boxed{^2}$$"
+        },
+        {
+          "title": "Ответ",
+          "text": "",
+          "math": "$$\\boxed{v_{\\min} \\approx 7{,}07 \\text{ м/с}, \\; \\varepsilon_{\\max} \\approx 17{,}3 \\text{ рад/с}^2}$$"
+        }
       ],
       "formula": "v_{\\min} = \\sqrt{6gl} \\approx 7{,}07 \\text{ м/с}"
     },
@@ -70,10 +134,26 @@
       "tldr": "Удар: ЗСМИ → ω. Подъём: ЗСЭ → θ",
       "hint": "Два этапа: неупругий удар, затем подъём под действием тяжести",
       "steps": [
-        {"title": "ЗСМИ (удар)", "text": "$mV_0 L = I\\omega$.\n$I = \\frac{ML^2}{3} + mL^2 = \\left(\\frac{M}{3} + m\\right)L^2$.\n$\\omega = \\frac{mV_0}{\\left(\\frac{M}{3}+m\\right)L}$."},
-        {"title": "ЗСЭ (подъём)", "text": "$\\frac{I\\omega^2}{2} = \\left(\\frac{M}{2} + m\\right)gL(1-\\cos\\theta)$."},
-        {"title": "Подстановка", "text": "Подставляем $\\omega$:\n$\\frac{m^2V_0^2}{2\\left(\\frac{M}{3}+m\\right)} = \\left(\\frac{M}{2}+m\\right)gL(1-\\cos\\theta)$."},
-        {"title": "Ответ", "text": "", "math": "$$\\boxed{\\cos\\theta = 1 - \\frac{m^2 V_0^2}{2gL\\left(\\frac{M}{3}+m\\right)\\left(\\frac{M}{2}+m\\right)}}$$"}
+        {
+          "title": "ЗСМИ (удар)",
+          "text": "$mV_0 L = I\\omega$.\n$I = \\frac{ML^2}{3} + mL^2 = \\left(\\frac{M}{3} + m\\right)L^2$.\n$\\omega = \\frac{mV_0}{\\left(\\frac{M}{3}+m\\right)L}$.",
+          "math": "$$\\boxed{\\omega = \\frac{mV_0}{\\left(\\frac{M}{3}+m\\right)L}}$$"
+        },
+        {
+          "title": "ЗСЭ (подъём)",
+          "text": "$\\frac{I\\omega^2}{2} = \\left(\\frac{M}{2} + m\\right)gL(1-\\cos\\theta)$.",
+          "math": "$$\\boxed{\\frac{I\\omega^2}{2} = \\left(\\frac{M}{2} + m\\right)gL(1-\\cos\\theta)}$$"
+        },
+        {
+          "title": "Подстановка",
+          "text": "Подставляем $\\omega$:\n$\\frac{m^2V_0^2}{2\\left(\\frac{M}{3}+m\\right)} = \\left(\\frac{M}{2}+m\\right)gL(1-\\cos\\theta)$.",
+          "math": "$$\\boxed{\\frac{m^2V_0^2}{2\\left(\\frac{M}{3}+m\\right)} = \\left(\\frac{M}{2}+m\\right)gL(1-\\cos\\theta)}$$"
+        },
+        {
+          "title": "Ответ",
+          "text": "",
+          "math": "$$\\boxed{\\cos\\theta = 1 - \\frac{m^2 V_0^2}{2gL\\left(\\frac{M}{3}+m\\right)\\left(\\frac{M}{2}+m\\right)}}$$"
+        }
       ],
       "formula": "\\cos\\theta = 1 - \\frac{m^2 V_0^2}{2gL(M/3+m)(M/2+m)}"
     },
@@ -85,10 +165,26 @@
       "tldr": "ω₀² = k/m, β = b/(2m), три частоты",
       "hint": "Три разные частоты: ω₀ (собственная), ω (затухающие), ω_рез (резонансная)",
       "steps": [
-        {"title": "Параметры", "text": "$\\omega_0 = \\sqrt{k/m}$ — собственная.\n$\\beta = b/(2m)$ — коэффициент затухания."},
-        {"title": "Частота затухающих колебаний", "text": "$\\omega = \\sqrt{\\omega_0^2 - \\beta^2} = \\sqrt{\\frac{k}{m} - \\frac{b^2}{4m^2}}$."},
-        {"title": "Лог. декремент", "text": "$T = 2\\pi/\\omega$.\n$\\lambda = \\beta T = \\frac{\\pi b}{m\\omega}$."},
-        {"title": "Резонансная частота", "text": "$\\omega_{\\text{рез}} = \\sqrt{\\omega_0^2 - 2\\beta^2} = \\sqrt{\\frac{k}{m} - \\frac{b^2}{2m^2}}$.\nОтличается от $\\omega$!", "math": "$$\\boxed{\\omega = \\sqrt{\\frac{k}{m} - \\frac{b^2}{4m^2}}, \\quad \\omega_{\\text{рез}} = \\sqrt{\\frac{k}{m} - \\frac{b^2}{2m^2}}}$$"}
+        {
+          "title": "Параметры",
+          "text": "$\\omega_0 = \\sqrt{k/m}$ — собственная.\n$\\beta = b/(2m)$ — коэффициент затухания.",
+          "math": "$$\\boxed{\\beta = b/(2m)}$$"
+        },
+        {
+          "title": "Частота затухающих колебаний",
+          "text": "$\\omega = \\sqrt{\\omega_0^2 - \\beta^2} = \\sqrt{\\frac{k}{m} - \\frac{b^2}{4m^2}}$.",
+          "math": "$$\\boxed{\\omega = \\sqrt{\\omega_0^2 - \\beta^2} = \\sqrt{\\frac{k}{m} - \\frac{b^2}{4m^2}}}$$"
+        },
+        {
+          "title": "Лог. декремент",
+          "text": "$T = 2\\pi/\\omega$.\n$\\lambda = \\beta T = \\frac{\\pi b}{m\\omega}$.",
+          "math": "$$\\boxed{\\lambda = \\beta T = \\frac{\\pi b}{m\\omega}}$$"
+        },
+        {
+          "title": "Резонансная частота",
+          "text": "$\\omega_{\\text{рез}} = \\sqrt{\\omega_0^2 - 2\\beta^2} = \\sqrt{\\frac{k}{m} - \\frac{b^2}{2m^2}}$.\nОтличается от $\\omega$!",
+          "math": "$$\\boxed{\\omega = \\sqrt{\\frac{k}{m} - \\frac{b^2}{4m^2}}, \\quad \\omega_{\\text{рез}} = \\sqrt{\\frac{k}{m} - \\frac{b^2}{2m^2}}}$$"
+        }
       ],
       "formula": "\\omega_{\\text{рез}} < \\omega < \\omega_0"
     }
