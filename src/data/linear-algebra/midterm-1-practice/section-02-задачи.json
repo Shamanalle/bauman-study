@@ -42,11 +42,13 @@
         },
         {
           "title": "Второй вектор",
-          "text": "$(a_2, b_1) = 1 \\cdot 1 + 0 + 0 + 0 = 1$.\n\n$b_2 = a_2 - \\frac{1}{1} b_1 = (1,0,0,1) - (1,0,0,0) = (0,0,0,1)^T$.\n\nПроверка: $(b_1, b_2) = 0$ ✓"
+          "text": "$(a_2, b_1) = 1 \\cdot 1 + 0 + 0 + 0 = 1$:",
+          "math": "$$b_2 = a_2 - \\frac{1}{1} b_1 = (1,0,0,1) - (1,0,0,0) = (0,0,0,1)^T. \\\\[4pt]  \\\\[4pt] Проверка: (b_1, b_2) = 0 ✓$$"
         },
         {
           "title": "Третий вектор",
-          "text": "$(a_3, b_1) = 1$, $(a_3, b_2) = 0$.\n\n$b_3 = a_3 - \\frac{1}{1} b_1 - \\frac{0}{1} b_2 = (1,1,1,0) - (1,0,0,0) = (0,1,1,0)^T$.\n\nПроверка: $(b_1, b_3) = 0$ ✓, $(b_2, b_3) = 0$ ✓"
+          "text": "$(a_3, b_1) = 1$, $(a_3, b_2) = 0$:",
+          "math": "$$b_3 = a_3 - \\frac{1}{1} b_1 - \\frac{0}{1} b_2 = (1,1,1,0) - (1,0,0,0) = (0,1,1,0)^T. \\\\[4pt]  \\\\[4pt] Проверка: (b_1, b_3) = 0 ✓, (b_2, b_3) = 0 ✓$$"
         },
         {
           "title": "Ответ",
@@ -76,7 +78,8 @@
         },
         {
           "title": "Вычисление A'",
-          "text": "Считаем $T^T A$:\n$\\begin{pmatrix} -1 & 1 \\\\ 5 & -6 \\end{pmatrix} \\begin{pmatrix} -1 & -4 \\\\ -4 & 1 \\end{pmatrix} = \\begin{pmatrix} -3 & 5 \\\\ 19 & -26 \\end{pmatrix}$.\n\nЗатем $(T^T A) \\cdot T$:\n$\\begin{pmatrix} -3 & 5 \\\\ 19 & -26 \\end{pmatrix} \\begin{pmatrix} -1 & 5 \\\\ 1 & -6 \\end{pmatrix} = \\begin{pmatrix} 8 & -45 \\\\ -45 & 251 \\end{pmatrix}$."
+          "text": "Считаем $T^T A$:\n$\\begin{pmatrix} -1 & 1 \\\\ 5 & -6 \\end{pmatrix} \\begin{pmatrix} -1 & -4 \\\\ -4 & 1 \\end{pmatrix} = \\begin{pmatrix} -3 & 5 \\\\ 19 & -26 \\end{pmatrix}$.:",
+          "math": "$$Затем $(T^T A) \\cdot T$:\n$\\begin{pmatrix} -3 & 5 \\\\ 19 & -26 \\end{pmatrix} \\begin{pmatrix} -1 & 5 \\\\ 1 & -6 \\end{pmatrix} = \\begin{pmatrix} 8 & -45 \\\\ -45 & 251 \\end{pmatrix}$$"
         },
         {
           "title": "Ответ",
@@ -132,11 +135,13 @@
         },
         {
           "title": "Обратная матрица",
-          "text": "$T^{-1} = \\frac{1}{-2} \\begin{pmatrix} -1 & -1 \\\\ -1 & 1 \\end{pmatrix} = \\begin{pmatrix} 1/2 & 1/2 \\\\ 1/2 & -1/2 \\end{pmatrix}$."
+          "text": ":",
+          "math": "$$T^{-1} = \\frac{1}{-2} \\begin{pmatrix} -1 & -1 \\\\ -1 & 1 \\end{pmatrix} = \\begin{pmatrix} 1/2 & 1/2 \\\\ 1/2 & -1/2 \\end{pmatrix}$$"
         },
         {
           "title": "Вычисление A'",
-          "text": "$A \\cdot T = \\begin{pmatrix} 1 & -1 \\\\ -1 & 1 \\end{pmatrix} \\begin{pmatrix} 1 & 1 \\\\ 1 & -1 \\end{pmatrix} = \\begin{pmatrix} 0 & 2 \\\\ 0 & -2 \\end{pmatrix}$.\n\n$A' = T^{-1} \\cdot (AT) = \\begin{pmatrix} 1/2 & 1/2 \\\\ 1/2 & -1/2 \\end{pmatrix} \\begin{pmatrix} 0 & 2 \\\\ 0 & -2 \\end{pmatrix} = \\begin{pmatrix} 0 & 0 \\\\ 0 & 2 \\end{pmatrix}$."
+          "text": "$A \\cdot T = \\begin{pmatrix} 1 & -1 \\\\ -1 & 1 \\end{pmatrix} \\begin{pmatrix} 1 & 1 \\\\ 1 & -1 \\end{pmatrix} = \\begin{pmatrix} 0 & 2 \\\\ 0 & -2 \\end{pmatrix}$:",
+          "math": "$$A' = T^{-1} \\cdot (AT) = \\begin{pmatrix} 1/2 & 1/2 \\\\ 1/2 & -1/2 \\end{pmatrix} \\begin{pmatrix} 0 & 2 \\\\ 0 & -2 \\end{pmatrix} = \\begin{pmatrix} 0 & 0 \\\\ 0 & 2 \\end{pmatrix}.$$"
         },
         {
           "title": "Ответ",
@@ -161,11 +166,13 @@
         },
         {
           "title": "Собственный вектор для λ₁ = 1",
-          "text": "$(A - E)\\vec{x} = \\vec{0}$:\n$\\begin{pmatrix} 11 & -22 \\\\ 11 & -22 \\end{pmatrix} \\vec{x} = \\vec{0}$ → $11x_1 - 22x_2 = 0$ → $x_1 = 2x_2$.\n\n$\\vec{x}_1 = t(2, 1)^T$, $t \\ne 0$."
+          "text": "$(A - E)\\vec{x} = \\vec{0}$:\n$\\begin{pmatrix} 11 & -22 \\\\ 11 & -22 \\end{pmatrix} \\vec{x} = \\vec{0}$ → $11x_1 - 22x_2 = 0$ → $x_1 = 2x_2$:",
+          "math": "$$\\vec{x}_1 = t(2, 1)^T, t \\ne 0.$$"
         },
         {
           "title": "Собственный вектор для λ₂ = −10",
-          "text": "$(A + 10E)\\vec{x} = \\vec{0}$:\n$\\begin{pmatrix} 22 & -22 \\\\ 11 & -11 \\end{pmatrix} \\vec{x} = \\vec{0}$ → $x_1 = x_2$.\n\n$\\vec{x}_2 = t(1, 1)^T$, $t \\ne 0$."
+          "text": "$(A + 10E)\\vec{x} = \\vec{0}$:\n$\\begin{pmatrix} 22 & -22 \\\\ 11 & -11 \\end{pmatrix} \\vec{x} = \\vec{0}$ → $x_1 = x_2$:",
+          "math": "$$\\vec{x}_2 = t(1, 1)^T, t \\ne 0.$$"
         },
         {
           "title": "Ответ",
@@ -195,7 +202,8 @@
         },
         {
           "title": "Собственные вектора",
-          "text": "$\\lambda_1 = 0$: $\\begin{pmatrix} 9 & 12 \\\\ 12 & 16 \\end{pmatrix} \\vec{x} = \\vec{0}$ → $3x_1 + 4x_2 = 0$ → $\\vec{v}_1 = (4, -3)^T$.\n\n$\\lambda_2 = 25$: $\\begin{pmatrix} -16 & 12 \\\\ 12 & -9 \\end{pmatrix} \\vec{x} = \\vec{0}$ → $4x_1 = 3x_2$ → $\\vec{v}_2 = (3, 4)^T$.\n\nНормируем: $e_1 = \\frac{1}{5}(4, -3)^T$, $e_2 = \\frac{1}{5}(3, 4)^T$."
+          "text": "$\\lambda_1 = 0$: $\\begin{pmatrix} 9 & 12 \\\\ 12 & 16 \\end{pmatrix} \\vec{x} = \\vec{0}$ → $3x_1 + 4x_2 = 0$ → $\\vec{v}_1 = (4, -3)^T$:",
+          "math": "$$\\lambda_2 = 25: \\begin{pmatrix} -16 & 12 \\\\ 12 & -9 \\end{pmatrix} \\vec{x} = \\vec{0} → 4x_1 = 3x_2 → \\vec{v}_2 = (3, 4)^T. \\\\[4pt]  \\\\[4pt] Нормируем: e_1 = \\frac{1}{5}(4, -3)^T, e_2 = \\frac{1}{5}(3, 4)^T.$$"
         },
         {
           "title": "Канонический вид",
@@ -220,7 +228,8 @@
         },
         {
           "title": "Работаем с остатком x₂x₃",
-          "text": "Нет квадратных членов по $x_2, x_3$, но есть $x_2 x_3$. Замена:\n$x_2 = u_2 + u_3$, $x_3 = u_2 - u_3$.\n\n$x_2 x_3 = (u_2+u_3)(u_2-u_3) = u_2^2 - u_3^2$."
+          "text": "Нет квадратных членов по $x_2, x_3$, но есть $x_2 x_3$. Замена:\n$x_2 = u_2 + u_3$, $x_3 = u_2 - u_3$:",
+          "math": "$$x_2 x_3 = (u_2+u_3)(u_2-u_3) = u_2^2 - u_3^2.$$"
         },
         {
           "title": "Итоговая замена",
@@ -249,7 +258,8 @@
         },
         {
           "title": "Составляем матрицу нового базиса",
-          "text": "$T_2 = \\begin{pmatrix} 3 & 5 \\\\ 2 & 4 \\end{pmatrix}$, $\\det T_2 = 12 - 10 = 2$.\n\n$T_2^{-1} = \\frac{1}{2} \\begin{pmatrix} 4 & -5 \\\\ -2 & 3 \\end{pmatrix}$."
+          "text": "$T_2 = \\begin{pmatrix} 3 & 5 \\\\ 2 & 4 \\end{pmatrix}$, $\\det T_2 = 12 - 10 = 2$:",
+          "math": "$$T_2^{-1} = \\frac{1}{2} \\begin{pmatrix} 4 & -5 \\\\ -2 & 3 \\end{pmatrix}.$$"
         },
         {
           "title": "Находим координаты",
@@ -269,15 +279,18 @@
       "steps": [
         {
           "title": "Матрица КФ и матрица перехода",
-          "text": "$A = \\begin{pmatrix} 4 & -1 \\\\ -1 & -1 \\end{pmatrix}$, $T = \\begin{pmatrix} 1 & 2 \\\\ 2 & 3 \\end{pmatrix}$."
+          "text": ":",
+          "math": "$$A = \\begin{pmatrix} 4 & -1 \\\\ -1 & -1 \\end{pmatrix}, \\quad T = \\begin{pmatrix} 1 & 2 \\\\ 2 & 3 \\end{pmatrix}$$"
         },
         {
           "title": "Вычисление TᵀA",
-          "text": "$T^T A = \\begin{pmatrix} 1 & 2 \\\\ 2 & 3 \\end{pmatrix} \\begin{pmatrix} 4 & -1 \\\\ -1 & -1 \\end{pmatrix} = \\begin{pmatrix} 2 & -3 \\\\ 5 & -5 \\end{pmatrix}$."
+          "text": ":",
+          "math": "$$T^T A = \\begin{pmatrix} 1 & 2 \\\\ 2 & 3 \\end{pmatrix} \\begin{pmatrix} 4 & -1 \\\\ -1 & -1 \\end{pmatrix} = \\begin{pmatrix} 2 & -3 \\\\ 5 & -5 \\end{pmatrix}$$"
         },
         {
           "title": "Вычисление A'",
-          "text": "$A' = (T^T A) \\cdot T = \\begin{pmatrix} 2 & -3 \\\\ 5 & -5 \\end{pmatrix} \\begin{pmatrix} 1 & 2 \\\\ 2 & 3 \\end{pmatrix} = \\begin{pmatrix} -4 & -5 \\\\ -5 & -5 \\end{pmatrix}$."
+          "text": ":",
+          "math": "$$A' = (T^T A) \\cdot T = \\begin{pmatrix} 2 & -3 \\\\ 5 & -5 \\end{pmatrix} \\begin{pmatrix} 1 & 2 \\\\ 2 & 3 \\end{pmatrix} = \\begin{pmatrix} -4 & -5 \\\\ -5 & -5 \\end{pmatrix}$$"
         },
         {
           "title": "Ответ",
@@ -297,7 +310,8 @@
       "steps": [
         {
           "title": "Составляем матрицы",
-          "text": "$S = \\begin{pmatrix} 8 & -3 \\\\ -5 & 2 \\end{pmatrix}$, $B = \\begin{pmatrix} -5 & 7 \\\\ 4 & -3 \\end{pmatrix}$.\n\n$\\det S = 16 - 15 = 1$."
+          "text": "$S = \\begin{pmatrix} 8 & -3 \\\\ -5 & 2 \\end{pmatrix}$, $B = \\begin{pmatrix} -5 & 7 \\\\ 4 & -3 \\end{pmatrix}$:",
+          "math": "$$\\det S = 16 - 15 = 1.$$"
         },
         {
           "title": "Обратная матрица",
@@ -305,7 +319,8 @@
         },
         {
           "title": "Вычисление A",
-          "text": "$A = B \\cdot S^{-1} = \\begin{pmatrix} -5 & 7 \\\\ 4 & -3 \\end{pmatrix} \\begin{pmatrix} 2 & 3 \\\\ 5 & 8 \\end{pmatrix} = \\begin{pmatrix} 25 & 41 \\\\ -7 & -12 \\end{pmatrix}$."
+          "text": ":",
+          "math": "$$A = B \\cdot S^{-1} = \\begin{pmatrix} -5 & 7 \\\\ 4 & -3 \\end{pmatrix} \\begin{pmatrix} 2 & 3 \\\\ 5 & 8 \\end{pmatrix} = \\begin{pmatrix} 25 & 41 \\\\ -7 & -12 \\end{pmatrix}$$"
         },
         {
           "title": "Ответ",
@@ -335,7 +350,8 @@
         },
         {
           "title": "Проверка критерия",
-          "text": "Для отрицательной определённости: $(-1)^k \\Delta_k > 0$.\n\n$(-1)^1(-2) = 2 > 0$ ✓\n$(-1)^2(6) = 6 > 0$ ✓\n$(-1)^3(-16) = 16 > 0$ ✓\n$(-1)^4(24) = 24 > 0$ ✓"
+          "text": "Для отрицательной определённости: $(-1)^k \\Delta_k > 0$:",
+          "math": "$$(-1)^1(-2) = 2 > 0 ✓ \\\\[4pt] (-1)^2(6) = 6 > 0 ✓ \\\\[4pt] (-1)^3(-16) = 16 > 0 ✓ \\\\[4pt] (-1)^4(24) = 24 > 0 ✓$$"
         },
         {
           "title": "Ответ",
@@ -360,7 +376,8 @@
         },
         {
           "title": "Ортогональная замена",
-          "text": "$\\lambda_1 = 0$: $9x - 6y = 0$ → $\\vec{v}_1 = (2, 3)^T / \\sqrt{13}$.\n$\\lambda_2 = 13$: $-4x - 6y = 0$ → $\\vec{v}_2 = (3, -2)^T / \\sqrt{13}$.\n\nЗамена: $x = \\frac{2u + 3v}{\\sqrt{13}}$, $y = \\frac{3u - 2v}{\\sqrt{13}}$."
+          "text": "$\\lambda_1 = 0$: $9x - 6y = 0$ → $\\vec{v}_1 = (2, 3)^T / \\sqrt{13}$:",
+          "math": "$$\\lambda_2 = 13: -4x - 6y = 0 → \\vec{v}_2 = (3, -2)^T / \\sqrt{13}. \\\\[4pt]  \\\\[4pt] Замена: x = \\frac{2u + 3v}{\\sqrt{13}}, y = \\frac{3u - 2v}{\\sqrt{13}}.$$"
         },
         {
           "title": "Подстановка",
@@ -389,7 +406,8 @@
         },
         {
           "title": "Вектор b₂",
-          "text": "$(a_2, b_1) = 4-6+1-24 = -25$.\n$b_2 = a_2 - \\frac{-25}{25}b_1 = a_2 + b_1 = (4, 1, 2, 2)^T$.\n$\\|b_2\\|^2 = 16+1+4+4 = 25$.\nПроверка: $(b_1, b_2) = 8-2+2-8 = 0$ ✓"
+          "text": "$(a_2, b_1) = 4-6+1-24 = -25$:",
+          "math": "$$b_2 = a_2 - \\frac{-25}{25}b_1 = a_2 + b_1 = (4, 1, 2, 2)^T. \\\\[4pt] \\|b_2\\|^2 = 16+1+4+4 = 25. \\\\[4pt] Проверка: (b_1, b_2) = 8-2+2-8 = 0 ✓$$"
         },
         {
           "title": "Скалярное произведение (p,q)",
