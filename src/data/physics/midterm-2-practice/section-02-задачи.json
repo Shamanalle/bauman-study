@@ -712,7 +712,7 @@
         },
         {
           "title": "Проверка размерности",
-          "text": "$[\\alpha] = \\text{Па} \\cdot \\text{м}^{6} = \\text{Н$\\cdot$м}^4$.\n$[A] = \\text{Н$\\cdot$м}^4 / \\text{м}^3 = \\text{Дж}$ ✓."
+          "text": "$[\\alpha] = \\text{Па} \\cdot \\text{м}^{6} = \\text{Н}\\cdot\\text{м}^4$.\n$[A] = \\text{Н}\\cdot\\text{м}^4 / \\text{м}^3 = \\text{Дж}$ ✓."
         },
         {
           "title": "Ответ",
