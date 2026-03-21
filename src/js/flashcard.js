@@ -197,7 +197,8 @@ function showCard() {
     hintBtn.addEventListener('click', () => {
       if (!hintBtn.classList.contains('used')) {
         hintBtn.classList.add('used');
-        hintBtn.textContent = `💡 ${hintText}`;
+        hintBtn.innerHTML = `💡 ${hintText}`;
+        renderMath(hintBtn);
       }
     });
   } else {
@@ -209,6 +210,9 @@ function showCard() {
 
   // Exit
   document.getElementById('fcExitBtn').addEventListener('click', showResults);
+
+  // Render any KaTeX in the card question/header
+  renderMath(document.getElementById('fcCard'));
 
   // Keyboard
   attachKeys();
