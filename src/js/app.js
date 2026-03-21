@@ -23,6 +23,31 @@ window.__filterSection = (name) => filterSection(name);
 window.__resetProgress = () => { progress.resetProgress(); updateLearnedUI(); renderPills(); render(''); };
 
 
+
+// --- Mode Tabs (Cards / Flashcard) ---
+function renderModeTabs(activeMode) {
+  const params = new URLSearchParams(window.location.search);
+  const subject = params.get('subject');
+  const assessment = params.get('assessment');
+  if (!subject || !assessment) return;
+
+  const baseUrl = `?subject=${subject}&assessment=${assessment}`;
+
+  const tabsDiv = document.createElement('div');
+  tabsDiv.className = 'mode-tabs';
+  tabsDiv.id = 'modeTabs';
+  tabsDiv.innerHTML = `
+    <button class="mode-tab ${activeMode === 'cards' ? 'active' : ''}"
+      onclick="location.href='${baseUrl}'">📖 Карточки</button>
+    <button class="mode-tab ${activeMode === 'flashcard' ? 'active' : ''}"
+      onclick="location.href='${baseUrl}&mode=flashcard'">🃏 Повторение</button>
+  `;
+
+  // Insert after hero, before nav
+  const hero = document.querySelector('.hero');
+  if (hero) hero.after(tabsDiv);
+}
+
 // --- Bootstrap ---
 async function init() {
   // 1. Global theme
@@ -82,23 +107,47 @@ async function init() {
     progress.setPrefix(meta.shortCode || 'app');
     progress.loadLearned();
     progress.loadStrength();
+
+    // 4. Check for flashcard mode
+    const mode = params.get('mode');
+
+    if (mode === 'flashcard') {
+      // Flashcard mode — render tabs + flashcard UI
+      renderModeTabs('flashcard');
+      document.getElementById('heroTitle').textContent = `${meta.icon} ${meta.title}`;
+      document.getElementById('heroSubtitle').textContent = meta.subtitle;
+      document.title = `${meta.title} · Повторение`;
+
+      // Hide standard elements not needed in flashcard mode
+      document.querySelector('.nav')?.style.setProperty('display', 'none');
+      document.getElementById('sectionPills')?.style.setProperty('display', 'none');
+      document.querySelector('.stats-row')?.style.setProperty('display', 'none');
+      document.querySelector('.progress-bar-hero')?.style.setProperty('display', 'none');
+
+      const { initFlashcard } = await import('./flashcard.js');
+      initFlashcard({ meta, sections });
+      initScrollTop();
+      return;
+    }
+
+    // 5. Standard card-list mode
+    renderModeTabs('cards');
     setSections(sections);
 
-    // 4. Update hero
+    // Update hero
     document.getElementById('heroTitle').textContent = `${meta.icon} ${meta.title}`;
     document.getElementById('heroSubtitle').textContent = meta.subtitle;
     document.title = `${meta.title} · Справочник`;
 
-    // 5. Initial render
+    // Initial render
     renderPills();
     render('');
 
-    // 6. Initialize features
+    // Initialize features
     initSearch();
-
     initKeyboard();
 
-    // 7. UI extras
+    // UI extras
     document.getElementById('toggleBtn').addEventListener('click', toggleAll);
     document.getElementById('randomBtn').addEventListener('click', goRandom);
     initScrollTop();

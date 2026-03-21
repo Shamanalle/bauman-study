@@ -1,0 +1,602 @@
+/* ══════════════════════════════════════════════
+   Flashcard Mode — Styles
+   All colors via CSS vars from base.css
+   ══════════════════════════════════════════════ */
+
+/* ── Mode Tabs ── */
+.mode-tabs {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.mode-tab {
+  flex: 1;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--text2);
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.mode-tab:hover {
+  background: var(--accent-bg);
+  color: var(--accent);
+}
+
+.mode-tab.active {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(45, 164, 78, 0.3);
+}
+
+/* ── Flashcard Container ── */
+.fc-container {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 8px;
+}
+
+/* ── Setup Screen ── */
+.fc-setup {
+  text-align: center;
+}
+
+.fc-setup-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 4px;
+  color: var(--text);
+}
+
+.fc-setup-subtitle {
+  font-size: 0.9rem;
+  color: var(--text2);
+  margin-bottom: 24px;
+}
+
+/* Stats ring */
+.fc-stats-ring {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 20px;
+}
+
+.fc-stats-ring svg {
+  transform: rotate(-90deg);
+}
+
+.fc-ring-bg {
+  fill: none;
+  stroke: var(--border);
+  stroke-width: 10;
+}
+
+.fc-ring-fill {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 10;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.6s ease;
+}
+
+.fc-ring-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.fc-ring-pct {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1;
+}
+
+.fc-ring-label {
+  font-size: 0.75rem;
+  color: var(--text3);
+}
+
+/* Stat pills row */
+.fc-stat-row {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.fc-stat-pill {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text2);
+}
+
+.fc-stat-pill[data-type="due"] { border-color: var(--orange-border); color: var(--orange); background: var(--orange-bg); }
+.fc-stat-pill[data-type="learned"] { border-color: var(--accent-border); color: var(--accent); background: var(--accent-bg); }
+.fc-stat-pill[data-type="new"] { border-color: var(--blue-border); color: var(--blue); background: var(--blue-bg); }
+
+/* Mode buttons */
+.fc-mode-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.fc-mode-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: left;
+}
+
+.fc-mode-btn:hover {
+  border-color: var(--accent);
+  background: var(--accent-bg);
+}
+
+.fc-mode-btn.active {
+  border-color: var(--accent);
+  background: var(--accent-bg);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.fc-mode-btn .fc-mode-count {
+  margin-left: auto;
+  font-size: 0.8rem;
+  color: var(--text3);
+  font-weight: 400;
+}
+
+/* Start button */
+.fc-start-btn {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 12px;
+  background: var(--accent);
+  color: #fff;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 14px rgba(45, 164, 78, 0.3);
+}
+
+.fc-start-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(45, 164, 78, 0.4);
+}
+
+.fc-start-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ── Session Screen ── */
+
+/* Progress bar */
+.fc-progress {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.fc-progress-counter {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text2);
+  white-space: nowrap;
+}
+
+.fc-progress-bar {
+  flex: 1;
+  height: 6px;
+  background: var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.fc-progress-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+/* Card */
+.fc-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  animation: fc-slide-in 0.3s ease;
+}
+
+@keyframes fc-slide-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fc-card-header {
+  padding: 20px 24px 16px;
+}
+
+.fc-type-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: var(--accent-bg);
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.fc-question {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* Reveal button */
+.fc-reveal-btn {
+  display: block;
+  width: calc(100% - 48px);
+  margin: 0 24px 20px;
+  padding: 14px;
+  border: 2px dashed var(--border2);
+  border-radius: 12px;
+  background: transparent;
+  color: var(--text2);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.fc-reveal-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-bg);
+}
+
+/* Hint button */
+.fc-hint-btn {
+  display: block;
+  width: calc(100% - 48px);
+  margin: 0 24px 12px;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text3);
+  font-family: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: left;
+}
+
+.fc-hint-btn:hover {
+  border-color: var(--orange-border);
+  color: var(--orange);
+}
+
+.fc-hint-btn.used {
+  background: var(--orange-bg);
+  border-color: var(--orange-border);
+  color: var(--text);
+  cursor: default;
+  white-space: pre-wrap;
+}
+
+/* Answer area */
+.fc-answer {
+  border-top: 1px solid var(--border);
+  padding: 20px 24px;
+  animation: fc-fade-in 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+@keyframes fc-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Grade buttons */
+.fc-grade-row {
+  display: flex;
+  gap: 8px;
+  padding: 0 24px 24px;
+}
+
+.fc-grade-btn {
+  flex: 1;
+  padding: 14px 8px;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.fc-grade-btn span {
+  display: block;
+  font-size: 1.3rem;
+  margin-bottom: 4px;
+}
+
+.fc-grade-btn[data-grade="1"] {
+  background: var(--red-bg);
+  border-color: var(--red-border);
+  color: var(--red);
+}
+.fc-grade-btn[data-grade="1"]:hover {
+  background: var(--red);
+  color: #fff;
+}
+
+.fc-grade-btn[data-grade="3"] {
+  background: var(--orange-bg);
+  border-color: var(--orange-border);
+  color: var(--orange);
+}
+.fc-grade-btn[data-grade="3"]:hover {
+  background: var(--orange);
+  color: #fff;
+}
+
+.fc-grade-btn[data-grade="5"] {
+  background: var(--accent-bg);
+  border-color: var(--accent-border);
+  color: var(--accent);
+}
+.fc-grade-btn[data-grade="5"]:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* Keyboard hint */
+.fc-keys-hint {
+  text-align: center;
+  padding: 0 24px 16px;
+  font-size: 0.75rem;
+  color: var(--text3);
+}
+
+.fc-keys-hint kbd {
+  display: inline-block;
+  padding: 2px 6px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--surface);
+  font-family: inherit;
+  font-size: 0.72rem;
+  margin: 0 1px;
+}
+
+/* ── Results Screen ── */
+.fc-results {
+  text-align: center;
+}
+
+.fc-results-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+/* Score bar */
+.fc-score-bar {
+  max-width: 300px;
+  margin: 0 auto 8px;
+  height: 12px;
+  background: var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.fc-score-fill {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 0.6s ease;
+}
+
+.fc-score-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text2);
+  margin-bottom: 24px;
+}
+
+/* Grade breakdown */
+.fc-breakdown {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.fc-breakdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.fc-breakdown-icon {
+  font-size: 1.5rem;
+}
+
+.fc-breakdown-count {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.fc-breakdown-label {
+  font-size: 0.75rem;
+  color: var(--text3);
+}
+
+/* Failed cards list */
+.fc-failed-list {
+  text-align: left;
+  margin-bottom: 24px;
+}
+
+.fc-failed-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--red);
+  margin-bottom: 8px;
+}
+
+.fc-failed-item {
+  padding: 8px 14px;
+  border-left: 3px solid var(--red-border);
+  background: var(--red-bg);
+  border-radius: 0 8px 8px 0;
+  margin-bottom: 6px;
+  font-size: 0.85rem;
+  color: var(--text);
+}
+
+/* Action buttons */
+.fc-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.fc-action-btn {
+  flex: 1;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.fc-action-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.fc-action-btn.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.fc-action-btn.primary:hover {
+  box-shadow: 0 4px 14px rgba(45, 164, 78, 0.3);
+}
+
+/* ── All-done state ── */
+.fc-all-done {
+  text-align: center;
+  padding: 40px 0;
+}
+
+.fc-all-done-icon {
+  font-size: 3rem;
+  margin-bottom: 12px;
+}
+
+.fc-all-done-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.fc-all-done-sub {
+  font-size: 0.85rem;
+  color: var(--text2);
+}
+
+/* ── Session exit ── */
+.fc-exit-btn {
+  display: block;
+  margin: 16px auto 0;
+  padding: 8px 20px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text3);
+  font-family: inherit;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.fc-exit-btn:hover {
+  border-color: var(--red-border);
+  color: var(--red);
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .fc-question { font-size: 1rem; }
+  .fc-grade-btn { padding: 12px 4px; font-size: 0.8rem; }
+  .fc-grade-btn span { font-size: 1.1rem; }
+  .fc-card-header { padding: 16px 18px 12px; }
+  .fc-answer { padding: 16px 18px; }
+  .fc-grade-row { padding: 0 18px 18px; }
+  .fc-reveal-btn { width: calc(100% - 36px); margin: 0 18px 16px; }
+  .fc-hint-btn { width: calc(100% - 36px); margin: 0 18px 10px; }
+  .fc-keys-hint { display: none; }
+}

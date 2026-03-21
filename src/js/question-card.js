@@ -81,7 +81,7 @@ export function buildQuestionBody(q, proofLabel, exampleLabel) {
     ${insightText ? `<div class="card-insight"><div class="card-insight-label">💡 Простыми словами</div><p class="card-insight-text">${nl(insightText)}</p></div>` : ''}
     ${noteText ? `<p class="card-note">📌 ${nl(noteText)}</p>` : ''}
     ${proofContent ? `
-      <div class="proof-toggle" onclick="this.classList.toggle('open');window.__renderMath?.(this.closest('.theorem-page') || this.closest('.quiz-card'))">
+      <div class="proof-toggle" onclick="this.classList.toggle('open');window.__renderMath?.(this.closest('.theorem-page') || this.closest('.quiz-card') || this.closest('.fc-answer') || this.closest('.fc-card'))">
         <span class="proof-toggle-icon">📐</span> ${proofTitle} <span class="adv-chevron">▸</span>
       </div>
       <div class="proof-body">
@@ -96,7 +96,7 @@ export function buildQuestionBody(q, proofLabel, exampleLabel) {
         ${q.example?.math ? `<div class="math-box">${q.example.math}</div>` : ''}
       </div>` : ''}
     ${q.advanced ? `
-      <div class="adv-toggle" onclick="this.classList.toggle('open');window.__renderMath?.(this.closest('.theorem-page'))">
+      <div class="adv-toggle" onclick="this.classList.toggle('open');window.__renderMath?.(this.closest('.theorem-page') || this.closest('.fc-answer') || this.closest('.fc-card'))">
         <span class="adv-toggle-icon">🎓</span> Строгая формулировка <span class="adv-chevron">▸</span>
       </div>
       <div class="adv-body"><div class="advanced-block"><p>${nl(q.advanced)}</p>
