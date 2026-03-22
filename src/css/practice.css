@@ -790,6 +790,61 @@
   padding: 0 4px;
 }
 
+/* Difficulty tabs */
+.pt-difficulty-tabs {
+  display: flex;
+  gap: 6px;
+  padding: 4px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.pt-diff-tab {
+  flex: 1;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text3);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.pt-diff-tab:hover {
+  color: var(--text);
+  background: rgba(99, 102, 241, 0.06);
+}
+
+.pt-diff-tab.active {
+  color: white;
+  background: var(--accent);
+  box-shadow: 0 2px 6px rgba(99, 102, 241, 0.25);
+}
+
+.pt-diff-count {
+  font-size: 0.72rem;
+  opacity: 0.7;
+  padding: 1px 5px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.pt-diff-tab.active .pt-diff-count {
+  background: rgba(255, 255, 255, 0.2);
+  opacity: 1;
+}
+
 /* Setup screen */
 .pt-setup {
   display: flex;
@@ -1604,14 +1659,16 @@
 }
 
 .es-ticket-btns,
-.es-timer-btns {
+.es-timer-btns,
+.es-diff-btns {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
 }
 
 .es-ticket-btn,
-.es-timer-btn {
+.es-timer-btn,
+.es-diff-btn {
   padding: 8px 14px;
   border: 1px solid var(--border);
   border-radius: 8px;
@@ -1622,19 +1679,37 @@
   cursor: pointer;
   transition: all 0.15s;
   font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .es-ticket-btn:hover,
-.es-timer-btn:hover {
+.es-timer-btn:hover,
+.es-diff-btn:hover {
   border-color: var(--accent);
   color: var(--accent);
 }
 
 .es-ticket-btn.active,
-.es-timer-btn.active {
+.es-timer-btn.active,
+.es-diff-btn.active {
   background: var(--accent);
   border-color: var(--accent);
   color: white;
+}
+
+.es-diff-count {
+  font-size: 0.72rem;
+  opacity: 0.6;
+  padding: 1px 5px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.es-diff-btn.active .es-diff-count {
+  background: rgba(255, 255, 255, 0.2);
+  opacity: 1;
 }
 
 /* History */

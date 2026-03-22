@@ -48,6 +48,8 @@ src/data/differential-equations/exam-practice/       ← экзамен: всё
 - Поле `steps` — пошаговые решения (5-7 шагов для сложных задач)
 - Поле `formula` — финальный ответ
 - Поле `plot` — графики для геометрических задач
+- **Сложность**: `section-02` = `MAIN` (экзаменационные), `section-03` = `EXTRA` (доп., проще).
+  См. `DIFFICULTY` в мастер-скилле и `classifySection()` в `practice-engine.js`.
 
 ---
 

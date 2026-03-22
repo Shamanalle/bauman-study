@@ -5,6 +5,21 @@ import { getPrefix } from './progress.js';
 
 const PRAC_SUFFIX = '_prac';
 
+// ── Difficulty classification ──
+export const DIFFICULTY = { ALL: 'all', MAIN: 'main', EXTRA: 'extra' };
+
+/**
+ * Classify a section as 'main' or 'extra' based on its section name.
+ * "✏️ Задачи" and "🎫 Билеты" → main (exam-level)
+ * "🎯 Доп. задачи" → extra (simpler/supplementary)
+ */
+export function classifySection(section) {
+  if (!section || !section.section) return DIFFICULTY.MAIN;
+  const name = section.section.toLowerCase();
+  if (name.includes('доп')) return DIFFICULTY.EXTRA;
+  return DIFFICULTY.MAIN;
+}
+
 // ── localStorage helpers ──
 
 function pracKey() { return getPrefix() + PRAC_SUFFIX; }
@@ -177,13 +192,16 @@ export function buildTrainingSession(questions, { topic = null, limit = 8, mode 
  * @param {number} count — number of tasks in the ticket
  * @returns {Array} selected questions
  */
-export function buildExamTicket(sections, count = 5) {
+export function buildExamTicket(sections, count = 5, { difficulty = DIFFICULTY.MAIN } = {}) {
   // Collect questions from problem sections (✏️) only
   const pool = [];
   for (const sec of sections) {
     if (sec.icon === '✏️') {
+      const diff = classifySection(sec);
+      // Filter by difficulty
+      if (difficulty !== DIFFICULTY.ALL && diff !== difficulty) continue;
       for (const q of sec.questions) {
-        pool.push({ ...q, _section: sec.section });
+        pool.push({ ...q, _section: sec.section, _difficulty: diff });
       }
     }
   }

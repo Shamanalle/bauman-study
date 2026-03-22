@@ -47,6 +47,8 @@ src/data/physics/exam-practice/         ← экзамен: всё
 - Поле `hint` — подсказка: какой закон/формулу применить
 - `formula` — ответ с единицами (`\text{ м/с}`, `\text{ Дж}`)
 - Поле `type` — тема (`Термодинамика`, `СТО`, `Динамика`)
+- **Сложность**: `section-02` = `MAIN` (экзаменационные), `section-03` = `EXTRA` (доп., проще).
+  См. `DIFFICULTY` в мастер-скилле и `classifySection()` в `practice-engine.js`.
 
 ---
 

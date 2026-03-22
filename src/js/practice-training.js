@@ -7,6 +7,7 @@ import { renderMath } from './math-utils.js';
 import { nl } from './text-utils.js';
 import { drawPlot } from './plot-utils.js';
 import * as engine from './practice-engine.js';
+import { DIFFICULTY, classifySection } from './practice-engine.js';
 
 let _meta = null;
 let _sections = [];
@@ -49,12 +50,13 @@ export function initTraining({ meta, sections }, onExit) {
   _sections = sections;
   _onExit = onExit;
 
-  // Collect all problems from ✏️ sections
+  // Collect all problems from ✏️ sections, tagging difficulty
   _allProblems = [];
   for (const sec of sections) {
     if (sec.icon === '✏️') {
+      const diff = classifySection(sec);
       for (const q of sec.questions) {
-        _allProblems.push({ ...q, _section: sec.section });
+        _allProblems.push({ ...q, _section: sec.section, _difficulty: diff });
       }
     }
   }
@@ -69,9 +71,27 @@ export function initTraining({ meta, sections }, onExit) {
 function showSetup() {
   cleanup();
   const container = getContainer();
-  const stats = engine.getOverallStats(_allProblems);
-  const topicStats = engine.getTopicStats(_allProblems);
+
+  // Check if we have both difficulty levels
+  const hasMain = _allProblems.some(q => q._difficulty === DIFFICULTY.MAIN);
+  const hasExtra = _allProblems.some(q => q._difficulty === DIFFICULTY.EXTRA);
+  const hasBoth = hasMain && hasExtra;
+
+  // Default difficulty filter
+  let selectedDifficulty = DIFFICULTY.ALL;
+  let filteredProblems = _allProblems;
+
+  function getFilteredProblems(diff) {
+    if (diff === DIFFICULTY.ALL) return _allProblems;
+    return _allProblems.filter(q => q._difficulty === diff);
+  }
+
+  const stats = engine.getOverallStats(filteredProblems);
+  const topicStats = engine.getTopicStats(filteredProblems);
   const pct = stats.total ? Math.round((stats.understood / stats.total) * 100) : 0;
+
+  const mainCount = _allProblems.filter(q => q._difficulty === DIFFICULTY.MAIN).length;
+  const extraCount = _allProblems.filter(q => q._difficulty === DIFFICULTY.EXTRA).length;
 
   // SVG ring
   const R = 58, C = 2 * Math.PI * R;
@@ -80,6 +100,14 @@ function showSetup() {
   container.innerHTML = `
     <div class="pt-container">
       <div class="pt-setup">
+        ${hasBoth ? `
+        <div class="pt-difficulty-tabs" id="ptDiffTabs">
+          <button class="pt-diff-tab active" data-diff="all">📋 Все <span class="pt-diff-count">${_allProblems.length}</span></button>
+          <button class="pt-diff-tab" data-diff="main">🎯 Задачи и билеты <span class="pt-diff-count">${mainCount}</span></button>
+          <button class="pt-diff-tab" data-diff="extra">📝 Доп. задачи <span class="pt-diff-count">${extraCount}</span></button>
+        </div>
+        ` : ''}
+
         <div class="pt-stats-ring">
           <svg width="140" height="140" viewBox="0 0 140 140">
             <circle class="pt-ring-bg" cx="70" cy="70" r="${R}" />
@@ -92,7 +120,7 @@ function showSetup() {
           </div>
         </div>
 
-        <div class="pt-stat-row">
+        <div class="pt-stat-row" id="ptStatRow">
           ${stats.weak ? `<div class="pt-stat-pill" data-type="weak">❌ ${stats.weak} слабых</div>` : ''}
           <div class="pt-stat-pill" data-type="ok">✅ ${stats.understood} понятых</div>
           ${stats.fresh ? `<div class="pt-stat-pill" data-type="fresh">🆕 ${stats.fresh} новых</div>` : ''}
@@ -146,6 +174,89 @@ function showSetup() {
     </div>
   `;
 
+  // Difficulty tabs — rebuild stats/topics when switching
+  if (hasBoth) {
+    function rebuildDynamicParts(diff) {
+      filteredProblems = getFilteredProblems(diff);
+      const newStats = engine.getOverallStats(filteredProblems);
+      const newTopicStats = engine.getTopicStats(filteredProblems);
+      const newPct = newStats.total ? Math.round((newStats.understood / newStats.total) * 100) : 0;
+
+      // Update ring
+      const newOffset = C - (C * newPct / 100);
+      const ringFill = container.querySelector('.pt-ring-fill');
+      const ringPct = container.querySelector('.pt-ring-pct');
+      if (ringFill) ringFill.setAttribute('stroke-dashoffset', newOffset);
+      if (ringPct) ringPct.textContent = newPct + '%';
+
+      // Update stat row
+      const statRow = document.getElementById('ptStatRow');
+      if (statRow) {
+        statRow.innerHTML = [
+          newStats.weak ? `<div class="pt-stat-pill" data-type="weak">❌ ${newStats.weak} слабых</div>` : '',
+          `<div class="pt-stat-pill" data-type="ok">✅ ${newStats.understood} понятых</div>`,
+          newStats.fresh ? `<div class="pt-stat-pill" data-type="fresh">🆕 ${newStats.fresh} новых</div>` : '',
+        ].join('');
+      }
+
+      // Update topic map
+      const topicMap = document.getElementById('ptTopicMap');
+      if (topicMap) {
+        topicMap.innerHTML = `<div class="pt-topic-map-title">📊 Покрытие по темам</div>` +
+          newTopicStats.map(t => {
+            const tPct2 = t.total ? Math.round((t.understood / t.total) * 100) : 0;
+            const barColor2 = tPct2 >= 70 ? 'var(--accent)' : tPct2 >= 30 ? 'var(--orange)' : 'var(--red)';
+            return `<div class="pt-topic-row" data-topic="${t.topic}">
+              <span class="pt-topic-name">${t.topic}</span>
+              <div class="pt-topic-bar">
+                <div class="pt-topic-fill" style="width:${tPct2}%;background:${barColor2}"></div>
+              </div>
+              <span class="pt-topic-count">${t.understood}/${t.total}</span>
+            </div>`;
+          }).join('');
+        // Re-attach topic map click handlers
+        topicMap.querySelectorAll('.pt-topic-row').forEach(row => {
+          row.style.cursor = 'pointer';
+          row.addEventListener('click', () => {
+            const topic = row.dataset.topic;
+            container.querySelectorAll('.pt-topic-btn').forEach(b => b.classList.remove('active'));
+            const targetBtn = container.querySelector(`.pt-topic-btn[data-topic="${topic}"]`);
+            if (targetBtn) targetBtn.classList.add('active');
+            selectedTopic = topic;
+          });
+        });
+      }
+
+      // Update topic buttons
+      const topicBtnsContainer = document.getElementById('ptTopicBtns');
+      if (topicBtnsContainer) {
+        topicBtnsContainer.innerHTML = `<button class="pt-topic-btn active" data-topic="all">🔀 Все</button>` +
+          (newStats.weak ? `<button class="pt-topic-btn" data-topic="__weak">❌ Слабые</button>` : '') +
+          newTopicStats.map(t => 
+            `<button class="pt-topic-btn" data-topic="${t.topic}">${t.topic} <span class="pt-topic-btn-count">${t.total}</span></button>`
+          ).join('');
+        // Re-attach topic button click handlers
+        selectedTopic = 'all';
+        topicBtnsContainer.querySelectorAll('.pt-topic-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            topicBtnsContainer.querySelectorAll('.pt-topic-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            selectedTopic = btn.dataset.topic;
+          });
+        });
+      }
+    }
+
+    container.querySelectorAll('.pt-diff-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        container.querySelectorAll('.pt-diff-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        selectedDifficulty = tab.dataset.diff;
+        rebuildDynamicParts(selectedDifficulty);
+      });
+    });
+  }
+
   // Topic selection
   let selectedTopic = 'all';
   container.querySelectorAll('.pt-topic-btn').forEach(btn => {
@@ -178,7 +289,7 @@ function showSetup() {
     });
   });
 
-  // Start
+  // Start — use filtered problems
   document.getElementById('ptStartBtn')?.addEventListener('click', () => {
     let mode = 'all';
     let topic = selectedTopic;
@@ -188,7 +299,7 @@ function showSetup() {
     } else if (selectedTopic === 'all') {
       topic = null;
     }
-    const session = engine.buildTrainingSession(_allProblems, {
+    const session = engine.buildTrainingSession(filteredProblems, {
       topic,
       limit: selectedSize,
       mode,

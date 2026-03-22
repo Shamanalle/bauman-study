@@ -5,6 +5,7 @@
 import { renderMath } from './math-utils.js';
 import { drawPlot } from './plot-utils.js';
 import * as engine from './practice-engine.js';
+import { DIFFICULTY, classifySection } from './practice-engine.js';
 
 let _meta = null;
 let _sections = [];
@@ -57,11 +58,17 @@ function showSetup() {
   // Check for real tickets (🎫 sections)
   const realTickets = engine.getRealTickets(_sections);
 
-  // Collect total problem count for random generation
-  let totalProblems = 0;
+  // Collect total problem count by difficulty
+  let mainCount = 0, extraCount = 0;
   for (const sec of _sections) {
-    if (sec.icon === '✏️') totalProblems += sec.questions.length;
+    if (sec.icon === '✏️') {
+      const diff = classifySection(sec);
+      if (diff === DIFFICULTY.MAIN) mainCount += sec.questions.length;
+      else extraCount += sec.questions.length;
+    }
   }
+  const totalProblems = mainCount + extraCount;
+  const hasBothDiff = mainCount > 0 && extraCount > 0;
 
   // Session history
   const history = engine.getSessionHistory().filter(s => s.mode === 'exam').slice(-5).reverse();
@@ -76,6 +83,17 @@ function showSetup() {
         </div>
 
         <div class="es-config">
+          ${hasBothDiff ? `
+          <div class="es-config-group">
+            <label class="es-config-label">📊 Сложность</label>
+            <div class="es-diff-btns" id="esDiffBtns">
+              <button class="es-diff-btn active" data-diff="main">🎯 Задачи и билеты <span class="es-diff-count">${mainCount}</span></button>
+              <button class="es-diff-btn" data-diff="extra">📝 Доп. задачи <span class="es-diff-count">${extraCount}</span></button>
+              <button class="es-diff-btn" data-diff="all">📋 Все <span class="es-diff-count">${totalProblems}</span></button>
+            </div>
+          </div>
+          ` : ''}
+
           <div class="es-config-group">
             <label class="es-config-label">📋 Билет</label>
             <div class="es-ticket-btns" id="esTicketBtns">
@@ -123,6 +141,16 @@ function showSetup() {
     </div>
   `;
 
+  // Difficulty selection (for exam, default to main/exam-level)
+  let selectedDifficulty = hasBothDiff ? DIFFICULTY.MAIN : DIFFICULTY.ALL;
+  container.querySelectorAll('.es-diff-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      container.querySelectorAll('.es-diff-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      selectedDifficulty = btn.dataset.diff;
+    });
+  });
+
   // Ticket selection
   let selectedTicket = 'random';
   container.querySelectorAll('.es-ticket-btn').forEach(btn => {
@@ -147,15 +175,13 @@ function showSetup() {
   document.getElementById('esStartBtn')?.addEventListener('click', () => {
     let tasks;
     if (selectedTicket === 'random') {
-      tasks = engine.buildExamTicket(_sections, 5);
+      tasks = engine.buildExamTicket(_sections, 5, { difficulty: selectedDifficulty });
     } else if (selectedTicket === 'random-3') {
-      tasks = engine.buildExamTicket(_sections, 3);
+      tasks = engine.buildExamTicket(_sections, 3, { difficulty: selectedDifficulty });
     } else if (selectedTicket.startsWith('real-')) {
       const idx = parseInt(selectedTicket.split('-')[1]);
       const ticket = realTickets[idx];
-      // Real ticket tasks — they may have nested structure from section-04
       if (ticket && ticket.steps) {
-        // Each step in a ticket is a separate task
         tasks = ticket.steps.map((step, i) => ({
           id: `${ticket.id}_t${i}`,
           title: step.title || `Задача ${i + 1}`,
@@ -166,10 +192,10 @@ function showSetup() {
           type: ticket.type || '',
         }));
       } else {
-        tasks = engine.buildExamTicket(_sections, 5);
+        tasks = engine.buildExamTicket(_sections, 5, { difficulty: selectedDifficulty });
       }
     } else {
-      tasks = engine.buildExamTicket(_sections, 5);
+      tasks = engine.buildExamTicket(_sections, 5, { difficulty: selectedDifficulty });
     }
 
     if (tasks.length > 0) {

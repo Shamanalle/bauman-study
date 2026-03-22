@@ -51,6 +51,8 @@ src/data/linear-algebra/kr-1-practice/        ← КР-1: ФНП — произ�
 - `type` — тема (`Собственные числа`, `Экстремум`, `Градиент`)
 - Задачи РК-1 и РК-2 — принципиально разные по структуре
 - Некоторые задачи имеют `type: undefined` — gracefully handle
+- **Сложность**: `section-02` = `MAIN` (экзаменационные), `section-03` = `EXTRA` (доп., проще).
+  См. `DIFFICULTY` в мастер-скилле и `classifySection()` в `practice-engine.js`.
 
 ---
 
