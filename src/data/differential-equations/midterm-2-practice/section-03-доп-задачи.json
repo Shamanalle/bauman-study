@@ -188,7 +188,8 @@
         },
         {
           "title": "Правая часть",
-          "math": "$$f(x)=y_0''-y_0=(x^2)''-x^2=2-x^2$$"
+          "math": "$$f(x)=y_0''-y_0=(x^2)''-x^2=2-x^2$$",
+          "text": "Подставляем числовые данные задачи и выполняем вычисления."
         },
         {
           "title": "Ответ",
@@ -264,7 +265,8 @@
         },
         {
           "title": "Общее решение",
-          "math": "$$y=C_1\\cos 2x+C_2\\sin 2x$$"
+          "math": "$$y=C_1\\cos 2x+C_2\\sin 2x$$",
+          "text": "Подставляем числовые данные задачи и выполняем вычисления."
         },
         {
           "title": "НУ",
@@ -399,11 +401,13 @@
       "steps": [
         {
           "title": "Подстановка",
-          "math": "$$p\\frac{dp}{dy}+p^2=0 \\Rightarrow p(p'+p)=0$$"
+          "math": "$$p\\frac{dp}{dy}+p^2=0 \\Rightarrow p(p'+p)=0$$",
+          "text": "Выполняем замену переменных и подставляем в уравнение."
         },
         {
           "title": "p≠0",
-          "math": "$$\\frac{dp}{dy}=-p \\Rightarrow p=Ce^{-y} \\Rightarrow \\frac{dy}{dx}=Ce^{-y} \\Rightarrow e^y\\,dy=C\\,dx$$"
+          "math": "$$\\frac{dp}{dy}=-p \\Rightarrow p=Ce^{-y} \\Rightarrow \\frac{dy}{dx}=Ce^{-y} \\Rightarrow e^y\\,dy=C\\,dx$$",
+          "text": "Подставляем числовые данные задачи и выполняем вычисления."
         },
         {
           "title": "Ответ",
@@ -426,7 +430,8 @@
         },
         {
           "title": "Разделяющееся",
-          "math": "$$\\frac{dp}{p}=\\frac{dx}{x} \\Rightarrow p=C_1 x \\Rightarrow y=\\frac{C_1 x^2}{2}+C_2$$"
+          "math": "$$\\frac{dp}{p}=\\frac{dx}{x} \\Rightarrow p=C_1 x \\Rightarrow y=\\frac{C_1 x^2}{2}+C_2$$",
+          "text": "Подставляем числовые данные задачи и выполняем вычисления."
         },
         {
           "title": "Ответ",
@@ -593,7 +598,8 @@
         },
         {
           "title": "Форма",
-          "math": "$$y_ч=Ax+B$$"
+          "math": "$$y_ч=Ax+B$$",
+          "text": "Подставляем числовые данные задачи и выполняем вычисления."
         },
         {
           "title": "Ответ",
@@ -699,7 +705,8 @@
         },
         {
           "title": "Подстановка и сравнение",
-          "math": "$$4Ax+2A+2B=x \\Rightarrow A=\\frac{1}{4},\\;B=-\\frac{1}{4}$$"
+          "math": "$$4Ax+2A+2B=x \\Rightarrow A=\\frac{1}{4},\\;B=-\\frac{1}{4}$$",
+          "text": "Сравниваем результаты для различных случаев."
         },
         {
           "title": "Ответ",
@@ -722,7 +729,8 @@
         },
         {
           "title": "Форма и подстановка",
-          "math": "$$2B\\cos x-2A\\sin x=\\sin x \\Rightarrow A=-\\frac{1}{2},\\;B=0$$"
+          "math": "$$2B\\cos x-2A\\sin x=\\sin x \\Rightarrow A=-\\frac{1}{2},\\;B=0$$",
+          "text": "Выполняем замену переменных и подставляем в уравнение."
         },
         {
           "title": "Ответ",
