@@ -10,9 +10,19 @@
       "tldr": "Подведение: d(x⁴)=4x³dx",
       "hint": "Замена $t=x^4+1$, $dt=4x^3\\,dx$",
       "steps": [
-        {"title": "Замена", "text": "$t=x^4+1$, $dt=4x^3 dx$:", "math": "$$\\int\\frac{x^3\\,dx}{x^4+1}=\\frac{1}{4}\\int\\frac{dt}{t}$$"},
-        {"title": "Интегрирование", "math": "$$=\\frac{1}{4}\\ln|t|+C$$"},
-        {"title": "Ответ", "math": "$$\\boxed{\\frac{1}{4}\\ln(x^4+1)+C}$$"}
+        {
+          "title": "Замена",
+          "text": "$t=x^4+1$, $dt=4x^3 dx$:",
+          "math": "$$\\int\\frac{x^3\\,dx}{x^4+1}=\\frac{1}{4}\\int\\frac{dt}{t}$$"
+        },
+        {
+          "title": "Интегрирование",
+          "math": "$$=\\frac{1}{4}\\ln|t|+C$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{\\frac{1}{4}\\ln(x^4+1)+C}$$"
+        }
       ],
       "formula": "\\frac{1}{4}\\ln(x^4+1)+C"
     },
@@ -24,9 +34,20 @@
       "tldr": "По частям: u=arctg x, dv=x dx",
       "hint": "$u=\\arctan x$, $dv=x\\,dx$ → $du=\\frac{dx}{1+x^2}$, $v=\\frac{x^2}{2}$",
       "steps": [
-        {"title": "По частям", "text": "$u=\\arctan x$, $dv=x\\,dx$:\n$v=x^2/2$, $du=dx/(1+x^2)$.", "math": "$$\\frac{x^2}{2}\\arctan x-\\frac{1}{2}\\int\\frac{x^2}{1+x^2}dx$$"},
-        {"title": "Упрощение", "text": "$\\frac{x^2}{1+x^2}=1-\\frac{1}{1+x^2}$.", "math": "$$=\\frac{x^2}{2}\\arctan x-\\frac{1}{2}(x-\\arctan x)+C$$"},
-        {"title": "Ответ", "math": "$$\\boxed{\\frac{x^2+1}{2}\\arctan x-\\frac{x}{2}+C}$$"}
+        {
+          "title": "По частям",
+          "text": "$u=\\arctan x$, $dv=x\\,dx$:\n$v=x^2/2$, $du=dx/(1+x^2)$.",
+          "math": "$$\\frac{x^2}{2}\\arctan x-\\frac{1}{2}\\int\\frac{x^2}{1+x^2}dx$$"
+        },
+        {
+          "title": "Упрощение",
+          "text": "$\\frac{x^2}{1+x^2}=1-\\frac{1}{1+x^2}$.",
+          "math": "$$=\\frac{x^2}{2}\\arctan x-\\frac{1}{2}(x-\\arctan x)+C$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{\\frac{x^2+1}{2}\\arctan x-\\frac{x}{2}+C}$$"
+        }
       ],
       "formula": "\\frac{x^2+1}{2}\\arctan x-\\frac{x}{2}+C"
     },
@@ -38,9 +59,19 @@
       "tldr": "Нечёт. степень sin: отщепляем sin x·dx",
       "hint": "$\\sin^3 x=(1-\\cos^2 x)\\sin x$, замена $t=\\cos x$",
       "steps": [
-        {"title": "Разложение", "text": "$\\sin^3 x\\cos^2 x=(1-\\cos^2 x)\\cos^2 x\\sin x$. Замена $t=\\cos x$, $dt=-\\sin x\\,dx$:", "math": "$$-\\int(1-t^2)t^2\\,dt=-\\int(t^2-t^4)dt$$"},
-        {"title": "Интегрирование", "math": "$$=-\\frac{t^3}{3}+\\frac{t^5}{5}+C$$"},
-        {"title": "Ответ", "math": "$$\\boxed{\\frac{\\cos^5 x}{5}-\\frac{\\cos^3 x}{3}+C}$$"}
+        {
+          "title": "Разложение",
+          "text": "$\\sin^3 x\\cos^2 x=(1-\\cos^2 x)\\cos^2 x\\sin x$. Замена $t=\\cos x$, $dt=-\\sin x\\,dx$:",
+          "math": "$$-\\int(1-t^2)t^2\\,dt=-\\int(t^2-t^4)dt$$"
+        },
+        {
+          "title": "Интегрирование",
+          "math": "$$=-\\frac{t^3}{3}+\\frac{t^5}{5}+C$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{\\frac{\\cos^5 x}{5}-\\frac{\\cos^3 x}{3}+C}$$"
+        }
       ],
       "formula": "\\frac{\\cos^5 x}{5}-\\frac{\\cos^3 x}{3}+C"
     },
@@ -52,8 +83,15 @@
       "tldr": "Выделение полного квадрата: (x+2)²+4",
       "hint": "$x^2+4x+8=(x+2)^2+4$ → табличный $\\int\\frac{dt}{t^2+a^2}$",
       "steps": [
-        {"title": "Полный квадрат", "text": "$x^2+4x+8=(x+2)^2+4$. Замена $t=x+2$:", "math": "$$\\int\\frac{dt}{t^2+4}=\\frac{1}{2}\\arctan\\frac{t}{2}+C$$"},
-        {"title": "Ответ", "math": "$$\\boxed{\\frac{1}{2}\\arctan\\frac{x+2}{2}+C}$$"}
+        {
+          "title": "Полный квадрат",
+          "text": "$x^2+4x+8=(x+2)^2+4$. Замена $t=x+2$:",
+          "math": "$$\\int\\frac{dt}{t^2+4}=\\frac{1}{2}\\arctan\\frac{t}{2}+C$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{\\frac{1}{2}\\arctan\\frac{x+2}{2}+C}$$"
+        }
       ],
       "formula": "\\frac{1}{2}\\arctan\\frac{x+2}{2}+C"
     },
@@ -65,9 +103,18 @@
       "tldr": "Разложение: x²−x−2=(x−2)(x+1)",
       "hint": "$\\frac{3x+1}{(x-2)(x+1)}=\\frac{A}{x-2}+\\frac{B}{x+1}$. Найти $A$, $B$",
       "steps": [
-        {"title": "Разложение", "text": "$\\frac{3x+1}{(x-2)(x+1)}=\\frac{A}{x-2}+\\frac{B}{x+1}$.\n\n$x=2$: $7=3A$ → $A=7/3$. $x=-1$: $-2=-3B$ → $B=2/3$."},
-        {"title": "Интегрирование", "math": "$$\\frac{7}{3}\\ln|x-2|+\\frac{2}{3}\\ln|x+1|+C$$"},
-        {"title": "Ответ", "math": "$$\\boxed{\\frac{7}{3}\\ln|x-2|+\\frac{2}{3}\\ln|x+1|+C}$$"}
+        {
+          "title": "Разложение",
+          "text": "$\\frac{3x+1}{(x-2)(x+1)}=\\frac{A}{x-2}+\\frac{B}{x+1}$.\n\n$x=2$: $7=3A$ → $A=7/3$. $x=-1$: $-2=-3B$ → $B=2/3$."
+        },
+        {
+          "title": "Интегрирование",
+          "math": "$$\\frac{7}{3}\\ln|x-2|+\\frac{2}{3}\\ln|x+1|+C$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{\\frac{7}{3}\\ln|x-2|+\\frac{2}{3}\\ln|x+1|+C}$$"
+        }
       ],
       "formula": "\\frac{7}{3}\\ln|x-2|+\\frac{2}{3}\\ln|x+1|+C"
     },
@@ -79,9 +126,21 @@
       "tldr": "Двойное по частям → уравнение на I",
       "hint": "Два раза по частям: $u=\\cos x$, $dv=e^x dx$, затем $u=\\sin x$ → получится уравнение $I=...-I$",
       "steps": [
-        {"title": "Первое по частям", "text": "$u=\\cos x$, $dv=e^x dx$:", "math": "$$I=e^x\\cos x+\\int e^x\\sin x\\,dx$$"},
-        {"title": "Второе по частям", "text": "$u=\\sin x$, $dv=e^x dx$:", "math": "$$I=e^x\\cos x+e^x\\sin x-I$$"},
-        {"title": "Ответ", "text": "$2I=e^x(\\cos x+\\sin x)$.", "math": "$$\\boxed{\\frac{e^x(\\cos x+\\sin x)}{2}+C}$$"}
+        {
+          "title": "Первое по частям",
+          "text": "$u=\\cos x$, $dv=e^x dx$:",
+          "math": "$$I=e^x\\cos x+\\int e^x\\sin x\\,dx$$"
+        },
+        {
+          "title": "Второе по частям",
+          "text": "$u=\\sin x$, $dv=e^x dx$:",
+          "math": "$$I=e^x\\cos x+e^x\\sin x-I$$"
+        },
+        {
+          "title": "Ответ",
+          "text": "$2I=e^x(\\cos x+\\sin x)$.",
+          "math": "$$\\boxed{\\frac{e^x(\\cos x+\\sin x)}{2}+C}$$"
+        }
       ],
       "formula": "\\frac{e^x(\\cos x+\\sin x)}{2}+C"
     },
@@ -93,9 +152,20 @@
       "tldr": "Замена t=1/x → −∫dt/√(1+t²)",
       "hint": "Замена $t=1/x$, $dx=-dt/t^2$ → $-\\int\\frac{dt}{\\sqrt{1+t^2}}$",
       "steps": [
-        {"title": "Замена t=1/x", "text": "$x=1/t$, $dx=-dt/t^2$, $\\sqrt{x^2+1}=\\sqrt{1/t^2+1}=\\sqrt{1+t^2}/|t|$.", "math": "$$-\\int\\frac{t\\,dt}{t^2\\cdot\\sqrt{1+t^2}/t}=-\\int\\frac{dt}{\\sqrt{1+t^2}}$$"},
-        {"title": "Табличный интеграл", "math": "$$=-\\ln|t+\\sqrt{1+t^2}|+C$$"},
-        {"title": "Ответ", "text": "Обратная замена $t=1/x$:", "math": "$$\\boxed{-\\ln\\left|\\frac{1}{x}+\\sqrt{1+\\frac{1}{x^2}}\\right|+C}$$"}
+        {
+          "title": "Замена t=1/x",
+          "text": "$x=1/t$, $dx=-dt/t^2$, $\\sqrt{x^2+1}=\\sqrt{1/t^2+1}=\\sqrt{1+t^2}/|t|$.",
+          "math": "$$-\\int\\frac{t\\,dt}{t^2\\cdot\\sqrt{1+t^2}/t}=-\\int\\frac{dt}{\\sqrt{1+t^2}}$$"
+        },
+        {
+          "title": "Табличный интеграл",
+          "math": "$$=-\\ln|t+\\sqrt{1+t^2}|+C$$"
+        },
+        {
+          "title": "Ответ",
+          "text": "Обратная замена $t=1/x$:",
+          "math": "$$\\boxed{-\\ln\\left|\\frac{1}{x}+\\sqrt{1+\\frac{1}{x^2}}\\right|+C}$$"
+        }
       ],
       "formula": "\\ln\\left|\\frac{x}{1+\\sqrt{1+x^2}}\\right|+C"
     },
@@ -107,9 +177,20 @@
       "tldr": "Двойное по частям: u=x², u=2x",
       "hint": "По частям дважды: $u=x^2$ → $u=2x$ → табличный",
       "steps": [
-        {"title": "Первое по частям", "text": "$u=x^2$, $dv=e^x dx$:", "math": "$$x^2 e^x-2\\int xe^x\\,dx$$"},
-        {"title": "Второе по частям", "text": "$u=x$, $dv=e^x dx$:", "math": "$$=x^2 e^x-2(xe^x-e^x)+C$$"},
-        {"title": "Ответ", "math": "$$\\boxed{e^x(x^2-2x+2)+C}$$"}
+        {
+          "title": "Первое по частям",
+          "text": "$u=x^2$, $dv=e^x dx$:",
+          "math": "$$x^2 e^x-2\\int xe^x\\,dx$$"
+        },
+        {
+          "title": "Второе по частям",
+          "text": "$u=x$, $dv=e^x dx$:",
+          "math": "$$=x^2 e^x-2(xe^x-e^x)+C$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{e^x(x^2-2x+2)+C}$$"
+        }
       ],
       "formula": "e^x(x^2-2x+2)+C"
     },
@@ -121,9 +202,19 @@
       "tldr": "sin x·cos x = sin(2x)/2",
       "hint": "$\\frac{1}{\\sin x\\cos x}=\\frac{2}{\\sin 2x}=2\\csc 2x$",
       "steps": [
-        {"title": "Упрощение", "text": "$\\sin x\\cos x=\\frac{\\sin 2x}{2}$ →", "math": "$$2\\int\\frac{dx}{\\sin 2x}=2\\int\\csc 2x\\,dx$$"},
-        {"title": "Табличный", "math": "$$=\\ln|\\tan x|+C$$"},
-        {"title": "Ответ", "math": "$$\\boxed{\\ln|\\tan x|+C}$$"}
+        {
+          "title": "Упрощение",
+          "text": "$\\sin x\\cos x=\\frac{\\sin 2x}{2}$ →",
+          "math": "$$2\\int\\frac{dx}{\\sin 2x}=2\\int\\csc 2x\\,dx$$"
+        },
+        {
+          "title": "Табличный",
+          "math": "$$=\\ln|\\tan x|+C$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{\\ln|\\tan x|+C}$$"
+        }
       ],
       "formula": "\\ln|\\tan x|+C"
     },
@@ -131,13 +222,22 @@
       "id": "Д2.1",
       "title": "S: y=x², y=√x",
       "type": "Задача · 6 б. · Площадь (декарт.)",
-      "formalText": "**Вычислить площадь фигуры:**\n$$y=x^2,\\quad y=\\sqrt{x}$$",
+      "formalText": "**Вычислить площадь фигуры:**\n$$y=x^2,\\quad y=\\sqrt{x}$$. Сделать чертёж.",
       "tldr": "Пересечение x=0,1; S=∫(√x−x²)dx",
       "hint": "Пересечение: $x^2=\\sqrt{x}$ → $x^4=x$ → $x=0,1$. $S=\\int_0^1(\\sqrt{x}-x^2)dx$",
       "steps": [
-        {"title": "Пересечения", "text": "$x^2=\\sqrt{x}$ → $x^4=x$ → $x(x^3-1)=0$ → $x=0,1$."},
-        {"title": "Площадь", "math": "$$S=\\int_0^1(x^{1/2}-x^2)dx=\\left[\\frac{2x^{3/2}}{3}-\\frac{x^3}{3}\\right]_0^1=\\frac{2}{3}-\\frac{1}{3}$$"},
-        {"title": "Ответ", "math": "$$\\boxed{S=\\frac{1}{3}}$$"}
+        {
+          "title": "Пересечения",
+          "text": "$x^2=\\sqrt{x}$ → $x^4=x$ → $x(x^3-1)=0$ → $x=0,1$."
+        },
+        {
+          "title": "Площадь",
+          "math": "$$S=\\int_0^1(x^{1/2}-x^2)dx=\\left[\\frac{2x^{3/2}}{3}-\\frac{x^3}{3}\\right]_0^1=\\frac{2}{3}-\\frac{1}{3}$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{S=\\frac{1}{3}}$$"
+        }
       ],
       "formula": "\\frac{1}{3}"
     },
@@ -145,13 +245,22 @@
       "id": "Д2.2",
       "title": "V_x: y=sin x, [0,π]",
       "type": "Задача · 6 б. · Объём (Ox)",
-      "formalText": "**Объём тела вращения вокруг Ox:**\n$$y=\\sin x,\\quad x\\in[0,\\pi]$$",
+      "formalText": "**Объём тела вращения вокруг Ox:**\n$$y=\\sin x,\\quad x\\in[0,\\pi]$$. Сделать чертёж.",
       "tldr": "V=π∫sin²x dx, формула понижения степени",
       "hint": "$V=\\pi\\int_0^\\pi\\sin^2 x\\,dx$. Используй $\\sin^2 x=\\frac{1-\\cos 2x}{2}$",
       "steps": [
-        {"title": "Формула объёма", "math": "$$V=\\pi\\int_0^\\pi\\sin^2 x\\,dx=\\pi\\int_0^\\pi\\frac{1-\\cos 2x}{2}dx$$"},
-        {"title": "Вычисление", "math": "$$=\\frac{\\pi}{2}\\left[x-\\frac{\\sin 2x}{2}\\right]_0^\\pi=\\frac{\\pi}{2}\\cdot\\pi$$"},
-        {"title": "Ответ", "math": "$$\\boxed{V=\\frac{\\pi^2}{2}}$$"}
+        {
+          "title": "Формула объёма",
+          "math": "$$V=\\pi\\int_0^\\pi\\sin^2 x\\,dx=\\pi\\int_0^\\pi\\frac{1-\\cos 2x}{2}dx$$"
+        },
+        {
+          "title": "Вычисление",
+          "math": "$$=\\frac{\\pi}{2}\\left[x-\\frac{\\sin 2x}{2}\\right]_0^\\pi=\\frac{\\pi}{2}\\cdot\\pi$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{V=\\frac{\\pi^2}{2}}$$"
+        }
       ],
       "formula": "\\frac{\\pi^2}{2}"
     },
@@ -159,12 +268,20 @@
       "id": "Д2.3",
       "title": "L: y=x³/3, x∈[0,1]",
       "type": "Задача · 6 б. · Длина дуги",
-      "formalText": "**Длина дуги:**\n$$y=\\frac{x^3}{3},\\quad x\\in[0,1]$$",
+      "formalText": "**Длина дуги:**\n$$y=\\frac{x^3}{3},\\quad x\\in[0,1]$$. Сделать чертёж.",
       "tldr": "L=∫√(1+x⁴)dx — подстановка",
       "hint": "$y'=x^2$ → $L=\\int_0^1\\sqrt{1+x^4}\\,dx$",
       "steps": [
-        {"title": "Формула длины", "text": "$y'=x^2$.", "math": "$$L=\\int_0^1\\sqrt{1+x^4}\\,dx$$"},
-        {"title": "Вычисление", "text": "Этот интеграл — эллиптический, не берётся в элементарных. Численно: $L \\approx 1.0894$.", "math": "$$\\boxed{L=\\int_0^1\\sqrt{1+x^4}\\,dx\\approx 1.089}$$"}
+        {
+          "title": "Формула длины",
+          "text": "$y'=x^2$.",
+          "math": "$$L=\\int_0^1\\sqrt{1+x^4}\\,dx$$"
+        },
+        {
+          "title": "Вычисление",
+          "text": "Этот интеграл — эллиптический, не берётся в элементарных. Численно: $L \\approx 1.0894$.",
+          "math": "$$\\boxed{L=\\int_0^1\\sqrt{1+x^4}\\,dx\\approx 1.089}$$"
+        }
       ],
       "formula": "\\int_0^1\\sqrt{1+x^4}\\,dx"
     },
@@ -172,13 +289,23 @@
       "id": "Д2.4",
       "title": "S: r=2cos φ",
       "type": "Задача · 6 б. · Площадь (полярные)",
-      "formalText": "**Площадь фигуры:**\n$$r=2\\cos\\varphi$$",
+      "formalText": "**Площадь фигуры:**\n$$r=2\\cos\\varphi$$. Сделать чертёж.",
       "tldr": "Окружность r=2cosφ: S=½∫r²dφ=π",
       "hint": "$S=\\frac{1}{2}\\int_{-\\pi/2}^{\\pi/2}4\\cos^2\\varphi\\,d\\varphi$. Это окружность радиуса 1",
       "steps": [
-        {"title": "Формула", "text": "Кривая замкнута при $\\varphi\\in[-\\pi/2,\\pi/2]$.", "math": "$$S=\\frac{1}{2}\\int_{-\\pi/2}^{\\pi/2}4\\cos^2\\varphi\\,d\\varphi=2\\int_{-\\pi/2}^{\\pi/2}\\frac{1+\\cos 2\\varphi}{2}d\\varphi$$"},
-        {"title": "Вычисление", "math": "$$=\\left[\\varphi+\\frac{\\sin 2\\varphi}{2}\\right]_{-\\pi/2}^{\\pi/2}=\\pi$$"},
-        {"title": "Ответ", "math": "$$\\boxed{S=\\pi}$$"}
+        {
+          "title": "Формула",
+          "text": "Кривая замкнута при $\\varphi\\in[-\\pi/2,\\pi/2]$.",
+          "math": "$$S=\\frac{1}{2}\\int_{-\\pi/2}^{\\pi/2}4\\cos^2\\varphi\\,d\\varphi=2\\int_{-\\pi/2}^{\\pi/2}\\frac{1+\\cos 2\\varphi}{2}d\\varphi$$"
+        },
+        {
+          "title": "Вычисление",
+          "math": "$$=\\left[\\varphi+\\frac{\\sin 2\\varphi}{2}\\right]_{-\\pi/2}^{\\pi/2}=\\pi$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{S=\\pi}$$"
+        }
       ],
       "formula": "\\pi"
     },
@@ -186,13 +313,23 @@
       "id": "Д2.5",
       "title": "V_y: x²+y²/4=1",
       "type": "Задача · 6 б. · Объём (Oy)",
-      "formalText": "**Объём тела вращения вокруг Oy:**\n$$x^2+\\frac{y^2}{4}=1$$",
+      "formalText": "**Объём тела вращения вокруг Oy:**\n$$x^2+\\frac{y^2}{4}=1$$. Сделать чертёж.",
       "tldr": "Эллипс: V_y=π∫x²dy=π∫(1−y²/4)dy",
       "hint": "Эллипс $a=1$, $b=2$. Вращение вокруг Oy: $x^2=1-y^2/4$, $y\\in[-2,2]$",
       "steps": [
-        {"title": "Формула", "text": "$x^2=1-y^2/4$. По симметрии:", "math": "$$V=2\\pi\\int_0^2\\left(1-\\frac{y^2}{4}\\right)dy$$"},
-        {"title": "Вычисление", "math": "$$=2\\pi\\left[y-\\frac{y^3}{12}\\right]_0^2=2\\pi\\left(2-\\frac{8}{12}\\right)=2\\pi\\cdot\\frac{4}{3}$$"},
-        {"title": "Ответ", "math": "$$\\boxed{V=\\frac{8\\pi}{3}}$$"}
+        {
+          "title": "Формула",
+          "text": "$x^2=1-y^2/4$. По симметрии:",
+          "math": "$$V=2\\pi\\int_0^2\\left(1-\\frac{y^2}{4}\\right)dy$$"
+        },
+        {
+          "title": "Вычисление",
+          "math": "$$=2\\pi\\left[y-\\frac{y^3}{12}\\right]_0^2=2\\pi\\left(2-\\frac{8}{12}\\right)=2\\pi\\cdot\\frac{4}{3}$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{V=\\frac{8\\pi}{3}}$$"
+        }
       ],
       "formula": "\\frac{8\\pi}{3}"
     },
@@ -200,13 +337,22 @@
       "id": "Д2.6",
       "title": "S: y=eˣ, y=e⁻ˣ, x=1",
       "type": "Задача · 6 б. · Площадь (декарт.)",
-      "formalText": "**Площадь фигуры:**\n$$y=e^x,\\;y=e^{-x},\\;x=1$$",
+      "formalText": "**Площадь фигуры:**\n$$y=e^x,\\;y=e^{-x},\\;x=1$$. Сделать чертёж.",
       "tldr": "Пересечение x=0; S=∫₀¹(eˣ−e⁻ˣ)dx",
       "hint": "$e^x=e^{-x}$ → $x=0$. $S=\\int_0^1(e^x-e^{-x})dx$",
       "steps": [
-        {"title": "Пересечения", "text": "$e^x=e^{-x}$ → $e^{2x}=1$ → $x=0$."},
-        {"title": "Площадь", "math": "$$S=\\int_0^1(e^x-e^{-x})dx=[e^x+e^{-x}]_0^1=(e+e^{-1})-(1+1)$$"},
-        {"title": "Ответ", "math": "$$\\boxed{S=e+e^{-1}-2}$$"}
+        {
+          "title": "Пересечения",
+          "text": "$e^x=e^{-x}$ → $e^{2x}=1$ → $x=0$."
+        },
+        {
+          "title": "Площадь",
+          "math": "$$S=\\int_0^1(e^x-e^{-x})dx=[e^x+e^{-x}]_0^1=(e+e^{-1})-(1+1)$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{S=e+e^{-1}-2}$$"
+        }
       ],
       "formula": "e+e^{-1}-2"
     },
@@ -214,12 +360,20 @@
       "id": "Д2.7",
       "title": "S пов.: y=x², [0,1] вокруг Ox",
       "type": "Задача · 6 б. · Площадь поверхности",
-      "formalText": "**Площадь поверхности вращения:**\n$$y=x^2,\\;x\\in[0,1]\\text{ вокруг Ox}$$",
+      "formalText": "**Площадь поверхности вращения:**\n$$y=x^2,\\;x\\in[0,1]\\text{ вокруг Ox}$$. Сделать чертёж.",
       "tldr": "P=2π∫y√(1+y'²)dx, y'=2x",
       "hint": "$P=2\\pi\\int_0^1 x^2\\sqrt{1+4x^2}\\,dx$",
       "steps": [
-        {"title": "Формула", "text": "$y'=2x$.", "math": "$$P=2\\pi\\int_0^1 x^2\\sqrt{1+4x^2}\\,dx$$"},
-        {"title": "Замена", "text": "$2x=\\sinh t$ или тригонометрическая. Результат:", "math": "$$\\boxed{P=\\frac{\\pi}{6}(5\\sqrt{5}-1)}$$"}
+        {
+          "title": "Формула",
+          "text": "$y'=2x$.",
+          "math": "$$P=2\\pi\\int_0^1 x^2\\sqrt{1+4x^2}\\,dx$$"
+        },
+        {
+          "title": "Ответ",
+          "text": "$2x=\\sinh t$ или тригонометрическая. Результат:",
+          "math": "$$\\boxed{P=\\frac{\\pi}{6}(5\\sqrt{5}-1)}$$"
+        }
       ],
       "formula": "\\frac{\\pi}{6}(5\\sqrt{5}-1)"
     },
@@ -227,13 +381,23 @@
       "id": "Д2.8",
       "title": "L: кардиоида r=1+cos φ",
       "type": "Задача · 6 б. · Длина дуги",
-      "formalText": "**Длина кардиоиды:**\n$$r=1+\\cos\\varphi$$",
+      "formalText": "**Длина кардиоиды:**\n$$r=1+\\cos\\varphi$$. Сделать чертёж.",
       "tldr": "L=∫₀²π √(r²+r'²)dφ, r'=−sinφ",
       "hint": "$L=\\int_0^{2\\pi}\\sqrt{(1+\\cos\\varphi)^2+\\sin^2\\varphi}\\,d\\varphi = \\int_0^{2\\pi}\\sqrt{2+2\\cos\\varphi}\\,d\\varphi$",
       "steps": [
-        {"title": "Формула", "text": "$r'=-\\sin\\varphi$. $r^2+r'^2=(1+\\cos\\varphi)^2+\\sin^2\\varphi=2+2\\cos\\varphi=4\\cos^2(\\varphi/2)$.", "math": "$$L=\\int_0^{2\\pi}2|\\cos(\\varphi/2)|\\,d\\varphi=4\\int_0^\\pi\\cos(\\varphi/2)d\\varphi$$"},
-        {"title": "Вычисление", "math": "$$=4\\cdot[2\\sin(\\varphi/2)]_0^\\pi=8$$"},
-        {"title": "Ответ", "math": "$$\\boxed{L=8}$$"}
+        {
+          "title": "Формула",
+          "text": "$r'=-\\sin\\varphi$. $r^2+r'^2=(1+\\cos\\varphi)^2+\\sin^2\\varphi=2+2\\cos\\varphi=4\\cos^2(\\varphi/2)$.",
+          "math": "$$L=\\int_0^{2\\pi}2|\\cos(\\varphi/2)|\\,d\\varphi=4\\int_0^\\pi\\cos(\\varphi/2)d\\varphi$$"
+        },
+        {
+          "title": "Вычисление",
+          "math": "$$=4\\cdot[2\\sin(\\varphi/2)]_0^\\pi=8$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{L=8}$$"
+        }
       ],
       "formula": "8"
     },
@@ -241,13 +405,22 @@
       "id": "Д2.9",
       "title": "S: y=x², y=2x",
       "type": "Задача · 6 б. · Площадь (декарт.)",
-      "formalText": "**Площадь фигуры:**\n$$y=x^2,\\quad y=2x$$",
+      "formalText": "**Площадь фигуры:**\n$$y=x^2,\\quad y=2x$$. Сделать чертёж.",
       "tldr": "Пересечение x=0,2; S=∫(2x−x²)dx",
       "hint": "$x^2=2x$ → $x=0,2$. $S=\\int_0^2(2x-x^2)dx$",
       "steps": [
-        {"title": "Пересечения", "text": "$x^2=2x$ → $x(x-2)=0$ → $x=0,2$."},
-        {"title": "Площадь", "math": "$$S=\\int_0^2(2x-x^2)dx=\\left[x^2-\\frac{x^3}{3}\\right]_0^2=4-\\frac{8}{3}$$"},
-        {"title": "Ответ", "math": "$$\\boxed{S=\\frac{4}{3}}$$"}
+        {
+          "title": "Пересечения",
+          "text": "$x^2=2x$ → $x(x-2)=0$ → $x=0,2$."
+        },
+        {
+          "title": "Площадь",
+          "math": "$$S=\\int_0^2(2x-x^2)dx=\\left[x^2-\\frac{x^3}{3}\\right]_0^2=4-\\frac{8}{3}$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{S=\\frac{4}{3}}$$"
+        }
       ],
       "formula": "\\frac{4}{3}"
     },
@@ -259,8 +432,15 @@
       "tldr": "f ~ 1/x² при x→∞, p=2>1 → сх.",
       "hint": "$\\frac{1}{x^2+x}\\sim\\frac{1}{x^2}$ при $x\\to\\infty$, $p=2>1$",
       "steps": [
-        {"title": "Эквивалент", "text": "При $x\\to\\infty$: $x^2+x\\sim x^2$ → $f\\sim 1/x^2$, $p=2$."},
-        {"title": "Ответ", "text": "$p=2>1$ → **сходится**. Более того: $\\frac{1}{x(x+1)}=\\frac{1}{x}-\\frac{1}{x+1}$ → $\\int_1^\\infty=\\ln 2$.", "math": "$$\\boxed{\\text{Сходится } (=\\ln 2)}$$"}
+        {
+          "title": "Эквивалент",
+          "text": "При $x\\to\\infty$: $x^2+x\\sim x^2$ → $f\\sim 1/x^2$, $p=2$."
+        },
+        {
+          "title": "Ответ",
+          "text": "$p=2>1$ → **сходится**. Более того: $\\frac{1}{x(x+1)}=\\frac{1}{x}-\\frac{1}{x+1}$ → $\\int_1^\\infty=\\ln 2$.",
+          "math": "$$\\boxed{\\text{Сходится } (=\\ln 2)}$$"
+        }
       ],
       "formula": "\\ln 2"
     },
@@ -272,8 +452,15 @@
       "tldr": "x−x²=x(1−x), две особые точки x=0,1, p=1/2<1",
       "hint": "Особые точки $x=0$ и $x=1$. При $x\\to 0$: $\\sqrt{x-x^2}\\sim\\sqrt{x}$ → $p=1/2<1$",
       "steps": [
-        {"title": "Анализ", "text": "$x-x^2=x(1-x)$. Особые: $x=0$ ($f\\sim 1/\\sqrt{x}$, $p=1/2$) и $x=1$ ($f\\sim 1/\\sqrt{1-x}$, $p=1/2$)."},
-        {"title": "Ответ", "text": "Оба $p=1/2<1$ → оба НИ **сходятся**. $\\int_0^1\\frac{dx}{\\sqrt{x(1-x)}}=\\pi$.", "math": "$$\\boxed{\\text{Сходится } (=\\pi)}$$"}
+        {
+          "title": "Анализ",
+          "text": "$x-x^2=x(1-x)$. Особые: $x=0$ ($f\\sim 1/\\sqrt{x}$, $p=1/2$) и $x=1$ ($f\\sim 1/\\sqrt{1-x}$, $p=1/2$)."
+        },
+        {
+          "title": "Ответ",
+          "text": "Оба $p=1/2<1$ → оба НИ **сходятся**. $\\int_0^1\\frac{dx}{\\sqrt{x(1-x)}}=\\pi$.",
+          "math": "$$\\boxed{\\text{Сходится } (=\\pi)}$$"
+        }
       ],
       "formula": "\\pi"
     },
@@ -285,8 +472,14 @@
       "tldr": "sin(1/x) ~ 1/x → f ~ 1/x², p=2>1 → сх.",
       "hint": "При $x\\to\\infty$: $\\sin(1/x)\\sim 1/x$ → $f\\sim 1/x^2$, $p=2>1$",
       "steps": [
-        {"title": "Эквивалент", "text": "При $x\\to\\infty$: $\\sin(1/x)\\sim 1/x$. Значит $f\\sim 1/x^2$, $p=2$."},
-        {"title": "Ответ", "math": "$$\\boxed{\\text{Сходится (} p=2>1\\text{)}}$$"}
+        {
+          "title": "Эквивалент",
+          "text": "При $x\\to\\infty$: $\\sin(1/x)\\sim 1/x$. Значит $f\\sim 1/x^2$, $p=2$."
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{\\text{Сходится (} p=2>1\\text{)}}$$"
+        }
       ],
       "formula": "\\text{Сходится}"
     },
@@ -298,8 +491,15 @@
       "tldr": "Подведение: t=ln x → ∫dt/t², сх.",
       "hint": "Замена $t=\\ln x$, $dt=dx/x$ → $\\int_{\\ln 2}^\\infty \\frac{dt}{t^2}$, сходится",
       "steps": [
-        {"title": "Замена", "text": "$t=\\ln x$, $dt=dx/x$:", "math": "$$\\int_{\\ln 2}^\\infty\\frac{dt}{t^2}=\\left[-\\frac{1}{t}\\right]_{\\ln 2}^\\infty=\\frac{1}{\\ln 2}$$"},
-        {"title": "Ответ", "math": "$$\\boxed{\\text{Сходится } (=1/\\ln 2)}$$"}
+        {
+          "title": "Замена",
+          "text": "$t=\\ln x$, $dt=dx/x$:",
+          "math": "$$\\int_{\\ln 2}^\\infty\\frac{dt}{t^2}=\\left[-\\frac{1}{t}\\right]_{\\ln 2}^\\infty=\\frac{1}{\\ln 2}$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{\\text{Сходится } (=1/\\ln 2)}$$"
+        }
       ],
       "formula": "\\frac{1}{\\ln 2}"
     },
@@ -311,8 +511,15 @@
       "tldr": "НИ 2-го рода (x=0). Прямое вычисление: −1",
       "hint": "При $x\\to 0^+$: $\\ln x \\to -\\infty$. По частям: $\\int\\ln x\\,dx=x\\ln x-x$",
       "steps": [
-        {"title": "Вычисление", "text": "$\\int_0^1\\ln x\\,dx=[x\\ln x-x]_0^1$.\n\n$(1\\cdot 0-1)-\\lim_{x\\to 0^+}(x\\ln x-x)=-1-0=-1$.", "math": "$$\\lim_{x\\to 0^+}x\\ln x=0$$"},
-        {"title": "Ответ", "math": "$$\\boxed{\\text{Сходится } (=-1)}$$"}
+        {
+          "title": "Вычисление",
+          "text": "$\\int_0^1\\ln x\\,dx=[x\\ln x-x]_0^1$.\n\n$(1\\cdot 0-1)-\\lim_{x\\to 0^+}(x\\ln x-x)=-1-0=-1$.",
+          "math": "$$\\lim_{x\\to 0^+}x\\ln x=0$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{\\text{Сходится } (=-1)}$$"
+        }
       ],
       "formula": "-1"
     },
@@ -324,8 +531,14 @@
       "tldr": "Степенной: p=3/2>1 → сх. = 2",
       "hint": "$x^{-3/2}$: $p=3/2>1$ → сходится",
       "steps": [
-        {"title": "Вычисление", "math": "$$\\int_1^\\infty x^{-3/2}dx=\\left[\\frac{x^{-1/2}}{-1/2}\\right]_1^\\infty=0-(-2)=2$$"},
-        {"title": "Ответ", "math": "$$\\boxed{\\text{Сходится } (=2)}$$"}
+        {
+          "title": "Вычисление",
+          "math": "$$\\int_1^\\infty x^{-3/2}dx=\\left[\\frac{x^{-1/2}}{-1/2}\\right]_1^\\infty=0-(-2)=2$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{\\text{Сходится } (=2)}$$"
+        }
       ],
       "formula": "2"
     },
@@ -337,8 +550,15 @@
       "tldr": "t=ln x → ∫dt/t = ln(ln x) → расх.",
       "hint": "Замена $t=\\ln x$ → $\\int_0^\\infty dt/t$ — расходится",
       "steps": [
-        {"title": "Замена", "text": "$t=\\ln x$:", "math": "$$\\int_0^\\infty\\frac{dt}{t}=\\lim_{A\\to\\infty}\\ln A=+\\infty$$"},
-        {"title": "Ответ", "math": "$$\\boxed{\\text{Расходится}}$$"}
+        {
+          "title": "Замена",
+          "text": "$t=\\ln x$:",
+          "math": "$$\\int_0^\\infty\\frac{dt}{t}=\\lim_{A\\to\\infty}\\ln A=+\\infty$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{\\text{Расходится}}$$"
+        }
       ],
       "formula": "\\text{Расходится}"
     },
@@ -350,8 +570,14 @@
       "tldr": "Показательная: e⁻ˣ → 0 быстро, = 1",
       "hint": "$\\int_0^\\infty e^{-x}dx=[-e^{-x}]_0^\\infty=0-(-1)=1$",
       "steps": [
-        {"title": "Вычисление", "math": "$$\\int_0^\\infty e^{-x}dx=[-e^{-x}]_0^\\infty=1$$"},
-        {"title": "Ответ", "math": "$$\\boxed{\\text{Сходится } (=1)}$$"}
+        {
+          "title": "Вычисление",
+          "math": "$$\\int_0^\\infty e^{-x}dx=[-e^{-x}]_0^\\infty=1$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{\\text{Сходится } (=1)}$$"
+        }
       ],
       "formula": "1"
     },
@@ -363,8 +589,14 @@
       "tldr": "p=3/4<1 → сх. = 4",
       "hint": "$p=3/4<1$ → **сходится**",
       "steps": [
-        {"title": "Вычисление", "math": "$$\\int_0^1 x^{-3/4}dx=\\left[\\frac{x^{1/4}}{1/4}\\right]_0^1=4$$"},
-        {"title": "Ответ", "math": "$$\\boxed{\\text{Сходится } (=4)}$$"}
+        {
+          "title": "Вычисление",
+          "math": "$$\\int_0^1 x^{-3/4}dx=\\left[\\frac{x^{1/4}}{1/4}\\right]_0^1=4$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{\\text{Сходится } (=4)}$$"
+        }
       ],
       "formula": "4"
     },
@@ -376,8 +608,16 @@
       "tldr": "Нет x: p=y', pp'−p²=y²ln y",
       "hint": "Замена $p=y'$, $y''=p\\frac{dp}{dy}$. Делим на $yp$: Бернулли для $p(y)$",
       "steps": [
-        {"title": "Замена p = y'", "text": "$y''=p\\frac{dp}{dy}$: $yp\\frac{dp}{dy}-p^2=y^2\\ln y$.\n\nДелим на $yp$: $\\frac{dp}{dy}-\\frac{p}{y}=\\frac{y\\ln y}{p}$ — Бернулли ($n=-1$).", "math": "$$z'-\\frac{2z}{y}=2y\\ln y$$"},
-        {"title": "Решение", "text": "Замена $z=p^2$. ИМ: $\\mu=y^{-2}$.\n$(zy^{-2})'=2y^{-1}\\ln y$.\n$zy^{-2}=2(\\ln y - 1)\\ln y/... $\n\nОбщее решение определяется квадратурой.", "math": "$$\\boxed{p^2 = y^2(\\ln^2 y + C)}$$"}
+        {
+          "title": "Замена p = y'",
+          "text": "$y''=p\\frac{dp}{dy}$: $yp\\frac{dp}{dy}-p^2=y^2\\ln y$.\n\nДелим на $yp$: $\\frac{dp}{dy}-\\frac{p}{y}=\\frac{y\\ln y}{p}$ — Бернулли ($n=-1$).",
+          "math": "$$z'-\\frac{2z}{y}=2y\\ln y$$"
+        },
+        {
+          "title": "Ответ",
+          "text": "Замена $z=p^2$. ИМ: $\\mu=y^{-2}$.\n$(zy^{-2})'=2y^{-1}\\ln y$.\n$zy^{-2}=2(\\ln y - 1)\\ln y/... $\n\nОбщее решение определяется квадратурой.",
+          "math": "$$\\boxed{p^2 = y^2(\\ln^2 y + C)}$$"
+        }
       ],
       "formula": "p^2 = y^2(\\ln^2 y + C)"
     },
@@ -389,8 +629,16 @@
       "tldr": "Нет y: p=y', xp'=p+xp² → Бернулли",
       "hint": "Замена $p=y'$: $xp'=p+xp^2$ → $p'-p/x=p^2$ — Бернулли ($n=2$)",
       "steps": [
-        {"title": "Замена p = y'", "text": "$p'-\\frac{p}{x}=p^2$. Бернулли ($n=2$). $z=1/p$, $z'=-p'/p^2$:\n$z'+z/x=-1$ → линейное.", "math": "$$z'+\\frac{z}{x}=-1$$"},
-        {"title": "Решение", "text": "ИМ: $\\mu=x$. $(zx)'=-x$ → $zx=-x^2/2+C$ → $z=-x/2+C/x$.", "math": "$$\\boxed{\\frac{1}{y'}=-\\frac{x}{2}+\\frac{C}{x}}$$"}
+        {
+          "title": "Замена p = y'",
+          "text": "$p'-\\frac{p}{x}=p^2$. Бернулли ($n=2$). $z=1/p$, $z'=-p'/p^2$:\n$z'+z/x=-1$ → линейное.",
+          "math": "$$z'+\\frac{z}{x}=-1$$"
+        },
+        {
+          "title": "Ответ",
+          "text": "ИМ: $\\mu=x$. $(zx)'=-x$ → $zx=-x^2/2+C$ → $z=-x/2+C/x$.",
+          "math": "$$\\boxed{\\frac{1}{y'}=-\\frac{x}{2}+\\frac{C}{x}}$$"
+        }
       ],
       "formula": "\\frac{1}{y'}=-\\frac{x}{2}+\\frac{C}{x}"
     },
@@ -402,8 +650,16 @@
       "tldr": "Нет x: p=y', pp'=2yp² → разделяемое",
       "hint": "Замена $p=y'$: $p\\frac{dp}{dy}=2yp^2$. Делим на $p$: $\\frac{dp}{p}=2y\\,dy$",
       "steps": [
-        {"title": "Разделение", "text": "$\\frac{dp}{p}=2y\\,dy$ → $\\ln|p|=y^2+C_1$ → $p=Ae^{y^2}$.", "math": "$$y'=Ae^{y^2}$$"},
-        {"title": "Ответ", "text": "Разделяем: $e^{-y^2}dy=A\\,dx$. Интеграл Гаусса не берётся в элементарных.", "math": "$$\\boxed{y'=C_1 e^{y^2}}$$"}
+        {
+          "title": "Разделение",
+          "text": "$\\frac{dp}{p}=2y\\,dy$ → $\\ln|p|=y^2+C_1$ → $p=Ae^{y^2}$.",
+          "math": "$$y'=Ae^{y^2}$$"
+        },
+        {
+          "title": "Ответ",
+          "text": "Разделяем: $e^{-y^2}dy=A\\,dx$. Интеграл Гаусса не берётся в элементарных.",
+          "math": "$$\\boxed{y'=C_1 e^{y^2}}$$"
+        }
       ],
       "formula": "y'=C_1 e^{y^2}"
     },
@@ -415,8 +671,16 @@
       "tldr": "Нет y: p=y', p'−p/x=x² → линейное",
       "hint": "Замена $p=y'$: $xp'-p=x^3$ → $p'-p/x=x^2$. ИМ: $\\mu=1/x$",
       "steps": [
-        {"title": "Замена p = y'", "text": "$p'-p/x=x^2$. ИМ: $\\mu=1/x$.", "math": "$$\\left(\\frac{p}{x}\\right)'=x$$"},
-        {"title": "Решение", "text": "$p/x=x^2/2+C_1$ → $p=x^3/2+C_1 x$.\n$y=x^4/8+C_1 x^2/2+C_2$.", "math": "$$\\boxed{y=\\frac{x^4}{8}+C_1\\frac{x^2}{2}+C_2}$$"}
+        {
+          "title": "Замена p = y'",
+          "text": "$p'-p/x=x^2$. ИМ: $\\mu=1/x$.",
+          "math": "$$\\left(\\frac{p}{x}\\right)'=x$$"
+        },
+        {
+          "title": "Ответ",
+          "text": "$p/x=x^2/2+C_1$ → $p=x^3/2+C_1 x$.\n$y=x^4/8+C_1 x^2/2+C_2$.",
+          "math": "$$\\boxed{y=\\frac{x^4}{8}+C_1\\frac{x^2}{2}+C_2}$$"
+        }
       ],
       "formula": "\\frac{x^4}{8}+C_1\\frac{x^2}{2}+C_2"
     },
@@ -428,8 +692,16 @@
       "tldr": "Нет x: (yp)'=0 → yp=C",
       "hint": "$p=y'$: $ypp'+p^2=0$. Замечаем: $(y\\cdot p)' = yp'+p\\cdot y' = yp'+p^2$ при $y'=p$. Нет! Точнее: $\\frac{d(y^2 y')}{dx}=...$. Проще: замена $z=p^2$.",
       "steps": [
-        {"title": "Замена", "text": "$p=y'$, $y''=pp'_y$: $ypp'+p^2=0$. Делим на $p$: $yp'+p=0$ → $(yp)'_y=0$... Или: замена $z=y^2$: $z'=2yy'$, $z''=2(yy''+(y')^2)=0$ → $z''=0$.", "math": "$$z''=0$$"},
-        {"title": "Ответ", "text": "$z=ax+b$ → $y^2=ax+b$.", "math": "$$\\boxed{y^2=C_1 x+C_2}$$"}
+        {
+          "title": "Замена",
+          "text": "$p=y'$, $y''=pp'_y$: $ypp'+p^2=0$. Делим на $p$: $yp'+p=0$ → $(yp)'_y=0$... Или: замена $z=y^2$: $z'=2yy'$, $z''=2(yy''+(y')^2)=0$ → $z''=0$.",
+          "math": "$$z''=0$$"
+        },
+        {
+          "title": "Ответ",
+          "text": "$z=ax+b$ → $y^2=ax+b$.",
+          "math": "$$\\boxed{y^2=C_1 x+C_2}$$"
+        }
       ],
       "formula": "y^2=C_1 x+C_2"
     },
@@ -441,8 +713,16 @@
       "tldr": "Автономное: p'=1+2p² → разделяемое",
       "hint": "Нет ни $x$, ни $y$: $p=y'$, $p'=1+2p^2$ → $\\frac{dp}{1+2p^2}=dx$",
       "steps": [
-        {"title": "Разделение", "text": "$\\frac{dp}{1+2p^2}=dx$ → $\\frac{1}{\\sqrt{2}}\\arctan(p\\sqrt{2})=x+C_1$.", "math": "$$p=y'=\\frac{1}{\\sqrt{2}}\\tan(\\sqrt{2}(x+C_1))$$"},
-        {"title": "Ответ", "text": "$y=-\\frac{1}{2}\\ln|\\cos(\\sqrt{2}(x+C_1))|+C_2$.", "math": "$$\\boxed{y=-\\frac{1}{2}\\ln|\\cos(\\sqrt{2}(x+C_1))|+C_2}$$"}
+        {
+          "title": "Разделение",
+          "text": "$\\frac{dp}{1+2p^2}=dx$ → $\\frac{1}{\\sqrt{2}}\\arctan(p\\sqrt{2})=x+C_1$.",
+          "math": "$$p=y'=\\frac{1}{\\sqrt{2}}\\tan(\\sqrt{2}(x+C_1))$$"
+        },
+        {
+          "title": "Ответ",
+          "text": "$y=-\\frac{1}{2}\\ln|\\cos(\\sqrt{2}(x+C_1))|+C_2$.",
+          "math": "$$\\boxed{y=-\\frac{1}{2}\\ln|\\cos(\\sqrt{2}(x+C_1))|+C_2}$$"
+        }
       ],
       "formula": "y=-\\frac{1}{2}\\ln|\\cos(\\sqrt{2}(x+C_1))|+C_2"
     },
@@ -454,9 +734,21 @@
       "tldr": "Эйлер: t=ln x → y''−3y'+2y=e³ᵗ",
       "hint": "Замена $x=e^t$: ОДУ с пост. коэфф. $\\ddot y-3\\dot y+2y=e^{3t}$",
       "steps": [
-        {"title": "Замена x=eᵗ", "text": "$x=e^t$, $xy'=\\dot y$, $x^2 y''=\\ddot y-\\dot y$.\n$\\ddot y-\\dot y-2\\dot y+2y=e^{3t}$ → $\\ddot y-3\\dot y+2y=e^{3t}$.", "math": "$$\\ddot y-3\\dot y+2y=e^{3t}$$"},
-        {"title": "Решение", "text": "ХУ: $k^2-3k+2=(k-1)(k-2)=0$. $y_{oo}=C_1 e^t+C_2 e^{2t}$.\n$\\alpha=3$, $s=0$ → $y_ч=Ae^{3t}$: $9A-9A+2A=1$ → $A=1/2$.", "math": "$$y=C_1 e^t+C_2 e^{2t}+\\frac{e^{3t}}{2}$$"},
-        {"title": "Ответ", "text": "Обратно $e^t=x$:", "math": "$$\\boxed{y=C_1 x+C_2 x^2+\\frac{x^3}{2}}$$"}
+        {
+          "title": "Замена x=eᵗ",
+          "text": "$x=e^t$, $xy'=\\dot y$, $x^2 y''=\\ddot y-\\dot y$.\n$\\ddot y-\\dot y-2\\dot y+2y=e^{3t}$ → $\\ddot y-3\\dot y+2y=e^{3t}$.",
+          "math": "$$\\ddot y-3\\dot y+2y=e^{3t}$$"
+        },
+        {
+          "title": "Решение",
+          "text": "ХУ: $k^2-3k+2=(k-1)(k-2)=0$. $y_{oo}=C_1 e^t+C_2 e^{2t}$.\n$\\alpha=3$, $s=0$ → $y_ч=Ae^{3t}$: $9A-9A+2A=1$ → $A=1/2$.",
+          "math": "$$y=C_1 e^t+C_2 e^{2t}+\\frac{e^{3t}}{2}$$"
+        },
+        {
+          "title": "Ответ",
+          "text": "Обратно $e^t=x$:",
+          "math": "$$\\boxed{y=C_1 x+C_2 x^2+\\frac{x^3}{2}}$$"
+        }
       ],
       "formula": "C_1 x+C_2 x^2+\\frac{x^3}{2}"
     },
@@ -468,8 +760,15 @@
       "tldr": "Нет x: p=y', pp'=e²ʸ → pdp=e²ʸdy",
       "hint": "$p\\,dp=e^{2y}dy$ → $p^2/2=e^{2y}/2+C$",
       "steps": [
-        {"title": "Разделение", "text": "$p=y'$, $pp'=e^{2y}$: $p\\,dp=e^{2y}dy$.", "math": "$$\\frac{p^2}{2}=\\frac{e^{2y}}{2}+C$$"},
-        {"title": "Ответ", "math": "$$\\boxed{(y')^2=e^{2y}+C}$$"}
+        {
+          "title": "Разделение",
+          "text": "$p=y'$, $pp'=e^{2y}$: $p\\,dp=e^{2y}dy$.",
+          "math": "$$\\frac{p^2}{2}=\\frac{e^{2y}}{2}+C$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{(y')^2=e^{2y}+C}$$"
+        }
       ],
       "formula": "(y')^2=e^{2y}+C"
     },
@@ -481,8 +780,16 @@
       "tldr": "Нет x: (p/sin y)'=0 → p'/p=cos y/sin y",
       "hint": "Замена $p=y'$: $pp'\\sin y=p^2\\cos y$ → $p'/p=\\cos y/\\sin y=\\cot y$",
       "steps": [
-        {"title": "Разделение", "text": "$\\frac{dp}{p}=\\cot y\\,dy$ → $\\ln|p|=\\ln|\\sin y|+C_1$ → $p=A\\sin y$.", "math": "$$y'=C_1\\sin y$$"},
-        {"title": "Ответ", "text": "$\\frac{dy}{\\sin y}=C_1 dx$ → $\\ln|\\tan(y/2)|=C_1 x+C_2$.", "math": "$$\\boxed{\\ln|\\tan(y/2)|=C_1 x+C_2}$$"}
+        {
+          "title": "Разделение",
+          "text": "$\\frac{dp}{p}=\\cot y\\,dy$ → $\\ln|p|=\\ln|\\sin y|+C_1$ → $p=A\\sin y$.",
+          "math": "$$y'=C_1\\sin y$$"
+        },
+        {
+          "title": "Ответ",
+          "text": "$\\frac{dy}{\\sin y}=C_1 dx$ → $\\ln|\\tan(y/2)|=C_1 x+C_2$.",
+          "math": "$$\\boxed{\\ln|\\tan(y/2)|=C_1 x+C_2}$$"
+        }
       ],
       "formula": "\\ln|\\tan(y/2)|=C_1 x+C_2"
     },
@@ -494,9 +801,18 @@
       "tldr": "ХУ: k(k−1)(k+1)=0. xe⁻ˣ рез.! cos x — нет",
       "hint": "$k=0,1,-1$. $xe^{-x}$: $\\alpha=-1$, $s=1$ → $xe^{-x}(A_0+A_1 x)$. $\\cos x$: $\\pm i$, $s=0$",
       "steps": [
-        {"title": "ХУ", "text": "$k^3-k=k(k-1)(k+1)=0$ → $k=0,1,-1$."},
-        {"title": "Подбор", "text": "**1)** $xe^{-x}$: $\\alpha=-1$, $s=1$ → $xe^{-x}(A_0+A_1 x)$.\n**2)** $\\cos x$: $\\pm i$, $s=0$ → $B_1\\cos x+B_2\\sin x$."},
-        {"title": "Ответ", "math": "$$\\boxed{y_{oo}+xe^{-x}(A_0+A_1 x)+(B_1\\cos x+B_2\\sin x)}$$"}
+        {
+          "title": "ХУ",
+          "text": "$k^3-k=k(k-1)(k+1)=0$ → $k=0,1,-1$."
+        },
+        {
+          "title": "Подбор",
+          "text": "**1)** $xe^{-x}$: $\\alpha=-1$, $s=1$ → $xe^{-x}(A_0+A_1 x)$.\n**2)** $\\cos x$: $\\pm i$, $s=0$ → $B_1\\cos x+B_2\\sin x$."
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y_{oo}+xe^{-x}(A_0+A_1 x)+(B_1\\cos x+B_2\\sin x)}$$"
+        }
       ],
       "formula": "\\text{вид общего решения (подбор)}"
     },
@@ -508,9 +824,18 @@
       "tldr": "ХУ: k²(k²+1)=0 → k=0²,±i",
       "hint": "$k=0,0,\\pm i$. $x^2$: $\\alpha=0$, $s=2$ → $x^2(A_0+A_1 x+A_2 x^2)$. $e^{-x}\\sin x$: $-1\\pm i$, $s=0$",
       "steps": [
-        {"title": "ХУ", "text": "$k^4+k^2=k^2(k^2+1)=0$ → $k=0,0,\\pm i$."},
-        {"title": "Подбор", "text": "**1)** $x^2$: $\\alpha=0$, $s=2$ → $x^2(A_0+A_1 x+A_2 x^2)$.\n**2)** $e^{-x}\\sin x$: $-1\\pm i$, $s=0$ → $e^{-x}(B_1\\cos x+B_2\\sin x)$."},
-        {"title": "Ответ", "math": "$$\\boxed{y_{oo}+x^2(A_0+A_1 x+A_2 x^2)+e^{-x}(B_1\\cos x+B_2\\sin x)}$$"}
+        {
+          "title": "ХУ",
+          "text": "$k^4+k^2=k^2(k^2+1)=0$ → $k=0,0,\\pm i$."
+        },
+        {
+          "title": "Подбор",
+          "text": "**1)** $x^2$: $\\alpha=0$, $s=2$ → $x^2(A_0+A_1 x+A_2 x^2)$.\n**2)** $e^{-x}\\sin x$: $-1\\pm i$, $s=0$ → $e^{-x}(B_1\\cos x+B_2\\sin x)$."
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y_{oo}+x^2(A_0+A_1 x+A_2 x^2)+e^{-x}(B_1\\cos x+B_2\\sin x)}$$"
+        }
       ],
       "formula": "\\text{вид общего решения (подбор)}"
     },
@@ -522,9 +847,18 @@
       "tldr": "ХУ: k=±2i. ±2i — корень! s=1",
       "hint": "$k=\\pm 2i$. $x\\sin 2x$: $\\pm 2i$ — корень, $s=1$, полином ст. 1",
       "steps": [
-        {"title": "ХУ", "text": "$k^2+4=0$ → $k=\\pm 2i$."},
-        {"title": "Подбор", "text": "$x\\sin 2x$: $\\pm 2i$ — корень, $s=1$. Полином ст. 1 → $x[(A_0+A_1 x)\\cos 2x+(B_0+B_1 x)\\sin 2x]$."},
-        {"title": "Ответ", "math": "$$\\boxed{y_{oo}+x[(A_0+A_1 x)\\cos 2x+(B_0+B_1 x)\\sin 2x]}$$"}
+        {
+          "title": "ХУ",
+          "text": "$k^2+4=0$ → $k=\\pm 2i$."
+        },
+        {
+          "title": "Подбор",
+          "text": "$x\\sin 2x$: $\\pm 2i$ — корень, $s=1$. Полином ст. 1 → $x[(A_0+A_1 x)\\cos 2x+(B_0+B_1 x)\\sin 2x]$."
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y_{oo}+x[(A_0+A_1 x)\\cos 2x+(B_0+B_1 x)\\sin 2x]}$$"
+        }
       ],
       "formula": "\\text{вид общего решения (подбор)}"
     },
@@ -536,9 +870,18 @@
       "tldr": "ХУ: k=±2. e²ˣ рез.! x³ — нет",
       "hint": "$k=2,-2$. $e^{2x}$: $\\alpha=2$, $s=1$ → $Axe^{2x}$. $x^3$: $\\alpha=0$, $s=0$",
       "steps": [
-        {"title": "ХУ", "text": "$(k-2)(k+2)=0$ → $k=\\pm 2$."},
-        {"title": "Подбор", "text": "**1)** $e^{2x}$: $\\alpha=2$, $s=1$ → $Axe^{2x}$.\n**2)** $x^3$: $\\alpha=0$, $s=0$ → $B_0+B_1 x+B_2 x^2+B_3 x^3$."},
-        {"title": "Ответ", "math": "$$\\boxed{y_{oo}+Axe^{2x}+(B_0+B_1 x+B_2 x^2+B_3 x^3)}$$"}
+        {
+          "title": "ХУ",
+          "text": "$(k-2)(k+2)=0$ → $k=\\pm 2$."
+        },
+        {
+          "title": "Подбор",
+          "text": "**1)** $e^{2x}$: $\\alpha=2$, $s=1$ → $Axe^{2x}$.\n**2)** $x^3$: $\\alpha=0$, $s=0$ → $B_0+B_1 x+B_2 x^2+B_3 x^3$."
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y_{oo}+Axe^{2x}+(B_0+B_1 x+B_2 x^2+B_3 x^3)}$$"
+        }
       ],
       "formula": "\\text{вид общего решения (подбор)}"
     },
@@ -550,9 +893,18 @@
       "tldr": "ХУ: k=±i. ±i — корень! s=1",
       "hint": "$k=\\pm i$. $x\\cos x$: $\\pm i$ — корень, $s=1$",
       "steps": [
-        {"title": "ХУ", "text": "$k^2+1=0$ → $k=\\pm i$."},
-        {"title": "Подбор", "text": "$\\pm i$ — корень, $s=1$. Полином ст. 1 → $x[(A_0+A_1 x)\\cos x+(B_0+B_1 x)\\sin x]$."},
-        {"title": "Ответ", "math": "$$\\boxed{y_{oo}+x[(A_0+A_1 x)\\cos x+(B_0+B_1 x)\\sin x]}$$"}
+        {
+          "title": "ХУ",
+          "text": "$k^2+1=0$ → $k=\\pm i$."
+        },
+        {
+          "title": "Подбор",
+          "text": "$\\pm i$ — корень, $s=1$. Полином ст. 1 → $x[(A_0+A_1 x)\\cos x+(B_0+B_1 x)\\sin x]$."
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y_{oo}+x[(A_0+A_1 x)\\cos x+(B_0+B_1 x)\\sin x]}$$"
+        }
       ],
       "formula": "\\text{вид общего решения (подбор)}"
     },
@@ -564,9 +916,18 @@
       "tldr": "ХУ: (k−3)²=0. e³ˣ рез. s=2!",
       "hint": "$k=3$ (кр. 2). $e^{3x}$: $\\alpha=3$, $s=2$ → $Ax^2 e^{3x}$. $x$: $\\alpha=0$, $s=0$",
       "steps": [
-        {"title": "ХУ", "text": "$(k-3)^2=0$ → $k=3$ (кр. 2)."},
-        {"title": "Подбор", "text": "$e^{3x}$: $s=2$ → $Ax^2 e^{3x}$. $x$: $s=0$ → $Bx+C$."},
-        {"title": "Ответ", "math": "$$\\boxed{(C_1+C_2 x)e^{3x}+Ax^2 e^{3x}+Bx+C}$$"}
+        {
+          "title": "ХУ",
+          "text": "$(k-3)^2=0$ → $k=3$ (кр. 2)."
+        },
+        {
+          "title": "Подбор",
+          "text": "$e^{3x}$: $s=2$ → $Ax^2 e^{3x}$. $x$: $s=0$ → $Bx+C$."
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{(C_1+C_2 x)e^{3x}+Ax^2 e^{3x}+Bx+C}$$"
+        }
       ],
       "formula": "\\text{вид общего решения (подбор)}"
     },
@@ -578,9 +939,18 @@
       "tldr": "ХУ: k²(k+1)=0 → k=0²,−1",
       "hint": "$k^2(k+1)=0$. $e^{-x}$: $\\alpha=-1$, $s=1$ → $Axe^{-x}$. $x^2$: $\\alpha=0$, $s=2$",
       "steps": [
-        {"title": "ХУ", "text": "$k^3+k^2=k^2(k+1)=0$ → $k=0,0,-1$."},
-        {"title": "Подбор", "text": "$e^{-x}$: $s=1$ → $Axe^{-x}$. $x^2$: $s=2$ → $x^2(B_0+B_1 x+B_2 x^2)$."},
-        {"title": "Ответ", "math": "$$\\boxed{y_{oo}+Axe^{-x}+x^2(B_0+B_1 x+B_2 x^2)}$$"}
+        {
+          "title": "ХУ",
+          "text": "$k^3+k^2=k^2(k+1)=0$ → $k=0,0,-1$."
+        },
+        {
+          "title": "Подбор",
+          "text": "$e^{-x}$: $s=1$ → $Axe^{-x}$. $x^2$: $s=2$ → $x^2(B_0+B_1 x+B_2 x^2)$."
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y_{oo}+Axe^{-x}+x^2(B_0+B_1 x+B_2 x^2)}$$"
+        }
       ],
       "formula": "\\text{вид общего решения (подбор)}"
     },
@@ -592,9 +962,18 @@
       "tldr": "ХУ: k=±1. sin x: нет. eˣ: рез.!",
       "hint": "$k=1,-1$. $\\sin x$: $\\pm i$, $s=0$ → $A\\cos x+B\\sin x$. $e^x$: $s=1$ → $Cxe^x$",
       "steps": [
-        {"title": "ХУ", "text": "$k^2-1=(k-1)(k+1)=0$ → $k=\\pm 1$."},
-        {"title": "Подбор", "text": "$\\sin x$: $s=0$ → $A\\cos x+B\\sin x$. $e^x$: $s=1$ → $Cxe^x$."},
-        {"title": "Ответ", "math": "$$\\boxed{C_1 e^x+C_2 e^{-x}+(A\\cos x+B\\sin x)+Cxe^x}$$"}
+        {
+          "title": "ХУ",
+          "text": "$k^2-1=(k-1)(k+1)=0$ → $k=\\pm 1$."
+        },
+        {
+          "title": "Подбор",
+          "text": "$\\sin x$: $s=0$ → $A\\cos x+B\\sin x$. $e^x$: $s=1$ → $Cxe^x$."
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{C_1 e^x+C_2 e^{-x}+(A\\cos x+B\\sin x)+Cxe^x}$$"
+        }
       ],
       "formula": "\\text{вид общего решения (подбор)}"
     },
@@ -606,9 +985,18 @@
       "tldr": "ХУ: k⁴−16=(k²−4)(k²+4)=0",
       "hint": "$k=\\pm 2,\\pm 2i$. $\\cos 2x$: $\\pm 2i$, $s=1$ → $x(A\\cos 2x+B\\sin 2x)$. $e^{2x}$: $s=1$ → $Cxe^{2x}$",
       "steps": [
-        {"title": "ХУ", "text": "$k^4-16=(k^2-4)(k^2+4)=(k-2)(k+2)(k^2+4)=0$ → $k=2,-2,\\pm 2i$."},
-        {"title": "Подбор", "text": "$\\cos 2x$: $\\pm 2i$ рез. $s=1$ → $x(A\\cos 2x+B\\sin 2x)$.\n$e^{2x}$: $\\alpha=2$, $s=1$ → $Cxe^{2x}$."},
-        {"title": "Ответ", "math": "$$\\boxed{y_{oo}+x(A\\cos 2x+B\\sin 2x)+Cxe^{2x}}$$"}
+        {
+          "title": "ХУ",
+          "text": "$k^4-16=(k^2-4)(k^2+4)=(k-2)(k+2)(k^2+4)=0$ → $k=2,-2,\\pm 2i$."
+        },
+        {
+          "title": "Подбор",
+          "text": "$\\cos 2x$: $\\pm 2i$ рез. $s=1$ → $x(A\\cos 2x+B\\sin 2x)$.\n$e^{2x}$: $\\alpha=2$, $s=1$ → $Cxe^{2x}$."
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y_{oo}+x(A\\cos 2x+B\\sin 2x)+Cxe^{2x}}$$"
+        }
       ],
       "formula": "\\text{вид общего решения (подбор)}"
     },
@@ -620,9 +1008,19 @@
       "tldr": "ХУ: k=±2i. sin 2x рез.! → xA·cos 2x + xB·sin 2x",
       "hint": "$k=\\pm 2i$. sin 2x: $\\pm 2i$ рез., $s=1$ → $y_ч=x(A\\cos 2x+B\\sin 2x)$",
       "steps": [
-        {"title": "ХУ", "text": "$k^2+4=0$ → $k=\\pm 2i$. $y_{oo}=C_1\\cos 2x+C_2\\sin 2x$."},
-        {"title": "Подбор", "text": "$\\pm 2i$ — корень, $s=1$. $y_ч=x(A\\cos 2x+B\\sin 2x)$.\n\n$y_ч''+4y_ч = -4A\\sin 2x+4B\\cos 2x = 8\\sin 2x$.\n\n$A=-2$, $B=0$.", "math": "$$y_ч=-2x\\cos 2x$$"},
-        {"title": "Ответ", "math": "$$\\boxed{y=C_1\\cos 2x+C_2\\sin 2x-2x\\cos 2x}$$"}
+        {
+          "title": "ХУ",
+          "text": "$k^2+4=0$ → $k=\\pm 2i$. $y_{oo}=C_1\\cos 2x+C_2\\sin 2x$."
+        },
+        {
+          "title": "Подбор",
+          "text": "$\\pm 2i$ — корень, $s=1$. $y_ч=x(A\\cos 2x+B\\sin 2x)$.\n\n$y_ч''+4y_ч = -4A\\sin 2x+4B\\cos 2x = 8\\sin 2x$.\n\n$A=-2$, $B=0$.",
+          "math": "$$y_ч=-2x\\cos 2x$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y=C_1\\cos 2x+C_2\\sin 2x-2x\\cos 2x}$$"
+        }
       ],
       "formula": "C_1\\cos 2x+C_2\\sin 2x-2x\\cos 2x"
     },
@@ -634,9 +1032,19 @@
       "tldr": "ХУ: k=±1. e⁻ˣ рез.! → Axe⁻ˣ",
       "hint": "$k=1,-1$. $e^{-x}$: $\\alpha=-1$, $s=1$ → $y_ч=Axe^{-x}$",
       "steps": [
-        {"title": "ХУ", "text": "$k^2-1=0$ → $k=\\pm 1$."},
-        {"title": "Подбор", "text": "$y_ч=Axe^{-x}$. $y_ч''=A(x-2)e^{-x}$.\n$A(x-2)e^{-x}-Axe^{-x}=-2Ae^{-x}=e^{-x}$ → $A=-1/2$.", "math": "$$y_ч=-\\frac{xe^{-x}}{2}$$"},
-        {"title": "Ответ", "math": "$$\\boxed{y=C_1 e^x+C_2 e^{-x}-\\frac{xe^{-x}}{2}}$$"}
+        {
+          "title": "ХУ",
+          "text": "$k^2-1=0$ → $k=\\pm 1$."
+        },
+        {
+          "title": "Подбор",
+          "text": "$y_ч=Axe^{-x}$. $y_ч''=A(x-2)e^{-x}$.\n$A(x-2)e^{-x}-Axe^{-x}=-2Ae^{-x}=e^{-x}$ → $A=-1/2$.",
+          "math": "$$y_ч=-\\frac{xe^{-x}}{2}$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y=C_1 e^x+C_2 e^{-x}-\\frac{xe^{-x}}{2}}$$"
+        }
       ],
       "formula": "C_1 e^x+C_2 e^{-x}-\\frac{xe^{-x}}{2}"
     },
@@ -648,9 +1056,19 @@
       "tldr": "Правая не квазиполином → вариация",
       "hint": "ХУ: $k=\\pm i$. Правая $\\tan x$ не квазиполином → вариация",
       "steps": [
-        {"title": "ХУ", "text": "$k=\\pm i$. $y_{oo}=C_1\\cos x+C_2\\sin x$."},
-        {"title": "Вариация", "text": "$W=1$. $C_1'=-\\sin x\\tan x=-\\frac{\\sin^2 x}{\\cos x}=\\cos x-\\sec x$.\n$C_2'=\\sin x$.", "math": "$$C_1=\\sin x-\\ln|\\sec x+\\tan x|,\\;C_2=-\\cos x$$"},
-        {"title": "Ответ", "math": "$$\\boxed{y=C_1\\cos x+C_2\\sin x-\\cos x\\ln|\\sec x+\\tan x|}$$"}
+        {
+          "title": "ХУ",
+          "text": "$k=\\pm i$. $y_{oo}=C_1\\cos x+C_2\\sin x$."
+        },
+        {
+          "title": "Вариация",
+          "text": "$W=1$. $C_1'=-\\sin x\\tan x=-\\frac{\\sin^2 x}{\\cos x}=\\cos x-\\sec x$.\n$C_2'=\\sin x$.",
+          "math": "$$C_1=\\sin x-\\ln|\\sec x+\\tan x|,\\;C_2=-\\cos x$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y=C_1\\cos x+C_2\\sin x-\\cos x\\ln|\\sec x+\\tan x|}$$"
+        }
       ],
       "formula": "C_1\\cos x+C_2\\sin x-\\cos x\\ln|\\sec x+\\tan x|"
     },
@@ -662,8 +1080,15 @@
       "tldr": "ХУ: k=±3i. cos 3x рез.! → x(A cos+B sin)",
       "hint": "$k=\\pm 3i$. $\\cos 3x$: $\\pm 3i$ — рез., $s=1$ → $x(A\\cos 3x+B\\sin 3x)$",
       "steps": [
-        {"title": "Подбор", "text": "$y_ч=x(A\\cos 3x+B\\sin 3x)$.\n$y_ч''+9y_ч=-6A\\sin 3x+6B\\cos 3x=2\\cos 3x$.\n$B=1/3$, $A=0$.", "math": "$$y_ч=\\frac{x\\sin 3x}{3}$$"},
-        {"title": "Ответ", "math": "$$\\boxed{y=C_1\\cos 3x+C_2\\sin 3x+\\frac{x\\sin 3x}{3}}$$"}
+        {
+          "title": "Подбор",
+          "text": "$y_ч=x(A\\cos 3x+B\\sin 3x)$.\n$y_ч''+9y_ч=-6A\\sin 3x+6B\\cos 3x=2\\cos 3x$.\n$B=1/3$, $A=0$.",
+          "math": "$$y_ч=\\frac{x\\sin 3x}{3}$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y=C_1\\cos 3x+C_2\\sin 3x+\\frac{x\\sin 3x}{3}}$$"
+        }
       ],
       "formula": "C_1\\cos 3x+C_2\\sin 3x+\\frac{x\\sin 3x}{3}"
     },
@@ -675,8 +1100,15 @@
       "tldr": "ХУ: k=1,2. eˣ рез. s=1 → Axeˣ",
       "hint": "$k=1,2$. $e^x$: $\\alpha=1$, $s=1$ → $Axe^x$",
       "steps": [
-        {"title": "Подбор", "text": "$y_ч=Axe^x$: $A(x+2)e^x-3A(x+1)e^x+2Axe^x=-Ae^x=e^x$ → $A=-1$.", "math": "$$y_ч=-xe^x$$"},
-        {"title": "Ответ", "math": "$$\\boxed{y=C_1 e^x+C_2 e^{2x}-xe^x}$$"}
+        {
+          "title": "Подбор",
+          "text": "$y_ч=Axe^x$: $A(x+2)e^x-3A(x+1)e^x+2Axe^x=-Ae^x=e^x$ → $A=-1$.",
+          "math": "$$y_ч=-xe^x$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y=C_1 e^x+C_2 e^{2x}-xe^x}$$"
+        }
       ],
       "formula": "C_1 e^x+C_2 e^{2x}-xe^x"
     },
@@ -688,9 +1120,18 @@
       "tldr": "ХУ: k=±i. eˣ: s=0. x: s=0",
       "hint": "$k=\\pm i$. $e^x$: $\\alpha=1$, не корень → $Ae^x$. $x$: $\\alpha=0$, не корень → $Bx+C$",
       "steps": [
-        {"title": "Подбор для eˣ", "text": "$Ae^x+Ae^x=e^x$ → $2A=1$, $A=1/2$."},
-        {"title": "Подбор для x", "text": "$0+Bx+C=x$ → $B=1$, $C=0$."},
-        {"title": "Ответ", "math": "$$\\boxed{y=C_1\\cos x+C_2\\sin x+\\frac{e^x}{2}+x}$$"}
+        {
+          "title": "Подбор для eˣ",
+          "text": "$Ae^x+Ae^x=e^x$ → $2A=1$, $A=1/2$."
+        },
+        {
+          "title": "Подбор для x",
+          "text": "$0+Bx+C=x$ → $B=1$, $C=0$."
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y=C_1\\cos x+C_2\\sin x+\\frac{e^x}{2}+x}$$"
+        }
       ],
       "formula": "C_1\\cos x+C_2\\sin x+\\frac{e^x}{2}+x"
     },
@@ -702,8 +1143,15 @@
       "tldr": "ХУ: k=±2. e²ˣ рез.! s=1 → Axe²ˣ",
       "hint": "$k=2,-2$. $e^{2x}$: $\\alpha=2$, $s=1$ → $Axe^{2x}$",
       "steps": [
-        {"title": "Подбор", "text": "$y_ч=Axe^{2x}$: $A(4x+4)e^{2x}-4Axe^{2x}=4Ae^{2x}=e^{2x}$ → $A=1/4$.", "math": "$$y_ч=\\frac{xe^{2x}}{4}$$"},
-        {"title": "Ответ", "math": "$$\\boxed{y=C_1 e^{2x}+C_2 e^{-2x}+\\frac{xe^{2x}}{4}}$$"}
+        {
+          "title": "Подбор",
+          "text": "$y_ч=Axe^{2x}$: $A(4x+4)e^{2x}-4Axe^{2x}=4Ae^{2x}=e^{2x}$ → $A=1/4$.",
+          "math": "$$y_ч=\\frac{xe^{2x}}{4}$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y=C_1 e^{2x}+C_2 e^{-2x}+\\frac{xe^{2x}}{4}}$$"
+        }
       ],
       "formula": "C_1 e^{2x}+C_2 e^{-2x}+\\frac{xe^{2x}}{4}"
     },
@@ -715,8 +1163,16 @@
       "tldr": "ХУ: (k+1)²=0. Правая не квазиполином → вариация",
       "hint": "$k=-1$ (кр. 2). $y_{oo}=(C_1+C_2 x)e^{-x}$. Правая не квазиполином → вариация",
       "steps": [
-        {"title": "Вариация", "text": "$y_1=e^{-x}$, $y_2=xe^{-x}$. $W=e^{-2x}$.\n\n$C_1'=-\\frac{xe^{-x}\\cdot e^{-x}/x^2}{e^{-2x}}=-\\frac{1}{x}$.\n$C_2'=\\frac{e^{-x}\\cdot e^{-x}/x^2}{e^{-2x}}=\\frac{1}{x^2}$.", "math": "$$C_1=-\\ln|x|,\\;C_2=-\\frac{1}{x}$$"},
-        {"title": "Ответ", "text": "$y_ч=e^{-x}(-\\ln|x|)+xe^{-x}(-1/x)=-e^{-x}(\\ln|x|+1)$.", "math": "$$\\boxed{y=(C_1+C_2 x)e^{-x}-e^{-x}(\\ln|x|+1)}$$"}
+        {
+          "title": "Вариация",
+          "text": "$y_1=e^{-x}$, $y_2=xe^{-x}$. $W=e^{-2x}$.\n\n$C_1'=-\\frac{xe^{-x}\\cdot e^{-x}/x^2}{e^{-2x}}=-\\frac{1}{x}$.\n$C_2'=\\frac{e^{-x}\\cdot e^{-x}/x^2}{e^{-2x}}=\\frac{1}{x^2}$.",
+          "math": "$$C_1=-\\ln|x|,\\;C_2=-\\frac{1}{x}$$"
+        },
+        {
+          "title": "Ответ",
+          "text": "$y_ч=e^{-x}(-\\ln|x|)+xe^{-x}(-1/x)=-e^{-x}(\\ln|x|+1)$.",
+          "math": "$$\\boxed{y=(C_1+C_2 x)e^{-x}-e^{-x}(\\ln|x|+1)}$$"
+        }
       ],
       "formula": "(C_1+C_2 x)e^{-x}-e^{-x}(\\ln|x|+1)"
     },
@@ -728,8 +1184,15 @@
       "tldr": "ХУ: (k−1)²=0. x²eˣ: рез. s=2! → x²(Ax²+...)eˣ",
       "hint": "$k=1$ (кр. 2). $3x^2 e^x$: $\\alpha=1$, $s=2$ → $x^2(A_0+A_1 x+A_2 x^2)e^x$",
       "steps": [
-        {"title": "Подбор", "text": "$y_ч=x^2(A+Bx+Cx^2)e^x$. После подстановки (упрощённо):\n$y''-2y'+y = e^x\\cdot[2A+6Bx+12Cx^2] = 3x^2 e^x$.\n\n$12C=3$ → $C=1/4$; $6B=0$ → $B=0$; $2A=0$ → $A=0$.", "math": "$$y_ч=\\frac{x^4 e^x}{4}$$"},
-        {"title": "Ответ", "math": "$$\\boxed{y=(C_1+C_2 x)e^x+\\frac{x^4 e^x}{4}}$$"}
+        {
+          "title": "Подбор",
+          "text": "$y_ч=x^2(A+Bx+Cx^2)e^x$. После подстановки (упрощённо):\n$y''-2y'+y = e^x\\cdot[2A+6Bx+12Cx^2] = 3x^2 e^x$.\n\n$12C=3$ → $C=1/4$; $6B=0$ → $B=0$; $2A=0$ → $A=0$.",
+          "math": "$$y_ч=\\frac{x^4 e^x}{4}$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y=(C_1+C_2 x)e^x+\\frac{x^4 e^x}{4}}$$"
+        }
       ],
       "formula": "(C_1+C_2 x)e^x+\\frac{x^4 e^x}{4}"
     }
