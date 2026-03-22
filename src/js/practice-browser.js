@@ -155,6 +155,11 @@ export function initPracticeBrowser(data) {
   const content = document.getElementById('content');
   content.innerHTML = `
     <div class="practice-browser">
+      <div class="prac-mode-tabs" id="pracModeTabs">
+        <button class="prac-mode-tab active" data-mode="reference">📖 Справочник</button>
+        <button class="prac-mode-tab" data-mode="training">🏋️ Тренировка</button>
+        <button class="prac-mode-tab" data-mode="exam">⏱ Контрольная</button>
+      </div>
       <div class="lab-tabs" id="pracTabs">
         ${sections.map((s, i) => {
           const label = s.section.replace(/^[\p{Emoji}\u200d\ufe0f]+\s*/u, '');
@@ -166,7 +171,52 @@ export function initPracticeBrowser(data) {
     </div>
   `;
 
-  // Tab click handler
+  // Mode tab handler
+  let currentMode = 'reference';
+  document.getElementById('pracModeTabs').addEventListener('click', async (e) => {
+    const tab = e.target.closest('.prac-mode-tab');
+    if (!tab) return;
+    const mode = tab.dataset.mode;
+    if (mode === currentMode) return;
+
+    currentMode = mode;
+    document.querySelectorAll('.prac-mode-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+
+    const pracTabs = document.getElementById('pracTabs');
+
+    if (mode === 'reference') {
+      // Show section tabs, render current tab
+      pracTabs.style.display = '';
+      renderCurrentTab();
+    } else if (mode === 'training') {
+      // Hide section tabs, launch training
+      pracTabs.style.display = 'none';
+      const { initTraining } = await import('./practice-training.js');
+      initTraining(data, () => {
+        // On exit: return to reference mode
+        currentMode = 'reference';
+        document.querySelectorAll('.prac-mode-tab').forEach(t => t.classList.remove('active'));
+        document.querySelector('.prac-mode-tab[data-mode="reference"]')?.classList.add('active');
+        pracTabs.style.display = '';
+        renderCurrentTab();
+      });
+    } else if (mode === 'exam') {
+      // Hide section tabs, launch exam
+      pracTabs.style.display = 'none';
+      const { initExamSim } = await import('./exam-simulator.js');
+      initExamSim(data, () => {
+        // On exit: return to reference mode
+        currentMode = 'reference';
+        document.querySelectorAll('.prac-mode-tab').forEach(t => t.classList.remove('active'));
+        document.querySelector('.prac-mode-tab[data-mode="reference"]')?.classList.add('active');
+        pracTabs.style.display = '';
+        renderCurrentTab();
+      });
+    }
+  });
+
+  // Section tab click handler
   document.getElementById('pracTabs').addEventListener('click', (e) => {
     const tab = e.target.closest('.lab-tab');
     if (!tab) return;
