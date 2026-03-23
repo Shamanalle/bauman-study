@@ -1314,6 +1314,1055 @@
         }
       ],
       "formula": "(C_1+C_2 x)e^x+\\frac{x^4 e^x}{4}"
+    },
+    {
+      "id": "Д5.1",
+      "title": "∫ x·cos(x²) dx",
+      "type": "Задача · Подведение",
+      "formalText": "**Вычислить:**\n$$\\int x\\cos(x^2)\\,dx$$",
+      "tldr": "d(x²)=2x dx → подведение",
+      "hint": "$d(x^2)=2x\\,dx$ → $\\frac{1}{2}\\int\\cos t\\,dt$",
+      "steps": [
+        {
+          "title": "Замена",
+          "text": "$t=x^2$, $dt=2x\\,dx$.",
+          "math": "$$\\int x\\cos(x^2)\\,dx = \\frac{1}{2}\\int\\cos t\\,dt$$"
+        },
+        {
+          "title": "Интегрирование",
+          "text": "Табличный: $\\int\\cos t\\,dt = \\sin t + C$.",
+          "math": "$$= \\frac{1}{2}\\sin t + C$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{\\frac{1}{2}\\sin(x^2)+C}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д5.2",
+      "title": "∫ x²·eˣ dx",
+      "type": "Задача · По частям",
+      "formalText": "**Вычислить:**\n$$\\int x^2 e^x\\,dx$$",
+      "tldr": "По частям 2 раза: u=x², dv=eˣdx",
+      "hint": "$u=x^2$, $dv=e^x dx$ → по частям дважды.",
+      "steps": [
+        {
+          "title": "Первый раз",
+          "text": "$u=x^2$, $dv=e^x dx$. $du=2x\\,dx$, $v=e^x$.",
+          "math": "$$x^2 e^x - 2\\int x e^x\\,dx$$"
+        },
+        {
+          "title": "Второй раз",
+          "text": "$u=x$, $dv=e^x dx$: $\\int xe^x dx = xe^x - e^x$.",
+          "math": "$$= x^2 e^x - 2(xe^x - e^x) + C$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{e^x(x^2-2x+2)+C}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д5.3",
+      "title": "∫ sin³x·cos²x dx",
+      "type": "Задача · Тригонометрия",
+      "formalText": "**Вычислить:**\n$$\\int\\sin^3 x\\cos^2 x\\,dx$$",
+      "tldr": "sin³x = sin x·(1−cos²x), t=cos x",
+      "hint": "Отщепляем $\\sin x$: $\\sin^3 x = \\sin x(1-\\cos^2 x)$, $t = \\cos x$.",
+      "steps": [
+        {
+          "title": "Отщепление",
+          "text": "$\\sin^3 x\\cos^2 x = \\sin x(1-\\cos^2 x)\\cos^2 x$.\n$t = \\cos x$, $dt = -\\sin x\\,dx$.",
+          "math": "$$-\\int(1-t^2)t^2\\,dt = -\\int(t^2-t^4)dt$$"
+        },
+        {
+          "title": "Интегрирование",
+          "math": "$$= -\\frac{t^3}{3}+\\frac{t^5}{5}+C$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{-\\frac{\\cos^3 x}{3}+\\frac{\\cos^5 x}{5}+C}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д5.4",
+      "title": "∫ dx/(x²+4x+8)",
+      "type": "Задача · Кв. трёхчлен",
+      "formalText": "**Вычислить:**\n$$\\int\\frac{dx}{x^2+4x+8}$$",
+      "tldr": "x²+4x+8 = (x+2)²+4 → arctg",
+      "hint": "$(x+2)^2+4$. Замена $t=x+2$ → $\\frac{1}{2}\\arctan\\frac{t}{2}$.",
+      "steps": [
+        {
+          "title": "Выделение полного квадрата",
+          "text": "$x^2+4x+8 = (x+2)^2+4$.",
+          "math": "$$\\int\\frac{dx}{(x+2)^2+4}$$"
+        },
+        {
+          "title": "Табличный",
+          "text": "$t = x+2$: $\\int\\frac{dt}{t^2+4} = \\frac{1}{2}\\arctan\\frac{t}{2}+C$."
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{\\frac{1}{2}\\arctan\\frac{x+2}{2}+C}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д5.5",
+      "title": "∫ (3x+1)/(x²−x−2) dx",
+      "type": "Задача · Рац. дроби",
+      "formalText": "**Вычислить:**\n$$\\int\\frac{3x+1}{x^2-x-2}\\,dx$$",
+      "tldr": "x²−x−2 = (x−2)(x+1) → A/(x−2)+B/(x+1)",
+      "hint": "Разложение: $\\frac{A}{x-2}+\\frac{B}{x+1}$. $A=7/3$, $B=2/3$.",
+      "steps": [
+        {
+          "title": "Разложение",
+          "text": "$x^2-x-2=(x-2)(x+1)$.\n$\\frac{3x+1}{(x-2)(x+1)} = \\frac{A}{x-2}+\\frac{B}{x+1}$.\n$x=2$: $7=3A$ → $A=7/3$. $x=-1$: $-2=-3B$ → $B=2/3$."
+        },
+        {
+          "title": "Интегрирование",
+          "math": "$$\\frac{7}{3}\\ln|x-2|+\\frac{2}{3}\\ln|x+1|+C$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{\\frac{7}{3}\\ln|x-2|+\\frac{2}{3}\\ln|x+1|+C}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д5.6",
+      "title": "∫ x·arctan x dx",
+      "type": "Задача · По частям",
+      "formalText": "**Вычислить:**\n$$\\int x\\arctan x\\,dx$$",
+      "tldr": "u = arctg x, dv = x dx",
+      "hint": "$u = \\arctan x$, $dv = x\\,dx$ → $v = x^2/2$.",
+      "steps": [
+        {
+          "title": "По частям",
+          "text": "$u = \\arctan x$, $dv = x\\,dx$.\n$du = \\frac{dx}{1+x^2}$, $v = \\frac{x^2}{2}$.",
+          "math": "$$\\frac{x^2}{2}\\arctan x - \\frac{1}{2}\\int\\frac{x^2}{1+x^2}dx$$"
+        },
+        {
+          "title": "Остаточный интеграл",
+          "text": "$\\frac{x^2}{1+x^2} = 1 - \\frac{1}{1+x^2}$.",
+          "math": "$$\\int\\frac{x^2}{1+x^2}dx = x - \\arctan x$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{\\frac{x^2}{2}\\arctan x - \\frac{x}{2} + \\frac{1}{2}\\arctan x + C}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д5.7",
+      "title": "∫ dx/√(5−4x−x²)",
+      "type": "Задача · Кв. трёхчлен",
+      "formalText": "**Вычислить:**\n$$\\int\\frac{dx}{\\sqrt{5-4x-x^2}}$$",
+      "tldr": "5−4x−x² = 9−(x+2)² → arcsin",
+      "hint": "$5-4x-x^2 = 9-(x+2)^2$. Табл.: $\\arcsin\\frac{x+2}{3}$.",
+      "steps": [
+        {
+          "title": "Полный квадрат",
+          "text": "$5-4x-x^2 = -(x^2+4x-5) = -(x+2)^2+9 = 9-(x+2)^2$."
+        },
+        {
+          "title": "Табличный",
+          "text": "$t=x+2$: $\\int\\frac{dt}{\\sqrt{9-t^2}} = \\arcsin\\frac{t}{3}+C$."
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{\\arcsin\\frac{x+2}{3}+C}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д5.8",
+      "title": "∫ ln²x dx",
+      "type": "Задача · По частям (двойное)",
+      "formalText": "**Вычислить:**\n$$\\int\\ln^2 x\\,dx$$",
+      "tldr": "По частям дважды: u=ln²x, dv=dx",
+      "hint": "$u=\\ln^2 x$, $dv=dx$. Потом ещё раз по частям для $\\int\\ln x\\,dx$.",
+      "steps": [
+        {
+          "title": "Первый раз",
+          "text": "$u=\\ln^2 x$, $dv=dx$. $du=2\\ln x \\cdot dx/x$, $v=x$.",
+          "math": "$$x\\ln^2 x - 2\\int\\ln x\\,dx$$"
+        },
+        {
+          "title": "Второй раз",
+          "text": "$\\int\\ln x\\,dx$: $u=\\ln x$, $dv=dx$ → $x\\ln x - x + C$.",
+          "math": "$$= x\\ln^2 x - 2(x\\ln x - x) + C$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{x\\ln^2 x - 2x\\ln x + 2x + C}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д5.9",
+      "title": "∫ sin⁴x dx",
+      "type": "Задача · Тригонометрия",
+      "formalText": "**Вычислить:**\n$$\\int\\sin^4 x\\,dx$$",
+      "tldr": "sin⁴x = ((1−cos2x)/2)² → понижение степени",
+      "hint": "$\\sin^4 x = \\left(\\frac{1-\\cos 2x}{2}\\right)^2$. Раскрываем и интегрируем.",
+      "steps": [
+        {
+          "title": "Понижение степени",
+          "text": "$\\sin^4 x = \\frac{(1-\\cos 2x)^2}{4} = \\frac{1-2\\cos 2x+\\cos^2 2x}{4}$.\n$\\cos^2 2x = \\frac{1+\\cos 4x}{2}$.",
+          "math": "$$= \\frac{3/2 - 2\\cos 2x + \\cos 4x/2}{4} = \\frac{3}{8}-\\frac{\\cos 2x}{2}+\\frac{\\cos 4x}{8}$$"
+        },
+        {
+          "title": "Интегрирование",
+          "math": "$$\\frac{3x}{8}-\\frac{\\sin 2x}{4}+\\frac{\\sin 4x}{32}+C$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{\\frac{3x}{8}-\\frac{\\sin 2x}{4}+\\frac{\\sin 4x}{32}+C}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д5.10",
+      "title": "∫ (2x+3)/(x²+2x+5) dx",
+      "type": "Задача · Кв. трёхчлен",
+      "formalText": "**Вычислить:**\n$$\\int\\frac{2x+3}{x^2+2x+5}\\,dx$$",
+      "tldr": "Числитель = (x²+2x+5)' + 1 → ln + arctg",
+      "hint": "$(x^2+2x+5)' = 2x+2$. Тогда $2x+3 = (2x+2)+1$.",
+      "steps": [
+        {
+          "title": "Разложение числителя",
+          "text": "$2x+3 = (2x+2)+1$, где $2x+2 = (x^2+2x+5)'$.",
+          "math": "$$\\int\\frac{2x+2}{x^2+2x+5}dx + \\int\\frac{dx}{(x+1)^2+4}$$"
+        },
+        {
+          "title": "Интегрирование",
+          "text": "Первый: $\\ln|x^2+2x+5|$.\nВторой: $\\frac{1}{2}\\arctan\\frac{x+1}{2}$."
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{\\ln(x^2+2x+5)+\\frac{1}{2}\\arctan\\frac{x+1}{2}+C}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д5.11",
+      "title": "∫ dx/(x(x²+1))",
+      "type": "Задача · Рац. дроби",
+      "formalText": "**Вычислить:**\n$$\\int\\frac{dx}{x(x^2+1)}$$",
+      "tldr": "A/x + (Bx+C)/(x²+1). A=1, B=−1, C=0.",
+      "hint": "$\\frac{1}{x(x^2+1)} = \\frac{1}{x}-\\frac{x}{x^2+1}$.",
+      "steps": [
+        {
+          "title": "Разложение",
+          "text": "$\\frac{1}{x(x^2+1)} = \\frac{A}{x}+\\frac{Bx+C}{x^2+1}$.\n$1 = A(x^2+1)+(Bx+C)x$. При $x=0$: $A=1$.\nПри $x^2$: $A+B=0$ → $B=-1$. При $x$: $C=0$."
+        },
+        {
+          "title": "Интегрирование",
+          "math": "$$\\int\\frac{dx}{x}-\\int\\frac{x\\,dx}{x^2+1} = \\ln|x|-\\frac{1}{2}\\ln(x^2+1)+C$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{\\ln|x|-\\frac{1}{2}\\ln(x^2+1)+C}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д5.12",
+      "title": "∫ eˣ·sin x dx",
+      "type": "Задача · По частям",
+      "formalText": "**Вычислить:**\n$$\\int e^x\\sin x\\,dx$$",
+      "tldr": "Дважды по частям → уравнение на I",
+      "hint": "Дважды по частям → получается $I = e^x(\\sin x-\\cos x)/2$.",
+      "steps": [
+        {
+          "title": "Первый раз",
+          "text": "$u=\\sin x$, $dv=e^x dx$.\n$I = e^x\\sin x - \\int e^x\\cos x\\,dx$."
+        },
+        {
+          "title": "Второй раз",
+          "text": "$u=\\cos x$, $dv=e^x dx$:\n$\\int e^x\\cos x\\,dx = e^x\\cos x+\\int e^x\\sin x\\,dx = e^x\\cos x + I$.\nИтого: $I = e^x\\sin x - e^x\\cos x - I$.",
+          "math": "$$2I = e^x(\\sin x - \\cos x)$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{\\frac{e^x(\\sin x - \\cos x)}{2}+C}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д5.13",
+      "title": "∫ √(x²+4) dx/x",
+      "type": "Задача · Замена",
+      "formalText": "**Вычислить:**\n$$\\int\\frac{\\sqrt{x^2+4}}{x}\\,dx$$",
+      "tldr": "x = 2sh t или t = √(x²+4)",
+      "hint": "Гиперболическая: $x=2\\sinh t$ или прямая замена $t=\\sqrt{x^2+4}$.",
+      "steps": [
+        {
+          "title": "Замена",
+          "text": "$t=\\sqrt{x^2+4}$, $t^2=x^2+4$, $2t\\,dt=2x\\,dx$.\n$x^2=t^2-4$, $x\\,dx=t\\,dt$.",
+          "math": "$$\\int\\frac{t}{x}\\cdot\\frac{t\\,dt}{x} = \\int\\frac{t^2\\,dt}{t^2-4}$$"
+        },
+        {
+          "title": "Деление",
+          "text": "$\\frac{t^2}{t^2-4} = 1+\\frac{4}{t^2-4} = 1+\\frac{1}{t-2}-\\frac{1}{t+2}$.",
+          "math": "$$= t + \\ln|t-2|-\\ln|t+2|+C$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{\\sqrt{x^2+4}+\\ln\\frac{\\sqrt{x^2+4}-2}{\\sqrt{x^2+4}+2}+C}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д5.14",
+      "title": "∫ xeˣ/(x+1)² dx",
+      "type": "Задача · По частям",
+      "formalText": "**Вычислить:**\n$$\\int\\frac{xe^x}{(x+1)^2}\\,dx$$",
+      "tldr": "x/(x+1)² = 1/(x+1)−1/(x+1)², u=eˣ",
+      "hint": "$\\frac{x}{(x+1)^2} = \\frac{1}{x+1}-\\frac{1}{(x+1)^2}$. По частям: $u=e^x$, $dv=\\frac{dx}{(x+1)^2}$.",
+      "steps": [
+        {
+          "title": "По частям",
+          "text": "$u=e^x$, $dv = \\frac{dx}{(x+1)^2}$. $v = -\\frac{1}{x+1}$.",
+          "math": "$$-\\frac{e^x}{x+1}+\\int\\frac{e^x}{x+1}dx$$"
+        },
+        {
+          "title": "Результат",
+          "text": "$\\int\\frac{xe^x}{(x+1)^2}dx = -\\frac{e^x}{x+1}+\\int\\frac{e^x}{x+1}dx$.\nИнтеграл $\\int\\frac{e^x}{x+1}dx$ — это Ei (не берётся в элементарных). Однако:\n$\\frac{x}{(x+1)^2} = \\frac{(x+1)-1}{(x+1)^2} = \\frac{1}{x+1}-\\frac{1}{(x+1)^2}$.\nТогда $I = \\int\\frac{e^x}{x+1}dx - \\int\\frac{e^x}{(x+1)^2}dx = \\int\\frac{e^x}{x+1}dx + \\frac{e^x}{x+1}-\\int\\frac{e^x}{x+1}dx = \\frac{e^x}{x+1}$."
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{\\frac{e^x}{x+1}+C}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д5.15",
+      "title": "∫ dx/(sin x·cos x)",
+      "type": "Задача · Тригонометрия",
+      "formalText": "**Вычислить:**\n$$\\int\\frac{dx}{\\sin x\\cos x}$$",
+      "tldr": "sin x·cos x = sin(2x)/2 → 2/sin(2x)",
+      "hint": "$\\sin x\\cos x = \\frac{1}{2}\\sin 2x$ → $\\int\\frac{2\\,dx}{\\sin 2x}$.",
+      "steps": [
+        {
+          "title": "Преобразование",
+          "text": "$\\frac{1}{\\sin x\\cos x} = \\frac{2}{\\sin 2x}$.\nИли: $\\frac{1}{\\sin x\\cos x} = \\frac{\\sin^2 x+\\cos^2 x}{\\sin x\\cos x} = \\tan x + \\cot x$."
+        },
+        {
+          "title": "Интегрирование",
+          "text": "$\\int(\\tan x+\\cot x)dx = -\\ln|\\cos x|+\\ln|\\sin x|+C$.",
+          "math": "$$= \\ln\\left|\\frac{\\sin x}{\\cos x}\\right|+C = \\ln|\\tan x|+C$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{\\ln|\\tan x|+C}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д6.1",
+      "title": "Площадь: y=x², y=√x",
+      "type": "Задача · Площадь (декарт.)",
+      "formalText": "Вычислить площадь фигуры:\n$$y=x^2, \\quad y=\\sqrt{x}$$",
+      "tldr": "Пересечение: x=0,1. S=∫₀¹(√x−x²)dx",
+      "hint": "Границы: $x=0$, $x=1$. $\\sqrt{x} \\ge x^2$.",
+      "steps": [
+        {
+          "title": "Пересечения",
+          "text": "$x^2=\\sqrt{x}$ → $x^4=x$ → $x(x^3-1)=0$ → $x=0,1$."
+        },
+        {
+          "title": "Интеграл",
+          "text": "$S = \\int_0^1(\\sqrt{x}-x^2)dx = \\frac{2x^{3/2}}{3}-\\frac{x^3}{3}\\Big|_0^1 = \\frac{2}{3}-\\frac{1}{3}$.",
+          "math": "$$= \\frac{1}{3}$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{S = \\frac{1}{3}}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д6.2",
+      "title": "Площадь: ρ = 2cos φ",
+      "type": "Задача · Площадь (полярные)",
+      "formalText": "Площадь фигуры, ограниченной кривой:\n$$\\rho = 2\\cos\\varphi$$",
+      "tldr": "Окружность, S = ½∫ρ²dφ от −π/2 до π/2",
+      "hint": "$\\rho=2\\cos\\varphi$ — окружность радиуса $1$ с центром $(1,0)$. $S = \\pi$.",
+      "steps": [
+        {
+          "title": "Формула",
+          "text": "$S = \\frac{1}{2}\\int_{-\\pi/2}^{\\pi/2}(2\\cos\\varphi)^2 d\\varphi = 2\\int_{-\\pi/2}^{\\pi/2}\\cos^2\\varphi\\,d\\varphi$.",
+          "math": "$$= 2\\int_{-\\pi/2}^{\\pi/2}\\frac{1+\\cos 2\\varphi}{2}d\\varphi$$"
+        },
+        {
+          "title": "Вычисление",
+          "text": "$= \\int_{-\\pi/2}^{\\pi/2}(1+\\cos 2\\varphi)d\\varphi = \\pi + 0 = \\pi$."
+        },
+        {
+          "title": "Ответ",
+          "text": "Совпадает с $S = \\pi R^2 = \\pi \\cdot 1^2$.",
+          "math": "$$\\boxed{S = \\pi}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д6.3",
+      "title": "Объём: y=√x, y=0, x=4 (вокруг Ox)",
+      "type": "Задача · Объём (Ox)",
+      "formalText": "Объём тела, полученного вращением вокруг $Ox$:\n$$y = \\sqrt{x}, \\; y=0, \\; x=4$$",
+      "tldr": "V = π∫₀⁴ x dx = 8π",
+      "hint": "$V = \\pi\\int_0^4 (\\sqrt{x})^2 dx = \\pi\\int_0^4 x\\,dx$.",
+      "steps": [
+        {
+          "title": "Формула",
+          "text": "$V = \\pi\\int_0^4 y^2\\,dx = \\pi\\int_0^4 x\\,dx$.",
+          "math": "$$= \\pi\\cdot\\frac{x^2}{2}\\Big|_0^4 = 8\\pi$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{V = 8\\pi}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д6.4",
+      "title": "Объём: y=x², x=y² (вокруг Oy)",
+      "type": "Задача · Объём (Oy)",
+      "formalText": "Объём тела, полученного вращением фигуры $y=x^2$, $x=y^2$ вокруг оси $Oy$.",
+      "tldr": "V = π∫₀¹(y − y⁴)dy",
+      "hint": "$x_1=\\sqrt{y}$ (правая), $x_2=y^2$ (левая). $V = \\pi\\int_0^1(y-y^4)dy$.",
+      "steps": [
+        {
+          "title": "Формула",
+          "text": "Границы: $(0,0)$, $(1,1)$. Метод дисков:\n$V = \\pi\\int_0^1(x_1^2-x_2^2)dy = \\pi\\int_0^1(y-y^4)dy$.",
+          "math": "$$= \\pi\\left(\\frac{y^2}{2}-\\frac{y^5}{5}\\right)\\Big|_0^1$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{V = \\frac{3\\pi}{10}}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д6.5",
+      "title": "Длина: y = ln(cos x), 0 ≤ x ≤ π/3",
+      "type": "Задача · Длина дуги",
+      "formalText": "Длина дуги кривой $y = \\ln(\\cos x)$ на $[0, \\pi/3]$.",
+      "tldr": "y' = −tan x, √(1+tan²x) = 1/cos x",
+      "hint": "$y' = -\\tan x$. $\\sqrt{1+y'^2} = \\frac{1}{\\cos x}$.",
+      "steps": [
+        {
+          "title": "Производная",
+          "text": "$y' = -\\frac{\\sin x}{\\cos x} = -\\tan x$.",
+          "math": "$$\\sqrt{1+y'^2} = \\sqrt{1+\\tan^2 x} = \\frac{1}{\\cos x}$$"
+        },
+        {
+          "title": "Длина",
+          "text": "$L = \\int_0^{\\pi/3}\\frac{dx}{\\cos x} = \\ln|\\sec x+\\tan x|\\Big|_0^{\\pi/3}$.\n$= \\ln(2+\\sqrt{3}) - \\ln 1$.",
+          "math": "$$= \\ln(2+\\sqrt{3})$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{L = \\ln(2+\\sqrt{3})}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д6.6",
+      "title": "Площадь поверхности: y=√x, 0≤x≤3 (вокруг Ox)",
+      "type": "Задача · Площадь поверхности",
+      "formalText": "Площадь поверхности вращения кривой $y=\\sqrt{x}$ ($0 \\le x \\le 3$) вокруг $Ox$.",
+      "tldr": "S = 2π∫√x·√(1+1/(4x))dx",
+      "hint": "$y'=1/(2\\sqrt{x})$. $\\sqrt{1+y'^2}=\\sqrt{1+1/(4x)}$.",
+      "steps": [
+        {
+          "title": "Формула",
+          "text": "$S = 2\\pi\\int_0^3 y\\sqrt{1+y'^2}\\,dx = 2\\pi\\int_0^3\\sqrt{x}\\sqrt{1+\\frac{1}{4x}}\\,dx$.",
+          "math": "$$= 2\\pi\\int_0^3\\sqrt{x+\\frac{1}{4}}\\,dx$$"
+        },
+        {
+          "title": "Интегрирование",
+          "text": "$t = x+1/4$: $\\int\\sqrt{t}\\,dt = \\frac{2t^{3/2}}{3}$.\n$= 2\\pi\\cdot\\frac{2}{3}\\left[(3.25)^{3/2}-(0.25)^{3/2}\\right]$.",
+          "math": "$$= \\frac{4\\pi}{3}\\left(\\frac{13\\sqrt{13}}{8}-\\frac{1}{8}\\right) = \\frac{\\pi(13\\sqrt{13}-1)}{6}$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{S = \\frac{\\pi(13\\sqrt{13}-1)}{6}}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д6.7",
+      "title": "НИ: ∫₁^∞ dx/(x²+1)",
+      "type": "Задача · НИ 1-го рода",
+      "formalText": "Вычислить, если сходится:\n$$\\int_1^{\\infty}\\frac{dx}{x^2+1}$$",
+      "tldr": "= arctan x|₁^∞ = π/2−π/4 = π/4",
+      "hint": "Первообразная: $\\arctan x$. $\\lim_{b\\to\\infty}\\arctan b = \\pi/2$.",
+      "steps": [
+        {
+          "title": "Первообразная",
+          "text": "$\\int\\frac{dx}{x^2+1} = \\arctan x + C$."
+        },
+        {
+          "title": "Предел",
+          "text": "$\\int_1^{\\infty} = \\lim_{b\\to\\infty}(\\arctan b - \\arctan 1) = \\frac{\\pi}{2}-\\frac{\\pi}{4}$.",
+          "math": "$$= \\frac{\\pi}{4}$$"
+        },
+        {
+          "title": "Ответ",
+          "text": "Сходится.",
+          "math": "$$\\boxed{\\frac{\\pi}{4}}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д6.8",
+      "title": "НИ: ∫₀¹ dx/√(1−x²)",
+      "type": "Задача · НИ 2-го рода",
+      "formalText": "Вычислить:\n$$\\int_0^1\\frac{dx}{\\sqrt{1-x^2}}$$",
+      "tldr": "arcsin x|₀¹ = π/2. Особенность при x=1.",
+      "hint": "$\\arcsin x\\Big|_0^1$. Особенность при $x=1$: $\\lim_{a\\to 1^-}\\arcsin a = \\pi/2$.",
+      "steps": [
+        {
+          "title": "Тип",
+          "text": "НИ 2-го рода: подынтегральная функция неограничена при $x \\to 1^-$."
+        },
+        {
+          "title": "Вычисление",
+          "text": "$\\int_0^a\\frac{dx}{\\sqrt{1-x^2}} = \\arcsin x\\Big|_0^a = \\arcsin a$.\n$\\lim_{a\\to 1^-}\\arcsin a = \\pi/2$.",
+          "math": "$$= \\frac{\\pi}{2}$$"
+        },
+        {
+          "title": "Ответ",
+          "text": "Сходится.",
+          "math": "$$\\boxed{\\frac{\\pi}{2}}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д6.9",
+      "title": "НИ: ∫₀^∞ xe⁻ˣ² dx",
+      "type": "Задача · НИ 1-го рода",
+      "formalText": "Вычислить:\n$$\\int_0^{\\infty} x e^{-x^2}\\,dx$$",
+      "tldr": "t=x², dt=2x dx → ½∫e⁻ᵗdt = 1/2",
+      "hint": "$t = x^2$: $\\frac{1}{2}\\int_0^{\\infty}e^{-t}dt = 1/2$.",
+      "steps": [
+        {
+          "title": "Замена",
+          "text": "$t = x^2$, $dt = 2x\\,dx$.",
+          "math": "$$\\frac{1}{2}\\int_0^{\\infty}e^{-t}\\,dt$$"
+        },
+        {
+          "title": "Вычисление",
+          "text": "$= \\frac{1}{2}\\left[-e^{-t}\\right]_0^{\\infty} = \\frac{1}{2}(0-(-1))$.",
+          "math": "$$= \\frac{1}{2}$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{\\frac{1}{2}}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д6.10",
+      "title": "НИ: ∫₀¹ ln x dx",
+      "type": "Задача · НИ 2-го рода",
+      "formalText": "Вычислить:\n$$\\int_0^1 \\ln x\\,dx$$",
+      "tldr": "По частям + предел: x·ln x−x|₀¹ = −1",
+      "hint": "По частям: $\\int\\ln x\\,dx = x\\ln x - x$. $\\lim_{x\\to 0^+}x\\ln x = 0$.",
+      "steps": [
+        {
+          "title": "Первообразная",
+          "text": "По частям: $u=\\ln x$, $dv=dx$ → $x\\ln x - x + C$."
+        },
+        {
+          "title": "Предел",
+          "text": "$\\lim_{a\\to 0^+}(x\\ln x - x)\\Big|_a^1 = (0-1)-(a\\ln a - a)$.\n$\\lim_{a\\to 0^+}a\\ln a = 0$ (правило Лопиталя).\n$= -1-0 = -1$."
+        },
+        {
+          "title": "Ответ",
+          "text": "Сходится.",
+          "math": "$$\\boxed{-1}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д6.11",
+      "title": "Площадь: x=a(t−sin t), y=a(1−cos t)",
+      "type": "Задача · Площадь (декарт.)",
+      "formalText": "Площадь под одной аркой циклоиды:\n$$x = a(t-\\sin t), \\quad y = a(1-\\cos t), \\quad 0 \\le t \\le 2\\pi$$",
+      "tldr": "S = ∫y dx = a²∫(1−cos t)² dt = 3πa²",
+      "hint": "$dx = a(1-\\cos t)dt$. $S = a^2\\int_0^{2\\pi}(1-\\cos t)^2 dt$.",
+      "steps": [
+        {
+          "title": "Формула",
+          "text": "$S = \\int_0^{2\\pi}y\\,dx = a^2\\int_0^{2\\pi}(1-\\cos t)^2 dt$.\n$(1-\\cos t)^2 = 1-2\\cos t+\\cos^2 t = \\frac{3}{2}-2\\cos t+\\frac{\\cos 2t}{2}$.",
+          "math": "$$= a^2\\int_0^{2\\pi}\\left(\\frac{3}{2}-2\\cos t+\\frac{\\cos 2t}{2}\\right)dt$$"
+        },
+        {
+          "title": "Вычисление",
+          "text": "$= a^2\\left[\\frac{3t}{2}-2\\sin t+\\frac{\\sin 2t}{4}\\right]_0^{2\\pi} = a^2 \\cdot 3\\pi$."
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{S = 3\\pi a^2}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д6.12",
+      "title": "Длина: x=cos³t, y=sin³t (астроида)",
+      "type": "Задача · Длина дуги",
+      "formalText": "Длина дуги астроиды $x=\\cos^3 t$, $y=\\sin^3 t$, $0 \\le t \\le 2\\pi$.",
+      "tldr": "x'²+y'² = 9sin²t·cos²t → L = 6",
+      "hint": "$x'=-3\\cos^2 t\\sin t$, $y'=3\\sin^2 t\\cos t$. $\\sqrt{x'^2+y'^2}=3|\\sin t\\cos t|$.",
+      "steps": [
+        {
+          "title": "Производные",
+          "text": "$x'=-3\\cos^2 t\\sin t$, $y'=3\\sin^2 t\\cos t$.",
+          "math": "$$\\sqrt{x'^2+y'^2} = 3|\\sin t\\cos t| = \\frac{3}{2}|\\sin 2t|$$"
+        },
+        {
+          "title": "Длина (1/4 дуги)",
+          "text": "По симметрии: $L = 4\\int_0^{\\pi/2}\\frac{3}{2}\\sin 2t\\,dt = 6\\int_0^{\\pi/2}\\sin 2t\\,dt = 6\\left[-\\frac{\\cos 2t}{2}\\right]_0^{\\pi/2}$.",
+          "math": "$$= 6\\cdot\\frac{1+1}{2} = 6$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{L = 6}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д6.13",
+      "title": "НИ: ∫₁^∞ dx/(x√(x²−1))",
+      "type": "Задача · НИ 1-го рода",
+      "formalText": "Вычислить:\n$$\\int_1^{\\infty}\\frac{dx}{x\\sqrt{x^2-1}}$$",
+      "tldr": "= arcsec x|₁^∞ = π/2. Или x=sec t.",
+      "hint": "Замена $x=\\sec t$: $\\int_0^{\\pi/2}dt = \\pi/2$. Или: $= \\arccos(1/x)$.",
+      "steps": [
+        {
+          "title": "Замена",
+          "text": "$x = \\sec t$, $dx = \\sec t\\tan t\\,dt$, $\\sqrt{x^2-1} = \\tan t$.",
+          "math": "$$\\int\\frac{\\sec t\\tan t\\,dt}{\\sec t \\cdot \\tan t} = \\int dt$$"
+        },
+        {
+          "title": "Пределы",
+          "text": "$x=1$: $t=0$. $x\\to\\infty$: $t\\to\\pi/2$.",
+          "math": "$$t\\Big|_0^{\\pi/2} = \\frac{\\pi}{2}$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{\\frac{\\pi}{2}}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д6.14",
+      "title": "НИ: ∫₀^∞ dx/(x²+a²)²",
+      "type": "Задача · НИ 1-го рода",
+      "formalText": "Вычислить:\n$$\\int_0^{\\infty}\\frac{dx}{(x^2+a^2)^2}, \\quad a > 0$$",
+      "tldr": "x=a·tan t → π/(4a³)",
+      "hint": "$x = a\\tan t$, $dx = a\\sec^2 t\\,dt$.",
+      "steps": [
+        {
+          "title": "Замена",
+          "text": "$x = a\\tan t$, $x^2+a^2 = a^2\\sec^2 t$.",
+          "math": "$$\\int_0^{\\pi/2}\\frac{a\\sec^2 t\\,dt}{a^4\\sec^4 t} = \\frac{1}{a^3}\\int_0^{\\pi/2}\\cos^2 t\\,dt$$"
+        },
+        {
+          "title": "Вычисление",
+          "text": "$\\int_0^{\\pi/2}\\cos^2 t\\,dt = \\pi/4$.",
+          "math": "$$= \\frac{\\pi}{4a^3}$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{\\frac{\\pi}{4a^3}}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д6.15",
+      "title": "Объём: y=sin x, 0≤x≤π (вокруг Ox)",
+      "type": "Задача · Объём (Ox)",
+      "formalText": "Объём тела вращения кривой $y = \\sin x$ ($0 \\le x \\le \\pi$) вокруг оси $Ox$.",
+      "tldr": "V = π∫sin²x dx = π²/2",
+      "hint": "$V = \\pi\\int_0^{\\pi}\\sin^2 x\\,dx = \\frac{\\pi^2}{2}$.",
+      "steps": [
+        {
+          "title": "Формула",
+          "text": "$V = \\pi\\int_0^{\\pi}\\sin^2 x\\,dx = \\pi\\int_0^{\\pi}\\frac{1-\\cos 2x}{2}dx$.",
+          "math": "$$= \\frac{\\pi}{2}\\left[x-\\frac{\\sin 2x}{2}\\right]_0^{\\pi}$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{V = \\frac{\\pi^2}{2}}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д6.16",
+      "title": "Площадь: ρ = 1+cos φ (кардиоида)",
+      "type": "Задача · Площадь (полярные)",
+      "formalText": "Площадь фигуры, ограниченной кардиоидой:\n$$\\rho = 1+\\cos\\varphi$$",
+      "tldr": "S = ½∫₀²π(1+cosφ)²dφ = 3π/2",
+      "hint": "$S = \\frac{1}{2}\\int_0^{2\\pi}(1+\\cos\\varphi)^2 d\\varphi$.",
+      "steps": [
+        {
+          "title": "Формула",
+          "text": "$S = \\frac{1}{2}\\int_0^{2\\pi}(1+\\cos\\varphi)^2 d\\varphi$.\n$(1+\\cos\\varphi)^2 = 1+2\\cos\\varphi+\\cos^2\\varphi = \\frac{3}{2}+2\\cos\\varphi+\\frac{\\cos 2\\varphi}{2}$."
+        },
+        {
+          "title": "Интегрирование",
+          "text": "$= \\frac{1}{2}\\left[\\frac{3\\varphi}{2}+2\\sin\\varphi+\\frac{\\sin 2\\varphi}{4}\\right]_0^{2\\pi} = \\frac{1}{2}\\cdot 3\\pi = \\frac{3\\pi}{2}$."
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{S = \\frac{3\\pi}{2}}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д7.1",
+      "title": "y'' = 2y'/(x+1)",
+      "type": "Задача · Понижение (нет y)",
+      "formalText": "Решить ОДУ:\n$$y'' = \\frac{2y'}{x+1}$$",
+      "tldr": "p=y': p'/p = 2/(x+1) → p = C(x+1)²",
+      "hint": "Замена $p=y'$: $\\frac{dp}{dx} = \\frac{2p}{x+1}$ — с разделяющимися.",
+      "steps": [
+        {
+          "title": "Замена p=y'",
+          "text": "$p' = 2p/(x+1)$. Разделяем: $dp/p = 2dx/(x+1)$.",
+          "math": "$$\\ln|p| = 2\\ln|x+1|+C_1 \\Rightarrow p = C_1(x+1)^2$$"
+        },
+        {
+          "title": "Интегрирование",
+          "text": "$y = \\int C_1(x+1)^2 dx = \\frac{C_1(x+1)^3}{3}+C_2$."
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y = \\frac{C_1(x+1)^3}{3}+C_2}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д7.2",
+      "title": "y·y'' = (y')²",
+      "type": "Задача · Понижение (нет x)",
+      "formalText": "Решить ОДУ:\n$$yy'' = (y')^2$$",
+      "tldr": "p=y': y·p·dp/dy = p² → dp/p = dy/y",
+      "hint": "$y'' = p\\frac{dp}{dy}$. $yp\\frac{dp}{dy} = p^2$ → $\\frac{dp}{p} = \\frac{dy}{y}$.",
+      "steps": [
+        {
+          "title": "Замена p=y'",
+          "text": "$y'' = p\\frac{dp}{dy}$. Уравнение: $yp\\frac{dp}{dy} = p^2$.\nДелим на $yp$ ($p \\ne 0$): $\\frac{dp}{p} = \\frac{dy}{y}$.",
+          "math": "$$p = C_1 y$$"
+        },
+        {
+          "title": "Разделяем",
+          "text": "$y' = C_1 y$ → $dy/y = C_1 dx$ → $\\ln|y| = C_1 x + C_2$."
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y = C_2 e^{C_1 x}}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д7.3",
+      "title": "ЛОДУ: y''−5y'+6y = 0",
+      "type": "Задача · Подбор формы ЛОДУ",
+      "formalText": "Решить ОДУ:\n$$y''-5y'+6y = 0$$",
+      "tldr": "λ²−5λ+6=0 → λ=2,3",
+      "hint": "Хар. ур.: $\\lambda^2-5\\lambda+6=0$ → $\\lambda_1=2$, $\\lambda_2=3$.",
+      "steps": [
+        {
+          "title": "Хар. уравнение",
+          "text": "$\\lambda^2-5\\lambda+6=0$.\n$D=25-24=1$. $\\lambda = (5\\pm 1)/2$.",
+          "math": "$$\\lambda_1 = 2, \\quad \\lambda_2 = 3$$"
+        },
+        {
+          "title": "Общее решение",
+          "text": "Корни различные вещественные."
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y = C_1 e^{2x}+C_2 e^{3x}}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д7.4",
+      "title": "ЛОДУ: y''+4y'+4y = 0",
+      "type": "Задача · Подбор формы ЛОДУ",
+      "formalText": "Решить ОДУ:\n$$y''+4y'+4y = 0$$",
+      "tldr": "λ²+4λ+4=0 → λ=−2 (кратный)",
+      "hint": "$(\\lambda+2)^2=0$ → $\\lambda=-2$ — кратный корень.",
+      "steps": [
+        {
+          "title": "Хар. уравнение",
+          "text": "$\\lambda^2+4\\lambda+4=(\\lambda+2)^2=0$ → $\\lambda=-2$ (кратность $2$)."
+        },
+        {
+          "title": "Общее решение",
+          "text": "Кратный корень $\\lambda = -2$:"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y = (C_1+C_2 x)e^{-2x}}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д7.5",
+      "title": "ЛОДУ: y''+y = 0",
+      "type": "Задача · Подбор формы ЛОДУ",
+      "formalText": "Решить:\n$$y''+y = 0$$",
+      "tldr": "λ²+1=0 → λ=±i → sin x, cos x",
+      "hint": "$\\lambda=\\pm i$ → $y = C_1\\cos x+C_2\\sin x$.",
+      "steps": [
+        {
+          "title": "Хар. уравнение",
+          "text": "$\\lambda^2+1=0$ → $\\lambda=\\pm i$. Комплексные корни $\\alpha\\pm\\beta i$ с $\\alpha=0$, $\\beta=1$."
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y = C_1\\cos x+C_2\\sin x}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д7.6",
+      "title": "ЛНДУ: y''−y = eˣ",
+      "type": "Задача · ЛОДУ подбор",
+      "formalText": "Решить ОДУ:\n$$y''-y = e^x$$",
+      "tldr": "λ=1 — корень хар. ур. → y*=Axeˣ",
+      "hint": "$\\lambda^2-1=0$ → $\\lambda=\\pm 1$. $e^x$ → $\\alpha=1$ — корень! Подбор: $y^*=Axe^x$.",
+      "steps": [
+        {
+          "title": "ОЛОДУ",
+          "text": "$\\lambda^2-1=0$ → $\\lambda=\\pm 1$.\n$y_0 = C_1 e^x+C_2 e^{-x}$."
+        },
+        {
+          "title": "Частное решение",
+          "text": "$f=e^x$, $\\alpha=1$ — простой корень. $y^*=Axe^x$.\n$y^{*\\prime}=Ae^x(1+x)$, $y^{*\\prime\\prime}=Ae^x(2+x)$.\nПодставляем: $Ae^x(2+x)-Axe^x=2Ae^x=e^x$ → $A=1/2$.",
+          "math": "$$y^* = \\frac{x}{2}e^x$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y = C_1 e^x+C_2 e^{-x}+\\frac{x}{2}e^x}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д7.7",
+      "title": "ЛНДУ: y''+y = cos x",
+      "type": "Задача · ЛОДУ подбор",
+      "formalText": "Решить:\n$$y''+y = \\cos x$$",
+      "tldr": "λ=±i, α±βi=±i — корень! y*=x(Acos x+Bsin x)",
+      "hint": "$\\cos x = \\text{Re}(e^{ix})$, $\\lambda=i$ — корень. Подбор: $y^*=x(A\\cos x+B\\sin x)$.",
+      "steps": [
+        {
+          "title": "ОЛОДУ",
+          "text": "$y_0 = C_1\\cos x+C_2\\sin x$."
+        },
+        {
+          "title": "Частное",
+          "text": "$\\alpha+i\\beta = i$ — корень. Подбор: $y^*=x(A\\cos x+B\\sin x)$.\nПодставка: $y^{*\\prime\\prime}+y^* = 2(-A\\sin x+B\\cos x) = \\cos x$.\n$B = 1/2$, $A = 0$.",
+          "math": "$$y^* = \\frac{x}{2}\\sin x$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y = C_1\\cos x+C_2\\sin x+\\frac{x}{2}\\sin x}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д7.8",
+      "title": "ЛНДУ: y''−3y'+2y = e³ˣ",
+      "type": "Задача · ЛОДУ подбор",
+      "formalText": "Решить:\n$$y''-3y'+2y = e^{3x}$$",
+      "tldr": "λ=1,2. α=3 не корень → y*=Ae³ˣ",
+      "hint": "$\\lambda=1,2$. $\\alpha=3$ — не корень. $y^*=Ae^{3x}$, $A=1/2$.",
+      "steps": [
+        {
+          "title": "ОЛОДУ",
+          "text": "$\\lambda^2-3\\lambda+2=0$ → $\\lambda=1,2$. $y_0=C_1e^x+C_2e^{2x}$."
+        },
+        {
+          "title": "Частное",
+          "text": "$\\alpha=3$ не корень. $y^*=Ae^{3x}$.\n$(9A-9A+2A)e^{3x}=e^{3x}$ → $2A=1$ → $A=1/2$.",
+          "math": "$$y^* = \\frac{1}{2}e^{3x}$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y = C_1 e^x+C_2 e^{2x}+\\frac{1}{2}e^{3x}}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д7.9",
+      "title": "ЛНДУ: y''+4y = sin 2x",
+      "type": "Задача · ЛОДУ подбор",
+      "formalText": "Решить:\n$$y''+4y = \\sin 2x$$",
+      "tldr": "β=2, λ=±2i — корень! y*=x(Acos2x+Bsin2x)",
+      "hint": "$\\lambda=\\pm 2i$. $\\sin 2x$: $\\alpha=0$, $\\beta=2$ → $i\\beta=2i$ — корень!",
+      "steps": [
+        {
+          "title": "ОЛОДУ",
+          "text": "$\\lambda^2+4=0$ → $\\lambda=\\pm 2i$. $y_0 = C_1\\cos 2x+C_2\\sin 2x$."
+        },
+        {
+          "title": "Частное",
+          "text": "$\\alpha \\pm i\\beta = \\pm 2i$ — корень. $y^*=x(A\\cos 2x+B\\sin 2x)$.\n$y^{*\\prime\\prime}+4y^* = -4A\\sin 2x+4B\\cos 2x = \\sin 2x$.\n$A = -1/4$, $B = 0$.",
+          "math": "$$y^* = -\\frac{x}{4}\\cos 2x$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y = C_1\\cos 2x+C_2\\sin 2x-\\frac{x}{4}\\cos 2x}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д7.10",
+      "title": "Вариация: y'+y = 1/(1+eˣ)",
+      "type": "Задача · Вариация постоянной",
+      "formalText": "Решить:\n$$y'+y = \\frac{1}{1+e^x}$$",
+      "tldr": "ОЛОДУ: y₀=Ce⁻ˣ. Вариация: C'(x)eˣ/(1+eˣ)",
+      "hint": "$y_0=Ce^{-x}$. $C'e^{-x}=\\frac{1}{1+e^x}$ → $C' = \\frac{e^x}{1+e^x}$.",
+      "steps": [
+        {
+          "title": "ОЛОДУ",
+          "text": "$y'+y=0$ → $y_0=Ce^{-x}$."
+        },
+        {
+          "title": "Вариация",
+          "text": "$C'e^{-x}=\\frac{1}{1+e^x}$ → $C' = \\frac{e^x}{1+e^x}$.\n$C = \\int\\frac{e^x dx}{1+e^x} = \\ln(1+e^x)+C_0$.",
+          "math": "$$y = (\\ln(1+e^x)+C_0)e^{-x}$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y = e^{-x}\\ln(1+e^x)+Ce^{-x}}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д7.11",
+      "title": "Вариация: y'−2y = x·eˣ",
+      "type": "Задача · Вариация постоянной",
+      "formalText": "Решить:\n$$y'-2y = xe^x$$",
+      "tldr": "y₀=Ce²ˣ, C'=xe⁻ˣ → по частям",
+      "hint": "$y_0=Ce^{2x}$. $C'e^{2x}=xe^x$ → $C'=xe^{-x}$.",
+      "steps": [
+        {
+          "title": "ОЛОДУ",
+          "text": "$y'-2y=0$ → $y_0=Ce^{2x}$."
+        },
+        {
+          "title": "Вариация",
+          "text": "$C'e^{2x}=xe^x$ → $C'=xe^{-x}$.\n$C = \\int xe^{-x}dx = -xe^{-x}-e^{-x}+C_0 = -(x+1)e^{-x}+C_0$ (по частям).",
+          "math": "$$y = -(x+1)e^x+C_0 e^{2x}$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y = Ce^{2x}-(x+1)e^x}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д7.12",
+      "title": "y'' = 6x",
+      "type": "Задача · Понижение (нет y)",
+      "formalText": "Решить ОДУ:\n$$y'' = 6x$$",
+      "tldr": "Двукратное интегрирование",
+      "hint": "$y' = 3x^2+C_1$ → $y = x^3+C_1x+C_2$.",
+      "steps": [
+        {
+          "title": "Первое интегрирование",
+          "text": "$y' = \\int 6x\\,dx = 3x^2+C_1$."
+        },
+        {
+          "title": "Второе",
+          "text": "$y = \\int(3x^2+C_1)dx = x^3+C_1 x+C_2$."
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y = x^3+C_1 x+C_2}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д7.13",
+      "title": "ЛНДУ: y''−y' = x²",
+      "type": "Задача · ЛОДУ подбор",
+      "formalText": "Решить:\n$$y''-y' = x^2$$",
+      "tldr": "λ=0,1. α=0 — корень! y*=x(Ax²+Bx+C)",
+      "hint": "$\\lambda=0$ — корень. Подбор: $y^*=x(Ax^2+Bx+C)$.",
+      "steps": [
+        {
+          "title": "ОЛОДУ",
+          "text": "$\\lambda^2-\\lambda=0$ → $\\lambda=0,1$. $y_0 = C_1+C_2 e^x$."
+        },
+        {
+          "title": "Частное",
+          "text": "$f=x^2$ — многочлен, $\\alpha=0$ — простой корень.\n$y^*=x(Ax^2+Bx+C) = Ax^3+Bx^2+Cx$.\n$y^{*\\prime\\prime}-y^{*\\prime} = (6Ax+2B)-(3Ax^2+2Bx+C) = -3Ax^2+(6A-2B)x+(2B-C)$.\n$-3A=1$ → $A=-1/3$. $6A-2B=0$ → $B=-1$. $2B-C=0$ → $C=-2$.",
+          "math": "$$y^* = -\\frac{x^3}{3}-x^2-2x$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y = C_1+C_2 e^x-\\frac{x^3}{3}-x^2-2x}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д7.14",
+      "title": "Понижение: x²y'' = (y')²",
+      "type": "Задача · Понижение (нет y)",
+      "formalText": "Решить:\n$$x^2 y'' = (y')^2$$",
+      "tldr": "p=y': x²dp/dx = p² → dp/p² = dx/x²",
+      "hint": "$p=y'$: $x^2 p' = p^2$ → $\\frac{dp}{p^2}=\\frac{dx}{x^2}$.",
+      "steps": [
+        {
+          "title": "Замена p=y'",
+          "text": "$x^2 \\frac{dp}{dx} = p^2$. Разделяем:\n$\\frac{dp}{p^2} = \\frac{dx}{x^2}$.",
+          "math": "$$-\\frac{1}{p} = -\\frac{1}{x}+C_1 \\Rightarrow p = \\frac{x}{1-C_1 x}$$"
+        },
+        {
+          "title": "Интегрирование",
+          "text": "$y = \\int\\frac{x\\,dx}{1-C_1 x}$. Замена $u=1-C_1 x$:\n$= -\\frac{1}{C_1^2}\\int\\frac{(1-u)du}{u} = -\\frac{1}{C_1^2}(\\ln|u|-u)+C_2$."
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y = -\\frac{1}{C_1^2}\\ln|1-C_1 x|+\\frac{x}{C_1}+C_2}$$"
+        }
+      ]
+    },
+    {
+      "id": "Д7.15",
+      "title": "ЛНДУ: y''+9y = cos 3x + sin x",
+      "type": "Задача · ЛОДУ подбор",
+      "formalText": "Решить:\n$$y''+9y = \\cos 3x + \\sin x$$",
+      "tldr": "Суперпозиция: для cos3x: λ=3i — корень; для sinx: не корень",
+      "hint": "$\\cos 3x$: $\\lambda=3i$ — корень → $y_1^*=x(A\\cos 3x+B\\sin 3x)$. $\\sin x$: не корень → $y_2^*=C\\sin x$.",
+      "steps": [
+        {
+          "title": "ОЛОДУ",
+          "text": "$\\lambda^2+9=0$ → $\\lambda=\\pm 3i$. $y_0 = C_1\\cos 3x+C_2\\sin 3x$."
+        },
+        {
+          "title": "Частные решения",
+          "text": "Для $\\cos 3x$: $3i$ — корень. $y_1^*=x(A\\cos 3x+B\\sin 3x)$. Подставка: $6B\\cos 3x - 6A\\sin 3x = \\cos 3x$ → $B=1/6$, $A=0$.\nДля $\\sin x$: $i$ — не корень. $y_2^*=D\\sin x$. $-D+9D=1$ → $D=1/8$.",
+          "math": "$$y^* = \\frac{x}{6}\\sin 3x+\\frac{1}{8}\\sin x$$"
+        },
+        {
+          "title": "Ответ",
+          "math": "$$\\boxed{y = C_1\\cos 3x+C_2\\sin 3x+\\frac{x}{6}\\sin 3x+\\frac{1}{8}\\sin x}$$"
+        }
+      ]
     }
   ]
 }
