@@ -41,10 +41,12 @@ const SUBJECTS = [
       { id: 'exam', name: 'Экзамен', bundleName: 'ИнтДУ_Экзамен' },
       { id: 'exam-practice', name: 'Экзамен · Практика', bundleName: 'ИнтДУ_Экзамен_Практика' },
       { id: 'midterm-1', name: 'РК-1', bundleName: 'ИнтДУ_РК-1' },
-
+      { id: 'midterm-1-practice', name: 'РК-1 · Практика', bundleName: 'ИнтДУ_РК-1_Практика' },
       { id: 'midterm-2', name: 'РК-2', bundleName: 'ИнтДУ_РК-2' },
+      { id: 'midterm-2-practice', name: 'РК-2 · Практика', bundleName: 'ИнтДУ_РК-2_Практика' },
       { id: 'kr-1', name: 'КР-1', bundleName: 'ИнтДУ_КР-1' },
       { id: 'kr-2', name: 'КР-2', bundleName: 'ИнтДУ_КР-2' },
+      { id: 'kr-2-practice', name: 'КР-2 · Практика', bundleName: 'ИнтДУ_КР-2_Практика' },
     ],
   },
   {
@@ -56,6 +58,7 @@ const SUBJECTS = [
       { id: 'midterm-2-practice', name: 'РК-2 · Практика', bundleName: 'ЛинАлг_РК-2_Практика' },
       { id: 'kr-1', name: 'КР · Теория', bundleName: 'ЛинАлг_КР-1' },
       { id: 'kr-1-practice', name: 'КР · Практика', bundleName: 'ЛинАлг_КР-1_Практика' },
+      { id: 'exam-practice', name: 'Экзамен · Практика', bundleName: 'ЛинАлг_Экзамен_Практика' },
     ],
   },
   {
@@ -109,7 +112,7 @@ for (const subject of SUBJECTS) {
 
     // Resolve SVG references in questions
     for (const section of sections) {
-      for (const q of section.questions) {
+      for (const q of (section.questions || section.cards || [])) {
         if (q.visual && typeof q.visual === 'string' && q.visual.startsWith('svg:')) {
           const svgName = q.visual.replace('svg:', '');
           q.visual = svgs[svgName] || null;
@@ -166,7 +169,7 @@ for (const subject of SUBJECTS) {
     const outPath = path.join(BUNDLES, `${assessment.bundleName}.html`);
     fs.writeFileSync(outPath, html, 'utf-8');
 
-    const totalQ = sections.reduce((s, sec) => s + sec.questions.length, 0);
+    const totalQ = sections.reduce((s, sec) => s + (sec.questions || sec.cards || []).length, 0);
     const size = (Buffer.byteLength(html) / 1024).toFixed(0);
     console.log(`  ✅ ${assessment.bundleName}.html — ${totalQ} вопросов, ${size} КБ`);
     totalBundles++;
