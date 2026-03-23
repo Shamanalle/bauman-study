@@ -73,7 +73,7 @@
       "title": "Класс «угол» — синус",
       "type": "Задача · Классы",
       "formalText": "Создать класс «угол (заданный в градусах)».\nЭлементы класса:\n- поле задает значение угла в градусах (статус доступа private)\n- конструктор для инициализации поля\n- метод для вычисления синуса угла\n\nСоздать 1 объект данного класса, вывести значение синуса заданного угла.",
-      "tldr": "class + double degrees + sin(deg * π/180)",
+      "tldr": "class + double degrees + sin(deg * $\\pi$/180)",
       "hint": "Не забудь перевести градусы в радианы: `sin(degrees * M_PI / 180.0)`. Подключи `<cmath>`.",
       "steps": [
         {
@@ -82,7 +82,7 @@
         },
         {
           "title": "Использование в main",
-          "text": "<pre class=\"code-block\"><code>int main() {\n    Angle a(30.0);\n    std::cout << \"sin(30°) = \" << a.sinValue()\n              << std::endl;  // ≈ 0.5\n    return 0;\n}</code></pre>"
+          "text": "<pre class=\"code-block\"><code>int main() {\n    Angle a(30.0);\n    std::cout << \"sin(30°) = \" << a.sinValue()\n              << std::endl;  // $\\approx$ 0.5\n    return 0;\n}</code></pre>"
         },
         {
           "title": "Полный код",
@@ -95,7 +95,7 @@
       "title": "Класс «угол» — косинус",
       "type": "Задача · Классы",
       "formalText": "Создать класс «угол (заданный в градусах)».\nЭлементы класса:\n- поле задает значение угла в градусах (статус доступа private)\n- конструктор для инициализации поля\n- метод для вычисления косинуса угла\n\nСоздать 1 объект данного класса, вывести значение косинуса заданного угла.",
-      "tldr": "class + double degrees + cos(deg * π/180)",
+      "tldr": "class + double degrees + cos(deg * $\\pi$/180)",
       "hint": "Аналогично синусу, но `std::cos(degrees * M_PI / 180.0)`.",
       "steps": [
         {
@@ -104,7 +104,7 @@
         },
         {
           "title": "Использование в main",
-          "text": "<pre class=\"code-block\"><code>int main() {\n    Angle a(60.0);\n    std::cout << \"cos(60°) = \" << a.cosValue()\n              << std::endl;  // ≈ 0.5\n    return 0;\n}</code></pre>"
+          "text": "<pre class=\"code-block\"><code>int main() {\n    Angle a(60.0);\n    std::cout << \"cos(60°) = \" << a.cosValue()\n              << std::endl;  // $\\approx$ 0.5\n    return 0;\n}</code></pre>"
         },
         {
           "title": "Полный код",
@@ -139,7 +139,7 @@
       "title": "Класс «круг» — площадь",
       "type": "Задача · Классы",
       "formalText": "Создать класс «круг».\nЭлементы класса:\n- поле задает значение радиуса круга (статус доступа private)\n- конструктор для инициализации поля\n- метод для вычисления площади круга\n\nСоздать 1 объект данного класса, напечатать значение площади круга.",
-      "tldr": "class + double radius + π·r²",
+      "tldr": "class + double radius + $\\pi$$\\cdot$r^2",
       "hint": "Площадь круга: `M_PI * radius * radius`. Подключи `<cmath>`.",
       "steps": [
         {
@@ -148,7 +148,7 @@
         },
         {
           "title": "Использование в main",
-          "text": "<pre class=\"code-block\"><code>int main() {\n    Circle c(5.0);\n    std::cout << \"Площадь круга: \" << c.area()\n              << std::endl;  // ≈ 78.54\n    return 0;\n}</code></pre>"
+          "text": "<pre class=\"code-block\"><code>int main() {\n    Circle c(5.0);\n    std::cout << \"Площадь круга: \" << c.area()\n              << std::endl;  // $\\approx$ 78.54\n    return 0;\n}</code></pre>"
         },
         {
           "title": "Полный код",
@@ -161,7 +161,7 @@
       "title": "Класс «окружность» — длина",
       "type": "Задача · Классы",
       "formalText": "Создать класс «окружность».\nЭлементы класса:\n- поле задает значение радиуса окружности (статус доступа private)\n- конструктор для инициализации поля\n- метод для вычисления длины окружности\n\nСоздать 1 объект данного класса, напечатать значение длины окружности.",
-      "tldr": "class + double radius + 2·π·r",
+      "tldr": "class + double radius + 2$\\cdot$\\pi$\\cdot$r",
       "hint": "Длина окружности: `2 * M_PI * radius`.",
       "steps": [
         {
@@ -170,7 +170,7 @@
         },
         {
           "title": "Использование в main",
-          "text": "<pre class=\"code-block\"><code>int main() {\n    CirclePerimeter c(5.0);\n    std::cout << \"Длина окружности: \" << c.length()\n              << std::endl;  // ≈ 31.42\n    return 0;\n}</code></pre>"
+          "text": "<pre class=\"code-block\"><code>int main() {\n    CirclePerimeter c(5.0);\n    std::cout << \"Длина окружности: \" << c.length()\n              << std::endl;  // $\\approx$ 31.42\n    return 0;\n}</code></pre>"
         },
         {
           "title": "Полный код",
@@ -183,7 +183,7 @@
       "title": "Класс «квадрат» — площадь",
       "type": "Задача · Классы",
       "formalText": "Создать класс «квадрат».\nЭлементы класса:\n- поле задает значение длины стороны квадрата (статус доступа private)\n- конструктор для инициализации поля\n- метод для вычисления площади квадрата\n\nСоздать 1 объект данного класса, напечатать значение площади квадрата.",
-      "tldr": "class + double side + side²",
+      "tldr": "class + double side + side^2",
       "hint": "Площадь квадрата: `side * side`.",
       "steps": [
         {
@@ -205,7 +205,7 @@
       "title": "Класс «квадрат» — периметр",
       "type": "Задача · Классы",
       "formalText": "Создать класс «квадрат».\nЭлементы класса:\n- поле задает значение длины стороны квадрата (статус доступа private)\n- конструктор для инициализации поля\n- метод для вычисления периметра квадрата\n\nСоздать 1 объект данного класса, напечатать значение периметра квадрата.",
-      "tldr": "class + double side + 4·side",
+      "tldr": "class + double side + 4$\\cdot$side",
       "hint": "Периметр квадрата: `4 * side`.",
       "steps": [
         {
@@ -274,8 +274,8 @@
       "id": "13",
       "title": "Квадрат → Куб (статический полиморфизм)",
       "type": "Задача · Наследование",
-      "formalText": "Базовый класс «квадрат» (поле side; метод area = side²; метод печати).\nПроизводный класс «куб» (переопределённый метод — объём = side³, внутри вызов метода базового).\n\nОбеспечить статический полиморфизм.",
-      "tldr": "Square → Cube (side³ через side² * side), без virtual",
+      "formalText": "Базовый класс «квадрат» (поле side; метод area = side^2; метод печати).\nПроизводный класс «куб» (переопределённый метод — объём = side^3, внутри вызов метода базового).\n\nОбеспечить статический полиморфизм.",
+      "tldr": "Square  →  Cube (side^3 через side^2 * side), без virtual",
       "hint": "Статический полиморфизм = БЕЗ `virtual`. Через `Base*` всегда вызовется метод Base, а не Derived.",
       "steps": [
         {
@@ -284,7 +284,7 @@
         },
         {
           "title": "Производный класс Cube",
-          "text": "Объём куба = площадь основания * сторона. Вызываем `Square::area()` внутри.\n\n<pre class=\"code-block\"><code>class Cube : public Square {\npublic:\n    Cube(double s) : Square(s) {}\n    double area() const {\n        return Square::area() * side;  // side³\n    }\n    void print() const {\n        std::cout << \"side=\" << side\n                  << \" volume=\" << area() << std::endl;\n    }\n};</code></pre>"
+          "text": "Объём куба = площадь основания * сторона. Вызываем `Square::area()` внутри.\n\n<pre class=\"code-block\"><code>class Cube : public Square {\npublic:\n    Cube(double s) : Square(s) {}\n    double area() const {\n        return Square::area() * side;  // side^3\n    }\n    void print() const {\n        std::cout << \"side=\" << side\n                  << \" volume=\" << area() << std::endl;\n    }\n};</code></pre>"
         },
         {
           "title": "Статический полиморфизм в main",
@@ -318,8 +318,8 @@
       "id": "15",
       "title": "Круг → Шар (динамический полиморфизм)",
       "type": "Задача · Наследование",
-      "formalText": "Базовый класс «круг» (поле radius; virtual метод area = πr²; метод печати).\nПроизводный «шар» (переопределённый метод — объём = 4/3·πr³).\n\nОбеспечить динамический полиморфизм.",
-      "tldr": "Circle (virtual πr²) → Sphere (override 4/3·πr³)",
+      "formalText": "Базовый класс «круг» (поле radius; virtual метод area = $\\pi$r^2; метод печати).\nПроизводный «шар» (переопределённый метод — объём = 4/3$\\cdot$$\\pi$r^3).\n\nОбеспечить динамический полиморфизм.",
+      "tldr": "Circle (virtual $\\pi$r^2)  →  Sphere (override 4/3$\\cdot$$\\pi$r^3)",
       "hint": "Динамический = с `virtual`. Объём шара: `4.0/3.0 * M_PI * r*r*r`.",
       "steps": [
         {
@@ -362,8 +362,8 @@
       "id": "17",
       "title": "Вещественное число → Комплексное (динамический полиморфизм)",
       "type": "Задача · Наследование",
-      "formalText": "Базовый «вещественное число» (поле value; virtual метод модуля |value|; virtual метод печати).\nПроизводный «комплексное число» (доп. поле imag; модуль = √(re²+im²); переопределённая печать).\n\nОбеспечить динамический полиморфизм.",
-      "tldr": "Real (|x|) → Complex (√(re²+im²)), virtual",
+      "formalText": "Базовый «вещественное число» (поле value; virtual метод модуля |value|; virtual метод печати).\nПроизводный «комплексное число» (доп. поле imag; модуль = $\\sqrt{}$(re^2+im^2); переопределённая печать).\n\nОбеспечить динамический полиморфизм.",
+      "tldr": "Real (|x|)  →  Complex ($\\sqrt{}$(re^2+im^2)), virtual",
       "hint": "Модуль вещественного: `std::abs(value)`. Модуль комплексного: `sqrt(value*value + imag*imag)`.",
       "steps": [
         {
@@ -428,7 +428,7 @@
       "id": "20",
       "title": "Квадрат → Прямоугольник (статический полиморфизм, периметр)",
       "type": "Задача · Наследование",
-      "formalText": "Базовый «квадрат» (поле side; метод периметра = 4·side; метод печати).\nПроизводный «прямоугольник» (доп. поле side2; переопределённый метод периметра = 2·(side+side2); переопределённая печать).\n\nОбеспечить статический полиморфизм.",
+      "formalText": "Базовый «квадрат» (поле side; метод периметра = 4$\\cdot$side; метод печати).\nПроизводный «прямоугольник» (доп. поле side2; переопределённый метод периметра = 2$\\cdot$(side+side2); переопределённая печать).\n\nОбеспечить статический полиморфизм.",
       "tldr": "Square (4s) → Rect (2(a+b)), без virtual",
       "hint": "Периметр квадрата: `4*side`. Периметр прямоугольника: `2*(side + side2)`.",
       "steps": [
@@ -508,7 +508,7 @@
         },
         {
           "title": "Полный код",
-          "text": "<pre class=\"code-block\"><code>#include &lt;iostream&gt;\n#include &lt;thread&gt;\n#include &lt;mutex&gt;\n#include &lt;string&gt;\n\nstd::mutex mtx;\n\nvoid printNumbers(int n, const std::string& name) {\n    for (int i = 1; i <= n; ++i) {\n        std::lock_guard<std::mutex> lock(mtx);\n        std::cout << name << \": \" << i << std::endl;\n    }\n}\n\nint main() {\n    std::thread t1(printNumbers, 5, \"T1\");\n    std::thread t2(printNumbers, 5, \"T2\");\n    t1.join();\n    t2.join();\n    return 0;\n}</code></pre>"
+          "text": "Продолжаем: <pre class=\"code-block\"><code>#include &lt;iostream&gt;\n#include &lt;thread&gt;\n#include &lt;mutex&gt;\n#include &lt;string&gt;\n\nstd::mutex mtx;\n\nvoid printNumbers(int n, const std::string& name) {\n    for (int i = 1; i <= n; ++i) {\n        std::lock_guard<std::mutex> lock(mtx);\n        std::cout << name << \": \" << i << std::endl;\n    }\n}\n\nint main() {\n    std::thread t1(printNumbers, 5, \"T1\");\n    std::thread t2(printNumbers, 5, \"T2\");\n    t1.join();\n    t2.join();\n    return 0;\n}</code></pre>"
         }
       ]
     },
