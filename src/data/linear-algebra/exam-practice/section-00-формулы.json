@@ -1,0 +1,46 @@
+{
+  "section": "📋 Формулы",
+  "icon": "📋",
+  "cards": [
+    {
+      "title": "Собственные числа и вектора",
+      "formalText": "Собственные числа $\\lambda$ матрицы $A$:\n$$\\det(A-\\lambda E)=0$$\nСобственные вектора: $(A-\\lambda E)v=0$"
+    },
+    {
+      "title": "Квадратичная форма",
+      "formalText": "КФ: $Q = x^T A x$, где $A$ — симметричная матрица.\nКанонический вид: $Q = \\lambda_1 y_1^2+\\ldots+\\lambda_n y_n^2$.\nКритерий Сильвестра: $Q > 0 \\Leftrightarrow \\Delta_1>0, \\Delta_2>0, \\ldots, \\Delta_n>0$"
+    },
+    {
+      "title": "Частные производные",
+      "formalText": "$$f_x' = \\lim_{\\Delta x\\to 0}\\frac{f(x_0+\\Delta x, y_0)-f(x_0,y_0)}{\\Delta x}$$\n\nПолный дифференциал: $df = f_x'\\,dx + f_y'\\,dy$"
+    },
+    {
+      "title": "Градиент и производная по направлению",
+      "formalText": "$$\\nabla f = \\left(\\frac{\\partial f}{\\partial x}, \\frac{\\partial f}{\\partial y}\\right)$$\n$$\\frac{\\partial f}{\\partial \\vec{l}} = \\nabla f \\cdot \\vec{l}_0 = f_x'\\cos\\alpha + f_y'\\cos\\beta$$"
+    },
+    {
+      "title": "Касательная плоскость и нормаль",
+      "formalText": "К поверхности $F(x,y,z)=0$ в точке $M_0$:\n$$F_x'(x-x_0)+F_y'(y-y_0)+F_z'(z-z_0)=0$$\nНормаль: $\\frac{x-x_0}{F_x'}=\\frac{y-y_0}{F_y'}=\\frac{z-z_0}{F_z'}$"
+    },
+    {
+      "title": "Экстремумы ФНП",
+      "formalText": "Необходимое: $f_x'=f_y'=0$.\nДостаточное: $\\Delta = AC-B^2$, $A=f_{xx}''$, $B=f_{xy}''$, $C=f_{yy}''$.\n$\\Delta>0, A>0$ — min; $\\Delta>0, A<0$ — max; $\\Delta<0$ — седло."
+    },
+    {
+      "title": "Условный экстремум (Лагранж)",
+      "formalText": "$$L = f(x,y)+\\lambda\\cdot g(x,y)$$\n$$L_x'=L_y'=L_\\lambda'=0$$"
+    },
+    {
+      "title": "Неявная функция",
+      "formalText": "Если $F(x,y,z)=0$ и $F_z'\\ne 0$:\n$$z_x' = -\\frac{F_x'}{F_z'}, \\quad z_y' = -\\frac{F_y'}{F_z'}$$"
+    },
+    {
+      "title": "Матрица перехода",
+      "formalText": "Если $e' = eT$, $x_{\\text{new}} = T^{-1}x_{\\text{old}}$.\nМатрица ЛО в новом базисе: $A' = T^{-1}AT$."
+    },
+    {
+      "title": "Ортогонализация Грама–Шмидта",
+      "formalText": "$$b_k = a_k - \\sum_{j=1}^{k-1}\\frac{(a_k,b_j)}{(b_j,b_j)}b_j$$\n$$e_k = \\frac{b_k}{|b_k|}$$"
+    }
+  ]
+}

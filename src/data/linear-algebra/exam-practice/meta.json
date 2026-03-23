@@ -1,0 +1,8 @@
+{
+  "title": "Линейная алгебра и ФНП",
+  "subtitle": "Экзамен · Практика",
+  "icon": "📐",
+  "shortCode": "laep",
+  "bundleName": "ЛинАлг_Экзамен_Практика",
+  "practiceMode": true
+}
