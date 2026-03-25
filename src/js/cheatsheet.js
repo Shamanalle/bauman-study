@@ -2,9 +2,7 @@
 // Triggered from practice-browser via a button
 
 export function initCheatsheet(meta, sections) {
-  // Find formulas section by checking:
-  // 1. Section name containing "Формулы" or "Синтаксис"
-  // 2. Fallback to first section  
+  // Find formulas section by checking section name
   const formulaSec = sections.find(s => {
     const secName = (s.section || '').toLowerCase();
     return secName.includes('формул') || secName.includes('синтаксис') || secName.includes('справочник');
@@ -20,7 +18,6 @@ export function initCheatsheet(meta, sections) {
         return;
       }
 
-      // Build cheatsheet HTML
       const safeTitle = escapeHtml(meta.title || '');
       const safeIcon = escapeHtml(meta.icon || '');
 
@@ -36,50 +33,109 @@ export function initCheatsheet(meta, sections) {
     onload="renderMathInElement(document.body, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false})"><\/script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
       font-family: "Inter", -apple-system, sans-serif;
-      font-size: 9pt; line-height: 1.5; padding: 12px;
-      column-count: 2; column-gap: 16px;
+      font-size: 8.5pt;
+      line-height: 1.4;
+      padding: 8px;
+      column-count: 2;
+      column-gap: 12px;
+      color: #1a1a1a;
     }
-    h1 { font-size: 12pt; text-align: center; margin-bottom: 8px; column-span: all; }
-    .subtitle { text-align: center; color: #666; font-size: 8pt; margin-bottom: 12px; column-span: all; }
-    .formula {
-      break-inside: avoid; page-break-inside: avoid;
-      border: 1px solid #ddd; border-radius: 6px;
-      padding: 6px 8px; margin-bottom: 6px;
+
+    h1 {
+      font-size: 11pt;
+      text-align: center;
+      margin-bottom: 6px;
+      column-span: all;
     }
-    .formula-title {
-      font-size: 7pt; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.05em; color: #2da44e; margin-bottom: 3px;
+
+    .subtitle {
+      text-align: center;
+      color: #666;
+      font-size: 7pt;
+      margin-bottom: 10px;
+      column-span: all;
     }
-    .formula-body { font-size: 8pt; overflow-x: hidden; }
-    .formula-body .katex { font-size: 0.85em; }
-    .formula-body strong { font-weight: 700; }
-    .formula-key-idea {
-      color: #8250df; font-size: 7pt; margin-top: 2px;
-      border-top: 1px dashed #e8ecf0; padding-top: 2px;
+
+    .f {
+      break-inside: avoid;
+      page-break-inside: avoid;
+      border: 0.5pt solid #ccc;
+      border-radius: 4px;
+      padding: 4px 6px;
+      margin-bottom: 5px;
     }
-    .katex-display { margin: 2px 0 !important; text-align: left !important; }
+
+    .f-t {
+      font-size: 6.5pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #2da44e;
+      margin-bottom: 2px;
+      line-height: 1.2;
+    }
+
+    .f-b {
+      font-size: 7.5pt;
+      line-height: 1.35;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+
+    .f-b strong { font-weight: 700; }
+
+    .f-k {
+      color: #8250df;
+      font-size: 6.5pt;
+      margin-top: 1px;
+      border-top: 0.5pt dashed #ddd;
+      padding-top: 1px;
+      line-height: 1.2;
+    }
+
+    /* KaTeX: compact, no overflow, no scroll */
+    .katex { font-size: 0.82em !important; }
+    .katex-display {
+      margin: 1px 0 !important;
+      text-align: left !important;
+      overflow: visible !important;
+    }
+    .katex-display > .katex {
+      text-align: left !important;
+      white-space: normal !important;
+    }
+    /* Kill any KaTeX scroll containers */
+    .katex-html { overflow: visible !important; }
+    .katex .base { white-space: normal !important; }
+
+    /* No scrollbars anywhere */
+    * { overflow: visible !important; }
+    body { overflow: visible !important; }
+
     @media print {
-      body { padding: 6px; font-size: 8pt; }
-      .formula { border: 0.5pt solid #ccc; padding: 4px 6px; margin-bottom: 4px; }
+      body { padding: 4px; font-size: 7.5pt; }
+      .f { border: 0.4pt solid #bbb; padding: 3px 5px; margin-bottom: 3px; }
+      .f-t { font-size: 6pt; }
+      .f-b { font-size: 7pt; }
+      .katex { font-size: 0.78em !important; }
     }
-    @page { margin: 10mm; }
+
+    @page { margin: 8mm; }
   </style>
 </head>
 <body>
   <h1>${safeIcon} ${safeTitle} · Формулы</h1>
   <div class="subtitle">${escapeHtml(formulaSec.section || '')} · ${items.length} позиций</div>
-  ${items.map((item, i) => `
-    <div class="formula">
-      <div class="formula-title">${i + 1}. ${escapeHtml(item.title || '')}</div>
-      <div class="formula-body">${formatFormulaContent(item)}</div>
-    </div>
-  `).join('')}
+  ${items.map((item, i) => `<div class="f">
+<div class="f-t">${i + 1}. ${escapeHtml(item.title || '')}</div>
+<div class="f-b">${formatFormulaContent(item)}</div>
+</div>`).join('\n')}
 </body>
 </html>`;
 
-      // Open in new window for printing
       const win = window.open('', '_blank');
       if (!win) {
         alert('Разрешите всплывающие окна для генерации шпаргалки');
@@ -88,7 +144,6 @@ export function initCheatsheet(meta, sections) {
       win.document.write(cheatHtml);
       win.document.close();
 
-      // Auto-trigger print after KaTeX loads
       win.addEventListener('load', () => {
         setTimeout(() => win.print(), 800);
       });
@@ -108,12 +163,10 @@ function formatFormulaContent(item) {
   let html = '';
 
   if (item.formalText) {
-    // Process markdown-like content: **bold**, newlines, bullet lists
     html += item.formalText
       .replace(/&/g, '&amp;')
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;')
-      // Restore $ math delimiters that were escaped
       .replace(/\$\$/g, '$$')
       .replace(/\$/g, '$')
       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
@@ -122,7 +175,7 @@ function formatFormulaContent(item) {
   }
 
   if (item.keyIdea) {
-    html += `<div class="formula-key-idea">💡 ${escapeHtml(item.keyIdea)}</div>`;
+    html += `<div class="f-k">💡 ${escapeHtml(item.keyIdea)}</div>`;
   }
 
   return html;
