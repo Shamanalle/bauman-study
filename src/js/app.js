@@ -211,6 +211,11 @@ function showPlatformPage() {
   document.getElementById('darkToggle2')?.addEventListener('click', progress.toggleTheme);
   const btn = document.getElementById('darkToggle2');
   if (btn) btn.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+
+  // Init global search
+  import('./global-search.js').then(({ initGlobalSearch }) => {
+    initGlobalSearch(document.getElementById('app'));
+  });
 }
 
 // Lazy import to avoid circular deps

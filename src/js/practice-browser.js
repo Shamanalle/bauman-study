@@ -159,6 +159,7 @@ export function initPracticeBrowser(data) {
         <button class="prac-mode-tab active" data-mode="reference">📖 Справочник</button>
         <button class="prac-mode-tab" data-mode="training">🏋️ Тренировка</button>
         <button class="prac-mode-tab" data-mode="exam">⏱ Контрольная</button>
+        <button class="prac-mode-tab" data-mode="cheatsheet" id="cheatsheetBtn">📄 Шпаргалка</button>
       </div>
       <div class="lab-tabs" id="pracTabs">
         ${sections.map((s, i) => {
@@ -179,6 +180,7 @@ export function initPracticeBrowser(data) {
     const mode = tab.dataset.mode;
     if (mode === currentMode) return;
 
+    const previousMode = currentMode;
     currentMode = mode;
     document.querySelectorAll('.prac-mode-tab').forEach(t => t.classList.remove('active'));
     tab.classList.add('active');
@@ -213,6 +215,15 @@ export function initPracticeBrowser(data) {
         pracTabs.style.display = '';
         renderCurrentTab();
       });
+    } else if (mode === 'cheatsheet') {
+      // Generate and open cheatsheet — don't switch mode, just trigger
+      const { initCheatsheet } = await import('./cheatsheet.js');
+      const cs = initCheatsheet(meta, sections);
+      if (cs) cs.render();
+      // Return to previous mode visually
+      tab.classList.remove('active');
+      document.querySelector(`.prac-mode-tab[data-mode="${previousMode || 'reference'}"]`)?.classList.add('active');
+      currentMode = previousMode || 'reference';
     }
   });
 

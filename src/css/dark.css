@@ -163,7 +163,7 @@ body.dark .ki-label { color: #e3b341; }
 body.dark .statement-block { background: rgba(9, 105, 218, 0.08); border-color: rgba(9, 105, 218, 0.25); color: #79c0ff; }
 body.dark .tldr { background: rgba(45, 164, 78, 0.1); border-color: rgba(45, 164, 78, 0.35); color: #7ee787; }
 
-/* Practice mode dark overrides */
+/* ===== Practice mode dark overrides ===== */
 body.dark .practice-condition { background: rgba(45, 164, 78, 0.06); border-color: rgba(45, 164, 78, 0.25); }
 body.dark .practice-condition .card-formal-text { color: #e6edf3; }
 body.dark .solution-reveal { color: #56d364; border-color: rgba(45, 164, 78, 0.5); }
@@ -172,6 +172,233 @@ body.dark .solution-reveal.open { background: rgba(45, 164, 78, 0.1); }
 body.dark .solution-body { background: #0d1117; border-color: #30363d; }
 body.dark .solution-answer { background: rgba(45, 164, 78, 0.1); border-color: rgba(45, 164, 78, 0.35); }
 body.dark .solution-answer-label { color: #56d364; }
+
+/* Practice Browser */
+body.dark .prac-formula-header { background: rgba(99, 102, 241, 0.08); border-color: rgba(99, 102, 241, 0.2); }
+body.dark .prac-formula-card { background: var(--surface); border-color: var(--border); }
+body.dark .prac-formula-card:hover { border-color: var(--accent); box-shadow: 0 2px 12px rgba(45, 164, 78, 0.15); }
+body.dark .prac-formula-title { color: #7ee787; border-color: var(--border); }
+body.dark .prac-formula-idx { background: rgba(45, 164, 78, 0.15); color: #7ee787; }
+body.dark .prac-formula-body { color: #c9d1d9; }
+body.dark .prac-formula-body strong { color: #e6edf3; }
+
+body.dark .prac-mode-tabs { background: var(--surface); border-color: var(--border); }
+body.dark .prac-mode-tab { color: #8b949e; }
+body.dark .prac-mode-tab:hover { background: rgba(45, 164, 78, 0.08); color: #7ee787; }
+body.dark .prac-mode-tab.active { background: #238636; color: #fff; }
+
+body.dark .prac-topic-filters { background: var(--surface); border-color: var(--border); }
+body.dark .prac-topic-pill { background: #21262d; border-color: var(--border); color: #8b949e; }
+body.dark .prac-topic-pill:hover { border-color: var(--accent); color: #7ee787; }
+body.dark .prac-topic-pill.active { background: var(--accent); color: #fff; }
+body.dark .prac-topic-count { color: #484f58; }
+
+body.dark .prac-algo-card { background: var(--surface); border-color: var(--border); }
+body.dark .prac-algo-header { color: #d2a8ff; }
+body.dark .prac-algo-badge { background: rgba(130, 80, 223, 0.15); color: #d2a8ff; }
+body.dark .prac-algo-steps { color: #c9d1d9; }
+body.dark .prac-algo-title { color: #e6edf3; }
+
+/* Practice Problems */
+body.dark .prac-problem { background: var(--surface); border-color: var(--border); }
+body.dark .prac-problem:hover { border-color: #484f58; }
+body.dark .prac-problem-num { background: rgba(45, 164, 78, 0.15); color: #7ee787; }
+body.dark .prac-problem-title { color: #e6edf3; }
+body.dark .prac-problem-type { color: #8b949e; }
+body.dark .prac-problem-statement { color: #c9d1d9; }
+body.dark .prac-problem-statement strong { color: #e6edf3; }
+body.dark .prac-problem-reveal { color: #56d364; border-color: rgba(45, 164, 78, 0.4); }
+body.dark .prac-problem-reveal:hover { background: rgba(45, 164, 78, 0.08); }
+body.dark .prac-problem-collapse { color: #8b949e; border-color: var(--border); }
+body.dark .prac-problem-collapse:hover { background: rgba(248, 81, 73, 0.06); color: #f85149; }
+body.dark .prac-problem-solution { background: #0d1117; border-color: #30363d; }
+body.dark .prac-problem-answer { background: rgba(45, 164, 78, 0.1); border-color: rgba(45, 164, 78, 0.35); }
+body.dark .prac-problem-answer strong { color: #7ee787; }
+body.dark .prac-hint-btn { background: #161b22; border-color: #30363d; color: #8b949e; }
+body.dark .prac-hint-btn:hover { border-color: #bf8700; color: #e3b341; }
+body.dark .prac-hint-content { background: rgba(191, 135, 0, 0.08); border-color: rgba(191, 135, 0, 0.25); }
+body.dark .prac-hint-text { color: #e3b341; }
+body.dark .prac-solution-hint { background: rgba(191, 135, 0, 0.08); border-color: rgba(191, 135, 0, 0.25); color: #e3b341; }
+
+body.dark .prac-step { border-color: var(--border); }
+body.dark .prac-step-num { background: rgba(130, 80, 223, 0.15); color: #d2a8ff; }
+body.dark .prac-step-title { color: #d2a8ff; }
+body.dark .prac-step-text { color: #c9d1d9; }
+body.dark .prac-step-text strong { color: #e6edf3; }
+body.dark .prac-step-math { background: rgba(130, 80, 223, 0.08); border-color: rgba(130, 80, 223, 0.25); }
+body.dark .prac-sol-step-num { background: rgba(130, 80, 223, 0.15); color: #d2a8ff; }
+body.dark .prac-sol-step-header strong { color: #d2a8ff; }
+body.dark .prac-sol-step-text { color: #c9d1d9; }
+
+/* Practice Tickets */
+body.dark .prac-ticket { background: var(--surface); border-color: var(--border); }
+body.dark .prac-ticket::before { background: linear-gradient(180deg, var(--accent), #238636); }
+body.dark .prac-ticket-header { color: #e6edf3; }
+body.dark .prac-ticket-title { color: #e6edf3; }
+body.dark .prac-ticket-subtitle { color: #8b949e; }
+body.dark .prac-ticket-task-item { background: #0d1117; border-color: #30363d; }
+body.dark .prac-ticket-task-num { color: #d2a8ff; }
+body.dark .prac-ticket-task-text { color: #c9d1d9; }
+body.dark .prac-ticket-task-reveal { color: #56d364; border-color: rgba(45, 164, 78, 0.4); }
+body.dark .prac-ticket-task-reveal:hover { background: rgba(45, 164, 78, 0.08); }
+body.dark .prac-ticket-task-collapse:hover { background: rgba(248, 81, 73, 0.06); color: #f85149; }
+body.dark .prac-ticket-sol-title { color: #d2a8ff; }
+body.dark .prac-ticket-sol-body { color: #c9d1d9; }
+body.dark .prac-ticket-sol-body strong { color: #e6edf3; }
+
+/* Practice Training (pt-*) */
+body.dark .pt-container { color: #e6edf3; }
+body.dark .pt-setup { background: var(--surface); border-color: var(--border); }
+body.dark .pt-config { background: #0d1117; border-color: #30363d; }
+body.dark .pt-config-label { color: #8b949e; }
+body.dark .pt-diff-tab { background: #21262d; border-color: var(--border); color: #8b949e; }
+body.dark .pt-diff-tab:hover { border-color: var(--accent); color: #7ee787; }
+body.dark .pt-diff-tab.active { background: rgba(45, 164, 78, 0.15); border-color: var(--accent); color: #7ee787; }
+body.dark .pt-diff-count { color: #484f58; }
+body.dark .pt-size-btn { background: #21262d; border-color: var(--border); color: #8b949e; }
+body.dark .pt-size-btn:hover { border-color: var(--accent); }
+body.dark .pt-size-btn.active { background: rgba(45, 164, 78, 0.15); border-color: var(--accent); color: #7ee787; }
+body.dark .pt-topic-btn { background: #21262d; border-color: var(--border); color: #8b949e; }
+body.dark .pt-topic-btn:hover { border-color: var(--accent); }
+body.dark .pt-topic-btn.active { background: rgba(45, 164, 78, 0.15); border-color: var(--accent); color: #7ee787; }
+body.dark .pt-start-btn { background: #238636; box-shadow: 0 4px 14px rgba(35, 134, 54, 0.4); }
+body.dark .pt-stat-pill { background: #161b22; border-color: #30363d; color: #8b949e; }
+body.dark .pt-stat-pill[data-type="weak"] { background: rgba(248, 81, 73, 0.1); border-color: rgba(248, 81, 73, 0.3); color: #f85149; }
+body.dark .pt-stat-pill[data-type="ok"] { background: rgba(191, 135, 0, 0.15); border-color: #bf8700; color: #e3b341; }
+body.dark .pt-stat-pill[data-type="fresh"] { background: rgba(56, 139, 253, 0.1); border-color: rgba(56, 139, 253, 0.3); color: #58a6ff; }
+body.dark .pt-ring-bg { stroke: #21262d; }
+body.dark .pt-ring-fill { stroke: #238636; }
+body.dark .pt-ring-pct { color: #e6edf3; }
+body.dark .pt-ring-label { color: #484f58; }
+
+body.dark .pt-task-card { background: var(--surface); border-color: var(--border); }
+body.dark .pt-task-title { color: #e6edf3; }
+body.dark .pt-task-statement { color: #c9d1d9; }
+body.dark .pt-badge { background: rgba(45, 164, 78, 0.15); color: #7ee787; }
+body.dark .pt-badge-topic { background: rgba(56, 139, 253, 0.1); color: #58a6ff; }
+body.dark .pt-progress-bar { background: #21262d; }
+body.dark .pt-progress-counter { color: #8b949e; }
+body.dark .pt-hint-btn { background: #161b22; border-color: #30363d; color: #8b949e; }
+body.dark .pt-hint-btn:hover { border-color: #bf8700; color: #e3b341; }
+body.dark .pt-hint-btn.used { background: rgba(191, 135, 0, 0.1); color: #c9d1d9; }
+body.dark .pt-hint-content { background: rgba(191, 135, 0, 0.08); border-color: rgba(191, 135, 0, 0.25); }
+body.dark .pt-hint-text { color: #e3b341; }
+body.dark .pt-reveal-btn { border-color: #30363d; color: #8b949e; }
+body.dark .pt-reveal-btn:hover { border-color: var(--accent); color: #7ee787; background: rgba(45, 164, 78, 0.06); }
+body.dark .pt-solution { border-top-color: #30363d; }
+body.dark .pt-answer { background: rgba(45, 164, 78, 0.1); border-color: rgba(45, 164, 78, 0.35); }
+body.dark .pt-answer strong { color: #7ee787; }
+body.dark .pt-sol-step-num { background: rgba(130, 80, 223, 0.15); color: #d2a8ff; }
+body.dark .pt-sol-step-header strong { color: #d2a8ff; }
+body.dark .pt-sol-step-text { color: #c9d1d9; }
+body.dark .pt-sol-step-math { background: rgba(130, 80, 223, 0.08); border-color: rgba(130, 80, 223, 0.25); }
+body.dark .pt-sol-step-tip { background: rgba(191, 163, 64, 0.08); border-color: rgba(191, 163, 64, 0.25); color: #e3b341; }
+body.dark .pt-grade-yes { background: rgba(45, 164, 78, 0.1); border-color: rgba(45, 164, 78, 0.3); color: #56d364; }
+body.dark .pt-grade-yes:hover { background: #238636; color: #fff; }
+body.dark .pt-grade-no { background: rgba(248, 81, 73, 0.1); border-color: rgba(248, 81, 73, 0.3); color: #f85149; }
+body.dark .pt-grade-no:hover { background: #da3633; color: #fff; }
+body.dark .pt-back-btn { background: #21262d; color: #e6edf3; border-color: var(--border); }
+body.dark .pt-exit-btn { border-color: #30363d; color: #484f58; }
+body.dark .pt-exit-btn:hover { border-color: rgba(248, 81, 73, 0.3); color: #f85149; }
+body.dark .pt-keys-hint { color: #484f58; }
+body.dark .pt-keys-hint kbd { background: #161b22; border-color: #30363d; }
+
+body.dark .pt-results { background: var(--surface); border-color: var(--border); }
+body.dark .pt-results-title { color: #e6edf3; }
+body.dark .pt-score-bar { background: #21262d; }
+body.dark .pt-score-label { color: #8b949e; }
+body.dark .pt-breakdown-count { color: #e6edf3; }
+body.dark .pt-breakdown-label { color: #484f58; }
+body.dark .pt-failed-title { color: #f85149; }
+body.dark .pt-failed-item { background: rgba(248, 81, 73, 0.06); border-color: rgba(248, 81, 73, 0.3); color: #e6edf3; }
+body.dark .pt-action-btn { background: #161b22; border-color: #30363d; color: #e6edf3; }
+body.dark .pt-action-btn:hover { border-color: var(--accent); color: #7ee787; }
+body.dark .pt-action-btn.primary { background: #238636; border-color: #238636; color: #fff; }
+body.dark .pt-topic-map { background: var(--surface); border-color: var(--border); }
+body.dark .pt-topic-map-title { color: #e6edf3; }
+body.dark .pt-topic-name { color: #8b949e; }
+body.dark .pt-topic-bar { background: #21262d; }
+body.dark .pt-topic-result { border-color: var(--border); }
+body.dark .pt-topic-result-name { color: #8b949e; }
+body.dark .pt-topic-result-bar { background: #21262d; }
+
+/* Exam Simulator (es-*) */
+body.dark .es-container { color: #e6edf3; }
+body.dark .es-setup { background: var(--surface); border-color: var(--border); }
+body.dark .es-setup-title { color: #e6edf3; }
+body.dark .es-setup-desc { color: #8b949e; }
+body.dark .es-config { background: #0d1117; border-color: #30363d; }
+body.dark .es-config-label { color: #8b949e; }
+body.dark .es-diff-btn { background: #21262d; border-color: var(--border); color: #8b949e; }
+body.dark .es-diff-btn:hover { border-color: var(--accent); }
+body.dark .es-diff-btn.active { background: rgba(45, 164, 78, 0.15); border-color: var(--accent); color: #7ee787; }
+body.dark .es-diff-count { color: #484f58; }
+body.dark .es-start-btn { background: #238636; }
+body.dark .es-ticket-btn { background: #21262d; border-color: var(--border); color: #8b949e; }
+body.dark .es-ticket-btn:hover { border-color: var(--accent); }
+body.dark .es-ticket-btn.active { background: rgba(45, 164, 78, 0.15); border-color: var(--accent); color: #7ee787; }
+body.dark .es-timer-btn { background: #21262d; border-color: var(--border); color: #8b949e; }
+body.dark .es-timer-btn:hover { border-color: var(--accent); }
+body.dark .es-timer-btn.active { background: rgba(45, 164, 78, 0.15); border-color: var(--accent); color: #7ee787; }
+
+body.dark .es-exam-header { background: var(--surface); border-color: var(--border); }
+body.dark .es-timer { color: #e6edf3; }
+body.dark .es-timer-warn { color: #e3b341; }
+body.dark .es-timer-danger { color: #f85149; }
+body.dark .es-timer-expired { color: #f85149; }
+body.dark .es-nav-dots { background: var(--surface); border-color: var(--border); }
+body.dark .es-nav-dot { background: #21262d; border-color: var(--border); color: #8b949e; }
+body.dark .es-nav-dot:hover { border-color: var(--accent); }
+body.dark .es-nav-dot.active { background: #238636; color: #fff; border-color: #238636; }
+
+body.dark .es-task-card { background: var(--surface); border-color: var(--border); }
+body.dark .es-task-title { color: #e6edf3; }
+body.dark .es-task-num { color: #d2a8ff; }
+body.dark .es-task-statement { color: #c9d1d9; }
+body.dark .es-reveal-sol-btn { color: #56d364; border-color: rgba(45, 164, 78, 0.4); }
+body.dark .es-reveal-sol-btn:hover { background: rgba(45, 164, 78, 0.08); }
+body.dark .es-sol-answer { background: rgba(45, 164, 78, 0.1); border-color: rgba(45, 164, 78, 0.35); }
+body.dark .es-sol-answer strong { color: #7ee787; }
+body.dark .es-sol-step-num { background: rgba(130, 80, 223, 0.15); color: #d2a8ff; }
+body.dark .es-sol-step-header strong { color: #d2a8ff; }
+body.dark .es-sol-step-text { color: #c9d1d9; }
+body.dark .es-sol-step-math { background: rgba(130, 80, 223, 0.08); border-color: rgba(130, 80, 223, 0.25); }
+body.dark .es-sol-step-tip { background: rgba(191, 163, 64, 0.08); border-color: rgba(191, 163, 64, 0.25); color: #e3b341; }
+body.dark .es-sol-hint { background: rgba(191, 135, 0, 0.08); border-color: rgba(191, 135, 0, 0.25); color: #e3b341; }
+body.dark .es-check-btn { background: #238636; }
+body.dark .es-check-yes.selected { background: rgba(45, 164, 78, 0.15); border-color: var(--accent); color: #7ee787; }
+body.dark .es-check-no.selected { background: rgba(248, 81, 73, 0.1); border-color: rgba(248, 81, 73, 0.3); color: #f85149; }
+body.dark .es-next-btn { background: #238636; color: #fff; }
+body.dark .es-prev-btn { background: #21262d; color: #e6edf3; border-color: var(--border); }
+body.dark .es-back-btn { background: #21262d; color: #e6edf3; border-color: var(--border); }
+body.dark .es-finish-btn { background: rgba(248, 81, 73, 0.1); color: #f85149; border-color: rgba(248, 81, 73, 0.3); }
+body.dark .es-finish-btn:hover { background: #da3633; color: #fff; }
+
+body.dark .es-review { background: var(--surface); border-color: var(--border); }
+body.dark .es-review-header h2 { color: #e6edf3; }
+body.dark .es-review-header p { color: #8b949e; }
+body.dark .es-summary-title { color: #e6edf3; }
+body.dark .es-summary-score-bar { background: #21262d; }
+body.dark .es-summary-score-label { color: #8b949e; }
+body.dark .es-summary-time { color: #8b949e; }
+body.dark .es-summary-warn { color: #e3b341; }
+body.dark .es-review-task { background: #0d1117; border-color: #30363d; }
+body.dark .es-review-task-title { color: #e6edf3; }
+body.dark .es-review-task-num { color: #d2a8ff; }
+body.dark .es-review-task-topic { color: #8b949e; }
+body.dark .es-review-task-statement { color: #c9d1d9; }
+body.dark .es-review-check { color: #56d364; }
+body.dark .es-review-solution { background: #161b22; border-color: #30363d; }
+body.dark .es-action-btn { background: #161b22; border-color: #30363d; color: #e6edf3; }
+body.dark .es-action-btn:hover { border-color: var(--accent); color: #7ee787; }
+body.dark .es-action-btn.primary { background: #238636; border-color: #238636; color: #fff; }
+body.dark .es-history { background: var(--surface); border-color: var(--border); }
+body.dark .es-history-title { color: #e6edf3; }
+body.dark .es-history-item { background: #0d1117; border-color: #30363d; color: #8b949e; }
+
+/* Plot canvas dark mode */
+body.dark .prac-plot-wrap { border-color: #30363d; }
+body.dark .prac-plot-canvas { filter: invert(0.88) hue-rotate(180deg); }
 
 /* Scroll-to-top */
 body.dark .scroll-top { background: #238636; }
