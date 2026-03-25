@@ -33,6 +33,13 @@
   .practice-browser { padding: 0 10px; }
   .prac-formula-grid { grid-template-columns: 1fr; gap: 10px; }
   .prac-formula-card { padding: 14px 16px; }
+  /* Override base overflow:hidden for horizontal scroll */
+  .prac-mode-tabs { overflow: visible; overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; scrollbar-width: none; flex-wrap: nowrap; }
+  .prac-mode-tabs::-webkit-scrollbar { display: none; }
+  .prac-mode-tab { white-space: nowrap; flex: 0 0 auto; font-size: 0.8rem; }
+  .lab-tabs { overflow: visible; overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; scrollbar-width: none; flex-wrap: nowrap; }
+  .lab-tabs::-webkit-scrollbar { display: none; }
+  .lab-tab { white-space: nowrap; flex: 0 0 auto; }
 
   /* Practice training */
   .pt-container { padding: 0 12px; }
@@ -100,6 +107,7 @@
   .katex { font-size: 0.92em; }
 
   /* Practice browser phone */
+  .prac-mode-tab { font-size: 0.72rem; padding: 6px 10px; }
   .prac-formula-header { padding: 10px 12px; font-size: 0.8rem; }
   .prac-formula-title { font-size: 0.78rem; }
 
@@ -148,8 +156,11 @@
   .theme-fab { right: 12px; bottom: 60px; width: 40px; height: 40px; font-size: 1rem; }
 
   /* Global search on phone */
-  .global-search-input { font-size: 0.85rem; }
-  .global-search-results { max-height: 60vh; }
+  .gs-input { font-size: 0.85rem; padding: 10px 14px; }
+  .gs-results { max-height: 60vh; }
+  .gs-result-title { font-size: 0.82rem; }
+  .gs-result-text { font-size: 0.75rem; }
+  .global-search { margin: -4px 12px 20px; }
 }
 
 /* --- Landscape phone fix --- */

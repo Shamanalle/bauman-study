@@ -2251,11 +2251,20 @@
 @media (max-width: 600px) {
   .prac-mode-tabs {
     border-radius: 10px;
+    overflow: visible;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    flex-wrap: nowrap;
   }
+  .prac-mode-tabs::-webkit-scrollbar { display: none; }
 
   .prac-mode-tab {
     padding: 8px 8px;
     font-size: 0.78rem;
+    white-space: nowrap;
+    flex: 0 0 auto;
   }
 
   .pt-topic-name {
