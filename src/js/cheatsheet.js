@@ -1,8 +1,9 @@
-// Cheatsheet: generate a printable formula sheet from section-00 formulas
-// Triggered from practice-browser via a button
+// Cheatsheet: generate a printable formula sheet
+// Strategy: pre-render KaTeX in main page, extract ALL styles, inject into print window
+
+import { renderMath } from './math-utils.js';
 
 export function initCheatsheet(meta, sections) {
-  // Find formulas section by checking section name
   const formulaSec = sections.find(s => {
     const secName = (s.section || '').toLowerCase();
     return secName.includes('формул') || secName.includes('синтаксис') || secName.includes('справочник');
@@ -18,165 +19,146 @@ export function initCheatsheet(meta, sections) {
         return;
       }
 
-      const safeTitle = escapeHtml(meta.title || '');
-      const safeIcon = escapeHtml(meta.icon || '');
+      // 1. Create hidden container in main page to pre-render KaTeX
+      const tmp = document.createElement('div');
+      tmp.style.cssText = 'position:absolute;top:-9999px;left:0;width:900px;font-size:10pt;visibility:hidden;';
+      document.body.appendChild(tmp);
 
-      const cheatHtml = `<!DOCTYPE html>
+      const safeTitle = esc(meta.title || '');
+      const safeIcon = esc(meta.icon || '');
+      const secTitle = esc(formulaSec.section || '');
+
+      // Build formula HTML
+      tmp.innerHTML = items.map((item, i) => {
+        let body = '';
+        if (item.formalText) {
+          body = item.formalText
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            .replace(/\n- (.+)/g, '\n• $1')
+            .replace(/\n/g, '<br>');
+        }
+        const ki = item.keyIdea
+          ? `<div class="cs-ki">💡 ${esc(item.keyIdea)}</div>`
+          : '';
+        return `<div class="cs-f"><div class="cs-t">${i + 1}. ${esc(item.title || '')}</div><div class="cs-b">${body}</div>${ki}</div>`;
+      }).join('');
+
+      // 2. Render KaTeX using the main page's renderer (fonts are loaded here)
+      renderMath(tmp);
+
+      // 3. Wait for rendering, then extract
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          const renderedCards = tmp.innerHTML;
+          tmp.remove();
+
+          // 4. Collect ALL stylesheets from the main page (includes KaTeX CSS)
+          const allStyles = collectStyles();
+
+          const html = `<!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${safeTitle} · Шпаргалка</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"><\/script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-    onload="renderMathInElement(document.body, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false})"><\/script>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+<meta charset="UTF-8">
+<title>${safeTitle} · Шпаргалка</title>
+<style>
+${allStyles}
 
-    body {
-      font-family: "Inter", -apple-system, sans-serif;
-      font-size: 8.5pt;
-      line-height: 1.4;
-      padding: 8px;
-      column-count: 2;
-      column-gap: 12px;
-      color: #1a1a1a;
-    }
+/* === Cheatsheet layout === */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: "Inter", -apple-system, sans-serif;
+  font-size: 10pt; line-height: 1.45;
+  padding: 12px 16px;
+  column-count: 2; column-gap: 16px;
+  color: #111; background: #fff;
+}
+h1 { font-size: 14pt; text-align: center; margin-bottom: 4px; column-span: all; font-weight: 800; }
+.cs-sub { text-align: center; color: #666; font-size: 8pt; margin-bottom: 12px; column-span: all; }
+.cs-f {
+  break-inside: avoid; page-break-inside: avoid;
+  border: 1px solid #d0d7de; border-radius: 6px;
+  padding: 6px 8px; margin-bottom: 6px;
+}
+.cs-t {
+  font-size: 7.5pt; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.03em; color: #1a7f37; margin-bottom: 2px;
+}
+.cs-b { font-size: 9pt; line-height: 1.45; }
+.cs-b strong { font-weight: 700; }
+.cs-ki {
+  color: #8250df; font-size: 7.5pt; margin-top: 3px;
+  border-top: 1px dashed #d8dee4; padding-top: 2px;
+}
+/* KaTeX sizing for cheatsheet */
+.katex { font-size: 1em !important; }
+.katex-display { margin: 3px 0 !important; }
 
-    h1 {
-      font-size: 11pt;
-      text-align: center;
-      margin-bottom: 6px;
-      column-span: all;
-    }
-
-    .subtitle {
-      text-align: center;
-      color: #666;
-      font-size: 7pt;
-      margin-bottom: 10px;
-      column-span: all;
-    }
-
-    .f {
-      break-inside: avoid;
-      page-break-inside: avoid;
-      border: 0.5pt solid #ccc;
-      border-radius: 4px;
-      padding: 4px 6px;
-      margin-bottom: 5px;
-    }
-
-    .f-t {
-      font-size: 6.5pt;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      color: #2da44e;
-      margin-bottom: 2px;
-      line-height: 1.2;
-    }
-
-    .f-b {
-      font-size: 7.5pt;
-      line-height: 1.35;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
-    }
-
-    .f-b strong { font-weight: 700; }
-
-    .f-k {
-      color: #8250df;
-      font-size: 6.5pt;
-      margin-top: 1px;
-      border-top: 0.5pt dashed #ddd;
-      padding-top: 1px;
-      line-height: 1.2;
-    }
-
-    /* KaTeX: compact, no overflow, no scroll */
-    .katex { font-size: 0.82em !important; }
-    .katex-display {
-      margin: 1px 0 !important;
-      text-align: left !important;
-      overflow: visible !important;
-    }
-    .katex-display > .katex {
-      text-align: left !important;
-      white-space: normal !important;
-    }
-    /* Kill any KaTeX scroll containers */
-    .katex-html { overflow: visible !important; }
-    .katex .base { white-space: normal !important; }
-
-    /* No scrollbars anywhere */
-    * { overflow: visible !important; }
-    body { overflow: visible !important; }
-
-    @media print {
-      body { padding: 4px; font-size: 7.5pt; }
-      .f { border: 0.4pt solid #bbb; padding: 3px 5px; margin-bottom: 3px; }
-      .f-t { font-size: 6pt; }
-      .f-b { font-size: 7pt; }
-      .katex { font-size: 0.78em !important; }
-    }
-
-    @page { margin: 8mm; }
-  </style>
+@media print {
+  body { padding: 8px 12px; font-size: 9pt; }
+  .cs-f { border-color: #ccc; padding: 5px 7px; margin-bottom: 5px; }
+  .cs-t { font-size: 7pt; }
+  .cs-b { font-size: 8.5pt; }
+}
+@page { margin: 8mm; }
+</style>
 </head>
 <body>
-  <h1>${safeIcon} ${safeTitle} · Формулы</h1>
-  <div class="subtitle">${escapeHtml(formulaSec.section || '')} · ${items.length} позиций</div>
-  ${items.map((item, i) => `<div class="f">
-<div class="f-t">${i + 1}. ${escapeHtml(item.title || '')}</div>
-<div class="f-b">${formatFormulaContent(item)}</div>
-</div>`).join('\n')}
+<h1>${safeIcon} ${safeTitle} · Формулы</h1>
+<div class="cs-sub">${secTitle} · ${items.length} позиций</div>
+${renderedCards}
 </body>
 </html>`;
 
-      const win = window.open('', '_blank');
-      if (!win) {
-        alert('Разрешите всплывающие окна для генерации шпаргалки');
-        return;
-      }
-      win.document.write(cheatHtml);
-      win.document.close();
+          const win = window.open('', '_blank');
+          if (!win) {
+            alert('Разрешите всплывающие окна для генерации шпаргалки');
+            return;
+          }
+          win.document.write(html);
+          win.document.close();
 
-      win.addEventListener('load', () => {
-        setTimeout(() => win.print(), 800);
+          win.addEventListener('load', () => {
+            setTimeout(() => win.print(), 600);
+          });
+        }, 300);
       });
     }
   };
 }
 
-function escapeHtml(str) {
-  return str
+/**
+ * Extract all stylesheets from the current page (including KaTeX) as inline CSS text.
+ * This ensures the print window has all styling without needing CDN access.
+ */
+function collectStyles() {
+  const parts = [];
+
+  for (const sheet of document.styleSheets) {
+    try {
+      // Only collect KaTeX styles (from CDN)
+      if (sheet.href && sheet.href.includes('katex')) {
+        const rules = [];
+        for (const rule of sheet.cssRules) {
+          rules.push(rule.cssText);
+        }
+        parts.push(`/* KaTeX inline */\n${rules.join('\n')}`);
+      }
+    } catch {
+      // CORS — can't read cross-origin sheets, fallback to link
+      if (sheet.href && sheet.href.includes('katex')) {
+        // We'll add the link tag instead
+        parts.push(`@import url("${sheet.href}");`);
+      }
+    }
+  }
+
+  return parts.join('\n');
+}
+
+function esc(str) {
+  return (str || '')
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
-}
-
-function formatFormulaContent(item) {
-  let html = '';
-
-  if (item.formalText) {
-    html += item.formalText
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/\$\$/g, '$$')
-      .replace(/\$/g, '$')
-      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-      .replace(/\n- (.+)/g, '\n• $1')
-      .replace(/\n/g, '<br>');
-  }
-
-  if (item.keyIdea) {
-    html += `<div class="f-k">💡 ${escapeHtml(item.keyIdea)}</div>`;
-  }
-
-  return html;
 }
