@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Физика · РК-1 · Шпаргалка</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+  crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+  crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false})"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:8pt;line-height:1.25;
+  padding:6px 8px;
+  column-count:2;column-gap:10px;
+  color:#1a1a1a;background:#fff;
+}
+h1{font-size:10pt;text-align:center;margin-bottom:1px;column-span:all;font-weight:800;letter-spacing:-0.02em}
+.sub{text-align:center;color:#57606a;font-size:6.5pt;margin-bottom:6px;column-span:all}
+.f{
+  break-inside:avoid;page-break-inside:avoid;
+  border:0.5pt solid #ccc;border-radius:3px;
+  padding:2px 4px;margin-bottom:3px;
+}
+.t{
+  font-size:6pt;font-weight:700;text-transform:uppercase;
+  letter-spacing:0.02em;color:#1a7f37;margin-bottom:1px;line-height:1.1;
+}
+.b{font-size:7.5pt;line-height:1.2}
+.b b{font-weight:700}
+.ki{
+  color:#8250df;font-size:6pt;margin-top:1px;
+  border-top:0.5pt dashed #d8dee4;padding-top:1px;line-height:1.1;
+}
+.katex{font-size:0.88em!important}
+.katex-display{margin:0!important}
+@media print{
+  body{padding:4px 6px;font-size:7pt}
+  .f{border-color:#bbb;padding:2px 3px;margin-bottom:2px}
+  .t{font-size:5.5pt}.b{font-size:7pt}
+  .katex{font-size:0.82em!important}
+}
+@page{margin:6mm}
+</style>
+</head>
+<body>
+<h1>⚛️ Физика · РК-1 · Формулы</h1>
+<div class="sub">Механика: кинематика, динамика, энергия, импульс, колебания · 11 позиций</div>
+<div class="f">
+<div class="t">1. Кинематика материальной точки</div>
+<div class="b"><b>Вектор перемещения:</b><br>$$\vec{\Delta r} = \vec{r}(t_2) - \vec{r}(t_1)$$<br><br><b>Мгновенная скорость:</b><br>$$\vec{v} = \frac{d\vec{r}}{dt}$$<br><br><b>Мгновенное ускорение:</b><br>$$\vec{a} = \frac{d\vec{v}}{dt} = \frac{d^2\vec{r}}{dt^2}$$<br><br><b>Тангенциальное ускорение</b> (изменяет модуль скорости):<br>$$a_\tau = \frac{dv}{dt}$$<br><br><b>Нормальное ускорение</b> (изменяет направление):<br>$$a_n = \frac{v^2}{R}$$<br><br><b>Полное ускорение:</b><br>$$a = \sqrt{a_\tau^2 + a_n^2}$$</div>
+</div>
+<div class="f">
+<div class="t">2. Вращательное движение</div>
+<div class="b"><b>Угловая скорость и ускорение:</b><br>$$\omega = \frac{d\varphi}{dt}, \qquad \varepsilon = \frac{d\omega}{dt} = \frac{d^2\varphi}{dt^2}$$<br><br><b>Связь с линейными величинами:</b><br>$$v = \omega R, \qquad a_\tau = \varepsilon R, \qquad a_n = \omega^2 R$$<br><br><b>Период и частота:</b><br>$$T = \frac{2\pi}{\omega}, \qquad \nu = \frac{1}{T} = \frac{\omega}{2\pi}$$<br><br><b>Равноускоренное вращение:</b><br>$$\omega = \omega_0 + \varepsilon t, \qquad \varphi = \omega_0 t + \frac{\varepsilon t^2}{2}$$</div>
+</div>
+<div class="f">
+<div class="t">3. Законы Ньютона и типы сил</div>
+<div class="b"><b>II закон Ньютона:</b><br>$$\vec{F} = m\vec{a} \qquad \text{или} \qquad \frac{d\vec{p}}{dt} = \vec{F}$$<br><br><b>Сила упругости (Гук):</b><br>$$F = -kx$$<br><br><b>Сила трения скольжения:</b><br>$$F_{\text{тр}} = \mu N$$<br><br><b>Закон всемирного тяготения:</b><br>$$F = G\frac{m_1 m_2}{r^2}, \quad G \approx 6{,}67 \cdot 10^{-11}\;\text{Н·м}^2/\text{кг}^2$$<br><br><b>Сила сопротивления среды:</b><br>$$\vec{F}_{\text{сопр}} = -b\vec{v}$$</div>
+</div>
+<div class="f">
+<div class="t">4. Импульс и закон сохранения</div>
+<div class="b"><b>Импульс тела:</b><br>$$\vec{p} = m\vec{v}$$<br><br><b>II закон Ньютона (импульсная форма):</b><br>$$\frac{d\vec{p}}{dt} = \vec{F}_{\text{внеш}}$$<br><br><b>Закон сохранения импульса</b> (при $\vec{F}_{\text{внеш}} = 0$):<br>$$\sum m_i \vec{v}_i = \text{const}$$<br><br><b>Центр масс:</b><br>$$\vec{r}_C = \frac{\sum m_i \vec{r}_i}{\sum m_i}$$</div>
+</div>
+<div class="f">
+<div class="t">5. Моменты инерции стандартных тел</div>
+<div class="b">| Тело | Ось | Момент инерции |<br>|---|---|---|<br>| Стержень | Через центр, ⊥ | $I = \frac{ml^2}{12}$ |<br>| Стержень | Через конец, ⊥ | $I = \frac{ml^2}{3}$ |<br>| Диск / цилиндр | Ось симметрии | $I = \frac{mR^2}{2}$ |<br>| Обруч / трубка | Ось симметрии | $I = mR^2$ |<br>| Сплошной шар | Через центр | $I = \frac{2}{5}mR^2$ |<br><br><b>Теорема Штейнера:</b><br>$$I = I_C + md^2$$<br>где $I_C$ — момент инерции через ц.м., $d$ — расстояние между осями.</div>
+</div>
+<div class="f">
+<div class="t">6. Момент силы и момент импульса</div>
+<div class="b"><b>Момент силы:</b><br>$$\vec{M} = \vec{r} \times \vec{F}, \qquad M = Fd$$<br><br><b>Момент импульса:</b><br>$$\vec{L} = \vec{r} \times \vec{p} = I\vec{\omega}$$<br><br><b>Уравнение моментов:</b><br>$$\frac{d\vec{L}}{dt} = \vec{M}_{\text{внеш}}$$<br><br><b>Основное уравнение динамики вращения:</b><br>$$I\varepsilon = M$$<br><br><b>Закон сохранения момента импульса</b> (при $M_{\text{внеш}} = 0$):<br>$$I_1\omega_1 = I_2\omega_2$$</div>
+</div>
+<div class="f">
+<div class="t">7. Работа и энергия</div>
+<div class="b"><b>Работа:</b><br>$$A = \int \vec{F} \cdot d\vec{r}$$<br><br><b>Кинетическая энергия:</b><br>$$E_k = \frac{mv^2}{2}, \qquad E_k^{\text{вращ}} = \frac{I\omega^2}{2}$$<br><br><b>Полная кинетическая энергия</b> (поступательное + вращательное):<br>$$E_k = \frac{mv_C^2}{2} + \frac{I_C\omega^2}{2}$$<br><br><b>Потенциальная энергия:</b><br>$$W_{\text{гр}} = mgh, \quad W_{\text{упр}} = \frac{kx^2}{2}$$<br><br><b>Связь силы и потенциальной энергии:</b><br>$$\vec{F} = -\text{grad}\,W = -\left(\frac{\partial W}{\partial x}, \frac{\partial W}{\partial y}, \frac{\partial W}{\partial z}\right)$$<br><br><b>Теорема о кинетической энергии:</b><br>$$A = \Delta E_k$$<br><br><b>Закон сохранения механической энергии:</b><br>$$E_k + W_{\text{пот}} = \text{const}$$</div>
+</div>
+<div class="f">
+<div class="t">8. Столкновения</div>
+<div class="b"><b>Абсолютно упругий удар (центральный):</b><br>$$v_1' = \frac{m_1 - m_2}{m_1 + m_2}v_1 + \frac{2m_2}{m_1 + m_2}v_2$$<br>$$v_2' = \frac{2m_1}{m_1 + m_2}v_1 + \frac{m_2 - m_1}{m_1 + m_2}v_2$$<br><br><b>Абсолютно неупругий удар:</b><br>$$u = \frac{m_1 v_1 + m_2 v_2}{m_1 + m_2}$$<br><br><b>Потеря энергии при неупругом ударе:</b><br>$$|\Delta E_k| = \frac{m_1 m_2}{2(m_1+m_2)}(v_1 - v_2)^2$$</div>
+</div>
+<div class="f">
+<div class="t">9. Гармонические колебания</div>
+<div class="b"><b>Уравнение и решение:</b><br>$$\ddot{x} + \omega_0^2 x = 0 \quad \Rightarrow \quad x = A\cos(\omega_0 t + \varphi_0)$$<br><br><b>Пружинный маятник:</b><br>$$\omega_0 = \sqrt{\frac{k}{m}}, \quad T = 2\pi\sqrt{\frac{m}{k}}$$<br><br><b>Математический маятник:</b><br>$$\omega_0 = \sqrt{\frac{g}{l}}, \quad T = 2\pi\sqrt{\frac{l}{g}}$$<br><br><b>Физический маятник:</b><br>$$\omega_0 = \sqrt{\frac{mgd}{I}}, \quad T = 2\pi\sqrt{\frac{I}{mgd}}$$<br>где $d$ — расстояние от оси до ц.м.<br><br><b>Энергия колебаний:</b><br>$$E = \frac{kA^2}{2} = \frac{m\omega_0^2 A^2}{2}$$</div>
+</div>
+<div class="f">
+<div class="t">10. Затухающие и вынужденные колебания</div>
+<div class="b"><b>Затухающие колебания:</b><br>$$\ddot{x} + 2\beta\dot{x} + \omega_0^2 x = 0$$<br>$$x = A_0 e^{-\beta t}\cos(\omega t + \varphi), \quad \omega = \sqrt{\omega_0^2 - \beta^2}$$<br><br><b>Коэффициент затухания:</b> $\beta = \frac{r}{2m}$<br><br><b>Время релаксации:</b> $\tau = \frac{1}{\beta}$ (амплитуда убывает в $e$ раз)<br><br><b>Логарифмический декремент:</b> $\delta = \beta T = \frac{T}{\tau}$<br><br><b>Добротность:</b> $Q = \frac{\pi}{\delta} = \frac{\omega_0}{2\beta}$<br><br><b>Резонансная частота:</b><br>$$\omega_{\text{рез}} = \sqrt{\omega_0^2 - 2\beta^2}$$</div>
+</div>
+<div class="f">
+<div class="t">11. Сложение колебаний</div>
+<div class="b"><b>Одинаковое направление, равные частоты:</b><br>$$A = \sqrt{A_1^2 + A_2^2 + 2A_1 A_2 \cos(\varphi_2 - \varphi_1)}$$<br><br><b>Близкие частоты (биения):</b><br>$$x = 2A\cos\left(\frac{\Delta\omega}{2}t\right)\cos(\bar{\omega}t)$$<br>$$T_{\text{биений}} = \frac{2\pi}{|\omega_1 - \omega_2|}$$</div>
+</div>
+</body>
+</html>

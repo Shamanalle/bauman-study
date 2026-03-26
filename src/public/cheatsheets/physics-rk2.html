@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Физика · РК-2 · Шпаргалка</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+  crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+  crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false})"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:8pt;line-height:1.25;
+  padding:6px 8px;
+  column-count:2;column-gap:10px;
+  color:#1a1a1a;background:#fff;
+}
+h1{font-size:10pt;text-align:center;margin-bottom:1px;column-span:all;font-weight:800;letter-spacing:-0.02em}
+.sub{text-align:center;color:#57606a;font-size:6.5pt;margin-bottom:6px;column-span:all}
+.f{
+  break-inside:avoid;page-break-inside:avoid;
+  border:0.5pt solid #ccc;border-radius:3px;
+  padding:2px 4px;margin-bottom:3px;
+}
+.t{
+  font-size:6pt;font-weight:700;text-transform:uppercase;
+  letter-spacing:0.02em;color:#1a7f37;margin-bottom:1px;line-height:1.1;
+}
+.b{font-size:7.5pt;line-height:1.2}
+.b b{font-weight:700}
+.ki{
+  color:#8250df;font-size:6pt;margin-top:1px;
+  border-top:0.5pt dashed #d8dee4;padding-top:1px;line-height:1.1;
+}
+.katex{font-size:0.88em!important}
+.katex-display{margin:0!important}
+@media print{
+  body{padding:4px 6px;font-size:7pt}
+  .f{border-color:#bbb;padding:2px 3px;margin-bottom:2px}
+  .t{font-size:5.5pt}.b{font-size:7pt}
+  .katex{font-size:0.82em!important}
+}
+@page{margin:6mm}
+</style>
+</head>
+<body>
+<h1>⚛️ Физика · РК-2 · Формулы</h1>
+<div class="sub">Термодинамика, молекулярная физика, СТО · 10 позиций</div>
+<div class="f">
+<div class="t">1. Уравнение бегущей волны</div>
+<div class="b"><b>Бегущая волна:</b><br>$$\xi(x,t) = A\cos(\omega t - kx + \varphi_0)$$<br><br><b>Волновое число:</b> $k = 2\pi/\lambda = \omega/v$<br><br><b>Фазовая скорость:</b> $v = \lambda\nu = \omega/k$<br><br><b>Связь:</b> $\lambda = vT = v/\nu$</div>
+</div>
+<div class="f">
+<div class="t">2. Стоячие волны</div>
+<div class="b"><b>Стоячая волна:</b><br>$$\xi(x,t) = 2A\cos(kx)\cos(\omega t)$$<br><br><b>Узлы:</b> $x_n = (2n+1)\lambda/4$, амплитуда = 0<br><br><b>Пучности:</b> $x_n = n\lambda/2$, амплитуда = $2A$<br><br><b>Струна:</b> $L = n\lambda/2$ → $\nu_n = nv/(2L)$</div>
+</div>
+<div class="f">
+<div class="t">3. Энергия волны</div>
+<div class="b"><b>Объёмная плотность энергии:</b><br>$$w = \rho\omega^2 A^2 \sin^2(\omega t - kx)$$<br><br><b>Средняя плотность:</b><br>$$\langle w \rangle = \frac{1}{2}\rho\omega^2 A^2$$<br><br><b>Интенсивность (поток энергии):</b><br>$$I = \langle w \rangle v = \frac{1}{2}\rho\omega^2 A^2 v$$<br><br><b>Вектор Умова:</b> $\vec{j} = w\vec{v}$</div>
+</div>
+<div class="f">
+<div class="t">4. МКТ идеального газа</div>
+<div class="b"><b>Основное уравнение МКТ:</b><br>$$p = nkT = \frac{1}{3}nm\langle v^2 \rangle$$<br><br><b>Уравнение Менделеева–Клапейрона:</b><br>$$pV = \nu RT = \frac{m}{M}RT$$<br><br><b>Средняя кинетическая энергия молекулы:</b><br>$$\langle\varepsilon\rangle = \frac{i}{2}kT$$<br><br><b>Степени свободы:</b> одноатомный $i = 3$, двухатомный $i = 5$<br><br><b>Средняя квадратичная скорость:</b><br>$$v_{\text{ск}} = \sqrt{\frac{3kT}{m_0}} = \sqrt{\frac{3RT}{M}}$$</div>
+</div>
+<div class="f">
+<div class="t">5. Первое начало термодинамики</div>
+<div class="b"><b>Первое начало:</b><br>$$Q = \Delta U + A$$<br><br><b>Внутренняя энергия:</b><br>$$U = \frac{i}{2}\nu RT$$<br><br><b>Работа газа:</b><br>$$A = \int_{V_1}^{V_2} p\,dV$$<br><br><b>Теплоёмкости:</b><br>$$C_V = \frac{i}{2}R, \quad C_p = \frac{i+2}{2}R, \quad \gamma = \frac{C_p}{C_V} = \frac{i+2}{i}$$</div>
+</div>
+<div class="f">
+<div class="t">6. Изопроцессы и адиабата</div>
+<div class="b">| Процесс | Закон | $Q$ | $A$ | $\Delta U$ |<br>|---|---|---|---|---|<br>| Изохорный ($V$=const) | $p/T$=const | $\nu C_V \Delta T$ | $0$ | $\nu C_V \Delta T$ |<br>| Изобарный ($p$=const) | $V/T$=const | $\nu C_p \Delta T$ | $p\Delta V$ | $\nu C_V \Delta T$ |<br>| Изотермический ($T$=const) | $pV$=const | $\nu RT\ln(V_2/V_1)$ | $\nu RT\ln(V_2/V_1)$ | $0$ |<br>| Адиабатный ($Q=0$) | $pV^\gamma$=const | $0$ | $-\Delta U$ | $\nu C_V \Delta T$ |<br>| Политропный | $pV^n$=const | ... | ... | ... |<br><br><b>Уравнение адиабаты:</b><br>$$pV^\gamma = \text{const}, \quad TV^{\gamma-1} = \text{const}$$</div>
+</div>
+<div class="f">
+<div class="t">7. КПД цикла Карно и энтропия</div>
+<div class="b"><b>КПД цикла Карно (максимальный):</b><br>$$\eta_{\text{Карно}} = 1 - \frac{T_2}{T_1}$$<br><br><b>КПД произвольного цикла:</b><br>$$\eta = \frac{A}{Q_1} = 1 - \frac{|Q_2|}{Q_1}$$<br><br><b>Энтропия:</b><br>$$dS = \frac{\delta Q}{T} \quad (\text{обратимый})$$<br><br>$$\Delta S = \nu C_V \ln\frac{T_2}{T_1} + \nu R \ln\frac{V_2}{V_1}$$</div>
+</div>
+<div class="f">
+<div class="t">8. СТО: преобразования Лоренца</div>
+<div class="b"><b>Фактор Лоренца:</b><br>$$\gamma_L = \frac{1}{\sqrt{1 - \beta^2}}, \quad \beta = v/c$$<br><br><b>Сокращение длины:</b><br>$$l = l_0\sqrt{1 - \beta^2} = l_0/\gamma_L$$<br><br><b>Замедление времени:</b><br>$$\Delta t = \gamma_L \Delta t_0$$<br><br><b>Сложение скоростей:</b><br>$$u = \frac{v_1 + v_2}{1 + v_1 v_2/c^2}$$</div>
+</div>
+<div class="f">
+<div class="t">9. Релятивистская механика</div>
+<div class="b"><b>Релятивистский импульс:</b><br>$$\vec{p} = \gamma_L m_0 \vec{v}$$<br><br><b>Полная энергия:</b><br>$$E = \gamma_L m_0 c^2 = E_0 + T$$<br><br><b>Энергия покоя:</b> $E_0 = m_0 c^2$<br><br><b>Кинетическая энергия:</b><br>$$T = (\gamma_L - 1)m_0 c^2$$<br><br><b>Связь E и p:</b><br>$$E^2 = (pc)^2 + (m_0 c^2)^2$$</div>
+</div>
+<div class="f">
+<div class="t">10. Распределения Максвелла и Больцмана</div>
+<div class="b"><b>Распределение Максвелла по скоростям:</b><br>$$f(v) = 4\pi n \left(\frac{m}{2\pi kT}\right)^{3/2} v^2 e^{-mv^2/(2kT)}$$<br><br><b>Характерные скорости:</b><br>$$v_{\text{в}} = \sqrt{\frac{2kT}{m}}, \quad \bar{v} = \sqrt{\frac{8kT}{\pi m}}, \quad v_{\text{ск}} = \sqrt{\frac{3kT}{m}}$$<br><br><b>Барометрическая формула:</b><br>$$p(h) = p_0 e^{-Mgh/(RT)}$$<br><br><b>Распределение Больцмана:</b><br>$$n(h) = n_0 e^{-mgh/(kT)}$$</div>
+</div>
+</body>
+</html>

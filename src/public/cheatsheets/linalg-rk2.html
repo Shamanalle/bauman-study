@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ЛинАлг и ФНП · РК-2 · Шпаргалка</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+  crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+  crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false})"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:8pt;line-height:1.25;
+  padding:6px 8px;
+  column-count:2;column-gap:10px;
+  color:#1a1a1a;background:#fff;
+}
+h1{font-size:10pt;text-align:center;margin-bottom:1px;column-span:all;font-weight:800;letter-spacing:-0.02em}
+.sub{text-align:center;color:#57606a;font-size:6.5pt;margin-bottom:6px;column-span:all}
+.f{
+  break-inside:avoid;page-break-inside:avoid;
+  border:0.5pt solid #ccc;border-radius:3px;
+  padding:2px 4px;margin-bottom:3px;
+}
+.t{
+  font-size:6pt;font-weight:700;text-transform:uppercase;
+  letter-spacing:0.02em;color:#1a7f37;margin-bottom:1px;line-height:1.1;
+}
+.b{font-size:7.5pt;line-height:1.2}
+.b b{font-weight:700}
+.ki{
+  color:#8250df;font-size:6pt;margin-top:1px;
+  border-top:0.5pt dashed #d8dee4;padding-top:1px;line-height:1.1;
+}
+.katex{font-size:0.88em!important}
+.katex-display{margin:0!important}
+@media print{
+  body{padding:4px 6px;font-size:7pt}
+  .f{border-color:#bbb;padding:2px 3px;margin-bottom:2px}
+  .t{font-size:5.5pt}.b{font-size:7pt}
+  .katex{font-size:0.82em!important}
+}
+@page{margin:6mm}
+</style>
+</head>
+<body>
+<h1>📐 ЛинАлг и ФНП · РК-2 · Формулы</h1>
+<div class="sub">ФНП, экстремумы, касательные плоскости · 8 позиций</div>
+<div class="f">
+<div class="t">1. Касательная плоскость и нормаль</div>
+<div class="b"><b>Поверхность</b> $F(x,y,z) = 0$, точка $M_0(x_0,y_0,z_0)$:<br><br><b>Касательная плоскость:</b><br>$$F_x'(M_0)(x-x_0) + F_y'(M_0)(y-y_0) + F_z'(M_0)(z-z_0) = 0$$<br><br><b>Нормаль:</b><br>$$\frac{x-x_0}{F_x'} = \frac{y-y_0}{F_y'} = \frac{z-z_0}{F_z'}$$<br><br><b>Для</b> $z = f(x,y)$, $F = z - f(x,y)$:<br>$$z - z_0 = f_x'(x-x_0) + f_y'(y-y_0)$$</div>
+</div>
+<div class="f">
+<div class="t">2. Градиент и производная по направлению</div>
+<div class="b"><b>Градиент:</b><br>$$\nabla f = \left(\frac{\partial f}{\partial x},\; \frac{\partial f}{\partial y},\; \frac{\partial f}{\partial z}\right)$$<br><br><b>Производная по направлению</b> $\vec{l}$:<br>$$\frac{\partial f}{\partial l} = \nabla f \cdot \frac{\vec{l}}{|\vec{l}|} = \sum f_{x_i}' \cos\alpha_i$$<br><br><b>Свойства:</b><br>• $|\nabla f|$ — максимальная скорость роста $f$<br>• $\nabla f$ перпендикулярен линиям (поверхностям) уровня</div>
+</div>
+<div class="f">
+<div class="t">3. Экстремум ФНП</div>
+<div class="b"><b>Необходимое условие:</b> $f_x' = 0$, $f_y' = 0$ (стационарная точка).<br><br><b>Достаточное условие</b> (для $z = f(x,y)$):<br>$$A = f_{xx}'', \quad B = f_{xy}'', \quad C = f_{yy}''$$<br>$$\Delta = AC - B^2$$<br><br>• $\Delta > 0$, $A > 0$ → <b>минимум</b><br>• $\Delta > 0$, $A < 0$ → <b>максимум</b><br>• $\Delta < 0$ → <b>седлова точка</b> (нет экстремума)<br>• $\Delta = 0$ → требуется доп. исследование</div>
+</div>
+<div class="f">
+<div class="t">4. Условный экстремум (Лагранж)</div>
+<div class="b"><b>Задача:</b> $f(x,y,z) \to \text{extr}$ при $g(x,y,z) = 0$.<br><br><b>Функция Лагранжа:</b><br>$$L = f + \lambda g$$<br><br><b>Необходимое условие:</b><br>$$L_x' = 0, \quad L_y' = 0, \quad L_z' = 0, \quad g = 0$$<br><br><b>Достаточное условие:</b> окаймлённый гессиан:<br>$$\bar{H} = \begin{vmatrix} 0 & g_x' & g_y' \\ g_x' & L_{xx}'' & L_{xy}'' \\ g_y' & L_{yx}'' & L_{yy}'' \end{vmatrix}$$<br>$\bar{H} > 0$ → минимум, $\bar{H} < 0$ → максимум.</div>
+</div>
+<div class="f">
+<div class="t">5. Неявная функция</div>
+<div class="b">Уравнение $F(x,y,z) = 0$ задаёт $z = z(x,y)$ неявно, если $F_z' \ne 0$.<br><br><b>Частные производные:</b><br>$$z_x' = -\frac{F_x'}{F_z'}, \qquad z_y' = -\frac{F_y'}{F_z'}$$<br><br><b>Дифференциал:</b><br>$$dz = z_x'\,dx + z_y'\,dy$$<br><br><b>Приближение:</b><br>$$z(x_0+\Delta x,\; y_0+\Delta y) \approx z_0 + dz$$</div>
+</div>
+<div class="f">
+<div class="t">6. Цепное правило (сложная функция)</div>
+<div class="b"><b>Для</b> $z = f(u(x,y),\; v(x,y))$:<br>$$z_x' = f_u' \cdot u_x' + f_v' \cdot v_x'$$<br>$$z_y' = f_u' \cdot u_y' + f_v' \cdot v_y'$$<br><br><b>Для</b> $u = f(x(t),\; y(t),\; z(t))$:<br>$$\frac{du}{dt} = f_x' \cdot x'(t) + f_y' \cdot y'(t) + f_z' \cdot z'(t)$$</div>
+</div>
+<div class="f">
+<div class="t">7. Формула Тейлора (2 переменные)</div>
+<div class="b"><b>Формула Тейлора</b> для $f(x,y)$ в окрестности $(a,b)$:<br>$$f(x,y) = f(a,b) + df(a,b) + \frac{1}{2!}d^2f(a,b) + \ldots$$<br><br>где $dx = x-a$, $dy = y-b$:<br>$$d^2f = f_{xx}''dx^2 + 2f_{xy}''dxdy + f_{yy}''dy^2$$</div>
+</div>
+<div class="f">
+<div class="t">8. Полный дифференциал</div>
+<div class="b"><b>Условие полного дифференциала:</b><br>$P(x,y)dx + Q(x,y)dy$ является полным дифференциалом $\Leftrightarrow$<br>$$\frac{\partial P}{\partial y} = \frac{\partial Q}{\partial x}$$<br><br><b>Восстановление функции:</b><br>$$f(x,y) = \int P(x,y)\,dx + \varphi(y)$$<br>где $\varphi(y)$ определяется из $f_y' = Q$.</div>
+</div>
+</body>
+</html>

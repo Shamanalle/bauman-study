@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Физика · Экзамен · Шпаргалка</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+  crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+  crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false})"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:8pt;line-height:1.25;
+  padding:6px 8px;
+  column-count:2;column-gap:10px;
+  color:#1a1a1a;background:#fff;
+}
+h1{font-size:10pt;text-align:center;margin-bottom:1px;column-span:all;font-weight:800;letter-spacing:-0.02em}
+.sub{text-align:center;color:#57606a;font-size:6.5pt;margin-bottom:6px;column-span:all}
+.f{
+  break-inside:avoid;page-break-inside:avoid;
+  border:0.5pt solid #ccc;border-radius:3px;
+  padding:2px 4px;margin-bottom:3px;
+}
+.t{
+  font-size:6pt;font-weight:700;text-transform:uppercase;
+  letter-spacing:0.02em;color:#1a7f37;margin-bottom:1px;line-height:1.1;
+}
+.b{font-size:7.5pt;line-height:1.2}
+.b b{font-weight:700}
+.ki{
+  color:#8250df;font-size:6pt;margin-top:1px;
+  border-top:0.5pt dashed #d8dee4;padding-top:1px;line-height:1.1;
+}
+.katex{font-size:0.88em!important}
+.katex-display{margin:0!important}
+@media print{
+  body{padding:4px 6px;font-size:7pt}
+  .f{border-color:#bbb;padding:2px 3px;margin-bottom:2px}
+  .t{font-size:5.5pt}.b{font-size:7pt}
+  .katex{font-size:0.82em!important}
+}
+@page{margin:6mm}
+</style>
+</head>
+<body>
+<h1>⚛️ Физика · Экзамен · Формулы</h1>
+<div class="sub">Полный курс: механика + термодинамика · 9 позиций</div>
+<div class="f">
+<div class="t">1. Кинематика МТ</div>
+<div class="b"><b>Прямолинейное:</b><br>$$v = v_0 + at, \quad s = v_0 t + at^2/2, \quad v^2 = v_0^2 + 2as$$<br><br><b>Криволинейное:</b> $\vec{a} = \vec{a}_\tau + \vec{a}_n$, $a_\tau = dv/dt$, $a_n = v^2/R$<br><br><b>Вращательное:</b><br>$$\omega = d\varphi/dt, \quad \varepsilon = d\omega/dt$$<br>$$v = \omega R, \quad a_\tau = \varepsilon R, \quad a_n = \omega^2 R$$</div>
+</div>
+<div class="f">
+<div class="t">2. Динамика: законы Ньютона и силы</div>
+<div class="b"><b>2-й закон:</b> $\vec{F} = m\vec{a}$<br><br><b>Трение:</b> $F_{\text{тр}} = \mu N$<br><br><b>Импульс:</b> $\vec{p} = m\vec{v}$, $\vec{F} = d\vec{p}/dt$<br><br><b>ЗСИ:</b> $\sum \vec{p}_i = \text{const}$ (замкнутая система)</div>
+</div>
+<div class="f">
+<div class="t">3. Энергия и столкновения</div>
+<div class="b"><b>Кинетическая:</b> $T = mv^2/2 + I\omega^2/2$ (поступательная + вращательная)<br><br><b>Потенциальная:</b> $U = mgh$, $U = kx^2/2$ (пружина), $F = -dU/dx$<br><br><b>ЗСЭ:</b> $T_1 + U_1 = T_2 + U_2$ (+ работа неконсерв. сил)<br><br><b>АУУ:</b> $m_1 v_1 + m_2 v_2 = m_1 v_1' + m_2 v_2'$; при центральном: $v_2' = 2m_1 v_1/(m_1+m_2)$</div>
+</div>
+<div class="f">
+<div class="t">4. Вращение ТТ</div>
+<div class="b"><b>Основное уравнение:</b> $M = I\varepsilon$<br><br><b>Момент инерции:</b> $I = \sum m_i r_i^2$<br><br>Стержень (ось через конец): $ml^2/3$. Через центр: $ml^2/12$.<br>Диск/цилиндр: $mR^2/2$. Шар: $2mR^2/5$. Кольцо: $mR^2$.<br><br><b>Штейнер:</b> $I = I_C + md^2$<br><br><b>Момент импульса:</b> $L = I\omega$, $\vec{M} = d\vec{L}/dt$<br><br><b>ЗСМИ:</b> $I_1\omega_1 = I_2\omega_2$</div>
+</div>
+<div class="f">
+<div class="t">5. Колебания</div>
+<div class="b"><b>Гармоническое:</b> $x = A\cos(\omega_0 t + \varphi_0)$<br><br>Пружина: $\omega_0 = \sqrt{k/m}$;<br>Мат. маятник: $\omega_0 = \sqrt{g/l}$;<br>Физ. маятник: $\omega_0 = \sqrt{mgd/I}$<br><br><b>Затухание:</b> $x = A_0 e^{-\beta t}\cos(\omega t + \varphi)$, $\omega = \sqrt{\omega_0^2 - \beta^2}$<br><br>$\delta = \beta T = \ln(A_n/A_{n+1})$, $Q = \pi/\delta$</div>
+</div>
+<div class="f">
+<div class="t">6. Волны</div>
+<div class="b"><b>Бегущая волна:</b> $\xi = A\cos(\omega t - kx)$<br><br>$k = 2\pi/\lambda = \omega/v$, $v = \lambda\nu = \omega/k$<br><br><b>Стоячая:</b> $\xi = 2A\cos(kx)\cos(\omega t)$<br><br><b>Энергия:</b><br>$$\langle w \rangle = \frac{1}{2}\rho\omega^2 A^2, \quad I = \langle w \rangle v$$</div>
+</div>
+<div class="f">
+<div class="t">7. МКТ идеального газа</div>
+<div class="b"><b>Менделеев–Клапейрон:</b> $pV = \nu RT$<br><br><b>Средняя энергия:</b> $\langle\varepsilon\rangle = (i/2)kT$<br><br>$i = 3$ одноатомный, $i = 5$ двухатомный<br><br><b>Скорости:</b> $v_{\text{в}} = \sqrt{2kT/m}$, $\bar{v} = \sqrt{8kT/(\pi m)}$, $v_{\text{ск}} = \sqrt{3kT/m}$<br><br><b>Барометр:</b> $p(h) = p_0 e^{-Mgh/(RT)}$</div>
+</div>
+<div class="f">
+<div class="t">8. Термодинамика</div>
+<div class="b"><b>Первое начало:</b> $Q = \Delta U + A$, $\Delta U = \nu C_V \Delta T$<br><br>$C_V = iR/2$, $C_p = (i+2)R/2$, $\gamma = C_p/C_V$<br><br><b>Адиабата:</b> $pV^\gamma = \text{const}$, $TV^{\gamma-1} = \text{const}$<br><br><b>КПД Карно:</b> $\eta = 1 - T_2/T_1$<br><br><b>Энтропия:</b> $\Delta S = \int \delta Q/T = \nu C_V \ln(T_2/T_1) + \nu R\ln(V_2/V_1)$</div>
+</div>
+<div class="f">
+<div class="t">9. СТО</div>
+<div class="b"><b>Лоренц:</b> $\gamma_L = 1/\sqrt{1-\beta^2}$, $\beta = v/c$<br><br>$l = l_0/\gamma_L$, $\Delta t = \gamma_L \Delta t_0$<br><br><b>Сложение скоростей:</b> $u = (v_1+v_2)/(1+v_1v_2/c^2)$<br><br><b>Энергия:</b> $E = \gamma_L m_0 c^2 = E_0 + T$<br><br><b>Импульс:</b> $p = \gamma_L m_0 v$<br><br><b>Инвариант:</b> $E^2 = (pc)^2 + (m_0c^2)^2$</div>
+</div>
+</body>
+</html>

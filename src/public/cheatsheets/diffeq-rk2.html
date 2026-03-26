@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Интегралы и ДУ · РК-2 · Шпаргалка</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+  crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+  crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false})"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:8pt;line-height:1.25;
+  padding:6px 8px;
+  column-count:2;column-gap:10px;
+  color:#1a1a1a;background:#fff;
+}
+h1{font-size:10pt;text-align:center;margin-bottom:1px;column-span:all;font-weight:800;letter-spacing:-0.02em}
+.sub{text-align:center;color:#57606a;font-size:6.5pt;margin-bottom:6px;column-span:all}
+.f{
+  break-inside:avoid;page-break-inside:avoid;
+  border:0.5pt solid #ccc;border-radius:3px;
+  padding:2px 4px;margin-bottom:3px;
+}
+.t{
+  font-size:6pt;font-weight:700;text-transform:uppercase;
+  letter-spacing:0.02em;color:#1a7f37;margin-bottom:1px;line-height:1.1;
+}
+.b{font-size:7.5pt;line-height:1.2}
+.b b{font-weight:700}
+.ki{
+  color:#8250df;font-size:6pt;margin-top:1px;
+  border-top:0.5pt dashed #d8dee4;padding-top:1px;line-height:1.1;
+}
+.katex{font-size:0.88em!important}
+.katex-display{margin:0!important}
+@media print{
+  body{padding:4px 6px;font-size:7pt}
+  .f{border-color:#bbb;padding:2px 3px;margin-bottom:2px}
+  .t{font-size:5.5pt}.b{font-size:7pt}
+  .katex{font-size:0.82em!important}
+}
+@page{margin:6mm}
+</style>
+</head>
+<body>
+<h1>∫ Интегралы и ДУ · РК-2 · Формулы</h1>
+<div class="sub">Несобственные интегралы, ОДУ · 7 позиций</div>
+<div class="f">
+<div class="t">1. Характеристическое уравнение ЛОДУ n-го порядка</div>
+<div class="b">Для ЛОДУ $y^{(n)} + a_{n-1}y^{(n-1)} + \ldots + a_1 y' + a_0 y = 0$<br><br><b>Характеристическое уравнение:</b><br>$$\lambda^n + a_{n-1}\lambda^{n-1} + \ldots + a_1\lambda + a_0 = 0$$</div>
+</div>
+<div class="f">
+<div class="t">2. ФСР при разных типах корней</div>
+<div class="b"><b>Действительный простой корень $\lambda$:</b> → $e^{\lambda x}$<br><br><b>Действительный корень $\lambda$ кратности $k$:</b> → $e^{\lambda x},\; xe^{\lambda x},\; \ldots,\; x^{k-1}e^{\lambda x}$<br><br><b>Комплексные $\alpha \pm i\beta$ (простые):</b> → $e^{\alpha x}\cos\beta x,\; e^{\alpha x}\sin\beta x$<br><br><b>Комплексные $\alpha \pm i\beta$ кратности $k$:</b> → $x^j e^{\alpha x}\cos\beta x,\; x^j e^{\alpha x}\sin\beta x$ при $j = 0, 1, \ldots, k-1$</div>
+</div>
+<div class="f">
+<div class="t">3. Формула Остроградского-Лиувилля</div>
+<div class="b">Для ЛОДУ 2-го порядка $y'' + p(x)y' + q(x)y = 0$:<br><br>$$W(x) = W(x_0) \cdot e^{-\int_{x_0}^x p(t)\,dt}$$<br><br>где $W$ — определитель Вронского (вронскиан):<br>$$W = \begin{vmatrix} y_1 & y_2 \\ y_1' & y_2' \end{vmatrix} = y_1 y_2' - y_1' y_2$$</div>
+</div>
+<div class="f">
+<div class="t">4. Метод вариации постоянных (Лагранжа)</div>
+<div class="b">Для ЛНДУ 2-го порядка $y'' + p y' + q y = f(x)$:<br><br><b>Общее решение:</b> $y = C_1(x)y_1 + C_2(x)y_2$<br><br><b>Система для $C_1', C_2'$:</b><br>$$\begin{cases} C_1' y_1 + C_2' y_2 = 0 \\ C_1' y_1' + C_2' y_2' = f(x) \end{cases}$$<br><br><b>Решение:</b><br>$$C_1' = -\frac{y_2 f}{W}, \quad C_2' = \frac{y_1 f}{W}$$</div>
+</div>
+<div class="f">
+<div class="t">5. Частное решение для правой части специального вида</div>
+<div class="b">Для $y'' + ay' + by = e^{\alpha x}P_n(x)$:<br><br>$$\tilde{y} = x^s e^{\alpha x} Q_n(x)$$<br><br>где $s$ = кратность $\alpha$ как корня хар. уравнения, $Q_n$ — полином степени $n$.<br><br>Для $y'' + ay' + by = e^{\alpha x}[P_n\cos\beta x + R_m\sin\beta x]$:<br><br>$$\tilde{y} = x^s e^{\alpha x}[\hat{Q}_N\cos\beta x + \hat{T}_N\sin\beta x]$$<br><br>где $N = \max(n,m)$, $s$ = кратность $\alpha + i\beta$.</div>
+</div>
+<div class="f">
+<div class="t">6. Понижение порядка ДУ</div>
+<div class="b"><b>Случай 1: ДУ не содержит $y$ явно</b> — $F(x, y', y'') = 0$:<br>Замена $p = y'$, $p' = y''$. Получаем ДУ 1-го порядка для $p(x)$.<br>После нахождения $p(x)$: $y = \int p(x)\,dx + C$.<br><br><b>Случай 2: ДУ не содержит $x$ явно</b> — $F(y, y', y'') = 0$:<br>Замена $y' = p(y)$, тогда $y'' = p \cdot p'_y$.<br>Получаем ДУ 1-го порядка для $p(y)$.<br>После: $\int \frac{dy}{p(y)} = x + C$.<br><br><b>Пример:</b> $xy'' + y' + x = 0$ → $(xp)' = -x$ → $xp = -\frac{x^2}{2} + C_1$.</div>
+</div>
+<div class="f">
+<div class="t">7. Подстановки Эйлера (иррациональные ДУ)</div>
+<div class="b">Для $\int R(x, \sqrt{ax^2+bx+c})\,dx$:<br><br><b>1-я подстановка</b> ($a > 0$):<br>$$\sqrt{ax^2+bx+c} = t \pm x\sqrt{a}$$<br><br><b>2-я подстановка</b> ($c > 0$):<br>$$\sqrt{ax^2+bx+c} = tx \pm \sqrt{c}$$<br><br><b>3-я подстановка</b> (если есть действ. корень $x_0$):<br>$$\sqrt{a(x-x_0)(x-x_1)} = t(x-x_0)$$</div>
+</div>
+</body>
+</html>

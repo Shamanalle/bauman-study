@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ЛинАлг и ФНП · РК-1 · Шпаргалка</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+  crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+  crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false})"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:8pt;line-height:1.25;
+  padding:6px 8px;
+  column-count:2;column-gap:10px;
+  color:#1a1a1a;background:#fff;
+}
+h1{font-size:10pt;text-align:center;margin-bottom:1px;column-span:all;font-weight:800;letter-spacing:-0.02em}
+.sub{text-align:center;color:#57606a;font-size:6.5pt;margin-bottom:6px;column-span:all}
+.f{
+  break-inside:avoid;page-break-inside:avoid;
+  border:0.5pt solid #ccc;border-radius:3px;
+  padding:2px 4px;margin-bottom:3px;
+}
+.t{
+  font-size:6pt;font-weight:700;text-transform:uppercase;
+  letter-spacing:0.02em;color:#1a7f37;margin-bottom:1px;line-height:1.1;
+}
+.b{font-size:7.5pt;line-height:1.2}
+.b b{font-weight:700}
+.ki{
+  color:#8250df;font-size:6pt;margin-top:1px;
+  border-top:0.5pt dashed #d8dee4;padding-top:1px;line-height:1.1;
+}
+.katex{font-size:0.88em!important}
+.katex-display{margin:0!important}
+@media print{
+  body{padding:4px 6px;font-size:7pt}
+  .f{border-color:#bbb;padding:2px 3px;margin-bottom:2px}
+  .t{font-size:5.5pt}.b{font-size:7pt}
+  .katex{font-size:0.82em!important}
+}
+@page{margin:6mm}
+</style>
+</head>
+<body>
+<h1>📐 ЛинАлг и ФНП · РК-1 · Формулы</h1>
+<div class="sub">Пространства, базисы, операторы · 8 позиций</div>
+<div class="f">
+<div class="t">1. Матрица перехода и координаты</div>
+<div class="b"><b>Матрица перехода</b> от базиса $\mathcal{B}$ к базису $\mathcal{B}'$:<br>$$\vec{e}' = \vec{e} \cdot T$$<br><br><b>Преобразование координат вектора:</b><br>$$X = T \cdot X'$$<br>$$X' = T^{-1} \cdot X$$<br><br>где $X$ — координаты в старом базисе, $X'$ — в новом.</div>
+</div>
+<div class="f">
+<div class="t">2. Матрица линейного оператора</div>
+<div class="b"><b>Действие оператора</b> $\mathcal{A}$ в базисе $\mathcal{B}$:<br>$$Y = A \cdot X$$<br><br><b>Преобразование матрицы оператора</b> при переходе к базису $\mathcal{B}'$:<br>$$A_{\mathcal{B}'} = T^{-1} \cdot A_{\mathcal{B}} \cdot T$$<br><br>где $T$ — матрица перехода от $\mathcal{B}$ к $\mathcal{B}'$.</div>
+</div>
+<div class="f">
+<div class="t">3. Собственные числа и вектора</div>
+<div class="b"><b>Характеристическое уравнение:</b><br>$$\det(A - \lambda E) = 0$$<br><br><b>Собственные вектора</b> при $\lambda_i$:<br>$$(A - \lambda_i E) \cdot \vec{x} = \vec{0}$$<br><br><b>След матрицы:</b> $\text{tr}\,A = \sum \lambda_i$<br><br><b>Определитель:</b> $\det A = \prod \lambda_i$</div>
+</div>
+<div class="f">
+<div class="t">4. Ортогонализация Грама–Шмидта</div>
+<div class="b">Из базиса $\{a_1, \ldots, a_n\}$ строим ортогональный $\{b_1, \ldots, b_n\}$:<br><br>$$b_1 = a_1$$<br><br>$$b_k = a_k - \sum_{j=1}^{k-1} \frac{(a_k, b_j)}{(b_j, b_j)} \cdot b_j, \quad k = 2, \ldots, n$$<br><br><b>Нормировка:</b> $e_k = \frac{b_k}{\|b_k\|}$</div>
+</div>
+<div class="f">
+<div class="t">5. Квадратичная форма</div>
+<div class="b"><b>Квадратичная форма:</b><br>$$Q(X) = X^T \cdot A \cdot X$$<br><br><b>Преобразование матрицы КФ</b> при переходе к новому базису:<br>$$A' = T^T \cdot A \cdot T$$<br><br><b>Канонический вид:</b> $Q = \lambda_1 y_1^2 + \lambda_2 y_2^2 + \ldots + \lambda_n y_n^2$<br><br>где $\lambda_i$ — собственные числа матрицы $A$.</div>
+</div>
+<div class="f">
+<div class="t">6. Критерий Сильвестра</div>
+<div class="b"><b>Угловые миноры</b> матрицы $A$:<br>$$\Delta_1 = a_{11}, \quad \Delta_2 = \begin{vmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{vmatrix}, \quad \ldots$$<br><br><b>Положительно определённая:</b> $\Delta_1 > 0,\; \Delta_2 > 0,\; \ldots,\; \Delta_n > 0$<br><br><b>Отрицательно определённая:</b> $(-1)^k \Delta_k > 0$ для всех $k$<br><br><b>Неопределённая:</b> не выполняется ни одно из условий выше.</div>
+</div>
+<div class="f">
+<div class="t">7. Скалярное произведение и нормы</div>
+<div class="b"><b>Скалярное произведение</b> (стандартное в $\mathbb{R}^n$):<br>$$(x, y) = \sum_{i=1}^{n} x_i y_i$$<br><br><b>Норма:</b> $\|x\| = \sqrt{(x, x)}$<br><br><b>Неравенство Коши–Буняковского:</b><br>$$|(x, y)|^2 \le (x, x) \cdot (y, y)$$<br><br><b>Угол:</b><br>$$\cos \varphi = \frac{(x, y)}{\|x\| \cdot \|y\|}$$</div>
+</div>
+<div class="f">
+<div class="t">8. Матрицы поворота</div>
+<div class="b"><b>Поворот вокруг $\vec{k}$ на $\varphi$:</b><br>$$R_z(\varphi) = \begin{pmatrix} \cos\varphi & -\sin\varphi & 0 \\ \sin\varphi & \cos\varphi & 0 \\ 0 & 0 & 1 \end{pmatrix}$$<br><br><b>Вокруг $\vec{i}$:</b><br>$$R_x(\varphi) = \begin{pmatrix} 1 & 0 & 0 \\ 0 & \cos\varphi & -\sin\varphi \\ 0 & \sin\varphi & \cos\varphi \end{pmatrix}$$<br><br><b>Вокруг $\vec{j}$:</b><br>$$R_y(\varphi) = \begin{pmatrix} \cos\varphi & 0 & \sin\varphi \\ 0 & 1 & 0 \\ -\sin\varphi & 0 & \cos\varphi \end{pmatrix}$$</div>
+</div>
+</body>
+</html>
