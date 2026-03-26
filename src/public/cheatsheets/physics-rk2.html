@@ -38,7 +38,10 @@ h1{font-size:10pt;text-align:center;margin-bottom:1px;column-span:all;font-weigh
   border-top:0.5pt dashed #d8dee4;padding-top:1px;line-height:1.1;
 }
 .katex{font-size:0.88em!important}
-.katex-display{margin:0!important}
+.katex-display{margin:0!important;padding:0!important}
+table{border-collapse:collapse;font-size:7pt;margin:2px 0;width:100%}
+th,td{border:0.5pt solid #ccc;padding:1px 3px;text-align:left}
+th{background:#f6f8fa;font-weight:600}
 @media print{
   body{padding:4px 6px;font-size:7pt}
   .f{border-color:#bbb;padding:2px 3px;margin-bottom:2px}
@@ -53,43 +56,43 @@ h1{font-size:10pt;text-align:center;margin-bottom:1px;column-span:all;font-weigh
 <div class="sub">Термодинамика, молекулярная физика, СТО · 10 позиций</div>
 <div class="f">
 <div class="t">1. Уравнение бегущей волны</div>
-<div class="b"><b>Бегущая волна:</b><br>$$\xi(x,t) = A\cos(\omega t - kx + \varphi_0)$$<br><br><b>Волновое число:</b> $k = 2\pi/\lambda = \omega/v$<br><br><b>Фазовая скорость:</b> $v = \lambda\nu = \omega/k$<br><br><b>Связь:</b> $\lambda = vT = v/\nu$</div>
+<div class="b"><b>Бегущая волна:</b><br>$\xi(x,t) = A\cos(\omega t - kx + \varphi_0)$<br><b>Волновое число:</b> $k = 2\pi/\lambda = \omega/v$<br><b>Фазовая скорость:</b> $v = \lambda\nu = \omega/k$<br><b>Связь:</b> $\lambda = vT = v/\nu$</div>
 </div>
 <div class="f">
 <div class="t">2. Стоячие волны</div>
-<div class="b"><b>Стоячая волна:</b><br>$$\xi(x,t) = 2A\cos(kx)\cos(\omega t)$$<br><br><b>Узлы:</b> $x_n = (2n+1)\lambda/4$, амплитуда = 0<br><br><b>Пучности:</b> $x_n = n\lambda/2$, амплитуда = $2A$<br><br><b>Струна:</b> $L = n\lambda/2$ → $\nu_n = nv/(2L)$</div>
+<div class="b"><b>Стоячая волна:</b><br>$\xi(x,t) = 2A\cos(kx)\cos(\omega t)$<br><b>Узлы:</b> $x_n = (2n+1)\lambda/4$, амплитуда = 0<br><b>Пучности:</b> $x_n = n\lambda/2$, амплитуда = $2A$<br><b>Струна:</b> $L = n\lambda/2$ → $\nu_n = nv/(2L)$</div>
 </div>
 <div class="f">
 <div class="t">3. Энергия волны</div>
-<div class="b"><b>Объёмная плотность энергии:</b><br>$$w = \rho\omega^2 A^2 \sin^2(\omega t - kx)$$<br><br><b>Средняя плотность:</b><br>$$\langle w \rangle = \frac{1}{2}\rho\omega^2 A^2$$<br><br><b>Интенсивность (поток энергии):</b><br>$$I = \langle w \rangle v = \frac{1}{2}\rho\omega^2 A^2 v$$<br><br><b>Вектор Умова:</b> $\vec{j} = w\vec{v}$</div>
+<div class="b"><b>Объёмная плотность энергии:</b><br>$w = \rho\omega^2 A^2 \sin^2(\omega t - kx)$<br><b>Средняя плотность:</b><br>$\langle w \rangle = \frac{1}{2}\rho\omega^2 A^2$<br><b>Интенсивность (поток энергии):</b><br>$I = \langle w \rangle v = \frac{1}{2}\rho\omega^2 A^2 v$<br><b>Вектор Умова:</b> $\vec{j} = w\vec{v}$</div>
 </div>
 <div class="f">
 <div class="t">4. МКТ идеального газа</div>
-<div class="b"><b>Основное уравнение МКТ:</b><br>$$p = nkT = \frac{1}{3}nm\langle v^2 \rangle$$<br><br><b>Уравнение Менделеева–Клапейрона:</b><br>$$pV = \nu RT = \frac{m}{M}RT$$<br><br><b>Средняя кинетическая энергия молекулы:</b><br>$$\langle\varepsilon\rangle = \frac{i}{2}kT$$<br><br><b>Степени свободы:</b> одноатомный $i = 3$, двухатомный $i = 5$<br><br><b>Средняя квадратичная скорость:</b><br>$$v_{\text{ск}} = \sqrt{\frac{3kT}{m_0}} = \sqrt{\frac{3RT}{M}}$$</div>
+<div class="b"><b>Основное уравнение МКТ:</b><br>$p = nkT = \frac{1}{3}nm\langle v^2 \rangle$<br><b>Уравнение Менделеева–Клапейрона:</b><br>$pV = \nu RT = \frac{m}{M}RT$<br><b>Средняя кинетическая энергия молекулы:</b><br>$\langle\varepsilon\rangle = \frac{i}{2}kT$<br><b>Степени свободы:</b> одноатомный $i = 3$, двухатомный $i = 5$<br><b>Средняя квадратичная скорость:</b><br>$v_{\text{ск}} = \sqrt{\frac{3kT}{m_0}} = \sqrt{\frac{3RT}{M}}$</div>
 </div>
 <div class="f">
 <div class="t">5. Первое начало термодинамики</div>
-<div class="b"><b>Первое начало:</b><br>$$Q = \Delta U + A$$<br><br><b>Внутренняя энергия:</b><br>$$U = \frac{i}{2}\nu RT$$<br><br><b>Работа газа:</b><br>$$A = \int_{V_1}^{V_2} p\,dV$$<br><br><b>Теплоёмкости:</b><br>$$C_V = \frac{i}{2}R, \quad C_p = \frac{i+2}{2}R, \quad \gamma = \frac{C_p}{C_V} = \frac{i+2}{i}$$</div>
+<div class="b"><b>Первое начало:</b><br>$Q = \Delta U + A$<br><b>Внутренняя энергия:</b><br>$U = \frac{i}{2}\nu RT$<br><b>Работа газа:</b><br>$A = \int_{V_1}^{V_2} p\,dV$<br><b>Теплоёмкости:</b><br>$C_V = \frac{i}{2}R, \quad C_p = \frac{i+2}{2}R, \quad \gamma = \frac{C_p}{C_V} = \frac{i+2}{i}$</div>
 </div>
 <div class="f">
 <div class="t">6. Изопроцессы и адиабата</div>
-<div class="b">| Процесс | Закон | $Q$ | $A$ | $\Delta U$ |<br>|---|---|---|---|---|<br>| Изохорный ($V$=const) | $p/T$=const | $\nu C_V \Delta T$ | $0$ | $\nu C_V \Delta T$ |<br>| Изобарный ($p$=const) | $V/T$=const | $\nu C_p \Delta T$ | $p\Delta V$ | $\nu C_V \Delta T$ |<br>| Изотермический ($T$=const) | $pV$=const | $\nu RT\ln(V_2/V_1)$ | $\nu RT\ln(V_2/V_1)$ | $0$ |<br>| Адиабатный ($Q=0$) | $pV^\gamma$=const | $0$ | $-\Delta U$ | $\nu C_V \Delta T$ |<br>| Политропный | $pV^n$=const | ... | ... | ... |<br><br><b>Уравнение адиабаты:</b><br>$$pV^\gamma = \text{const}, \quad TV^{\gamma-1} = \text{const}$$</div>
+<div class="b"><table><tr><th>Процесс</th><th>Закон</th><th>$Q$</th><th>$A$</th><th>$\Delta U$</th></tr><tr><td>Изохорный ($V$=const)</td><td>$p/T$=const</td><td>$\nu C_V \Delta T$</td><td>$0$</td><td>$\nu C_V \Delta T$</td></tr><tr><td>Изобарный ($p$=const)</td><td>$V/T$=const</td><td>$\nu C_p \Delta T$</td><td>$p\Delta V$</td><td>$\nu C_V \Delta T$</td></tr><tr><td>Изотермический ($T$=const)</td><td>$pV$=const</td><td>$\nu RT\ln(V_2/V_1)$</td><td>$\nu RT\ln(V_2/V_1)$</td><td>$0$</td></tr><tr><td>Адиабатный ($Q=0$)</td><td>$pV^\gamma$=const</td><td>$0$</td><td>$-\Delta U$</td><td>$\nu C_V \Delta T$</td></tr><tr><td>Политропный</td><td>$pV^n$=const</td><td>...</td><td>...</td><td>...</td></tr></table><br><b>Уравнение адиабаты:</b><br>$pV^\gamma = \text{const}, \quad TV^{\gamma-1} = \text{const}$</div>
 </div>
 <div class="f">
 <div class="t">7. КПД цикла Карно и энтропия</div>
-<div class="b"><b>КПД цикла Карно (максимальный):</b><br>$$\eta_{\text{Карно}} = 1 - \frac{T_2}{T_1}$$<br><br><b>КПД произвольного цикла:</b><br>$$\eta = \frac{A}{Q_1} = 1 - \frac{|Q_2|}{Q_1}$$<br><br><b>Энтропия:</b><br>$$dS = \frac{\delta Q}{T} \quad (\text{обратимый})$$<br><br>$$\Delta S = \nu C_V \ln\frac{T_2}{T_1} + \nu R \ln\frac{V_2}{V_1}$$</div>
+<div class="b"><b>КПД цикла Карно (максимальный):</b><br>$\eta_{\text{Карно}} = 1 - \frac{T_2}{T_1}$<br><b>КПД произвольного цикла:</b><br>$\eta = \frac{A}{Q_1} = 1 - \frac{|Q_2|}{Q_1}$<br><b>Энтропия:</b><br>$dS = \frac{\delta Q}{T} \quad (\text{обратимый})$<br>$\Delta S = \nu C_V \ln\frac{T_2}{T_1} + \nu R \ln\frac{V_2}{V_1}$</div>
 </div>
 <div class="f">
 <div class="t">8. СТО: преобразования Лоренца</div>
-<div class="b"><b>Фактор Лоренца:</b><br>$$\gamma_L = \frac{1}{\sqrt{1 - \beta^2}}, \quad \beta = v/c$$<br><br><b>Сокращение длины:</b><br>$$l = l_0\sqrt{1 - \beta^2} = l_0/\gamma_L$$<br><br><b>Замедление времени:</b><br>$$\Delta t = \gamma_L \Delta t_0$$<br><br><b>Сложение скоростей:</b><br>$$u = \frac{v_1 + v_2}{1 + v_1 v_2/c^2}$$</div>
+<div class="b"><b>Фактор Лоренца:</b><br>$\gamma_L = \frac{1}{\sqrt{1 - \beta^2}}, \quad \beta = v/c$<br><b>Сокращение длины:</b><br>$l = l_0\sqrt{1 - \beta^2} = l_0/\gamma_L$<br><b>Замедление времени:</b><br>$\Delta t = \gamma_L \Delta t_0$<br><b>Сложение скоростей:</b><br>$u = \frac{v_1 + v_2}{1 + v_1 v_2/c^2}$</div>
 </div>
 <div class="f">
 <div class="t">9. Релятивистская механика</div>
-<div class="b"><b>Релятивистский импульс:</b><br>$$\vec{p} = \gamma_L m_0 \vec{v}$$<br><br><b>Полная энергия:</b><br>$$E = \gamma_L m_0 c^2 = E_0 + T$$<br><br><b>Энергия покоя:</b> $E_0 = m_0 c^2$<br><br><b>Кинетическая энергия:</b><br>$$T = (\gamma_L - 1)m_0 c^2$$<br><br><b>Связь E и p:</b><br>$$E^2 = (pc)^2 + (m_0 c^2)^2$$</div>
+<div class="b"><b>Релятивистский импульс:</b><br>$\vec{p} = \gamma_L m_0 \vec{v}$<br><b>Полная энергия:</b><br>$E = \gamma_L m_0 c^2 = E_0 + T$<br><b>Энергия покоя:</b> $E_0 = m_0 c^2$<br><b>Кинетическая энергия:</b><br>$T = (\gamma_L - 1)m_0 c^2$<br><b>Связь E и p:</b><br>$E^2 = (pc)^2 + (m_0 c^2)^2$</div>
 </div>
 <div class="f">
 <div class="t">10. Распределения Максвелла и Больцмана</div>
-<div class="b"><b>Распределение Максвелла по скоростям:</b><br>$$f(v) = 4\pi n \left(\frac{m}{2\pi kT}\right)^{3/2} v^2 e^{-mv^2/(2kT)}$$<br><br><b>Характерные скорости:</b><br>$$v_{\text{в}} = \sqrt{\frac{2kT}{m}}, \quad \bar{v} = \sqrt{\frac{8kT}{\pi m}}, \quad v_{\text{ск}} = \sqrt{\frac{3kT}{m}}$$<br><br><b>Барометрическая формула:</b><br>$$p(h) = p_0 e^{-Mgh/(RT)}$$<br><br><b>Распределение Больцмана:</b><br>$$n(h) = n_0 e^{-mgh/(kT)}$$</div>
+<div class="b"><b>Распределение Максвелла по скоростям:</b><br>$f(v) = 4\pi n \left(\frac{m}{2\pi kT}\right)^{3/2} v^2 e^{-mv^2/(2kT)}$<br><b>Характерные скорости:</b><br>$v_{\text{в}} = \sqrt{\frac{2kT}{m}}, \quad \bar{v} = \sqrt{\frac{8kT}{\pi m}}, \quad v_{\text{ск}} = \sqrt{\frac{3kT}{m}}$<br><b>Барометрическая формула:</b><br>$p(h) = p_0 e^{-Mgh/(RT)}$<br><b>Распределение Больцмана:</b><br>$n(h) = n_0 e^{-mgh/(kT)}$</div>
 </div>
 </body>
 </html>

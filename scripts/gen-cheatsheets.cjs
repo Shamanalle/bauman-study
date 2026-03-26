@@ -90,8 +90,24 @@ function formatBody(item) {
   let html = '';
   if (item.formalText) {
     html = item.formalText
+      // Convert display math $$ to inline $ for compactness
+      .replace(/\$\$(.*?)\$\$/g, '$$$1$$')
+      // Bold
       .replace(/\*\*(.*?)\*\*/g, '<b>$1</b>')
+      // Bullet lists
       .replace(/\n- /g, '\n• ')
+      // Remove empty lines (double newlines)
+      .replace(/\n\n+/g, '\n')
+      // Tables: convert markdown tables to compact HTML
+      .replace(/\|(.+)\|\n\|[-|]+\|\n([\s\S]*?)(?=\n[^|]|$)/g, (match, header, body) => {
+        const ths = header.split('|').filter(Boolean).map(h => `<th>${h.trim()}</th>`).join('');
+        const rows = body.trim().split('\n').map(row => {
+          const tds = row.split('|').filter(Boolean).map(d => `<td>${d.trim()}</td>`).join('');
+          return `<tr>${tds}</tr>`;
+        }).join('');
+        return `<table><tr>${ths}</tr>${rows}</table>`;
+      })
+      // Newlines to <br>
       .replace(/\n/g, '<br>');
   }
   if (item.keyIdea) {
@@ -141,7 +157,10 @@ h1{font-size:10pt;text-align:center;margin-bottom:1px;column-span:all;font-weigh
   border-top:0.5pt dashed #d8dee4;padding-top:1px;line-height:1.1;
 }
 .katex{font-size:0.88em!important}
-.katex-display{margin:0!important}
+.katex-display{margin:0!important;padding:0!important}
+table{border-collapse:collapse;font-size:7pt;margin:2px 0;width:100%}
+th,td{border:0.5pt solid #ccc;padding:1px 3px;text-align:left}
+th{background:#f6f8fa;font-weight:600}
 @media print{
   body{padding:4px 6px;font-size:7pt}
   .f{border-color:#bbb;padding:2px 3px;margin-bottom:2px}
