@@ -595,7 +595,7 @@
         {
           "title": "Импульс тела",
           "text": "Связь кинетической энергии и импульса: $E_k = p^2/(2m)$.\n$p = \\sqrt{2mE_k} = \\sqrt{2 \\cdot 3 \\cdot 73{,}25} = \\sqrt{439{,}5} \\approx 21{,}0$ кг$\\cdot$м/с.\nСкорость тела: $v = p/m = 21{,}0/3 = 7{,}0$ м/с.\nПроверка: $E_k = mv^2/2 = 3 \\cdot 49/2 = 73{,}5$ Дж ✓.",
-          "math": "$$\\boxed{A = E_k \\approx 73{,}3 \\text{ Дж}, \\quad p \\approx 21 \\text{ кг·м/с}}$$"
+          "math": "$$\\boxed{A = E_k \\approx 73{,}3 \\text{ Дж}, \\quad p \\approx 21 \\text{ кг}\\cdot\\text{м/с}}$$"
         }
       ],
       "formula": "E_k \\approx 73{,}3 \\text{ Дж}"

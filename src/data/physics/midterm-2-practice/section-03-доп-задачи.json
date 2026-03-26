@@ -47,7 +47,7 @@
         },
         {
           "title": "Ответ",
-          "math": "$$\\boxed{C_n = -\\frac{5R}{2} \\approx -20{,}8 \\text{ Дж/(моль·К)}}$$"
+          "math": "$$\\boxed{C_n = -\\frac{5R}{2} \\approx -20{,}8 \\text{ Дж/(моль}\\cdot\\text{К)}}$$"
         }
       ],
       "formula": "C_n = -5R/2"
@@ -148,7 +148,7 @@
         },
         {
           "title": "Ответ",
-          "math": "$$\\boxed{E = 2{,}48 \\text{ эВ}, \\; p = 1{,}33 \\cdot 10^{-27} \\text{ кг·м/с}}$$"
+          "math": "$$\\boxed{E = 2{,}48 \\text{ эВ}, \\; p = 1{,}33 \\cdot 10^{-27} \\text{ кг}\\cdot\\text{м/с}}$$"
         }
       ],
       "formula": "E = 2{,}48 \\text{ эВ}"
@@ -376,7 +376,7 @@
         },
         {
           "title": "Ответ",
-          "math": "$$\\boxed{p \\approx 5{,}6 \\cdot 10^{-22} \\text{ кг·м/с}, \\; p/p_{\\text{кл}} \\approx 2{,}3}$$"
+          "math": "$$\\boxed{p \\approx 5{,}6 \\cdot 10^{-22} \\text{ кг}\\cdot\\text{м/с}, \\; p/p_{\\text{кл}} \\approx 2{,}3}$$"
         }
       ],
       "formula": "p/p_{\\text{кл}} \\approx 2{,}3"
@@ -1061,10 +1061,10 @@
         {
           "title": "Ответ",
           "text": "Динамическая вязкость азота $\\approx 10^{-5}$ Па$\\cdot$с.",
-          "math": "$$\\boxed{\\eta \\approx 1{,}1 \\cdot 10^{-5} \\text{ Па·с}}$$"
+          "math": "$$\\boxed{\\eta \\approx 1{,}1 \\cdot 10^{-5} \\text{ Па}\\cdot\\text{с}}$$"
         }
       ],
-      "formula": "\\eta \\approx 10^{-5} \\text{ Па·с}"
+      "formula": "\\eta \\approx 10^{-5} \\text{ Па}\\cdot\\text{с}"
     },
     {
       "id": "d-43",
@@ -1138,10 +1138,10 @@
         {
           "title": "Ответ",
           "text": "Теплопроводность гелия $\\approx 0{,}042$ Вт/(м$\\cdot$К).",
-          "math": "$$\\boxed{\\kappa \\approx 0{,}042 \\text{ Вт/(м·К)}}$$"
+          "math": "$$\\boxed{\\kappa \\approx 0{,}042 \\text{ Вт/(м}\\cdot\\text{К)}}$$"
         }
       ],
-      "formula": "\\kappa \\approx 0{,}042 \\text{ Вт/(м·К)}"
+      "formula": "\\kappa \\approx 0{,}042 \\text{ Вт/(м}\\cdot\\text{К)}"
     },
     {
       "id": "d-46",

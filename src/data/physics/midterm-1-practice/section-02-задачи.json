@@ -18,7 +18,7 @@
         {
           "title": "Значения при t = 1 с",
           "text": "Подставляем $t = 1$ с:\n$\\varepsilon(1) = -2 \\cdot 1 - 10 = -12$ рад/с$^2$.\nМомент сил:\n$M = I\\varepsilon = 10 \\cdot (-12) = -120$ Н$\\cdot$м.",
-          "math": "$$\\varepsilon(1) = -12 \\text{ рад/с}^2, \\quad M(1) = -120 \\text{ Н·м}$$"
+          "math": "$$\\varepsilon(1) = -12 \\text{ рад/с}^2, \\quad M(1) = -120 \\text{ Н}\\cdot\\text{м}$$"
         },
         {
           "title": "Момент смены направления",
@@ -28,7 +28,7 @@
         {
           "title": "Ответ",
           "text": "Угловое ускорение в момент смены:\n$\\varepsilon(2{,}07) = -2 \\cdot 2{,}07 - 10 = -14{,}14$ рад/с$^2$.",
-          "math": "$$\\boxed{\\varepsilon(1) = -12 \\text{ рад/с}^2,\\; M = -120 \\text{ Н·м},\\; \\varepsilon(2{,}07) = -14{,}14 \\text{ рад/с}^2}$$"
+          "math": "$$\\boxed{\\varepsilon(1) = -12 \\text{ рад/с}^2,\\; M = -120 \\text{ Н}\\cdot\\text{м},\\; \\varepsilon(2{,}07) = -14{,}14 \\text{ рад/с}^2}$$"
         }
       ],
       "formula": "\\varepsilon(1) = -12 \\text{ рад/с}^2"
@@ -106,7 +106,7 @@
         {
           "title": "Момент инерции после",
           "text": "После поимки мяч вращается вместе со студентом на расстоянии $d$ от оси:\n$I_1 = I_{\\text{ст}} + I_{\\text{ск}} + md^2 = 3 + 2 + 1 \\cdot 0{,}25 = 5{,}25$ кг$\\cdot$м$^2$.",
-          "math": "$$I_1 = 5{,}25 \\text{ кг·м}^2$$"
+          "math": "$$I_1 = 5{,}25 \\text{ кг}\\cdot\\text{м}^2$$"
         },
         {
           "title": "Угловая скорость после",
@@ -402,7 +402,7 @@
         {
           "title": "Ответ",
           "text": "$M_{\\text{тр}} = I\\varepsilon = 8 \\cdot 10^{-8} \\cdot 4189 \\approx 3{,}35 \\cdot 10^{-4}$ Н$\\cdot$м.",
-          "math": "$$\\boxed{E_k \\approx 5006 \\text{ Дж}, \\quad M_{\\text{тр}} \\approx 3{,}35 \\cdot 10^{-4} \\text{ Н·м}}$$"
+          "math": "$$\\boxed{E_k \\approx 5006 \\text{ Дж}, \\quad M_{\\text{тр}} \\approx 3{,}35 \\cdot 10^{-4} \\text{ Н}\\cdot\\text{м}}$$"
         }
       ],
       "formula": "E_k \\approx 5006 \\text{ Дж}"
@@ -579,15 +579,15 @@
         {
           "title": "Момент сил",
           "text": "$M(t) = I\\varepsilon = 0{,}032(-16 + 18t) = -0{,}512 + 0{,}576t$ Н$\\cdot$м.\nПри $t = 3$ с: $M(3) = -0{,}512 + 1{,}728 = 1{,}216$ Н$\\cdot$м.",
-          "math": "$$M(t) = 0{,}032(-16 + 18t) \\text{ Н·м}$$"
+          "math": "$$M(t) = 0{,}032(-16 + 18t) \\text{ Н}\\cdot\\text{м}$$"
         },
         {
           "title": "Момент импульса при t = 3",
           "text": "$\\omega(3) = -2 \\cdot 8 \\cdot 3 + 3 \\cdot 3 \\cdot 9 = -48 + 81 = 33$ рад/с.\n$L(3) = I\\omega(3) = 0{,}032 \\cdot 33 = 1{,}056$ кг$\\cdot$м$^2$/с.",
-          "math": "$$\\boxed{M(3) = 1{,}216 \\text{ Н·м}, \\quad L(3) = 1{,}056 \\text{ кг·м}^2\\text{/с}}$$"
+          "math": "$$\\boxed{M(3) = 1{,}216 \\text{ Н}\\cdot\\text{м}, \\quad L(3) = 1{,}056 \\text{ кг}\\cdot\\text{м}^2\\text{/с}}$$"
         }
       ],
-      "formula": "M(3) = 1{,}216 \\text{ Н·м}"
+      "formula": "M(3) = 1{,}216 \\text{ Н}\\cdot\\text{м}"
     },
     {
       "id": "t23",
@@ -735,15 +735,15 @@
         {
           "title": "Момент инерции",
           "text": "Вся кинетическая энергия ушла на работу торможения:\n$|A| = \\frac{I\\omega_0^2}{2}$ $\\Rightarrow$ $I = \\frac{2|A|}{\\omega_0^2} = \\frac{2 \\cdot 45}{(30\\pi)^2} = \\frac{90}{900\\pi^2} = \\frac{1}{10\\pi^2} \\approx 0{,}01013$ кг$\\cdot$м$^2$.",
-          "math": "$$I = \\frac{2|A|}{\\omega_0^2} \\approx 0{,}0101 \\text{ кг·м}^2$$"
+          "math": "$$I = \\frac{2|A|}{\\omega_0^2} \\approx 0{,}0101 \\text{ кг}\\cdot\\text{м}^2$$"
         },
         {
           "title": "Момент сил торможения",
           "text": "Равнозамедленное: $\\omega_0^2 = 2\\varepsilon \\cdot \\varphi$, где $\\varphi = 2\\pi N$.\n$\\varepsilon = \\frac{\\omega_0^2}{4\\pi N} = \\frac{900\\pi^2}{4\\pi \\cdot 75} = \\frac{900\\pi}{300} = 3\\pi \\approx 9{,}42$ рад/с$^2$.\n$M_{\\text{тр}} = I\\varepsilon = \\frac{1}{10\\pi^2} \\cdot 3\\pi = \\frac{3}{10\\pi} \\approx 0{,}0955$ Н$\\cdot$м.",
-          "math": "$$\\boxed{I \\approx 0{,}0101 \\text{ кг·м}^2, \\quad M_{\\text{тр}} = \\frac{3}{10\\pi} \\approx 0{,}096 \\text{ Н·м}}$$"
+          "math": "$$\\boxed{I \\approx 0{,}0101 \\text{ кг}\\cdot\\text{м}^2, \\quad M_{\\text{тр}} = \\frac{3}{10\\pi} \\approx 0{,}096 \\text{ Н}\\cdot\\text{м}}$$"
         }
       ],
-      "formula": "I \\approx 0{,}0101 \\text{ кг·м}^2"
+      "formula": "I \\approx 0{,}0101 \\text{ кг}\\cdot\\text{м}^2"
     },
     {
       "id": "t29",

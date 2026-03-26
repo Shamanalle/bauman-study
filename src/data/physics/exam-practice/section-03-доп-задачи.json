@@ -576,10 +576,10 @@
         },
         {
           "title": "Ответ",
-          "math": "$$\\boxed{M \\approx 62{,}8 \\text{ Н·м}, \\; N = 360}$$"
+          "math": "$$\\boxed{M \\approx 62{,}8 \\text{ Н}\\cdot\\text{м}, \\; N = 360}$$"
         }
       ],
-      "formula": "M \\approx 62{,}8 \\text{ Н·м}"
+      "formula": "M \\approx 62{,}8 \\text{ Н}\\cdot\\text{м}"
     },
     {
       "id": "d-24",

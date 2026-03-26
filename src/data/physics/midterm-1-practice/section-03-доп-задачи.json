@@ -122,7 +122,7 @@
         },
         {
           "title": "Ответ",
-          "math": "$$\\boxed{I = \\frac{31ml^2}{30} \\approx 0{,}506 \\text{ кг·м}^2}$$"
+          "math": "$$\\boxed{I = \\frac{31ml^2}{30} \\approx 0{,}506 \\text{ кг}\\cdot\\text{м}^2}$$"
         }
       ],
       "formula": "31ml^2/30"
@@ -1112,10 +1112,10 @@
         },
         {
           "title": "Ответ",
-          "math": "$$\\boxed{M \\approx 62{,}8 \\text{ Н·м}, \\; N = 360 \\text{ об}}$$"
+          "math": "$$\\boxed{M \\approx 62{,}8 \\text{ Н}\\cdot\\text{м}, \\; N = 360 \\text{ об}}$$"
         }
       ],
-      "formula": "M \\approx 62{,}8 \\text{ Н·м}"
+      "formula": "M \\approx 62{,}8 \\text{ Н}\\cdot\\text{м}"
     },
     {
       "id": "d-46",
