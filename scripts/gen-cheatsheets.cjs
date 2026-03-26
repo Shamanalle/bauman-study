@@ -138,6 +138,7 @@ body{
   padding:6px 8px;
   column-count:2;column-gap:10px;
   color:#1a1a1a;background:#fff;
+  overflow-wrap:break-word;word-wrap:break-word;
 }
 h1{font-size:10pt;text-align:center;margin-bottom:1px;column-span:all;font-weight:800;letter-spacing:-0.02em}
 .sub{text-align:center;color:#57606a;font-size:6.5pt;margin-bottom:6px;column-span:all}
