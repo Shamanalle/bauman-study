@@ -2,63 +2,12 @@
 // Similar architecture to lab-browser.js but for exam/KR practice
 
 import { renderMath } from './math-utils.js';
-import { nl } from './text-utils.js';
+import { nl, md } from './text-utils.js';
 import * as progress from './progress.js';
 import { drawPlot } from './plot-utils.js';
 
 let practiceData = null;   // { meta, sections }
 let currentTab = 0;        // index into sections
-
-/**
- * Lightweight markdown → HTML for JSON content.
- * Handles: **bold**, \n→<br>, bullet lists (- item).
- * Preserves LaTeX ($ and $$) by passing through.
- */
-function md(str) {
-  if (!str) return '';
-  // Preserve $$ blocks from being mangled
-  const blocks = [];
-  str = str.replace(/\$\$[\s\S]*?\$\$/g, m => { blocks.push(m); return `⌘B${blocks.length - 1}⌘`; });
-  // Preserve inline $...$ math
-  str = str.replace(/\$[^$]+?\$/g, m => { blocks.push(m); return `⌘B${blocks.length - 1}⌘`; });
-
-  // Markdown tables: detect lines with | ... | pattern
-  str = str.replace(/(?:^|\n)((?:\|[^\n]+\|\s*\n)+)/g, (_, tableBlock) => {
-    const rows = tableBlock.trim().split('\n').map(r => r.trim()).filter(Boolean);
-    if (rows.length < 2) return '\n' + tableBlock;
-    // Check for separator row (|---|---|)
-    const sepIdx = rows.findIndex(r => /^\|[\s:]*-+[\s:]*(\|[\s:]*-+[\s:]*)*\|$/.test(r));
-    let html = '<table class="md-table">';
-    rows.forEach((row, i) => {
-      if (i === sepIdx) return; // skip separator
-      const cells = row.split('|').filter((_, ci, arr) => ci > 0 && ci < arr.length - 1);
-      const tag = (sepIdx >= 0 && i < sepIdx) ? 'th' : 'td';
-      html += '<tr>' + cells.map(c => `<${tag}>${c.trim()}</${tag}>`).join('') + '</tr>';
-    });
-    html += '</table>';
-    return '\n' + html + '\n';
-  });
-
-  // Bold
-  str = str.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-
-  // Bullet lists: lines starting with "- "
-  str = str.replace(/(?:^|\n)- (.+)/g, (_, item) => `\n<li>${item.trim()}</li>`);
-  str = str.replace(/(<li>[\s\S]*?<\/li>)/g, '<ul>$1</ul>');
-  str = str.replace(/<\/ul>\s*<ul>/g, '');
-
-  // Newlines → <br>
-  str = str.replace(/\n/g, '<br>');
-  str = str.replace(/<br>\s*<ul>/g, '<ul>');
-  str = str.replace(/<\/ul>\s*<br>/g, '</ul>');
-  str = str.replace(/<br>\s*<table/g, '<table');
-  str = str.replace(/<\/table>\s*<br>/g, '</table>');
-
-  // Restore all blocks
-  blocks.forEach((b, i) => { str = str.replace(`⌘B${i}⌘`, b); });
-
-  return str;
-}
 
 /**
  * Toggle reveal/collapse for a problem or ticket.

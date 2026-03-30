@@ -218,80 +218,17 @@ function showPlatformPage() {
   });
 }
 
-// Lazy import to avoid circular deps
+// Lazy import to avoid circular deps — now uses centralized config
 function await_import_subjects() {
-  return { getSubjectsConfig: getSubjectsConfigLocal };
+  // Dynamic import was a historical workaround; now uses the single source of truth
+  const { SUBJECTS } = require_subjects_config();
+  return { getSubjectsConfig: () => SUBJECTS };
 }
 
-function getSubjectsConfigLocal() {
-  return [
-    {
-      id: 'physics', title: 'Физика', subtitle: 'Механика, термодинамика, волны',
-      icon: '⚛️', assessments: [
-        { name: 'Экзамен · Теория', assessment: 'exam', type: 'exam', icon: '📋' },
-        { name: 'Экзамен · Практика', assessment: 'exam-practice', type: 'kr', icon: '✏️' },
-        { name: 'РК-1 · Теория', assessment: 'midterm-1', type: 'midterm', icon: '📝' },
-        { name: 'РК-1 · Практика', assessment: 'midterm-1-practice', type: 'kr', icon: '✏️' },
-        { name: 'РК-2 · Теория', assessment: 'midterm-2', type: 'midterm', icon: '📝' },
-        { name: 'РК-2 · Практика', assessment: 'midterm-2-practice', type: 'kr', icon: '✏️' },
-        { name: 'Учебное пособие', assessment: null, type: 'textbook', icon: '📖', href: '?subject=physics&type=textbook' },
-      ],
-    },
-    {
-      id: 'differential-equations', title: 'Интегралы и ДУ',
-      subtitle: 'Определённые интегралы, несобственные интегралы, ОДУ', icon: '∫',
-      assessments: [
-        { name: 'Экзамен · Теория', assessment: 'exam', type: 'exam', icon: '📋' },
-        { name: 'Экзамен · Практика', assessment: 'exam-practice', type: 'kr', icon: '✏️' },
-        { name: 'РК-1 · Теория', assessment: 'midterm-1', type: 'midterm', icon: '📝' },
-        { name: 'РК-1 · Практика', assessment: 'midterm-1-practice', type: 'kr', icon: '✏️' },
-        { name: 'РК-2 · Теория', assessment: 'midterm-2', type: 'midterm', icon: '📝' },
-        { name: 'РК-2 · Практика', assessment: 'midterm-2-practice', type: 'kr', icon: '✏️' },
-        { name: 'КР-1 · Интегрирование', assessment: 'kr-1', type: 'kr', icon: '✏️' },
-        { name: 'КР-2 · ДУ 1-го порядка', assessment: 'kr-2', type: 'kr', icon: '✏️' },
-        { name: 'Учебное пособие', assessment: null, type: 'textbook', icon: '📖', href: '?subject=differential-equations&type=textbook' },
-      ],
-    },
-    {
-      id: 'linear-algebra', title: 'Линейная алгебра и ФНП',
-      subtitle: 'Пространства, операторы, квадратичные формы, ФНП', icon: '📐',
-      assessments: [
-        { name: 'РК-1 · Теория', assessment: 'midterm-1', type: 'midterm', icon: '📝' },
-        { name: 'РК-1 · Практика', assessment: 'midterm-1-practice', type: 'kr', icon: '✏️' },
-        { name: 'РК-2 · Теория', assessment: 'midterm-2', type: 'midterm', icon: '📝' },
-        { name: 'РК-2 · Практика', assessment: 'midterm-2-practice', type: 'kr', icon: '✏️' },
-        { name: 'КР · Теория', assessment: 'kr-1', type: 'kr', icon: '✏️' },
-        { name: 'КР · Практика', assessment: 'kr-1-practice', type: 'kr', icon: '✏️' },
-        { name: 'Учебное пособие', assessment: null, type: 'textbook', icon: '📖', href: '?subject=linear-algebra&type=textbook' },
-      ],
-    },
-    {
-      id: 'algorithmic-languages', title: 'Алгоритмические языки',
-      subtitle: 'C++: ООП, шаблоны, исключения, многопоточность', icon: '💻',
-      assessments: [
-        { name: 'Экзамен · Теория', assessment: 'exam', type: 'exam', icon: '📋' },
-        { name: 'Экзамен · Практика', assessment: 'exam-practice', type: 'kr', icon: '✏️' },
-        { name: 'Лабораторные', assessment: null, type: 'labs', icon: '💻', href: '?subject=algorithmic-languages&type=labs' },
-        { name: 'Учебное пособие', assessment: null, type: 'textbook', icon: '📖', href: '?subject=algorithmic-languages&type=textbook' },
-      ],
-    },
-    {
-      id: 'programming-technologies', title: 'Технологии и методы программирования',
-      subtitle: 'Git: контроль версий, ветвление, GitHub', icon: '🔀',
-      assessments: [
-        { name: 'Учебное пособие', assessment: null, type: 'textbook', icon: '📖', href: '?subject=programming-technologies&type=textbook' },
-        { name: 'Лабораторные', assessment: null, type: 'labs', icon: '🔬', href: '?subject=programming-technologies&type=labs' },
-      ],
-    },
-    {
-      id: 'math-cs-foundations', title: 'Мат. основы информатики',
-      subtitle: 'Булевы функции, нормальные формы, теорема Поста', icon: '🔢',
-      assessments: [
-        { name: 'Зачёт', assessment: 'zachet', type: 'exam', icon: '✅' },
-        { name: 'Учебное пособие', assessment: null, type: 'textbook', icon: '📖', href: '?subject=math-cs-foundations&type=textbook' },
-      ],
-    },
-  ];
+// Synchronous access to subjects config (ESM import hoisted at module level)
+import { SUBJECTS as _SUBJECTS_CONFIG } from './subjects-config.js';
+function require_subjects_config() {
+  return { SUBJECTS: _SUBJECTS_CONFIG };
 }
 
 function initScrollTop() {

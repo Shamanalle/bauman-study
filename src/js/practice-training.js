@@ -4,7 +4,7 @@
 // Modeled after flashcard.js but for problem-solving practice
 
 import { renderMath } from './math-utils.js';
-import { nl } from './text-utils.js';
+import { nl, md } from './text-utils.js';
 import { drawPlot } from './plot-utils.js';
 import * as engine from './practice-engine.js';
 import { DIFFICULTY, classifySection } from './practice-engine.js';
@@ -18,23 +18,6 @@ let _sessionResults = [];  // { question, understood }
 let _solutionRevealed = false;
 let _keyHandler = null;
 let _onExit = null;
-
-// ── md() — lightweight markdown for JSON content ──
-function md(str) {
-  if (!str) return '';
-  const blocks = [];
-  str = str.replace(/\$\$[\s\S]*?\$\$/g, m => { blocks.push(m); return `⌘B${blocks.length - 1}⌘`; });
-  str = str.replace(/\$[^$]+?\$/g, m => { blocks.push(m); return `⌘B${blocks.length - 1}⌘`; });
-  str = str.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-  str = str.replace(/(?:^|\n)- (.+)/g, (_, item) => `\n<li>${item.trim()}</li>`);
-  str = str.replace(/(<li>[\s\S]*?<\/li>)/g, '<ul>$1</ul>');
-  str = str.replace(/<\/ul>\s*<ul>/g, '');
-  str = str.replace(/\n/g, '<br>');
-  str = str.replace(/<br>\s*<ul>/g, '<ul>');
-  str = str.replace(/<\/ul>\s*<br>/g, '</ul>');
-  blocks.forEach((b, i) => { str = str.replace(`⌘B${i}⌘`, b); });
-  return str;
-}
 
 // ══════════════════════════════════════════════
 //  PUBLIC API

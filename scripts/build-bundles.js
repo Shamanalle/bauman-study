@@ -23,58 +23,19 @@ const cssContent = fs.readFileSync(path.join(DIST, 'assets', cssFile), 'utf-8');
 const jsContent = fs.readFileSync(path.join(DIST, 'assets', jsFile), 'utf-8');
 
 // Subjects config
-const SUBJECTS = [
-  {
-    id: 'physics', title: 'Физика', icon: '⚛️',
-    assessments: [
-      { id: 'exam', name: 'Экзамен', bundleName: 'Физика_Экзамен' },
-      { id: 'exam-practice', name: 'Экзамен · Практика', bundleName: 'Физика_Экзамен_Практика' },
-      { id: 'midterm-1', name: 'РК-1', bundleName: 'Физика_РК-1' },
-      { id: 'midterm-1-practice', name: 'РК-1 · Практика', bundleName: 'Физика_РК-1_Практика' },
-      { id: 'midterm-2', name: 'РК-2', bundleName: 'Физика_РК-2' },
-      { id: 'midterm-2-practice', name: 'РК-2 · Практика', bundleName: 'Физика_РК-2_Практика' },
-    ],
-  },
-  {
-    id: 'differential-equations', title: 'Интегралы и ДУ', icon: '∫',
-    assessments: [
-      { id: 'exam', name: 'Экзамен', bundleName: 'ИнтДУ_Экзамен' },
-      { id: 'exam-practice', name: 'Экзамен · Практика', bundleName: 'ИнтДУ_Экзамен_Практика' },
-      { id: 'midterm-1', name: 'РК-1', bundleName: 'ИнтДУ_РК-1' },
-      { id: 'midterm-1-practice', name: 'РК-1 · Практика', bundleName: 'ИнтДУ_РК-1_Практика' },
-      { id: 'midterm-2', name: 'РК-2', bundleName: 'ИнтДУ_РК-2' },
-      { id: 'midterm-2-practice', name: 'РК-2 · Практика', bundleName: 'ИнтДУ_РК-2_Практика' },
-      { id: 'kr-1', name: 'КР-1', bundleName: 'ИнтДУ_КР-1' },
-      { id: 'kr-2', name: 'КР-2', bundleName: 'ИнтДУ_КР-2' },
-      { id: 'kr-2-practice', name: 'КР-2 · Практика', bundleName: 'ИнтДУ_КР-2_Практика' },
-    ],
-  },
-  {
-    id: 'linear-algebra', title: 'Линейная алгебра и ФНП', icon: '📐',
-    assessments: [
-      { id: 'midterm-1', name: 'РК-1 · Теория', bundleName: 'ЛинАлг_РК-1' },
-      { id: 'midterm-1-practice', name: 'РК-1 · Практика', bundleName: 'ЛинАлг_РК-1_Практика' },
-      { id: 'midterm-2', name: 'РК-2 · Теория', bundleName: 'ЛинАлг_РК-2' },
-      { id: 'midterm-2-practice', name: 'РК-2 · Практика', bundleName: 'ЛинАлг_РК-2_Практика' },
-      { id: 'kr-1', name: 'КР · Теория', bundleName: 'ЛинАлг_КР-1' },
-      { id: 'kr-1-practice', name: 'КР · Практика', bundleName: 'ЛинАлг_КР-1_Практика' },
-      { id: 'exam-practice', name: 'Экзамен · Практика', bundleName: 'ЛинАлг_Экзамен_Практика' },
-    ],
-  },
-  {
-    id: 'algorithmic-languages', title: 'Алгоритмические языки', icon: '💻',
-    assessments: [
-      { id: 'exam', name: 'Экзамен', bundleName: 'АЯ_Экзамен' },
-      { id: 'exam-practice', name: 'Экзамен · Практика', bundleName: 'АЯ_Экзамен_Практика' },
-    ],
-  },
-  {
-    id: 'math-cs-foundations', title: 'Мат. основы информатики', icon: '🔢',
-    assessments: [
-      { id: 'zachet', name: 'Зачёт', bundleName: 'МОИ_Зачёт' },
-    ],
-  },
-];
+// Subjects config from single source of truth
+import { getBundleableAssessments } from '../src/js/subjects-config.js';
+
+const SUBJECTS = getBundleableAssessments().map(s => ({
+  id: s.id,
+  title: s.title,
+  icon: s.icon,
+  assessments: s.assessments.map(a => ({
+    id: a.assessment,
+    name: a.name,
+    bundleName: a.bundleName,
+  })),
+}));
 
 // Create bundles directory
 if (!fs.existsSync(BUNDLES)) fs.mkdirSync(BUNDLES, { recursive: true });

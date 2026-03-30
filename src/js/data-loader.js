@@ -87,75 +87,7 @@ export function allQuestions(sections) {
 }
 
 /**
- * Get all available assessments for the platform landing page.
+ * Get all available subjects and assessments for the platform landing page.
+ * Re-exported from the single source of truth in subjects-config.js
  */
-export function getSubjectsConfig() {
-  return [
-    {
-      id: 'physics', title: 'Физика', subtitle: 'Механика, термодинамика, волны',
-      icon: '⚛️', theme: 'physics',
-      assessments: [
-        { name: 'Экзамен · Теория', assessment: 'exam', type: 'exam', icon: '📋' },
-        { name: 'Экзамен · Практика', assessment: 'exam-practice', type: 'kr', icon: '✏️' },
-        { name: 'РК-1 · Теория', assessment: 'midterm-1', type: 'midterm', icon: '📝' },
-        { name: 'РК-1 · Практика', assessment: 'midterm-1-practice', type: 'kr', icon: '✏️' },
-        { name: 'РК-2 · Теория', assessment: 'midterm-2', type: 'midterm', icon: '📝' },
-        { name: 'РК-2 · Практика', assessment: 'midterm-2-practice', type: 'kr', icon: '✏️' },
-        { name: 'Учебное пособие', assessment: null, type: 'textbook', icon: '📖', href: '?subject=physics&type=textbook' },
-      ],
-    },
-    {
-      id: 'differential-equations', title: 'Интегралы и ДУ',
-      subtitle: 'Определённые интегралы, несобственные интегралы, ОДУ',
-      icon: '∫', theme: 'diffeq',
-      assessments: [
-        { name: 'Экзамен', assessment: 'exam', type: 'exam', icon: '📋' },
-        { name: 'РК-1', assessment: 'midterm-1', type: 'midterm', icon: '📝' },
-        { name: 'РК-2', assessment: 'midterm-2', type: 'midterm', icon: '📝' },
-        { name: 'КР-1 · Интегрирование', assessment: 'kr-1', type: 'kr', icon: '✏️' },
-        { name: 'КР-2 · ДУ 1-го порядка', assessment: 'kr-2', type: 'kr', icon: '✏️' },
-        { name: 'Учебное пособие', assessment: null, type: 'textbook', icon: '📖', href: '?subject=differential-equations&type=textbook' },
-      ],
-    },
-    {
-      id: 'linear-algebra', title: 'Линейная алгебра и ФНП',
-      subtitle: 'Пространства, операторы, квадратичные формы, ФНП',
-      icon: '📐', theme: 'linalg',
-      assessments: [
-        { name: 'РК-1 · Теория', assessment: 'midterm-1', type: 'midterm', icon: '📝' },
-        { name: 'РК-1 · Практика', assessment: 'midterm-1-practice', type: 'kr', icon: '✏️' },
-        { name: 'РК-2 · Теория', assessment: 'midterm-2', type: 'midterm', icon: '📝' },
-        { name: 'РК-2 · Практика', assessment: 'midterm-2-practice', type: 'kr', icon: '✏️' },
-        { name: 'КР · Теория', assessment: 'kr-1', type: 'kr', icon: '📝' },
-        { name: 'КР · Практика', assessment: 'kr-1-practice', type: 'kr', icon: '✏️' },
-        { name: 'Учебное пособие', assessment: null, type: 'textbook', icon: '📖', href: '?subject=linear-algebra&type=textbook' },
-      ],
-    },
-    {
-      id: 'algorithmic-languages', title: 'Алгоритмические языки',
-      subtitle: 'C++: ООП, шаблоны, исключения, многопоточность',
-      icon: '💻', theme: 'alglang',
-      assessments: [
-        { name: 'Экзамен', assessment: 'exam', type: 'exam', icon: '📋' },
-        { name: 'Лабораторные', assessment: null, type: 'labs', icon: '💻', href: '?subject=algorithmic-languages&type=labs' },
-      ],
-    },
-    {
-      id: 'programming-technologies', title: 'Технологии и методы программирования',
-      subtitle: 'Git: контроль версий, ветвление, GitHub',
-      icon: '🔀', theme: 'progtech',
-      assessments: [
-        { name: 'Учебное пособие', assessment: null, type: 'textbook', icon: '📖', href: '?subject=programming-technologies&type=textbook' },
-        { name: 'Лабораторные', assessment: null, type: 'labs', icon: '🔬', href: '?subject=programming-technologies&type=labs' },
-      ],
-    },
-    {
-      id: 'math-cs-foundations', title: 'Мат. основы информатики',
-      subtitle: 'Булевы функции, нормальные формы, теорема Поста',
-      icon: '🔢', theme: 'moi',
-      assessments: [
-        { name: 'Зачёт', assessment: 'zachet', type: 'zachet', icon: '✅' },
-      ],
-    },
-  ];
-}
+export { SUBJECTS as getSubjectsConfig } from './subjects-config.js';

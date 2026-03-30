@@ -24,69 +24,22 @@ const cssContent = fs.readFileSync(path.join(distAssets, cssFile), 'utf-8');
 const jsContent = fs.readFileSync(path.join(distAssets, jsFile), 'utf-8');
 
 // Subjects config
-const SUBJECTS = [
-  {
-    id: 'physics', title: 'Физика', subtitle: 'Механика, термодинамика, волны', icon: '⚛️',
-    assessments: [
-      { id: 'exam', name: 'Экзамен · Теория', icon: '📋' },
-      { id: 'exam-practice', name: 'Экзамен · Практика', icon: '✏️' },
-      { id: 'midterm-1', name: 'РК-1 · Теория', icon: '📝' },
-      { id: 'midterm-1-practice', name: 'РК-1 · Практика', icon: '✏️' },
-      { id: 'midterm-2', name: 'РК-2 · Теория', icon: '📝' },
-      { id: 'midterm-2-practice', name: 'РК-2 · Практика', icon: '✏️' },
-      { id: null, name: 'Учебное пособие', icon: '📖', href: '?subject=physics&type=textbook', skipBundle: true },
-    ],
-  },
-  {
-    id: 'differential-equations', title: 'Интегралы и ДУ',
-    subtitle: 'Определённые интегралы, несобственные интегралы, ОДУ', icon: '∫',
-    assessments: [
-      { id: 'exam', name: 'Экзамен · Теория', icon: '📋' },
-      { id: 'exam-practice', name: 'Экзамен · Практика', icon: '✏️' },
-      { id: 'midterm-1', name: 'РК-1 · Теория', icon: '📝' },
-      { id: 'midterm-1-practice', name: 'РК-1 · Практика', icon: '✏️' },
-      { id: 'midterm-2', name: 'РК-2 · Теория', icon: '📝' },
-      { id: 'midterm-2-practice', name: 'РК-2 · Практика', icon: '✏️' },
-      { id: 'kr-1', name: 'КР-1 · Интегрирование', icon: '✏️' },
-      { id: 'kr-2', name: 'КР-2 · ДУ 1-го порядка', icon: '✏️' },
-    ],
-  },
-  {
-    id: 'linear-algebra', title: 'Линейная алгебра и ФНП',
-    subtitle: 'Пространства, операторы, квадратичные формы, ФНП', icon: '📐',
-    assessments: [
-      { id: 'midterm-1', name: 'РК-1 · Линалг', icon: '📝' },
-      { id: 'midterm-2', name: 'РК-2 · ФНП', icon: '📝' },
-      { id: 'kr-1', name: 'КР · ФНП', icon: '✏️' },
-      { id: null, name: 'Учебное пособие', icon: '📖', href: '?subject=linear-algebra&type=textbook', skipBundle: true },
-    ],
-  },
-  {
-    id: 'algorithmic-languages', title: 'Алгоритмические языки',
-    subtitle: 'C++: ООП, шаблоны, исключения, многопоточность', icon: '💻',
-    assessments: [
-      { id: 'exam', name: 'Экзамен · Теория', icon: '📋' },
-      { id: 'exam-practice', name: 'Экзамен · Практика', icon: '✏️' },
-      { id: null, name: 'Учебное пособие', icon: '📖', href: '?subject=algorithmic-languages&type=textbook', skipBundle: true },
-    ],
-  },
-  {
-    id: 'programming-technologies', title: 'Технологии и методы программирования',
-    subtitle: 'Git: контроль версий, ветвление, GitHub', icon: '🔀',
-    assessments: [
-      { id: null, name: 'Учебное пособие', icon: '📖', href: '?subject=programming-technologies&type=textbook', skipBundle: true },
-      { id: null, name: 'Лабораторные', icon: '🔬', href: '?subject=programming-technologies&type=labs', skipBundle: true },
-    ],
-  },
-  {
-    id: 'math-cs-foundations', title: 'Мат. основы информатики',
-    subtitle: 'Булевы функции, нормальные формы, теорема Поста', icon: '🔢',
-    assessments: [
-      { id: 'zachet', name: 'Зачёт', icon: '✅' },
-      { id: null, name: 'Учебное пособие', icon: '📖', href: '?subject=math-cs-foundations&type=textbook', skipBundle: true },
-    ],
-  },
-];
+// Subjects config from single source of truth
+import { SUBJECTS as _SUBJECTS_RAW } from '../src/js/subjects-config.js';
+
+const SUBJECTS = _SUBJECTS_RAW.map(s => ({
+  id: s.id,
+  title: s.title,
+  subtitle: s.subtitle,
+  icon: s.icon,
+  assessments: s.assessments.map(a => ({
+    id: a.assessment ?? null,
+    name: a.name,
+    icon: a.icon,
+    href: a.href,
+    skipBundle: a.skipBundle,
+  })),
+}));
 
 // Load ALL data
 const allData = {};

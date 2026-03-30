@@ -1,14 +1,8 @@
 // Global Search: search across all subjects and assessments
 // Loaded lazily on the platform page
 
-const SUBJECT_MAP = {
-  'physics': { title: 'Физика', icon: '⚛️' },
-  'differential-equations': { title: 'Интегралы и ДУ', icon: '∫' },
-  'linear-algebra': { title: 'ЛинАлг и ФНП', icon: '📐' },
-  'algorithmic-languages': { title: 'Алг. языки', icon: '💻' },
-  'math-cs-foundations': { title: 'МОИ', icon: '🔢' },
-  'programming-technologies': { title: 'ТиМП', icon: '🔀' },
-};
+import { getSubjectMap } from './subjects-config.js';
+const SUBJECT_MAP = getSubjectMap();
 
 let searchIndex = null; // Lazy-loaded
 let indexPromise = null; // Prevent double-building
