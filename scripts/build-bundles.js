@@ -159,10 +159,10 @@ window.__INLINE_META__ = ${JSON.stringify(meta)};
 window.__INLINE_SECTIONS__ = ${JSON.stringify(sections)};
 `;
 
-  // Replace the fetch-based loadAssessmentData function.
-  // In the minified code, it's the async function K() that does fetches.
-  // We'll override by redefining window.location.search to have params,
-  // and intercepting fetch to return inlined data.
+  // Strip export statement
+  js = js.replace(/export\{[^}]*\};?\s*$/, '');
+  // Strip import.meta references so code runs natively without ES module requirements
+  js = js.replaceAll('import.meta.url', '""').replaceAll(/import\.meta/g, '({})');
 
   const patchedJS = `
 ${inlinedData}

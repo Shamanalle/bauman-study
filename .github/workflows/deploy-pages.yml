@@ -42,15 +42,14 @@ jobs:
       - name: Setup Pages
         id: pages_setup
         uses: actions/configure-pages@v4
-        continue-on-error: true
+        with:
+          enablement: true
 
       - name: Upload artifact
-        if: steps.pages_setup.outcome == 'success'
         uses: actions/upload-pages-artifact@v3
         with:
           path: './dist'
 
       - name: Deploy to GitHub Pages
-        if: steps.pages_setup.outcome == 'success'
         id: deployment
         uses: actions/deploy-pages@v4

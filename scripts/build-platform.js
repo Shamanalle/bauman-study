@@ -208,8 +208,9 @@ const html = `<!DOCTYPE html>
 
 const outPath = path.join(BUNDLES, 'Платформа.html');
 fs.writeFileSync(outPath, html, 'utf-8');
+fs.writeFileSync(path.join(BUNDLES, 'Platform.html'), html, 'utf-8');
 const size = (Buffer.byteLength(html) / 1024).toFixed(0);
-console.log(`\n✅ Платформа.html — ${totalQuestions} вопросов, ${size} КБ`);
+console.log(`\n✅ Платформа.html / Platform.html — ${totalQuestions} вопросов, ${size} КБ`);
 
 
 function buildPlatformJS(appJS, allData, subjects, textbookData, allLabData) {
@@ -220,6 +221,9 @@ function buildPlatformJS(appJS, allData, subjects, textbookData, allLabData) {
 
   // Strip export statement (Vite outputs e.g. export{Y as h,$ as r})
   appJS = appJS.replace(/export\{[^}]*\};?\s*$/, '');
+
+  // Strip import.meta references so code runs natively without ES module requirements
+  appJS = appJS.replaceAll('import.meta.url', '""').replaceAll(/import\.meta/g, '({})');
 
   return `
 // ===== ANDROID content:// FIX =====

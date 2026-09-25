@@ -40,6 +40,7 @@ jobs:
         run: |
           mkdir -p release-assets
           cp bundles/Платформа.html release-assets/
+          cp bundles/Платформа.html release-assets/Platform.html
           zip -r release-assets/bauman-study-offline-bundles.zip bundles/
 
       - name: Create GitHub Release
@@ -47,6 +48,7 @@ jobs:
         with:
           files: |
             release-assets/bauman-study-offline-bundles.zip
+            release-assets/Platform.html
             release-assets/Платформа.html
           generate_release_notes: true
           draft: false
