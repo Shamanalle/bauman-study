@@ -387,6 +387,7 @@
 }
 .math-box-wrap .math-box {
   margin: 0 !important;
+  padding-right: 76px;
 }
 .copy-latex-btn {
   position: absolute;
@@ -891,6 +892,12 @@ body[data-subject] .app {
 }
 
 /* Markdown tables */
+.md-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 12px 0;
+}
 .md-table {
   width: 100%;
   border-collapse: collapse;

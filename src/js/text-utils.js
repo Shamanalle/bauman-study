@@ -15,14 +15,14 @@ export function nl(str) {
       const rows = tableBlock.trim().split('\n').map(r => r.trim()).filter(Boolean);
       if (rows.length < 2) return '\n' + tableBlock;
       const sepIdx = rows.findIndex(r => /^\|[\s:]*-+[\s:]*([\s:]*\|[\s:]*-+[\s:]*)*\|$/.test(r));
-      let html = '<table class="md-table">';
+      let html = '<div class="md-table-wrap"><table class="md-table">';
       rows.forEach((row, i) => {
         if (i === sepIdx) return;
         const cells = row.split('|').filter((_, ci, arr) => ci > 0 && ci < arr.length - 1);
         const tag = (sepIdx >= 0 && i < sepIdx) ? 'th' : 'td';
         html += '<tr>' + cells.map(c => `<${tag}>${c.trim()}</${tag}>`).join('') + '</tr>';
       });
-      html += '</table>';
+      html += '</table></div>';
       return '\n' + html + '\n';
     });
     p = p
@@ -123,14 +123,14 @@ export function md(str) {
     if (rows.length < 2) return '\n' + tableBlock;
     // Check for separator row (|---|---|)
     const sepIdx = rows.findIndex(r => /^\|[\s:]*-+[\s:]*(\|[\s:]*-+[\s:]*)*\|$/.test(r));
-    let html = '<table class="md-table">';
+    let html = '<div class="md-table-wrap"><table class="md-table">';
     rows.forEach((row, i) => {
       if (i === sepIdx) return; // skip separator
       const cells = row.split('|').filter((_, ci, arr) => ci > 0 && ci < arr.length - 1);
       const tag = (sepIdx >= 0 && i < sepIdx) ? 'th' : 'td';
       html += '<tr>' + cells.map(c => `<${tag}>${c.trim()}</${tag}>`).join('') + '</tr>';
     });
-    html += '</table>';
+    html += '</table></div>';
     return '\n' + html + '\n';
   });
 

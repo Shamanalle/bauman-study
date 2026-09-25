@@ -67,6 +67,13 @@
 
   /* Platform page */
   .platform-grid { grid-template-columns: 1fr; }
+
+  /* Command Palette (Spotlight) */
+  .cp-backdrop { padding: 8px 10px 10px; align-items: flex-start; }
+  .cp-dialog { max-height: 88vh; border-radius: 16px; }
+  .cp-header { padding: 12px 14px; }
+  .cp-footer { display: none; }
+  .cp-filter-bar { padding: 8px 12px; }
 }
 
 /* --- Phone (≤ 480px) --- */
@@ -152,6 +159,9 @@
   .tb-chapter-title { font-size: 1rem; }
 
   /* Site header phone */
+  .site-header {
+    height: 52px;
+  }
   .site-header-inner {
     height: 52px;
     padding: 0 14px;
@@ -174,9 +184,53 @@
     display: none;
   }
   .header-icon-btn {
-    width: 32px;
-    height: 32px;
+    width: 34px;
+    height: 34px;
     font-size: 0.9rem;
+  }
+
+  /* Sticky sub-nav and breadcrumbs align to 52px header */
+  .global-breadcrumbs,
+  .nav {
+    top: 52px;
+  }
+  .global-breadcrumbs {
+    padding: 6px 10px;
+    font-size: 0.78rem;
+    gap: 6px;
+    margin: -8px 0 14px 0;
+  }
+  .gb-switcher {
+    max-width: 140px;
+    font-size: 0.75rem;
+    padding: 3px 22px 3px 8px;
+  }
+  .gb-current {
+    max-width: 130px;
+  }
+
+  /* LaTeX copy button on mobile */
+  .copy-latex-btn {
+    padding: 3px 6px;
+    font-size: 0.68rem;
+    top: 6px;
+    right: 6px;
+  }
+  .math-box-wrap .math-box {
+    padding-right: 62px;
+  }
+
+  /* Cheatsheet drawer on mobile */
+  .cs-drawer-header {
+    padding: 10px 12px;
+    gap: 8px;
+  }
+  .cs-drawer-title-group {
+    font-size: 0.85rem;
+  }
+  .cs-drawer-btn {
+    padding: 4px 8px;
+    font-size: 0.72rem;
   }
 
   /* Scroll-top button */
@@ -188,6 +242,36 @@
   .gs-result-title { font-size: 0.82rem; }
   .gs-result-text { font-size: 0.75rem; }
   .global-search { margin: -4px 12px 20px; }
+}
+
+/* --- Ultra-compact phone (≤ 380px) --- */
+@media (max-width: 380px) {
+  .site-header-inner {
+    padding: 0 8px;
+    gap: 6px;
+  }
+  .header-brand .brand-title {
+    display: none;
+  }
+  .header-search-btn {
+    padding: 5px 8px;
+    font-size: 0.76rem;
+  }
+  .search-btn-icon {
+    margin-right: 4px;
+  }
+  .gb-switcher {
+    max-width: 105px;
+  }
+  .gb-current {
+    max-width: 95px;
+  }
+  .hero {
+    padding: 14px 10px 12px;
+  }
+  .hero h1 {
+    font-size: 1.1rem;
+  }
 }
 
 /* --- Landscape phone fix --- */

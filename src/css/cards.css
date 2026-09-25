@@ -375,3 +375,17 @@
   margin: 0;
   flex: 1;
 }
+
+@media (max-width: 480px) {
+  .solution-answer {
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-start;
+  }
+  .solution-body {
+    padding: 12px 14px;
+  }
+  .practice-condition {
+    padding: 12px 14px;
+  }
+}
