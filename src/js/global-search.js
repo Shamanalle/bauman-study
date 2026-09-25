@@ -509,38 +509,40 @@ export function closePalette() {
 export function initGlobalSearch(container) {
   renderPaletteModal();
 
-  // Trigger search bar on platform home
-  const triggerHtml = `
-    <div class="global-search-trigger" id="globalSearchTrigger" title="Быстрый поиск (Ctrl + K)">
-      <div class="gst-box">
-        <span class="gst-icon">🔍</span>
-        <span class="gst-text">Поиск по всем предметам, формулам и билетам...</span>
-        <kbd class="gst-kbd">Ctrl K</kbd>
-      </div>
-    </div>
-  `;
-
-  const hero = container.querySelector('.hero');
-  if (hero) {
-    hero.insertAdjacentHTML('afterend', triggerHtml);
-  }
-
-  const trigger = document.getElementById('globalSearchTrigger');
-  if (trigger) {
-    trigger.addEventListener('click', () => openPalette());
-  }
-
   window.openCommandPalette = openPalette;
 
   // Global keyboard shortcuts (Ctrl+K, Cmd+K, /)
-  window.addEventListener('keydown', (e) => {
-    const isInput = ['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName);
-    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
-      e.preventDefault();
-      openPalette();
-    } else if (e.key === '/' && !isInput) {
-      e.preventDefault();
-      openPalette();
+  if (!window.__commandPaletteShortcutsBound) {
+    window.__commandPaletteShortcutsBound = true;
+    window.addEventListener('keydown', (e) => {
+      const isInput = ['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName);
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        openPalette();
+      } else if (e.key === '/' && !isInput) {
+        e.preventDefault();
+        openPalette();
+      }
+    });
+  }
+
+  // Trigger search bar ONLY on platform home and ONLY ONCE
+  const platformHero = container?.querySelector('.platform-hero');
+  if (platformHero && !document.getElementById('globalSearchTrigger')) {
+    const triggerHtml = `
+      <div class="global-search-trigger" id="globalSearchTrigger" title="Быстрый поиск (Ctrl + K)">
+        <div class="gst-box">
+          <span class="gst-icon">🔍</span>
+          <span class="gst-text">Поиск по всем предметам, формулам и билетам...</span>
+          <kbd class="gst-kbd">Ctrl K</kbd>
+        </div>
+      </div>
+    `;
+    platformHero.insertAdjacentHTML('afterend', triggerHtml);
+
+    const trigger = document.getElementById('globalSearchTrigger');
+    if (trigger) {
+      trigger.addEventListener('click', () => openPalette());
     }
-  });
+  }
 }

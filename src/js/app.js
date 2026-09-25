@@ -197,10 +197,6 @@ async function init() {
     }
   });
 
-  // Early init of command palette for universal Ctrl+K / / access
-  import('./global-search.js').then(({ initGlobalSearch }) => {
-    initGlobalSearch(document.getElementById('app') || document.body);
-  }).catch(() => {});
 
   const params = new URLSearchParams(window.location.search);
   const isInlineBundle = typeof window !== 'undefined' && Boolean(window.__INLINE_META__);
@@ -346,10 +342,6 @@ function showPlatformPage() {
         <div class="stat-pill stat-pill--highlight" title="Билеты, изученные вами на этом устройстве">
           <span class="stat-pill-icon">✨</span> <strong>${totalLearned}</strong> выучено
         </div>
-        <button class="stat-pill stat-pill--btn" id="heroSearchBtn" title="Быстрый поиск (Ctrl+K)">
-          <span class="stat-pill-icon">🔍</span> Поиск <kbd>Ctrl K</kbd>
-        </button>
-        <button class="stat-pill dark-toggle" id="darkToggle2" title="Переключить тему">🌙</button>
       </div>
     </div>
 
@@ -415,16 +407,6 @@ function showPlatformPage() {
       `}).join('')}
     </div>
   `;
-
-  // Re-bind dark toggle
-  document.getElementById('darkToggle2')?.addEventListener('click', progress.toggleTheme);
-  const btn = document.getElementById('darkToggle2');
-  if (btn) btn.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
-
-  // Search hero button
-  document.getElementById('heroSearchBtn')?.addEventListener('click', () => {
-    if (window.openCommandPalette) window.openCommandPalette();
-  });
 
   // Category filter handlers
   const filterBtns = document.querySelectorAll('.plat-cat-btn');

@@ -74,6 +74,11 @@
   .cp-header { padding: 12px 14px; }
   .cp-footer { display: none; }
   .cp-filter-bar { padding: 8px 12px; }
+
+  /* Hide physical keyboard hints on touch devices */
+  #shortcutsHeaderBtn { display: none !important; }
+  .header-search-btn .search-btn-kbd { display: none !important; }
+  .gst-kbd { display: none !important; }
 }
 
 /* --- Phone (≤ 480px) --- */
@@ -88,7 +93,7 @@
   /* Nav compact */
   .nav { padding: 6px 8px; gap: 6px; }
   #search { font-size: 0.8rem; padding: 6px 10px; }
-  .nav-btn { width: 34px; height: 34px; padding: 0; font-size: 0.85rem; }
+  .nav-btn { min-width: 36px; min-height: 36px; padding: 0 4px; font-size: 0.85rem; }
 
   /* Section pills: horizontal scroll */
   .section-pills { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: 0 8px; }
@@ -137,7 +142,7 @@
   .fc-question { font-size: 0.95rem; }
   .fc-grade-btns { gap: 6px; }
   .fc-grade-btn { padding: 10px 14px; font-size: 0.8rem; }
-  .fc-keys-hint { display: none; } /* Hide keyboard hints on touch devices */
+  .fc-keys-hint { display: none; }
 
   /* Mode tabs phone */
   .mode-tabs { padding: 4px; border-radius: 10px; }
@@ -147,6 +152,38 @@
   .platform-hero h1 { font-size: 1.6rem; }
   .platform-grid { gap: 12px; }
   .platform-card { padding: 16px; }
+
+  /* Platform category filter pills carousel */
+  .platform-filters-row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    justify-content: flex-start;
+    padding: 0 4px 6px;
+    margin-bottom: 16px;
+    gap: 8px;
+  }
+  .platform-filters-row::-webkit-scrollbar {
+    display: none;
+  }
+  .plat-cat-btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: 6px 14px;
+    font-size: 0.8rem;
+  }
+
+  /* Global search trigger under hero */
+  .global-search-trigger {
+    margin: -4px 0 18px;
+  }
+  .gst-box {
+    padding: 10px 14px;
+  }
+  .gst-text {
+    font-size: 0.82rem;
+  }
 
   /* Quiz phone */
   .quiz-card { padding: 16px; }
@@ -164,8 +201,8 @@
   }
   .site-header-inner {
     height: 52px;
-    padding: 0 14px;
-    gap: 10px;
+    padding: 0 12px;
+    gap: 8px;
   }
   .header-brand .brand-badge {
     display: none;
@@ -173,15 +210,34 @@
   .header-brand .brand-title {
     font-size: 0.95rem;
   }
-  .header-search-btn {
-    padding: 6px 10px;
-    font-size: 0.8rem;
+  .header-center {
+    flex: 0 0 auto;
+    margin-left: auto;
   }
+  .header-search-btn {
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .header-search-btn .search-btn-text,
   .header-search-btn .search-btn-kbd {
-    display: none;
+    display: none !important;
+  }
+  .header-search-btn .search-btn-icon {
+    margin-right: 0;
+    font-size: 1rem;
+  }
+  .header-right {
+    gap: 6px;
+    flex-shrink: 0;
   }
   .header-icon-btn.header-gh-btn {
-    display: none;
+    display: none !important;
   }
   .header-icon-btn {
     width: 34px;
