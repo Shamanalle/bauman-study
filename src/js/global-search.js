@@ -26,18 +26,78 @@ function saveRecentSearch(q) {
   } catch (e) {}
 }
 
+const GREEK = {
+  alpha: 'α', beta: 'β', gamma: 'γ', delta: 'δ', epsilon: 'ε', zeta: 'ζ',
+  eta: 'η', theta: 'θ', iota: 'ι', kappa: 'κ', lambda: 'λ', mu: 'μ',
+  nu: 'ν', xi: 'ξ', pi: 'π', rho: 'ρ', sigma: 'σ', tau: 'τ',
+  phi: 'φ', chi: 'χ', psi: 'ψ', omega: 'ω',
+  Gamma: 'Γ', Delta: 'Δ', Theta: 'Θ', Lambda: 'Λ', Xi: 'Ξ',
+  Pi: 'Π', Sigma: 'Σ', Phi: 'Φ', Psi: 'Ψ', Omega: 'Ω'
+};
+const SYMBOLS = {
+  pm: '±', mp: '∓', times: '×', cdot: '·', div: '÷',
+  approx: '≈', neq: '≠', ne: '≠', leq: '≤', le: '≤', geq: '≥', ge: '≥',
+  infty: '∞', to: '→', leftrightarrow: '↔', implies: '⇒',
+  subset: '⊂', supset: '⊃', in: '∈', notin: '∉', emptyset: '∅',
+  cup: '∪', cap: '∩', forall: '∀', exists: '∃', nabla: '∇',
+  partial: '∂', dots: '…', ldots: '…', cdots: '…'
+};
+
 /**
- * Strip LaTeX, markdown, and special chars to build a clean search string.
+ * Strip LaTeX, markdown, and special chars to build a clean search string and preview snippet.
  */
 function stripForSearch(text) {
   return (text || '')
-    .replace(/\$\$[\s\S]*?\$\$/g, ' ')  // remove display math
-    .replace(/\$[^$]+?\$/g, ' ')          // remove inline math
-    .replace(/\*\*(.*?)\*\*/g, '$1')      // strip bold markers
-    .replace(/\\[a-zA-Z]+/g, ' ')         // remove LaTeX commands
-    .replace(/[{}\\]/g, ' ')              // remove braces
-    .replace(/\s+/g, ' ')                 // collapse whitespace
+    .replace(/\$\$[\s\S]*?\$\$/g, ' ')
+    .replace(/\$([^$]+?)\$/g, (_, inner) => {
+      const m = inner
+        .replace(/\\frac\{([^}]+)\}\{([^}]+)\}/g, '$1/$2')
+        .replace(/\\sqrt\{([^}]+)\}/g, '√($1)')
+        .replace(/\\text\{([^}]+)\}/g, '$1')
+        .replace(/\\mathbf\{([^}]+)\}/g, '$1')
+        .replace(/\\vec\{([^}]+)\}/g, '$1')
+        .replace(/\\left|\\right/g, '')
+        .replace(/\^\{([^}]+)\}/g, '^$1')
+        .replace(/\_\{([^}]+)\}/g, '_$1')
+        .replace(/\\([a-zA-Z]+)/g, (match, word) => GREEK[word] || SYMBOLS[word] || word)
+        .replace(/[{}\\]/g, '')
+        .replace(/\s+/g, ' ')
+        .trim();
+      return m ? ' ' + m + ' ' : ' ';
+    })
+    .replace(/\*\*(.*?)\*\*/g, '$1')
+    .replace(/\\([a-zA-Z]+)/g, ' ')
+    .replace(/[{}\\]/g, ' ')
+    .replace(/\s+([,.:;?!])/g, '$1')
+    .replace(/,\s*,+/g, ', ')
+    .replace(/:\s*:+/g, ': ')
+    .replace(/\(\s*,\s*\)/g, ' ')
+    .replace(/\[\s*,\s*\]/g, ' ')
+    .replace(/\s+/g, ' ')
     .trim();
+}
+
+/**
+ * Extract a readable snippet centered around search term if present.
+ */
+function extractSnippet(text, query, maxLen = 130) {
+  if (!text) return '';
+  const clean = stripForSearch(text);
+  if (!clean) return '';
+  if (!query || query.trim().length === 0) {
+    return clean.length > maxLen ? clean.substring(0, maxLen).trim() + '…' : clean;
+  }
+  const lowerText = clean.toLowerCase();
+  const lowerQ = query.trim().toLowerCase();
+  const idx = lowerText.indexOf(lowerQ);
+  if (idx === -1 || idx < 35) {
+    return clean.length > maxLen ? clean.substring(0, maxLen).trim() + '…' : clean;
+  }
+  const start = Math.max(0, idx - 25);
+  const end = Math.min(clean.length, start + maxLen);
+  const prefix = start > 0 ? '…' : '';
+  const suffix = end < clean.length ? '…' : '';
+  return prefix + clean.substring(start, end).trim() + suffix;
 }
 
 /**
@@ -255,7 +315,7 @@ function highlightMatches(text, query) {
 
 function getCategoryBadge(category) {
   switch (category) {
-    case 'practice': return '<span class="cp-tag cp-tag--prac">✏️ Практика</span>';
+    case 'practice': return '<span class="cp-tag cp-tag--prac">✏️ Задачи</span>';
     case 'textbook': return '<span class="cp-tag cp-tag--tb">📖 Учебник</span>';
     case 'labs': return '<span class="cp-tag cp-tag--labs">🔬 Лабы</span>';
     default: return '<span class="cp-tag cp-tag--theory">📘 Теория</span>';
@@ -276,11 +336,16 @@ function renderPaletteModal() {
   modal.innerHTML = `
     <div class="cp-dialog" role="dialog" aria-modal="true" aria-label="Поиск">
       <div class="cp-header">
-        <span class="cp-search-icon">🔍</span>
-        <input type="text" class="cp-input" id="cpInput" placeholder="Поиск по вопросам, теоремам, задачам и лабам..." autocomplete="off" spellcheck="false">
-        <span class="cp-loading" id="cpLoading" style="display:none"><span class="cp-spinner"></span></span>
-        <button class="cp-clear-btn" id="cpClearBtn" title="Очистить">✕</button>
-        <kbd class="cp-kbd-esc" id="cpCloseKbd">Esc</kbd>
+        <div class="cp-input-wrap">
+          <span class="cp-search-icon">🔍</span>
+          <input type="text" class="cp-input" id="cpInput" placeholder="Поиск по вопросам, теоремам, задачам и лабам..." autocomplete="off" spellcheck="false">
+          <span class="cp-loading" id="cpLoading" style="display:none"><span class="cp-spinner"></span></span>
+          <button class="cp-clear-btn" id="cpClearBtn" title="Очистить" aria-label="Очистить">✕</button>
+        </div>
+        <button class="cp-close-btn" id="cpCloseBtn" title="Закрыть" aria-label="Закрыть">
+          <span class="cp-close-text">Отмена</span>
+          <kbd class="cp-kbd-esc" id="cpCloseKbd">Esc</kbd>
+        </button>
       </div>
 
       <div class="cp-filter-bar">
@@ -326,7 +391,7 @@ function renderPaletteModal() {
   // Setup palette listeners
   const input = modal.querySelector('#cpInput');
   const clearBtn = modal.querySelector('#cpClearBtn');
-  const closeKbd = modal.querySelector('#cpCloseKbd');
+  const closeBtn = modal.querySelector('#cpCloseBtn');
   const resultsEl = modal.querySelector('#cpResults');
   const initialEl = modal.querySelector('#cpInitial');
   const loadingEl = modal.querySelector('#cpLoading');
@@ -366,7 +431,7 @@ function renderPaletteModal() {
     input.focus();
   });
 
-  closeKbd.addEventListener('click', closePalette);
+  closeBtn.addEventListener('click', closePalette);
 
   let debounceTimer = null;
 
@@ -381,7 +446,7 @@ function renderPaletteModal() {
       return;
     }
 
-    clearBtn.style.display = 'block';
+    clearBtn.style.display = 'inline-flex';
     loadingEl.style.display = 'inline-block';
 
     debounceTimer = setTimeout(async () => {
@@ -406,18 +471,19 @@ function renderPaletteModal() {
             ${hits.map((item, idx) => {
               const hash = item.id != null ? `#q${item.id}` : '';
               const href = item.customUrl || `?subject=${encodeURIComponent(item.subject)}&assessment=${encodeURIComponent(item.assessment)}${hash}`;
-              const cleanText = stripForSearch(item.displayText).substring(0, 110);
+              const snippet = extractSnippet(item.displayText || item.keyIdea || '', q, 130);
 
               return `
                 <a href="${href}" class="cp-item" data-idx="${idx}">
                   <div class="cp-item-top">
-                    <span class="cp-item-icon">${item.subjectIcon}</span>
-                    <span class="cp-item-title">${highlightMatches(item.title, q)}</span>
-                    <span class="cp-item-subject">${escapeHtml(item.subjectTitle)}</span>
+                    <div class="cp-item-title-wrap">
+                      <span class="cp-item-icon">${item.subjectIcon}</span>
+                      <span class="cp-item-title">${highlightMatches(item.title, q)}</span>
+                    </div>
                     ${getCategoryBadge(item.category)}
                   </div>
-                  ${cleanText ? `<div class="cp-item-snippet">${highlightMatches(cleanText, q)}…</div>` : ''}
-                  <div class="cp-item-meta">${escapeHtml(item.assessmentTitle)} ${item.section ? `· ${escapeHtml(item.section)}` : ''}</div>
+                  ${snippet ? `<div class="cp-item-snippet">${highlightMatches(snippet, q)}</div>` : ''}
+                  <div class="cp-item-meta">${escapeHtml(item.subjectTitle)} · ${escapeHtml(item.assessmentTitle)}${item.section ? ` · ${escapeHtml(item.section)}` : ''}</div>
                 </a>
               `;
             }).join('')}

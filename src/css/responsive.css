@@ -71,9 +71,17 @@
   /* Command Palette (Spotlight) */
   .cp-backdrop { padding: 8px 10px 10px; align-items: flex-start; }
   .cp-dialog { max-height: 88vh; border-radius: 16px; }
-  .cp-header { padding: 12px 14px; }
-  .cp-footer { display: none; }
-  .cp-filter-bar { padding: 8px 12px; }
+  .cp-header { padding: 10px 14px; gap: 8px; flex-shrink: 0; }
+  .cp-footer { display: none !important; }
+  .cp-kbd-esc { display: none !important; }
+  .cp-close-text { display: inline-block !important; }
+  .cp-filter-bar { padding: 8px 12px; min-height: 42px; flex-shrink: 0; }
+  .cp-filter-chip { font-size: 0.75rem; padding: 4px 10px; flex-shrink: 0; }
+  .cp-body { padding: 6px 10px 12px; }
+  .cp-item { padding: 10px 12px; }
+  .cp-item-title { font-size: 0.88rem; }
+  .cp-item-snippet { font-size: 0.78rem; line-height: 1.4; }
+  .cp-item-meta { font-size: 0.7rem; }
 
   /* Hide physical keyboard hints on touch devices */
   #shortcutsHeaderBtn { display: none !important; }
@@ -125,6 +133,12 @@
   .nav { padding: 6px 8px; gap: 6px; }
   #search { font-size: 0.8rem; padding: 6px 10px; }
   .nav-btn { min-width: 36px; min-height: 36px; padding: 0 4px; font-size: 0.85rem; }
+
+  /* Command palette phone (16px prevents iOS zoom) */
+  .cp-input { font-size: 16px !important; }
+  .cp-header { padding: 10px 12px; }
+  .cp-filter-bar { padding: 6px 10px; }
+  .cp-item { padding: 9px 10px; }
 
   /* Section pills: horizontal scroll */
   .section-pills { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: 0 8px; }
