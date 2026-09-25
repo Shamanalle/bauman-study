@@ -89,8 +89,33 @@ for (const subject of SUBJECTS) {
       }
     }
 
+    // Check if this bundle has a matching cheatsheet to inline
+    const CHEATSHEET_MAP = {
+      'physics|midterm-1-practice': 'physics-rk1',
+      'physics|midterm-2-practice': 'physics-rk2',
+      'physics|exam-practice': 'physics-exam',
+      'differential-equations|midterm-1-practice': 'diffeq-rk1',
+      'differential-equations|midterm-2-practice': 'diffeq-rk2',
+      'differential-equations|exam-practice': 'diffeq-exam',
+      'differential-equations|kr-1': 'diffeq-rk1',
+      'differential-equations|kr-2': 'diffeq-rk2',
+      'differential-equations|kr-2-practice': 'diffeq-rk2',
+      'linear-algebra|midterm-1-practice': 'linalg-rk1',
+      'linear-algebra|midterm-2-practice': 'linalg-rk2',
+      'linear-algebra|exam-practice': 'linalg-exam',
+      'linear-algebra|kr-1-practice': 'linalg-rk1',
+      'algorithmic-languages|exam-practice': 'alglang-exam',
+    };
+    const csKey = `${subject.id}|${assessment.id}`;
+    const csFile = CHEATSHEET_MAP[csKey];
+    const csSrcDir = path.join(ROOT, 'src', 'public', 'cheatsheets');
+    let csContent = null;
+    if (csFile && fs.existsSync(path.join(csSrcDir, csFile + '.html'))) {
+      csContent = fs.readFileSync(path.join(csSrcDir, csFile + '.html'), 'utf-8');
+    }
+
     // Build the modified JS that has data inlined
-    const inlinedJS = buildInlinedJS(jsContent, meta, sections);
+    const inlinedJS = buildInlinedJS(jsContent, meta, sections, csContent);
 
     // Generate HTML bundle
     const html = `<!DOCTYPE html>
@@ -145,19 +170,37 @@ for (const subject of SUBJECTS) {
   }
 }
 
+// Copy cheatsheets to bundles/cheatsheets for offline zip distribution
+const csBundlesDir = path.join(BUNDLES, 'cheatsheets');
+if (!fs.existsSync(csBundlesDir)) fs.mkdirSync(csBundlesDir, { recursive: true });
+const csSrcDir = path.join(ROOT, 'src', 'public', 'cheatsheets');
+if (fs.existsSync(csSrcDir)) {
+  for (const f of fs.readdirSync(csSrcDir).filter(f => f.endsWith('.html'))) {
+    fs.copyFileSync(path.join(csSrcDir, f), path.join(csBundlesDir, f));
+  }
+  console.log(`  📄 Скопировано ${fs.readdirSync(csBundlesDir).length} шпаргалок в bundles/cheatsheets`);
+}
+
 console.log(`\n✅ Собрано ${totalBundles} бандлов в bundles/`);
+
+function safeJson(data) {
+  return JSON.stringify(data).replace(/<\/script/gi, '<\\/script');
+}
 
 /**
  * Modify the built JS to replace fetch-based data loading with inlined data.
  */
-function buildInlinedJS(js, meta, sections) {
+function buildInlinedJS(js, meta, sections, csContent) {
   // The compiled JS has an async function K() that fetches data.
   // We replace the entire data-loading function with one that returns inlined data.
   
   const inlinedData = `
-window.__INLINE_META__ = ${JSON.stringify(meta)};
-window.__INLINE_SECTIONS__ = ${JSON.stringify(sections)};
+window.__INLINE_META__ = ${safeJson(meta)};
+window.__INLINE_SECTIONS__ = ${safeJson(sections)};
+${csContent ? `window.__INLINE_CHEATSHEET__ = ${safeJson(csContent)};` : ''}
 `;
+
+
 
   // Strip export statement
   js = js.replace(/export\{[^}]*\};?\s*$/, '');

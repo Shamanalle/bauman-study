@@ -5,6 +5,7 @@ import { renderMath } from './math-utils.js';
 import { nl, md } from './text-utils.js';
 import * as progress from './progress.js';
 import { drawPlot } from './plot-utils.js';
+import { initCheatsheet } from './cheatsheet.js';
 
 let practiceData = null;   // { meta, sections }
 let currentTab = 0;        // index into sections
@@ -166,7 +167,6 @@ export function initPracticeBrowser(data) {
       });
     } else if (mode === 'cheatsheet') {
       // Generate and open cheatsheet — don't switch mode, just trigger
-      const { initCheatsheet } = await import('./cheatsheet.js');
       const cs = initCheatsheet(meta, sections);
       if (cs) cs.render();
       // Return to previous mode visually

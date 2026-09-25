@@ -160,7 +160,27 @@ for (const labSubject of LAB_SUBJECTS) {
   console.log(`  🔬 ${labSubject}/labs: ${labIndex.labs.length} лаб`);
 }
 
-const platformJS = buildPlatformJS(jsContent, allData, SUBJECTS, textbookData, allLabData);
+// Load cheatsheets
+const cheatsheetData = {};
+const csDir = path.join(ROOT, 'src', 'public', 'cheatsheets');
+if (fs.existsSync(csDir)) {
+  for (const f of fs.readdirSync(csDir).filter(f => f.endsWith('.html'))) {
+    const id = f.replace('.html', '');
+    cheatsheetData[id] = fs.readFileSync(path.join(csDir, f), 'utf-8');
+  }
+  console.log(`  📄 ${Object.keys(cheatsheetData).length} шпаргалок загружено`);
+}
+
+// Copy cheatsheets to bundles/cheatsheets
+const csBundlesDir = path.join(BUNDLES, 'cheatsheets');
+if (!fs.existsSync(csBundlesDir)) fs.mkdirSync(csBundlesDir, { recursive: true });
+if (fs.existsSync(csDir)) {
+  for (const f of fs.readdirSync(csDir).filter(f => f.endsWith('.html'))) {
+    fs.copyFileSync(path.join(csDir, f), path.join(csBundlesDir, f));
+  }
+}
+
+const platformJS = buildPlatformJS(jsContent, allData, SUBJECTS, textbookData, allLabData, cheatsheetData);
 
 const html = `<!DOCTYPE html>
 <html lang="ru">
@@ -213,7 +233,11 @@ const size = (Buffer.byteLength(html) / 1024).toFixed(0);
 console.log(`\n✅ Платформа.html / Platform.html — ${totalQuestions} вопросов, ${size} КБ`);
 
 
-function buildPlatformJS(appJS, allData, subjects, textbookData, allLabData) {
+function safeJson(data) {
+  return JSON.stringify(data).replace(/<\/script/gi, '<\\/script');
+}
+
+function buildPlatformJS(appJS, allData, subjects, textbookData, allLabData, cheatsheetData) {
   // With inlineDynamicImports: true in vite.config.js, Vite produces a single JS file
   // with no separate chunks. We only need to:
   // 1. Strip the ES module export{} at the end
@@ -241,11 +265,14 @@ function buildPlatformJS(appJS, allData, subjects, textbookData, allLabData) {
 })();
 
 // ===== INLINE DATA =====
-window.__ALL_DATA__ = ${JSON.stringify(allData)};
-window.__SUBJECTS__ = ${JSON.stringify(subjects)};
-window.__TEXTBOOK_DATA__ = ${JSON.stringify(textbookData)};
-window.__ALL_LAB_DATA__ = ${JSON.stringify(allLabData)};
+window.__ALL_DATA__ = ${safeJson(allData)};
+window.__SUBJECTS__ = ${safeJson(subjects)};
+window.__TEXTBOOK_DATA__ = ${safeJson(textbookData)};
+window.__ALL_LAB_DATA__ = ${safeJson(allLabData)};
+window.__CHEATSHEET_DATA__ = ${safeJson(cheatsheetData || {})};
 window.__CURRENT__ = null;
+
+
 
 // ===== FETCH INTERCEPT =====
 const _origFetch = window.fetch;
