@@ -12,6 +12,17 @@ const issues = [];
 
 function check(cond, file, id, msg) { if (!cond) issues.push({ file, id, msg }); }
 
+const metaFile = path.join(BASE, 'meta.json');
+let isCode = false;
+if (fs.existsSync(metaFile)) {
+  try {
+    const meta = JSON.parse(fs.readFileSync(metaFile, 'utf8'));
+    if (meta.shortCode === 'ayep' || BASE.includes('algorithmic-languages')) {
+      isCode = true;
+    }
+  } catch (e) {}
+}
+
 for (const file of files) {
   const data = JSON.parse(fs.readFileSync(path.join(BASE, file), 'utf8'));
   const isTask = file.includes('задач');
@@ -25,7 +36,7 @@ for (const file of files) {
       check(q.hint, file, q.id, 'Нет hint');
       check(q.tldr, file, q.id, 'Нет tldr');
       check(q.tldr !== 'Анализ' && q.tldr !== 'Шаг 1:', file, q.id, `tldr бесполезный: "${q.tldr}"`);
-      check(steps.length >= 3, file, q.id, `Мало шагов: ${steps.length}`);
+      check(steps.length >= (isCode ? 2 : 3), file, q.id, `Мало шагов: ${steps.length}`);
 
       // Проверка type
       const parts = (q.type || '').split('·').map(s => s.trim());
@@ -38,8 +49,8 @@ for (const file of files) {
     check(uniqueTitles.size === titles.length, file, q.id,
       `Дубли title шагов: ${titles.filter((t,i) => titles.indexOf(t) !== i).join(', ')}`);
 
-    // Последний step должен иметь boxed
-    if (steps.length > 0) {
+    // Последний step должен иметь boxed (для математических/физических бандлов)
+    if (!isCode && steps.length > 0) {
       const lastMath = steps[steps.length - 1].math || '';
       check(lastMath.includes('\\boxed{'), file, q.id, 'Нет \\boxed{} в последнем шаге');
       check(lastMath.startsWith('$$') && lastMath.endsWith('$$'), file, q.id, 'math не обёрнут в $$');
@@ -48,13 +59,15 @@ for (const file of files) {
     // === LaTeX проверки ===
     for (const s of steps) {
       const text = s.text || '';
-      // Unicode math в text (α, β, ∫, √, ², ₁)
-      if (/[αβγδεζηθλμντπρσφχψωΑΒΓΔ∫√∑∏∞≠≈≤≥±∂∇²³¹⁰₀₁₂₃]/.test(text)) {
-        check(false, file, q.id, `Unicode math в step "${s.title}"`);
+      if (!isCode) {
+        // Unicode math в text (α, β, ∫, √, ², ₁)
+        if (/[αβγδεζηθλμντπρσφχψωΑΒΓΔ∫√∑∏∞≠≈≤≥±∂∇²³¹⁰₀₁₂₃]/.test(text)) {
+          check(false, file, q.id, `Unicode math в step "${s.title}"`);
+        }
+        // Незакрытые $
+        const dollars = (text.match(/(?<!\$)\$(?!\$)/g) || []).length;
+        check(dollars % 2 === 0, file, q.id, `Незакрытые $ в step "${s.title}" (${dollars})`);
       }
-      // Незакрытые $
-      const dollars = (text.match(/(?<!\$)\$(?!\$)/g) || []).length;
-      check(dollars % 2 === 0, file, q.id, `Незакрытые $ в step "${s.title}" (${dollars})`);
 
       // Запрещённые фразы
       const banned = ['стандартным методом', 'аналогично', 'по формуле из лекций',
@@ -74,7 +87,7 @@ for (const file of files) {
     }
 
     // === Билеты: каждый step должен иметь math ===
-    if (isTicket) {
+    if (isTicket && !isCode) {
       for (const s of steps) {
         check(s.math, file, q.id, `Билет: step "${s.title}" без math`);
         if (s.math) check(s.math.includes('\\boxed{'), file, q.id, `Билет: step "${s.title}" без \\boxed{}`);
@@ -84,8 +97,9 @@ for (const file of files) {
     // === Проверка дублирования текста между шагами ===
     for (let i = 0; i < steps.length - 1; i++) {
       for (let j = i + 1; j < steps.length; j++) {
-        const t1 = (steps[i].text || '').slice(0, 80);
-        const t2 = (steps[j].text || '').slice(0, 80);
+        const clean = str => (str || '').replace(/<[^>]+>/g, '').trim().slice(0, 80);
+        const t1 = clean(steps[i].text);
+        const t2 = clean(steps[j].text);
         if (t1.length > 30 && t1 === t2) {
           check(false, file, q.id, `Дубль текста: step "${steps[i].title}" = step "${steps[j].title}"`);
         }

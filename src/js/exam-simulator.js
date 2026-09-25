@@ -45,14 +45,16 @@ function showSetup() {
   // Collect total problem count by difficulty
   let mainCount = 0, extraCount = 0;
   for (const sec of _sections) {
-    if (sec.icon === '✏️') {
+    const isProblem = sec.icon === '✏️' || sec.icon === '🎯' || (sec.section && sec.section.toLowerCase().includes('задач'));
+    if (isProblem && sec.icon !== '🎫') {
       const diff = classifySection(sec);
-      if (diff === DIFFICULTY.MAIN) mainCount += sec.questions.length;
-      else extraCount += sec.questions.length;
+      if (diff === DIFFICULTY.MAIN) mainCount += (sec.questions || []).length;
+      else extraCount += (sec.questions || []).length;
     }
   }
   const totalProblems = mainCount + extraCount;
   const hasBothDiff = mainCount > 0 && extraCount > 0;
+
 
   // Session history
   const history = engine.getSessionHistory().filter(s => s.mode === 'exam').slice(-5).reverse();
@@ -166,21 +168,36 @@ function showSetup() {
       const idx = parseInt(selectedTicket.split('-')[1]);
       const ticket = realTickets[idx];
       if (ticket && ticket.steps) {
-        tasks = ticket.steps.map((step, i) => ({
-          id: `${ticket.id}_t${i}`,
-          title: step.title || `Задача ${i + 1}`,
-          formalText: step.text || '',
-          steps: step.steps || [],
-          formula: step.math || '',
-          hint: '',
-          type: ticket.type || '',
-        }));
+        tasks = ticket.steps.map((step, i) => {
+          let taskStatement = '';
+          if (ticket.formalText) {
+            const lines = ticket.formalText.split(/\n+/).map(l => l.trim()).filter(Boolean);
+            const pattern = new RegExp(`(?:\\*\\*|#+\\s*)?Задача\\s*${i + 1}\\b`, 'i');
+            const found = lines.find(l => pattern.test(l));
+            taskStatement = found || lines[i] || '';
+          }
+          const formalText = taskStatement || (step.title ? `**${step.title}**` : `Задача ${i + 1}`);
+          return {
+            id: `${ticket.id}_t${i}`,
+            title: step.title || `Задача ${i + 1}`,
+            formalText,
+            steps: step.steps && step.steps.length ? step.steps : (step.text ? [{
+              title: step.title || 'Решение',
+              text: step.text,
+              math: step.math || '',
+            }] : []),
+            formula: step.math || '',
+            hint: '',
+            type: ticket.type || '',
+          };
+        });
       } else {
         tasks = engine.buildExamTicket(_sections, 5, { difficulty: selectedDifficulty });
       }
     } else {
       tasks = engine.buildExamTicket(_sections, 5, { difficulty: selectedDifficulty });
     }
+
 
     if (tasks.length > 0) {
       startExam(tasks, selectedTime * 60 * 1000);
@@ -496,7 +513,12 @@ function buildSolutionHTML(q) {
     html += '</div>';
   }
   if (q.formula) {
-    html += `<div class="es-sol-answer"><strong>Ответ:</strong> $$${q.formula}$$</div>`;
+    const formulaStr = q.formula.trim();
+    const formatted = (formulaStr.startsWith('$$') && formulaStr.endsWith('$$')) ||
+                      (formulaStr.startsWith('$') && formulaStr.endsWith('$'))
+      ? formulaStr
+      : `$$${formulaStr}$$`;
+    html += `<div class="es-sol-answer"><strong>Ответ:</strong> ${formatted}</div>`;
   }
   return html;
 }

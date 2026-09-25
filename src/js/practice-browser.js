@@ -195,12 +195,18 @@ function renderCurrentTab() {
   if (!section) { el.innerHTML = '<p>Нет данных</p>'; return; }
 
   const icon = section.icon || '';
-  switch (icon) {
-    case '📋': renderFormulas(el, section); break;
-    case '📚': renderMethods(el, section); break;
-    case '✏️': renderProblems(el, section); break;
-    case '🎫': renderTickets(el, section); break;
-    default:   renderFormulas(el, section); break;
+  const title = (section.section || section.title || section.name || '').toLowerCase();
+
+  if (icon === '📋' || title.includes('формул')) {
+    renderFormulas(el, section);
+  } else if (icon === '📚' || title.includes('метод') || title.includes('алгоритм')) {
+    renderMethods(el, section);
+  } else if (icon === '✏️' || icon === '🎯' || title.includes('задач') || title.includes('практик')) {
+    renderProblems(el, section);
+  } else if (icon === '🎫' || title.includes('билет') || title.includes('вариант')) {
+    renderTickets(el, section);
+  } else {
+    renderFormulas(el, section);
   }
 
   requestAnimationFrame(() => renderMath(el));

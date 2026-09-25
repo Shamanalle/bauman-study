@@ -193,14 +193,15 @@ export function buildTrainingSession(questions, { topic = null, limit = 8, mode 
  * @returns {Array} selected questions
  */
 export function buildExamTicket(sections, count = 5, { difficulty = DIFFICULTY.MAIN } = {}) {
-  // Collect questions from problem sections (✏️) only
+  // Collect questions from problem sections (✏️, 🎯, or containing 'задач')
   const pool = [];
   for (const sec of sections) {
-    if (sec.icon === '✏️') {
+    const isProblem = sec.icon === '✏️' || sec.icon === '🎯' || (sec.section && sec.section.toLowerCase().includes('задач'));
+    if (isProblem && sec.icon !== '🎫') {
       const diff = classifySection(sec);
       // Filter by difficulty
       if (difficulty !== DIFFICULTY.ALL && diff !== difficulty) continue;
-      for (const q of sec.questions) {
+      for (const q of (sec.questions || [])) {
         pool.push({ ...q, _section: sec.section, _difficulty: diff });
       }
     }

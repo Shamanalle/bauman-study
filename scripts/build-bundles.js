@@ -187,11 +187,15 @@ window.fetch = function(url, opts) {
 };
 
 // Ensure URL has subject/assessment params for the app to work
-if (!new URLSearchParams(window.location.search).has('subject')) {
-  const url = new URL(window.location.href);
-  url.searchParams.set('subject', '${meta.shortCode || 'inline'}');
-  url.searchParams.set('assessment', 'inline');
-  history.replaceState(null, '', url.toString());
+try {
+  if (!new URLSearchParams(window.location.search).has('subject')) {
+    const url = new URL(window.location.href);
+    url.searchParams.set('subject', '${meta.shortCode || 'inline'}');
+    url.searchParams.set('assessment', 'inline');
+    history.replaceState(null, '', url.toString());
+  }
+} catch (e) {
+  // Ignore SecurityError when opened directly via file:// protocol
 }
 
 ${js}`;

@@ -536,7 +536,36 @@ body.dark .fc-action-btn:hover { border-color: var(--accent); color: #7ee787; }
 body.dark .fc-action-btn.primary { background: #238636; border-color: #238636; color: #fff; }
 
 body.dark .fc-exit-btn { border-color: #30363d; color: #484f58; }
-body.dark .fc-exit-btn:hover { border-color: rgba(248, 81, 73, 0.3); color: #f85149; }
-
 body.dark .fc-all-done-text { color: #e6edf3; }
 body.dark .fc-all-done-sub { color: #8b949e; }
+
+/* Global breadcrumbs dark */
+body.dark .global-breadcrumbs {
+  background: rgba(13, 17, 23, 0.9);
+  border-bottom-color: #30363d;
+}
+body.dark .gb-current { color: #e6edf3; }
+body.dark .gb-back { color: #58a6ff; }
+body.dark .gb-back:hover { background: rgba(56, 139, 253, 0.15); color: #79c0ff; }
+body.dark .gb-tag { background: rgba(45, 164, 78, 0.15); color: #7ee787; border-color: rgba(45, 164, 78, 0.4); }
+
+/* Learn button dark */
+body.dark .tp-learn-btn { background: #161b22; border-color: #30363d; color: #8b949e; }
+body.dark .tp-learn-btn:hover { border-color: var(--accent); color: #7ee787; }
+body.dark .tp-learn-btn.learned { background: #238636; border-color: #238636; color: #fff; }
+
+/* Search empty state dark */
+body.dark .search-empty-state { background: var(--surface); border-color: var(--border); }
+body.dark .ses-title { color: #e6edf3; }
+body.dark .ses-desc { color: #8b949e; }
+
+/* Shortcuts modal dark */
+body.dark .shortcuts-modal { background: #161b22; border-color: #30363d; box-shadow: 0 20px 48px rgba(0, 0, 0, 0.6); }
+body.dark .shortcuts-modal-header { border-bottom-color: #30363d; }
+body.dark .shortcuts-modal-header h3 { color: #e6edf3; }
+body.dark .shortcuts-modal-close { color: #8b949e; }
+body.dark .shortcuts-modal-close:hover { background: #21262d; color: #e6edf3; }
+body.dark .shortcut-desc { color: #8b949e; }
+body.dark .shortcuts-modal-footer { background: #0d1117; border-top-color: #30363d; color: #484f58; }
+body.dark .shortcuts-fab { background: #161b22; border-color: #30363d; color: #e6edf3; }
+body.dark kbd { background: #21262d; border-color: #30363d; color: #c9d1d9; }

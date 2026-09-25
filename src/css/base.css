@@ -13,9 +13,18 @@
 .platform-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px; }
 .platform-card {
   background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
-  overflow: hidden; box-shadow: var(--shadow); transition: all 0.2s;
+  overflow: hidden; box-shadow: var(--shadow); transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+  position: relative;
 }
-.platform-card:hover { transform: translateY(-2px); box-shadow: var(--shadow2); }
+.platform-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--blue));
+  opacity: 0.7;
+}
+.platform-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08); }
 .platform-card-header { padding: 20px 24px 12px; display: flex; align-items: flex-start; gap: 14px; }
 .platform-icon { font-size: 2rem; }
 .platform-card-title { font-size: 1.1rem; font-weight: 700; color: var(--text); }
@@ -28,6 +37,8 @@
   transition: all 0.15s; background: var(--bg);
 }
 .platform-link:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-bg); }
+.platform-link-title { display: flex; align-items: center; gap: 6px; flex: 1; }
+.platform-link-end { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
 .platform-arrow { color: var(--text3); transition: 0.15s; }
 .platform-link:hover .platform-arrow { color: var(--accent); transform: translateX(3px); }
 .platform-divider { height: 1px; background: var(--border); margin: 4px 0; }
@@ -41,6 +52,22 @@
   border-color: var(--accent);
 }
 
+/* Platform category badges */
+.plat-badge {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 10px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.plat-badge--exam { background: var(--purple-bg); color: var(--purple); border: 1px solid var(--purple-border); }
+.plat-badge--rk { background: var(--orange-bg); color: var(--orange); border: 1px solid var(--orange-border); }
+.plat-badge--prac { background: var(--blue-bg); color: var(--blue); border: 1px solid var(--blue-border); }
+.plat-badge--theory { background: var(--accent-bg); color: var(--accent); border: 1px solid var(--accent-border); }
+.plat-badge--labs { background: var(--teal-bg); color: var(--teal); border: 1px solid var(--teal-border); }
+
 /* Global Search */
 .global-search { position: relative; margin: -8px auto 24px; max-width: 600px; }
 .gs-input-wrap {
@@ -53,6 +80,23 @@
 .gs-input {
   flex: 1; border: none; outline: none; background: transparent;
   font-size: 0.95rem; color: var(--text); font-family: inherit;
+}
+.gs-kbd-hint {
+  font-size: 0.72rem;
+  padding: 2px 6px;
+  color: var(--text3);
+  border-color: var(--border);
+  background: var(--surface);
+  user-select: none;
+}
+.gs-results-header {
+  padding: 8px 16px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text3);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  border-bottom: 1px solid var(--border);
 }
 .gs-input::placeholder { color: var(--text3); }
 .gs-loading { font-size: 0.9rem; }

@@ -35,7 +35,8 @@ function updateThemeButton() {
 let learned = [];
 
 export function loadLearned() {
-  learned = JSON.parse(localStorage.getItem(`${_prefix}_learned3`) || '[]');
+  const raw = JSON.parse(localStorage.getItem(`${_prefix}_learned3`) || '[]');
+  learned = raw.map(id => String(id));
   return learned;
 }
 
@@ -46,22 +47,21 @@ export function saveLearned() {
 }
 
 export function toggleLearnedItem(id) {
-  id = isNaN(+id) ? id : +id;
-  const idx = learned.indexOf(id);
+  const strId = String(id);
+  const idx = learned.indexOf(strId);
   if (idx > -1) learned.splice(idx, 1);
-  else learned.push(id);
+  else learned.push(strId);
   saveLearned();
 }
 
 export function isLearned(id) {
-  id = isNaN(+id) ? id : +id;
-  return learned.includes(id);
+  return learned.includes(String(id));
 }
 
 export function markLearned(id) {
-  id = isNaN(+id) ? id : +id;
-  if (!learned.includes(id)) {
-    learned.push(id);
+  const strId = String(id);
+  if (!learned.includes(strId)) {
+    learned.push(strId);
     saveLearned();
   }
 }

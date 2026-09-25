@@ -1,23 +1,22 @@
 {
-  "name": "Бауман Study",
-  "short_name": "BM Study",
-  "description": "Платформа подготовки к экзаменам МГТУ им. Баумана",
+  "name": "Баумана · Подготовка к экзаменам",
+  "short_name": "Бауманка",
+  "description": "Интерактивная платформа подготовки к экзаменам и зачётам МГТУ им. Н.Э. Баумана",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0d1117",
-  "theme_color": "#238636",
-  "orientation": "any",
+  "background_color": "#ffffff",
+  "theme_color": "#1f883d",
   "icons": [
     {
-      "src": "/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
     },
     {
-      "src": "/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
+      "src": "/icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
       "purpose": "any maskable"
     }
   ]

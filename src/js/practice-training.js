@@ -33,12 +33,13 @@ export function initTraining({ meta, sections }, onExit) {
   _sections = sections;
   _onExit = onExit;
 
-  // Collect all problems from ✏️ sections, tagging difficulty
+  // Collect all problems from problem sections, tagging difficulty
   _allProblems = [];
   for (const sec of sections) {
-    if (sec.icon === '✏️') {
+    const isProblem = sec.icon === '✏️' || sec.icon === '🎯' || (sec.section && sec.section.toLowerCase().includes('задач'));
+    if (isProblem && sec.icon !== '🎫') {
       const diff = classifySection(sec);
-      for (const q of sec.questions) {
+      for (const q of (sec.questions || [])) {
         _allProblems.push({ ...q, _section: sec.section, _difficulty: diff });
       }
     }

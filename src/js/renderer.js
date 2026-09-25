@@ -18,6 +18,7 @@ export function render(filter = '') {
   const fl = filter.toLowerCase();
   const container = document.getElementById('content');
   container.innerHTML = '';
+  let totalRendered = 0;
 
   currentSections.forEach(sec => {
     if (activeSection && sec.section !== activeSection) return;
@@ -33,6 +34,7 @@ export function render(filter = '') {
     );
 
     if (!qs.length) return;
+    totalRendered += qs.length;
 
     const secId = 'sec-prog-' + sec.section.replace(/\s/g, '_');
     const divider = document.createElement('div');
@@ -53,6 +55,16 @@ export function render(filter = '') {
       container.appendChild(el);
     });
   });
+
+  if (totalRendered === 0 && fl) {
+    container.innerHTML = `
+      <div class="search-empty-state">
+        <div class="ses-icon">🔍</div>
+        <div class="ses-title">Ничего не найдено</div>
+        <div class="ses-desc">По запросу «${filter}» нет совпадений</div>
+      </div>
+    `;
+  }
 
   updateLearnedUI();
   requestAnimationFrame(() => {
@@ -75,7 +87,7 @@ export function updateLearnedUI() {
 
   // Update number badges
   document.querySelectorAll('.tp-num').forEach(el => {
-    const id = isNaN(+el.dataset.id) ? el.dataset.id : +el.dataset.id;
+    const id = String(el.dataset.id);
     if (learned.includes(id)) {
       el.style.background = 'var(--accent)';
       el.title = '✅ Выучено!';
@@ -85,12 +97,21 @@ export function updateLearnedUI() {
     }
   });
 
+  // Update learn toggle buttons
+  document.querySelectorAll('.tp-learn-btn').forEach(btn => {
+    const id = String(btn.dataset.id);
+    const isLearned = learned.includes(id);
+    btn.classList.toggle('learned', isLearned);
+    btn.title = isLearned ? 'Выучено! Нажмите, чтобы снять отметку' : 'Отметить как выученное';
+    btn.setAttribute('aria-label', isLearned ? 'Выучено' : 'Отметить как выученное');
+  });
+
   // Update section progress
   let secDone = 0;
   currentSections.forEach(sec => {
     const el = document.getElementById('sec-prog-' + sec.section.replace(/\s/g, '_'));
     const total = sec.questions.length;
-    const done = sec.questions.filter(q => learned.includes(q.id)).length;
+    const done = sec.questions.filter(q => learned.includes(String(q.id))).length;
     if (done === total) secDone++;
     if (el) {
       el.textContent = done + '/' + total;
@@ -111,7 +132,7 @@ export function renderPills() {
   let html = `<button class="sp${!activeSection ? ' active' : ''}" onclick="window.__filterSection(null)">Все</button>`;
 
   html += currentSections.map(s => {
-    const done = s.questions.filter(q => learned.includes(q.id)).length;
+    const done = s.questions.filter(q => learned.includes(String(q.id))).length;
     const t = s.questions.length;
     const badge = done > 0 ? ` <span class="sp-badge">${done}/${t}</span>` : '';
     return `<button class="sp${activeSection === s.section ? ' active' : ''}${done === t ? ' sp-done' : ''}" onclick="window.__filterSection('${s.section.replace(/'/g, "\\'")}')">${s.icon} ${s.section}${badge}</button>`;

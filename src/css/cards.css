@@ -39,6 +39,48 @@
 .tp-header-task .tp-chevron { position: absolute; top: 32px; right: 24px; margin-top: 0; }
 .theorem-page.open .tp-chevron { transform: rotate(180deg); }
 
+/* Explicit learn button */
+.tp-learn-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text3);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+  margin-top: 2px;
+  padding: 0;
+}
+.tp-learn-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: scale(1.08);
+}
+.tp-learn-btn.learned {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(45, 164, 78, 0.3);
+}
+
+/* Empty search state */
+.search-empty-state {
+  text-align: center;
+  padding: 48px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  margin: 20px 0;
+}
+.ses-icon { font-size: 2.2rem; margin-bottom: 8px; }
+.ses-title { font-size: 1.15rem; font-weight: 700; color: var(--text); }
+.ses-desc { font-size: 0.88rem; color: var(--text2); margin-top: 4px; }
+
 /* Card body */
 .tp-body { display: none; padding: 0 24px 24px; }
 .theorem-page.open .tp-body { padding: 28px 32px; display: flex; flex-direction: column; gap: 16px; }

@@ -7,8 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "migrate": "node scripts/migrate-data.js",
-    "bundle": "node scripts/build-bundles.js"
+    "bundle": "node scripts/build-bundles.js",
+    "build:platform": "node scripts/build-platform.js",
+    "validate:practice": "node scripts/check-all-practice.cjs"
   },
   "devDependencies": {
     "pdf-parse": "^2.4.5",

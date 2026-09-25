@@ -1,75 +1,53 @@
-// Service Worker — Cache-first for assets, Network-first for data
 const CACHE_NAME = 'bauman-study-v2';
 
-const PRECACHE = [
-  '/',
-  '/index.html',
-];
-
-// Install: precache shell
-self.addEventListener('install', (e) => {
-  e.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(PRECACHE))
-  );
+self.addEventListener('install', (event) => {
   self.skipWaiting();
 });
 
-// Activate: clean old caches
-self.addEventListener('activate', (e) => {
-  e.waitUntil(
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
     caches.keys().then((keys) =>
-      Promise.all(keys.filter((k) => k !== CACHE_NAME).map((k) => caches.delete(k)))
+      Promise.all(
+        keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key))
+      )
     )
   );
   self.clients.claim();
 });
 
-// Fetch strategy
-self.addEventListener('fetch', (e) => {
-  const url = new URL(e.request.url);
+self.addEventListener('fetch', (event) => {
+  const url = new URL(event.request.url);
 
-  // Skip non-GET
-  if (e.request.method !== 'GET') return;
+  // Ignore non-GET requests
+  if (event.request.method !== 'GET') return;
 
-  // Skip external origins (CDN fonts, KaTeX)
-  if (url.origin !== location.origin) {
-    // Network-first for CDN, cache on success
-    e.respondWith(
-      fetch(e.request)
-        .then((res) => {
-          const clone = res.clone();
-          caches.open(CACHE_NAME).then((c) => c.put(e.request, clone));
-          return res;
-        })
-        .catch(() => caches.match(e.request))
-    );
-    return;
-  }
-
-  // Cache-first for JS/CSS assets (hashed by Vite)
-  if (url.pathname.startsWith('/assets/')) {
-    e.respondWith(
-      caches.match(e.request).then((cached) =>
-        cached || fetch(e.request).then((res) => {
-          const clone = res.clone();
-          caches.open(CACHE_NAME).then((c) => c.put(e.request, clone));
-          return res;
-        })
-      )
-    );
-    return;
-  }
-
-  // Network-first for HTML and data (to get fresh content)
-  e.respondWith(
-    fetch(e.request)
-      .then((res) => {
-        const clone = res.clone();
-        caches.open(CACHE_NAME).then((c) => c.put(e.request, clone));
-        return res;
+  // Cache CDN assets (KaTeX, Google Fonts)
+  if (url.origin.includes('jsdelivr') || url.origin.includes('googleapis') || url.origin.includes('gstatic')) {
+    event.respondWith(
+      caches.match(event.request).then((cached) => {
+        if (cached) return cached;
+        return fetch(event.request).then((response) => {
+          if (response && response.status === 200) {
+            const clone = response.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
+          }
+          return response;
+        });
       })
-      .catch(() => caches.match(e.request).then((cached) =>
-        cached || new Response('Offline', { status: 503, statusText: 'Offline' })
-      ))
+    );
+    return;
+  }
+
+  // Network first with cache fallback for local files
+  event.respondWith(
+    fetch(event.request)
+      .then((response) => {
+        if (response && response.status === 200) {
+          const clone = response.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
+        }
+        return response;
+      })
+      .catch(() => caches.match(event.request))
   );
 });

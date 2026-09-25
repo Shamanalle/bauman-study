@@ -142,18 +142,15 @@ export function buildSession(allCards, { mode = 'all', section = null, limit = 1
 
   switch (mode) {
     case 'due':
-      session = [...due];
+      session = shuffle([...due]);
       break;
     case 'new':
-      session = [...newCards];
+      session = shuffle([...newCards]);
       break;
     default: // 'all'
-      // Due first (most urgent), then new, then in-progress
-      session = [...due, ...newCards, ...inProgress];
+      // Due first (most urgent), then new, then in-progress (shuffled within each priority group)
+      session = [...shuffle([...due]), ...shuffle([...newCards]), ...shuffle([...inProgress])];
   }
-
-  // Shuffle within priority groups for variety
-  shuffle(session);
 
   // Apply limit
   if (limit && session.length > limit) {

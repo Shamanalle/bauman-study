@@ -173,10 +173,16 @@
 
 /* --- Print --- */
 @media print {
-  .hero, .nav, .section-pills, .scroll-top, .theme-fab, .mode-tabs,
-  .pt-nav, .es-nav-dots, .fc-grade-btns, .fc-keys-hint { display: none !important; }
-  .theorem-page { break-inside: avoid; page-break-inside: avoid; }
-  .tp-body { display: block !important; }
-  body { font-size: 10pt; }
+  .hero, .nav, .section-pills, .scroll-top, .theme-fab, .shortcuts-fab, .mode-tabs,
+  .global-breadcrumbs, .shortcuts-modal-backdrop, .prac-mode-tabs, .lab-tabs,
+  .pt-nav, .es-nav-dots, .fc-grade-btns, .fc-keys-hint, .tp-learn-btn { display: none !important; }
+  .theorem-page, .prac-formula-card, .prac-method-card, .prac-problem, .prac-ticket {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+  }
+  .tp-body, .prac-problem-solution, .prac-ticket-task-solution { display: block !important; }
+  body { font-size: 10pt; background: #fff !important; color: #000 !important; }
   .katex { font-size: 0.9em; }
 }

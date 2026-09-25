@@ -1,0 +1,50 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate practice bundles
+        run: npm run validate:practice
+
+      - name: Build offline standalone bundles
+        run: npm run bundle
+
+      - name: Build platform single-file
+        run: npm run build:platform
+
+      - name: Archive offline bundles
+        run: |
+          mkdir -p release-assets
+          cp Платформа.html release-assets/
+          zip -r release-assets/bauman-study-offline-bundles.zip bundles/ Платформа.html
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            release-assets/bauman-study-offline-bundles.zip
+            release-assets/Платформа.html
+          generate_release_notes: true
+          draft: false
+          prerelease: false

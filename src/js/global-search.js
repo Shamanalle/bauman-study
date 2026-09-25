@@ -1,7 +1,7 @@
 // Global Search: search across all subjects and assessments
 // Loaded lazily on the platform page
 
-import { getSubjectMap } from './subjects-config.js';
+import { SUBJECTS, getSubjectMap } from './subjects-config.js';
 const SUBJECT_MAP = getSubjectMap();
 
 let searchIndex = null; // Lazy-loaded
@@ -13,45 +13,82 @@ async function buildIndex() {
 
   indexPromise = (async () => {
     searchIndex = [];
-    const subjects = Object.keys(SUBJECT_MAP);
 
-    // Fetch all assessments in parallel per subject
-    const allFetches = subjects.map(subjectId =>
-      discoverAssessments(subjectId).then(assessments => ({ subjectId, assessments }))
+    // Collect all assessment targets from SUBJECTS
+    const targets = [];
+    for (const sub of SUBJECTS) {
+      for (const a of sub.assessments) {
+        if (a.assessment) {
+          targets.push({
+            subjectId: sub.id,
+            assessmentId: a.assessment,
+            assessmentName: a.name,
+          });
+        }
+      }
+    }
+
+    // Fetch meta and index for all assessments
+    const assessmentData = await Promise.all(
+      targets.map(async ({ subjectId, assessmentId, assessmentName }) => {
+        try {
+          const basePath = `/data/${subjectId}/${assessmentId}`;
+          const [metaRes, indexRes] = await Promise.all([
+            fetch(`${basePath}/meta.json`).catch(() => null),
+            fetch(`${basePath}/index.json`).catch(() => null),
+          ]);
+          if (!metaRes?.ok || !indexRes?.ok) return null;
+          const meta = await metaRes.json();
+          const index = await indexRes.json();
+          return {
+            subjectId,
+            assessmentId,
+            assessmentName,
+            meta,
+            sections: index.sections || [],
+          };
+        } catch {
+          return null;
+        }
+      })
     );
 
-    const results = await Promise.all(allFetches);
+    const validAssessments = assessmentData.filter(Boolean);
 
-    for (const { subjectId, assessments } of results) {
-      for (const { assessment, meta } of assessments) {
-        if (!meta.sections) continue;
+    for (const { subjectId, assessmentId, assessmentName, meta, sections } of validAssessments) {
+      const basePath = `/data/${subjectId}/${assessmentId}`;
+      const secFetches = sections.map(async (secFile) => {
+        try {
+          const resp = await fetch(`${basePath}/${secFile}`);
+          if (!resp.ok) return null;
+          return { data: await resp.json(), secFile };
+        } catch {
+          return null;
+        }
+      });
 
-        for (const secFile of meta.sections) {
-          try {
-            const resp = await fetch(`/data/${subjectId}/${assessment}/${secFile}`);
-            if (!resp.ok) continue;
-            const data = await resp.json();
-            const items = data.questions || data.cards || [];
+      const secResults = await Promise.all(secFetches);
+      for (const res of secResults) {
+        if (!res) continue;
+        const { data, secFile } = res;
+        const items = data.questions || data.cards || [];
 
-            for (const item of items) {
-              const rawText = item.formalText || item.statement || '';
-              searchIndex.push({
-                id: item.id,
-                title: item.title || '',
-                // Strip LaTeX and markdown for search text
-                searchText: stripForSearch(rawText),
-                displayText: rawText,
-                keyIdea: item.keyIdea || '',
-                type: item.type || '',
-                subject: subjectId,
-                subjectTitle: SUBJECT_MAP[subjectId]?.title || subjectId,
-                subjectIcon: SUBJECT_MAP[subjectId]?.icon || '📄',
-                assessment,
-                assessmentTitle: meta.title || assessment,
-                section: data.section || secFile,
-              });
-            }
-          } catch { /* skip individual files */ }
+        for (const item of items) {
+          const rawText = item.formalText || item.statement || item.title || '';
+          searchIndex.push({
+            id: item.id,
+            title: item.title || '',
+            searchText: stripForSearch(rawText + ' ' + (item.title || '') + ' ' + (item.insight || item.tldr || '')),
+            displayText: rawText,
+            keyIdea: item.insight || item.tldr || item.keyIdea || '',
+            type: item.type || '',
+            subject: subjectId,
+            subjectTitle: SUBJECT_MAP[subjectId]?.title || subjectId,
+            subjectIcon: SUBJECT_MAP[subjectId]?.icon || '📄',
+            assessment: assessmentId,
+            assessmentTitle: meta.title || assessmentName,
+            section: data.section || secFile,
+          });
         }
       }
     }
@@ -76,27 +113,6 @@ function stripForSearch(text) {
     .trim();
 }
 
-async function discoverAssessments(subjectId) {
-  const results = [];
-  const possibleAssessments = [
-    'exam', 'exam-practice', 'midterm-1', 'midterm-1-practice',
-    'midterm-2', 'midterm-2-practice', 'kr-1', 'kr-1-practice',
-    'kr-2', 'kr-2-practice', 'zachet',
-  ];
-
-  // Fetch all meta.json in parallel
-  const fetches = possibleAssessments.map(async (assessment) => {
-    try {
-      const resp = await fetch(`/data/${subjectId}/${assessment}/meta.json`);
-      if (!resp.ok) return null;
-      const meta = await resp.json();
-      return { assessment, meta };
-    } catch { return null; }
-  });
-
-  const settled = await Promise.all(fetches);
-  return settled.filter(Boolean);
-}
 
 function search(query, items, maxResults = 30) {
   if (!query || query.length < 2) return [];
@@ -139,8 +155,10 @@ function escapeHtml(str) {
 }
 
 function renderResult(item) {
-  const href = `?subject=${encodeURIComponent(item.subject)}&assessment=${encodeURIComponent(item.assessment)}`;
+  const hash = item.id != null ? `#q${item.id}` : '';
+  const href = `?subject=${encodeURIComponent(item.subject)}&assessment=${encodeURIComponent(item.assessment)}${hash}`;
   // Clean display text: strip LaTeX and markdown for preview
+
   const cleanText = stripForSearch(item.displayText).substring(0, 120);
 
   return `
@@ -163,7 +181,8 @@ export function initGlobalSearch(container) {
     <div class="global-search" id="globalSearch">
       <div class="gs-input-wrap">
         <span class="gs-search-icon">🔍</span>
-        <input type="text" class="gs-input" id="gsInput" placeholder="Поиск по всем предметам…" autocomplete="off">
+        <input type="text" class="gs-input" id="gsInput" placeholder="Поиск по всем предметам и билетам…" autocomplete="off">
+        <kbd class="gs-kbd-hint">Ctrl K</kbd>
         <span class="gs-loading" id="gsLoading" style="display:none">⏳</span>
       </div>
       <div class="gs-results" id="gsResults" style="display:none"></div>
@@ -202,7 +221,10 @@ export function initGlobalSearch(container) {
         if (hits.length === 0) {
           results.innerHTML = '<div class="gs-no-results">Ничего не найдено</div>';
         } else {
-          results.innerHTML = hits.map(renderResult).join('');
+          results.innerHTML = `
+            <div class="gs-results-header">Найдено: ${hits.length}</div>
+            ${hits.map(renderResult).join('')}
+          `;
         }
         results.style.display = '';
       } catch (err) {

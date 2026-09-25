@@ -14,11 +14,16 @@ export function buildQuestionCard(q) {
 
   return `
     <div class="tp-header ${isTask ? 'tp-header-task' : ''}" onclick="this.parentElement.classList.toggle('open');window.__renderMath?.(this.parentElement)">
-      <div class="tp-num" data-id="${q.id}" ondblclick="window.__toggleLearn('${q.id}',event)">${q.id}</div>
+      <div class="tp-num" data-id="${q.id}" title="Двойной клик = выучено" ondblclick="window.__toggleLearn('${q.id}',event)">${q.id}</div>
       <div class="tp-header-text">
         <div class="tp-title">${q.title}</div>
         <div class="tp-subtitle">${q.type}</div>
       </div>
+      <button class="tp-learn-btn" data-id="${q.id}" title="Отметить как выученное" onclick="window.__toggleLearn('${q.id}',event)">
+        <svg class="tp-learn-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </button>
       <span class="tp-chevron">▼</span>
     </div>
     <div class="tp-body">
@@ -78,8 +83,8 @@ export function buildQuestionBody(q, proofLabel, exampleLabel) {
     </div>
     ${q.formula ? `<div class="math-box">$$${q.formula}$$</div>` : ''}
     ${q.visual ? `<div class="visual-block">${q.visual}${q.visualLabel ? `<div class="visual-label">${q.visualLabel}</div>` : ''}</div>` : ''}
-    ${insightText ? `<div class="card-insight"><div class="card-insight-label">💡 Простыми словами</div><p class="card-insight-text">${nl(insightText)}</p></div>` : ''}
-    ${noteText ? `<p class="card-note">📌 ${nl(noteText)}</p>` : ''}
+    ${insightText ? `<div class="card-insight"><div class="card-insight-label">💡 Простыми словами</div><div class="card-insight-text">${nl(insightText)}</div></div>` : ''}
+    ${noteText ? `<div class="card-note">📌 ${nl(noteText)}</div>` : ''}
     ${proofContent ? `
       <div class="proof-toggle" onclick="this.classList.toggle('open');window.__renderMath?.(this.closest('.theorem-page') || this.closest('.quiz-card') || this.closest('.fc-answer') || this.closest('.fc-card'))">
         <span class="proof-toggle-icon">📐</span> ${proofTitle} <span class="adv-chevron">▸</span>
@@ -99,7 +104,7 @@ export function buildQuestionBody(q, proofLabel, exampleLabel) {
       <div class="adv-toggle" onclick="this.classList.toggle('open');window.__renderMath?.(this.closest('.theorem-page') || this.closest('.fc-answer') || this.closest('.fc-card'))">
         <span class="adv-toggle-icon">🎓</span> Строгая формулировка <span class="adv-chevron">▸</span>
       </div>
-      <div class="adv-body"><div class="advanced-block"><p>${nl(q.advanced)}</p>
+      <div class="adv-body"><div class="advanced-block"><div>${nl(q.advanced)}</div>
         ${q.advancedProof ? `<div class="adv-proof"><strong>${proofLabel}.</strong> ${nl(q.advancedProof)}</div>` : ''}
       </div></div>` : ''}`;
 }
@@ -144,7 +149,7 @@ function buildPracticeModeBody(q, proofLabel, exampleLabel) {
     const proofContent = buildProofContent(q);
     const insightText = q.insight || buildLegacyInsight(q);
     return `
-      ${insightText ? `<div class="card-insight"><div class="card-insight-label">💡 Простыми словами</div><p class="card-insight-text">${nl(insightText)}</p></div>` : ''}
+      ${insightText ? `<div class="card-insight"><div class="card-insight-label">💡 Простыми словами</div><div class="card-insight-text">${nl(insightText)}</div></div>` : ''}
       <div class="card-formal">
         <div class="card-formal-text">${nl(q.formalText || '')}</div>
         ${q.conditions ? '<ul class="card-cond">' + q.conditions.map(c => '<li>' + c + '</li>').join('') + '</ul>' : ''}
@@ -159,7 +164,7 @@ function buildPracticeModeBody(q, proofLabel, exampleLabel) {
           <div class="card-example-text">${nl(typeof q.example === 'string' ? q.example : q.example.text)}</div>
           ${q.example?.math ? `<div class="math-box">${q.example.math}</div>` : ''}
         </div>` : ''}
-      ${q.note ? `<p class="card-note">📌 ${nl(q.note)}</p>` : ''}`;
+      ${q.note ? `<div class="card-note">📌 ${nl(q.note)}</div>` : ''}`;
   }
 
   // Task cards: only formalText visible, rest behind solution-reveal
@@ -179,13 +184,13 @@ function buildPracticeModeBody(q, proofLabel, exampleLabel) {
         <span class="adv-chevron">▸</span>
       </div>
       <div class="solution-body">
-        ${insightText ? `<div class="card-insight"><div class="card-insight-label">💡 Простыми словами</div><p class="card-insight-text">${nl(insightText)}</p></div>` : ''}
+        ${insightText ? `<div class="card-insight"><div class="card-insight-label">💡 Простыми словами</div><div class="card-insight-text">${nl(insightText)}</div></div>` : ''}
         ${proofContent || ''}
         ${q.formula ? `<div class="solution-answer"><span class="solution-answer-label">Ответ:</span> <div class="math-box">$$${q.formula}$$</div></div>` : ''}
         ${q.example ? `
           <div class="card-example-text">${nl(typeof q.example === 'string' ? q.example : q.example.text)}</div>
           ${q.example?.math ? `<div class="math-box">${q.example.math}</div>` : ''}` : ''}
-        ${q.note || q.examSay ? `<p class="card-note">📌 ${nl(q.note || q.examSay)}</p>` : ''}
+        ${q.note || q.examSay ? `<div class="card-note">📌 ${nl(q.note || q.examSay)}</div>` : ''}
       </div>` : ''}`;
 }
 

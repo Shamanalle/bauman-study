@@ -23,3 +23,8 @@ npm-debug.log*
 # Gemini agent data
 .gemini/
 .agent/skills/*/scripts/__pycache__/
+graphify-out/
+.graphifyignore
+new_temp/
+Платформа.html
+*.zip

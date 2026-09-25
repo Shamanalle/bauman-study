@@ -10,6 +10,7 @@ import { initSearch } from './search.js';
 import { initKeyboard } from './keyboard.js';
 import { renderMath } from './math-utils.js';
 import * as progress from './progress.js';
+import { SUBJECTS } from './subjects-config.js';
 
 // --- Global functions exposed for onclick handlers in HTML strings ---
 window.__renderMath = (el) => renderMath(el);
@@ -48,10 +49,45 @@ function renderModeTabs(activeMode) {
   if (hero) hero.after(tabsDiv);
 }
 
+export function renderBreadcrumbs(title, categoryName = null) {
+  let bc = document.getElementById('globalBreadcrumbs');
+  if (!bc) {
+    bc = document.createElement('nav');
+    bc.id = 'globalBreadcrumbs';
+    bc.className = 'global-breadcrumbs';
+    bc.setAttribute('aria-label', 'Навигация');
+    const hero = document.querySelector('.hero');
+    if (hero) {
+      hero.before(bc);
+    } else {
+      document.getElementById('app')?.prepend(bc);
+    }
+  }
+  const rootUrl = window.location.pathname;
+  bc.innerHTML = `
+    <a href="${rootUrl}" class="gb-back" title="Вернуться ко всем предметам">
+      <span class="gb-arrow">←</span> Все предметы
+    </a>
+    <span class="gb-sep">/</span>
+    <span class="gb-current">${title}</span>
+    ${categoryName ? `<span class="gb-sep">/</span><span class="gb-tag">${categoryName}</span>` : ''}
+  `;
+}
+
+function getAssessmentBadge(name) {
+  if (name.includes('Экзамен')) return `<span class="plat-badge plat-badge--exam">Экзамен</span>`;
+  if (name.includes('РК')) return `<span class="plat-badge plat-badge--rk">РК</span>`;
+  if (name.includes('КР') || name.includes('Практика')) return `<span class="plat-badge plat-badge--prac">Практика</span>`;
+  if (name.includes('Учебник') || name.includes('Конспект')) return `<span class="plat-badge plat-badge--theory">Теория</span>`;
+  if (name.includes('Лабораторн')) return `<span class="plat-badge plat-badge--labs">Лабы</span>`;
+  return '';
+}
+
 // --- Bootstrap ---
 async function init() {
-  // 1. Global theme
+  // 1. Global theme & keyboard shortcuts
   progress.initTheme();
+  initKeyboard();
   document.getElementById('darkToggle')?.addEventListener('click', progress.toggleTheme);
   document.getElementById('themeFab')?.addEventListener('click', progress.toggleTheme);
 
@@ -66,6 +102,7 @@ async function init() {
   if (isLabs && params.get('subject') === 'algorithmic-languages') {
     const { initLabBrowser } = await import('./lab-browser.js');
     await initLabBrowser();
+    renderBreadcrumbs('Языки программирования', 'Лабораторные');
     initScrollTop();
     return;
   }
@@ -74,6 +111,7 @@ async function init() {
   if (isLabs && params.get('subject') === 'programming-technologies') {
     const { initTimpLabBrowser } = await import('./timp-lab-browser.js');
     await initTimpLabBrowser();
+    renderBreadcrumbs('Технологии и методы программирования', 'Лабораторные');
     initScrollTop();
     return;
   }
@@ -82,6 +120,7 @@ async function init() {
   if (params.get('type') === 'textbook') {
     const { initTextbook } = await import('./textbook.js');
     await initTextbook();
+    renderBreadcrumbs('Учебное пособие', 'Теория');
     initScrollTop();
     return;
   }
@@ -98,6 +137,7 @@ async function init() {
     // Practice mode → dedicated practice browser
     if (meta.practiceMode) {
       const { initPracticeBrowser } = await import('./practice-browser.js');
+      renderBreadcrumbs(meta.title, 'Практика');
       initPracticeBrowser({ meta, sections });
       initScrollTop();
       return;
@@ -113,6 +153,7 @@ async function init() {
 
     if (mode === 'flashcard') {
       // Flashcard mode — render tabs + flashcard UI
+      renderBreadcrumbs(meta.title, 'Повторение');
       renderModeTabs('flashcard');
       document.getElementById('heroTitle').textContent = `${meta.icon} ${meta.title}`;
       document.getElementById('heroSubtitle').textContent = meta.subtitle;
@@ -131,6 +172,7 @@ async function init() {
     }
 
     // 5. Standard card-list mode
+    renderBreadcrumbs(meta.title, 'Справочник');
     renderModeTabs('cards');
     setSections(sections);
 
@@ -145,7 +187,6 @@ async function init() {
 
     // Initialize features
     initSearch();
-    initKeyboard();
 
     // UI extras
     document.getElementById('toggleBtn').addEventListener('click', toggleAll);
@@ -160,10 +201,9 @@ async function init() {
 }
 
 function showPlatformPage() {
-  const { getSubjectsConfig } = await_import_subjects();
-  const subjects = getSubjectsConfig();
+  const subjects = SUBJECTS;
 
-  document.title = 'Платформа подготовки к экзаменам';
+  document.title = 'Платформа подготовки к экзаменам · МГТУ им. Баумана';
   document.getElementById('app').innerHTML = `
     <div class="hero" style="margin-bottom:32px">
       <h1>🎓 Платформа подготовки к экзаменам</h1>
@@ -190,15 +230,21 @@ function showPlatformPage() {
           <div class="platform-assessments">
             ${textbook.map(a => `
               <a href="${a.href || `?subject=${sub.id}&assessment=${a.assessment}`}" class="platform-link platform-link--special">
-                <span>${a.icon} ${a.name}</span>
-                <span class="platform-arrow">→</span>
+                <span class="platform-link-title">${a.icon} ${a.name}</span>
+                <span class="platform-link-end">
+                  ${getAssessmentBadge(a.name)}
+                  <span class="platform-arrow">→</span>
+                </span>
               </a>
             `).join('')}
             ${textbook.length ? `<div class="platform-divider"></div>` : ''}
             ${rest.map(a => `
               <a href="${a.href || `?subject=${sub.id}&assessment=${a.assessment}`}" class="platform-link">
-                <span>${a.icon} ${a.name}</span>
-                <span class="platform-arrow">→</span>
+                <span class="platform-link-title">${a.icon} ${a.name}</span>
+                <span class="platform-link-end">
+                  ${getAssessmentBadge(a.name)}
+                  <span class="platform-arrow">→</span>
+                </span>
               </a>
             `).join('')}
           </div>
@@ -218,18 +264,6 @@ function showPlatformPage() {
   });
 }
 
-// Lazy import to avoid circular deps — now uses centralized config
-function await_import_subjects() {
-  // Dynamic import was a historical workaround; now uses the single source of truth
-  const { SUBJECTS } = require_subjects_config();
-  return { getSubjectsConfig: () => SUBJECTS };
-}
-
-// Synchronous access to subjects config (ESM import hoisted at module level)
-import { SUBJECTS as _SUBJECTS_CONFIG } from './subjects-config.js';
-function require_subjects_config() {
-  return { SUBJECTS: _SUBJECTS_CONFIG };
-}
 
 function initScrollTop() {
   const btn = document.getElementById('scrollTop');

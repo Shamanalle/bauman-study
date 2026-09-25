@@ -30,10 +30,19 @@ export function nl(str) {
     // Normalize literal \n (backslash + n from JSON) → real newline
     // (?![a-zA-Z]) protects LaTeX commands: \nabla, \neq, \newline, etc.
     p = p.replace(/\\n(?![a-zA-Z])/g, '\n');
-    // Now handle uniformly: double+ newlines → paragraph, single → <br>
-    p = p
-      .replace(/\n{2,}/g, '</p><p class="nl-p">')             // double+ newlines → paragraph break
-      .replace(/\n/g, '<br>');                                  // remaining single newlines → <br>
+
+    // Now handle uniformly: double+ newlines → balanced paragraph tags, single → <br>
+    const paras = p.split(/\n{2,}/);
+    if (paras.length > 1) {
+      p = paras.map((para, idx) => {
+        const withBr = para.replace(/\n/g, '<br>');
+        const cls = idx > 0 ? ' class="nl-p"' : '';
+        return `<p${cls}>${withBr}</p>`;
+      }).join('');
+    } else {
+      p = p.replace(/\n/g, '<br>');
+    }
+
     // Strip <br> adjacent to display math $$ to prevent double-spacing
     p = p.replace(/(<br\s*\/?>)+\s*(\$\$)/g, '$2');
     p = p.replace(/(\$\$)\s*(<br\s*\/?>)+/g, '$1');

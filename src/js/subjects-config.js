@@ -98,13 +98,15 @@ export const SUBJECTS = [
   {
     id: 'math-cs-foundations',
     title: 'Мат. основы информатики',
-    subtitle: 'Булевы функции, нормальные формы, теорема Поста',
+    subtitle: 'Булев куб, булевы функции, замкнутые классы, теорема Поста',
     icon: '🔢',
     theme: 'moi',
     assessments: [
-      { name: 'КР-1 · Практика', assessment: 'kr-1',   type: 'kr',       icon: '✏️', bundleName: 'МОИ_КР-1' },
-      { name: 'Зачёт',           assessment: 'zachet',  type: 'zachet',   icon: '✅', bundleName: 'МОИ_Зачёт' },
-      { name: 'Учебное пособие', assessment: null,      type: 'textbook', icon: '📖', href: '?subject=math-cs-foundations&type=textbook', skipBundle: true },
+      { name: 'КР-1 · Булев куб',   assessment: 'kr-1',   type: 'kr',       icon: '✏️', bundleName: 'МОИ_КР-1' },
+      { name: 'КР-2 · Формулы',     assessment: 'kr-2',   type: 'kr',       icon: '✏️', bundleName: 'МОИ_КР-2' },
+      { name: 'КР-3 · Классы',      assessment: 'kr-3',   type: 'kr',       icon: '✏️', bundleName: 'МОИ_КР-3' },
+      { name: 'Зачёт',              assessment: 'zachet',  type: 'zachet',   icon: '✅', bundleName: 'МОИ_Зачёт' },
+      { name: 'Учебное пособие',    assessment: null,      type: 'textbook', icon: '📖', href: '?subject=math-cs-foundations&type=textbook', skipBundle: true },
     ],
   },
 ];
