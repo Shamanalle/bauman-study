@@ -113,6 +113,7 @@ export function drawPlot(canvas, config) {
   const style = getComputedStyle(canvas);
   const isDark = style.getPropertyValue('--bg')?.trim()?.startsWith('#1') ||
                  style.getPropertyValue('--bg')?.trim()?.startsWith('#0') ||
+                 document.body?.classList.contains('dark') ||
                  document.documentElement.getAttribute('data-theme') === 'dark';
 
   const colors = {

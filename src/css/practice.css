@@ -2292,3 +2292,132 @@
   .es-review-solution { padding: 12px 14px; }
 }
 
+/* ─── Cheatsheet Slide-out Drawer ─── */
+.cs-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.22s ease;
+  display: flex;
+  justify-content: flex-end;
+}
+.cs-drawer-backdrop--open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.cs-drawer {
+  width: 100%;
+  max-width: 680px;
+  height: 100%;
+  background: var(--surface);
+  box-shadow: -10px 0 32px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.cs-drawer-backdrop--open .cs-drawer {
+  transform: translateX(0);
+}
+.cs-drawer-header {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--surface);
+}
+.cs-drawer-title-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cs-drawer-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.cs-drawer-btn {
+  padding: 5px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text2);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.cs-drawer-btn:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+  background: var(--blue-bg);
+}
+.cs-drawer-close {
+  background: transparent;
+  border: none;
+  color: var(--text3);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: all 0.15s;
+}
+.cs-drawer-close:hover {
+  background: var(--bg);
+  color: var(--text);
+}
+.cs-drawer-body {
+  flex: 1;
+  position: relative;
+  background: var(--bg);
+  overflow: hidden;
+}
+.cs-drawer-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* ─── Exam Simulator Progress Bar & Pulse ─── */
+.es-timer-bar-wrap {
+  width: 100%;
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+.es-timer-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--blue));
+  transition: width 0.3s ease, background 0.3s ease;
+}
+.es-timer-warn + .es-timer-bar-wrap .es-timer-bar-fill,
+.es-timer-bar-wrap:has(.es-timer-warn) .es-timer-bar-fill {
+  background: var(--orange);
+}
+@keyframes timer-pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.85; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.es-timer-pulse {
+  animation: timer-pulse 1s infinite ease-in-out;
+  color: var(--red) !important;
+  font-weight: 800;
+}
+

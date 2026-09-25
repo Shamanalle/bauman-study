@@ -19,19 +19,26 @@ const BASE_PATH = './data/programming-technologies/labs';
  * Initialize the ТиМП lab browser.
  */
 export async function initTimpLabBrowser() {
-  const [metaRes, indexRes] = await Promise.all([
-    fetch(`${BASE_PATH}/meta.json`),
-    fetch(`${BASE_PATH}/index.json`),
-  ]);
+  if (typeof window !== 'undefined' && window.__ALL_LAB_DATA__?.['programming-technologies']) {
+    const td = window.__ALL_LAB_DATA__['programming-technologies'];
+    labsMeta = td.meta;
+    labsIndex = td.index;
+    referenceData = td.glossary || null;
+  } else {
+    const [metaRes, indexRes] = await Promise.all([
+      fetch(`${BASE_PATH}/meta.json`),
+      fetch(`${BASE_PATH}/index.json`),
+    ]);
 
-  labsMeta = await metaRes.json();
-  labsIndex = await indexRes.json();
+    labsMeta = await metaRes.json();
+    labsIndex = await indexRes.json();
 
-  // Try loading reference data
-  try {
-    const refRes = await fetch(`${BASE_PATH}/commands-glossary.json`);
-    if (refRes.ok) referenceData = await refRes.json();
-  } catch (_) {}
+    // Try loading reference data
+    try {
+      const refRes = await fetch(`${BASE_PATH}/commands-glossary.json`);
+      if (refRes.ok) referenceData = await refRes.json();
+    } catch (_) {}
+  }
 
   // Parse URL params
   const params = new URLSearchParams(window.location.search);
@@ -143,9 +150,14 @@ async function loadLab(labIndex) {
 
   try {
     const labInfo = labsIndex.labs[labIndex];
-    const res = await fetch(`${BASE_PATH}/${labInfo.file}`);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    currentLabData = await res.json();
+    if (typeof window !== 'undefined' && window.__ALL_LAB_DATA__?.['programming-technologies']?.labs) {
+      currentLabData = window.__ALL_LAB_DATA__['programming-technologies'].labs[labInfo.file];
+      if (!currentLabData) throw new Error('Not found in offline data');
+    } else {
+      const res = await fetch(`${BASE_PATH}/${labInfo.file}`);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      currentLabData = await res.json();
+    }
     currentTab = 'tasks';
     // Reset active tab
     document.querySelectorAll('#timpLabTabs .lab-tab').forEach(t => t.classList.remove('active'));
@@ -251,6 +263,7 @@ function postProcessCodeBlocks(container) {
       navigator.clipboard.writeText(text).then(() => {
         btn.textContent = '✓ Скопировано';
         btn.classList.add('copied');
+        if (window.showToast) window.showToast('Код команды скопирован в буфер', 'copy');
         setTimeout(() => {
           btn.textContent = 'Копировать';
           btn.classList.remove('copied');

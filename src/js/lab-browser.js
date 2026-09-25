@@ -18,14 +18,20 @@ const BASE_PATH = './data/algorithmic-languages/labs';
  * Initialize the lab browser.
  */
 export async function initLabBrowser() {
-  // Load meta and index
-  const [metaRes, indexRes] = await Promise.all([
-    fetch(`${BASE_PATH}/meta.json`),
-    fetch(`${BASE_PATH}/index.json`),
-  ]);
+  if (typeof window !== 'undefined' && window.__ALL_LAB_DATA__?.['algorithmic-languages']) {
+    const ld = window.__ALL_LAB_DATA__['algorithmic-languages'];
+    labsMeta = ld.meta;
+    labsIndex = ld.index;
+  } else {
+    // Load meta and index
+    const [metaRes, indexRes] = await Promise.all([
+      fetch(`${BASE_PATH}/meta.json`),
+      fetch(`${BASE_PATH}/index.json`),
+    ]);
 
-  labsMeta = await metaRes.json();
-  labsIndex = await indexRes.json();
+    labsMeta = await metaRes.json();
+    labsIndex = await indexRes.json();
+  }
 
   // Parse URL params
   const params = new URLSearchParams(window.location.search);
@@ -158,9 +164,15 @@ async function loadSolution(variant, lab) {
   contentEl.innerHTML = '<div class="lab-loading">⏳ Загрузка решения...</div>';
 
   try {
-    const res = await fetch(`${BASE_PATH}/solutions/v${variant}/lab-${lab}.json`);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    currentSolution = await res.json();
+    if (typeof window !== 'undefined' && window.__ALL_LAB_DATA__?.['algorithmic-languages']?.solutions) {
+      const sols = window.__ALL_LAB_DATA__['algorithmic-languages'].solutions;
+      currentSolution = sols[`v${variant}`]?.[`lab-${lab}.json`];
+      if (!currentSolution) throw new Error('Solution not found in offline data');
+    } else {
+      const res = await fetch(`${BASE_PATH}/solutions/v${variant}/lab-${lab}.json`);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      currentSolution = await res.json();
+    }
     renderTabContent();
   } catch (err) {
     contentEl.innerHTML = `
@@ -195,7 +207,10 @@ function renderTabContent() {
           <div class="lab-code-header">
             <span class="lab-code-filename">main.cpp</span>
             <span class="lab-code-variant">Вариант ${currentSolution.variant}</span>
-            <button class="lab-copy-btn" id="copyCodeBtn" title="Копировать код">📋 Копировать</button>
+            <div class="lab-code-actions">
+              <button class="lab-copy-btn" id="copyCodeBtn" title="Копировать код">📋 Копировать</button>
+              <button class="lab-copy-btn lab-dl-btn" id="downloadCodeBtn" title="Скачать .cpp файл">💾 Скачать .cpp</button>
+            </div>
           </div>
           <div class="lab-code-body">
             ${highlightCode(`<pre><code>${escapeHtml(currentSolution.code)}</code></pre>`)}
@@ -207,8 +222,18 @@ function renderTabContent() {
         navigator.clipboard.writeText(currentSolution.code).then(() => {
           const btn = document.getElementById('copyCodeBtn');
           btn.textContent = '✅ Скопировано!';
+          if (window.showToast) window.showToast('Код программы скопирован в буфер', 'copy');
           setTimeout(() => btn.textContent = '📋 Копировать', 2000);
         });
+      });
+      // Download button
+      document.getElementById('downloadCodeBtn')?.addEventListener('click', () => {
+        const blob = new Blob([currentSolution.code], { type: 'text/x-c++src;charset=utf-8' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = `lab${currentLab}_v${currentSolution.variant}.cpp`;
+        a.click();
+        if (window.showToast) window.showToast(`Файл lab${currentLab}_v${currentSolution.variant}.cpp сохранён`, 'success');
       });
       break;
 

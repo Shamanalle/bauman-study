@@ -5,6 +5,7 @@
 import { buildQuestionBody } from './question-card.js';
 import { renderMath } from './math-utils.js';
 import * as sr from './sr-engine.js';
+import { celebrate } from './progress.js';
 
 let _meta = null;
 let _sections = [];
@@ -310,6 +311,10 @@ function showResults() {
 
   const score = Math.round(((easy + ok * 0.5) / total) * 100);
   const barColor = score >= 70 ? 'var(--accent)' : score >= 40 ? 'var(--orange)' : 'var(--red)';
+
+  if (score >= 70) {
+    try { celebrate(); } catch(_) {}
+  }
 
   container.innerHTML = `
     <div class="fc-container">

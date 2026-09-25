@@ -1,6 +1,29 @@
 // Question card HTML builder
 import { nl } from './text-utils.js';
 
+function escapeAttr(str) {
+  return String(str || '')
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
+export function renderMathBox(formula) {
+  if (!formula) return '';
+  const cleanLatex = String(formula).trim().replace(/^\\?\[|\\?\]$/g, '').replace(/^\$\$|\$\$$/g, '').trim();
+  const escaped = escapeAttr(cleanLatex);
+  return `
+    <div class="math-box-wrap" data-latex="${escaped}">
+      <div class="math-box">$$${cleanLatex}$$</div>
+      <button class="copy-latex-btn" title="Скопировать формулу LaTeX" onclick="window.__copyLatex(this, event)">
+        <span class="cl-icon">📋</span> LaTeX
+      </button>
+    </div>
+  `;
+}
+
 /**
  * Build the full HTML for a question card (header + collapsible body).
  */
@@ -81,7 +104,7 @@ export function buildQuestionBody(q, proofLabel, exampleLabel) {
       <div class="card-formal-text">${nl(q.formalText || q.statement || '')}</div>
       ${q.conditions ? '<ul class="card-cond">' + q.conditions.map(c => '<li>' + c + '</li>').join('') + '</ul>' : ''}
     </div>
-    ${q.formula ? `<div class="math-box">$$${q.formula}$$</div>` : ''}
+    ${q.formula ? renderMathBox(q.formula) : ''}
     ${q.visual ? `<div class="visual-block">${q.visual}${q.visualLabel ? `<div class="visual-label">${q.visualLabel}</div>` : ''}</div>` : ''}
     ${insightText ? `<div class="card-insight"><div class="card-insight-label">💡 Простыми словами</div><div class="card-insight-text">${nl(insightText)}</div></div>` : ''}
     ${noteText ? `<div class="card-note">📌 ${nl(noteText)}</div>` : ''}
@@ -98,7 +121,7 @@ export function buildQuestionBody(q, proofLabel, exampleLabel) {
       </div>
       <div class="example-body">
         <div class="card-example-text">${nl(typeof q.example === 'string' ? q.example : q.example.text)}</div>
-        ${q.example?.math ? `<div class="math-box">${q.example.math}</div>` : ''}
+        ${q.example?.math ? renderMathBox(q.example.math) : ''}
       </div>` : ''}
     ${q.advanced ? `
       <div class="adv-toggle" onclick="this.classList.toggle('open');window.__renderMath?.(this.closest('.theorem-page') || this.closest('.fc-answer') || this.closest('.fc-card'))">
@@ -153,7 +176,7 @@ function buildPracticeModeBody(q, proofLabel, exampleLabel) {
       <div class="card-formal">
         <div class="card-formal-text">${nl(q.formalText || '')}</div>
         ${q.conditions ? '<ul class="card-cond">' + q.conditions.map(c => '<li>' + c + '</li>').join('') + '</ul>' : ''}
-        ${q.formula ? `<div class="math-box">$$${q.formula}$$</div>` : ''}
+        ${q.formula ? renderMathBox(q.formula) : ''}
       </div>
       ${proofContent || ''}
       ${q.example ? `
@@ -162,7 +185,7 @@ function buildPracticeModeBody(q, proofLabel, exampleLabel) {
         </div>
         <div class="example-body">
           <div class="card-example-text">${nl(typeof q.example === 'string' ? q.example : q.example.text)}</div>
-          ${q.example?.math ? `<div class="math-box">${q.example.math}</div>` : ''}
+          ${q.example?.math ? renderMathBox(q.example.math) : ''}
         </div>` : ''}
       ${q.note ? `<div class="card-note">📌 ${nl(q.note)}</div>` : ''}`;
   }
@@ -186,10 +209,10 @@ function buildPracticeModeBody(q, proofLabel, exampleLabel) {
       <div class="solution-body">
         ${insightText ? `<div class="card-insight"><div class="card-insight-label">💡 Простыми словами</div><div class="card-insight-text">${nl(insightText)}</div></div>` : ''}
         ${proofContent || ''}
-        ${q.formula ? `<div class="solution-answer"><span class="solution-answer-label">Ответ:</span> <div class="math-box">$$${q.formula}$$</div></div>` : ''}
+        ${q.formula ? `<div class="solution-answer"><span class="solution-answer-label">Ответ:</span> ${renderMathBox(q.formula)}</div>` : ''}
         ${q.example ? `
           <div class="card-example-text">${nl(typeof q.example === 'string' ? q.example : q.example.text)}</div>
-          ${q.example?.math ? `<div class="math-box">${q.example.math}</div>` : ''}` : ''}
+          ${q.example?.math ? renderMathBox(q.example.math) : ''}` : ''}
         ${q.note || q.examSay ? `<div class="card-note">📌 ${nl(q.note || q.examSay)}</div>` : ''}
       </div>` : ''}`;
 }

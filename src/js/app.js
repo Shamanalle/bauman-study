@@ -12,13 +12,39 @@ import { renderMath } from './math-utils.js';
 import * as progress from './progress.js';
 import { SUBJECTS } from './subjects-config.js';
 
+import { showToast } from './toast.js';
+
 // --- Global functions exposed for onclick handlers in HTML strings ---
+window.showToast = showToast;
 window.__renderMath = (el) => renderMath(el);
 window.__toggleLearn = (id, e) => {
   e?.stopPropagation();
   progress.toggleLearnedItem(id);
   updateLearnedUI();
   renderPills();
+  const isNowLearned = progress.isLearned(id);
+  showToast(
+    isNowLearned ? `Билет #${id} отмечен выученным` : `Билет #${id} снят с отметки`,
+    isNowLearned ? 'success' : 'info',
+    1800
+  );
+};
+window.__copyLatex = (btn, e) => {
+  e?.stopPropagation();
+  const wrap = btn.closest('.math-box-wrap');
+  const latex = wrap?.dataset?.latex || wrap?.querySelector('.math-box')?.textContent || '';
+  if (!latex) return;
+  navigator.clipboard.writeText(latex).then(() => {
+    btn.innerHTML = `<span class="cl-icon">✓</span> Скопировано`;
+    btn.classList.add('copied');
+    showToast('LaTeX формула скопирована в буфер', 'copy', 2000);
+    setTimeout(() => {
+      btn.innerHTML = `<span class="cl-icon">📋</span> LaTeX`;
+      btn.classList.remove('copied');
+    }, 2000);
+  }).catch(() => {
+    showToast('Не удалось скопировать', 'error');
+  });
 };
 window.__filterSection = (name) => filterSection(name);
 window.__resetProgress = () => { progress.resetProgress(); updateLearnedUI(); renderPills(); render(''); };
@@ -64,14 +90,46 @@ export function renderBreadcrumbs(title, categoryName = null) {
     }
   }
   const rootUrl = window.location.pathname;
-  bc.innerHTML = `
-    <a href="${rootUrl}" class="gb-back" title="Вернуться ко всем предметам">
-      <span class="gb-arrow">←</span> Все предметы
-    </a>
-    <span class="gb-sep">/</span>
-    <span class="gb-current">${title}</span>
-    ${categoryName ? `<span class="gb-sep">/</span><span class="gb-tag">${categoryName}</span>` : ''}
-  `;
+  const params = new URLSearchParams(window.location.search);
+  const currentSubId = params.get('subject');
+  const currentAssessment = params.get('assessment');
+  const currentType = params.get('type');
+  const subject = SUBJECTS.find(s => s.id === currentSubId);
+
+  if (subject && subject.assessments?.length > 1) {
+    const optionsHtml = subject.assessments.map(a => {
+      const href = a.href || `?subject=${subject.id}&assessment=${a.assessment}`;
+      let isSelected = false;
+      if (currentType && a.type === currentType) isSelected = true;
+      else if (currentAssessment && a.assessment === currentAssessment && !currentType) isSelected = true;
+      return `<option value="${href}" ${isSelected ? 'selected' : ''}>${a.icon} ${a.name}</option>`;
+    }).join('');
+
+    bc.innerHTML = `
+      <a href="${rootUrl}" class="gb-back" title="Вернуться ко всем предметам">
+        <span class="gb-arrow">←</span> Все предметы
+      </a>
+      <span class="gb-sep">/</span>
+      <span class="gb-subject">${subject.icon} ${subject.title}</span>
+      <span class="gb-sep">/</span>
+      <div class="gb-switcher-wrap">
+        <select class="gb-switcher" aria-label="Выбрать работу" onchange="if(this.value) location.href=this.value">
+          ${optionsHtml}
+        </select>
+        <span class="gb-switcher-arrow">▾</span>
+      </div>
+      ${categoryName ? `<span class="gb-tag">${categoryName}</span>` : ''}
+    `;
+  } else {
+    bc.innerHTML = `
+      <a href="${rootUrl}" class="gb-back" title="Вернуться ко всем предметам">
+        <span class="gb-arrow">←</span> Все предметы
+      </a>
+      <span class="gb-sep">/</span>
+      <span class="gb-current">${title}</span>
+      ${categoryName ? `<span class="gb-tag">${categoryName}</span>` : ''}
+    `;
+  }
 }
 
 function getAssessmentBadge(name) {
@@ -200,36 +258,81 @@ async function init() {
   }
 }
 
+const SUBJECT_CATEGORIES = {
+  'differential-equations': 'math',
+  'linear-algebra': 'math',
+  'math-cs-foundations': 'math cs',
+  'physics': 'physics',
+  'algorithmic-languages': 'cs',
+  'programming-technologies': 'cs',
+};
+
 function showPlatformPage() {
   const subjects = SUBJECTS;
+  const { totalLearned, subjectLearned } = progress.getOverallProgress();
+  const totalAssessments = subjects.reduce((s, sub) => s + sub.assessments.length, 0);
 
   document.title = 'Платформа подготовки к экзаменам · МГТУ им. Баумана';
   document.getElementById('app').innerHTML = `
-    <div class="hero" style="margin-bottom:32px">
-      <h1>🎓 Платформа подготовки к экзаменам</h1>
-      <p>МГТУ им. Н.Э. Баумана · 2 семестр</p>
+    <div class="hero platform-hero">
+      <div class="hero-badge">🎓 Семестр 2 · МГТУ им. Н.Э. Баумана</div>
+      <h1 class="hero-title">База знаний и тренажёр к экзаменам</h1>
+      <p class="hero-subtitle">Билеты, алгоритмы, интерактивная практика и симулятор контрольных мероприятий</p>
       <div class="stats-row">
-        <div class="stat-pill">📚 ${subjects.length} предметов</div>
-        <div class="stat-pill">📝 ${subjects.reduce((s, sub) => s + sub.assessments.length, 0)} работ</div>
+        <div class="stat-pill" title="Количество предметов в базе">
+          <span class="stat-pill-icon">📚</span> <strong>${subjects.length}</strong> предметов
+        </div>
+        <div class="stat-pill" title="Контрольные, РК, экзамены и пособия">
+          <span class="stat-pill-icon">📝</span> <strong>${totalAssessments}</strong> работ
+        </div>
+        <div class="stat-pill stat-pill--highlight" title="Билеты, изученные вами на этом устройстве">
+          <span class="stat-pill-icon">✨</span> <strong>${totalLearned}</strong> выучено
+        </div>
+        <button class="stat-pill stat-pill--btn" id="heroSearchBtn" title="Быстрый поиск (Ctrl+K)">
+          <span class="stat-pill-icon">🔍</span> Поиск <kbd>Ctrl K</kbd>
+        </button>
         <button class="stat-pill dark-toggle" id="darkToggle2" title="Переключить тему">🌙</button>
       </div>
     </div>
+
+    <div class="platform-filters-row" id="platformCategoryFilters">
+      <button class="plat-cat-btn active" data-cat="all">🌟 Все направления <span class="plat-cat-count">${subjects.length}</span></button>
+      <button class="plat-cat-btn" data-cat="math">📐 Высшая математика <span class="plat-cat-count">3</span></button>
+      <button class="plat-cat-btn" data-cat="physics">⚛️ Физика <span class="plat-cat-count">1</span></button>
+      <button class="plat-cat-btn" data-cat="cs">💻 Программирование <span class="plat-cat-count">3</span></button>
+    </div>
+
     <div class="platform-grid">
       ${subjects.map(sub => {
+        const cat = SUBJECT_CATEGORIES[sub.id] || 'other';
         const textbook = sub.assessments.filter(a => a.type === 'textbook');
         const rest = sub.assessments.filter(a => a.type !== 'textbook');
+        const learnedCount = subjectLearned[sub.id] || 0;
+        const hasPractice = rest.some(a => a.type === 'kr' || a.name.includes('Практика'));
+        const hasTheory = rest.some(a => a.type === 'exam' || a.type === 'midterm' || a.type === 'zachet');
+
         return `
-        <div class="platform-card">
+        <div class="platform-card" data-category="${cat}">
           <div class="platform-card-header">
             <span class="platform-icon">${sub.icon}</span>
-            <div>
+            <div class="platform-card-title-wrap">
               <div class="platform-card-title">${sub.title}</div>
               <div class="platform-card-subtitle">${sub.subtitle}</div>
             </div>
+            ${learnedCount > 0 ? `<div class="plat-sub-learned" title="Выучено билетов в этом предмете">✨ ${learnedCount}</div>` : ''}
           </div>
+
+          ${hasPractice && hasTheory ? `
+            <div class="plat-sub-tabs">
+              <button class="plat-sub-tab active" data-subtab="all">Все</button>
+              <button class="plat-sub-tab" data-subtab="theory">Теория</button>
+              <button class="plat-sub-tab" data-subtab="practice">Практика</button>
+            </div>
+          ` : ''}
+
           <div class="platform-assessments">
             ${textbook.map(a => `
-              <a href="${a.href || `?subject=${sub.id}&assessment=${a.assessment}`}" class="platform-link platform-link--special">
+              <a href="${a.href || `?subject=${sub.id}&assessment=${a.assessment}`}" class="platform-link platform-link--special" data-type="theory">
                 <span class="platform-link-title">${a.icon} ${a.name}</span>
                 <span class="platform-link-end">
                   ${getAssessmentBadge(a.name)}
@@ -238,15 +341,17 @@ function showPlatformPage() {
               </a>
             `).join('')}
             ${textbook.length ? `<div class="platform-divider"></div>` : ''}
-            ${rest.map(a => `
-              <a href="${a.href || `?subject=${sub.id}&assessment=${a.assessment}`}" class="platform-link">
+            ${rest.map(a => {
+              const isPrac = a.type === 'kr' || a.name.includes('Практика');
+              return `
+              <a href="${a.href || `?subject=${sub.id}&assessment=${a.assessment}`}" class="platform-link" data-type="${isPrac ? 'practice' : 'theory'}">
                 <span class="platform-link-title">${a.icon} ${a.name}</span>
                 <span class="platform-link-end">
                   ${getAssessmentBadge(a.name)}
                   <span class="platform-arrow">→</span>
                 </span>
               </a>
-            `).join('')}
+            `}).join('')}
           </div>
         </div>
       `}).join('')}
@@ -257,6 +362,47 @@ function showPlatformPage() {
   document.getElementById('darkToggle2')?.addEventListener('click', progress.toggleTheme);
   const btn = document.getElementById('darkToggle2');
   if (btn) btn.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+
+  // Search hero button
+  document.getElementById('heroSearchBtn')?.addEventListener('click', () => {
+    if (window.openCommandPalette) window.openCommandPalette();
+  });
+
+  // Category filter handlers
+  const filterBtns = document.querySelectorAll('.plat-cat-btn');
+  filterBtns.forEach(b => {
+    b.addEventListener('click', () => {
+      filterBtns.forEach(other => other.classList.remove('active'));
+      b.classList.add('active');
+      const cat = b.dataset.cat;
+      document.querySelectorAll('.platform-card').forEach(card => {
+        const cardCats = (card.dataset.category || '').split(' ');
+        card.style.display = (cat === 'all' || cardCats.includes(cat)) ? '' : 'none';
+      });
+    });
+  });
+
+  // Subtab filter handlers (inside each card)
+  document.querySelectorAll('.plat-sub-tabs').forEach(tabGroup => {
+    tabGroup.addEventListener('click', (e) => {
+      const tab = e.target.closest('.plat-sub-tab');
+      if (!tab) return;
+      tabGroup.querySelectorAll('.plat-sub-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const mode = tab.dataset.subtab;
+      const card = tabGroup.closest('.platform-card');
+      card.querySelectorAll('.platform-link:not(.platform-link--special)').forEach(link => {
+        const isPrac = link.dataset.type === 'practice';
+        if (mode === 'all') {
+          link.style.display = '';
+        } else if (mode === 'practice') {
+          link.style.display = isPrac ? '' : 'none';
+        } else if (mode === 'theory') {
+          link.style.display = !isPrac ? '' : 'none';
+        }
+      });
+    });
+  });
 
   // Init global search
   import('./global-search.js').then(({ initGlobalSearch }) => {

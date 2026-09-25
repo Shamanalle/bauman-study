@@ -63,20 +63,24 @@ description: >
 
 | Файл | Зачем |
 |------|-------|
-| `src/js/practice-browser.js` | **Текущий** рендерер practice-бандлов — табы, задачи, решения. Переиспользуй `md()` |
+| `src/js/practice-browser.js` | **Текущий** рендерер practice-бандлов — табы, задачи, решения, интеграция Cheatsheet Drawer |
 | `src/js/practice-engine.js` | **Engine** — `DIFFICULTY` enum, `classifySection()`, topic extraction, sessions, progress, exam ticket builder |
 | `src/js/practice-training.js` | **Training UI** — Setup с difficulty-табами → Task → Results |
-| `src/js/exam-simulator.js` | **Exam UI** — Setup с difficulty-выбором → Timed exam → Review |
-| `src/js/app.js` | Роутинг, подключение режимов, URL-параметры |
+| `src/js/exam-simulator.js` | **Exam UI** — Setup с difficulty-выбором → Timed exam с прогресс-баром и пульсацией таймера → Review |
+| `src/js/cheatsheet.js` | Встроенный боковой Drawer (`openCheatsheetDrawer`) для подглядывания в формулы без сброса сессии |
+| `src/js/toast.js` | Неблокирующие Toast-уведомления (`showToast`) вместо `alert()` |
+| `src/js/global-search.js` | Command Palette (Spotlight search `Ctrl+K` / `/`) с offline-индексацией |
+| `src/js/app.js` | Роутинг, подключение режимов, URL-параметры, выпадающий переключатель аттестаций |
 | `src/js/data-loader.js` | Загрузка JSON-данных, структура `{ meta, sections }` |
 | `src/js/flashcard.js` | Flashcard-режим — **аналогия**: твой тренировочный режим ≈ flashcard для задач |
 | `src/js/sr-engine.js` | SR-движок — переиспользуй паттерны хранения прогресса |
-| `src/js/progress.js` | localStorage через `setPrefix()` |
-| `src/js/question-card.js` | `buildQuestionBody()` — переиспользуй для рендера |
+| `src/js/progress.js` | localStorage через `setPrefix()` + расчет глобального прогресса `getOverallProgress()` |
+| `src/js/question-card.js` | `buildQuestionBody()` и `renderMathBox()` с кнопкой копирования LaTeX `📋` |
 | `src/js/math-utils.js` | `renderMath()` — KaTeX |
 | `src/js/text-utils.js` | `nl()` — markdown→HTML |
-| `src/css/base.css` | CSS-переменные |
+| `src/css/base.css` | Дизайн-токены, тени, анимации, стекломорфизм |
 | `src/css/dark.css` | Dark theme |
+| `src/css/practice.css` | Стили тренажера, Cheatsheet Drawer, таймера экзамена |
 
 ### Данные
 

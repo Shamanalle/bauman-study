@@ -126,3 +126,34 @@ export function celebrate() {
 
   setTimeout(() => c.remove(), 4000);
 }
+
+// --- Overall Platform Progress ---
+
+export function getOverallProgress() {
+  let totalLearned = 0;
+  const subjectLearned = {};
+  try {
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key && key.endsWith('_learned3')) {
+        const arr = JSON.parse(localStorage.getItem(key) || '[]');
+        const count = Array.isArray(arr) ? arr.length : 0;
+        totalLearned += count;
+        const prefix = key.replace('_learned3', '');
+        let subId = null;
+        if (prefix.startsWith('ph')) subId = 'physics';
+        else if (prefix.startsWith('id')) subId = 'differential-equations';
+        else if (prefix.startsWith('la')) subId = 'linear-algebra';
+        else if (prefix.startsWith('al') || prefix.startsWith('ay')) subId = 'algorithmic-languages';
+        else if (prefix.startsWith('timp') || prefix.startsWith('pt')) subId = 'programming-technologies';
+        else if (prefix.startsWith('moi')) subId = 'math-cs-foundations';
+        if (subId) {
+          subjectLearned[subId] = (subjectLearned[subId] || 0) + count;
+        }
+      }
+    }
+  } catch (e) {
+    console.warn('Error reading progress:', e);
+  }
+  return { totalLearned, subjectLearned };
+}

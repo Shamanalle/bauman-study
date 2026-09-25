@@ -16,18 +16,23 @@ let currentChapterIdx = 0;
 export async function initTextbook() {
   const params = new URLSearchParams(window.location.search);
   const subject = params.get('subject');
-  const basePath = `./data/${subject}/textbook`;
+  // Check offline inlined data first
+  if (typeof window !== 'undefined' && window.__TEXTBOOK_DATA__ && window.__TEXTBOOK_DATA__[subject]) {
+    const td = window.__TEXTBOOK_DATA__[subject];
+    textbookMeta = td.meta;
+    textbookIndex = td.index;
+  } else {
+    const basePath = `./data/${subject}/textbook`;
+    const [metaRes, indexRes] = await Promise.all([
+      fetch(`${basePath}/meta.json`),
+      fetch(`${basePath}/index.json`),
+    ]);
 
-  // Load meta + index
-  const [metaRes, indexRes] = await Promise.all([
-    fetch(`${basePath}/meta.json`),
-    fetch(`${basePath}/index.json`),
-  ]);
+    if (!metaRes.ok) throw new Error('Textbook not found');
 
-  if (!metaRes.ok) throw new Error('Textbook not found');
-
-  textbookMeta = await metaRes.json();
-  textbookIndex = await indexRes.json();
+    textbookMeta = await metaRes.json();
+    textbookIndex = await indexRes.json();
+  }
 
   // Parse URL for chapter
   currentChapterIdx = parseInt(params.get('ch') || '0');
@@ -127,9 +132,15 @@ async function loadChapter(idx) {
   try {
     const params = new URLSearchParams(window.location.search);
     const subject = params.get('subject');
-    const res = await fetch(`./data/${subject}/textbook/${chapterInfo.file}`);
-    if (!res.ok) throw new Error('Chapter not found');
-    currentChapter = await res.json();
+
+    if (typeof window !== 'undefined' && window.__TEXTBOOK_DATA__ && window.__TEXTBOOK_DATA__[subject]) {
+      currentChapter = window.__TEXTBOOK_DATA__[subject].chapters[chapterInfo.file];
+      if (!currentChapter) throw new Error('Chapter not found in offline data');
+    } else {
+      const res = await fetch(`./data/${subject}/textbook/${chapterInfo.file}`);
+      if (!res.ok) throw new Error('Chapter not found');
+      currentChapter = await res.json();
+    }
 
     renderChapter();
     updateChapterNav();

@@ -1,5 +1,6 @@
 // Cheatsheet: opens pre-generated static HTML cheatsheet for the current assessment
 // Static files are in /cheatsheets/{subject}-{assessment}.html
+import { showToast } from './toast.js';
 
 export const CHEATSHEET_MAP = {
   'physics|midterm-1-practice': 'physics-rk1',
@@ -35,42 +36,103 @@ export function getCheatsheetUrl(file) {
   }
 }
 
+function resolveCheatsheetTarget() {
+  const params = new URLSearchParams(window.location.search);
+  const subject = params.get('subject') || '';
+  const assessment = params.get('assessment') || '';
+  const key = `${subject}|${assessment}`;
+  const file = CHEATSHEET_MAP[key];
+
+  if (!file) return null;
+
+  const inlinedHtml = (typeof window !== 'undefined' && window.__CHEATSHEET_DATA__ && window.__CHEATSHEET_DATA__[file])
+    || (typeof window !== 'undefined' && window.__INLINE_CHEATSHEET__);
+
+  let url = '';
+  if (inlinedHtml) {
+    try {
+      const blob = new Blob([inlinedHtml], { type: 'text/html; charset=utf-8' });
+      url = URL.createObjectURL(blob);
+    } catch (e) {
+      url = getCheatsheetUrl(file);
+    }
+  } else {
+    url = getCheatsheetUrl(file);
+  }
+
+  return { file, url, inlinedHtml };
+}
+
+let activeDrawer = null;
+
+export function openCheatsheetDrawer(meta) {
+  const target = resolveCheatsheetTarget();
+  if (!target) {
+    showToast('Шпаргалка для этого раздела пока не создана', 'info');
+    return;
+  }
+
+  if (activeDrawer && document.body.contains(activeDrawer)) {
+    activeDrawer.classList.add('cs-drawer-backdrop--open');
+    return;
+  }
+
+  const backdrop = document.createElement('div');
+  backdrop.id = 'csDrawerBackdrop';
+  backdrop.className = 'cs-drawer-backdrop';
+  backdrop.innerHTML = `
+    <div class="cs-drawer" id="csDrawer">
+      <div class="cs-drawer-header">
+        <div class="cs-drawer-title-group">
+          <span class="cs-drawer-icon">📄</span>
+          <span class="cs-drawer-title">Шпаргалка · ${meta?.title || 'Формулы'}</span>
+        </div>
+        <div class="cs-drawer-actions">
+          <button class="cs-drawer-btn" id="csOpenTabBtn" title="Открыть в новой вкладке">↗ Новая вкладка</button>
+          <button class="cs-drawer-close" id="csCloseBtn" title="Закрыть (Esc)">✕</button>
+        </div>
+      </div>
+      <div class="cs-drawer-body">
+        <iframe class="cs-drawer-iframe" src="${target.url}" title="Шпаргалка"></iframe>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(backdrop);
+  activeDrawer = backdrop;
+
+  requestAnimationFrame(() => {
+    backdrop.classList.add('cs-drawer-backdrop--open');
+  });
+
+  const closeDrawer = () => {
+    backdrop.classList.remove('cs-drawer-backdrop--open');
+    setTimeout(() => {
+      backdrop.remove();
+      if (activeDrawer === backdrop) activeDrawer = null;
+    }, 220);
+    document.removeEventListener('keydown', onKeyDown);
+  };
+
+  const onKeyDown = (e) => {
+    if (e.key === 'Escape') closeDrawer();
+  };
+  document.addEventListener('keydown', onKeyDown);
+
+  backdrop.querySelector('#csCloseBtn')?.addEventListener('click', closeDrawer);
+  backdrop.addEventListener('click', (e) => {
+    if (e.target === backdrop) closeDrawer();
+  });
+  backdrop.querySelector('#csOpenTabBtn')?.addEventListener('click', () => {
+    window.open(target.url, '_blank');
+  });
+}
+
 export function initCheatsheet(meta, sections) {
   return {
     render() {
-      // Determine which cheatsheet to open
-      const params = new URLSearchParams(window.location.search);
-      const subject = params.get('subject') || '';
-      const assessment = params.get('assessment') || '';
-      const key = `${subject}|${assessment}`;
-      const file = CHEATSHEET_MAP[key];
-
-      if (!file) {
-        alert('Шпаргалка для этого раздела пока не создана');
-        return;
-      }
-
-      // Priority 1: Inlined HTML from standalone platform or bundle (Blob URL works 100% offline)
-      const inlinedHtml = (window.__CHEATSHEET_DATA__ && window.__CHEATSHEET_DATA__[file])
-        || window.__INLINE_CHEATSHEET__;
-
-      if (inlinedHtml) {
-        try {
-          const blob = new Blob([inlinedHtml], { type: 'text/html; charset=utf-8' });
-          const blobUrl = URL.createObjectURL(blob);
-          const win = window.open(blobUrl, '_blank');
-          if (win) return;
-        } catch (e) {
-          console.warn('Failed to open blob URL, falling back to static URL', e);
-        }
-      }
-
-      // Priority 2: Static URL relative to application root
-      const url = getCheatsheetUrl(file);
-      const win = window.open(url, '_blank');
-      if (!win) {
-        window.location.href = url;
-      }
+      // Open the in-page drawer for smooth split reading
+      openCheatsheetDrawer(meta);
     }
   };
 }

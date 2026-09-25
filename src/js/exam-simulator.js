@@ -247,6 +247,11 @@ function renderExam() {
         </div>
         <button class="es-finish-btn" id="esFinishBtn">🏁 Завершить</button>
       </div>
+      ${_timerDuration > 0 ? `
+        <div class="es-timer-bar-wrap">
+          <div class="es-timer-bar-fill" id="esTimerBarFill" style="width: 0%"></div>
+        </div>
+      ` : ''}
 
       <div class="es-task-card" id="esTaskCard">
         <div class="es-task-num">Задача ${_currentTask + 1} из ${_examTasks.length}</div>
@@ -319,16 +324,30 @@ function startTimer() {
 
 function updateTimerDisplay() {
   const timerEl = document.getElementById('esTimer');
+  const barFill = document.getElementById('esTimerBarFill');
   if (!timerEl || _timerDuration <= 0) return;
 
-  const remaining = Math.max(0, _timerDuration - (Date.now() - _startTime));
+  const elapsed = Date.now() - _startTime;
+  const remaining = Math.max(0, _timerDuration - elapsed);
   const mins = Math.floor(remaining / 60000);
   const secs = Math.floor((remaining % 60000) / 1000);
   timerEl.textContent = `⏱ ${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
 
-  // Warning colors
-  if (remaining < 300000) timerEl.classList.add('es-timer-warn'); // < 5 min
-  if (remaining < 60000) timerEl.classList.add('es-timer-danger'); // < 1 min
+  const pct = Math.min(100, Math.max(0, (elapsed / _timerDuration) * 100));
+  if (barFill) {
+    barFill.style.width = `${pct}%`;
+  }
+
+  // Warning colors & pulse
+  if (remaining < 300000) { // < 5 min
+    timerEl.classList.add('es-timer-warn');
+    timerEl.classList.add('es-timer-pulse');
+  } else {
+    timerEl.classList.remove('es-timer-warn', 'es-timer-pulse');
+  }
+  if (remaining < 60000) { // < 1 min
+    timerEl.classList.add('es-timer-danger');
+  }
 }
 
 function finishExam() {
