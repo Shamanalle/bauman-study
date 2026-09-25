@@ -81,6 +81,37 @@
   .gst-kbd { display: none !important; }
 }
 
+/* --- Large Phone / Compact Tablet (≤ 640px) --- */
+@media (max-width: 640px) {
+  .header-center {
+    flex: 0 0 auto;
+    margin-left: auto;
+  }
+  .header-search-btn {
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+    max-width: 34px !important;
+    padding: 0 !important;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .header-search-btn .search-btn-text,
+  .header-search-btn .search-btn-kbd {
+    display: none !important;
+  }
+  .header-search-btn .search-btn-icon {
+    margin: 0 !important;
+    font-size: 1rem;
+  }
+  .header-icon-btn.header-gh-btn {
+    display: none !important;
+  }
+}
+
 /* --- Phone (≤ 480px) --- */
 @media (max-width: 480px) {
   /* Hero compact */

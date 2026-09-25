@@ -142,23 +142,28 @@
   border-radius: 12px;
   margin-bottom: 16px;
   border: 1px solid var(--border);
-  flex-wrap: wrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  flex-wrap: nowrap;
+}
+.lab-tabs::-webkit-scrollbar {
+  display: none;
 }
 
 .lab-tab {
-  flex: 1;
-  padding: 8px 10px;
+  flex: 0 0 auto;
+  padding: 8px 14px;
   border: none;
   border-radius: 8px;
   background: transparent;
   color: var(--text3);
-  font-size: 0.8rem;
-  font-weight: 500;
+  font-size: 0.82rem;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
   white-space: nowrap;
   font-family: inherit;
-  min-width: 0;
   text-align: center;
 }
 
@@ -470,6 +475,7 @@
 .lab-tabs-row .lab-tabs {
   margin-bottom: 0;
   flex: 1;
+  min-width: 0;
 }
 
 .lab-drawer-overlay {

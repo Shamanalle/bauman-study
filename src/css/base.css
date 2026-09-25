@@ -7,7 +7,6 @@
 @import './quiz.css';
 @import './flashcard.css';
 @import './dark.css';
-@import './responsive.css';
 
 /* Platform landing page */
 .platform-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px; }

@@ -56,11 +56,13 @@ function renderLabBrowser() {
   document.getElementById('heroTitle').textContent = `💻 ${labsMeta.title}`;
   document.getElementById('heroSubtitle').textContent = labsMeta.subtitle;
 
-  // Hide standard UI elements
+  // Hide standard UI elements and unused hero banner in labs
+  const hero = document.querySelector('.hero');
   const nav = document.querySelector('.nav');
   const pills = document.getElementById('sectionPills');
   const statsRow = document.querySelector('.stats-row');
   const progressBar = document.querySelector('.progress-bar-hero');
+  if (hero) hero.style.display = 'none';
   if (nav) nav.style.display = 'none';
   if (pills) pills.innerHTML = '';
   if (statsRow) statsRow.style.display = 'none';

@@ -3,6 +3,7 @@ import '../css/base.css';
 import '../css/labs.css';
 import '../css/textbook.css';
 import '../css/practice.css';
+import '../css/responsive.css';
 import { loadAssessmentData, allQuestions } from './data-loader.js';
 import { render, updateLearnedUI, renderPills, setSections, filterSection, toggleAll, goRandom } from './renderer.js';
 import { initSearch } from './search.js';
