@@ -23,10 +23,16 @@ export function toggleTheme() {
 }
 
 function updateThemeButton() {
-  const icon = document.body.classList.contains('dark') ? '☀️' : '🌙';
-  ['darkToggle', 'darkToggle2', 'themeFab'].forEach(id => {
+  const isDark = document.body.classList.contains('dark');
+  const icon = isDark ? '☀️' : '🌙';
+  ['darkToggle', 'darkToggle2', 'themeFab', 'themeToggleBtn'].forEach(id => {
     const btn = document.getElementById(id);
-    if (btn) btn.textContent = icon;
+    if (btn) {
+      const iconSpan = btn.querySelector('.theme-icon') || btn;
+      iconSpan.textContent = icon;
+      btn.setAttribute('aria-label', isDark ? 'Включить светлую тему' : 'Включить тёмную тему');
+      btn.title = isDark ? 'Включить светлую тему (T)' : 'Включить тёмную тему (T)';
+    }
   });
 }
 

@@ -151,9 +151,36 @@
   .tb-chapter { padding: 14px; }
   .tb-chapter-title { font-size: 1rem; }
 
+  /* Site header phone */
+  .site-header-inner {
+    height: 52px;
+    padding: 0 14px;
+    gap: 10px;
+  }
+  .header-brand .brand-badge {
+    display: none;
+  }
+  .header-brand .brand-title {
+    font-size: 0.95rem;
+  }
+  .header-search-btn {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+  .header-search-btn .search-btn-kbd {
+    display: none;
+  }
+  .header-icon-btn.header-gh-btn {
+    display: none;
+  }
+  .header-icon-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 0.9rem;
+  }
+
   /* Scroll-top button */
-  .scroll-top { right: 12px; bottom: 12px; width: 40px; height: 40px; font-size: 1rem; }
-  .theme-fab { right: 12px; bottom: 60px; width: 40px; height: 40px; font-size: 1rem; }
+  .scroll-top { right: 16px; bottom: 16px; width: 42px; height: 42px; font-size: 1.05rem; }
 
   /* Global search on phone */
   .gs-input { font-size: 0.85rem; padding: 10px 14px; }

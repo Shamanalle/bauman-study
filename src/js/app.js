@@ -91,10 +91,21 @@ export function renderBreadcrumbs(title, categoryName = null) {
   }
   const rootUrl = window.location.pathname;
   const params = new URLSearchParams(window.location.search);
+  const isInlineBundle = typeof window !== 'undefined' && Boolean(window.__INLINE_META__);
   const currentSubId = params.get('subject');
   const currentAssessment = params.get('assessment');
   const currentType = params.get('type');
   const subject = SUBJECTS.find(s => s.id === currentSubId);
+
+  if (isInlineBundle) {
+    bc.innerHTML = `
+      <span class="gb-tag">📦 Автономный бандл</span>
+      <span class="gb-sep">/</span>
+      <span class="gb-current">${title}</span>
+      ${categoryName ? `<span class="gb-tag">${categoryName}</span>` : ''}
+    `;
+    return;
+  }
 
   if (subject && subject.assessments?.length > 1) {
     const optionsHtml = subject.assessments.map(a => {
@@ -106,7 +117,7 @@ export function renderBreadcrumbs(title, categoryName = null) {
     }).join('');
 
     bc.innerHTML = `
-      <a href="${rootUrl}" class="gb-back" title="Вернуться ко всем предметам">
+      <a href="${rootUrl}" class="gb-back" id="gbBackLink" title="Вернуться ко всем предметам">
         <span class="gb-arrow">←</span> Все предметы
       </a>
       <span class="gb-sep">/</span>
@@ -120,15 +131,29 @@ export function renderBreadcrumbs(title, categoryName = null) {
       </div>
       ${categoryName ? `<span class="gb-tag">${categoryName}</span>` : ''}
     `;
+
+    bc.querySelector('#gbBackLink')?.addEventListener('click', (e) => {
+      if (typeof window !== 'undefined' && typeof window.__goHome === 'function') {
+        e.preventDefault();
+        window.__goHome();
+      }
+    });
   } else {
     bc.innerHTML = `
-      <a href="${rootUrl}" class="gb-back" title="Вернуться ко всем предметам">
+      <a href="${rootUrl}" class="gb-back" id="gbBackLink" title="Вернуться ко всем предметам">
         <span class="gb-arrow">←</span> Все предметы
       </a>
       <span class="gb-sep">/</span>
       <span class="gb-current">${title}</span>
       ${categoryName ? `<span class="gb-tag">${categoryName}</span>` : ''}
     `;
+
+    bc.querySelector('#gbBackLink')?.addEventListener('click', (e) => {
+      if (typeof window !== 'undefined' && typeof window.__goHome === 'function') {
+        e.preventDefault();
+        window.__goHome();
+      }
+    });
   }
 }
 
@@ -146,15 +171,48 @@ async function init() {
   // 1. Global theme & keyboard shortcuts
   progress.initTheme();
   initKeyboard();
+
+  // Wire up theme toggles (header and hero)
   document.getElementById('darkToggle')?.addEventListener('click', progress.toggleTheme);
-  document.getElementById('themeFab')?.addEventListener('click', progress.toggleTheme);
+  document.getElementById('themeToggleBtn')?.addEventListener('click', progress.toggleTheme);
+
+  // Wire up header search trigger
+  document.getElementById('headerSearchBtn')?.addEventListener('click', () => {
+    if (window.openCommandPalette) {
+      window.openCommandPalette();
+    } else {
+      const input = document.getElementById('search');
+      if (input) {
+        input.focus();
+        input.select?.();
+      }
+    }
+  });
+
+  // Wire up brand link for SPA navigation
+  document.getElementById('headerBrandLink')?.addEventListener('click', (e) => {
+    if (typeof window !== 'undefined' && typeof window.__goHome === 'function') {
+      e.preventDefault();
+      window.__goHome();
+    }
+  });
+
+  // Early init of command palette for universal Ctrl+K / / access
+  import('./global-search.js').then(({ initGlobalSearch }) => {
+    initGlobalSearch(document.getElementById('app') || document.body);
+  }).catch(() => {});
 
   const params = new URLSearchParams(window.location.search);
-  const hasParams = params.has('subject') && params.has('assessment');
+  const isInlineBundle = typeof window !== 'undefined' && Boolean(window.__INLINE_META__);
+  const hasParams = (params.has('subject') && params.has('assessment')) || isInlineBundle;
   const isLabs = params.get('type') === 'labs';
 
   // Set subject on body for per-subject CSS scoping
-  if (params.has('subject')) document.body.dataset.subject = params.get('subject');
+  if (params.has('subject')) {
+    document.body.dataset.subject = params.get('subject');
+  } else if (isInlineBundle && window.__INLINE_META__?.shortCode) {
+    document.body.dataset.subject = window.__INLINE_META__.shortCode;
+  }
 
   // Labs browser (separate page type)
   if (isLabs && params.get('subject') === 'algorithmic-languages') {

@@ -192,6 +192,150 @@
   border-color: var(--accent-border);
 }
 
+/* Sticky Site Header */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-bottom: 1px solid var(--border);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.site-header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 3vw, 32px);
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 700;
+  font-size: 1.05rem;
+  transition: opacity 0.15s;
+}
+
+.header-brand:hover {
+  opacity: 0.85;
+}
+
+.brand-icon {
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.brand-title {
+  letter-spacing: -0.01em;
+}
+
+.brand-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 6px;
+  background: var(--accent-bg);
+  color: var(--accent);
+  border: 1px solid var(--accent-border);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.header-center {
+  flex: 1;
+  max-width: 440px;
+  display: flex;
+  justify-content: center;
+}
+
+.header-search-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text3);
+  font-family: inherit;
+  font-size: 0.84rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.header-search-btn:hover {
+  border-color: var(--blue);
+  color: var(--text2);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.search-btn-icon {
+  font-size: 0.88rem;
+  margin-right: 8px;
+}
+
+.search-btn-text {
+  flex: 1;
+  text-align: left;
+}
+
+.search-btn-kbd {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  padding: 2px 5px;
+  border-radius: 4px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text2);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.15s ease;
+  text-decoration: none;
+}
+
+.header-icon-btn:hover {
+  background: var(--bg);
+  border-color: var(--border2);
+  color: var(--text);
+  transform: translateY(-1px);
+}
+
 /* Breadcrumb Switcher */
 .gb-subject {
   font-weight: 600;
@@ -736,9 +880,14 @@ code { font-family: "JetBrains Mono", monospace; }
 
 /* App container */
 .app {
-  max-width: 820px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 20px 16px 80px;
+  padding: 24px clamp(16px, 3vw, 32px) 80px;
+}
+
+/* Focused max-width for tickets and reading */
+body[data-subject] .app {
+  max-width: 1000px;
 }
 
 /* Markdown tables */

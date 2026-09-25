@@ -10,6 +10,20 @@
  * - svgs: { img_1: "<svg>...</svg>", ... }
  */
 export async function loadAssessmentData() {
+  // If data is inlined (offline single-file bundles), return immediately
+  if (typeof window !== 'undefined' && window.__INLINE_META__ && window.__INLINE_SECTIONS__) {
+    const meta = window.__INLINE_META__;
+    const sections = window.__INLINE_SECTIONS__;
+    for (const section of sections) {
+      for (const q of (section.questions || section.cards || [])) {
+        if (meta.practiceMode) {
+          q.practiceMode = true;
+        }
+      }
+    }
+    return { meta, sections, svgs: {} };
+  }
+
   const params = new URLSearchParams(window.location.search);
   const subject = params.get('subject') || 'physics';
   const assessment = params.get('assessment') || 'midterm-2';

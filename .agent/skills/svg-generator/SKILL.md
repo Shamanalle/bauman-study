@@ -19,7 +19,7 @@ description: "Генерация качественных SVG-диаграмм �
 
 ### Где хранятся SVG
 ```
-src/public/data/<subject>/svg/<name>.svg
+src/data/<subject>/svg/<name>.svg
 ```
 
 ### Как они подключаются

@@ -111,11 +111,9 @@ function createShortcutsModal() {
     }
   });
 
-  // FAB button in bottom corner
-  const fab = document.getElementById('shortcutsFab');
-  if (fab) {
-    fab.addEventListener('click', toggleShortcutsModal);
-  }
+  // Header and FAB triggers
+  document.getElementById('shortcutsHeaderBtn')?.addEventListener('click', toggleShortcutsModal);
+  document.getElementById('shortcutsFab')?.addEventListener('click', toggleShortcutsModal);
 }
 
 export function initKeyboard() {

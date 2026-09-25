@@ -117,6 +117,8 @@ for (const subject of SUBJECTS) {
     // Build the modified JS that has data inlined
     const inlinedJS = buildInlinedJS(jsContent, meta, sections, csContent);
 
+    const totalQ = sections.reduce((s, sec) => s + (sec.questions || sec.cards || []).length, 0);
+
     // Generate HTML bundle
     const html = `<!DOCTYPE html>
 <html lang="ru">
@@ -132,12 +134,45 @@ for (const subject of SUBJECTS) {
   <style>${cssContent}</style>
 </head>
 <body>
+  <header class="site-header" id="siteHeader">
+    <div class="site-header-inner">
+      <div class="header-left">
+        <a href="./" class="header-brand" id="headerBrandLink" title="На главную Bauman Study">
+          <span class="brand-icon">🎓</span>
+          <span class="brand-title">Bauman Study</span>
+          <span class="brand-badge">v2.0</span>
+        </a>
+      </div>
+      <div class="header-center">
+        <button class="header-search-btn" id="headerSearchBtn" title="Быстрый поиск (Ctrl+K)">
+          <span class="search-btn-icon">🔍</span>
+          <span class="search-btn-text">Поиск по билетам...</span>
+          <kbd class="search-btn-kbd">Ctrl K</kbd>
+        </button>
+      </div>
+      <div class="header-right">
+        <button class="header-icon-btn" id="themeToggleBtn" title="Переключить тему (T)">
+          <span class="theme-icon">🌙</span>
+        </button>
+        <button class="header-icon-btn" id="shortcutsHeaderBtn" title="Горячие клавиши (?)">
+          <span>⌨️</span>
+        </button>
+        <a href="https://github.com/Shamanalle/bauman-study" target="_blank" rel="noopener noreferrer" class="header-icon-btn header-gh-btn" title="GitHub репозиторий" aria-label="GitHub">
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
   <div class="app" id="app">
     <div class="hero">
-      <h1 id="heroTitle">📚 Загрузка...</h1>
-      <p id="heroSubtitle">...</p>
+      <div class="hero-badge">🎓 Семестр 2 · МГТУ им. Н.Э. Баумана</div>
+      <h1 id="heroTitle" class="hero-title">${meta.icon || '📚'} ${meta.title || assessment.name}</h1>
+      <p id="heroSubtitle" class="hero-subtitle">${meta.subtitle || 'Справочник для подготовки'}</p>
       <div class="stats-row">
-        <div class="stat-pill">✅ <span id="learnedCount">0</span> / <span id="totalCount">0</span> выучено · <span id="secDone">0</span>/<span id="secTotal">0</span> разделов</div>
+        <div class="stat-pill">✅ <span id="learnedCount">0</span> / <span id="totalCount">${totalQ}</span> выучено · <span id="secDone">0</span>/<span id="secTotal">${sections.length}</span> разделов</div>
         <button class="stat-pill dark-toggle" id="darkToggle" title="Переключить тему">🌙</button>
       </div>
       <div class="progress-bar-hero"><div class="progress-fill-hero" id="heroProgress"></div></div>
@@ -163,7 +198,6 @@ for (const subject of SUBJECTS) {
     const outPath = path.join(BUNDLES, `${assessment.bundleName}.html`);
     fs.writeFileSync(outPath, html, 'utf-8');
 
-    const totalQ = sections.reduce((s, sec) => s + (sec.questions || sec.cards || []).length, 0);
     const size = (Buffer.byteLength(html) / 1024).toFixed(0);
     console.log(`  ✅ ${assessment.bundleName}.html — ${totalQ} вопросов, ${size} КБ`);
     totalBundles++;
@@ -246,7 +280,17 @@ try {
     history.replaceState(null, '', url.toString());
   }
 } catch (e) {
-  // Ignore SecurityError when opened directly via file:// protocol
+  // On file:// origins, history.replaceState throws SecurityError in Chromium.
+  // Fallback: proxy URLSearchParams so query lookups succeed transparently.
+  var _origUSP = URLSearchParams;
+  var _defaultSearch = '?subject=${meta.shortCode || 'inline'}&assessment=inline';
+  window.URLSearchParams = function(init) {
+    if (typeof init === 'string' && (init === window.location.search || init === '') && !init.includes('subject=')) {
+      return new _origUSP(_defaultSearch);
+    }
+    return arguments.length === 0 ? new _origUSP() : new _origUSP(init);
+  };
+  window.URLSearchParams.prototype = _origUSP.prototype;
 }
 
 ${js}`;

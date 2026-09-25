@@ -1,23 +1,80 @@
 /* Dark theme overrides */
 body.dark {
-  --bg: #0d1117; --surface: #161b22; --card: #161b22;
-  --border: #30363d; --border2: #484f58;
-  --text: #e6edf3; --text2: #8b949e; --text3: #484f58;
-  --accent-bg: rgba(45, 164, 78, 0.12); --accent-border: rgba(45, 164, 78, 0.4);
-  --blue-bg: rgba(9, 105, 218, 0.12); --blue-border: rgba(9, 105, 218, 0.4);
-  --purple-bg: rgba(130, 80, 223, 0.12); --purple-border: rgba(130, 80, 223, 0.4);
-  --orange-bg: rgba(191, 163, 64, 0.12); --orange-border: rgba(191, 163, 64, 0.4);
-  --red-bg: rgba(207, 34, 46, 0.12); --red-border: rgba(207, 34, 46, 0.4);
-  --teal-bg: rgba(10, 123, 131, 0.12);
-  --shadow: 0 1px 3px rgba(0, 0, 0, 0.3); --shadow2: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --bg: #090d16;
+  --surface: #111827;
+  --card: #111827;
+  --border: rgba(255, 255, 255, 0.08);
+  --border2: rgba(255, 255, 255, 0.16);
+  --text: #f1f5f9;
+  --text2: #94a3b8;
+  --text3: #64748b;
+  --accent: #10b981;
+  --accent-bg: rgba(16, 185, 129, 0.12);
+  --accent-border: rgba(16, 185, 129, 0.35);
+  --blue: #3b82f6;
+  --blue-bg: rgba(59, 130, 246, 0.12);
+  --blue-border: rgba(59, 130, 246, 0.35);
+  --purple: #a855f7;
+  --purple-bg: rgba(168, 85, 247, 0.12);
+  --purple-border: rgba(168, 85, 247, 0.35);
+  --orange: #f59e0b;
+  --orange-bg: rgba(245, 158, 11, 0.12);
+  --orange-border: rgba(245, 158, 11, 0.35);
+  --red: #f43f5e;
+  --red-bg: rgba(244, 63, 94, 0.12);
+  --red-border: rgba(244, 63, 94, 0.35);
+  --teal: #14b8a6;
+  --teal-bg: rgba(20, 184, 166, 0.12);
+  --glass-bg: rgba(9, 13, 22, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+  --shadow2: 0 12px 36px rgba(0, 0, 0, 0.65);
+}
+
+/* Site Header Dark */
+body.dark .site-header {
+  background: var(--glass-bg);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+body.dark .header-search-btn {
+  background: #111827;
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--text3);
+}
+body.dark .header-search-btn:hover {
+  border-color: var(--blue);
+  color: var(--text2);
+}
+body.dark .header-icon-btn {
+  background: #111827;
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--text2);
+}
+body.dark .header-icon-btn:hover {
+  background: #1f2937;
+  color: var(--text);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 /* Hero */
-body.dark .hero { background: linear-gradient(135deg, #161b22, #1c2a3a); }
-body.dark .hero h1 { color: #e6edf3; }
-body.dark .hero p { color: #8b949e; }
-body.dark .stat-pill { background: rgba(255, 255, 255, 0.1); color: #e6edf3; }
-body.dark .progress-bar-hero { background: #21262d; }
+body.dark .hero {
+  background: #111827;
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+body.dark .hero h1, body.dark .hero-title { color: #f1f5f9; }
+body.dark .hero p, body.dark .hero-subtitle { color: #94a3b8; }
+body.dark .stat-pill {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #f1f5f9;
+}
+body.dark .hero-badge {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #94a3b8;
+}
+body.dark .progress-bar-hero { background: #1f2937; }
 
 /* Nav */
 body.dark .nav { background: var(--bg); border-color: var(--border); }
@@ -541,13 +598,13 @@ body.dark .fc-all-done-sub { color: #8b949e; }
 
 /* Global breadcrumbs dark */
 body.dark .global-breadcrumbs {
-  background: rgba(13, 17, 23, 0.9);
-  border-bottom-color: #30363d;
+  background: var(--glass-bg);
+  border-color: rgba(255, 255, 255, 0.08);
 }
-body.dark .gb-current { color: #e6edf3; }
-body.dark .gb-back { color: #58a6ff; }
-body.dark .gb-back:hover { background: rgba(56, 139, 253, 0.15); color: #79c0ff; }
-body.dark .gb-tag { background: rgba(45, 164, 78, 0.15); color: #7ee787; border-color: rgba(45, 164, 78, 0.4); }
+body.dark .gb-current { color: #f1f5f9; }
+body.dark .gb-back { color: #60a5fa; }
+body.dark .gb-back:hover { background: rgba(59, 130, 246, 0.15); color: #93c5fd; }
+body.dark .gb-tag { background: rgba(16, 185, 129, 0.15); color: #34d399; border-color: rgba(16, 185, 129, 0.35); }
 
 /* Learn button dark */
 body.dark .tp-learn-btn { background: #161b22; border-color: #30363d; color: #8b949e; }
