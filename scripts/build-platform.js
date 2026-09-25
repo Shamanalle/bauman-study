@@ -16,8 +16,15 @@ const DIST = path.join(ROOT, 'dist');
 const DATA = path.join(ROOT, 'src', 'data');
 const BUNDLES = path.join(ROOT, 'bundles');
 
-// Read built assets (Vite outputs a single JS file thanks to inlineDynamicImports)
+import { execSync } from 'child_process';
+
 const distAssets = path.join(DIST, 'assets');
+if (!fs.existsSync(distAssets)) {
+  console.log('📦 dist/assets не найдены. Запускаю сборку Vite...');
+  execSync('npm run build', { cwd: ROOT, stdio: 'inherit' });
+}
+
+// Read built assets (Vite outputs a single JS file thanks to inlineDynamicImports)
 const cssFile = fs.readdirSync(distAssets).find(f => f.endsWith('.css'));
 const jsFile = fs.readdirSync(distAssets).find(f => f.endsWith('.js'));
 const cssContent = fs.readFileSync(path.join(distAssets, cssFile), 'utf-8');

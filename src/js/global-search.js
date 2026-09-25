@@ -32,7 +32,7 @@ async function buildIndex() {
     const assessmentData = await Promise.all(
       targets.map(async ({ subjectId, assessmentId, assessmentName }) => {
         try {
-          const basePath = `/data/${subjectId}/${assessmentId}`;
+          const basePath = `./data/${subjectId}/${assessmentId}`;
           const [metaRes, indexRes] = await Promise.all([
             fetch(`${basePath}/meta.json`).catch(() => null),
             fetch(`${basePath}/index.json`).catch(() => null),
@@ -56,7 +56,7 @@ async function buildIndex() {
     const validAssessments = assessmentData.filter(Boolean);
 
     for (const { subjectId, assessmentId, assessmentName, meta, sections } of validAssessments) {
-      const basePath = `/data/${subjectId}/${assessmentId}`;
+      const basePath = `./data/${subjectId}/${assessmentId}`;
       const secFetches = sections.map(async (secFile) => {
         try {
           const resp = await fetch(`${basePath}/${secFile}`);

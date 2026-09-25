@@ -5,15 +5,13 @@
 [![CI](https://github.com/Shamanalle/bauman-study/actions/workflows/ci.yml/badge.svg)](https://github.com/Shamanalle/bauman-study/actions/workflows/ci.yml)
 [![Deploy GitHub Pages](https://github.com/Shamanalle/bauman-study/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/Shamanalle/bauman-study/actions/workflows/deploy-pages.yml)
 [![Release](https://img.shields.io/github/v/release/Shamanalle/bauman-study?color=blue&logo=github)](https://github.com/Shamanalle/bauman-study/releases)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![KaTeX](https://img.shields.io/badge/Math-KaTeX-brightgreen.svg)](https://katex.org/)
 [![PWA](https://img.shields.io/badge/PWA-Ready-orange.svg)](#-pwa-и-автономный-режим)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
 **Комплексная интерактивная образовательная среда для студентов МГТУ им. Н.Э. Баумана**  
 Справочники, интервальные повторения (SM-2), генератор контрольных мероприятий, шпаргалки и лабораторные работы.
 
-[🌐 **Открыть веб-версию платформы**](https://shamanalle.github.io/bauman-study/) • [📦 **Скачать офлайн-версию (ZIP)**](https://github.com/Shamanalle/bauman-study/releases/latest) • [🤝 **Внести свой вклад**](CONTRIBUTING.md)
+[🌐 **Открыть веб-версию платформы**](https://shamanalle.github.io/bauman-study/) • [📦 **Скачать офлайн-версию (ZIP)**](https://github.com/Shamanalle/bauman-study/releases/latest)
 
 </div>
 
@@ -65,14 +63,14 @@
 
 ```mermaid
 flowchart TD
-    subgraph Data Layer ["Данные и материалы (src/data)"]
+    subgraph DataLayer ["Данные и материалы (src/data)"]
         Physics["Физика (JSON + SVG)"]
         DiffEq["Интегралы и ДУ (JSON)"]
         LinAlg["Линейная алгебра (JSON)"]
         CS["ЯП / ТиМП / МОИ (JSON + C++)"]
     end
 
-    subgraph Core Engine ["Ядро платформы (src/js)"]
+    subgraph CoreEngine ["Ядро платформы (src/js)"]
         App["App Bootstrap & Breadcrumbs"]
         Search["Глобальный поиск (Global Search)"]
         Cards["Рендерер карточек (5 блоков)"]
@@ -81,14 +79,14 @@ flowchart TD
         Keyboard["Менеджер горячих клавиш"]
     end
 
-    subgraph Build Pipeline ["Сборка и экспорт"]
+    subgraph BuildPipeline ["Сборка и экспорт"]
         Vite["Vite Web App & PWA (dist/)"]
         Bundler["Сборщик офлайн-бандлов (bundles/)"]
         PlatformGen["Единый файл Платформа.html"]
     end
 
-    Data Layer --> Core Engine
-    Core Engine --> Build Pipeline
+    DataLayer --> CoreEngine
+    CoreEngine --> BuildPipeline
 ```
 
 ---
@@ -147,23 +145,3 @@ npm run dev
 - Скрывают элементы интерфейса, меню, поиск и плавающие кнопки.
 - Оптимизируют размер шрифта KaTeX и убирают тени.
 - Предотвращают разрыв карточек и формул между страницами (`break-inside: avoid`).
-
----
-
-## 🤝 Участие в проекте (Contributing)
-
-Мы приветствуем любые улучшения: дополнение теоретических материалов, исправление опечаток в формулах, добавление решений задач или улучшение интерфейса!
-
-Подробные инструкции по добавлению материалов, форматированию формул и процессу Pull Request описаны в документе [**CONTRIBUTING.md**](CONTRIBUTING.md).
-
----
-
-## 📜 Лицензия
-
-Проект распространяется под свободной лицензией **[MIT](LICENSE)**. Вы можете свободно использовать, модифицировать и распространять материалы при сохранении указания авторства.
-
-<div align="center">
-
-Создано с ❤️ для студентов **МГТУ им. Н.Э. Баумана**
-
-</div>

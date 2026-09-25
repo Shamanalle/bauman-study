@@ -14,7 +14,7 @@ export async function loadAssessmentData() {
   const subject = params.get('subject') || 'physics';
   const assessment = params.get('assessment') || 'midterm-2';
 
-  const basePath = `/data/${subject}/${assessment}`;
+  const basePath = `./data/${subject}/${assessment}`;
 
   // Load meta
   const metaResp = await fetch(`${basePath}/meta.json`);
@@ -54,7 +54,7 @@ export async function loadAssessmentData() {
 
   // Load SVGs
   const svgs = {};
-  const svgBasePath = `/data/${subject}/svg`;
+  const svgBasePath = `./data/${subject}/svg`;
   // Process SVG references in questions + propagate practiceMode
   for (const section of sections) {
     for (const q of section.questions) {

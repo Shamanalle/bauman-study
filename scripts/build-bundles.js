@@ -16,11 +16,19 @@ const DIST = path.join(ROOT, 'dist');
 const DATA = path.join(ROOT, 'src', 'data');
 const BUNDLES = path.join(ROOT, 'bundles');
 
+import { execSync } from 'child_process';
+
+const distAssets = path.join(DIST, 'assets');
+if (!fs.existsSync(distAssets)) {
+  console.log('📦 dist/assets не найдены. Запускаю сборку Vite...');
+  execSync('npm run build', { cwd: ROOT, stdio: 'inherit' });
+}
+
 // Read built assets
-const cssFile = fs.readdirSync(path.join(DIST, 'assets')).find(f => f.endsWith('.css'));
-const jsFile = fs.readdirSync(path.join(DIST, 'assets')).find(f => f.endsWith('.js'));
-const cssContent = fs.readFileSync(path.join(DIST, 'assets', cssFile), 'utf-8');
-const jsContent = fs.readFileSync(path.join(DIST, 'assets', jsFile), 'utf-8');
+const cssFile = fs.readdirSync(distAssets).find(f => f.endsWith('.css'));
+const jsFile = fs.readdirSync(distAssets).find(f => f.endsWith('.js'));
+const cssContent = fs.readFileSync(path.join(distAssets, cssFile), 'utf-8');
+const jsContent = fs.readFileSync(path.join(distAssets, jsFile), 'utf-8');
 
 // Subjects config
 // Subjects config from single source of truth

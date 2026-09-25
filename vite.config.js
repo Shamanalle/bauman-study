@@ -3,6 +3,7 @@ import { resolve } from 'path';
 import fs from 'fs';
 
 export default defineConfig({
+  base: './',
   root: 'src',
   publicDir: resolve(__dirname, 'src/public'),
   plugins: [
